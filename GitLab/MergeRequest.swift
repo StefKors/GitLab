@@ -34,7 +34,7 @@ struct MergeRequestElement {
     let mergeWhenPipelineSucceeds: Bool
     let mergeStatus: MergeStatus
     let sha: String
-    let mergeCommitSHA, squashCommitSHA, discussionLocked: NSNull
+    let mergeCommitSHA, squashCommitSHA, discussionLocked: String
     let shouldRemoveSourceBranch: Bool?
     let forceRemoveSourceBranch: Bool
     let reference: String?
@@ -44,7 +44,7 @@ struct MergeRequestElement {
     let squash: Bool
     let taskCompletionStatus: TaskCompletionStatus
     let hasConflicts, blockingDiscussionsResolved: Bool
-    let approvalsBeforeMerge: NSNull?
+    let approvalsBeforeMerge: Bool?
     let allowCollaboration, allowMaintainerToPush: Bool?
 }
 
@@ -97,5 +97,5 @@ struct TaskCompletionStatus {
 // MARK: - TimeStats
 struct TimeStats {
     let timeEstimate, totalTimeSpent: Int
-    let humanTimeEstimate, humanTotalTimeSpent: NSNull
+    let humanTimeEstimate, humanTotalTimeSpent: Int?
 }
