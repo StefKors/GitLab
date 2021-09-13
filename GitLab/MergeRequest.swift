@@ -13,7 +13,7 @@
 import Foundation
 
 // MARK: - MergeRequestElement
-struct MergeRequestElement {
+struct MergeRequestElement: Codable {
     let id, iid, projectID: Int
     let title, mergeRequestDescription: String
     let state: MergeRequestState
@@ -49,7 +49,7 @@ struct MergeRequestElement {
 }
 
 // MARK: - Author
-struct Author {
+struct Author: Codable {
     let id: Int
     let name, username: String
     let state: AuthorState
@@ -57,17 +57,17 @@ struct Author {
     let webURL: String
 }
 
-enum AuthorState {
+enum AuthorState: String, Codable {
     case active
 }
 
-enum MergeStatus {
+enum MergeStatus: String, Codable {
     case canBeMerged
     case unchecked
 }
 
 // MARK: - Milestone
-struct Milestone {
+struct Milestone: Codable {
     let id, iid, projectID: Int
     let title, milestoneDescription, state, createdAt: String
     let updatedAt, dueDate, startDate: String
@@ -75,27 +75,27 @@ struct Milestone {
 }
 
 // MARK: - References
-struct References {
+struct References: Codable {
     let short, relative, full: String
 }
 
-enum MergeRequestState {
+enum MergeRequestState: String, Codable {
     case merged
     case opened
 }
 
-enum TargetBranch {
+enum TargetBranch: String, Codable {
     case develop
     case master
 }
 
 // MARK: - TaskCompletionStatus
-struct TaskCompletionStatus {
+struct TaskCompletionStatus: Codable {
     let count, completedCount: Int
 }
 
 // MARK: - TimeStats
-struct TimeStats {
+struct TimeStats: Codable {
     let timeEstimate, totalTimeSpent: Int
     let humanTimeEstimate, humanTotalTimeSpent: Int?
 }

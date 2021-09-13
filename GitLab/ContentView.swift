@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var networkManager = NetworkManager()
     var body: some View {
-        Text("Hello, World!")
+        Text("\(networkManager.mergeRequests.count)")
+            .onAppear {
+                networkManager.name()
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
