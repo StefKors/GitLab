@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A10721A26F0D05B0087CBA9 /* ProgressIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10721926F0D05B0087CBA9 /* ProgressIcon.swift */; };
+		8A10721C26F0D1210087CBA9 /* NeedsReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
 		8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FB26EFD08E004136AB /* ContentView.swift */; };
 		8A5FC0FE26EFD08F004136AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
@@ -16,6 +18,9 @@
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
 		8A5FC12926EFD640004136AB /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12826EFD640004136AB /* MergeRequest.swift */; };
 		8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */; };
+		8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */; };
+		8AD5372626F0D41800DEE0B4 /* MockMRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5372526F0D41800DEE0B4 /* MockMRData.swift */; };
+		8AD5372826F0D81F00DEE0B4 /* RefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A10721926F0D05B0087CBA9 /* ProgressIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIcon.swift; sourceTree = "<group>"; };
+		8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsReviewIcon.swift; sourceTree = "<group>"; };
 		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5FC0FB26EFD08E004136AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +59,9 @@
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5FC12826EFD640004136AB /* MergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequest.swift; sourceTree = "<group>"; };
 		8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIcon.swift; sourceTree = "<group>"; };
+		8AD5372526F0D41800DEE0B4 /* MockMRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMRData.swift; sourceTree = "<group>"; };
+		8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatus.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +112,15 @@
 		8A5FC0F826EFD08E004136AB /* GitLab */ = {
 			isa = PBXGroup;
 			children = (
+				8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */,
+				8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */,
 				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
 				8A5FC0FB26EFD08E004136AB /* ContentView.swift */,
+				8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */,
+				8A10721926F0D05B0087CBA9 /* ProgressIcon.swift */,
 				8A5FC12826EFD640004136AB /* MergeRequest.swift */,
 				8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */,
+				8AD5372526F0D41800DEE0B4 /* MockMRData.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10226EFD08F004136AB /* Main.storyboard */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
@@ -271,10 +286,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AD5372826F0D81F00DEE0B4 /* RefreshStatus.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
 				8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */,
 				8A5FC12926EFD640004136AB /* MergeRequest.swift in Sources */,
+				8A10721C26F0D1210087CBA9 /* NeedsReviewIcon.swift in Sources */,
+				8A10721A26F0D05B0087CBA9 /* ProgressIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
+				8AD5372626F0D41800DEE0B4 /* MockMRData.swift in Sources */,
+				8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

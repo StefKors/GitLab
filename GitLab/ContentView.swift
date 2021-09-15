@@ -9,151 +9,86 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var networkManager = NetworkManager()
-    var mergeRequests: [MergeRequestElement] = []
-    var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+    @Environment(\.openURL) var openURL
 
-            ForEach(mergeRequests, id: \.id) { MR in
-                VStack {
-                    // MARK: - Top Part
-                    HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(MR.title)
-                                .fontWeight(.bold)
-
-                            HStack(spacing: 5) {
-                                Text(MR.references.short)
-                                    .foregroundColor(.accentColor)
-                                Text("Created by")
-                                Text(MR.author.name)
-                                    .foregroundColor(.accentColor)
-                            }
-                        }
-
-                        Spacer()
-                        VStack(alignment:.trailing) {
-                            HStack {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.accentColor)
-                                    .font(.system(size: 18))
-                            }
-
-                            //                        "checkmark.circle"
-                            //                        "xmark.circle"
-                        }
-
-
-                    }
-
-
-//                    // MARK: - Bottom Part
-//                    Text(MR.mergeRequestDescription)
-//                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 0))
-//                        .opacity(0.7)
-                }
-            }
-
-            Divider()
-
-            ForEach(mergeRequests, id: \.id) { MR in
-                VStack {
-                    // MARK: - Top Part
-                    HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(MR.title)
-                                .fontWeight(.bold)
-
-                            HStack(spacing: 5) {
-                                Text(MR.references.short)
-                                    .foregroundColor(.accentColor)
-                                Text("Created by")
-                                Text(MR.author.name)
-                                    .foregroundColor(.accentColor)
-                            }
-                        }
-
-                        Spacer()
-                        VStack(alignment:.trailing) {
-                            HStack {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.accentColor)
-                                    .font(.system(size: 18))
-                            }
-                        }
-
-
-                    }
-                }
-            }
-
-            Divider()
-
-            ForEach(mergeRequests, id: \.id) { MR in
-                VStack {
-                    // MARK: - Top Part
-                    HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(MR.title)
-                                .fontWeight(.bold)
-
-                            HStack(spacing: 5) {
-                                Text(MR.references.short)
-                                    .foregroundColor(.accentColor)
-                                Text("Created by")
-                                Text(MR.author.name)
-                                    .foregroundColor(.accentColor)
-                            }
-                        }
-
-                        Spacer()
-                        VStack(alignment:.trailing) {
-                            HStack {
-                                ProgressBar()
-                            }
-                        }
-
-
-                    }
-                }
-            }
-
-        }.frame(maxWidth: 400, maxHeight: .infinity)
-            .padding()
-
-//        Text("\(networkManager.mergeRequests.count)")
-//            .onAppear {
-//                networkManager.name()
-//            }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    var dateValue: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: networkManager.lastUpdate)
     }
-}
-
-struct ProgressBar: View {
-    private let animation = Animation.linear(duration: 2.0).repeatForever(autoreverses: false)
-    @State var isAtMaxScale = false
-
     var body: some View {
-        ZStack {
-            Circle()
-                .stroke(lineWidth: 2.0)
-                .opacity(0.3)
-                .foregroundColor(.accentColor)
+        ZStack(alignment: .topLeading) {
+            VStack(alignment: .trailing, spacing: 10) {
+                ScrollView {
+                    ForEach(networkManager.mergeRequests, id: \.id) { MR in
+                        VStack {
+                            // MARK: - Top Part
+                            HStack {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(MR.title ?? "untitled")
+                                        .fontWeight(.bold)
+
+                                    HStack(spacing: 5) {
+                                        Text(MR.references?.short ?? "")
+                                            .foregroundColor(.accentColor)
+                                        Text("Created by")
+                                        Text(MR.author?.name ?? "")
+                                            .foregroundColor(.accentColor)
+                                    }
+                                }
+
+                                Spacer()
+                                VStack(alignment:.trailing) {
+                                    HStack {
+                                        if MR.mergeStatus != MergeStatus.canBeMerged {
+                                            NeedsReviewIcon()
+                                        }
+                                        CommentIcon(count: MR.userNotesCount)
+                                        Image(systemName: "checkmark.circle")
+                                            .foregroundColor(.accentColor)
+                                            .font(.system(size: 18))
+                                    }
+
+                                    //                        "checkmark.circle"
+                                    //                        "xmark.circle"
+                                }
 
 
-            Circle()
-                .trim(from: 0.0, to: .pi/10)
-                .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, lineJoin: .round))
-                .foregroundColor(.accentColor)
-                .rotationEffect(Angle(degrees: 270.0))
-                .animation(.linear)
-        }.frame(width: 16, height: 16)
-            .rotationEffect(Angle(degrees: self.isAtMaxScale ? 360.0 : 0.0))
-            .onAppear {
-                withAnimation(self.animation, {
-                    self.isAtMaxScale.toggle()
+                            }
+                        }
+                        .onTapGesture {
+                            guard let id = MR.iid else {
+                                return
+                            }
+                            let url = "https://gitlab.com/beamgroup/beam/-/merge_requests/\(id)"
+                            openMR(url)
+                        }
+                        Divider()
+                    }
+
+                }
+                Button("Query GitLab", action: {
+                    networkManager.getMRs()
                 })
+                Text("Last updated at: \(dateValue)")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 10))
             }
+            .frame(maxWidth: 400, maxHeight: .infinity)
+            .padding()
+            .onAppear {
+                networkManager.getMRs()
+            }
+        }
     }
+    func openMR(_ target: String) {
+        guard let url = URL(string: target) else {
+            return
+        }
+        openURL(url)
+    }
+
 }
 
 
@@ -220,7 +155,7 @@ struct ContentView_Previews: PreviewProvider {
         )
     ]
     static var previews: some View {
-        ContentView(mergeRequests: mrs)
+        ContentView()
     }
 }
 
