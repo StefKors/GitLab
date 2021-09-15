@@ -18,12 +18,9 @@ class NetworkManager: ObservableObject {
     var token: String = "Bearer DYjsR1sjWmsPBwBMdipb"
     var lastUpdate: Date = NSDate.now
 //    @Published var dataTask
-    @Published var mergeRequests: [MergeRequestElement] = Mock.MRs {
+    @Published var mergeRequests: [MergeRequestElement] = [] {
         didSet {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(2000)) {
-                self.isUpdatingMRs = false
-            }
-
+            self.isUpdatingMRs = false
         }
     }
     @Published var isUpdatingMRs: Bool = false
@@ -36,28 +33,28 @@ class NetworkManager: ObservableObject {
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.httpAdditionalHeaders = ["Authorization": token]
 
-//        let session = URLSession(configuration: sessionConfiguration)
-//        session.dataTaskPublisher(for: url)
-//            .map({ item in
-//                return item.data
-//            })
-//            .decode(type: [MergeRequestElement].self, decoder: JSONDecoder())
-//            .catch { error -> AnyPublisher<[MergeRequestElement], Never> in
-//                print(error)
-//                if error is URLError {
-//                    return Just([])
-//                        .eraseToAnyPublisher()
-//                } else {
-//                    return Empty(completeImmediately: true)
-//                        .eraseToAnyPublisher()
-//                }
-//            }
-//            .retry(3)
-////            .replaceError(with: [])
-//            .receive(on: RunLoop.main)
-//            .assign(to: \.mergeRequests, on: self)
-//            .store(in: &scope)
+        let session = URLSession(configuration: sessionConfiguration)
+        session.dataTaskPublisher(for: url)
+            .map({ item in
+                return item.data
+            })
+            .decode(type: [MergeRequestElement].self, decoder: JSONDecoder())
+            .catch { error -> AnyPublisher<[MergeRequestElement], Never> in
+                print(error)
+                if error is URLError {
+                    return Just([])
+                        .eraseToAnyPublisher()
+                } else {
+                    return Empty(completeImmediately: true)
+                        .eraseToAnyPublisher()
+                }
+            }
+            .retry(3)
+//            .replaceError(with: [])
+            .receive(on: RunLoop.main)
+            .assign(to: \.mergeRequests, on: self)
+            .store(in: &scope)
 
-        mergeRequests = Mock.MRs
+//        mergeRequests = Mock.MRs
     }
 }
