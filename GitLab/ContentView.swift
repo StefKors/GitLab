@@ -56,11 +56,6 @@ struct ContentView: View {
 
 
                             }
-
-                            //                    // MARK: - Bottom Part
-                            //                    Text(MR.mergeRequestDescription)
-                            //                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 0))
-                            //                        .opacity(0.7)
                         }
                         .onTapGesture {
                             guard let id = MR.iid else {
@@ -85,14 +80,6 @@ struct ContentView: View {
             .onAppear {
                 networkManager.getMRs()
             }
-
-            RefreshStatus(isVisible: networkManager.isUpdatingMRs)
-
-            //        Text("\(networkManager.mergeRequests.count)")
-            //            .onAppear {
-            //                networkManager.name()
-            //            }
-            //            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     func openMR(_ target: String) {
