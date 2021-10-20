@@ -27,7 +27,19 @@ class NetworkManager: ObservableObject {
                 return item.data
             })
             .decode(type: [MergeRequestElement].self, decoder: JSONDecoder())
-            .replaceError(with: [])
+            .catch { error -> AnyPublisher<[MergeRequestElement], Never> in
+                dump(self)
+                dump(error)
+                if error is URLError {
+                    return Just([])
+                        .eraseToAnyPublisher()
+                } else {
+                    return Empty(completeImmediately: true)
+                        .eraseToAnyPublisher()
+                }
+            }
+            .retry(3)
+//            .replaceError(with: [])
             .receive(on: RunLoop.main)
             .assign(to: \.mergeRequests, on: self)
             .store(in: &scope)
