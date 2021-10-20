@@ -8,15 +8,27 @@
 import Foundation
 import Combine
 
+enum RequestError: Error {
+    case sessionError(error: Error)
+}
+
 class NetworkManager: ObservableObject {
     // https://gitlab.com/api/v4/projects/22103425/merge_requests?state=opened
     var url: URL = URL(string: "https://www.gitlab.com/api/v4/projects/22103425/merge_requests?state=opened")!
     var token: String = "Bearer DYjsR1sjWmsPBwBMdipb"
+    var lastUpdate: Date = NSDate.now
 //    @Published var dataTask
-    @Published var mergeRequests: [MergeRequestElement] = []
+    @Published var mergeRequests: [MergeRequestElement] = [] {
+        didSet {
+            self.isUpdatingMRs = false
+        }
+    }
+    @Published var isUpdatingMRs: Bool = false
     private var scope: Set<AnyCancellable> = []
 
-    func name() {
+    func getMRs() {
+        isUpdatingMRs = true
+
         // network call
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.httpAdditionalHeaders = ["Authorization": token]
@@ -44,6 +56,6 @@ class NetworkManager: ObservableObject {
             .assign(to: \.mergeRequests, on: self)
             .store(in: &scope)
 
-        print(scope)
+//        mergeRequests = Mock.MRs
     }
 }
