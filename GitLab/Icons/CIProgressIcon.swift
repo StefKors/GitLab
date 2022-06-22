@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressIcon: View {
+struct CIProgressIcon: View {
     private let animation = Animation.linear(duration: 2.0).repeatForever(autoreverses: false)
     @State var isAtMaxScale = false
     
@@ -35,8 +35,8 @@ struct ProgressIcon: View {
     }
 }
 
-struct ProgressIcon_Previews: PreviewProvider {
+struct CIProgressIcon_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressIcon()
+        CIProgressIcon()
     }
 }

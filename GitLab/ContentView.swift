@@ -70,13 +70,30 @@ struct ContentView: View {
                                     Spacer()
                                     VStack(alignment:.trailing) {
                                         HStack {
-                                            if !(MR.approved ?? false) {
+                                            let isApproved = MR.approved ?? false
+                                            if isApproved {
+                                                ApprovedReviewIcon()
+                                            } else {
                                                 NeedsReviewIcon()
                                             }
+
+                                            if let CIStatus = MR.headPipeline?.status {
+                                                switch CIStatus {
+                                                case .created:
+                                                    CIProgressIcon()
+                                                case .manual:
+                                                    CIProgressIcon()
+                                                case .running:
+                                                    CIProgressIcon()
+                                                case .success:
+                                                    CISuccessIcon()
+                                                case .failed:
+                                                    CIFailedIcon()
+                                                case .canceled:
+                                                    CICanceledIcon()
+                                                }
+                                            }
                                             // CommentIcon(count: MR.userNotesCount)
-                                            Image(systemName: "checkmark.circle")
-                                                .foregroundColor(.accentColor)
-                                                .font(.system(size: 18))
                                         }
 
                                         //                        "checkmark.circle"

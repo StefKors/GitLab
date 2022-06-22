@@ -11,7 +11,7 @@ struct RefreshStatus: View {
     var isVisible: Bool
     var body: some View {
         HStack {
-            ProgressIcon()
+            CIProgressIcon()
             Text("updating")
         }
         .padding(10)

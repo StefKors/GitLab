@@ -1,11 +1,10 @@
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let mergeRequests = try? newJSONDecoder().decode(MergeRequests.self, from: jsonData)
 
 import Foundation
 
-// MARK: - MergeRequests
+// MARK: - GitLabQuery
 struct GitLabQuery: Codable {
     let data: DataClass?
 }
@@ -21,22 +20,12 @@ struct CurrentUser: Codable {
     let authoredMergeRequests: AuthoredMergeRequests?
 }
 
-// MARK: - AuthoredMergeRequests
-struct AuthoredMergeRequests: Codable {
-    let edges: [AuthoredMergeRequestsEdge]?
-}
-
-// MARK: - AuthoredMergeRequestsEdge
-struct AuthoredMergeRequestsEdge: Codable {
-    let node: MergeRequest?
-}
-
 // MARK: - MergeRequest
 struct MergeRequest: Codable {
     let state, id, title: String?
     let draft: Bool?
     let webURL: String?
-    let approvedBy: ApprovedBy?
+    let approvedBy: AuthoredMergeRequests?
     let approved: Bool?
     let approvalsLeft: Int?
     let headPipeline: HeadPipeline?
@@ -48,19 +37,14 @@ struct MergeRequest: Codable {
     }
 }
 
-// MARK: - ApprovedBy
-struct ApprovedBy: Codable {
-    let edges: [ApprovedByEdge]?
+// MARK: - AuthoredMergeRequestsEdge
+struct AuthoredMergeRequestsEdge: Codable {
+    let node: MergeRequest?
 }
 
-// MARK: - ApprovedByEdge
-struct ApprovedByEdge: Codable {
-    let node: FluffyNode?
-}
-
-// MARK: - FluffyNode
-struct FluffyNode: Codable {
-    let id, name, username: String?
+// MARK: - AuthoredMergeRequests
+struct AuthoredMergeRequests: Codable {
+    let edges: [AuthoredMergeRequestsEdge]?
 }
 
 // MARK: - JobsEdge
@@ -73,17 +57,15 @@ struct Jobs: Codable {
     let edges: [JobsEdge]?
 }
 
-// MARK: - TentacledNode
-struct TentacledNode: Codable {
-    let id: String?
-    let status: PurpleStatus?
-    let name: Name?
+// MARK: - FluffyNode
+struct FluffyNode: Codable {
+    let id, status, name: String?
     let jobs: Jobs?
 }
 
 // MARK: - StagesEdge
 struct StagesEdge: Codable {
-    let node: TentacledNode?
+    let node: FluffyNode?
 }
 
 // MARK: - Stages
@@ -95,22 +77,16 @@ struct Stages: Codable {
 struct HeadPipeline: Codable {
     let id: String?
     let active: Bool?
-    let status: HeadPipelineStatus?
+    let status: Status?
     let stages: Stages?
     let name: String?
 }
 
-enum Name: String, Codable {
-    case build = "build"
-    case deploy = "deploy"
-    case test = "test"
-}
-
-enum PurpleStatus: String, Codable {
-    case success = "success"
-}
-
-enum HeadPipelineStatus: String, Codable {
+enum Status: String, Codable {
+    case failed = "FAILED"
+    case canceled = "CANCELED"
+    case created = "CREATED"
     case manual = "MANUAL"
+    case running = "RUNNING"
     case success = "SUCCESS"
 }
