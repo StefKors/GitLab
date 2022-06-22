@@ -1,16 +1,14 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Defaults",
-        "repositoryURL": "https://github.com/sindresorhus/Defaults",
-        "state": {
-          "branch": null,
-          "revision": "55f3302c3ab30a8760f10042d0ebc0a6907f865a",
-          "version": "6.1.0"
-        }
+  "pins" : [
+    {
+      "identity" : "get",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Get.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f93c8efb3cc17b4e6404bd943949b631b1836a12"
       }
-    ]
-  },
-  "version": 1
+    }
+  ],
+  "version" : 2
 }

@@ -16,13 +16,10 @@
 		8A5FC10426EFD08F004136AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10226EFD08F004136AB /* Main.storyboard */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
-		8A5FC12926EFD640004136AB /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12826EFD640004136AB /* MergeRequest.swift */; };
+		8A5FC12926EFD640004136AB /* MergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12826EFD640004136AB /* MergeRequests.swift */; };
 		8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */; };
 		8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */; };
-		8ABB1A672721A7DC00357FEE /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8ABB1A662721A7DC00357FEE /* Defaults */; };
-		8ABB1A692721A80C00357FEE /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB1A682721A80C00357FEE /* UserDefaultsStorage.swift */; };
-		8ABB1A6B2721B60400357FEE /* Approval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB1A6A2721B60400357FEE /* Approval.swift */; };
-		8AD5372626F0D41800DEE0B4 /* MockMRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5372526F0D41800DEE0B4 /* MockMRData.swift */; };
+		8A99A99028638AA2007A31BD /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99A98F28638AA2007A31BD /* Get */; };
 		8AD5372826F0D81F00DEE0B4 /* RefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,12 +57,9 @@
 		8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A5FC12826EFD640004136AB /* MergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequest.swift; sourceTree = "<group>"; };
+		8A5FC12826EFD640004136AB /* MergeRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequests.swift; sourceTree = "<group>"; };
 		8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIcon.swift; sourceTree = "<group>"; };
-		8ABB1A682721A80C00357FEE /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
-		8ABB1A6A2721B60400357FEE /* Approval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Approval.swift; sourceTree = "<group>"; };
-		8AD5372526F0D41800DEE0B4 /* MockMRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMRData.swift; sourceTree = "<group>"; };
 		8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatus.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -74,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ABB1A672721A7DC00357FEE /* Defaults in Frameworks */,
+				8A99A99028638AA2007A31BD /* Get in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +92,6 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
-				8ABB1A6A2721B60400357FEE /* Approval.swift */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A5FC10E26EFD08F004136AB /* GitLabTests */,
 				8A5FC11926EFD08F004136AB /* GitLabUITests */,
@@ -123,12 +116,10 @@
 				8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */,
 				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
 				8A5FC0FB26EFD08E004136AB /* ContentView.swift */,
-				8ABB1A682721A80C00357FEE /* UserDefaultsStorage.swift */,
 				8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */,
 				8A10721926F0D05B0087CBA9 /* ProgressIcon.swift */,
-				8A5FC12826EFD640004136AB /* MergeRequest.swift */,
+				8A5FC12826EFD640004136AB /* MergeRequests.swift */,
 				8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */,
-				8AD5372526F0D41800DEE0B4 /* MockMRData.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10226EFD08F004136AB /* Main.storyboard */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
@@ -181,7 +172,7 @@
 			);
 			name = GitLab;
 			packageProductDependencies = (
-				8ABB1A662721A7DC00357FEE /* Defaults */,
+				8A99A98F28638AA2007A31BD /* Get */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* GitLab.app */;
@@ -230,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					8A5FC0F526EFD08E004136AB = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -255,7 +246,7 @@
 			);
 			mainGroup = 8A5FC0ED26EFD08E004136AB;
 			packageReferences = (
-				8ABB1A652721A7DC00357FEE /* XCRemoteSwiftPackageReference "Defaults" */,
+				8A99A98E28638AA2007A31BD /* XCRemoteSwiftPackageReference "Get" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -300,16 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ABB1A692721A80C00357FEE /* UserDefaultsStorage.swift in Sources */,
 				8AD5372826F0D81F00DEE0B4 /* RefreshStatus.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
 				8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */,
-				8A5FC12926EFD640004136AB /* MergeRequest.swift in Sources */,
+				8A5FC12926EFD640004136AB /* MergeRequests.swift in Sources */,
 				8A10721C26F0D1210087CBA9 /* NeedsReviewIcon.swift in Sources */,
-				8ABB1A6B2721B60400357FEE /* Approval.swift in Sources */,
 				8A10721A26F0D05B0087CBA9 /* ProgressIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
-				8AD5372626F0D41800DEE0B4 /* MockMRData.swift in Sources */,
 				8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +467,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = GitLab/GitLab.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
@@ -490,7 +479,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -504,6 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = GitLab/GitLab.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
@@ -515,7 +505,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -648,21 +638,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8ABB1A652721A7DC00357FEE /* XCRemoteSwiftPackageReference "Defaults" */ = {
+		8A99A98E28638AA2007A31BD /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			repositoryURL = "https://github.com/kean/Get.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8ABB1A662721A7DC00357FEE /* Defaults */ = {
+		8A99A98F28638AA2007A31BD /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8ABB1A652721A7DC00357FEE /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
+			package = 8A99A98E28638AA2007A31BD /* XCRemoteSwiftPackageReference "Get" */;
+			productName = Get;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
