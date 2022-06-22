@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct ContentView: View {
     @StateObject var networkManager = NetworkManager()
     @Environment(\.openURL) var openURL
+    @Default(.apiToken) var apiToken
+    @State var showSettings: Bool = false
 
     var dateValue: String {
         let dateFormatter = DateFormatter()
@@ -17,63 +20,83 @@ struct ContentView: View {
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: networkManager.lastUpdate)
     }
+
     var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .trailing, spacing: 10) {
-                ScrollView {
-                    ForEach(networkManager.mergeRequests, id: \.id) { MR in
-                        VStack {
-                            // MARK: - Top Part
-                            HStack {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Text(MR.title ?? "untitled")
-                                        .fontWeight(.bold)
-
-                                    HStack(spacing: 5) {
-                                        Text(MR.references?.short ?? "")
-                                            .foregroundColor(.accentColor)
-                                        Text("Created by")
-                                        Text(MR.author?.name ?? "")
-                                            .foregroundColor(.accentColor)
-                                    }
-                                }
-
-                                Spacer()
-                                VStack(alignment:.trailing) {
-                                    HStack {
-                                        if MR.mergeStatus != MergeStatus.canBeMerged {
-                                            NeedsReviewIcon()
-                                        }
-                                        CommentIcon(count: MR.userNotesCount)
-                                        Image(systemName: "checkmark.circle")
-                                            .foregroundColor(.accentColor)
-                                            .font(.system(size: 18))
-                                    }
-
-                                    //                        "checkmark.circle"
-                                    //                        "xmark.circle"
-                                }
-
-
-                            }
-                        }
-                        .onTapGesture {
-                            guard let id = MR.iid else {
-                                return
-                            }
-                            let url = "https://gitlab.com/beamgroup/beam/-/merge_requests/\(id)"
-                            openMR(url)
-                        }
-                        Divider()
-                    }
-
-                }
-                Button("Query GitLab", action: {
-                    networkManager.getMRs()
+                Button("Settings", action: {
+                    showSettings.toggle()
                 })
-                Text("Last updated at: \(dateValue)")
-                    .foregroundColor(.gray)
-                    .font(.system(size: 10))
+                if apiToken.isEmpty || showSettings {
+                    VStack(alignment: .leading) {
+                        Text("GitLab API Token")
+                        TextField(
+                            "Enter token here...",
+                            text: $apiToken,
+                            onCommit: {
+                                // make API call with token.
+                                networkManager.getMRs()
+                            })
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Spacer()
+                        Button("Clear API Token", action: {apiToken = ""})
+                        Button("Query GitLab", action: {
+                            networkManager.getMRs()
+                        })
+                    }
+                } else {
+                    ScrollView {
+                        ForEach(networkManager.mergeRequests, id: \.id) { MR in
+                            VStack {
+                                // MARK: - Top Part
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Text(MR.title ?? "untitled")
+                                            .fontWeight(.bold)
+
+                                        HStack(spacing: 5) {
+                                            Text(MR.references?.short ?? "")
+                                                .foregroundColor(.accentColor)
+                                            Text("Created by")
+                                            Text(MR.author?.name ?? "")
+                                                .foregroundColor(.accentColor)
+                                        }
+                                    }
+
+                                    Spacer()
+                                    VStack(alignment:.trailing) {
+                                        HStack {
+                                            if MR.mergeStatus != MergeStatus.canBeMerged {
+                                                NeedsReviewIcon()
+                                            }
+                                            CommentIcon(count: MR.userNotesCount)
+                                            Image(systemName: "checkmark.circle")
+                                                .foregroundColor(.accentColor)
+                                                .font(.system(size: 18))
+                                        }
+
+                                        //                        "checkmark.circle"
+                                        //                        "xmark.circle"
+                                    }
+
+
+                                }
+                            }
+                            .onTapGesture {
+                                guard let id = MR.iid else {
+                                    return
+                                }
+                                let url = "https://gitlab.com/beamgroup/beam/-/merge_requests/\(id)"
+                                openMR(url)
+                            }
+                            Divider()
+                        }
+
+                    }
+                    Text("Last updated at: \(dateValue)")
+                        .foregroundColor(.gray)
+                        .font(.system(size: 10))
+                }
             }
             .frame(maxWidth: 400, maxHeight: .infinity)
             .padding()

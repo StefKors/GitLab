@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		8A5FC12926EFD640004136AB /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12826EFD640004136AB /* MergeRequest.swift */; };
 		8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */; };
 		8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */; };
+		8ABB1A672721A7DC00357FEE /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8ABB1A662721A7DC00357FEE /* Defaults */; };
+		8ABB1A692721A80C00357FEE /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB1A682721A80C00357FEE /* UserDefaultsStorage.swift */; };
+		8ABB1A6B2721B60400357FEE /* Approval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB1A6A2721B60400357FEE /* Approval.swift */; };
 		8AD5372626F0D41800DEE0B4 /* MockMRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5372526F0D41800DEE0B4 /* MockMRData.swift */; };
 		8AD5372826F0D81F00DEE0B4 /* RefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,8 @@
 		8A5FC12826EFD640004136AB /* MergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequest.swift; sourceTree = "<group>"; };
 		8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIcon.swift; sourceTree = "<group>"; };
+		8ABB1A682721A80C00357FEE /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		8ABB1A6A2721B60400357FEE /* Approval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Approval.swift; sourceTree = "<group>"; };
 		8AD5372526F0D41800DEE0B4 /* MockMRData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMRData.swift; sourceTree = "<group>"; };
 		8AD5372726F0D81F00DEE0B4 /* RefreshStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshStatus.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ABB1A672721A7DC00357FEE /* Defaults in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +98,7 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
+				8ABB1A6A2721B60400357FEE /* Approval.swift */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A5FC10E26EFD08F004136AB /* GitLabTests */,
 				8A5FC11926EFD08F004136AB /* GitLabUITests */,
@@ -116,6 +123,7 @@
 				8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */,
 				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
 				8A5FC0FB26EFD08E004136AB /* ContentView.swift */,
+				8ABB1A682721A80C00357FEE /* UserDefaultsStorage.swift */,
 				8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */,
 				8A10721926F0D05B0087CBA9 /* ProgressIcon.swift */,
 				8A5FC12826EFD640004136AB /* MergeRequest.swift */,
@@ -172,6 +180,9 @@
 			dependencies = (
 			);
 			name = GitLab;
+			packageProductDependencies = (
+				8ABB1A662721A7DC00357FEE /* Defaults */,
+			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* GitLab.app */;
 			productType = "com.apple.product-type.application";
@@ -243,6 +254,9 @@
 				Base,
 			);
 			mainGroup = 8A5FC0ED26EFD08E004136AB;
+			packageReferences = (
+				8ABB1A652721A7DC00357FEE /* XCRemoteSwiftPackageReference "Defaults" */,
+			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,11 +300,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ABB1A692721A80C00357FEE /* UserDefaultsStorage.swift in Sources */,
 				8AD5372826F0D81F00DEE0B4 /* RefreshStatus.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
 				8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */,
 				8A5FC12926EFD640004136AB /* MergeRequest.swift in Sources */,
 				8A10721C26F0D1210087CBA9 /* NeedsReviewIcon.swift in Sources */,
+				8ABB1A6B2721B60400357FEE /* Approval.swift in Sources */,
 				8A10721A26F0D05B0087CBA9 /* ProgressIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
 				8AD5372626F0D41800DEE0B4 /* MockMRData.swift in Sources */,
@@ -630,6 +646,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8ABB1A652721A7DC00357FEE /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8ABB1A662721A7DC00357FEE /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8ABB1A652721A7DC00357FEE /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A5FC0EE26EFD08E004136AB /* Project object */;
 }
