@@ -15,6 +15,8 @@
 		8A36B2032863A53200044A1C /* CIFailedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2022863A53200044A1C /* CIFailedIcon.swift */; };
 		8A36B2052863A75900044A1C /* CICanceledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2042863A75900044A1C /* CICanceledIcon.swift */; };
 		8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2062863A7E000044A1C /* CIRetryIcon.swift */; };
+		8A36B2092863A8F500044A1C /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2082863A8F500044A1C /* CISkippedIcon.swift */; };
+		8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20A2863AAB600044A1C /* CiManualIcon.swift */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
 		8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FB26EFD08E004136AB /* ContentView.swift */; };
 		8A5FC0FE26EFD08F004136AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		8A36B2022863A53200044A1C /* CIFailedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIFailedIcon.swift; sourceTree = "<group>"; };
 		8A36B2042863A75900044A1C /* CICanceledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICanceledIcon.swift; sourceTree = "<group>"; };
 		8A36B2062863A7E000044A1C /* CIRetryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIRetryIcon.swift; sourceTree = "<group>"; };
+		8A36B2082863A8F500044A1C /* CISkippedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CISkippedIcon.swift; path = GitLab/Icons/CISkippedIcon.swift; sourceTree = "<group>"; };
+		8A36B20A2863AAB600044A1C /* CiManualIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiManualIcon.swift; sourceTree = "<group>"; };
 		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5FC0FB26EFD08E004136AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				8A36B2022863A53200044A1C /* CIFailedIcon.swift */,
 				8A36B2062863A7E000044A1C /* CIRetryIcon.swift */,
 				8A36B2042863A75900044A1C /* CICanceledIcon.swift */,
+				8A36B20A2863AAB600044A1C /* CiManualIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
+				8A36B2082863A8F500044A1C /* CISkippedIcon.swift */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A5FC10E26EFD08F004136AB /* GitLabTests */,
 				8A5FC11926EFD08F004136AB /* GitLabUITests */,
@@ -323,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A36B1FF2863A49E00044A1C /* RefreshStatus.swift in Sources */,
+				8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */,
 				8A36B1FA2863A1EF00044A1C /* ApprovedReviewIcon.swift in Sources */,
 				8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
@@ -333,6 +340,7 @@
 				8A36B2012863A4DF00044A1C /* CISuccessIcon.swift in Sources */,
 				8A10721A26F0D05B0087CBA9 /* CIProgressIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
+				8A36B2092863A8F500044A1C /* CISkippedIcon.swift in Sources */,
 				8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */,
 				8A36B2052863A75900044A1C /* CICanceledIcon.swift in Sources */,
 			);

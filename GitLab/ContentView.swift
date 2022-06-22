@@ -82,7 +82,7 @@ struct ContentView: View {
                                                 case .created:
                                                     CIProgressIcon()
                                                 case .manual:
-                                                    CIProgressIcon()
+                                                    CiManualIcon()
                                                 case .running:
                                                     CIProgressIcon()
                                                 case .success:
@@ -91,6 +91,8 @@ struct ContentView: View {
                                                     CIFailedIcon()
                                                 case .canceled:
                                                     CICanceledIcon()
+                                                case .skipped:
+                                                    CISkippedIcon()
                                                 }
                                             }
                                             // CommentIcon(count: MR.userNotesCount)

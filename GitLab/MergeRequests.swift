@@ -89,4 +89,5 @@ enum Status: String, Codable {
     case manual = "MANUAL"
     case running = "RUNNING"
     case success = "SUCCESS"
+    case skipped = "SKIPPED"
 }

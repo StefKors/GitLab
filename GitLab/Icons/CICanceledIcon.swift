@@ -12,6 +12,7 @@ struct CICanceledIcon: View {
         Image(systemName: "circle.slash")
             .foregroundColor(.gray)
             .font(.system(size: 18))
+            .help("CI canceled")
     }
 }
 

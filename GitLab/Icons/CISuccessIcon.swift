@@ -12,6 +12,7 @@ struct CISuccessIcon: View {
         Image(systemName: "checkmark.circle")
             .foregroundColor(.accentColor)
             .font(.system(size: 18))
+            .help("CI Success")
     }
 }
 

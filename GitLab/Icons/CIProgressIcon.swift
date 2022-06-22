@@ -17,8 +17,7 @@ struct CIProgressIcon: View {
                 .stroke(lineWidth: 2.0)
                 .opacity(0.3)
                 .foregroundColor(.accentColor)
-            
-            
+
             Circle()
                 .trim(from: 0.0, to: .pi/10)
                 .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, lineJoin: .round))
@@ -32,6 +31,7 @@ struct CIProgressIcon: View {
                     self.isAtMaxScale.toggle()
                 })
             }
+            .help("CI in progress")
     }
 }
 
