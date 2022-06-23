@@ -13,7 +13,7 @@ struct StocksMenuBarApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Emp
+            EmptyView()
         }.windowStyle(.automatic)
     }
 }
