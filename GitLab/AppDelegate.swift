@@ -8,13 +8,13 @@
 import SwiftUI
 
 @main
-struct StocksMenuBarApp: App {
+struct GitLabApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-    
+
     var body: some Scene {
-        WindowGroup {
+        Settings {
             EmptyView()
-        }.windowStyle(.automatic)
+        }
     }
 }
 
