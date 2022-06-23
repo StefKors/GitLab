@@ -164,5 +164,10 @@ struct ContentView: View {
                 }
             }
         }.frame(minWidth: 200, minHeight: 200)
+            .contextMenu {
+                Button("Quit") {
+                    NSApplication.shared.terminate(nil)
+                }.keyboardShortcut("q", modifiers: [.command])
+            }
     }
 }

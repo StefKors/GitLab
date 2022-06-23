@@ -42,7 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         self.popover.behavior = .transient
         self.popover.animates = true
         self.popover.contentViewController = NSHostingController(rootView: ContentView(model: self.networkManager))
-        constructMenu()
     }
     
     @objc func togglePopover() {
@@ -57,12 +56,4 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             }
         }
     }
-
-    func constructMenu() {
-        let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Quit GitLab", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-
-        statusItem.menu = menu
-    }
-
 }
