@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F2FA480F-757C-4325-9D97-C03B86E3CA0D"
+            uuid = "0754DC0D-1821-49B8-8100-157713353675"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GitLab/NetworkManager.swift"
+            filePath = "../../Library/Developer/Xcode/DerivedData/GitLab-cpanvpdpzrjqljfkzutopphptenw/SourcePackages/checkouts/Get/Sources/Get/APIClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "getMRs()"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "decode(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

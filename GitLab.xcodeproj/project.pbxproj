@@ -17,6 +17,10 @@
 		8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2062863A7E000044A1C /* CIRetryIcon.swift */; };
 		8A36B2092863A8F500044A1C /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2082863A8F500044A1C /* CISkippedIcon.swift */; };
 		8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20A2863AAB600044A1C /* CiManualIcon.swift */; };
+		8A36B20E28646D9F00044A1C /* WebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20D28646D9F00044A1C /* WebLink.swift */; };
+		8A36B2102864766300044A1C /* TitleWebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20F2864766300044A1C /* TitleWebLink.swift */; };
+		8A36B21328647D8B00044A1C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8A36B21228647D8B00044A1C /* Defaults */; };
+		8A36B217286480F600044A1C /* UserDefaultsFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B216286480F600044A1C /* UserDefaultsFix.swift */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
 		8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FB26EFD08E004136AB /* ContentView.swift */; };
 		8A5FC0FE26EFD08F004136AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
@@ -26,7 +30,7 @@
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
 		8A5FC12926EFD640004136AB /* MergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12826EFD640004136AB /* MergeRequests.swift */; };
 		8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */; };
-		8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */; };
+		8A6A07AB26F0C346003A9B7E /* DiscussionCountIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */; };
 		8A99A99028638AA2007A31BD /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99A98F28638AA2007A31BD /* Get */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +62,9 @@
 		8A36B2062863A7E000044A1C /* CIRetryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIRetryIcon.swift; sourceTree = "<group>"; };
 		8A36B2082863A8F500044A1C /* CISkippedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CISkippedIcon.swift; path = GitLab/Icons/CISkippedIcon.swift; sourceTree = "<group>"; };
 		8A36B20A2863AAB600044A1C /* CiManualIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiManualIcon.swift; sourceTree = "<group>"; };
+		8A36B20D28646D9F00044A1C /* WebLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLink.swift; sourceTree = "<group>"; };
+		8A36B20F2864766300044A1C /* TitleWebLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWebLink.swift; sourceTree = "<group>"; };
+		8A36B216286480F600044A1C /* UserDefaultsFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFix.swift; sourceTree = "<group>"; };
 		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5FC0FB26EFD08E004136AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,7 +81,7 @@
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5FC12826EFD640004136AB /* MergeRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequests.swift; sourceTree = "<group>"; };
 		8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentIcon.swift; sourceTree = "<group>"; };
+		8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionCountIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A36B21328647D8B00044A1C /* Defaults in Frameworks */,
 				8A99A99028638AA2007A31BD /* Get in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,7 +116,7 @@
 			children = (
 				8A36B1F92863A1EF00044A1C /* ApprovedReviewIcon.swift */,
 				8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */,
-				8A6A07AA26F0C346003A9B7E /* CommentIcon.swift */,
+				8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */,
 				8A10721926F0D05B0087CBA9 /* CIProgressIcon.swift */,
 				8A36B2002863A4DF00044A1C /* CISuccessIcon.swift */,
 				8A36B2022863A53200044A1C /* CIFailedIcon.swift */,
@@ -125,6 +133,15 @@
 				8A36B1FE2863A49E00044A1C /* RefreshStatus.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		8A36B2182864836100044A1C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8A36B20D28646D9F00044A1C /* WebLink.swift */,
+				8A36B20F2864766300044A1C /* TitleWebLink.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8A5FC0ED26EFD08E004136AB = {
@@ -151,11 +168,13 @@
 		8A5FC0F826EFD08E004136AB /* GitLab */ = {
 			isa = PBXGroup;
 			children = (
+				8A36B2182864836100044A1C /* Components */,
 				8A36B1FD2863A49E00044A1C /* Actions */,
 				8A36B1FB2863A43A00044A1C /* Icons */,
 				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
 				8A5FC0FB26EFD08E004136AB /* ContentView.swift */,
 				8A5FC12826EFD640004136AB /* MergeRequests.swift */,
+				8A36B216286480F600044A1C /* UserDefaultsFix.swift */,
 				8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10226EFD08F004136AB /* Main.storyboard */,
@@ -210,6 +229,7 @@
 			name = GitLab;
 			packageProductDependencies = (
 				8A99A98F28638AA2007A31BD /* Get */,
+				8A36B21228647D8B00044A1C /* Defaults */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* GitLab.app */;
@@ -284,6 +304,7 @@
 			mainGroup = 8A5FC0ED26EFD08E004136AB;
 			packageReferences = (
 				8A99A98E28638AA2007A31BD /* XCRemoteSwiftPackageReference "Get" */,
+				8A36B21128647D8B00044A1C /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -329,19 +350,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A36B1FF2863A49E00044A1C /* RefreshStatus.swift in Sources */,
+				8A36B20E28646D9F00044A1C /* WebLink.swift in Sources */,
 				8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */,
 				8A36B1FA2863A1EF00044A1C /* ApprovedReviewIcon.swift in Sources */,
 				8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */,
+				8A36B2102864766300044A1C /* TitleWebLink.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
 				8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */,
 				8A5FC12926EFD640004136AB /* MergeRequests.swift in Sources */,
+				8A36B217286480F600044A1C /* UserDefaultsFix.swift in Sources */,
 				8A10721C26F0D1210087CBA9 /* NeedsReviewIcon.swift in Sources */,
 				8A36B2032863A53200044A1C /* CIFailedIcon.swift in Sources */,
 				8A36B2012863A4DF00044A1C /* CISuccessIcon.swift in Sources */,
 				8A10721A26F0D05B0087CBA9 /* CIProgressIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
 				8A36B2092863A8F500044A1C /* CISkippedIcon.swift in Sources */,
-				8A6A07AB26F0C346003A9B7E /* CommentIcon.swift in Sources */,
+				8A6A07AB26F0C346003A9B7E /* DiscussionCountIcon.swift in Sources */,
 				8A36B2052863A75900044A1C /* CICanceledIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
-				DEVELOPMENT_TEAM = 324R3F66LU;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
@@ -541,7 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
-				DEVELOPMENT_TEAM = 324R3F66LU;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
@@ -682,6 +706,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A36B21128647D8B00044A1C /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8A99A98E28638AA2007A31BD /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -693,6 +725,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A36B21228647D8B00044A1C /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A36B21128647D8B00044A1C /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
 		8A99A98F28638AA2007A31BD /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A99A98E28638AA2007A31BD /* XCRemoteSwiftPackageReference "Get" */;

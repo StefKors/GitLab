@@ -10,7 +10,7 @@ import SwiftUI
 struct CISuccessIcon: View {
     var body: some View {
         Image(systemName: "checkmark.circle")
-            .foregroundColor(.accentColor)
+            .foregroundColor(.green)
             .font(.system(size: 18))
             .help("CI Success")
     }

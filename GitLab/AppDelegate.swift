@@ -5,43 +5,67 @@
 //  Created by Stef Kors on 13/09/2021.
 //
 
-import Cocoa
 import SwiftUI
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+@main
+struct StocksMenuBarApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     
+    var body: some Scene {
+        WindowGroup {
+            ContentView(model: NetworkManager())
+        }.windowStyle(.automatic)
+    }
+}
+
+// macos13
+// @main
+// struct UtilityApp: App {
+//     var body: some Scene {
+//         MenuBarExtra("Utility App", systemImage: "hammer") {
+//             AppMenu()
+//         }
+//     }
+// }
+
+class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
+    
+    private var statusItem: NSStatusItem!
     var popover: NSPopover!
-    var statusBarItem: NSStatusItem!
+    private var networkManager: NetworkManager!
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+    @MainActor func applicationDidFinishLaunching(_ notification: Notification) {
         
-        // Create the popover
-        let popover = NSPopover()
-        popover.contentSize = NSSize(width: 400, height: 500)
-        popover.behavior = .transient
-        popover.contentViewController = NSHostingController(rootView: contentView)
-        self.popover = popover
+        self.networkManager = NetworkManager()
         
-        // Create the status item
-        self.statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
-        if let button = self.statusBarItem.button {
-            button.image = NSImage(named: "Icon")
-            button.action = #selector(togglePopover(_:))
+        if let statusButton = statusItem.button {
+            statusButton.image = NSImage(named: "Icon")
+            statusButton.action = #selector(togglePopover)
         }
+        
+        self.popover = NSPopover()
+        self.popover.contentSize = NSSize(width: 440, height: 260)
+        self.popover.behavior = .transient
+        self.popover.animates = true
+        self.popover.contentViewController = NSHostingController(rootView: ContentView(model: self.networkManager))
     }
     
-    @objc func togglePopover(_ sender: AnyObject?) {
-        if let button = self.statusBarItem.button {
-            if self.popover.isShown {
-                self.popover.performClose(sender)
+    @objc func togglePopover() {
+        
+        Task {
+            await self.networkManager.getMRs()
+        }
+        
+        if let button = statusItem.button {
+            if popover.isShown {
+                self.popover.performClose(nil)
             } else {
-                self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             }
         }
+        
     }
     
 }

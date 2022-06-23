@@ -9,6 +9,13 @@ import Foundation
 import Combine
 import Get
 import SwiftUI
+import Defaults
+
+extension Defaults.Keys {
+    static let apiToken = Key<String>("apiToken", default: "")
+    static let lastUpdate = Key<Date?>("lastUpdate", default: nil)
+    static let mergeRequests = Key<[MergeRequest]>("mergeRequests", default: [])
+}
 
 enum RequestError: Error {
     case sessionError(error: Error)
@@ -16,18 +23,84 @@ enum RequestError: Error {
 
 class NetworkManager: ObservableObject {
     @Published var isUpdatingMRs: Bool = false
-
-    @AppStorage("username") var apiToken: String = "glpat-vQVd9zZynapzXDZ6aDKc"
-
     @Published var queryResponse: GitLabQuery?
-
-    @Published var mergeRequests: [MergeRequest] = []
-
+    @Default(.apiToken) var apiToken
+    @Default(.mergeRequests) var mergeRequests
+    @Default(.lastUpdate) var lastUpdate
 
     let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-    let graphqlQuery = "query { currentUser { name authoredMergeRequests(state: opened) { edges { node { state id title draft webUrl approvedBy { edges { node { id name username } } } approved approvalsLeft headPipeline { id active status stages { edges { node { id status name jobs { edges { node { id active name status } } } } } } } } } } } }"
-    func getMRs() async {
+    /// https://gitlab.com/-/graphql-explorer
+    let graphqlQuery = """
+query {
+  currentUser {
+    name
+    authoredMergeRequests(state: opened) {
+      edges {
+        node {
+          state
+          id
+          title
+          draft
+          webUrl
+          reference
+          targetProject {
+            id
+            name
+            path
+            webUrl
+            group {
+              id
+              name
+              fullName
+              fullPath
+              webUrl
+            }
+          }
+          approvedBy {
+            edges {
+              node {
+                id
+                name
+                username
+              }
+            }
+          }
+          mergeStatusEnum
+          approved
+          approvalsLeft
+          userDiscussionsCount
+          headPipeline {
+            id
+            active
+            status
+            stages {
+              edges {
+                node {
+                  id
+                  status
+                  name
+                  jobs {
+                    edges {
+                      node {
+                        id
+                        active
+                        name
+                        status
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+"""
 
+    func getMRs() async {
         let req = Request<GitLabQuery>.post("/graphql", query: [
             ("query", graphqlQuery),
             ("private_token", apiToken)
@@ -43,6 +116,7 @@ class NetworkManager: ObservableObject {
             }) ?? []
 
             queryResponse = response
+            lastUpdate = .now
         }
     }
 
