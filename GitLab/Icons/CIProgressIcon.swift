@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressIcon: View {
+struct CIProgressIcon: View {
     private let animation = Animation.linear(duration: 2.0).repeatForever(autoreverses: false)
     @State var isAtMaxScale = false
     
@@ -17,8 +17,7 @@ struct ProgressIcon: View {
                 .stroke(lineWidth: 2.0)
                 .opacity(0.3)
                 .foregroundColor(.accentColor)
-            
-            
+
             Circle()
                 .trim(from: 0.0, to: .pi/10)
                 .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, lineJoin: .round))
@@ -32,11 +31,13 @@ struct ProgressIcon: View {
                     self.isAtMaxScale.toggle()
                 })
             }
+            .padding(1)
+            .help("CI in progress")
     }
 }
 
-struct ProgressIcon_Previews: PreviewProvider {
+struct CIProgressIcon_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressIcon()
+        CIProgressIcon()
     }
 }

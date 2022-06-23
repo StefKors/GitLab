@@ -7,54 +7,117 @@
 
 import Foundation
 import Combine
+import Get
+import SwiftUI
+import Defaults
+
+extension Defaults.Keys {
+    static let apiToken = Key<String>("apiToken", default: "")
+    static let lastUpdate = Key<Date?>("lastUpdate", default: nil)
+    static let mergeRequests = Key<[MergeRequest]>("mergeRequests", default: [])
+}
 
 enum RequestError: Error {
     case sessionError(error: Error)
 }
 
 class NetworkManager: ObservableObject {
-    // https://gitlab.com/api/v4/projects/22103425/merge_requests?state=opened
-    var url: URL = URL(string: "https://www.gitlab.com/api/v4/projects/22103425/merge_requests?state=opened")!
-    var token: String = "Bearer DYjsR1sjWmsPBwBMdipb"
-    var lastUpdate: Date = NSDate.now
-//    @Published var dataTask
-    @Published var mergeRequests: [MergeRequestElement] = [] {
-        didSet {
-            self.isUpdatingMRs = false
+    @Published var isUpdatingMRs: Bool = false
+    @Published var queryResponse: GitLabQuery?
+    @Default(.apiToken) var apiToken
+    @Default(.mergeRequests) var mergeRequests
+    @Default(.lastUpdate) var lastUpdate
+
+    let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
+    /// https://gitlab.com/-/graphql-explorer
+    let graphqlQuery = """
+query {
+  currentUser {
+    name
+    authoredMergeRequests(state: opened) {
+      edges {
+        node {
+          state
+          id
+          title
+          draft
+          webUrl
+          reference
+          targetProject {
+            id
+            name
+            path
+            webUrl
+            group {
+              id
+              name
+              fullName
+              fullPath
+              webUrl
+            }
+          }
+          approvedBy {
+            edges {
+              node {
+                id
+                name
+                username
+              }
+            }
+          }
+          mergeStatusEnum
+          approved
+          approvalsLeft
+          userDiscussionsCount
+          headPipeline {
+            id
+            active
+            status
+            stages {
+              edges {
+                node {
+                  id
+                  status
+                  name
+                  jobs {
+                    edges {
+                      node {
+                        id
+                        active
+                        name
+                        status
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+"""
+
+    func getMRs() async {
+        let req = Request<GitLabQuery>.post("/graphql", query: [
+            ("query", graphqlQuery),
+            ("private_token", apiToken)
+        ])
+
+        guard let response: GitLabQuery = try? await client.send(req).value else {
+            return
+        }
+
+        await MainActor.run {
+            mergeRequests = response.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
+                return edge.node
+            }) ?? []
+
+            queryResponse = response
+            lastUpdate = .now
         }
     }
-    @Published var isUpdatingMRs: Bool = false
-    private var scope: Set<AnyCancellable> = []
 
-    func getMRs() {
-        isUpdatingMRs = true
-
-        // network call
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.httpAdditionalHeaders = ["Authorization": token]
-
-        let session = URLSession(configuration: sessionConfiguration)
-        session.dataTaskPublisher(for: url)
-            .map({ item in
-                return item.data
-            })
-            .decode(type: [MergeRequestElement].self, decoder: JSONDecoder())
-            .catch { error -> AnyPublisher<[MergeRequestElement], Never> in
-                print(error)
-                if error is URLError {
-                    return Just([])
-                        .eraseToAnyPublisher()
-                } else {
-                    return Empty(completeImmediately: true)
-                        .eraseToAnyPublisher()
-                }
-            }
-            .retry(3)
-//            .replaceError(with: [])
-            .receive(on: RunLoop.main)
-            .assign(to: \.mergeRequests, on: self)
-            .store(in: &scope)
-
-//        mergeRequests = Mock.MRs
-    }
 }

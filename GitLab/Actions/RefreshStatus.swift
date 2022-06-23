@@ -11,13 +11,13 @@ struct RefreshStatus: View {
     var isVisible: Bool
     var body: some View {
         HStack {
-            ProgressIcon()
+            CIProgressIcon()
             Text("updating")
         }
         .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(.white)
+                .fill(Color.white)
                 .shadow(radius: 20)
         )
         .animation(.easeInOut)
