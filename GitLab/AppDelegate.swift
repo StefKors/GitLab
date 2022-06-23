@@ -35,33 +35,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             statusButton.image = NSImage(named: "Icon")
             statusButton.action = #selector(togglePopover)
         }
-        
+
+        // statusItem.menu = menu
         self.popover = NSPopover()
         self.popover.contentSize = NSSize(width: 440, height: 260)
         self.popover.behavior = .transient
         self.popover.animates = true
         self.popover.contentViewController = NSHostingController(rootView: ContentView(model: self.networkManager))
-        setupMenus()
+        constructMenu()
     }
     
     @objc func togglePopover() {
-        Task {
-            await self.networkManager.getMRs()
-        }
-        
         if let button = statusItem.button {
             if popover.isShown {
                 self.popover.performClose(nil)
             } else {
                 popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                Task {
+                    await self.networkManager.getMRs()
+                }
             }
         }
     }
 
-    func setupMenus() {
+    func constructMenu() {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit GitLab", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+
         statusItem.menu = menu
     }
-    
+
 }
