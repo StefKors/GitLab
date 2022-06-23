@@ -13,21 +13,12 @@ struct StocksMenuBarApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(model: NetworkManager())
+            Emp
         }.windowStyle(.automatic)
     }
 }
 
-// macos13
-// @main
-// struct UtilityApp: App {
-//     var body: some Scene {
-//         MenuBarExtra("Utility App", systemImage: "hammer") {
-//             AppMenu()
-//         }
-//     }
-// }
-
+// macos13 can use MenuBarExtra() instead
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     private var statusItem: NSStatusItem!
