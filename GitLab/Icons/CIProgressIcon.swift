@@ -31,6 +31,7 @@ struct CIProgressIcon: View {
                     self.isAtMaxScale.toggle()
                 })
             }
+            .padding(1)
             .help("CI in progress")
     }
 }

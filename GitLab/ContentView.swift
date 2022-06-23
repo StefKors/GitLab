@@ -129,8 +129,12 @@ struct ContentView: View {
                                 isHovering = hovering
                             }
                             .onReceive(timer) { _ in
-                                let failedMRs = model.mergeRequests.filter({ $0.headPipeline?.status == .failed })
-                                NSApp.dockTile.badgeLabel = "\(failedMRs.count)"
+                                let failedMRs = model.mergeRequests.filter({ $0.headPipeline?.status == .failed }).count
+                                if failedMRs > 0 {
+                                    NSApp.dockTile.badgeLabel = "\(failedMRs)"
+                                } else {
+                                    NSApp.dockTile.badgeLabel = nil
+                                }
 
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
