@@ -73,6 +73,7 @@ query {
             id
             active
             status
+            mergeRequestEventType
             stages {
               edges {
                 node {

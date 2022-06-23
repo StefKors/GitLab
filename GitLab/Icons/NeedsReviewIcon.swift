@@ -15,7 +15,8 @@ struct NeedsReviewIcon: View {
             .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.accentColor, lineWidth: 1)
+                    .stroke(Color.accentColor, lineWidth: 2)
+                    .opacity(0.3)
             )
 
     }

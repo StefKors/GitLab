@@ -96,6 +96,7 @@ struct HeadPipeline: Codable, DefaultsSerializable {
     let status: PipelineStatus?
     let stages: Stages?
     let name: String?
+    let mergeRequestEventType: MergeRequestEventType?
 }
 
 // MARK: - TargetProject
@@ -157,3 +158,11 @@ enum MergeRequestState: String, Codable, DefaultsSerializable {
     case all = "all"
 }
 
+enum MergeRequestEventType: String, Codable, DefaultsSerializable {
+    /// Pipeline run on the changes from the source branch combined with the target branch.
+    case mergedResult = "MERGED_RESULT"
+    /// Pipeline run on the changes in the merge request source branch.
+    case detached = "DETACHED"
+    /// Pipeline ran as part of a merge train.
+    case mergeTrain = "MERGE_TRAIN"
+}

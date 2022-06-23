@@ -83,7 +83,10 @@ struct ContentView: View {
                                             }
 
                                             let isApproved = MR.approved ?? false
-                                            if isApproved {
+                                            let isOnMergeTrain = MR.headPipeline?.mergeRequestEventType == .mergeTrain
+                                            if isOnMergeTrain {
+                                                MergeTrainIcon()
+                                            } else if isApproved {
                                                 ApprovedReviewIcon()
                                             } else {
                                                 // NeedsReviewIcon()

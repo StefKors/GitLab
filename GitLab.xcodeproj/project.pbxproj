@@ -32,6 +32,7 @@
 		8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */; };
 		8A6A07AB26F0C346003A9B7E /* DiscussionCountIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */; };
 		8A99A99028638AA2007A31BD /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99A98F28638AA2007A31BD /* Get */; };
+		8AC4B3FF2864AE170054C601 /* MergeTrainIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4B3FE2864AE170054C601 /* MergeTrainIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		8A5FC12826EFD640004136AB /* MergeRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequests.swift; sourceTree = "<group>"; };
 		8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionCountIcon.swift; sourceTree = "<group>"; };
+		8AC4B3FE2864AE170054C601 /* MergeTrainIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTrainIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				8A36B2062863A7E000044A1C /* CIRetryIcon.swift */,
 				8A36B2042863A75900044A1C /* CICanceledIcon.swift */,
 				8A36B20A2863AAB600044A1C /* CiManualIcon.swift */,
+				8AC4B3FE2864AE170054C601 /* MergeTrainIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */,
 				8A36B1FA2863A1EF00044A1C /* ApprovedReviewIcon.swift in Sources */,
 				8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */,
+				8AC4B3FF2864AE170054C601 /* MergeTrainIcon.swift in Sources */,
 				8A36B2102864766300044A1C /* TitleWebLink.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
 				8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */,
