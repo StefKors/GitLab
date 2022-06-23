@@ -97,7 +97,7 @@ struct ContentView: View {
                                                 case .created:
                                                     CIProgressIcon()
                                                 case .manual:
-                                                    CiManualIcon()
+                                                    CIManualIcon()
                                                 case .running:
                                                     CIProgressIcon()
                                                 case .success:
@@ -108,6 +108,14 @@ struct ContentView: View {
                                                     CICanceledIcon()
                                                 case .skipped:
                                                     CISkippedIcon()
+                                                case .waitingForResource:
+                                                    CIWaitingForResourceIcon()
+                                                case .preparing:
+                                                    CIPreparingIcon()
+                                                case .pending:
+                                                    CIPendingIcon()
+                                                case .scheduled:
+                                                    CIScheduledIcon()
                                                 }
                                             }
 

@@ -16,7 +16,7 @@
 		8A36B2052863A75900044A1C /* CICanceledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2042863A75900044A1C /* CICanceledIcon.swift */; };
 		8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2062863A7E000044A1C /* CIRetryIcon.swift */; };
 		8A36B2092863A8F500044A1C /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B2082863A8F500044A1C /* CISkippedIcon.swift */; };
-		8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20A2863AAB600044A1C /* CiManualIcon.swift */; };
+		8A36B20B2863AAB600044A1C /* CIManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20A2863AAB600044A1C /* CIManualIcon.swift */; };
 		8A36B20E28646D9F00044A1C /* WebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20D28646D9F00044A1C /* WebLink.swift */; };
 		8A36B2102864766300044A1C /* TitleWebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36B20F2864766300044A1C /* TitleWebLink.swift */; };
 		8A36B21328647D8B00044A1C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8A36B21228647D8B00044A1C /* Defaults */; };
@@ -33,6 +33,10 @@
 		8A6A07AB26F0C346003A9B7E /* DiscussionCountIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */; };
 		8A99A99028638AA2007A31BD /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99A98F28638AA2007A31BD /* Get */; };
 		8AC4B3FF2864AE170054C601 /* MergeTrainIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4B3FE2864AE170054C601 /* MergeTrainIcon.swift */; };
+		8AC4B4022864C4660054C601 /* CIWaitingForResourceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4B4012864C4660054C601 /* CIWaitingForResourceIcon.swift */; };
+		8AC4B4042864C4790054C601 /* CIPreparingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4B4032864C4790054C601 /* CIPreparingIcon.swift */; };
+		8AC4B4062864C4800054C601 /* CIPendingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4B4052864C4800054C601 /* CIPendingIcon.swift */; };
+		8AC4B4082864C48B0054C601 /* CIScheduledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4B4072864C48B0054C601 /* CIScheduledIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +66,7 @@
 		8A36B2042863A75900044A1C /* CICanceledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CICanceledIcon.swift; sourceTree = "<group>"; };
 		8A36B2062863A7E000044A1C /* CIRetryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIRetryIcon.swift; sourceTree = "<group>"; };
 		8A36B2082863A8F500044A1C /* CISkippedIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CISkippedIcon.swift; path = GitLab/Icons/CISkippedIcon.swift; sourceTree = "<group>"; };
-		8A36B20A2863AAB600044A1C /* CiManualIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiManualIcon.swift; sourceTree = "<group>"; };
+		8A36B20A2863AAB600044A1C /* CIManualIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIManualIcon.swift; sourceTree = "<group>"; };
 		8A36B20D28646D9F00044A1C /* WebLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLink.swift; sourceTree = "<group>"; };
 		8A36B20F2864766300044A1C /* TitleWebLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWebLink.swift; sourceTree = "<group>"; };
 		8A36B216286480F600044A1C /* UserDefaultsFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFix.swift; sourceTree = "<group>"; };
@@ -84,6 +88,10 @@
 		8A5FC12A26EFD7EB004136AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionCountIcon.swift; sourceTree = "<group>"; };
 		8AC4B3FE2864AE170054C601 /* MergeTrainIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeTrainIcon.swift; sourceTree = "<group>"; };
+		8AC4B4012864C4660054C601 /* CIWaitingForResourceIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIWaitingForResourceIcon.swift; sourceTree = "<group>"; };
+		8AC4B4032864C4790054C601 /* CIPreparingIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIPreparingIcon.swift; sourceTree = "<group>"; };
+		8AC4B4052864C4800054C601 /* CIPendingIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIPendingIcon.swift; sourceTree = "<group>"; };
+		8AC4B4072864C48B0054C601 /* CIScheduledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIScheduledIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,15 +125,19 @@
 			isa = PBXGroup;
 			children = (
 				8A36B1F92863A1EF00044A1C /* ApprovedReviewIcon.swift */,
-				8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */,
-				8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */,
-				8A10721926F0D05B0087CBA9 /* CIProgressIcon.swift */,
-				8A36B2002863A4DF00044A1C /* CISuccessIcon.swift */,
-				8A36B2022863A53200044A1C /* CIFailedIcon.swift */,
-				8A36B2062863A7E000044A1C /* CIRetryIcon.swift */,
 				8A36B2042863A75900044A1C /* CICanceledIcon.swift */,
-				8A36B20A2863AAB600044A1C /* CiManualIcon.swift */,
+				8A36B2022863A53200044A1C /* CIFailedIcon.swift */,
+				8A36B20A2863AAB600044A1C /* CIManualIcon.swift */,
+				8AC4B4052864C4800054C601 /* CIPendingIcon.swift */,
+				8AC4B4032864C4790054C601 /* CIPreparingIcon.swift */,
+				8A10721926F0D05B0087CBA9 /* CIProgressIcon.swift */,
+				8A36B2062863A7E000044A1C /* CIRetryIcon.swift */,
+				8AC4B4072864C48B0054C601 /* CIScheduledIcon.swift */,
+				8A36B2002863A4DF00044A1C /* CISuccessIcon.swift */,
+				8AC4B4012864C4660054C601 /* CIWaitingForResourceIcon.swift */,
+				8A6A07AA26F0C346003A9B7E /* DiscussionCountIcon.swift */,
 				8AC4B3FE2864AE170054C601 /* MergeTrainIcon.swift */,
+				8A10721B26F0D1210087CBA9 /* NeedsReviewIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -354,10 +366,12 @@
 			files = (
 				8A36B1FF2863A49E00044A1C /* RefreshStatus.swift in Sources */,
 				8A36B20E28646D9F00044A1C /* WebLink.swift in Sources */,
-				8A36B20B2863AAB600044A1C /* CiManualIcon.swift in Sources */,
+				8A36B20B2863AAB600044A1C /* CIManualIcon.swift in Sources */,
 				8A36B1FA2863A1EF00044A1C /* ApprovedReviewIcon.swift in Sources */,
 				8A36B2072863A7E000044A1C /* CIRetryIcon.swift in Sources */,
+				8AC4B4042864C4790054C601 /* CIPreparingIcon.swift in Sources */,
 				8AC4B3FF2864AE170054C601 /* MergeTrainIcon.swift in Sources */,
+				8AC4B4082864C48B0054C601 /* CIScheduledIcon.swift in Sources */,
 				8A36B2102864766300044A1C /* TitleWebLink.swift in Sources */,
 				8A5FC12B26EFD7EB004136AB /* NetworkManager.swift in Sources */,
 				8A5FC0FC26EFD08E004136AB /* ContentView.swift in Sources */,
@@ -368,6 +382,8 @@
 				8A36B2012863A4DF00044A1C /* CISuccessIcon.swift in Sources */,
 				8A10721A26F0D05B0087CBA9 /* CIProgressIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
+				8AC4B4022864C4660054C601 /* CIWaitingForResourceIcon.swift in Sources */,
+				8AC4B4062864C4800054C601 /* CIPendingIcon.swift in Sources */,
 				8A36B2092863A8F500044A1C /* CISkippedIcon.swift in Sources */,
 				8A6A07AB26F0C346003A9B7E /* DiscussionCountIcon.swift in Sources */,
 				8A36B2052863A75900044A1C /* CICanceledIcon.swift in Sources */,
@@ -542,7 +558,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -570,7 +586,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;

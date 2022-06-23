@@ -47,9 +47,9 @@ struct MergeRequest: Codable, DefaultsSerializable {
     let targetProject: TargetProject?
 
     enum CodingKeys: String, CodingKey {
-        case mergeStatusEnum, state, id, title, draft, userDiscussionsCount, reference, targetProject
+        case state, id, title, draft
         case webURL = "webUrl"
-        case approvedBy, approved, approvalsLeft, headPipeline
+        case reference, targetProject, approvedBy, mergeStatusEnum, approved, approvalsLeft, userDiscussionsCount, headPipeline
     }
 }
 
@@ -101,14 +101,6 @@ struct HeadPipeline: Codable, DefaultsSerializable {
 
 // MARK: - TargetProject
 struct TargetProject: Codable, DefaultsSerializable {
-    internal init(id: String?, name: String?, path: String?, webURL: URL?, group: Group?) {
-        self.id = id
-        self.name = name
-        self.path = path
-        self.webURL = webURL
-        self.group = group
-    }
-
     let id, name, path: String?
     let webURL: URL?
     let group: Group?
@@ -131,17 +123,33 @@ struct Group: Codable, DefaultsSerializable {
     }
 }
 
-
+// MARK: - PipelineStatus
 enum PipelineStatus: String, Codable, DefaultsSerializable {
-    case failed = "FAILED"
-    case canceled = "CANCELED"
+    /// Pipeline has been created.
     case created = "CREATED"
-    case manual = "MANUAL"
+    /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
+    case waitingForResource = "WAITING_FOR_RESOURCE"
+    /// Pipeline is preparing to run.
+    case preparing = "PREPARING"
+    /// Pipeline has not started running yet.
+    case pending = "PENDING"
+    /// Pipeline is running.
     case running = "RUNNING"
+    /// At least one stage of the pipeline failed.
+    case failed = "FAILED"
+    /// Pipeline completed successfully.
     case success = "SUCCESS"
+    /// Pipeline was canceled before completion.
+    case canceled = "CANCELED"
+    /// Pipeline was skipped.
     case skipped = "SKIPPED"
+    /// Pipeline needs to be manually started.
+    case manual = "MANUAL"
+    /// Pipeline is scheduled to run.
+    case scheduled = "SCHEDULED"
 }
 
+// MARK: - MergeStatus
 enum MergeStatus: String, Codable, DefaultsSerializable {
     case cannotBeMerged = "CANNOT_BE_MERGED"
     case cannotBeMergedRecheck = "CANNOT_BE_MERGED_RECHECK"
@@ -150,6 +158,7 @@ enum MergeStatus: String, Codable, DefaultsSerializable {
     case unchecked = "UNCHECKED"
 }
 
+// MARK: - MergeRequestState
 enum MergeRequestState: String, Codable, DefaultsSerializable {
     case merged = "merged"
     case opened = "opened"
@@ -158,6 +167,7 @@ enum MergeRequestState: String, Codable, DefaultsSerializable {
     case all = "all"
 }
 
+// MARK: - MergeRequestEventType
 enum MergeRequestEventType: String, Codable, DefaultsSerializable {
     /// Pipeline run on the changes from the source branch combined with the target branch.
     case mergedResult = "MERGED_RESULT"

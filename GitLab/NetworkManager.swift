@@ -102,22 +102,24 @@ query {
 """
 
     func getMRs() async {
+        print("start: fetch new data \(Date.now)")
         let req = Request<GitLabQuery>.post("/graphql", query: [
             ("query", graphqlQuery),
             ("private_token", apiToken)
         ])
 
-        guard let response: GitLabQuery = try? await client.send(req).value else {
-            return
-        }
-
-        await MainActor.run {
-            mergeRequests = response.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
-                return edge.node
-            }) ?? []
-
-            queryResponse = response
-            lastUpdate = .now
+        do {
+            let response: GitLabQuery = try await client.send(req).value
+            await MainActor.run {
+                mergeRequests = response.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
+                    return edge.node
+                }) ?? []
+                queryResponse = response
+                lastUpdate = .now
+                print("end: updated values \(Date.now)")
+            }
+        } catch {
+            print("end: Fetch failed with unexpected error: \(error).")
         }
     }
 
