@@ -41,10 +41,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         self.popover.behavior = .transient
         self.popover.animates = true
         self.popover.contentViewController = NSHostingController(rootView: ContentView(model: self.networkManager))
+        setupMenus()
     }
     
     @objc func togglePopover() {
-        
         Task {
             await self.networkManager.getMRs()
         }
@@ -56,7 +56,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             }
         }
-        
+    }
+
+    func setupMenus() {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        statusItem.menu = menu
     }
     
 }
