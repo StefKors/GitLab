@@ -1,6 +1,6 @@
 //
-//  CommentIcon.swift
-//  CommentIcon
+//  DiscussionCountIcon.swift
+//
 //
 //  Created by Stef Kors on 14/09/2021.
 //

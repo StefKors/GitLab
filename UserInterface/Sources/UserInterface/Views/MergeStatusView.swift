@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  MergeStatusView.swift
 //  
 //
 //  Created by Stef Kors on 24/06/2022.
