@@ -43,6 +43,7 @@ struct ApprovedReviewIcon: View {
                 .stroke(Color.green, lineWidth: 2)
                 .opacity(0.3)
         )
+        .padding(1)
         .help("Merge request approved")
     }
 }
