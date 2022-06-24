@@ -60,6 +60,9 @@ public struct UserInterface: View {
                 }
                 else {
                     ScrollView {
+                        if model.mergeRequests.isEmpty {
+                            InboxZeroIcon()
+                        }
                         ForEach(model.mergeRequests, id: \.id) { MR in
                             VStack {
                                 // MARK: - Top Part
