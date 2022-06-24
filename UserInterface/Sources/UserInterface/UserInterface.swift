@@ -175,7 +175,7 @@ public struct UserInterface: View {
             .frame(maxWidth: 800, maxHeight: 300)
             .padding()
             .onAppear {
-                Task {
+                Task(priority: .background) {
                     await model.getMRs()
                 }
             }

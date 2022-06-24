@@ -51,9 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 self.popover.performClose(nil)
             } else {
                 popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-                Task {
-                    await self.networkManager.getMRs()
-                }
             }
         }
     }
