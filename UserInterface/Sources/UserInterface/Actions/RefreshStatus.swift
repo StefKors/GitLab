@@ -20,10 +20,10 @@ struct RefreshStatus: View {
                 .fill(Color.white)
                 .shadow(radius: 20)
         )
-        .animation(.easeInOut)
+        .animation(.easeInOut, value: isVisible)
         .opacity(isVisible ? 1 : 0)
         .offset(x: 0, y: isVisible ? 0 : 5)
-        .animation(.easeInOut)
+        .animation(.easeInOut, value: isVisible)
     }
 }
 

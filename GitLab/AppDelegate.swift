@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserInterface
 
 @main
 struct GitLabApp: App {
@@ -41,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         self.popover.contentSize = NSSize(width: 440, height: 260)
         self.popover.behavior = .transient
         self.popover.animates = true
-        self.popover.contentViewController = NSHostingController(rootView: ContentView(model: self.networkManager))
+        self.popover.contentViewController = NSHostingController(rootView: UserInterface(model: self.networkManager))
     }
     
     @objc func togglePopover() {

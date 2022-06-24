@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  UserInterface.swift
 //  GitLab
 //
 //  Created by Stef Kors on 13/09/2021.
@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject private var model: NetworkManager
+public struct UserInterface: View {
+    @StateObject public var model: NetworkManager
 
-    init(model: NetworkManager) {
+    public init(model: NetworkManager) {
         self._model = StateObject(wrappedValue: model)
     }
 
 
-    @State var showSettings: Bool = false
-    @State var isHovering: Bool = false
+    @State public var showSettings: Bool = false
+    @State public var isHovering: Bool = false
 
-    @State var timeRemaining = 10
-    let initialTimeRemaining = 10
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State public var timeRemaining = 10
+    public let initialTimeRemaining = 10
+    public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
-    var dateValue: String? {
+    public var dateValue: String? {
         guard let date = model.lastUpdate else {
             return nil
         }
@@ -33,7 +33,7 @@ struct ContentView: View {
         return dateFormatter.string(from: date)
     }
 
-    var body: some View {
+    public var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .trailing, spacing: 10) {
                 if model.apiToken.isEmpty || showSettings {
@@ -57,7 +57,8 @@ struct ContentView: View {
                             }
                         })
                     }
-                } else {
+                }
+                else {
                     ScrollView {
                         ForEach(model.mergeRequests, id: \.id) { MR in
                             VStack {
@@ -161,7 +162,6 @@ struct ContentView: View {
                                 }
                             }
                     }
-
                     Button(action: {
                         showSettings.toggle()
                     }, label: {

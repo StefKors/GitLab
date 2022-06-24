@@ -23,7 +23,7 @@ struct CIProgressIcon: View {
                 .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(.accentColor)
                 .rotationEffect(Angle(degrees: 270.0))
-                .animation(.linear)
+                .animation(.linear, value: self.animation)
         }.frame(width: 16, height: 16)
             .rotationEffect(Angle(degrees: self.isAtMaxScale ? 360.0 : 0.0))
             .onAppear {
