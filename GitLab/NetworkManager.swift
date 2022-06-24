@@ -62,6 +62,7 @@ query {
                 id
                 name
                 username
+                avatarUrl
               }
             }
           }
@@ -102,7 +103,6 @@ query {
 """
 
     func getMRs() async {
-        print("start: fetch new data \(Date.now)")
         let req = Request<GitLabQuery>.post("/graphql", query: [
             ("query", graphqlQuery),
             ("private_token", apiToken)
@@ -111,15 +111,20 @@ query {
         do {
             let response: GitLabQuery = try await client.send(req).value
             await MainActor.run {
-                mergeRequests = response.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
+                let mrs = response.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
                     return edge.node
                 }) ?? []
+
+                mergeRequests = mrs
                 queryResponse = response
                 lastUpdate = .now
-                print("end: updated values \(Date.now)")
+
+                let approvers = mrs.first?.approvedBy?.edges?.compactMap { $0.node }
+            // https://gitlab.com/uploads/-/system/user/avatar/8609834/avatar.png?width=40
+                print(approvers)
             }
         } catch {
-            print("end: Fetch failed with unexpected error: \(error).")
+            print("\(Date.now) Fetch failed with unexpected error: \(error).")
         }
     }
 

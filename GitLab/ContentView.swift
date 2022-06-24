@@ -87,7 +87,9 @@ struct ContentView: View {
                                             if isOnMergeTrain {
                                                 MergeTrainIcon()
                                             } else if isApproved {
-                                                ApprovedReviewIcon()
+                                                if let approvers = MR.approvedBy?.edges?.compactMap { $0.node } {
+                                                    ApprovedReviewIcon(approvedBy: approvers)
+                                                }
                                             } else {
                                                 // NeedsReviewIcon()
                                             }

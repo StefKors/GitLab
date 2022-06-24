@@ -38,7 +38,7 @@ struct MergeRequest: Codable, DefaultsSerializable {
     let draft: Bool?
     let webURL: URL?
     let mergeStatusEnum: MergeStatus?
-    let approvedBy: AuthoredMergeRequests?
+    let approvedBy: ApprovedMergeRequests?
     let approved: Bool?
     let approvalsLeft: Int?
     let userDiscussionsCount: Int?
@@ -51,6 +51,26 @@ struct MergeRequest: Codable, DefaultsSerializable {
         case webURL = "webUrl"
         case reference, targetProject, approvedBy, mergeStatusEnum, approved, approvalsLeft, userDiscussionsCount, headPipeline
     }
+}
+
+struct Author: Codable, DefaultsSerializable {
+    let id, name, username: String?
+    let avatarUrl: URL?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, username
+        case avatarUrl = "avatarUrl"
+    }
+}
+
+// MARK: - ApprovedMergeRequestsEdge
+struct ApprovedMergeRequestsEdge: Codable, DefaultsSerializable {
+    let node: Author?
+}
+
+// MARK: - ApprovedMergeRequests
+struct ApprovedMergeRequests: Codable, DefaultsSerializable {
+    let edges: [ApprovedMergeRequestsEdge]?
 }
 
 // MARK: - AuthoredMergeRequestsEdge
