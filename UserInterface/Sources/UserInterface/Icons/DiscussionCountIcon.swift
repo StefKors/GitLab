@@ -15,9 +15,9 @@ struct DiscussionCountIcon: View {
                 HStack {
                     Image(systemName: "bubble.left.and.bubble.right")
                         .symbolRenderingMode(.hierarchical)
-                        .font(.system(size: 16))
-                    Text("\(count)")
                         .font(.system(size: 14))
+                    Text("\(count)")
+                        .font(.system(size: 12))
                         .help("\(count) discussions")
                 }
             } else {

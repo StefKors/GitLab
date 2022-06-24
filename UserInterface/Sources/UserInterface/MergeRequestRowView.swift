@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MergeRequestRowView: View {
     var MR: MergeRequest
-
+    
     var macOSUI: some View {
         VStack {
             // MARK: - Top Part
@@ -18,7 +18,6 @@ struct MergeRequestRowView: View {
                 Spacer()
                 VStack(alignment:.trailing) {
                     HStack {
-
                         if let count = MR.userDiscussionsCount, count > 1 {
                             DiscussionCountIcon(count: count)
                             Divider()
@@ -31,7 +30,7 @@ struct MergeRequestRowView: View {
             }
         }
     }
-
+    
     var iOSUI: some View {
         VStack {
             // MARK: - Top Part
@@ -52,7 +51,7 @@ struct MergeRequestRowView: View {
             }
         }
     }
-
+    
     var body: some View {
 #if os(macOS)
         macOSUI
