@@ -107,7 +107,7 @@ query {
     public func getMRs() async {
         let req = Request<GitLabQuery>.post("/graphql", query: [
             ("query", graphqlQuery),
-            ("private_token", apiToken)
+            ("private_token", "glpat-vQVd9zZynapzXDZ6aDKc")
         ])
 
         do {
@@ -120,6 +120,7 @@ query {
                 mergeRequests = mrs
                 queryResponse = response
                 lastUpdate = .now
+                print("mergeRequests \(mergeRequests)")
             }
         } catch {
             print("\(Date.now) Fetch failed with unexpected error: \(error).")

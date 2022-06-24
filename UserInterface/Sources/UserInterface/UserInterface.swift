@@ -64,71 +64,7 @@ public struct UserInterface: View {
                             InboxZeroIcon()
                         }
                         ForEach(model.mergeRequests, id: \.id) { MR in
-                            VStack {
-                                // MARK: - Top Part
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webURL)
-
-                                        WebLink(
-                                            linkText: "\(MR.targetProject?.path ?? "")\("/")\(MR.targetProject?.group?.fullPath ?? "")\(MR.reference ?? "")",
-                                            destination: MR.targetProject?.webURL
-                                        )
-                                    }
-
-                                    Spacer()
-                                    VStack(alignment:.trailing) {
-                                        HStack {
-
-                                            if let count = MR.userDiscussionsCount, count > 1 {
-                                                DiscussionCountIcon(count: count)
-                                                Divider()
-                                                    .padding(2)
-                                            }
-
-                                            let isApproved = MR.approved ?? false
-                                            let isOnMergeTrain = MR.headPipeline?.mergeRequestEventType == .mergeTrain
-                                            if isOnMergeTrain {
-                                                MergeTrainIcon()
-                                            } else if isApproved {
-                                                if let approvers = MR.approvedBy?.edges?.compactMap { $0.node } {
-                                                    ApprovedReviewIcon(approvedBy: approvers)
-                                                }
-                                            } else {
-                                                // NeedsReviewIcon()
-                                            }
-
-                                            if let CIStatus = MR.headPipeline?.status {
-                                                switch CIStatus {
-                                                case .created:
-                                                    CIProgressIcon()
-                                                case .manual:
-                                                    CIManualIcon()
-                                                case .running:
-                                                    CIProgressIcon()
-                                                case .success:
-                                                    CISuccessIcon()
-                                                case .failed:
-                                                    CIFailedIcon()
-                                                case .canceled:
-                                                    CICanceledIcon()
-                                                case .skipped:
-                                                    CISkippedIcon()
-                                                case .waitingForResource:
-                                                    CIWaitingForResourceIcon()
-                                                case .preparing:
-                                                    CIPreparingIcon()
-                                                case .pending:
-                                                    CIPendingIcon()
-                                                case .scheduled:
-                                                    CIScheduledIcon()
-                                                }
-                                            }
-
-                                        }
-                                    }
-                                }
-                            }
+                            MergeRequestRowView(MR: MR)
                             Divider()
                         }
                     }
@@ -146,12 +82,14 @@ public struct UserInterface: View {
                                 isHovering = hovering
                             }
                             .onReceive(timer) { _ in
+#if os(macOS)
                                 let failedMRs = model.mergeRequests.filter({ $0.headPipeline?.status == .failed }).count
                                 if failedMRs > 0 {
                                     NSApp.dockTile.badgeLabel = "\(failedMRs)"
                                 } else {
                                     NSApp.dockTile.badgeLabel = nil
                                 }
+#endif
 
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
@@ -180,10 +118,12 @@ public struct UserInterface: View {
                 }
             }
         }.frame(minWidth: 200, minHeight: 200)
+#if os(macOS)
             .contextMenu {
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
                 }.keyboardShortcut("q", modifiers: [.command])
             }
+#endif
     }
 }
