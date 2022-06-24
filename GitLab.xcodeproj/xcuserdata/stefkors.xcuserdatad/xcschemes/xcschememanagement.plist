@@ -7,7 +7,7 @@
 		<key>GitLab iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>GitLab.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,6 +17,21 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8A31CB392866334000C94AC1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A31CB482866334100C94AC1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A31CB522866334100C94AC1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8A5FC0F526EFD08E004136AB</key>
 		<dict>
 			<key>primary</key>

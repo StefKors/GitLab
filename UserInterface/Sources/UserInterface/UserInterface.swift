@@ -57,15 +57,17 @@ public struct UserInterface: View {
                             }
                         })
                     }
-                }
-                else {
+                } else {
                     ScrollView {
                         if model.mergeRequests.isEmpty {
                             InboxZeroIcon()
                         }
-                        ForEach(model.mergeRequests, id: \.id) { MR in
-                            MergeRequestRowView(MR: MR)
-                            Divider()
+                        ForEach(model.mergeRequests.indices, id: \.self) { index in
+                            MergeRequestRowView(MR: model.mergeRequests[index]).padding(.vertical, 4)
+                            let isLast = index == model.mergeRequests.count - 1
+                            if !isLast {
+                                Divider()
+                            }
                         }
                     }
                 }
@@ -110,14 +112,13 @@ public struct UserInterface: View {
                     })
                 }
             }
-            .frame(maxWidth: 800, maxHeight: 300)
             .padding()
             .onAppear {
                 Task(priority: .background) {
                     await model.getMRs()
                 }
             }
-        }.frame(minWidth: 200, minHeight: 200)
+        }
 #if os(macOS)
             .contextMenu {
                 Button("Quit") {
