@@ -18,7 +18,7 @@ struct InboxZeroIcon: View {
             }
             Spacer()
         }
-        .frame(height: 200)
+        .frame(height: 180)
     }
 }
 
