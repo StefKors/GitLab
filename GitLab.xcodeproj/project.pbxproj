@@ -79,6 +79,8 @@
 		8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitLab iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB572866334100C94AC1 /* GitLab_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSUITests.swift; sourceTree = "<group>"; };
 		8A31CB592866334100C94AC1 /* GitLab_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8A36AEF92868D2650008B949 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -251,6 +253,8 @@
 			children = (
 				8AC4B4122865C1480054C601 /* WidgetKit.framework */,
 				8AC4B4142865C1480054C601 /* SwiftUI.framework */,
+				8A36AEF92868D2650008B949 /* UserNotifications.framework */,
+				8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -7,13 +7,18 @@
 
 import SwiftUI
 
+
 struct NotificationButton: View {
     var body: some View {
-        Button(action: {
+        VStack {
+            Button("Request Permission") {
 
-        }, label: {
-            Text("show notification")
-        })
+            }
+
+            Button("Schedule Notification") {
+
+            }
+        }
     }
 }
 

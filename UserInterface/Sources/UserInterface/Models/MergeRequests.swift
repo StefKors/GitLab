@@ -5,34 +5,32 @@
 import Foundation
 import Defaults
 
-public struct User: Codable, Defaults.Serializable {
-    let name: String
-    let age: String
-}
-
-extension Defaults.Keys {
-    static let user = Key<User>("user", default: .init(name: "Hello", age: "24"))
-}
-
-
 // MARK: - GitLabQuery
-public struct GitLabQuery: Codable, DefaultsSerializable {
+public struct GitLabQuery: Codable, DefaultsSerializable, Equatable {
     let data: DataClass?
 }
 
+public extension GitLabQuery {
+    var mergeRequests: [MergeRequest] {
+        return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
+        }) ?? []
+    }
+}
+
 // MARK: - DataClass
-public struct DataClass: Codable, DefaultsSerializable {
+public struct DataClass: Codable, DefaultsSerializable, Equatable {
     let currentUser: CurrentUser?
 }
 
 // MARK: - CurrentUser
-public struct CurrentUser: Codable, DefaultsSerializable {
+public struct CurrentUser: Codable, DefaultsSerializable, Equatable {
     let name: String?
     let authoredMergeRequests: AuthoredMergeRequests?
 }
 
 // MARK: - MergeRequest
-public struct MergeRequest: Codable, DefaultsSerializable {
+public struct MergeRequest: Codable, DefaultsSerializable, Equatable {
     let id, title: String?
     let state: MergeRequestState?
     let draft: Bool?
@@ -53,7 +51,21 @@ public struct MergeRequest: Codable, DefaultsSerializable {
     }
 }
 
-public struct Author: Codable, DefaultsSerializable {
+extension BidirectionalCollection where Element == MergeRequest {
+    /// Goes through all merge requests and returns the approvedBy authors
+    /// - Returns: in the format of `["!4": [Author]]`
+    var approvedByDict: [String: [Author]] {
+        var beforeDict: [String: [Author]] = [:]
+        self.forEach({ mr in
+            guard let id = mr.reference else { return }
+            let approved = mr.approvedBy?.edges?.compactMap({ $0.node })
+            beforeDict[id] = approved
+        })
+        return beforeDict
+    }
+}
+
+public struct Author: Codable, DefaultsSerializable, Equatable {
     let id, name, username: String?
     let avatarUrl: URL?
 
@@ -64,53 +76,53 @@ public struct Author: Codable, DefaultsSerializable {
 }
 
 // MARK: - ApprovedMergeRequestsEdge
-public struct ApprovedMergeRequestsEdge: Codable, DefaultsSerializable {
+public struct ApprovedMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
     let node: Author?
 }
 
 // MARK: - ApprovedMergeRequests
-public struct ApprovedMergeRequests: Codable, DefaultsSerializable {
+public struct ApprovedMergeRequests: Codable, DefaultsSerializable, Equatable {
     let edges: [ApprovedMergeRequestsEdge]?
 }
 
 // MARK: - AuthoredMergeRequestsEdge
-public struct AuthoredMergeRequestsEdge: Codable, DefaultsSerializable {
+public struct AuthoredMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
     let node: MergeRequest?
 }
 
 // MARK: - AuthoredMergeRequests
-public struct AuthoredMergeRequests: Codable, DefaultsSerializable {
+public struct AuthoredMergeRequests: Codable, DefaultsSerializable, Equatable {
     let edges: [AuthoredMergeRequestsEdge]?
 }
 
 // MARK: - JobsEdge
-public struct JobsEdge: Codable, DefaultsSerializable {
+public struct JobsEdge: Codable, DefaultsSerializable, Equatable {
     let node: HeadPipeline?
 }
 
 // MARK: - Jobs
-public struct Jobs: Codable, DefaultsSerializable {
+public struct Jobs: Codable, DefaultsSerializable, Equatable {
     let edges: [JobsEdge]?
 }
 
 // MARK: - FluffyNode
-public struct FluffyNode: Codable, DefaultsSerializable {
+public struct FluffyNode: Codable, DefaultsSerializable, Equatable {
     let id, status, name: String?
     let jobs: Jobs?
 }
 
 // MARK: - StagesEdge
-public struct StagesEdge: Codable, DefaultsSerializable {
+public struct StagesEdge: Codable, DefaultsSerializable, Equatable {
     let node: FluffyNode?
 }
 
 // MARK: - Stages
-public struct Stages: Codable, DefaultsSerializable {
+public struct Stages: Codable, DefaultsSerializable, Equatable {
     let edges: [StagesEdge]?
 }
 
 // MARK: - HeadPipeline
-public struct HeadPipeline: Codable, DefaultsSerializable {
+public struct HeadPipeline: Codable, DefaultsSerializable, Equatable {
     let id: String?
     let active: Bool?
     let status: PipelineStatus?
@@ -120,7 +132,7 @@ public struct HeadPipeline: Codable, DefaultsSerializable {
 }
 
 // MARK: - TargetProject
-public struct TargetProject: Codable, DefaultsSerializable {
+public struct TargetProject: Codable, DefaultsSerializable, Equatable {
     let id, name, path: String?
     let webURL: URL?
     let group: Group?
@@ -133,7 +145,7 @@ public struct TargetProject: Codable, DefaultsSerializable {
 }
 
 // MARK: - Group
-public struct Group: Codable, DefaultsSerializable {
+public struct Group: Codable, DefaultsSerializable, Equatable {
     let id, name, fullName, fullPath: String?
     let webURL: URL?
 
@@ -144,7 +156,7 @@ public struct Group: Codable, DefaultsSerializable {
 }
 
 // MARK: - PipelineStatus
-public enum PipelineStatus: String, Codable, DefaultsSerializable {
+public enum PipelineStatus: String, Codable, DefaultsSerializable, Equatable {
     /// Pipeline has been created.
     case created = "CREATED"
     /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
@@ -170,7 +182,7 @@ public enum PipelineStatus: String, Codable, DefaultsSerializable {
 }
 
 // MARK: - MergeStatus
-public enum MergeStatus: String, Codable, DefaultsSerializable {
+public enum MergeStatus: String, Codable, DefaultsSerializable, Equatable {
     case cannotBeMerged = "CANNOT_BE_MERGED"
     case cannotBeMergedRecheck = "CANNOT_BE_MERGED_RECHECK"
     case canBeMerged = "CAN_BE_MERGED"
@@ -179,7 +191,7 @@ public enum MergeStatus: String, Codable, DefaultsSerializable {
 }
 
 // MARK: - MergeRequestState
-public enum MergeRequestState: String, Codable, DefaultsSerializable {
+public enum MergeRequestState: String, Codable, DefaultsSerializable, Equatable {
     case merged = "merged"
     case opened = "opened"
     case closed = "closed"
@@ -188,7 +200,7 @@ public enum MergeRequestState: String, Codable, DefaultsSerializable {
 }
 
 // MARK: - MergeRequestEventType
-public enum MergeRequestEventType: String, Codable, DefaultsSerializable {
+public enum MergeRequestEventType: String, Codable, DefaultsSerializable, Equatable {
     /// Pipeline run on the changes from the source branch combined with the target branch.
     case mergedResult = "MERGED_RESULT"
     /// Pipeline run on the changes in the merge request source branch.

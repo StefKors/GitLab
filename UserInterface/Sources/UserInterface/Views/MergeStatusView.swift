@@ -9,17 +9,28 @@ import SwiftUI
 
 struct MergeStatusView: View {
     var MR: MergeRequest
+
+    var isApproved: Bool {
+        MR.approved ?? false
+    }
+
+    var isOnMergeTrain: Bool {
+        MR.headPipeline?.mergeRequestEventType == .mergeTrain
+    }
+
+    var approvers: [Author]? {
+        MR.approvedBy?.edges?.compactMap({ $0.node })
+    }
+
     var body: some View {
-        let isApproved = MR.approved ?? false
-        let isOnMergeTrain = MR.headPipeline?.mergeRequestEventType == .mergeTrain
-        if isOnMergeTrain {
-            MergeTrainIcon()
-        } else if isApproved {
-            if let approvers = MR.approvedBy?.edges?.compactMap({ $0.node }) {
+        HStack {
+            if isOnMergeTrain {
+                MergeTrainIcon()
+            } else if isApproved, let approvers = approvers, !approvers.isEmpty {
                 ApprovedReviewIcon(approvedBy: approvers)
+            } else {
+                NeedsReviewIcon()
             }
-        } else {
-            // NeedsReviewIcon()
         }
     }
 }

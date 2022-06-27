@@ -36,6 +36,7 @@ public struct UserInterface: View {
     public var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .trailing, spacing: 10) {
+                NotificationButton()
                 if model.apiToken.isEmpty || showSettings {
                     VStack(alignment: .leading) {
                         Text("GitLab API Token")
@@ -63,7 +64,9 @@ public struct UserInterface: View {
                             InboxZeroIcon()
                         }
                         ForEach(model.mergeRequests.indices, id: \.self) { index in
-                            MergeRequestRowView(MR: model.mergeRequests[index]).padding(.vertical, 4)
+                            MergeRequestRowView(MR: model.mergeRequests[index])
+                                .id(model.mergeRequests[index].id)
+                                .padding(.vertical, 4)
                             let isLast = index == model.mergeRequests.count - 1
                             if !isLast {
                                 Divider()
