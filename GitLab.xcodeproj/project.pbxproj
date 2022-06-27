@@ -15,6 +15,12 @@
 		8A31CB582866334100C94AC1 /* GitLab_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB572866334100C94AC1 /* GitLab_iOSUITests.swift */; };
 		8A31CB5A2866334100C94AC1 /* GitLab_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB592866334100C94AC1 /* GitLab_iOSUITestsLaunchTests.swift */; };
 		8A31CB65286633F700C94AC1 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8A31CB64286633F700C94AC1 /* UserInterface */; };
+		8A36AF112869B4110008B949 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A36AEF92868D2650008B949 /* UserNotifications.framework */; };
+		8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */; };
+		8A36AF152869B4110008B949 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36AF142869B4110008B949 /* NotificationViewController.swift */; };
+		8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A36AF162869B4110008B949 /* MainInterface.storyboard */; };
+		8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8A36AF102869B4110008B949 /* NotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A36AF222869BE650008B949 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8A36AF212869BE650008B949 /* UserInterface */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
 		8A5FC0FE26EFD08F004136AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
@@ -39,6 +45,13 @@
 			remoteGlobalIDString = 8A31CB392866334000C94AC1;
 			remoteInfo = "GitLab iOS";
 		};
+		8A36AF1B2869B4110008B949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A5FC0EE26EFD08E004136AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A36AF0F2869B4110008B949;
+			remoteInfo = NotificationContent;
+		};
 		8A5FC10C26EFD08F004136AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8A5FC0EE26EFD08E004136AB /* Project object */;
@@ -62,6 +75,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +95,11 @@
 		8A31CB592866334100C94AC1 /* GitLab_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A36AEF92868D2650008B949 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		8A36AF102869B4110008B949 /* NotificationContent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationContent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A36AF142869B4110008B949 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		8A36AF172869B4110008B949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8A36AF192869B4110008B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContent.entitlements; sourceTree = "<group>"; };
 		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +137,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A36AF0D2869B4110008B949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */,
+				8A36AF112869B4110008B949 /* UserNotifications.framework in Frameworks */,
+				8A36AF222869BE650008B949 /* UserInterface in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +211,17 @@
 			path = "GitLab iOSUITests";
 			sourceTree = "<group>";
 		};
+		8A36AF132869B4110008B949 /* NotificationContent */ = {
+			isa = PBXGroup;
+			children = (
+				8A36AF142869B4110008B949 /* NotificationViewController.swift */,
+				8A36AF162869B4110008B949 /* MainInterface.storyboard */,
+				8A36AF192869B4110008B949 /* Info.plist */,
+				8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */,
+			);
+			path = NotificationContent;
+			sourceTree = "<group>";
+		};
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +231,7 @@
 				8A31CB3B2866334000C94AC1 /* GitLab iOS */,
 				8A31CB4C2866334100C94AC1 /* GitLab iOSTests */,
 				8A31CB562866334100C94AC1 /* GitLab iOSUITests */,
+				8A36AF132869B4110008B949 /* NotificationContent */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F726EFD08E004136AB /* Products */,
 			);
@@ -205,6 +246,7 @@
 				8A31CB3A2866334000C94AC1 /* GitLab iOS.app */,
 				8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */,
 				8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */,
+				8A36AF102869B4110008B949 /* NotificationContent.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +360,26 @@
 			productReference = 8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8A36AF0F2869B4110008B949 /* NotificationContent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A36AF1E2869B4110008B949 /* Build configuration list for PBXNativeTarget "NotificationContent" */;
+			buildPhases = (
+				8A36AF0C2869B4110008B949 /* Sources */,
+				8A36AF0D2869B4110008B949 /* Frameworks */,
+				8A36AF0E2869B4110008B949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationContent;
+			packageProductDependencies = (
+				8A36AF212869BE650008B949 /* UserInterface */,
+			);
+			productName = NotificationContent;
+			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8A5FC0F526EFD08E004136AB /* GitLab */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A5FC11F26EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLab" */;
@@ -330,6 +392,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
 			);
 			name = GitLab;
 			packageProductDependencies = (
@@ -395,6 +458,9 @@
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 8A31CB392866334000C94AC1;
 					};
+					8A36AF0F2869B4110008B949 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					8A5FC0F526EFD08E004136AB = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -429,6 +495,7 @@
 				8A31CB392866334000C94AC1 /* GitLab iOS */,
 				8A31CB482866334100C94AC1 /* GitLab iOSTests */,
 				8A31CB522866334100C94AC1 /* GitLab iOSUITests */,
+				8A36AF0F2869B4110008B949 /* NotificationContent */,
 			);
 		};
 /* End PBXProject section */
@@ -454,6 +521,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A36AF0E2869B4110008B949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +585,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8A36AF0C2869B4110008B949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A36AF152869B4110008B949 /* NotificationViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A5FC0F226EFD08E004136AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,6 +630,11 @@
 			target = 8A31CB392866334000C94AC1 /* GitLab iOS */;
 			targetProxy = 8A31CB542866334100C94AC1 /* PBXContainerItemProxy */;
 		};
+		8A36AF1C2869B4110008B949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A36AF0F2869B4110008B949 /* NotificationContent */;
+			targetProxy = 8A36AF1B2869B4110008B949 /* PBXContainerItemProxy */;
+		};
 		8A5FC10D26EFD08F004136AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
@@ -560,6 +648,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8A36AF162869B4110008B949 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A36AF172869B4110008B949 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		8A5FC10226EFD08F004136AB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -723,6 +819,64 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "GitLab iOS";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8A36AF1F2869B4110008B949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = NotificationContent/NotificationContent.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationContent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationContent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8A36AF202869B4110008B949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = NotificationContent/NotificationContent.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationContent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationContent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1013,6 +1167,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8A36AF1E2869B4110008B949 /* Build configuration list for PBXNativeTarget "NotificationContent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A36AF1F2869B4110008B949 /* Debug */,
+				8A36AF202869B4110008B949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "GitLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1053,6 +1216,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		8A31CB64286633F700C94AC1 /* UserInterface */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserInterface;
+		};
+		8A36AF212869BE650008B949 /* UserInterface */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UserInterface;
 		};

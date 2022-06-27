@@ -14,7 +14,6 @@ public struct UserInterface: View {
         self._model = StateObject(wrappedValue: model)
     }
 
-
     @State public var showSettings: Bool = false
     @State public var isHovering: Bool = false
 

@@ -22,9 +22,8 @@ class NotificationManager {
                 print(error.localizedDescription)
             }
         }
-
-        UNUserNotificationCenter.current().delegate = delegate
         registerApprovalAction()
+        UNUserNotificationCenter.current().delegate = delegate
     }
 
     func registerApprovalAction() {
@@ -50,7 +49,7 @@ class NotificationManager {
         notificationCenter.setNotificationCategories([mrApprovalCategory])
     }
 
-    func sendNotification(title: String, subtitle: String?, mrURL: URL? = nil) {
+    func sendNotification(title: String, subtitle: String?, userInfo: [AnyHashable : Any]? = nil) {
         let content = UNMutableNotificationContent()
         content.title = title
 
@@ -58,9 +57,8 @@ class NotificationManager {
             content.subtitle = subtitle
         }
 
-        if let mrURL = mrURL {
-            content.userInfo = ["MR_URL" : mrURL.absoluteString ]
-            content.categoryIdentifier = "MR_EVENT"
+        if let userInfo = userInfo {
+            content.userInfo = userInfo
         }
 
         content.categoryIdentifier = "MR_EVENT"

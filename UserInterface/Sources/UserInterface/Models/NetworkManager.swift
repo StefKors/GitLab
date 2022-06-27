@@ -135,21 +135,36 @@ query {
                         let diff = newAuthors.difference(from: beforeAuthors)
                         // MARK: - Notification Approved MRs
                         let approvers = diff.insertions.insertedElements.compactMap({ $0.name })
-                        if !approvers.isEmpty {
+                        if !approvers.isEmpty,
+                           let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
+                           let url = eventMR.webURL,
+                           let pipelineStatus = eventMR.headPipeline?.status {
+
+                            let userInfo = [
+                                "MR_URL" : url.absoluteString,
+                                "PIPELINE_STATUS": pipelineStatus.rawValue
+                            ]
                             NotificationManager.shared.sendNotification(
-                                title: "Merge request \(reference) was approved",
+                                title: "\(reference) is approved",
                                 subtitle: "by \(approvers.formatted())",
-                                mrURL: newMergeRequests.first(where: { $0.reference == reference })?.webURL
+                                userInfo: userInfo
                             )
                         }
 
                         // MARK: - Notification Revoked MRs
                         let revokers = diff.removals.removedElements.compactMap({ $0.name })
-                        if !revokers.isEmpty {
+                        if !revokers.isEmpty,
+                        let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
+                           let url = eventMR.webURL,
+                           let pipelineStatus = eventMR.headPipeline?.status {
+                            let userInfo = [
+                                "MR_URL" : url.absoluteString,
+                                "PIPELINE_STATUS": pipelineStatus.rawValue
+                            ]
                             NotificationManager.shared.sendNotification(
-                                title: "Merge request \(reference) approval was revoked",
+                                title: "\(reference) approval was revoked",
                                 subtitle: "by \(revokers.formatted())",
-                                mrURL: newMergeRequests.first(where: { $0.reference == reference })?.webURL
+                                userInfo: userInfo
                             )
                         }
                     }
