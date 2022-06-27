@@ -29,7 +29,7 @@ struct MergeStatusView: View {
             } else if isApproved, let approvers = approvers, !approvers.isEmpty {
                 ApprovedReviewIcon(approvedBy: approvers)
             } else {
-                NeedsReviewIcon()
+                // NeedsReviewIcon()
             }
         }
     }
