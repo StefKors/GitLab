@@ -9,7 +9,7 @@
 			<key>UNNotificationExtensionCategory</key>
 			<string>MR_EVENT</string>
 			<key>UNNotificationExtensionDefaultContentHidden</key>
-			<false/>
+			<true/>
 			<key>UNNotificationExtensionInitialContentSizeRatio</key>
 			<real>1</real>
 			<key>UNNotificationExtensionOverridesDefaultTitle</key>

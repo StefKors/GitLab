@@ -35,7 +35,6 @@ public struct UserInterface: View {
     public var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .trailing, spacing: 10) {
-                NotificationButton()
                 if model.apiToken.isEmpty || showSettings {
                     VStack(alignment: .leading) {
                         Text("GitLab API Token")
