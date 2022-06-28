@@ -69,8 +69,8 @@ public struct UserInterface: View {
                             if !isLast {
                                 Divider()
                             }
-                        }
-                    }
+                        }.padding(.horizontal)
+                    }.padding(.top)
                 }
                 HStack {
                     Spacer()
@@ -100,9 +100,9 @@ public struct UserInterface: View {
                     }, label: {
                         Image(systemName: "gear.circle.fill")
                     })
-                }
+                }.padding(.bottom)
+                    .padding(.trailing)
             }
-            .padding()
             .onAppear {
                 Task(priority: .background) {
                     await model.getMRs()
