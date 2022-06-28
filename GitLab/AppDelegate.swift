@@ -14,7 +14,7 @@ struct GitLabApp: App {
 
     var body: some Scene {
         Settings {
-            EmptyView()
+            SettingsView()
         }
     }
 }
@@ -53,5 +53,61 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
                 popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             }
         }
+    }
+}
+
+struct SettingsView: View {
+    private enum Tabs: Hashable {
+        case general, advanced
+    }
+    var body: some View {
+        TabView {
+            GeneralSettingsView()
+                .tabItem {
+                    Label("General", systemImage: "gear")
+                }
+                .tag(Tabs.general)
+            AdvancedSettingsView()
+                .tabItem {
+                    Label("Advanced", systemImage: "star")
+                }
+                .tag(Tabs.advanced)
+        }
+        .padding(20)
+        .frame(width: 375, height: 150)
+    }
+}
+
+struct GeneralSettingsView: View {
+    @StateObject public var model = NetworkManager.shared
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("GitLab API Token")
+            TextField(
+                "Enter token here...",
+                text: model.$apiToken,
+                onCommit: {
+                    // make API call with token.
+                    Task {
+                        await model.getMRs()
+                    }
+                })
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            Spacer()
+            Button("Clear API Token", action: {model.apiToken = ""})
+            Button("Query GitLab", action: {
+                Task {
+                    await model.getMRs()
+                }
+            })
+        }
+    }
+}
+
+struct AdvancedSettingsView: View {
+
+    var body: some View {
+        Text("Advanced settings")
     }
 }
