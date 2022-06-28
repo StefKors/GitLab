@@ -58,17 +58,19 @@ public class NetworkManager: ObservableObject {
                         if !approvers.isEmpty,
                            let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
                            let url = eventMR.webURL,
-                           let pipelineStatus = eventMR.headPipeline?.status {
+                           let headPipeline = eventMR.headPipeline,
+                           let jsonData = try? JSONEncoder().encode(headPipeline) {
 
                             let userInfo = [
                                 "MR_URL" : url.absoluteString,
-                                "PIPELINE_STATUS": pipelineStatus.rawValue
-                            ]
+                                "PIPELINE_STATUS": jsonData
+                            ] as [String : Any]
                             NotificationManager.shared.sendNotification(
                                 title: "\(reference) is approved",
                                 subtitle: "by \(approvers.formatted())",
                                 userInfo: userInfo
                             )
+
                         }
 
                         // MARK: - Notification Revoked MRs
@@ -76,16 +78,19 @@ public class NetworkManager: ObservableObject {
                         if !revokers.isEmpty,
                         let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
                            let url = eventMR.webURL,
-                           let pipelineStatus = eventMR.headPipeline?.status {
+                           let headPipeline = eventMR.headPipeline,
+                           let jsonData = try? JSONEncoder().encode(headPipeline) {
+
                             let userInfo = [
                                 "MR_URL" : url.absoluteString,
-                                "PIPELINE_STATUS": pipelineStatus.rawValue
-                            ]
+                                "PIPELINE_STATUS": jsonData
+                            ] as [String : Any]
                             NotificationManager.shared.sendNotification(
                                 title: "\(reference) approval was revoked",
                                 subtitle: "by \(revokers.formatted())",
                                 userInfo: userInfo
                             )
+
                         }
                     }
                 }

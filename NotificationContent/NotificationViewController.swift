@@ -13,9 +13,9 @@ import SwiftUI
 import UserInterface
 
 /// https://developer.apple.com/documentation/usernotificationsui/customizing_the_appearance_of_notifications
-class NotificationViewController: NSHostingController<CIStatusView>, UNNotificationContentExtension {
+class NotificationViewController: NSHostingController<PipelineView>, UNNotificationContentExtension {
     @objc required dynamic init?(coder: NSCoder) {
-        super.init(coder: coder, rootView: CIStatusView(status: .pending))
+        super.init(coder: coder, rootView: PipelineView(stages: []))
     }
 
     override func viewDidLoad() {
@@ -26,9 +26,10 @@ class NotificationViewController: NSHostingController<CIStatusView>, UNNotificat
         print("custom notification")
         print(notification.request.content.categoryIdentifier)
 
-        if let status = notification.request.content.userInfo["PIPELINE_STATUS"] as? String {
+        if let jsonData = notification.request.content.userInfo["PIPELINE_STATUS"] as? Data,
+           let headPipeline = try? JSONDecoder().decode(HeadPipeline.self, from: jsonData) {
             // should display
-            self.rootView = CIStatusView(status: PipelineStatus(rawValue: status))
+            self.rootView = PipelineView(stages: headPipeline.stages?.edges?.map({ $0.node }) ?? [])
         }
     }
 }
