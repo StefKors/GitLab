@@ -23,9 +23,6 @@ class NotificationViewController: NSHostingController<PipelineView>, UNNotificat
     }
 
     func didReceive(_ notification: UNNotification) {
-        print("custom notification")
-        print(notification.request.content.categoryIdentifier)
-
         if let jsonData = notification.request.content.userInfo["PIPELINE_STATUS"] as? Data,
            let headPipeline = try? JSONDecoder().decode(HeadPipeline.self, from: jsonData) {
             // should display
