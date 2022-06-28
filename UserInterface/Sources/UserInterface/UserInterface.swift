@@ -55,7 +55,7 @@ public struct UserInterface: View {
                                 await model.getMRs()
                             }
                         })
-                    }
+                    }.padding()
                 } else {
                     ScrollView {
                         if model.mergeRequests.isEmpty {
