@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */; };
-		8A31CB3F2866334000C94AC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB3E2866334000C94AC1 /* ContentView.swift */; };
 		8A31CB412866334100C94AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB402866334100C94AC1 /* Assets.xcassets */; };
 		8A31CB442866334100C94AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB432866334100C94AC1 /* Preview Assets.xcassets */; };
 		8A31CB4E2866334100C94AC1 /* GitLab_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB4D2866334100C94AC1 /* GitLab_iOSTests.swift */; };
@@ -85,7 +84,6 @@
 /* Begin PBXFileReference section */
 		8A31CB3A2866334000C94AC1 /* GitLab iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitLab iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSApp.swift; sourceTree = "<group>"; };
-		8A31CB3E2866334000C94AC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A31CB402866334100C94AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A31CB432866334100C94AC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitLab iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */,
-				8A31CB3E2866334000C94AC1 /* ContentView.swift */,
 				8A31CB402866334100C94AC1 /* Assets.xcassets */,
 				8A31CB422866334100C94AC1 /* Preview Content */,
 			);
@@ -563,7 +560,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A31CB3F2866334000C94AC1 /* ContentView.swift in Sources */,
 				8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
