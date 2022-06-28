@@ -32,6 +32,10 @@ public struct UserInterface: View {
         return dateFormatter.string(from: date)
     }
 
+    var height: CGFloat {
+        CGFloat((model.mergeRequests.count * 70) + 70)
+    }
+
     public var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .trailing, spacing: 10) {
@@ -109,6 +113,7 @@ public struct UserInterface: View {
                 }
             }
         }
+        .frame(width: 480, height: height, alignment: .topLeading)
 #if os(macOS)
             .contextMenu {
                 Button("Quit") {
