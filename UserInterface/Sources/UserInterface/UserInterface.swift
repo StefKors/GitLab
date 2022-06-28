@@ -8,10 +8,10 @@
 import SwiftUI
 
 public struct UserInterface: View {
-    @StateObject public var model: NetworkManager
+    @ObservedObject public var model: NetworkManager
 
     public init(model: NetworkManager) {
-        self._model = StateObject(wrappedValue: model)
+        self._model = ObservedObject(wrappedValue: model)
     }
 
     @State public var showSettings: Bool = false
@@ -76,24 +76,13 @@ public struct UserInterface: View {
                     Spacer()
 
                     if let lastUpdate = dateValue {
-                        let timeString = timeRemaining < 10 ? "0\(timeRemaining)" : "\(timeRemaining)"
-                        let text = isHovering ? "\(timeString)s until next fetch" : "Last updated at: \(lastUpdate)"
-                        Text(text)
+                        Text("Last updated at: \(lastUpdate)")
                             .foregroundColor(.gray)
                             .font(.system(size: 10))
                             .onHover { hovering in
                                 isHovering = hovering
                             }
                             .onReceive(timer) { _ in
-#if os(macOS)
-                                let failedMRs = model.mergeRequests.filter({ $0.headPipeline?.status == .failed }).count
-                                if failedMRs > 0 {
-                                    NSApp.dockTile.badgeLabel = "\(failedMRs)"
-                                } else {
-                                    NSApp.dockTile.badgeLabel = nil
-                                }
-#endif
-
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
                                 }

@@ -107,7 +107,9 @@ public struct Jobs: Codable, DefaultsSerializable, Equatable {
 
 // MARK: - FluffyNode
 public struct FluffyNode: Codable, DefaultsSerializable, Equatable {
-    let id, status, name: String?
+    let id: String?
+    let status: StageStatusType?
+    let name: String?
     let jobs: Jobs?
 }
 
@@ -207,4 +209,33 @@ public enum MergeRequestEventType: String, Codable, DefaultsSerializable, Equata
     case detached = "DETACHED"
     /// Pipeline ran as part of a merge train.
     case mergeTrain = "MERGE_TRAIN"
+}
+
+public enum StageStatusType: String, Codable, DefaultsSerializable, Equatable {
+    /// Pipeline has been created.
+    case created = "created"
+    /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
+    case waitingForResource = "waiting_for_resource"
+    /// Pipeline is preparing to run.
+    case preparing = "preparing"
+    /// Pipeline has not started running yet.
+    case pending = "pending"
+    /// Pipeline is running.
+    case running = "running"
+    /// At least one stage of the pipeline failed.
+    case failed = "failed"
+    /// Pipeline completed successfully.
+    case success = "success"
+    /// Pipeline was canceled before completion.
+    case canceled = "canceled"
+    /// Pipeline was skipped.
+    case skipped = "skipped"
+    /// Pipeline needs to be manually started.
+    case manual = "manual"
+    /// Pipeline is scheduled to run.
+    case scheduled = "scheduled"
+
+    public func toPipelineStatus() -> PipelineStatus? {
+        PipelineStatus(rawValue: self.rawValue.uppercased())
+    }
 }

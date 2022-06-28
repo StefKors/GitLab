@@ -18,7 +18,7 @@ public struct CIStatusView: View {
         if let CIStatus = status {
             switch CIStatus {
             case .created:
-                CIProgressIcon()
+                CICreatedIcon()
             case .manual:
                 CIManualIcon()
             case .running:

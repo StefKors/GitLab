@@ -13,7 +13,6 @@ import Defaults
 
 extension Defaults.Keys {
     static let apiToken = Key<String>("apiToken", default: "")
-    static let lastUpdate = Key<Date?>("lastUpdate", default: nil)
     static let mergeRequests = Key<[MergeRequest]>("mergeRequests", default: [])
     static let queryResponse = Key<GitLabQuery?>("gitlabQuery", default: nil)
 }
@@ -24,106 +23,27 @@ enum RequestError: Error {
 
 public class NetworkManager: ObservableObject {
     @Published public var isUpdatingMRs: Bool = false
-    @Default(.queryResponse) public var queryResponse: GitLabQuery?
     @Default(.apiToken) public var apiToken
     @Default(.mergeRequests) public var mergeRequests
-    @Default(.lastUpdate) public var lastUpdate
+    @Published public var lastUpdate: Date?
 
     public init() {}
 
-    public let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-
-    var req: Request<GitLabQuery> {
-        Request<GitLabQuery>.post("/graphql", query: [
-            ("query", graphqlQuery),
-            ("private_token", apiToken)
-        ])}
-
     /// https://gitlab.com/-/graphql-explorer
-    public let graphqlQuery = """
-query {
-  currentUser {
-    name
-    authoredMergeRequests(state: opened) {
-      edges {
-        node {
-          state
-          id
-          title
-          draft
-          webUrl
-          reference
-          targetProject {
-            id
-            name
-            path
-            webUrl
-            group {
-              id
-              name
-              fullName
-              fullPath
-              webUrl
-            }
-          }
-          approvedBy {
-            edges {
-              node {
-                id
-                name
-                username
-                avatarUrl
-              }
-            }
-          }
-          mergeStatusEnum
-          approved
-          approvalsLeft
-          userDiscussionsCount
-          headPipeline {
-            id
-            active
-            status
-            mergeRequestEventType
-            stages {
-              edges {
-                node {
-                  id
-                  status
-                  name
-                  jobs {
-                    edges {
-                      node {
-                        id
-                        active
-                        name
-                        status
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-"""
+    public let graphqlQuery = "query { currentUser { name authoredMergeRequests(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status } } } } } } } } } } } }"
 
     public func getMRs() async {
         do {
+            print("fetch: start")
             let beforeApprovedByDict = mergeRequests.approvedByDict
+            let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
+            let req = Request<GitLabQuery>.post("/graphql", query: [
+                    ("query", graphqlQuery),
+                    ("private_token", apiToken)
+                ])
             let response: GitLabQuery = try await client.send(req).value
 
             await MainActor.run {
-                guard let previousResponse = queryResponse,
-                      previousResponse != response else {
-                    // didn't recieve any new data. returning early
-                    return
-                }
-
                 // MARK: - Handle Notifications
                 let newMergeRequests = response.mergeRequests
                 let newApproveByDict = newMergeRequests.approvedByDict
@@ -172,9 +92,10 @@ query {
 
 
                 // MARK: - Update published values
-                queryResponse = response
+                // queryResponse = response
                 mergeRequests = newMergeRequests
                 lastUpdate = .now
+                print("fetch: updated data")
             }
         } catch {
             print("\(Date.now) Fetch failed with unexpected error: \(error).")
