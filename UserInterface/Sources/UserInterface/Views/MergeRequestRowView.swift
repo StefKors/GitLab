@@ -10,9 +10,12 @@ import SwiftUI
 struct MergeRequestRowView: View {
     var MR: MergeRequest
     var macOSUI: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .center, spacing: 4) {
             MergeRequestLabelView(MR: MR)
             Spacer()
+            if let count = MR.userDiscussionsCount, count > 1 {
+                DiscussionCountIcon(count: count)
+            }
             MergeStatusView(MR: MR)
             PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [])
         }
