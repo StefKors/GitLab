@@ -11,8 +11,14 @@ public struct GitLabQuery: Codable, DefaultsSerializable, Equatable {
 }
 
 public extension GitLabQuery {
-    public var mergeRequests: [MergeRequest] {
+    var authoredMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
+        }) ?? []
+    }
+
+    var reviewRequestedMergeRequests: [MergeRequest] {
+        return self.data?.currentUser?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
             return edge.node
         }) ?? []
     }
@@ -27,6 +33,7 @@ public struct DataClass: Codable, DefaultsSerializable, Equatable {
 public struct CurrentUser: Codable, DefaultsSerializable, Equatable {
     public let name: String?
     public let authoredMergeRequests: AuthoredMergeRequests?
+    public let reviewRequestedMergeRequests: ReviewRequestedMergeRequests?
 }
 
 // MARK: - MergeRequest
@@ -93,6 +100,16 @@ public struct AuthoredMergeRequestsEdge: Codable, DefaultsSerializable, Equatabl
 // MARK: - AuthoredMergeRequests
 public struct AuthoredMergeRequests: Codable, DefaultsSerializable, Equatable {
     public let edges: [AuthoredMergeRequestsEdge]?
+}
+
+// MARK: - ReviewRequestedMergeRequests
+public struct ReviewRequestedMergeRequests: Codable, DefaultsSerializable, Equatable {
+    public let edges: [ReviewRequestedMergeRequestsEdge]?
+}
+
+// MARK: - ReviewRequestedMergeRequestsEdge
+public struct ReviewRequestedMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
+    public let node: MergeRequest?
 }
 
 // MARK: - JobsEdge

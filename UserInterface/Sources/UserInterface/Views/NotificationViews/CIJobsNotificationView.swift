@@ -9,11 +9,11 @@ import SwiftUI
 
 public struct CIJobsNotificationView: View {
     public var stages: [FluffyNode?]
-
+    
     public init (stages: [FluffyNode?]?) {
         self.stages = stages ?? []
     }
-
+    
     public var body: some View {
         HStack(alignment: .top, spacing: 0) {
             ForEach(stages.indices, id: \.self) { index in
@@ -35,6 +35,6 @@ public struct CIJobsNotificationView: View {
                 }
             }
         }
-
+        
     }
 }
