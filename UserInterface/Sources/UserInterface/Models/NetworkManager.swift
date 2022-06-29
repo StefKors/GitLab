@@ -118,7 +118,7 @@ public class NetworkManager: ObservableObject {
 
     private func fetchReviewRequestedMergeRequests() async {
         do {
-            print("fetch: start fetchnreviewRequestedMergeRequests \(getQuery(.reviewRequestedMergeRequests))")
+            print("fetch: start fetchnreviewRequestedMergeRequests")
             let beforeMergeRequests = reviewRequestedMergeRequests
             let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
             let req = Request<GitLabQuery>.post("/graphql", query: [
@@ -126,15 +126,14 @@ public class NetworkManager: ObservableObject {
                 ("private_token", apiToken)
             ])
             let response: GitLabQuery = try await client.send(req).value
-            print("response \(response)")
             await MainActor.run {
                 // MARK: - Update published values
-                // if beforeMergeRequests != response.mergeRequests {
+                if beforeMergeRequests.isEmpty || (beforeMergeRequests != response.reviewRequestedMergeRequests) {
                     // queryResponse = response
                 reviewRequestedMergeRequests = response.reviewRequestedMergeRequests
                     lastUpdate = .now
-                print("fetch: updated data fetchreviewRequestedMergeRequests \(response.reviewRequestedMergeRequests)")
-                // }
+                print("fetch: updated data fetchreviewRequestedMergeRequests")
+                }
             }
         } catch {
             print("\(Date.now) Fetch fetchreviewRequestedMergeRequests failed with unexpected error: \(error).")
