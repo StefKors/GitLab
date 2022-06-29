@@ -7,12 +7,18 @@ import Defaults
 
 // MARK: - GitLabQuery
 public struct GitLabQuery: Codable, DefaultsSerializable, Equatable {
-    let data: DataClass?
+    public let data: DataClass?
 }
 
 public extension GitLabQuery {
-    var mergeRequests: [MergeRequest] {
+    var authoredMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
+        }) ?? []
+    }
+
+    var reviewRequestedMergeRequests: [MergeRequest] {
+        return self.data?.currentUser?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
             return edge.node
         }) ?? []
     }
@@ -20,29 +26,30 @@ public extension GitLabQuery {
 
 // MARK: - DataClass
 public struct DataClass: Codable, DefaultsSerializable, Equatable {
-    let currentUser: CurrentUser?
+    public let currentUser: CurrentUser?
 }
 
 // MARK: - CurrentUser
 public struct CurrentUser: Codable, DefaultsSerializable, Equatable {
-    let name: String?
-    let authoredMergeRequests: AuthoredMergeRequests?
+    public let name: String?
+    public let authoredMergeRequests: AuthoredMergeRequests?
+    public let reviewRequestedMergeRequests: ReviewRequestedMergeRequests?
 }
 
 // MARK: - MergeRequest
 public struct MergeRequest: Codable, DefaultsSerializable, Equatable {
-    let id, title: String?
-    let state: MergeRequestState?
-    let draft: Bool?
-    let webURL: URL?
-    let mergeStatusEnum: MergeStatus?
-    let approvedBy: ApprovedMergeRequests?
-    let approved: Bool?
-    let approvalsLeft: Int?
-    let userDiscussionsCount: Int?
-    let headPipeline: HeadPipeline?
-    let reference: String?
-    let targetProject: TargetProject?
+    public let id, title: String?
+    public let state: MergeRequestState?
+    public let draft: Bool?
+    public let webURL: URL?
+    public let mergeStatusEnum: MergeStatus?
+    public let approvedBy: ApprovedMergeRequests?
+    public let approved: Bool?
+    public let approvalsLeft: Int?
+    public let userDiscussionsCount: Int?
+    public let headPipeline: HeadPipeline?
+    public let reference: String?
+    public let targetProject: TargetProject?
 
     enum CodingKeys: String, CodingKey {
         case state, id, title, draft
@@ -54,7 +61,7 @@ public struct MergeRequest: Codable, DefaultsSerializable, Equatable {
 extension BidirectionalCollection where Element == MergeRequest {
     /// Goes through all merge requests and returns the approvedBy authors
     /// - Returns: in the format of `["!4": [Author]]`
-    var approvedByDict: [String: [Author]] {
+    public var approvedByDict: [String: [Author]] {
         var beforeDict: [String: [Author]] = [:]
         self.forEach({ mr in
             guard let id = mr.reference else { return }
@@ -66,8 +73,8 @@ extension BidirectionalCollection where Element == MergeRequest {
 }
 
 public struct Author: Codable, DefaultsSerializable, Equatable {
-    let id, name, username: String?
-    let avatarUrl: URL?
+    public let id, name, username: String?
+    public let avatarUrl: URL?
 
     enum CodingKeys: String, CodingKey {
         case id, name, username
@@ -77,67 +84,77 @@ public struct Author: Codable, DefaultsSerializable, Equatable {
 
 // MARK: - ApprovedMergeRequestsEdge
 public struct ApprovedMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
-    let node: Author?
+    public let node: Author?
 }
 
 // MARK: - ApprovedMergeRequests
 public struct ApprovedMergeRequests: Codable, DefaultsSerializable, Equatable {
-    let edges: [ApprovedMergeRequestsEdge]?
+    public let edges: [ApprovedMergeRequestsEdge]?
 }
 
 // MARK: - AuthoredMergeRequestsEdge
 public struct AuthoredMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
-    let node: MergeRequest?
+    public let node: MergeRequest?
 }
 
 // MARK: - AuthoredMergeRequests
 public struct AuthoredMergeRequests: Codable, DefaultsSerializable, Equatable {
-    let edges: [AuthoredMergeRequestsEdge]?
+    public let edges: [AuthoredMergeRequestsEdge]?
+}
+
+// MARK: - ReviewRequestedMergeRequests
+public struct ReviewRequestedMergeRequests: Codable, DefaultsSerializable, Equatable {
+    public let edges: [ReviewRequestedMergeRequestsEdge]?
+}
+
+// MARK: - ReviewRequestedMergeRequestsEdge
+public struct ReviewRequestedMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
+    public let node: MergeRequest?
 }
 
 // MARK: - JobsEdge
 public struct JobsEdge: Codable, DefaultsSerializable, Equatable {
-    let node: HeadPipeline?
+    public let node: HeadPipeline?
 }
 
 // MARK: - Jobs
 public struct Jobs: Codable, DefaultsSerializable, Equatable {
-    let edges: [JobsEdge]?
+    public let edges: [JobsEdge]?
 }
 
 // MARK: - FluffyNode
 public struct FluffyNode: Codable, DefaultsSerializable, Equatable {
-    let id: String?
-    let status: StageStatusType?
-    let name: String?
-    let jobs: Jobs?
+    public let id: String?
+    public let status: StageStatusType?
+    public let name: String?
+    public let jobs: Jobs?
 }
 
 // MARK: - StagesEdge
 public struct StagesEdge: Codable, DefaultsSerializable, Equatable {
-    let node: FluffyNode?
+    public let node: FluffyNode?
 }
 
 // MARK: - Stages
 public struct Stages: Codable, DefaultsSerializable, Equatable {
-    let edges: [StagesEdge]?
+    public let edges: [StagesEdge]?
 }
 
 // MARK: - HeadPipeline
 public struct HeadPipeline: Codable, DefaultsSerializable, Equatable {
-    let id: String?
-    let active: Bool?
-    let status: PipelineStatus?
-    let stages: Stages?
-    let name: String?
-    let mergeRequestEventType: MergeRequestEventType?
+    public let id: String?
+    public let active: Bool?
+    public let status: PipelineStatus?
+    public let stages: Stages?
+    public let name: String?
+    public let mergeRequestEventType: MergeRequestEventType?
 }
 
 // MARK: - TargetProject
 public struct TargetProject: Codable, DefaultsSerializable, Equatable {
-    let id, name, path: String?
-    let webURL: URL?
-    let group: Group?
+    public let id, name, path: String?
+    public let webURL: URL?
+    public let group: Group?
 
     enum CodingKeys: String, CodingKey {
         case id, name, path
@@ -148,8 +165,8 @@ public struct TargetProject: Codable, DefaultsSerializable, Equatable {
 
 // MARK: - Group
 public struct Group: Codable, DefaultsSerializable, Equatable {
-    let id, name, fullName, fullPath: String?
-    let webURL: URL?
+    public let id, name, fullName, fullPath: String?
+    public let webURL: URL?
 
     enum CodingKeys: String, CodingKey {
         case id, name, fullName, fullPath

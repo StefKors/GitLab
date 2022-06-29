@@ -78,34 +78,6 @@ class NotificationManager {
 class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     @Environment(\.openURL) private var openURL
 
-    // func userNotificationCenter(
-    //     _ center: UNUserNotificationCenter,
-    //     willPresent notification: UNNotification,
-    //     withCompletionHandler completionHandler:
-    //     @escaping (UNNotificationPresentationOptions) -> Void
-    // ) {
-    //     if notification.request.content.categoryIdentifier == "MR_EVENT" {
-    //         // Retrieve the meeting details.
-    //         // let meetingID = notification.request.content.userInfo["MEETING_ID"] as! String
-    //         // let userID = notification.request.content.userInfo["USER_ID"] as! String
-    //
-    //         // Add the meeting to the queue.
-    //         // sharedMeetingManager.queueMeetingForDelivery(user: userID, meetingID: meetingID)
-    //
-    //
-    //         // Play a sound to let the user know about the invitation.
-    //         completionHandler(.sound)
-    //         return
-    //     }
-    //     else {
-    //         // Handle other notification types...
-    //     }
-    //
-    //
-    //     // Don't alert the user for other types.
-    //     completionHandler(UNNotificationPresentationOptions(rawValue: 0))
-    // }
-
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -119,11 +91,14 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
             return
         }
 
-
         // Perform the task associated with the action.
         switch response.actionIdentifier {
         case "OPEN_URL":
             openURL(url)
+            break
+
+        case UNNotificationDismissActionIdentifier:
+            // do nothing
             break
 
         default:

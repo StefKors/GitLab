@@ -25,7 +25,7 @@ import UserInterface
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     
     private var statusItem: NSStatusItem!
-    var popover: NSPopover = NSPopover()
+    var popover = NSPopover()
     private var networkManager: NetworkManager!
     
     @MainActor func applicationDidFinishLaunching(_ notification: Notification) {
@@ -39,8 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             statusButton.action = #selector(togglePopover)
         }
 
-        // statusItem.menu = menu
-        self.popover.contentSize = NSSize(width: 440, height: 260)
         self.popover.behavior = .transient
         self.popover.animates = true
         self.popover.contentViewController = NSHostingController(rootView: UserInterface(model: self.networkManager))

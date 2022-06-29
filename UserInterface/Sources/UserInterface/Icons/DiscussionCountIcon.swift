@@ -12,7 +12,7 @@ struct DiscussionCountIcon: View {
     var body: some View {
         if let count = count, count > 1 {
             if count <= 50 {
-                HStack {
+                HStack(spacing: 2) {
                     Image(systemName: "bubble.left.and.bubble.right")
                         .symbolRenderingMode(.hierarchical)
                         .font(.system(size: 14))

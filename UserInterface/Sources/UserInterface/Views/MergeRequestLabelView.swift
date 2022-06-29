@@ -12,6 +12,9 @@ struct MergeRequestLabelView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webURL)
+                /// hacks we actually want line wrapping
+                .multilineTextAlignment(.leading)
+                .truncationMode(.middle)
             WebLink(
                 linkText: "\(MR.targetProject?.path ?? "")\("/")\(MR.targetProject?.group?.fullPath ?? "")\(MR.reference ?? "")",
                 destination: MR.targetProject?.webURL

@@ -7,64 +7,16 @@
 
 import SwiftUI
 
-struct CIJobsView: View {
-    var stage: FluffyNode
-    @State var isHovering: Bool = false
-
-    var body: some View {
-        HStack {
-            CIStatusView(status: stage.status?.toPipelineStatus())
-                .popover(isPresented: $isHovering, content: {
-                    if let jobs = stage.jobs?.edges?.map({ $0.node }) {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(stage.name?.capitalized ?? "")
-                                .fontWeight(.bold)
-                                .padding(.bottom, 4)
-                            ForEach(jobs.indices, id: \.self) { index in
-                                if let job = jobs[index] {
-                                    HStack {
-                                        CIStatusView(status: job.status)
-                                        Text(job.name ?? "")
-                                    }
-                                }
-                            }
-                        }.padding()
-                    }
-                })
-        }
-        .animation(.spring(response: 0.35, dampingFraction: 1, blendDuration: 0), value: isHovering)
-        .onHover { hovering in
-            isHovering = hovering
-        }
-    }
-}
-
-struct PipelineView: View {
-    var stages: [FluffyNode?]
-
-    var body: some View {
-        HStack(alignment: .center, spacing: 0) {
-            ForEach(stages.indices, id: \.self) { index in
-                if let stage = stages[index] {
-                    CIJobsView(stage: stage)
-                    let isLast = index == stages.count - 1
-                    if !isLast {
-                        Rectangle()
-                            .fill(.quaternary)
-                            .frame(width: 6, height: 2, alignment: .center)
-                    }
-                }
-            }
-        }
-    }
-}
-
 struct MergeRequestRowView: View {
     var MR: MergeRequest
     var macOSUI: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .center, spacing: 4) {
             MergeRequestLabelView(MR: MR)
             Spacer()
+            if let count = MR.userDiscussionsCount, count > 1 {
+                DiscussionCountIcon(count: count)
+            }
+            MergeStatusView(MR: MR)
             PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [])
         }
     }
