@@ -13,7 +13,7 @@ struct MergeRequestRowView: View {
         HStack(alignment: .center, spacing: 4) {
             MergeRequestLabelView(MR: MR)
             Spacer()
-            if let count = MR.userDiscussionsCount, count > 1 {
+            if let count = MR.userNotesCount, count > 1 {
                 DiscussionCountIcon(count: count)
             }
             MergeStatusView(MR: MR)
@@ -30,7 +30,7 @@ struct MergeRequestRowView: View {
             Spacer()
             VStack(alignment:.trailing) {
                 HStack {
-                    if let count = MR.userDiscussionsCount, count > 1 {
+                    if let count = MR.userNotesCount, count > 1 {
                         DiscussionCountIcon(count: count)
                     }
                     CIStatusView(status: MR.headPipeline?.status)

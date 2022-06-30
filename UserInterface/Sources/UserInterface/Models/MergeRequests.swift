@@ -47,6 +47,7 @@ public struct MergeRequest: Codable, DefaultsSerializable, Equatable {
     public let approved: Bool?
     public let approvalsLeft: Int?
     public let userDiscussionsCount: Int?
+    public let userNotesCount: Int?
     public let headPipeline: HeadPipeline?
     public let reference: String?
     public let targetProject: TargetProject?
@@ -54,7 +55,7 @@ public struct MergeRequest: Codable, DefaultsSerializable, Equatable {
     enum CodingKeys: String, CodingKey {
         case state, id, title, draft
         case webURL = "webUrl"
-        case reference, targetProject, approvedBy, mergeStatusEnum, approved, approvalsLeft, userDiscussionsCount, headPipeline
+        case reference, targetProject, approvedBy, mergeStatusEnum, approved, approvalsLeft, userDiscussionsCount, userNotesCount, headPipeline
     }
 }
 
