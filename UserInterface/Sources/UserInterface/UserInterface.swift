@@ -67,6 +67,11 @@ public struct UserInterface: View {
                             }
                         })
                     }.padding()
+                } else if model.tokenExpired {
+                    HStack(alignment: .center) {
+                        Text("Token Expired")
+                    }
+                    .frame(width: 200, height: 200)
                 } else {
                     Picker(selection: $selectedView, content: {
                         Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)

@@ -27,6 +27,7 @@ public class NetworkManager: ObservableObject {
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
     @Published public var lastUpdate: Date?
+    @Published public var tokenExpired: Bool = false
 
     public init() {}
 
@@ -53,6 +54,11 @@ public class NetworkManager: ObservableObject {
             let response: GitLabQuery = try await client.send(req).value
 
             await MainActor.run {
+                if response.data?.currentUser == nil {
+                    tokenExpired = true
+                } else {
+                    tokenExpired = false
+                }
                 // MARK: - Handle Notifications
                 let newMergeRequests = response.authoredMergeRequests
                 let newApproveByDict = newMergeRequests.approvedByDict
@@ -67,6 +73,7 @@ public class NetworkManager: ObservableObject {
                         if !approvers.isEmpty,
                            let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
                            let url = eventMR.webURL,
+                           let title = eventMR.title,
                            let headPipeline = eventMR.headPipeline,
                            let jsonData = try? JSONEncoder().encode(headPipeline) {
 
@@ -75,8 +82,8 @@ public class NetworkManager: ObservableObject {
                                 "PIPELINE_STATUS": jsonData
                             ] as [String : Any]
                             NotificationManager.shared.sendNotification(
-                                title: "\(reference) is approved",
-                                subtitle: "by \(approvers.formatted())",
+                                title: title,
+                                subtitle: "\(reference) is approved by \(approvers.formatted())",
                                 userInfo: userInfo
                             )
 
@@ -87,6 +94,7 @@ public class NetworkManager: ObservableObject {
                         if !revokers.isEmpty,
                            let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
                            let url = eventMR.webURL,
+                           let title = eventMR.title,
                            let headPipeline = eventMR.headPipeline,
                            let jsonData = try? JSONEncoder().encode(headPipeline) {
 
@@ -95,8 +103,8 @@ public class NetworkManager: ObservableObject {
                                 "PIPELINE_STATUS": jsonData
                             ] as [String : Any]
                             NotificationManager.shared.sendNotification(
-                                title: "\(reference) approval was revoked",
-                                subtitle: "by \(revokers.formatted())",
+                                title: title,
+                                subtitle: "\(reference) approval revoked by \(revokers.formatted())",
                                 userInfo: userInfo
                             )
 
@@ -127,6 +135,11 @@ public class NetworkManager: ObservableObject {
             ])
             let response: GitLabQuery = try await client.send(req).value
             await MainActor.run {
+                if response.data?.currentUser == nil {
+                    tokenExpired = true
+                } else {
+                    tokenExpired = false
+                }
                 // MARK: - Update published values
                 if beforeMergeRequests.isEmpty || (beforeMergeRequests != response.reviewRequestedMergeRequests) {
                     // queryResponse = response
