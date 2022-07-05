@@ -10,7 +10,7 @@ import SwiftUI
 struct CIPendingIcon: View {
     var body: some View {
         Image(systemName: "pause.circle")
-            .foregroundColor(.secondary)
+            .foregroundColor(Color(.displayP3, red: (217)/255, green: (123)/255, blue: (0)/255, opacity: 1))
             .font(.system(size: 18))
             .help("CI pipeline pending")
     }

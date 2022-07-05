@@ -148,7 +148,14 @@ public struct HeadPipeline: Codable, DefaultsSerializable, Equatable {
     public let status: PipelineStatus?
     public let stages: Stages?
     public let name: String?
+    public let detailedStatus: DetailedStatus?
     public let mergeRequestEventType: MergeRequestEventType?
+}
+
+// MARK: - DetailedStatus
+public struct DetailedStatus: Codable, DefaultsSerializable, Equatable {
+    public let id: String?
+    public let detailsPath: String?
 }
 
 // MARK: - TargetProject
