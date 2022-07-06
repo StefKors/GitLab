@@ -33,7 +33,7 @@ public class NetworkManager: ObservableObject {
 
     /// https://gitlab.com/-/graphql-explorer
     fileprivate func getQuery(_ type: QueryType) -> String {
-                          "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
+        "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
     }
 
     public func fetch() async {
@@ -120,6 +120,12 @@ public class NetworkManager: ObservableObject {
                 print("fetch: updated data fetchAuthoredMergeRequests")
             }
         } catch {
+            // ▿ APIError
+            // - unacceptableStatusCode : 502
+            // ----------------------
+            // Error Domain=NSURLErrorDomain Code=-1009 "The Internet connection appears to be offline." UserInfo={_kCFStreamErrorCodeKey=50, NSUnderlyingError=0x600000c9f9f0 {Error Domain=kCFErrorDomainCFNetwork Code=-1009 "(null)" UserInfo={_NSURLErrorNWPathKey=unsatisfied (No network route), _kCFStreamErrorCodeKey=50, _kCFStreamErrorDomainKey=1}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <EEFF3503-C6AC-4103-8973-E11AE4524D41>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+            //     "LocalDataTask <EEFF3503-C6AC-4103-8973-E11AE4524D41>.<1>"
+            // ), NSLocalizedDescription=The Internet connection appears to be offline., NSErrorFailingURLStringKey=https://gitlab.com/api/graphql?query=query%20%7B%20currentUser%20%7B%20name%20authoredMergeRequests(state:%20opened)%20%7B%20edges%20%7B%20node%20%7B%20state%20id%20title%20draft%20webUrl%20reference%20targetProject%20%7B%20id%20name%20path%20webUrl%20group%20%7B%20id%20name%20fullName%20fullPath%20webUrl%20%7D%20%7D%20approvedBy%20%7B%20edges%20%7B%20node%20%7B%20id%20name%20username%20avatarUrl%20%7D%20%7D%20%7D%20mergeStatusEnum%20approved%20approvalsLeft%20userDiscussionsCount%20userNotesCount%20headPipeline%20%7B%20id%20active%20status%20mergeRequestEventType%20stages%20%7B%20edges%20%7B%20node%20%7B%20id%20status%20name%20jobs%20%7B%20edges%20%7B%20node%20%7B%20id%20active%20name%20status%20detailedStatus%20%7B%20id%20detailsPath%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D&private_token=glpat-VFPbTJQ81LfmNSnjRGwm, NSErrorFailingURLKey=https://gitlab.com/api/graphql?query=query%20%7B%20currentUser%20%7B%20name%20authoredMergeRequests(state:%20opened)%20%7B%20edges%20%7B%20node%20%7B%20state%20id%20title%20draft%20webUrl%20reference%20targetProject%20%7B%20id%20name%20path%20webUrl%20group%20%7B%20id%20name%20fullName%20fullPath%20webUrl%20%7D%20%7D%20approvedBy%20%7B%20edges%20%7B%20node%20%7B%20id%20name%20username%20avatarUrl%20%7D%20%7D%20%7D%20mergeStatusEnum%20approved%20approvalsLeft%20userDiscussionsCount%20userNotesCount%20headPipeline%20%7B%20id%20active%20status%20mergeRequestEventType%20stages%20%7B%20edges%20%7B%20node%20%7B%20id%20status%20name%20jobs%20%7B%20edges%20%7B%20node%20%7B%20id%20active%20name%20status%20detailedStatus%20%7B%20id%20detailsPath%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D%20%7D&private_token=glpat-VFPbTJQ81LfmNSnjRGwm, _kCFStreamErrorDomainKey=1}
             print("\(Date.now) Fetch fetchAuthoredMergeRequests failed with unexpected error: \(error).")
         }
     }
@@ -149,6 +155,8 @@ public class NetworkManager: ObservableObject {
                 }
             }
         } catch {
+            // ▿ APIError
+            // - unacceptableStatusCode : 502
             print("\(Date.now) Fetch fetchreviewRequestedMergeRequests failed with unexpected error: \(error).")
         }
     }

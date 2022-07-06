@@ -14,11 +14,11 @@ struct InboxZeroIcon: View {
             HStack {
                 Spacer()
                 Text("All done 🥳")
+                    .padding(.top, 3)
                 Spacer()
             }
             Spacer()
         }
-        .frame(height: 50)
     }
 }
 
