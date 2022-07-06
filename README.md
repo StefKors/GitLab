@@ -5,8 +5,8 @@
 
 ![GitLab Widget](https://gitlab.com/beamgroup/gitlab-widget) is a menu bar application that make it easier to work with GitLab. The Widget makes it easy to see the merge requests you opened and the merge requests your should review. It will also notify you when any of your merge requests get approved.
 
+#### Supported Platforms
 <p align="center">
-  <h4>Supported platforms</h4>
   <img src="Images/macos-active.svg" height="24">
   <img src="Images/ios.svg" height="24">
   <img src="Images/ipados.svg" height="24">
