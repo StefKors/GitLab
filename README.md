@@ -7,9 +7,9 @@
 
 <p align="center">
 <p>Supported platforms</p>
-  <img src="Images/macos-active.svg" height="42">
-  <img src="Images/ios.svg" height="42">
-  <img src="Images/ipados.svg" height="42">
-  <img src="Images/tvos.svg" height="42">
-  <img src="Images/watchos.svg" height="42">
+  <img src="Images/macos-active.svg" height="24">
+  <img src="Images/ios.svg" height="24">
+  <img src="Images/ipados.svg" height="24">
+  <img src="Images/tvos.svg" height="24">
+  <img src="Images/watchos.svg" height="24">
 </p>
