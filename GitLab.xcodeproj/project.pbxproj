@@ -26,6 +26,7 @@
 		8A5FC10426EFD08F004136AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10226EFD08F004136AB /* Main.storyboard */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
+		8AAB479E2881784E007828B8 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8AAB479D2881784E007828B8 /* Documentation.docc */; };
 		8AC4B42D28660ED60054C601 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC4B42C28660ED60054C601 /* UserInterface */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AAB479D2881784E007828B8 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -222,6 +224,7 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
+				8AAB479D2881784E007828B8 /* Documentation.docc */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A5FC10E26EFD08F004136AB /* GitLabTests */,
 				8A5FC11926EFD08F004136AB /* GitLabUITests */,
@@ -594,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
+				8AAB479E2881784E007828B8 /* Documentation.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
