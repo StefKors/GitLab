@@ -11,8 +11,16 @@ import Get
 import SwiftUI
 import Defaults
 
+public enum AppIcons: String, DefaultsSerializable, CaseIterable {
+    case ReleaseIcon
+    case DevIcon
+}
+
 extension Defaults.Keys {
     static let apiToken = Key<String>("apiToken", default: "")
+    static let showDockIcon = Key<Bool>("showDockIcon", default: false)
+    static let selectedIcon = Key<AppIcons>("selectedIcon", default: .DevIcon)
+    static let showAppWindow = Key<Bool>("showAppWindow", default: false)
     static let authoredMergeRequests = Key<[MergeRequest]>("authoredMergeRequests", default: [])
     static let reviewRequestedMergeRequests = Key<[MergeRequest]>("reviewRequestedMergeRequests", default: [])
 }
@@ -24,12 +32,21 @@ enum RequestError: Error {
 public class NetworkManager: ObservableObject {
     @Published public var isUpdatingMRs: Bool = false
     @Default(.apiToken) public var apiToken
+    @Default(.showDockIcon) public var showDockIcon {
+        didSet {
+            setDockIconPolicy()
+        }
+    }
+    @Default(.selectedIcon) public var selectedIcon
+    @Default(.showAppWindow) public var showAppWindow
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
     @Published public var lastUpdate: Date?
     @Published public var tokenExpired: Bool = false
 
-    public init() {}
+    public init() {
+        self.setDockIconPolicy()
+    }
 
     /// https://gitlab.com/-/graphql-explorer
     fileprivate func getQuery(_ type: QueryType) -> String {
@@ -161,6 +178,19 @@ public class NetworkManager: ObservableObject {
         }
     }
 
+    public func setDockIconPolicy() {
+        if showDockIcon {
+            // The application is an ordinary app that appears in the Dock and may
+            // have a user interface.
+            NSApp.setActivationPolicy(.regular)
+        } else {
+            // The application does not appear in the Dock and does not have a menu
+            // bar, but it may be activated programmatically or by clicking on one
+            // of its windows.
+            NSApp.setActivationPolicy(.accessory)
+
+        }
+    }
 }
 
 public enum QueryType: String, CaseIterable, Identifiable {

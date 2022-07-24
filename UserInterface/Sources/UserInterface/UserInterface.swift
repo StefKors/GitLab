@@ -15,8 +15,6 @@ public struct UserInterface: View {
     }
     
     @State private var selectedView: QueryType = .authoredMergeRequests
-    
-    @State public var showSettings: Bool = false
     @State public var isHovering: Bool = false
     
     @State public var timeRemaining = 10
@@ -46,27 +44,11 @@ public struct UserInterface: View {
     public var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .trailing, spacing: 10) {
-                if model.apiToken.isEmpty || showSettings {
-                    VStack(alignment: .leading) {
-                        Text("GitLab API Token")
-                        TextField(
-                            "Enter token here...",
-                            text: model.$apiToken,
-                            onCommit: {
-                                // make API call with token.
-                                Task {
-                                    await model.fetch()
-                                }
-                            })
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        Spacer()
-                        Button("Clear API Token", action: {model.apiToken = ""})
-                        Button("Query GitLab", action: {
-                            Task {
-                                await model.fetch()
-                            }
-                        })
-                    }.padding()
+                if model.apiToken.isEmpty {
+                    HStack(alignment: .center) {
+                        Text("No Token Found")
+                    }
+                    .frame(width: 200, height: 200)
                 } else if model.tokenExpired {
                     HStack(alignment: .center) {
                         Text("Token Expired")
@@ -120,13 +102,9 @@ public struct UserInterface: View {
                                 }
                             }
                     }
-                    Button(action: {
-                        showSettings.toggle()
-                    }, label: {
-                        Image(systemName: "gear.circle.fill")
-                    })
-                }.padding(.bottom)
-                    .padding(.trailing)
+                }
+                .padding(.bottom)
+                .padding(.trailing)
             }
             .onAppear {
                 Task(priority: .background) {
@@ -135,12 +113,5 @@ public struct UserInterface: View {
             }
         }
         .frame(width: 550, alignment: .topLeading)
-#if os(macOS)
-        .contextMenu {
-            Button("Quit") {
-                NSApplication.shared.terminate(nil)
-            }.keyboardShortcut("q", modifiers: [.command])
-        }
-#endif
     }
 }

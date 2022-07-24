@@ -19,6 +19,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/sindresorhus/Preferences", branch: "main"),
         .package(url: "https://github.com/sindresorhus/Defaults.git", branch: "main"),
         .package(url: "https://github.com/kean/Get.git", branch: "main"),
     ],
@@ -27,7 +28,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "UserInterface",
-            dependencies: ["Defaults", "Get"],
+            dependencies: ["Preferences", "Defaults", "Get"],
             path: "Sources/UserInterface"
         ),
         .testTarget(
