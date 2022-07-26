@@ -12,23 +12,7 @@ public struct UserInterface: View {
 
     public init() { }
 
-
     @State private var selectedView: QueryType = .authoredMergeRequests
-    @State public var isHovering: Bool = false
-    @State public var timeRemaining = 10
-    public let initialTimeRemaining = 10
-    public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    public var dateValue: String? {
-        guard let date = model.lastUpdate else {
-            return nil
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: date)
-    }
     
     var mergeRequests: [MergeRequest] {
         switch selectedView {
@@ -38,20 +22,14 @@ public struct UserInterface: View {
             return model.reviewRequestedMergeRequests
         }
     }
-    
+
     public var body: some View {
         ZStack(alignment: .topLeading) {
             VStack(alignment: .center, spacing: 10) {
                 if model.apiToken.isEmpty {
-                    HStack(alignment: .center) {
-                        Text("No Token Found")
-                    }
-                    .frame(width: 200, height: 200)
+                    BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
                 } else if model.tokenExpired {
-                    HStack(alignment: .center) {
-                        Text("Token Expired")
-                    }
-                    .frame(width: 200, height: 200)
+                    BaseTextView(message: "Token Expired")
                 } else {
                     Picker(selection: $selectedView, content: {
                         Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
@@ -68,7 +46,7 @@ public struct UserInterface: View {
                         .padding(.horizontal)
 
                     if mergeRequests.isEmpty {
-                        InboxZeroIcon()
+                        BaseTextView(message: "All done 🥳")
                     }
                     VStack(alignment: .leading) {
                         ForEach(mergeRequests.indices, id: \.self) { index in
@@ -82,32 +60,7 @@ public struct UserInterface: View {
                         }.padding(.horizontal)
                     }
                 }
-                HStack {
-                    Spacer()
-
-                    if let lastUpdate = dateValue {
-                        Text("Last updated at: \(lastUpdate)")
-                            .foregroundColor(.gray)
-                            .font(.system(size: 10))
-                            .onHover { hovering in
-                                isHovering = hovering
-                            }
-                            .onReceive(timer) { _ in
-                                if timeRemaining > 0 {
-                                    timeRemaining -= 1
-                                }
-
-                                if timeRemaining <= 0 {
-                                    timeRemaining = initialTimeRemaining
-                                    Task(priority: .background) {
-                                        await model.fetch()
-                                    }
-                                }
-                            }
-                    }
-                }
-                .padding(.bottom)
-                .padding(.trailing)
+                LastUpdateMessageView()
             }
             .onAppear {
                 Task(priority: .background) {

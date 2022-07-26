@@ -73,6 +73,28 @@ extension BidirectionalCollection where Element == MergeRequest {
     }
 }
 
+extension BidirectionalCollection where Element == CollectionDifference<Author>.Change {
+    /// Return all elements of changed type `.insert`
+    var insertedElements: [Author] {
+        return self.compactMap({ insertion -> Author? in
+            guard case let .insert(offset: _, element: element, associatedWith: _) = insertion else {
+                return nil
+            }
+            return element
+        })
+    }
+
+    /// Return all elements of changed type `.remove`
+    var removedElements: [Author] {
+        return self.compactMap({ insertion -> Author? in
+            guard case let .remove(offset: _, element: element, associatedWith: _) = insertion else {
+                return nil
+            }
+            return element
+        })
+    }
+}
+
 public struct Author: Codable, DefaultsSerializable, Equatable {
     public let id, name, username: String?
     public let avatarUrl: URL?

@@ -44,7 +44,7 @@ public struct CIStatusView: View {
     }
 }
 
-struct SwiftUIView_Previews: PreviewProvider {
+struct CIStatusView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
