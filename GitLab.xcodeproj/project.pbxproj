@@ -83,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A07E5672890492C0042EACB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A31CB3A2866334000C94AC1 /* GitLab iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitLab iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSApp.swift; sourceTree = "<group>"; };
 		8A31CB402866334100C94AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
+				8A07E5672890492C0042EACB /* README.md */,
 				8AAB479D2881784E007828B8 /* Documentation.docc */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A5FC10E26EFD08F004136AB /* GitLabTests */,

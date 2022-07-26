@@ -13,3 +13,18 @@
   <img src="Images/tvos.svg" height="24">
   <img src="Images/watchos.svg" height="24">
 </p>
+
+## Feature Ideas
+- [ ] Button + shortcut copy text + MR name for slack
+- [x] Right click menu
+- [ ] Notifications for comments
+- [ ] Click on job to open job url
+- [ ] See comments since last view
+- [ ] MR Activity view
+- [ ] Settings menu
+- [ ] Switch between app / menubar view
+- [ ] Choose Icon in menubar
+- [ ] Choose Icon in dock
+- [ ] Show information in menubar icon (notifications/unreads ect)
+- [ ] Open MR of recently pushed branch
+- [ ] Recent projects buttons
