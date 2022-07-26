@@ -1,5 +1,6 @@
 <p align="center">
   <img src="GitLab/Assets.xcassets/AppIcon.appiconset/mac1024.png" height="128">
+  <img src="GitLab/Assets.xcassets/AppIcon-Development.appiconset/icon_512x512@2x.png" height="128">
   <h1 align="center">GitLab Widget</h1>
 </p>
 
