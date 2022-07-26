@@ -10,14 +10,12 @@ import SwiftUI
 struct InboxZeroIcon: View {
     var body: some View {
         VStack {
-            Spacer()
             HStack {
                 Spacer()
                 Text("All done 🥳")
                     .padding(.top, 3)
                 Spacer()
             }
-            Spacer()
         }
     }
 }

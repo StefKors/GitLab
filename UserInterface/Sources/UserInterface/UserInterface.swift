@@ -8,15 +8,13 @@
 import SwiftUI
 
 public struct UserInterface: View {
-    @ObservedObject public var model: NetworkManager
-    
-    public init(model: NetworkManager) {
-        self._model = ObservedObject(wrappedValue: model)
-    }
-    
+    @EnvironmentObject public var model: NetworkManager
+
+    public init() { }
+
+
     @State private var selectedView: QueryType = .authoredMergeRequests
     @State public var isHovering: Bool = false
-    
     @State public var timeRemaining = 10
     public let initialTimeRemaining = 10
     public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -43,7 +41,7 @@ public struct UserInterface: View {
     
     public var body: some View {
         ZStack(alignment: .topLeading) {
-            VStack(alignment: .trailing, spacing: 10) {
+            VStack(alignment: .center, spacing: 10) {
                 if model.apiToken.isEmpty {
                     HStack(alignment: .center) {
                         Text("No Token Found")
@@ -64,6 +62,11 @@ public struct UserInterface: View {
                         .padding(.horizontal)
                         .padding(.top)
                         .padding(.bottom, 0)
+
+                    // Show only last 3 notices's
+                    NoticeListView()
+                        .padding(.horizontal)
+
                     if mergeRequests.isEmpty {
                         InboxZeroIcon()
                     }
@@ -81,7 +84,7 @@ public struct UserInterface: View {
                 }
                 HStack {
                     Spacer()
-                    
+
                     if let lastUpdate = dateValue {
                         Text("Last updated at: \(lastUpdate)")
                             .foregroundColor(.gray)
@@ -93,7 +96,7 @@ public struct UserInterface: View {
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
                                 }
-                                
+
                                 if timeRemaining <= 0 {
                                     timeRemaining = initialTimeRemaining
                                     Task(priority: .background) {

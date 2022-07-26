@@ -18,7 +18,7 @@
 
 ## Feature Ideas
 - [ ] Button + shortcut copy text + MR name for slack
-- [ ] Right click menu
+- [x] Right click menu
 - [ ] Notifications for comments
 - [ ] Click on job to open job url
 - [ ] See comments since last view
@@ -30,9 +30,3 @@
 - [ ] Show information in menubar icon (notifications/unreads ect)
 - [ ] Open MR of recently pushed branch
 - [ ] Recent projects buttons
-
-## Topics
-
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
-
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
