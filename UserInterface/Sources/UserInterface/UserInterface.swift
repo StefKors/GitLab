@@ -24,7 +24,7 @@ public struct UserInterface: View {
     }
 
     public var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack(alignment: .topTrailing) {
             VStack(alignment: .center, spacing: 10) {
                 if model.apiToken.isEmpty {
                     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
@@ -41,7 +41,6 @@ public struct UserInterface: View {
                         .padding(.top)
                         .padding(.bottom, 0)
 
-                    // Show only last 3 notices's
                     NoticeListView()
                         .padding(.horizontal)
 
@@ -68,6 +67,6 @@ public struct UserInterface: View {
                 }
             }
         }
-        .frame(width: 550, alignment: .topLeading)
+        .frame(width: 500)
     }
 }

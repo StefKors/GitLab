@@ -19,6 +19,6 @@ struct MergeRequestLabelView: View {
                 linkText: "\(MR.targetProject?.path ?? "")\("/")\(MR.targetProject?.group?.fullPath ?? "")\(MR.reference ?? "")",
                 destination: MR.targetProject?.webURL
             )
-        }
+        }.fixedSize(horizontal: false, vertical: true)
     }
 }
