@@ -67,14 +67,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         if let statusButton = statusItem.button {
-            let itemImage = NSImage(named: "Icon")
-            itemImage?.isTemplate = true
+            let itemImage = NSImage(named: "Icon-Gradients")
             statusButton.image = itemImage
             statusButton.action = #selector(togglePopover)
             statusButton.sendAction(on: [.leftMouseDown, .rightMouseDown])
         }
 
-        self.popover.behavior = .transient
+        self.popover.behavior = NSPopover.Behavior.transient
         self.popover.animates = true
 
         self.popover.contentViewController = rootView
@@ -131,16 +130,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
         NSApplication.shared.terminate(nil)
     }
 
+    @objc func applicationWillResignActive(_ notification: Notification) {
+        print("resign active")
+    }
+
     @objc func togglePopover() {
         if let button = statusItem.button {
             if popover.isShown {
                 self.popover.performClose(nil)
+                self.popover.resignFirstResponder()
+                NSApplication.shared.deactivate()
             } else if let event = NSApp.currentEvent, event.isRightClick {
-                // settingsWindowController.show()
                 statusItem.menu = statusBarMenu // add menu to button...
                 statusItem.button?.performClick(nil) // ...and click
             } else {
-                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                NSApplication.shared.activate(ignoringOtherApps: true)
+                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
             }
         }
     }

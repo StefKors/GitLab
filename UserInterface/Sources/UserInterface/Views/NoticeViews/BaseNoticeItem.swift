@@ -8,21 +8,11 @@
 import SwiftUI
 
 struct BaseNoticeItem: View {
-    var notice: NoticeMessage
-    var removeNotice: ((_ notice: NoticeMessage) -> Void)?
+    @EnvironmentObject public var noticeState: NoticeState
+    @Environment(\.openURL) var openURL
     @State var isHovering: Bool = false
 
-    var styleColor: Color {
-        switch notice.type {
-        case .information, .network:
-            return .blue
-        case .warning:
-            return .yellow
-        case .error:
-            return .red
-        }
-
-    }
+    var notice: NoticeMessage
 
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
@@ -31,59 +21,90 @@ struct BaseNoticeItem: View {
                     ZStack {
                         HStack(alignment: .center) {
                             Image(systemName: "exclamationmark.icloud.fill")
-                                .foregroundColor(styleColor)
                             // One bigger than the xmark icon to make sure background renders correctly
                                 .font(.system(size: 19))
                                 .help("Close")
                             Text("\(statusCode)")
                                 .bold()
                         }
-                        .foregroundColor(styleColor)
                     }
                 }
                 .padding()
-                .background(styleColor.opacity(0.3))
+                .background(notice.color.opacity(0.3))
             }
             VStack(alignment: .center) {
                 ZStack {
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
-                            Text(notice.label)
-                                .lineLimit(1)
-                                .font(.body)
-                        }
+                            if notice.type == .branch, let createdAt = notice.createdAt {
+                                Text(.init(notice.label)) + Text(" ") + Text(toRelativeDate(createdAt))
+                            } else {
+                                Text(.init(notice.label))
+                            }
+
+                            if let url = notice.webLink {
+                                Button(action: {
+                                    openURL(url)
+                                }, label: {
+                                    Image("merge-request")
+                                        .font(.system(size: 19))
+                                        .help("Close")
+                                    Text("Create merge request")
+                                })
+                            }
+                        }.fixedSize(horizontal: false, vertical: true)
                         Spacer()
-                        if isHovering {
-                            Text("close")
-                                .transition(.opacity)
-                                .transition(.move(edge: .trailing))
-                        }
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 18))
-                            .help("Close")
+                            .help("Dismiss")
+                            .opacity(isHovering ? 1 : 0.6)
                             .onHover { hoverState in
                                 isHovering = hoverState
                             }
                             .onTapGesture {
-                                removeNotice?(notice)
+                                noticeState.dismissNotice(id: notice.id)
                             }
                     }
-                    .foregroundColor(styleColor)
                     .animation(.spring(), value: isHovering)
                 }
             }
             .padding()
         }
-        .background(styleColor.opacity(0.3))
-        .background(.thickMaterial)
-        .cornerRadius(4)
-        .overlay( /// apply a rounded border
-            RoundedRectangle(cornerRadius: 4)
-                .stroke(styleColor, lineWidth: 1)
-        )
-        .shadow(color: styleColor.opacity(0.35), radius: 5, x: 0, y: 3)
+        .modifier(NoticeTypeBackground(notice: notice))
+        .shadow(color: Color(NSColor.shadowColor).opacity(0.35), radius: 5, x: 0, y: 3)
     }
 
+    fileprivate func toRelativeDate(_ date: Date) -> String {
+        // guard let createdAt = createdAt,
+        //       let date = GitLabISO8601DateFormatter.date(from: createdAt) else {
+        //     return createdAt ?? ""
+        // }
+
+        let nowTime: Double = 60 * 3 // 3 min
+        if abs(date.timeIntervalSinceNow) < nowTime {
+            return "just now"
+        }
+
+        // ask for the full relative date
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: date, relativeTo: Date.now)
+    }
+}
+
+struct NoticeTypeBackground: ViewModifier {
+    var notice: NoticeMessage
+    
+    let radius: CGFloat = 8
+    func body(content: Content) -> some View {
+        if notice.type == .branch {
+            content
+                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+        } else {
+            content
+                .background(notice.color.opacity(0.3), in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+        }
+    }
 }
 
 struct BaseNoticeItem_Previews: PreviewProvider {

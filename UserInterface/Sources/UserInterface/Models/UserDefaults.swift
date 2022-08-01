@@ -1,0 +1,20 @@
+//
+//  File.swift
+//  
+//
+//  Created by Stef Kors on 29/07/2022.
+//
+
+import Foundation
+import Defaults
+
+extension Defaults.Keys {
+    // MARK: - NetworkManager
+    static let apiToken = Key<String>("apiToken", default: "")
+    static let showDockIcon = Key<Bool>("showDockIcon", default: false)
+    static let selectedIcon = Key<AppIcons>("selectedIcon", default: .DevIcon)
+    static let showAppWindow = Key<Bool>("showAppWindow", default: false)
+    static let authoredMergeRequests = Key<[MergeRequest]>("authoredMergeRequests", default: [])
+    static let reviewRequestedMergeRequests = Key<[MergeRequest]>("reviewRequestedMergeRequests", default: [])
+    static let targetProjectsDict = Key<[String: TargetProject]>("targetProjectsDict-9999999", default: [:])
+}

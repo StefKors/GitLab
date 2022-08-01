@@ -15,15 +15,6 @@ public enum AppIcons: String, DefaultsSerializable, CaseIterable {
     case DevIcon
 }
 
-extension Defaults.Keys {
-    static let apiToken = Key<String>("apiToken", default: "")
-    static let showDockIcon = Key<Bool>("showDockIcon", default: false)
-    static let selectedIcon = Key<AppIcons>("selectedIcon", default: .DevIcon)
-    static let showAppWindow = Key<Bool>("showAppWindow", default: false)
-    static let authoredMergeRequests = Key<[MergeRequest]>("authoredMergeRequests", default: [])
-    static let reviewRequestedMergeRequests = Key<[MergeRequest]>("reviewRequestedMergeRequests", default: [])
-}
-
 enum RequestError: Error {
     case sessionError(error: Error)
 }
@@ -43,6 +34,7 @@ public class NetworkManager: ObservableObject {
     @Default(.showAppWindow) public var showAppWindow
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
+    @Default(.targetProjectsDict) public var targetProjectsDict
 
     // Not Persisted AppState
     @Published public var lastUpdate: Date?
@@ -59,6 +51,7 @@ public class NetworkManager: ObservableObject {
 
     public func fetch() async {
         /// Parallel?
+        await fetchLatestBranchPush()
         await fetchAuthoredMergeRequests()
         await fetchReviewRequestedMergeRequests()
     }

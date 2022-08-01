@@ -105,6 +105,18 @@ public struct Author: Codable, DefaultsSerializable, Equatable {
     }
 }
 
+/// (same as Author above ^ but with int for id
+public struct EventAuthor: Codable, DefaultsSerializable, Equatable {
+    public let id: Int?
+    public let name, username: String?
+    public let avatarUrl: URL?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, username
+        case avatarUrl = "avatarUrl"
+    }
+}
+
 // MARK: - ApprovedMergeRequestsEdge
 public struct ApprovedMergeRequestsEdge: Codable, DefaultsSerializable, Equatable {
     public let node: Author?
@@ -182,7 +194,8 @@ public struct DetailedStatus: Codable, DefaultsSerializable, Equatable {
 
 // MARK: - TargetProject
 public struct TargetProject: Codable, DefaultsSerializable, Equatable {
-    public let id, name, path: String?
+    public let id: String
+    public let name, path: String?
     public let webURL: URL?
     public let group: Group?
 
