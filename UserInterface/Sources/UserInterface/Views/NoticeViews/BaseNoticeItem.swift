@@ -71,7 +71,7 @@ struct BaseNoticeItem: View {
             .padding()
         }
         .modifier(NoticeTypeBackground(notice: notice))
-        .shadow(color: Color(NSColor.shadowColor).opacity(0.35), radius: 5, x: 0, y: 3)
+        .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
     }
 
     fileprivate func toRelativeDate(_ date: Date) -> String {
@@ -99,7 +99,7 @@ struct NoticeTypeBackground: ViewModifier {
     func body(content: Content) -> some View {
         if notice.type == .branch {
             content
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
         } else {
             content
                 .background(notice.color.opacity(0.3), in: RoundedRectangle(cornerRadius: radius, style: .continuous))
