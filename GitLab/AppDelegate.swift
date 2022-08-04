@@ -140,9 +140,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
                 statusItem.menu = statusBarMenu // add menu to button...
                 statusItem.button?.performClick(nil) // ...and click
             } else {
-                // NSApplication.shared.activate(ignoringOtherApps: true)
+                NSApplication.shared.activate(ignoringOtherApps: true)
                 self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
-                // self.popover.contentViewController?.view.window?.makeKey()
+                self.popover.contentViewController?.view.window?.makeKey()
             }
         }
     }
