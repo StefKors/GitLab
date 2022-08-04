@@ -32,15 +32,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
     private var popover = NSPopover()
     private var statusBarMenu: NSMenu!
     public var networkManager: NetworkManager = NetworkManager()
-    public var rootView: NSViewController
-
-    private override init () {
-        let view = UserInterface()
-            .environmentObject(self.networkManager)
-            .environmentObject(self.networkManager.noticeState)
-
-        rootView = NSHostingController(rootView: view)
-    }
 
     @MainActor func applicationDidFinishLaunching(_ notification: Notification) {
         initStatusBarUI()
@@ -48,7 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
-        self.appWindow.makeKeyAndOrderFront(nil)
         return true
     }
 
@@ -76,7 +66,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
         self.popover.behavior = NSPopover.Behavior.transient
         self.popover.animates = true
 
-        self.popover.contentViewController = rootView
+        let view = UserInterface()
+            .environmentObject(self.networkManager)
+            .environmentObject(self.networkManager.noticeState)
+        self.popover.contentViewController = NSHostingController(rootView: view)
 
         statusBarMenu = NSMenu(title: "Status Bar Menu")
         statusBarMenu.delegate = self
@@ -108,8 +101,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
             self.appWindow.styleMask.insert(NSWindow.StyleMask.closable)
             self.appWindow.styleMask.insert(NSWindow.StyleMask.miniaturizable)
             self.appWindow.styleMask.insert(NSWindow.StyleMask.resizable)
-            self.appWindow.title = "GitLab"
-            self.appWindow.contentViewController = rootView
+            self.appWindow.title = "GitLab Widget"
+            let view = UserInterface()
+                .environmentObject(self.networkManager)
+                .environmentObject(self.networkManager.noticeState)
+            self.appWindow.contentViewController = NSHostingController(rootView: view)
             self.appWindow.center()
         }
     }
@@ -144,8 +140,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
                 statusItem.menu = statusBarMenu // add menu to button...
                 statusItem.button?.performClick(nil) // ...and click
             } else {
-                NSApplication.shared.activate(ignoringOtherApps: true)
-                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
+                // NSApplication.shared.activate(ignoringOtherApps: true)
+                self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
+                // self.popover.contentViewController?.view.window?.makeKey()
             }
         }
     }
