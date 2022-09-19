@@ -318,11 +318,11 @@ public struct ProjectImageResponse: Codable, DefaultsSerializable, Equatable, Ha
         case filePath = "file_path"
         case size, encoding
         case contentSha256 = "content_sha256"
-        case ref
+        case ref = "ref"
         case blobID = "blob_id"
         case commitID = "commit_id"
         case lastCommitID = "last_commit_id"
         case executeFilemode = "execute_filemode"
-        case content
+        case content = "content"
     }
 }
