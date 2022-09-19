@@ -41,8 +41,11 @@ public struct UserInterface: View {
                         .padding(.top)
                         .padding(.bottom, 0)
 
-                    NoticeListView()
-                        .padding(.horizontal)
+                    RepoLaunchpadView(repos: model.launchpadState.contributedRepos)
+
+                    // Disabled in favor for real notifications`
+                    // NoticeListView()
+                    //     .padding(.horizontal)
 
                     if mergeRequests.isEmpty {
                         BaseTextView(message: "All done 🥳")

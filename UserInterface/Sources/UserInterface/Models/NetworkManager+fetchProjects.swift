@@ -18,9 +18,9 @@ extension NetworkManager {
                 return arrString
             }
 
-            let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl group { id name fullName     fullPath webUrl } } } } }"
+            let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl group { id name fullName     fullPath webUrl } } } } }"
             let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req = Request<TargetProjectsQuery>.post("/graphql", query: [
+            let req: Request<TargetProjectsQuery> = Request.init(path: "/graphql", query: [
                 ("query", projectQuery),
                 ("private_token", self.apiToken)
             ])
@@ -59,6 +59,7 @@ extension NetworkManager {
     }
 
     public func updateDict(_ targetProject: TargetProject) {
+        self.addLaunchpadProject(targetProject)
         self.targetProjectsDict[targetProject.id] = targetProject
     }
 }

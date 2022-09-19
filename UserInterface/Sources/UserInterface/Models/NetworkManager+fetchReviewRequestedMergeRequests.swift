@@ -16,7 +16,7 @@ extension NetworkManager {
             print("fetch: start fetchReviewRequestedMergeRequests")
             let beforeMergeRequests = reviewRequestedMergeRequests
             let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req = Request<GitLabQuery>.post("/graphql", query: [
+            let req: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
                 ("query", getQuery(.reviewRequestedMergeRequests)),
                 ("private_token", apiToken)
             ])

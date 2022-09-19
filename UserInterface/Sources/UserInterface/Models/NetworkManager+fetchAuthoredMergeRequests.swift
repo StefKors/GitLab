@@ -16,7 +16,7 @@ extension NetworkManager {
             print("fetch: start fetchAuthoredMergeRequests")
             let beforeApprovedByDict = authoredMergeRequests.approvedByDict
             let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req = Request<GitLabQuery>.post("/graphql", query: [
+            let req: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
                 ("query", getQuery(.authoredMergeRequests)),
                 ("private_token", apiToken)
             ])
@@ -87,6 +87,12 @@ extension NetworkManager {
                 authoredMergeRequests = newMergeRequests
                 lastUpdate = .now
                 noticeState.clearNetworkNotices()
+
+                for mr in response.authoredMergeRequests {
+                    if let project = mr.targetProject {
+                        addLaunchpadProject(project)
+                    }
+                }
             }
         } catch APIError.unacceptableStatusCode(let statusCode) {
             // Handle Bad GitLab Reponse

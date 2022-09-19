@@ -32,6 +32,7 @@ struct LastUpdateMessageView: View {
 
             if let lastUpdate = dateValue {
                 Text("Last updated at: \(lastUpdate)")
+                    .transition(.opacity.animation(.easeInOut(duration: 0.35).delay(0.2)))
                     .foregroundColor(.gray)
                     .font(.system(size: 10))
                     .onHover { hovering in
@@ -49,6 +50,8 @@ struct LastUpdateMessageView: View {
                             }
                         }
                     }
+            } else {
+                LastUpdateMessagePlaceholderView()
             }
         }
         .padding(.bottom)

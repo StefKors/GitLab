@@ -22,13 +22,19 @@ let package = Package(
         .package(url: "https://github.com/sindresorhus/Preferences", branch: "main"),
         .package(url: "https://github.com/sindresorhus/Defaults.git", branch: "main"),
         .package(url: "https://github.com/kean/Get.git", branch: "main"),
+        .package(url: "https://github.com/StefKors/CachedAsyncImage.git", branch: "main"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "UserInterface",
-            dependencies: ["Preferences", "Defaults", "Get"],
+            dependencies: [
+                "Preferences",
+                "Defaults",
+                "Get",
+                "CachedAsyncImage",
+            ],
             path: "Sources/UserInterface"
         ),
         .testTarget(

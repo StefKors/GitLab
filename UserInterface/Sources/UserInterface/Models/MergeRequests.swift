@@ -193,21 +193,25 @@ public struct DetailedStatus: Codable, DefaultsSerializable, Equatable {
 }
 
 // MARK: - TargetProject
-public struct TargetProject: Codable, DefaultsSerializable, Equatable {
+public struct TargetProject: Codable, DefaultsSerializable, Equatable, Hashable {
     public let id: String
     public let name, path: String?
     public let webURL: URL?
+    public let avatarUrl: URL?
     public let group: Group?
+    public let fetchedAvatarData: Data?
 
     enum CodingKeys: String, CodingKey {
         case id, name, path
         case webURL = "webUrl"
+        case avatarUrl = "avatarUrl"
         case group
+        case fetchedAvatarData
     }
 }
 
 // MARK: - Group
-public struct Group: Codable, DefaultsSerializable, Equatable {
+public struct Group: Codable, DefaultsSerializable, Equatable, Hashable {
     public let id, name, fullName, fullPath: String?
     public let webURL: URL?
 
@@ -297,5 +301,28 @@ public enum StageStatusType: String, Codable, DefaultsSerializable, Equatable {
 
     public func toPipelineStatus() -> PipelineStatus? {
         PipelineStatus(rawValue: self.rawValue.uppercased())
+    }
+}
+
+// MARK: - ProjectImageResponse
+public struct ProjectImageResponse: Codable, DefaultsSerializable, Equatable, Hashable {
+    let fileName, filePath: String?
+    let size: Int?
+    let encoding, contentSha256, ref, blobID: String?
+    let commitID, lastCommitID: String?
+    let executeFilemode: Bool?
+    let content: String?
+
+    enum CodingKeys: String, CodingKey {
+        case fileName = "file_name"
+        case filePath = "file_path"
+        case size, encoding
+        case contentSha256 = "content_sha256"
+        case ref
+        case blobID = "blob_id"
+        case commitID = "commit_id"
+        case lastCommitID = "last_commit_id"
+        case executeFilemode = "execute_filemode"
+        case content
     }
 }

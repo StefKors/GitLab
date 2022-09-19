@@ -13,7 +13,7 @@ struct NoticeListView: View {
 
     var body: some View {
         VStack {
-            ForEach(noticeState.notices.filter({ $0.dismissed == false}).suffix(3), id: \.id) { notice in
+            ForEach(noticeState.notices.filter({ $0.dismissed == false }), id: \.id) { notice in
                 BaseNoticeItem(notice: notice)
                     .id(notice.id)
             }

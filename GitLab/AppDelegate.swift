@@ -42,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject, NSMenuDele
         return true
     }
 
+    // TODO: https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#prefill-personal-access-token-name-and-scopes
     private lazy var settingsWindowController = SettingsWindowController(
         preferencePanes: [
             AccountSettingsViewController(model: self.networkManager),

@@ -15,7 +15,7 @@ extension NetworkManager {
         do {
             let yesterday = "2022-06-25"
             let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req = Request<PushEvents>.get("/v4/events", query: [
+            let req: Request<PushEvents> = Request.init(path: "/v4/events", query: [
                 ("after", yesterday),
                 ("scope", "read_user"),
                 ("action", "pushed"),
@@ -33,8 +33,8 @@ extension NetworkManager {
                 if hasCachedproject.isNil {
                     // fetching because dict is empty
                     print("fetching because dict is empty")
-                    await fetchProjects(ids: [projectID])
                 }
+                await fetchProjects(ids: [projectID])
             }
 
             let event = response.first(where: { event in

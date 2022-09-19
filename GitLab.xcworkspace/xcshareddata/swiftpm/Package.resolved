@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "cachedasyncimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/StefKors/CachedAsyncImage.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e3c1f7c6c935ebfc46d865548e6d28cbdaf836d5"
+      }
+    },
+    {
       "identity" : "defaults",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/Defaults.git",
@@ -15,7 +24,7 @@
       "location" : "https://github.com/kean/Get.git",
       "state" : {
         "branch" : "main",
-        "revision" : "f93c8efb3cc17b4e6404bd943949b631b1836a12"
+        "revision" : "d889247d5f7da094130b9a1bb33985cfce047e0a"
       }
     },
     {
@@ -24,7 +33,7 @@
       "location" : "https://github.com/sindresorhus/Preferences",
       "state" : {
         "branch" : "main",
-        "revision" : "2651cd144615009242c994b087508fef99e9275c"
+        "revision" : "5ea5617ea621c0a9c242a2e3c01cefc4cd07ea04"
       }
     }
   ],

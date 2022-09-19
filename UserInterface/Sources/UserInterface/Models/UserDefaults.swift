@@ -17,4 +17,5 @@ extension Defaults.Keys {
     static let authoredMergeRequests = Key<[MergeRequest]>("authoredMergeRequests", default: [])
     static let reviewRequestedMergeRequests = Key<[MergeRequest]>("reviewRequestedMergeRequests", default: [])
     static let targetProjectsDict = Key<[String: TargetProject]>("targetProjectsDict-9999999", default: [:])
+    static let contributedRepos = Key<Set<LaunchpadRepo>>("contributedRepos", default: [])
 }
