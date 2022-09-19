@@ -41,7 +41,7 @@ public struct UserInterface: View {
                         .padding(.top)
                         .padding(.bottom, 0)
 
-                    RepoLaunchpadView(repos: model.launchpadState.contributedRepos)
+                    LaunchpadView(repos: model.launchpadState.contributedRepos)
 
                     // Disabled in favor for real notifications`
                     // NoticeListView()
