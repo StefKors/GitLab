@@ -20,14 +20,15 @@
 		8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A36AF162869B4110008B949 /* MainInterface.storyboard */; };
 		8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8A36AF102869B4110008B949 /* NotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A36AF222869BE650008B949 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8A36AF212869BE650008B949 /* UserInterface */; };
+		8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
-		8A5FC0FE26EFD08F004136AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
 		8A5FC10426EFD08F004136AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10226EFD08F004136AB /* Main.storyboard */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
 		8AAB479E2881784E007828B8 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8AAB479D2881784E007828B8 /* Documentation.docc */; };
 		8AC4B42D28660ED60054C601 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC4B42C28660ED60054C601 /* UserInterface */; };
+		8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8A5B657128E4E01500535C61 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AC4B4262865C14A0054C601 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +127,7 @@
 		8AAB479D2881784E007828B8 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
+				8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10226EFD08F004136AB /* Main.storyboard */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
@@ -390,6 +403,7 @@
 				8A5FC0F326EFD08E004136AB /* Frameworks */,
 				8A5FC0F426EFD08E004136AB /* Resources */,
 				8AC4B4262865C14A0054C601 /* Embed App Extensions */,
+				8A5B657128E4E01500535C61 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
@@ -446,7 +460,7 @@
 		8A5FC0EE26EFD08E004136AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
@@ -539,8 +553,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5FC10426EFD08F004136AB /* Main.storyboard in Resources */,
+				8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */,
 				8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */,
-				8A5FC0FE26EFD08F004136AB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
 				8AAB479E2881784E007828B8 /* Documentation.docc in Sources */,
 			);
@@ -1005,7 +1020,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Development";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = GitLab/GitLab.entitlements;
 				CODE_SIGN_IDENTITY = "-";
@@ -1036,7 +1051,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = GitLab/GitLab.entitlements;
 				CODE_SIGN_IDENTITY = "-";

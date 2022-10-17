@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Icon-Gradient-Any.svg",
+      "filename" : "Icon-Gradient-Any.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "Icon-Gradient-Black.svg",
+      "filename" : "Icon-Gradient-Black Copy 2.pdf",
       "idiom" : "universal"
     },
     {
@@ -21,7 +21,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Icon-Gradient-White.svg",
+      "filename" : "Icon-Gradient-Black.pdf",
       "idiom" : "universal"
     }
   ],
@@ -30,6 +30,7 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "original"
+    "compression-type" : "automatic",
+    "preserves-vector-representation" : true
   }
 }

@@ -58,16 +58,16 @@ public class NetworkManager: ObservableObject {
     }
 
     public func setDockIconPolicy() {
-        if showDockIcon {
-            // The application is an ordinary app that appears in the Dock and may
-            // have a user interface.
-            NSApp.setActivationPolicy(.regular)
-        } else {
-            // The application does not appear in the Dock and does not have a menu
-            // bar, but it may be activated programmatically or by clicking on one
-            // of its windows.
-            NSApp.setActivationPolicy(.accessory)
-        }
+        // if showDockIcon {
+        //     // The application is an ordinary app that appears in the Dock and may
+        //     // have a user interface.
+        //     NSApp.setActivationPolicy(.regular)
+        // } else {
+        //     // The application does not appear in the Dock and does not have a menu
+        //     // bar, but it may be activated programmatically or by clicking on one
+        //     // of its windows.
+        //     NSApp.setActivationPolicy(.accessory)
+        // }
     }
 }
 
