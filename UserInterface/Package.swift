@@ -19,7 +19,6 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/sindresorhus/Preferences", branch: "main"),
         .package(url: "https://github.com/sindresorhus/Defaults.git", branch: "main"),
         .package(url: "https://github.com/kean/Get.git", branch: "main"),
         .package(url: "https://github.com/StefKors/CachedAsyncImage.git", branch: "main"),
@@ -30,7 +29,6 @@ let package = Package(
         .target(
             name: "UserInterface",
             dependencies: [
-                "Preferences",
                 "Defaults",
                 "Get",
                 "CachedAsyncImage",

@@ -26,15 +26,6 @@
         "branch" : "main",
         "revision" : "d889247d5f7da094130b9a1bb33985cfce047e0a"
       }
-    },
-    {
-      "identity" : "preferences",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sindresorhus/Preferences",
-      "state" : {
-        "branch" : "main",
-        "revision" : "5ea5617ea621c0a9c242a2e3c01cefc4cd07ea04"
-      }
     }
   ],
   "version" : 2
