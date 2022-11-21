@@ -10,15 +10,13 @@ import UserInterface
 import Preferences
 
 struct MenubarContentView: View {
-    @StateObject var networkManager = NetworkManager()
+    
     @Environment(\.scenePhase) var scenePhase
     @State var scene: ScenePhase?
 
     var body: some View {
         // if scene == .active {
             UserInterface()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
                 .onChange(of: scenePhase) { newPhase in
 
                     if newPhase == .active {

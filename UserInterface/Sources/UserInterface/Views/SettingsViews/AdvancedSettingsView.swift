@@ -6,52 +6,62 @@
 //
 
 import SwiftUI
-import Preferences
 import Defaults
 
 public struct AdvancedSettingsView: View {
-    @ObservedObject public var model: NetworkManager
-    @Default(.selectedIcon) public var selectedIcon
+    @EnvironmentObject public var model: NetworkManager
 
     public var body: some View {
-        Settings.Container(contentWidth: 450.0) {
-            Settings.Section(title: "Display as App Window") {
-                Toggle(isOn: $model.showAppWindow) {
-                    EmptyView()
-                }
-                .toggleStyle(.switch)
-            }
-
-            Settings.Section(title: "Show Dock Icon") {
-                Toggle(isOn: $model.showDockIcon) {
-                    EmptyView()
-                }
-                .toggleStyle(.switch)
-            }
-
-            Settings.Section(title: "Choose App Icon") {
-                HStack(alignment: .top) {
-                    ForEach(AppIcons.allCases, id: \.rawValue) { icon in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(lineWidth: 2)
-                                .fill(selectedIcon == icon ? Color.accentColor : .clear)
-                            Image(icon.rawValue)
-                                .resizable()
-                                .scaledToFit()
-                                .onTapGesture {
-                                    let clockView = Image(icon.rawValue)
-                                        .resizable()
-                                        .scaledToFit()
-
-                                    NSApp.dockTile.contentView = NSHostingView(rootView: clockView)
-                                    NSApp.dockTile.display()
-                                    selectedIcon = icon
-                                }
-                        }.frame(width: 60, height: 60)
+        VStack(alignment: .leading) {
+            GroupBox {
+                HStack {
+                    Text("Display as App Window")
+                    Toggle(isOn: $model.showAppWindow) {
+                        EmptyView()
                     }
-                }
+                    .toggleStyle(.switch)
+                    Spacer()
+                }.padding()
             }
-        }
+
+            GroupBox {
+                HStack {
+                    Text("Show Dock Icon")
+                    Toggle(isOn: $model.showDockIcon) {
+                        EmptyView()
+                    }
+                    .toggleStyle(.switch)
+                    Spacer()
+                }.padding()
+            }
+
+            GroupBox {
+                HStack {
+                    Text("Choose Dock Icon")
+                    HStack(alignment: .top) {
+                        ForEach(AppIcons.allCases, id: \.rawValue) { icon in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(lineWidth: 2)
+                                    .fill(model.selectedIcon == icon ? Color.accentColor : .clear)
+                                Image(icon.rawValue)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .onTapGesture {
+                                        let clockView = Image(icon.rawValue)
+                                            .resizable()
+                                            .scaledToFit()
+
+                                        NSApp.dockTile.contentView = NSHostingView(rootView: clockView)
+                                        NSApp.dockTile.display()
+                                        model.selectedIcon = icon
+                                    }
+                            }.frame(width: 60, height: 60)
+                        }
+                    }
+                    Spacer()
+                }.padding()
+            }
+        }.padding()
     }
 }

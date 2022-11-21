@@ -7,14 +7,23 @@
 
 import SwiftUI
 import UserInterface
-import Preferences
 
 @main
 struct GitLabApp: App {
+    @StateObject var networkManager = NetworkManager()
+    
     var body: some Scene {
         MenuBarExtra("GitLab Desktop", image: "Icon-Gradients-PNG") {
             MenubarContentView()
+                .environmentObject(self.networkManager)
+                .environmentObject(self.networkManager.noticeState)
         }
         .menuBarExtraStyle(.window)
+
+        Settings {
+            SettingsView()
+                .environmentObject(self.networkManager)
+                .environmentObject(self.networkManager.noticeState)
+        }
     }
 }
