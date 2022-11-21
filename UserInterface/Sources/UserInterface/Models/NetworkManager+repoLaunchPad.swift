@@ -13,7 +13,7 @@ extension NetworkManager {
     public func addLaunchpadProject(_ project: TargetProject) {
         let containsLaunchpad = launchpadState.contributedRepos.contains(where: { $0.id == project.id })
         let shouldFetch = containsLaunchpad == false
-        guard project.avatarUrl != nil, shouldFetch else {
+        guard project.avatarUrl != nil, shouldFetch, let url = project.webURL else {
             return
         }
 
@@ -21,7 +21,8 @@ extension NetworkManager {
             let repo = LaunchpadRepo(
                 id: project.id,
                 name: project.name ?? "",
-                image: await getProjectImage(project)
+                image: await getProjectImage(project),
+                url: url
             )
             launchpadState.add(repo)
         }

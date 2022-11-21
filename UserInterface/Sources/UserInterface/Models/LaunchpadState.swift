@@ -15,6 +15,7 @@ public struct LaunchpadRepo: Codable, DefaultsSerializable, Equatable, Hashable 
     public var name: String
     public var image: Data?
     public var group: String = "Beam"
+    public var url: URL
 
     public static func ==(lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
         return lhs.id == rhs.id

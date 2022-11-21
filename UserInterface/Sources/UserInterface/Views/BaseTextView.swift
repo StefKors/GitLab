@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  BaseTextView.swift
 //  
 //
 //  Created by Stef Kors on 26/07/2022.
