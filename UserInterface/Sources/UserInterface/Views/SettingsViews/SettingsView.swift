@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Cocoa
-import Preferences
 
 public struct SettingsView: View {
     private enum Tabs: Hashable {
