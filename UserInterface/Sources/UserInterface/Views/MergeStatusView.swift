@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct MergeStatusView: View {
     var MR: MergeRequest
@@ -28,9 +29,23 @@ struct MergeStatusView: View {
                 MergeTrainIcon()
             } else if isApproved, let approvers = approvers, !approvers.isEmpty {
                 ApprovedReviewIcon(approvedBy: approvers)
+            } else if let title = MR.title, !title.containsIgnoringCase("draft") || !title.containsIgnoringCase("wip") {
+                CreateMergeRequestIcon(MR: MR)
             } else {
                 // NeedsReviewIcon()
             }
         }
     }
 }
+
+
+extension String {
+
+    func contains(_ find: String) -> Bool{
+        return self.range(of: find) != nil
+    }
+
+    func containsIgnoringCase(_ find: String) -> Bool{
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
+    }
