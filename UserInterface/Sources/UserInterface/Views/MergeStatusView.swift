@@ -29,7 +29,7 @@ struct MergeStatusView: View {
                 MergeTrainIcon()
             } else if isApproved, let approvers = approvers, !approvers.isEmpty {
                 ApprovedReviewIcon(approvedBy: approvers)
-            } else if let title = MR.title, !title.containsIgnoringCase("draft") || !title.containsIgnoringCase("wip") {
+            } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
                 CreateMergeRequestIcon(MR: MR)
             } else {
                 // NeedsReviewIcon()
