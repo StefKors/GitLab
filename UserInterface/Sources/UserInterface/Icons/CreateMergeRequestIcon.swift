@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import TextToEmoji
 
 struct CreateMergeRequestIcon: View {
     let MR: MergeRequest
