@@ -19,7 +19,7 @@ public struct AccountSettingsView: View {
                         HStack {
                             TextField(
                                 "Enter token here...",
-                                text: model.$apiToken,
+                                text: NetworkManager.$apiToken,
                                 onCommit: {
                                     // make API call with token.
                                     Task {
@@ -27,7 +27,7 @@ public struct AccountSettingsView: View {
                                     }
                                 })
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            Button("Clear API Token", action: {model.apiToken = ""})
+                            Button("Clear API Token", action: {NetworkManager.apiToken = ""})
                         }
 
                         Text("Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can")

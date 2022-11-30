@@ -15,12 +15,8 @@ extension NetworkManager {
         do {
             print("fetch: start fetchReviewRequestedMergeRequests")
             let beforeMergeRequests = reviewRequestedMergeRequests
-            let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
-                ("query", getQuery(.reviewRequestedMergeRequests)),
-                ("private_token", apiToken)
-            ])
-            let response: GitLabQuery = try await client.send(req).value
+          
+            let response: GitLabQuery = try await client.send(reviewRequestedMergeRequestsReq).value
             await MainActor.run {
                 if response.data?.currentUser == nil {
                     tokenExpired = true

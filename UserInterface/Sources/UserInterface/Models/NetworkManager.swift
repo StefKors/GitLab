@@ -25,7 +25,7 @@ public class NetworkManager: ObservableObject {
     public var launchpadState = LaunchpadState()
 
     // Stored App State:
-    @Default(.apiToken) public var apiToken
+    @Default(.apiToken) public static var apiToken
     @Default(.showDockIcon) public var showDockIcon {
         didSet {
             setDockIconPolicy()
@@ -46,9 +46,33 @@ public class NetworkManager: ObservableObject {
     }
 
     /// https://gitlab.com/-/graphql-explorer
-    public func getQuery(_ type: QueryType) -> String {
+    public static func getQuery(_ type: QueryType) -> String {
         "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
     }
+
+    public let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
+    public let branchPushReq: Request<PushEvents> = Request.init(path: "/v4/events", query: [
+        ("after", "2022-06-25"),
+        ("scope", "read_user"),
+        ("action", "pushed"),
+        ("private_token", apiToken)
+    ])
+
+    public let authoredMergeRequestsReq: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
+        ("query", getQuery(.authoredMergeRequests)),
+        ("private_token", apiToken)
+    ])
+
+    public let reviewRequestedMergeRequestsReq: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
+        ("query", getQuery(.reviewRequestedMergeRequests)),
+        ("private_token", apiToken)
+    ])
+
+    // uses custom delegate to handle correctly encoding url path
+    public let launchPadClient = APIClient(configuration: APIClient.Configuration(
+        baseURL: URL(string: "https://gitlab.com"),
+        delegate: LaunchPadClientDelegate()
+    ))
 
     public func fetch() async {
         /// Parallel?
@@ -68,6 +92,15 @@ public class NetworkManager: ObservableObject {
         //     // of its windows.
         //     NSApp.setActivationPolicy(.accessory)
         // }
+    }
+}
+
+extension Date {
+    static var oneHourAgo: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-DD"
+        let date = Calendar.current.date(byAdding: .hour, value: -1, to: .now)!
+        return formatter.string(from: date)
     }
 }
 

@@ -17,14 +17,14 @@ extension NetworkManager {
             return
         }
 
-        Task(priority: .background) {
+        Task(priority: .background) { [weak self] in
             let repo = LaunchpadRepo(
                 id: project.id,
                 name: project.name ?? "",
                 image: await getProjectImage(project),
                 url: url
             )
-            launchpadState.add(repo)
+            self?.launchpadState.add(repo)
         }
     }
 
@@ -36,23 +36,17 @@ extension NetworkManager {
     // https://gitlab.com/api/v4/projects/35262023/repository/files/logo%2Epng
         let url = URL(string: "/api/v4/projects/\(id)/repository/files/logo%2Epng")!
 
-        // uses custom delegate to handle correctly encoding url path
-        let client = APIClient(configuration: APIClient.Configuration(
-            baseURL: URL(string: "https://gitlab.com"),
-            delegate: ClientDelegate()
-        ))
-
         let req: Request<ProjectImageResponse> = Request.init(
             url: url,
             method: .get,
             query: [("ref", "main")],
             headers: [
-                "Private-Token": apiToken
+                "Private-Token": Self.apiToken
             ]
         )
 
         do {
-            let response: ProjectImageResponse? = try await client.send(req).value
+            let response: ProjectImageResponse? = try await launchPadClient.send(req).value
             if let content = response?.content {
                 return Data(base64Encoded: content)
             }
@@ -66,7 +60,7 @@ extension NetworkManager {
     }
 }
 
-fileprivate final class ClientDelegate: APIClientDelegate {
+final class LaunchPadClientDelegate: APIClientDelegate {
     func client<T>(_ client: APIClient, makeURLForRequest request: Request<T>) throws -> URL? {
         guard let base = client.configuration.baseURL?.absoluteString,
            let path = request.url,

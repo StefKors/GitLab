@@ -13,15 +13,7 @@ import Defaults
 extension NetworkManager {
     public func fetchLatestBranchPush() async {
         do {
-            let yesterday = "2022-06-25"
-            let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req: Request<PushEvents> = Request.init(path: "/v4/events", query: [
-                ("after", yesterday),
-                ("scope", "read_user"),
-                ("action", "pushed"),
-                ("private_token", apiToken)
-            ])
-            let response: PushEvents = try await client.send(req).value
+            let response: PushEvents = try await client.send(branchPushReq).value
 
             let pushedBranch = response.first(where: { event in
                 event.actionName == .pushedNew

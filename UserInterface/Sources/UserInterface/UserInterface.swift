@@ -26,7 +26,7 @@ public struct UserInterface: View {
     public var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .center, spacing: 10) {
-                if model.apiToken.isEmpty {
+                if NetworkManager.apiToken.isEmpty {
                     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
                 } else if model.tokenExpired {
                     BaseTextView(message: "Token Expired")

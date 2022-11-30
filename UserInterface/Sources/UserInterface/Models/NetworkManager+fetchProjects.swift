@@ -19,10 +19,9 @@ extension NetworkManager {
             }
 
             let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl group { id name fullName     fullPath webUrl } } } } }"
-            let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
             let req: Request<TargetProjectsQuery> = Request.init(path: "/graphql", query: [
                 ("query", projectQuery),
-                ("private_token", self.apiToken)
+                ("private_token", Self.apiToken)
             ])
 
             let fullProject: TargetProjectsQuery = try await client.send(req).value

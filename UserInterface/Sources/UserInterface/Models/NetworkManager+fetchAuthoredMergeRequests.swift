@@ -15,12 +15,7 @@ extension NetworkManager {
         do {
             print("fetch: start fetchAuthoredMergeRequests")
             let beforeApprovedByDict = authoredMergeRequests.approvedByDict
-            let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-            let req: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
-                ("query", getQuery(.authoredMergeRequests)),
-                ("private_token", apiToken)
-            ])
-            let response: GitLabQuery = try await client.send(req).value
+            let response: GitLabQuery = try await client.send(authoredMergeRequestsReq).value
 
             await MainActor.run {
                 if response.data?.currentUser == nil {
