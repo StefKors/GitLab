@@ -18,6 +18,7 @@ class NotificationManager {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { success, error in
             if success {
                 print("All set!")
+                NSApplication.shared.dockTile.showsApplicationBadge = false
             } else if let error = error {
                 print(error.localizedDescription)
             }
