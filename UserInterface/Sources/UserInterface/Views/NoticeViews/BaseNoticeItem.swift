@@ -45,6 +45,11 @@ struct BaseNoticeItem: View {
                             if let url = notice.webLink {
                                 Button(action: {
                                     openURL(url)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                                        withAnimation(.interpolatingSpring(stiffness: 500, damping: 15)) {
+                                            noticeState.dismissNotice(id: notice.id)
+                                        }
+                                    }
                                 }, label: {
                                     Image("merge-request")
                                         .font(.system(size: 19))
