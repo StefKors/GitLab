@@ -29,7 +29,22 @@ public class LaunchpadState: ObservableObject {
     // Allow fetching Launchpad items at launch
     @Published var updateAtLaunch: Bool = true
 
-    func add(_ repo: LaunchpadRepo) {
+    func upsert(_ repo: LaunchpadRepo) {
+        guard updateAtLaunch else {
+            print("skipping launchpad update for \(repo.name)")
+            return
+        }
+
+        if let preExistingLaunchpad = contributedRepos.first(where: { contributedRepo in
+            return contributedRepo.id == repo.id
+        }) {
+            contributedRepos.remove(preExistingLaunchpad)
+        }
+
         contributedRepos.insert(repo)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
+            self.updateAtLaunch = false
+        }
     }
 }

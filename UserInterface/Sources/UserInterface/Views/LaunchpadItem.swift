@@ -21,6 +21,8 @@ struct LaunchpadItem: View {
                 if let image = repo.image {
                     Image(nsImage: NSImage(data: image)!)
                         .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                        .shadow(radius: 3)
                 } else {
                     RoundedRectangle(cornerRadius: 6, style: .continuous)
                         .fill(Color.secondary)
