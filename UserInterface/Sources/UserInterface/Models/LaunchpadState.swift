@@ -12,14 +12,53 @@ import SwiftUI
 import Boutique
 
 public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
+    internal init(id: String, name: String, image: Data? = nil, group: String = "Beam", url: URL, hasUpdatedSinceLaunch: Bool = false) {
+        self.id = id
+        self.name = name
+        self.image = image
+        self.group = group
+        self.url = url
+        self.hasUpdatedSinceLaunch = hasUpdatedSinceLaunch
+    }
+    
     public var id: String
     public var name: String
     public var image: Data?
     public var group: String = "Beam"
     public var url: URL
+    public var hasUpdatedSinceLaunch: Bool = false
 
     public static func ==(lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
         return lhs.id == rhs.id
+    }
+
+    enum CodingKeys: CodingKey {
+        case id
+        case name
+        case image
+        case group
+        case url
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container: KeyedDecodingContainer<LaunchpadRepo.CodingKeys> = try decoder.container(keyedBy: LaunchpadRepo.CodingKeys.self)
+
+        self.id = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.id)
+        self.name = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.name)
+        self.image = try container.decodeIfPresent(Data.self, forKey: LaunchpadRepo.CodingKeys.image)
+        self.group = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.group)
+        self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
+
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container: KeyedEncodingContainer<LaunchpadRepo.CodingKeys> = encoder.container(keyedBy: LaunchpadRepo.CodingKeys.self)
+
+        try container.encode(self.id, forKey: LaunchpadRepo.CodingKeys.id)
+        try container.encode(self.name, forKey: LaunchpadRepo.CodingKeys.name)
+        try container.encodeIfPresent(self.image, forKey: LaunchpadRepo.CodingKeys.image)
+        try container.encode(self.group, forKey: LaunchpadRepo.CodingKeys.group)
+        try container.encode(self.url, forKey: LaunchpadRepo.CodingKeys.url)
     }
 }
 

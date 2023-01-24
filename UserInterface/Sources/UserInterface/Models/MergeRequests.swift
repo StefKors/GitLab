@@ -198,6 +198,7 @@ public struct TargetProject: Codable, DefaultsSerializable, Equatable, Hashable 
     public let name, path: String?
     public let webURL: URL?
     public let avatarUrl: URL?
+    public let repository: Repository?
     public let group: Group?
     public let fetchedAvatarData: Data?
 
@@ -205,8 +206,19 @@ public struct TargetProject: Codable, DefaultsSerializable, Equatable, Hashable 
         case id, name, path
         case webURL = "webUrl"
         case avatarUrl = "avatarUrl"
+        case repository
         case group
         case fetchedAvatarData
+    }
+}
+
+// MARK: - Repository
+public struct Repository: Codable, DefaultsSerializable, Equatable, Hashable {
+    /// Main Branch
+    public let rootRef: String?
+
+    enum CodingKeys: String, CodingKey {
+        case rootRef = "rootRef"
     }
 }
 

@@ -18,7 +18,7 @@ extension NetworkManager {
                 return arrString
             }
 
-            let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl group { id name fullName     fullPath webUrl } } } } }"
+            let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl repository { rootRef } group { id name fullName     fullPath webUrl } } } } }"
             let req: Request<TargetProjectsQuery> = Request.init(path: "/graphql", query: [
                 ("query", projectQuery),
                 ("private_token", Self.apiToken)

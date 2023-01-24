@@ -18,7 +18,7 @@
 		8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */; };
 		8A36AF152869B4110008B949 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36AF142869B4110008B949 /* NotificationViewController.swift */; };
 		8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A36AF162869B4110008B949 /* MainInterface.storyboard */; };
-		8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8A36AF102869B4110008B949 /* NotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A36AF102869B4110008B949 /* NotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A36AF222869BE650008B949 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8A36AF212869BE650008B949 /* UserInterface */; };
 		8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
@@ -80,15 +80,15 @@
 			name = "Embed XPC Services";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8AC4B4262865C14A0054C601 /* Embed App Extensions */ = {
+		8AC4B4262865C14A0054C601 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed App Extensions */,
+				8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -402,7 +402,7 @@
 				8A5FC0F226EFD08E004136AB /* Sources */,
 				8A5FC0F326EFD08E004136AB /* Frameworks */,
 				8A5FC0F426EFD08E004136AB /* Resources */,
-				8AC4B4262865C14A0054C601 /* Embed App Extensions */,
+				8AC4B4262865C14A0054C601 /* Embed Foundation Extensions */,
 				8A5B657128E4E01500535C61 /* Embed XPC Services */,
 			);
 			buildRules = (
@@ -461,7 +461,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -697,6 +697,7 @@
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GitLab;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -730,6 +731,7 @@
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GitLab;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -848,6 +850,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -860,7 +863,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -878,6 +881,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -890,7 +894,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -933,6 +937,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -994,6 +999,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1027,17 +1033,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1058,17 +1066,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.11;
+				MARKETING_VERSION = 1.12;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1083,6 +1093,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 324R3F66LU;
 				INFOPLIST_FILE = GitLabTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1105,6 +1116,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 324R3F66LU;
 				INFOPLIST_FILE = GitLabTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1126,6 +1138,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 324R3F66LU;
 				INFOPLIST_FILE = GitLabUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1146,6 +1159,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 324R3F66LU;
 				INFOPLIST_FILE = GitLabUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
