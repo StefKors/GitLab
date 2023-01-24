@@ -23,7 +23,7 @@ public class NetworkManager: ObservableObject {
     // Subview States: Use with @EnvironmentObject
     public var noticeState = NoticeState()
     public var launchpadState = LaunchpadController()
-
+    
     // Stored App State:
     @Default(.apiToken) public static var apiToken
     @Default(.showDockIcon) public var showDockIcon {
@@ -36,20 +36,20 @@ public class NetworkManager: ObservableObject {
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
     @Default(.targetProjectsDict) public var targetProjectsDict
-
+    
     // Not Persisted AppState
     @Published public var lastUpdate: Date?
     @Published public var tokenExpired: Bool = false
-
+    
     public init() {
         self.setDockIconPolicy()
     }
-
+    
     /// https://gitlab.com/-/graphql-explorer
     public static func getQuery(_ type: QueryType) -> String {
-          "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
+        "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
     }
-
+    
     public let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
     public let branchPushReq: Request<PushEvents> = Request.init(path: "/v4/events", query: [
         ("after", "2022-06-25"),
@@ -57,41 +57,43 @@ public class NetworkManager: ObservableObject {
         ("action", "pushed"),
         ("private_token", apiToken)
     ])
-
+    
     public let authoredMergeRequestsReq: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
         ("query", getQuery(.authoredMergeRequests)),
         ("private_token", apiToken)
     ])
-
+    
     public let reviewRequestedMergeRequestsReq: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
         ("query", getQuery(.reviewRequestedMergeRequests)),
         ("private_token", apiToken)
     ])
-
+    
     // uses custom delegate to handle correctly encoding url path
     public let launchPadClient = APIClient(configuration: APIClient.Configuration(
         baseURL: URL(string: "https://gitlab.com"),
         delegate: LaunchPadClientDelegate()
     ))
-
+    
     public func fetch() async {
         /// Parallel?
         await fetchLatestBranchPush()
         await fetchAuthoredMergeRequests()
         await fetchReviewRequestedMergeRequests()
     }
-
+    
     public func setDockIconPolicy() {
-        // if showDockIcon {
-        //     // The application is an ordinary app that appears in the Dock and may
-        //     // have a user interface.
-        //     NSApp.setActivationPolicy(.regular)
-        // } else {
-        //     // The application does not appear in the Dock and does not have a menu
-        //     // bar, but it may be activated programmatically or by clicking on one
-        //     // of its windows.
-        //     NSApp.setActivationPolicy(.accessory)
-        // }
+#if os(macOS)
+        if showDockIcon {
+            // The application is an ordinary app that appears in the Dock and may
+            // have a user interface.
+            NSApp.setActivationPolicy(.regular)
+        } else {
+            // The application does not appear in the Dock and does not have a menu
+            // bar, but it may be activated programmatically or by clicking on one
+            // of its windows.
+            NSApp.setActivationPolicy(.accessory)
+        }
+#endif
     }
 }
 
