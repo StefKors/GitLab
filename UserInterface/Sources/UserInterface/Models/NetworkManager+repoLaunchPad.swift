@@ -19,10 +19,11 @@ extension NetworkManager {
             let repo = LaunchpadRepo(
                 id: project.id,
                 name: project.name ?? "",
-                image: await getProjectImage(project),
+                image:  await self?.getProjectImage(project),
                 url: url
             )
-            self?.launchpadState.upsert(repo)
+
+            await self?.launchpadState.addRepo(repo: repo)
         }
     }
 

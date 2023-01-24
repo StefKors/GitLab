@@ -22,7 +22,7 @@ enum RequestError: Error {
 public class NetworkManager: ObservableObject {
     // Subview States: Use with @EnvironmentObject
     public var noticeState = NoticeState()
-    public var launchpadState = LaunchpadState()
+    public var launchpadState = LaunchpadController()
 
     // Stored App State:
     @Default(.apiToken) public static var apiToken

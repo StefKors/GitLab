@@ -25,7 +25,7 @@ public struct UserInterface: View {
 
     public var body: some View {
         ZStack(alignment: .topTrailing) {
-            VStack(alignment: .center, spacing: 10) {
+            LazyVStack(alignment: .center, spacing: 10) {
                 if NetworkManager.apiToken.isEmpty {
                     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
                 } else if model.tokenExpired {
@@ -41,7 +41,7 @@ public struct UserInterface: View {
                         .padding(.top)
                         .padding(.bottom, 0)
 
-                    LaunchpadView(repos: model.launchpadState.contributedRepos)
+                    LaunchpadView(launchpadController: model.launchpadState)
 
                     // Disabled in favor for real notifications`
                     NoticeListView()

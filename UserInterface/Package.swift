@@ -22,6 +22,7 @@ let package = Package(
         .package(url: "https://github.com/sindresorhus/Defaults.git", branch: "main"),
         .package(url: "https://github.com/kean/Get.git", branch: "main"),
         .package(url: "https://github.com/StefKors/CachedAsyncImage.git", branch: "main"),
+        .package(url: "https://github.com/mergesort/Boutique.git", from: "2.1.1"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -32,6 +33,7 @@ let package = Package(
                 "Defaults",
                 "Get",
                 "CachedAsyncImage",
+                "Boutique",
             ],
             path: "Sources/UserInterface"
         ),

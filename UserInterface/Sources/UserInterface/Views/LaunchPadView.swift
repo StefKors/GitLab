@@ -7,17 +7,23 @@
 
 import SwiftUI
 
-
 struct LaunchpadView: View {
-    public var repos: Set<LaunchpadRepo>
+    @StateObject var launchpadController: LaunchpadController
+    @State private var repos: [LaunchpadRepo] = []
+
+    @State private var selectedView: Int = 0
 
     var body: some View {
         HStack() {
-            ForEach(repos.map { $0 }, id: \.id) { repo in
+            ForEach(repos, id: \.id) { repo in
                 LaunchpadItem(repo: repo)
             }
             Spacer()
         }
         .padding(.leading)
+        .onReceive(launchpadController.$contributedRepos.$items, perform: {
+            // We can even create complex pipelines, for example filtering all notes bigger than a tweet
+            self.repos = $0
+        })
     }
 }

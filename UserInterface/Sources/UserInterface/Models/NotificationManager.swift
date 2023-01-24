@@ -18,7 +18,6 @@ class NotificationManager {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { success, error in
             if success {
                 print("All set!")
-                NSApplication.shared.dockTile.showsApplicationBadge = false
             } else if let error = error {
                 print(error.localizedDescription)
             }
@@ -28,6 +27,7 @@ class NotificationManager {
     }
 
     func registerApprovalAction() {
+        NSApplication.shared.dockTile.showsApplicationBadge = false
         // Define the custom actions.
         let acceptAction = UNNotificationAction(
             identifier: "OPEN_URL",
@@ -86,7 +86,7 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         @escaping () -> Void
     ) {
         let userInfo = response.notification.request.content.userInfo
-        guard let urlString = userInfo["MR_URL"] as? String,
+        guard let urlString = userInfo["OPEN_URL"] as? String,
               let url = URL(string: urlString) else {
             completionHandler()
             return
@@ -95,7 +95,8 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         // Perform the task associated with the action.
         switch response.actionIdentifier {
         case "OPEN_URL":
-            openURL(url)
+            NSWorkspace.shared.open(url)
+            center.removeAllDeliveredNotifications()
             break
 
         case UNNotificationDismissActionIdentifier:
@@ -103,7 +104,8 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
             break
 
         default:
-            openURL(url)
+            NSWorkspace.shared.open(url)
+            center.removeAllDeliveredNotifications()
             break
         }
         // Always call the completion handler when done.

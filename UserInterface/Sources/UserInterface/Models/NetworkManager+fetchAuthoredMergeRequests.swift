@@ -42,7 +42,7 @@ extension NetworkManager {
                            let jsonData = try? JSONEncoder().encode(headPipeline) {
 
                             let userInfo = [
-                                "MR_URL" : url.absoluteString,
+                                "OPEN_URL" : url.absoluteString,
                                 "PIPELINE_STATUS": jsonData
                             ] as [String : Any]
                             NotificationManager.shared.sendNotification(
@@ -63,7 +63,7 @@ extension NetworkManager {
                            let jsonData = try? JSONEncoder().encode(headPipeline) {
 
                             let userInfo = [
-                                "MR_URL" : url.absoluteString,
+                                "OPEN_URL" : url.absoluteString,
                                 "PIPELINE_STATUS": jsonData
                             ] as [String : Any]
                             NotificationManager.shared.sendNotification(
