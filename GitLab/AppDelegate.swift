@@ -13,11 +13,18 @@ struct GitLabApp: App {
     @StateObject var networkManager = NetworkManager()
     
     var body: some Scene {
-        MenuBarExtra("GitLab Desktop", image: "Icon-Gradients-PNG") {
+        MenuBarExtra(content: {
             MenubarContentView()
                 .environmentObject(self.networkManager)
                 .environmentObject(self.networkManager.noticeState)
-        }
+        }, label: {
+            Label(title: {
+                Text("GitLab Desktop")
+            }, icon: {
+                Image("Icon-Gradients-PNG")
+            })
+        })
+        // MenuBarExtra("GitLab Desktop", image: "Icon-Gradients-PNG") {
         .menuBarExtraStyle(.window)
 
         Settings {
