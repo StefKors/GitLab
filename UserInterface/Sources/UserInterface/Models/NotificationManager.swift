@@ -8,6 +8,12 @@
 import Foundation
 import UserNotifications
 import SwiftUI
+#if canImport(AppKit)
+import AppKit
+#else
+import UIKit
+#endif
+
 
 class NotificationManager {
 
@@ -27,7 +33,9 @@ class NotificationManager {
     }
 
     func registerApprovalAction() {
+#if canImport(AppKit)
         NSApplication.shared.dockTile.showsApplicationBadge = false
+#endif
         // Define the custom actions.
         let acceptAction = UNNotificationAction(
             identifier: "OPEN_URL",
@@ -95,7 +103,8 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         // Perform the task associated with the action.
         switch response.actionIdentifier {
         case "OPEN_URL":
-            NSWorkspace.shared.open(url)
+            openURL(url)
+            // NSWorkspace.shared.open(url)
             center.removeAllDeliveredNotifications()
             break
 
@@ -104,7 +113,8 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
             break
 
         default:
-            NSWorkspace.shared.open(url)
+            openURL(url)
+            // NSWorkspace.shared.open(url)
             center.removeAllDeliveredNotifications()
             break
         }

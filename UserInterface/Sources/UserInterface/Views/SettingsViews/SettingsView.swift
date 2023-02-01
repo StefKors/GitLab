@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Cocoa
+// import Cocoa
 
 public struct SettingsView: View {
     private enum Tabs: Hashable {

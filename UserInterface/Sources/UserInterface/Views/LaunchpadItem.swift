@@ -19,10 +19,17 @@ struct LaunchpadItem: View {
         HStack() {
             HStack {
                 if let image = repo.image {
+#if os(macOS)
                     Image(nsImage: NSImage(data: image)!)
                         .resizable()
                         .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
                         .shadow(radius: 3)
+#else
+                    Image(uiImage: UIImage(data: image)!)
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                        .shadow(radius: 3)
+#endif
                 } else {
                     RoundedRectangle(cornerRadius: 6, style: .continuous)
                         .fill(Color.secondary)

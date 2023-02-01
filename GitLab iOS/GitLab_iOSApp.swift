@@ -10,10 +10,13 @@ import UserInterface
 
 @main
 struct GitLab_iOSApp: App {
-    let model = NetworkManager()
+    @StateObject var networkManager = NetworkManager()
+
     var body: some Scene {
         WindowGroup {
-            UserInterface(model: model)
+            UserInterface()
+                .environmentObject(self.networkManager)
+                .environmentObject(self.networkManager.noticeState)
         }
     }
 }

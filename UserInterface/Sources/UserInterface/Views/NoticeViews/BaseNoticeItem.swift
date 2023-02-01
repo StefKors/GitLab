@@ -76,7 +76,10 @@ struct BaseNoticeItem: View {
             .padding()
         }
         .modifier(NoticeTypeBackground(notice: notice))
+        // TODO: fix on ios
+#if os(macOS)
         .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
+#endif
     }
 
     fileprivate func toRelativeDate(_ date: Date) -> String {

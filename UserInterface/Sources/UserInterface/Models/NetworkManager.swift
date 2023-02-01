@@ -9,7 +9,11 @@ import Foundation
 import Get
 import SwiftUI
 import Defaults
+#if canImport(AppKit)
 import AppKit
+#else
+import UIKit
+#endif
 
 public enum AppIcons: String, DefaultsSerializable, CaseIterable {
     case ReleaseIcon

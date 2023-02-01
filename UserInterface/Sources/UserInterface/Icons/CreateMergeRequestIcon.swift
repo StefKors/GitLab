@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
+#if canImport(AppKit)
+import AppKit
+#else
+import UIKit
+#endif
 
 struct CreateMergeRequestIcon: View {
     let MR: MergeRequest
@@ -35,10 +41,16 @@ struct CreateMergeRequestIcon: View {
 \(MR.title ?? "") \(String.FriendlyEmojis.randomElement() ?? "🦆")
 \(MR.webURL?.absoluteString ?? "")
 """
+#if canImport(AppKit)
+        let pasteboard = NSPasteboard.general
+#else
+        let pasteboard = UIPasteboard.general
+#endif
 
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(content, forType: .string)
-        NSPasteboard.general.setString(content, forType: .rtf)
+        // pasteboard.clearContents()
+        pasteboard.string = content
+        // pasteboard.setString(content, forType: .string)
+        // pasteboard.setString(content, forType: .rtf)
     }
 }
 extension String {

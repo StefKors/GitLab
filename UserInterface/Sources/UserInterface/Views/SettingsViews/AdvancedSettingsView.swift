@@ -34,7 +34,7 @@ public struct AdvancedSettingsView: View {
             //         Spacer()
             //     }.padding()
             // }
-
+#if os(macOS)
             GroupBox {
                 HStack {
                     Text("Choose Dock Icon")
@@ -62,6 +62,7 @@ public struct AdvancedSettingsView: View {
                     Spacer()
                 }.padding()
             }
+#endif
         }.padding()
     }
 }
