@@ -24,16 +24,16 @@ public struct AdvancedSettingsView: View {
                 }.padding()
             }
 
-            GroupBox {
-                HStack {
-                    Text("Show Dock Icon")
-                    Toggle(isOn: $model.showDockIcon) {
-                        EmptyView()
-                    }
-                    .toggleStyle(.switch)
-                    Spacer()
-                }.padding()
-            }
+            // GroupBox {
+            //     HStack {
+            //         Text("Show Dock Icon")
+            //         Toggle(isOn: $model.showDockIcon) {
+            //             EmptyView()
+            //         }
+            //         .toggleStyle(.switch)
+            //         Spacer()
+            //     }.padding()
+            // }
 
             GroupBox {
                 HStack {

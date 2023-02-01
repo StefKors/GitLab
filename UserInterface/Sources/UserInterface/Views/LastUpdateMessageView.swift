@@ -54,13 +54,16 @@ struct LastUpdateMessageView: View {
             Spacer()
             
 #if os(macOS)
-            Button("Settings", action: openSettings)
-                .buttonStyle(.link)
+            Button(action: openSettings, label: {
+                Label("Settings", systemImage: "gear")
+            })
+            Button(action: quitApp, label: {
+                Label("Quit", systemImage: "power")
+            })
 #endif
         }
         .font(.system(size: 10))
-        .padding(.bottom)
-        .padding(.horizontal)
+        .padding()
     }
     
     func openSettings() {
@@ -71,6 +74,12 @@ struct LastUpdateMessageView: View {
         else {
             NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
         }
+#endif
+    }
+
+    func quitApp() {
+#if os(macOS)
+        NSApp.sendAction(Selector(("terminate:")), to: nil, from: nil)
 #endif
     }
 }
