@@ -11,7 +11,7 @@ import Defaults
 // MARK: - PushEvent
 public typealias PushEvents = [PushEvent]
 
-public struct PushEvent: Codable, DefaultsSerializable, Equatable {
+public struct PushEvent: Codable, Defaults.Serializable, Equatable {
     let id, projectID: Int
     let actionName: ActionName?
     let targetID, targetIid, targetType: String?
@@ -46,7 +46,7 @@ enum ActionName: String, Codable {
 }
 
 // MARK: - PushData
-public struct PushData: Codable, DefaultsSerializable, Equatable {
+public struct PushData: Codable, Defaults.Serializable, Equatable {
     let commitCount: Int?
     let action: Action?
     let refType: RefType?

@@ -9,7 +9,7 @@ import Foundation
 import Defaults
 import SwiftUI
 
-public struct NoticeMessage: Codable, DefaultsSerializable, Equatable, Hashable  {
+public struct NoticeMessage: Codable, Defaults.Serializable, Equatable, Hashable  {
     public var id: UUID = UUID()
     public var label: String
     public var statusCode: Int?

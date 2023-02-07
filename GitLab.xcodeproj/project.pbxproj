@@ -23,7 +23,6 @@
 		8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
 		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
-		8A5FC10426EFD08F004136AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10226EFD08F004136AB /* Main.storyboard */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
 		8AAB479E2881784E007828B8 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8AAB479D2881784E007828B8 /* Documentation.docc */; };
@@ -116,7 +115,6 @@
 		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8A5FC10326EFD08F004136AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A5FC10526EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5FC10626EFD08F004136AB /* GitLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitLab.entitlements; sourceTree = "<group>"; };
 		8A5FC10B26EFD08F004136AB /* GitLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,7 +272,6 @@
 				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
 				8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
-				8A5FC10226EFD08F004136AB /* Main.storyboard */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
 				8A5FC10626EFD08F004136AB /* GitLab.entitlements */,
 				8A5FC0FF26EFD08F004136AB /* Preview Content */,
@@ -556,7 +553,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5FC10426EFD08F004136AB /* Main.storyboard in Resources */,
 				8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */,
 				8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */,
 			);
@@ -675,14 +671,6 @@
 				8A36AF172869B4110008B949 /* Base */,
 			);
 			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-		8A5FC10226EFD08F004136AB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A5FC10326EFD08F004136AB /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1052,7 +1040,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1086,7 +1074,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.13;
+				MARKETING_VERSION = 1.14;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -33,7 +33,7 @@
       "location" : "https://github.com/sindresorhus/Defaults.git",
       "state" : {
         "branch" : "main",
-        "revision" : "981ccb0a01c54abbe3c12ccb8226108527bbf115"
+        "revision" : "d71bfd8ffbf944ef08eacbca5fb96d6f69bf7696"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/kean/Get.git",
       "state" : {
         "branch" : "main",
-        "revision" : "d889247d5f7da094130b9a1bb33985cfce047e0a"
+        "revision" : "12830cc64f31789ae6f4352d2d51d03a25fc3741"
       }
     },
     {

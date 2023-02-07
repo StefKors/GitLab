@@ -15,7 +15,7 @@ import AppKit
 import UIKit
 #endif
 
-public enum AppIcons: String, DefaultsSerializable, CaseIterable {
+public enum AppIcons: String, Defaults.Serializable, CaseIterable {
     case ReleaseIcon
     case DevIcon
 }
@@ -48,6 +48,9 @@ public class NetworkManager: ObservableObject {
 
     public init() {
         self.setDockIconPolicy()
+#if canImport(AppKit)
+        NSApplication.shared.dockTile.showsApplicationBadge = false
+#endif
     }
 
     /// https://gitlab.com/-/graphql-explorer

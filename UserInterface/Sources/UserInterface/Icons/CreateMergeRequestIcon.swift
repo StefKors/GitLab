@@ -43,14 +43,14 @@ struct CreateMergeRequestIcon: View {
 """
 #if canImport(AppKit)
         let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(content, forType: .string)
+        pasteboard.setString(content, forType: .rtf)
 #else
         let pasteboard = UIPasteboard.general
+        pasteboard.string = content
 #endif
 
-        // pasteboard.clearContents()
-        pasteboard.string = content
-        // pasteboard.setString(content, forType: .string)
-        // pasteboard.setString(content, forType: .rtf)
     }
 }
 extension String {
