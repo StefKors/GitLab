@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Defaults
+import UserNotifications
 
 public struct AdvancedSettingsView: View {
     @EnvironmentObject public var model: NetworkManager
@@ -14,13 +15,24 @@ public struct AdvancedSettingsView: View {
     public var body: some View {
         VStack(alignment: .leading) {
             GroupBox {
-                HStack {
-                    Text("Display as App Window")
-                    Toggle(isOn: $model.showAppWindow) {
-                        EmptyView()
+                VStack {
+                    HStack {
+                        Text("Clear all Notifications")
+                        Spacer()
+                        Button("Clear", action: {
+                            let notifs = UNUserNotificationCenter.current()
+                            notifs.removeAllDeliveredNotifications()
+                        })
                     }
-                    .toggleStyle(.switch)
-                    Spacer()
+
+                    HStack {
+                        Text("Display as App Window")
+                        Spacer()
+                        Toggle(isOn: $model.showAppWindow) {
+                            EmptyView()
+                        }
+                        .toggleStyle(.switch)
+                    }
                 }.padding()
             }
 
@@ -38,6 +50,7 @@ public struct AdvancedSettingsView: View {
             GroupBox {
                 HStack {
                     Text("Choose Dock Icon")
+                    Spacer()
                     HStack(alignment: .top) {
                         ForEach(AppIcons.allCases, id: \.rawValue) { icon in
                             ZStack {
@@ -59,7 +72,6 @@ public struct AdvancedSettingsView: View {
                             }.frame(width: 60, height: 60)
                         }
                     }
-                    Spacer()
                 }.padding()
             }
 #endif
