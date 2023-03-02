@@ -1,5 +1,5 @@
 //
-//  CreateMergeRequestIcon.swift
+//  ShareMergeRequestIcon.swift
 //  
 //
 //  Created by Stef Kors on 28/11/2022.
@@ -13,32 +13,48 @@ import AppKit
 import UIKit
 #endif
 
-struct CreateMergeRequestIcon: View {
+struct ShareMergeRequestIcon: View {
     let MR: MergeRequest
+    @State private var chosenEmoji: String = ""
+    @State private var isVisible: Bool = false
 
     var body: some View {
-        Button {
-            copyToPasteboard()
-        } label: {
-            HStack {
-                Image(systemName: "square.and.arrow.up")
-                Text("Share")
+        ZStack {
+            Button {
+                copyToPasteboard()
+            } label: {
+                HStack {
+                    Image(systemName: "square.and.arrow.up")
+                    Text("Share")
+                }
             }
+            .buttonStyle(.automatic)
+            .font(.system(size: 11))
+
+            Text(chosenEmoji)
+                .font(.system(size: 36))
+                .opacity(isVisible ? 1 : 0)
+                .offset(y: isVisible ? -40 : 0)
+                .scaleEffect(x: isVisible ? 1 : 0, y: isVisible ? 1 : 0)
         }
-        .buttonStyle(.plain)
-        .font(.system(size: 11))
-        .foregroundColor(.secondary)
-        .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(.secondary, lineWidth: 2)
-                .opacity(0.3)
-        )
+        .onChange(of: chosenEmoji) { newValue in
+            let animation: Animation = .interpolatingSpring(stiffness: 130, damping: 12)
+            withAnimation(animation) {
+                isVisible = true
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400), execute: {
+                withAnimation(animation) {
+                    isVisible = false
+                }
+            })
+        }
     }
 
     func copyToPasteboard() {
+        let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
         let content = """
-\(MR.title ?? "") \(String.FriendlyEmojis.randomElement() ?? "🦆")
+\(MR.title ?? "") \(emoji)
 \(MR.webURL?.absoluteString ?? "")
 """
 #if canImport(AppKit)
@@ -50,7 +66,7 @@ struct CreateMergeRequestIcon: View {
         let pasteboard = UIPasteboard.general
         pasteboard.string = content
 #endif
-
+        chosenEmoji = emoji
     }
 }
 extension String {

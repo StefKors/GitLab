@@ -25,15 +25,16 @@ struct MergeStatusView: View {
 
     var body: some View {
         HStack {
-            if isOnMergeTrain {
-                MergeTrainIcon()
-            } else if isApproved, let approvers = approvers, !approvers.isEmpty {
-                ApprovedReviewIcon(approvedBy: approvers)
-            } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
-                CreateMergeRequestIcon(MR: MR)
-            } else {
-                // NeedsReviewIcon()
-            }
+            ShareMergeRequestIcon(MR: MR)
+            // if isOnMergeTrain {
+            //     MergeTrainIcon()
+            // } else if isApproved, let approvers = approvers, !approvers.isEmpty {
+            //     ApprovedReviewIcon(approvedBy: approvers)
+            // } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
+            //     ShareMergeRequestIcon(MR: MR)
+            // } else {
+            //     // NeedsReviewIcon()
+            // }
         }
     }
 }
@@ -48,4 +49,4 @@ extension String {
     func containsIgnoringCase(_ find: String) -> Bool{
         return self.range(of: find, options: .caseInsensitive) != nil
     }
-    }
+}

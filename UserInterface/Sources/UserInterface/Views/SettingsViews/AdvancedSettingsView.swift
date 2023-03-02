@@ -21,7 +21,28 @@ public struct AdvancedSettingsView: View {
                         Spacer()
                         Button("Clear", action: {
                             let notifs = UNUserNotificationCenter.current()
+                            notifs.getDeliveredNotifications { delivereds in
+                                for delivered in delivereds {
+                                    print("has delivered notif \(delivered.description)")
+                                }
+                            }
+
+                            notifs.getPendingNotificationRequests { pendings in
+                                for pending in pendings {
+                                    print("has pending notif \(pending.description)")
+                                }
+                            }
+
                             notifs.removeAllDeliveredNotifications()
+                            if #available(macOS 13.0, *) {
+                                notifs.setBadgeCount(0) { error in
+                                    print("error? \(error?.localizedDescription)")
+                                }
+                            } else {
+                                // Fallback on earlier versions
+                            }
+
+
                         })
                     }
 
