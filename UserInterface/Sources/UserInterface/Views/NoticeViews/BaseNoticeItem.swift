@@ -51,10 +51,7 @@ struct BaseNoticeItem: View {
                                         }
                                     }
                                 }, label: {
-                                    Image("merge-request")
-                                        .font(.system(size: 19))
-                                        .help("Close")
-                                    Text("Create merge request")
+                                    Label("Create merge request", image: "merge-request")
                                 })
                             }
                         }.fixedSize(horizontal: false, vertical: true)
