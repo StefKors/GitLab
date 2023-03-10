@@ -25,16 +25,16 @@ struct MergeStatusView: View {
 
     var body: some View {
         HStack {
-            ShareMergeRequestIcon(MR: MR)
-            // if isOnMergeTrain {
-            //     MergeTrainIcon()
-            // } else if isApproved, let approvers = approvers, !approvers.isEmpty {
-            //     ApprovedReviewIcon(approvedBy: approvers)
-            // } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
-            //     ShareMergeRequestIcon(MR: MR)
-            // } else {
-            //     // NeedsReviewIcon()
-            // }
+            // ShareMergeRequestIcon(MR: MR)
+            if isOnMergeTrain {
+                MergeTrainIcon()
+            } else if isApproved, let approvers = approvers, !approvers.isEmpty {
+                ApprovedReviewIcon(approvedBy: approvers)
+            } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
+                ShareMergeRequestIcon(MR: MR)
+            } else {
+                // NeedsReviewIcon()
+            }
         }
     }
 }

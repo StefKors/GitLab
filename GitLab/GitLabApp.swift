@@ -17,6 +17,7 @@ struct GitLabApp: App {
             MenubarContentView()
                 .environmentObject(self.networkManager)
                 .environmentObject(self.networkManager.noticeState)
+                .buttonStyle(.menubar)
         }, label: {
             Label(title: {
                 Text("GitLab Desktop")

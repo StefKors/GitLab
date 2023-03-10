@@ -28,7 +28,6 @@ struct ShareMergeRequestIcon: View {
                     Text("Share")
                 }
             }
-            .buttonStyle(.automatic)
             .font(.system(size: 11))
 
             Text(chosenEmoji)
@@ -36,6 +35,7 @@ struct ShareMergeRequestIcon: View {
                 .opacity(isVisible ? 1 : 0)
                 .offset(y: isVisible ? -40 : 0)
                 .scaleEffect(x: isVisible ? 1 : 0, y: isVisible ? 1 : 0)
+                .allowsHitTesting(false)
         }
         .frame(height: 20)
         .onChange(of: chosenEmoji) { newValue in
