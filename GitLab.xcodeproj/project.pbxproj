@@ -21,7 +21,7 @@
 		8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A36AF102869B4110008B949 /* NotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8A36AF222869BE650008B949 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8A36AF212869BE650008B949 /* UserInterface */; };
 		8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
-		8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* AppDelegate.swift */; };
+		8A5FC0FA26EFD08E004136AB /* GitLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* GitLabApp.swift */; };
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
@@ -112,7 +112,7 @@
 		8A36AF192869B4110008B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContent.entitlements; sourceTree = "<group>"; };
 		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A5FC0F926EFD08E004136AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8A5FC0F926EFD08E004136AB /* GitLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabApp.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A5FC10526EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		8A5FC0F826EFD08E004136AB /* GitLab */ = {
 			isa = PBXGroup;
 			children = (
-				8A5FC0F926EFD08E004136AB /* AppDelegate.swift */,
+				8A5FC0F926EFD08E004136AB /* GitLabApp.swift */,
 				8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
@@ -613,7 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */,
-				8A5FC0FA26EFD08E004136AB /* AppDelegate.swift in Sources */,
+				8A5FC0FA26EFD08E004136AB /* GitLabApp.swift in Sources */,
 				8AAB479E2881784E007828B8 /* Documentation.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

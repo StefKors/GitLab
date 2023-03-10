@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  GitLabApp.swift
 //  GitLab
 //
 //  Created by Stef Kors on 13/09/2021.
