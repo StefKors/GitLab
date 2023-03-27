@@ -10,13 +10,13 @@ import UserInterface
 
 @main
 struct GitLabApp: App {
-    @StateObject var networkManager = NetworkManager()
-    
+    // @StateObject var networkManager = NetworkManager()
+
     var body: some Scene {
         MenuBarExtra(content: {
             MenubarContentView()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+                // .environmentObject(self.networkManager)
+                // .environmentObject(self.networkManager.noticeState)
                 .buttonStyle(.menubar)
         }, label: {
             Label(title: {
@@ -28,10 +28,10 @@ struct GitLabApp: App {
         // MenuBarExtra("GitLab Desktop", image: "Icon-Gradients-PNG") {
         .menuBarExtraStyle(.window)
         
-        Settings {
-            SettingsView()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
-        }
+        // Settings {
+        //     SettingsView()
+        //         .environmentObject(self.networkManager)
+        //         .environmentObject(self.networkManager.noticeState)
+        // }
     }
 }

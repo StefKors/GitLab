@@ -64,11 +64,11 @@ public struct UserInterface: View {
                 }
                 LastUpdateMessageView()
             }
-            .onAppear {
-                Task(priority: .background) {
-                    await model.fetch()
-                }
-            }
+            // .onAppear {
+            //     Task(priority: .background) {
+            //         await model.fetch()
+            //     }
+            // }
         }
         .frame(width: 500)
     }

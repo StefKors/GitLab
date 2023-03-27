@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:GitLabAPIService/GitLabAPIService.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:UserInterface">
    </FileRef>
    <FileRef

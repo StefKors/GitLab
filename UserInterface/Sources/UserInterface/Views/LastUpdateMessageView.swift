@@ -13,8 +13,8 @@ struct LastUpdateMessageView: View {
     public let initialTimeRemaining = 10
     @State public var isHovering: Bool = false
     @State public var timeRemaining = 10
-    public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+    // public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     public var dateValue: String? {
         guard let date = model.lastUpdate else {
             return nil
@@ -35,18 +35,18 @@ struct LastUpdateMessageView: View {
                     .onHover { hovering in
                         isHovering = hovering
                     }
-                    .onReceive(timer) { _ in
-                        if timeRemaining > 0 {
-                            timeRemaining -= 1
-                        }
-                        
-                        if timeRemaining <= 0 {
-                            timeRemaining = initialTimeRemaining
-                            Task(priority: .background) {
-                                await model.fetch()
-                            }
-                        }
-                    }
+                    // .onReceive(timer) { _ in
+                    //     if timeRemaining > 0 {
+                    //         timeRemaining -= 1
+                    //     }
+                    //     
+                    //     if timeRemaining <= 0 {
+                    //         timeRemaining = initialTimeRemaining
+                    //         Task(priority: .background) {
+                    //             await model.fetch()
+                    //         }
+                    //     }
+                    // }
             } else {
                 LastUpdateMessagePlaceholderView()
             }
