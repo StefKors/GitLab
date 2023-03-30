@@ -16,7 +16,7 @@
 </p>
 
 ## Feature Ideas
-- [ ] Button + shortcut copy text + MR name for slack
+- [x] Button + shortcut copy text + MR name for slack
 - [x] Right click menu
 - [ ] Notifications for comments
 - [x] Click on job to open job url
@@ -28,4 +28,4 @@
 - [x] Choose Icon in dock
 - [ ] Show information in menubar icon (notifications/unreads ect)
 - [x] Open MR of recently pushed branch
-- [ ] Recent projects buttons
+- [x] Recent projects buttons
