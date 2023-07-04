@@ -12,7 +12,7 @@ import SwiftUI
 import Boutique
 
 public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
-    internal init(id: String, name: String, image: Data? = nil, group: String = "Beam", url: URL, hasUpdatedSinceLaunch: Bool = false) {
+    internal init(id: String, name: String, image: Data? = nil, group: String, url: URL, hasUpdatedSinceLaunch: Bool = false) {
         self.id = id
         self.name = name
         self.image = image
@@ -24,7 +24,7 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
     public var id: String
     public var name: String
     public var image: Data?
-    public var group: String = "Beam"
+    public var group: String
     public var url: URL
     public var hasUpdatedSinceLaunch: Bool = false
 
@@ -64,7 +64,8 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
 
 public extension Store where Item == LaunchpadRepo {
     static let launchpadStore = Store<LaunchpadRepo>(
-        storage: SQLiteStorageEngine.default(appendingPath: "LaunchpadRepos")
+        storage: SQLiteStorageEngine.default(appendingPath: "LaunchpadRepos"),
+        cacheIdentifier: \.id
     )
 }
 
@@ -72,19 +73,16 @@ public class LaunchpadController: ObservableObject {
     @Stored(in: .launchpadStore) var contributedRepos
 
     func addRepo(repo: LaunchpadRepo) async {
-        // Make an API call that adds the note to the server...
         try? await self.$contributedRepos.insert(repo)
     }
 
 
     func removeRepo(repo: LaunchpadRepo) async {
-        // Make an API call that removes the repo from the server...
         try? await self.$contributedRepos.remove(repo)
     }
 
 
     func clearAllRepos() async {
-        // Make an API call that removes all the notes from the server...
         try? await self.$contributedRepos.removeAll()
     }
 

@@ -23,7 +23,6 @@ public struct SettingsView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(.white, .blue)
                     Text("Advanced")
-                    // Label("Advanced", systemImage: "bubbles.and.sparkles.fill")
                 }
                 .tag(Tabs.Advanced)
             AccountSettingsView()
@@ -32,10 +31,9 @@ public struct SettingsView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(.white, .blue)
                     Text("Account")
-                    // Label("Account", systemImage: "person.badge.shield.checkmark.fill")
                 }
                 .tag(Tabs.Account)
-        }.frame(minWidth: 500)
+        }.frame(width: 600, height: 300)
 
     }
 }

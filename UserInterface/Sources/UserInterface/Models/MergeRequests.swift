@@ -193,11 +193,12 @@ public struct DetailedStatus: Codable, Defaults.Serializable, Equatable {
 }
 
 // MARK: - TargetProject
-public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable {
+public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable, Identifiable {
     public let id: String
     public let name, path: String?
     public let webURL: URL?
     public let avatarUrl: URL?
+    public let namespace: NameSpace
     public let repository: Repository?
     public let group: Group?
     public let fetchedAvatarData: Data?
@@ -206,9 +207,21 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
         case id, name, path
         case webURL = "webUrl"
         case avatarUrl = "avatarUrl"
+        case namespace
         case repository
         case group
         case fetchedAvatarData
+    }
+}
+
+// MARK: - NameSpace
+public struct NameSpace: Codable, Defaults.Serializable, Equatable, Hashable, Identifiable {
+    public let id: String
+    public let fullPath: String
+    public let fullName: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, fullPath, fullName
     }
 }
 

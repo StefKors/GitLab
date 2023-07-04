@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Stef Kors on 19/09/2022.
 //
@@ -11,30 +11,22 @@ import Get
 extension NetworkManager {
 
     public func addLaunchpadProject(_ project: TargetProject) {
-        guard project.avatarUrl != nil, let url = project.webURL else {
+        // guard project.avatarUrl != nil, let url = project.webURL else {
+        guard let url = project.webURL else {
             return
         }
 
         Task(priority: .background) { [weak self] in
-            let shouldUpdate = self?.launchpadState.contributedRepos.contains(where: { repo in
-                if project.id == repo.id,
-                    repo.hasUpdatedSinceLaunch == false {
-                     return true
-                }
-                return false
-            }) ?? false
+            let repo = LaunchpadRepo(
+                id: project.id,
+                name: project.name ?? "",
+                image:  await self?.getProjectImage(project),
+                group: project.group?.fullName ?? project.namespace.fullName,
+                url: url,
+                hasUpdatedSinceLaunch: true
+            )
 
-            if shouldUpdate {
-                let repo = LaunchpadRepo(
-                    id: project.id,
-                    name: project.name ?? "",
-                    image:  await self?.getProjectImage(project),
-                    url: url,
-                    hasUpdatedSinceLaunch: true
-                )
-
-                await self?.launchpadState.addRepo(repo: repo)
-            }
+            await self?.launchpadState.addRepo(repo: repo)
         }
     }
 
@@ -75,7 +67,7 @@ extension NetworkManager {
 final class LaunchPadClientDelegate: APIClientDelegate {
     func client<T>(_ client: APIClient, makeURLForRequest request: Request<T>) throws -> URL? {
         guard let base = client.configuration.baseURL?.absoluteString,
-           let path = request.url,
+              let path = request.url,
               let query = request.query?.first,
               let branch = query.1 else {
             return nil

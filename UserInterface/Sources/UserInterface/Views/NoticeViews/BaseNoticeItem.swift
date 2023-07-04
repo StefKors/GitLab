@@ -36,8 +36,8 @@ struct BaseNoticeItem: View {
                 ZStack {
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
-                            if notice.type == .branch, let createdAt = notice.createdAt {
-                                Text(.init(notice.label)) + Text(" ") + Text(toRelativeDate(createdAt))
+                            if notice.type == .branch {
+                                Text(.init(notice.label)) + Text(" ") + Text(toRelativeDate(notice.createdAt))
                             } else {
                                 Text(.init(notice.label))
                             }

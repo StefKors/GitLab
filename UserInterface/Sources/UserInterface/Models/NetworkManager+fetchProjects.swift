@@ -13,12 +13,12 @@ import Defaults
 extension NetworkManager {
     public func fetchProjects(ids: [Int]) async {
         do {
-            let projectIds: String = ids.reduce("") { partialResult, id in
-                let arrString = partialResult + ", \"gid://gitlab/Project/\(id)\""
-                return arrString
-            }
+            let projectIds: String = ids.map { id in
+                return "\"gid://gitlab/Project/\(id)\""
+            }.joined(separator: ", ")
 
-            let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl repository { rootRef } group { id name fullName     fullPath webUrl } } } } }"
+            let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl repository { rootRef } namespace { id fullPath fullName } group { id name fullName     fullPath webUrl } } } } }"
+
             let req: Request<TargetProjectsQuery> = Request.init(path: "/graphql", query: [
                 ("query", projectQuery),
                 ("private_token", Self.apiToken)

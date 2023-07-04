@@ -36,8 +36,6 @@ public class NetworkManager: ObservableObject {
             setDockIconPolicy()
         }
     }
-    @Default(.selectedIcon) public var selectedIcon
-    @Default(.showAppWindow) public var showAppWindow
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
     @Default(.targetProjectsDict) public var targetProjectsDict

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -97,6 +97,28 @@
 
 /* Begin PBXFileReference section */
 		8A07E5672890492C0042EACB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8A2F5B8A2A54C5BD00C0B52F /* Small Icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon16.png"; sourceTree = "<group>"; };
+		8A2F5B8B2A54C5BD00C0B52F /* Large Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Large Icon1024.png"; sourceTree = "<group>"; };
+		8A2F5B8C2A54C5BD00C0B52F /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
+		8A2F5B8D2A54C5BD00C0B52F /* ipados-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ipados-active.svg"; sourceTree = "<group>"; };
+		8A2F5B8E2A54C5BD00C0B52F /* Small Icon64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon64.png"; sourceTree = "<group>"; };
+		8A2F5B8F2A54C5BD00C0B52F /* Medium Icon128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Medium Icon128.png"; sourceTree = "<group>"; };
+		8A2F5B902A54C5BD00C0B52F /* Large Icon.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Large Icon.svg"; sourceTree = "<group>"; };
+		8A2F5B912A54C5BD00C0B52F /* Large Icon256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Large Icon256.png"; sourceTree = "<group>"; };
+		8A2F5B922A54C5BD00C0B52F /* ios-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ios-active.svg"; sourceTree = "<group>"; };
+		8A2F5B932A54C5BD00C0B52F /* Small Icon128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon128.png"; sourceTree = "<group>"; };
+		8A2F5B942A54C5BD00C0B52F /* watchos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchos-active.svg"; sourceTree = "<group>"; };
+		8A2F5B972A54C5BD00C0B52F /* tvos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tvos.svg; sourceTree = "<group>"; };
+		8A2F5B982A54C5BD00C0B52F /* ipados.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ipados.svg; sourceTree = "<group>"; };
+		8A2F5B992A54C5BD00C0B52F /* macos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "macos-active.svg"; sourceTree = "<group>"; };
+		8A2F5B9A2A54C5BD00C0B52F /* Large Icon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Large Icon512.png"; sourceTree = "<group>"; };
+		8A2F5B9B2A54C5BD00C0B52F /* Medium Icon256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Medium Icon256.png"; sourceTree = "<group>"; };
+		8A2F5B9C2A54C5BD00C0B52F /* Small Icon.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Small Icon.svg"; sourceTree = "<group>"; };
+		8A2F5B9D2A54C5BD00C0B52F /* Medium Icon.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Medium Icon.svg"; sourceTree = "<group>"; };
+		8A2F5B9E2A54C5BD00C0B52F /* ios.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ios.svg; sourceTree = "<group>"; };
+		8A2F5B9F2A54C5BD00C0B52F /* Small Icon32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon32.png"; sourceTree = "<group>"; };
+		8A2F5BA02A54C5BD00C0B52F /* macos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = macos.svg; sourceTree = "<group>"; };
+		8A2F5BA12A54C5BD00C0B52F /* tvos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tvos-active.svg"; sourceTree = "<group>"; };
 		8A31CB3A2866334000C94AC1 /* GitLab iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitLab iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSApp.swift; sourceTree = "<group>"; };
 		8A31CB402866334100C94AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,6 +213,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2F5B892A54C5BD00C0B52F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8A2F5B8A2A54C5BD00C0B52F /* Small Icon16.png */,
+				8A2F5B8B2A54C5BD00C0B52F /* Large Icon1024.png */,
+				8A2F5B8C2A54C5BD00C0B52F /* watchos.svg */,
+				8A2F5B8D2A54C5BD00C0B52F /* ipados-active.svg */,
+				8A2F5B8E2A54C5BD00C0B52F /* Small Icon64.png */,
+				8A2F5B8F2A54C5BD00C0B52F /* Medium Icon128.png */,
+				8A2F5B902A54C5BD00C0B52F /* Large Icon.svg */,
+				8A2F5B912A54C5BD00C0B52F /* Large Icon256.png */,
+				8A2F5B922A54C5BD00C0B52F /* ios-active.svg */,
+				8A2F5B932A54C5BD00C0B52F /* Small Icon128.png */,
+				8A2F5B942A54C5BD00C0B52F /* watchos-active.svg */,
+				8A2F5B972A54C5BD00C0B52F /* tvos.svg */,
+				8A2F5B982A54C5BD00C0B52F /* ipados.svg */,
+				8A2F5B992A54C5BD00C0B52F /* macos-active.svg */,
+				8A2F5B9A2A54C5BD00C0B52F /* Large Icon512.png */,
+				8A2F5B9B2A54C5BD00C0B52F /* Medium Icon256.png */,
+				8A2F5B9C2A54C5BD00C0B52F /* Small Icon.svg */,
+				8A2F5B9D2A54C5BD00C0B52F /* Medium Icon.svg */,
+				8A2F5B9E2A54C5BD00C0B52F /* ios.svg */,
+				8A2F5B9F2A54C5BD00C0B52F /* Small Icon32.png */,
+				8A2F5BA02A54C5BD00C0B52F /* macos.svg */,
+				8A2F5BA12A54C5BD00C0B52F /* tvos-active.svg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		8A31CB3B2866334000C94AC1 /* GitLab iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,16 +292,17 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
-				8A07E5672890492C0042EACB /* README.md */,
 				8AAB479D2881784E007828B8 /* Documentation.docc */,
+				8A07E5672890492C0042EACB /* README.md */,
+				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
-				8A5FC10E26EFD08F004136AB /* GitLabTests */,
-				8A5FC11926EFD08F004136AB /* GitLabUITests */,
 				8A31CB3B2866334000C94AC1 /* GitLab iOS */,
 				8A31CB4C2866334100C94AC1 /* GitLab iOSTests */,
 				8A31CB562866334100C94AC1 /* GitLab iOSUITests */,
+				8A5FC10E26EFD08F004136AB /* GitLabTests */,
+				8A5FC11926EFD08F004136AB /* GitLabUITests */,
+				8A2F5B892A54C5BD00C0B52F /* Images */,
 				8A36AF132869B4110008B949 /* NotificationContent */,
-				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F726EFD08E004136AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -859,7 +911,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -891,7 +943,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -953,7 +1005,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1009,7 +1061,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

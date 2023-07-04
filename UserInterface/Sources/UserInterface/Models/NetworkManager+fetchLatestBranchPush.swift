@@ -19,14 +19,17 @@ extension NetworkManager {
                 event.actionName == .pushedNew
             })
 
+            print(pushedBranch.debugDescription)
+
             // Check cached projects otherwise fetch project from API
             if let projectID = pushedBranch?.projectID {
                 let hasCachedproject = targetProjectsDict["gid://gitlab/Project/\(projectID)"]
+
                 if hasCachedproject.isNil {
                     // fetching because dict is empty
                     print("fetching because dict is empty")
+                    await fetchProjects(ids: [projectID])
                 }
-                await fetchProjects(ids: [projectID])
             }
 
             let event = response.first(where: { event in
@@ -38,12 +41,13 @@ extension NetworkManager {
 
             if let event = event,
                let project = targetProjectsDict["gid://gitlab/Project/\(event.projectID)"],
-               let groupName = project.group?.fullName, let projectName = project.name,
+               let projectName = project.name,
                let branchRef = event.pushData?.ref,
                let projectURL = project.webURL, let branchURL = URL(string: "\(projectURL.absoluteString)/-/tree/\(branchRef)"),
                let createdAt = event.createdAt,
                let date = GitLabISO8601DateFormatter.date(from: createdAt) {
-
+                let groupName = project.group?.fullName ?? project.namespace.fullName
+                print("creating notice")
                 let notice = NoticeMessage(
                     label: "You pushed to [\(branchRef)](\(branchURL)) at [\(groupName)/\(projectName)](\(projectURL))",
                     webLink: makeMRUrl(url: project.webURL, branchRef: branchRef),

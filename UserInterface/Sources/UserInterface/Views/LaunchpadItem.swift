@@ -36,7 +36,7 @@ struct LaunchpadItem: View {
                         .shadow(radius: 3)
                         .overlay(content: {
                             if let char = repo.name.first {
-                                Text(String(char))
+                                Text(String(char).capitalized)
                                     .font(.headline.bold())
                                     .foregroundColor(.primary)
                                     .colorInvert()
