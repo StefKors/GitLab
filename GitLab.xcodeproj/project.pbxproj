@@ -26,7 +26,6 @@
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
 		8A7FBF6829C3326D0032E394 /* GitLabAPIService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8AAB479E2881784E007828B8 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8AAB479D2881784E007828B8 /* Documentation.docc */; };
 		8AC4B42D28660ED60054C601 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC4B42C28660ED60054C601 /* UserInterface */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */; };
@@ -148,7 +147,6 @@
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AAB479D2881784E007828B8 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
-				8AAB479D2881784E007828B8 /* Documentation.docc */,
 				8A07E5672890492C0042EACB /* README.md */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
@@ -670,7 +667,6 @@
 			files = (
 				8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* GitLabApp.swift in Sources */,
-				8AAB479E2881784E007828B8 /* Documentation.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

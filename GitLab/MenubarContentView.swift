@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UserInterface
-import GitLabAPIService
 
 struct MenubarContentView: View {
 
