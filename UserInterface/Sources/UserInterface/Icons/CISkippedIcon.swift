@@ -12,6 +12,7 @@ struct CISkippedIcon: View {
         Image(systemName: "chevron.right.circle")
             .foregroundColor(.secondary)
             .font(.system(size: 18))
+            .clipShape(Rectangle())
     }
 }
 

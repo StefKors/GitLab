@@ -13,6 +13,7 @@ struct CIRetryIcon: View {
             .foregroundColor(.red)
             .font(.system(size: 18))
             .help("Retry CI pipeline")
+            .clipShape(Rectangle())
     }
 }
 

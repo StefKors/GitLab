@@ -14,6 +14,7 @@ struct CICreatedIcon: View {
             .symbolRenderingMode(.hierarchical)
             .font(.system(size: 18))
             .help("CI Created")
+            .clipShape(Rectangle())
     }
 }
 

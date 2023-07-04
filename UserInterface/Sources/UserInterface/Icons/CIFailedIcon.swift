@@ -13,6 +13,7 @@ struct CIFailedIcon: View {
             .foregroundColor(.red)
             .font(.system(size: 18))
             .help("CI Failed")
+            .clipShape(Rectangle())
     }
 }
 

@@ -13,6 +13,7 @@ struct CIScheduledIcon: View {
             .foregroundColor(.primary)
             .font(.system(size: 18))
             .help("CI pipeline scheduled")
+            .clipShape(Rectangle())
     }
 }
 

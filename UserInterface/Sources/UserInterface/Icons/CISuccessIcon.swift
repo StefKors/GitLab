@@ -13,6 +13,7 @@ struct CISuccessIcon: View {
             .foregroundColor(.green)
             .font(.system(size: 18))
             .help("CI Success")
+            .clipShape(Rectangle())
     }
 }
 

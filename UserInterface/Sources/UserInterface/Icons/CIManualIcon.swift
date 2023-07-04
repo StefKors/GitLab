@@ -13,6 +13,7 @@ struct CIManualIcon: View {
             .foregroundColor(.secondary)
             .font(.system(size: 18))
             .help("Manual CI step")
+            .clipShape(Rectangle())
     }
 }
 

@@ -13,6 +13,7 @@ struct CICanceledIcon: View {
             .foregroundColor(.gray)
             .font(.system(size: 18))
             .help("CI canceled")
+            .clipShape(Rectangle())
     }
 }
 
