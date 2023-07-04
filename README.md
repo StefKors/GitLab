@@ -7,13 +7,43 @@
 ![GitLab Widget](https://gitlab.com/beamgroup/gitlab-widget) is a menu bar application that makes it easier to work with GitLab. The Widget makes it easy to see the merge requests you opened and the merge requests your should review. It will also notify you when any of your merge requests get approved.
 
 #### Supported Platforms
-<p align="center">
-  <img src="Images/macos-active.svg" height="24">
-  <img src="Images/ios.svg" height="24">
-  <img src="Images/ipados.svg" height="24">
-  <img src="Images/tvos.svg" height="24">
-  <img src="Images/watchos.svg" height="24">
+<p align="left">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/macos.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/macos-active.svg">
+  <img alt="macos" src="Images/macos-active.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/ios-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/ios.svg">
+  <img alt="macos" src="Images/ios.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/ipados-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/ipados.svg">
+  <img alt="macos" src="Images/ipados.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/tvos-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/tvos.svg">
+  <img alt="macos" src="Images/tvos.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/watchos-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/watchos.svg">
+  <img alt="macos" src="Images/watchos.svg" height="24">
+</picture>
 </p>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-light.png">
+  <img alt="Screenshot of the app" src="Images/Screenshot-light.png">
+</picture>
 
 ## Feature Ideas
 - [x] Button + shortcut copy text + MR name for slack
