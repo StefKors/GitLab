@@ -25,7 +25,6 @@
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
-		8A7FBF6829C3326D0032E394 /* GitLabAPIService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AC4B42D28660ED60054C601 /* UserInterface in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC4B42C28660ED60054C601 /* UserInterface */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */; };
@@ -70,17 +69,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8A5B657128E4E01500535C61 /* Embed XPC Services */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
-			files = (
-				8A7FBF6829C3326D0032E394 /* GitLabAPIService.xpc in Embed XPC Services */,
-			);
-			name = "Embed XPC Services";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8AC4B4262865C14A0054C601 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,7 +444,6 @@
 				8A5FC0F326EFD08E004136AB /* Frameworks */,
 				8A5FC0F426EFD08E004136AB /* Resources */,
 				8AC4B4262865C14A0054C601 /* Embed Foundation Extensions */,
-				8A5B657128E4E01500535C61 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
@@ -756,6 +743,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stefkors.GitLab-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -790,6 +781,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stefkors.GitLab-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1086,6 +1081,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GitLab Widget";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1120,6 +1116,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GitLab Widget";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
