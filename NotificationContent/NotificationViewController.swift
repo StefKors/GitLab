@@ -11,6 +11,7 @@ import UserNotificationsUI
 
 import SwiftUI
 import UserInterface
+import Boutique
 
 /// https://developer.apple.com/documentation/usernotificationsui/customizing_the_appearance_of_notifications
 class NotificationViewController: NSHostingController<CIJobsNotificationView>, UNNotificationContentExtension {

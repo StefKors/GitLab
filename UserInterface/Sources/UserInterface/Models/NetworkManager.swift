@@ -27,7 +27,7 @@ enum RequestError: Error {
 public class NetworkManager: ObservableObject {
     // Subview States: Use with @EnvironmentObject
     public var noticeState = NoticeState()
-    public var launchpadState = LaunchpadController()
+    public var launchpadState: LaunchpadController
 
     // Stored App State:
     @Default(.apiToken) public static var apiToken
@@ -44,7 +44,8 @@ public class NetworkManager: ObservableObject {
     @Published public var lastUpdate: Date?
     @Published public var tokenExpired: Bool = false
 
-    public init() {
+    public init(launchState: LaunchpadController = .init()) {
+        self.launchpadState = launchState
         self.setDockIconPolicy()
 #if canImport(AppKit)
         NSApplication.shared.dockTile.showsApplicationBadge = false

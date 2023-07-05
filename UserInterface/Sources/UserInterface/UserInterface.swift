@@ -73,3 +73,12 @@ public struct UserInterface: View {
         .frame(width: 500)
     }
 }
+
+public struct UserInterface_Previews: PreviewProvider {
+    public static let networkManager = NetworkManager()
+    public static var previews: some View {
+        UserInterface()
+            .environmentObject(self.networkManager)
+            .environmentObject(self.networkManager.noticeState)
+    }
+}

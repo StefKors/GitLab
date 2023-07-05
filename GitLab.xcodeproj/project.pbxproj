@@ -278,6 +278,7 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
+				8AF80BE92A5580E700819B80 /* Shared */,
 				8A07E5672890492C0042EACB /* README.md */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
@@ -355,6 +356,13 @@
 				8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AF80BE92A5580E700819B80 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

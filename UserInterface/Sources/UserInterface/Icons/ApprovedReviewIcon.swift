@@ -49,7 +49,10 @@ struct ApprovedReviewIcon: View {
 }
 
 struct ApprovedReviewIcon_Previews: PreviewProvider {
+    static let networkManager = NetworkManager()
     static var previews: some View {
         ApprovedReviewIcon(approvedBy: [Author(id: "id", name: "Nicolas Cage", username: "cage2000", avatarUrl: URL(string: "/uploads/-/system/user/avatar/8609834/avatar.png")!)])
+            .environmentObject(self.networkManager)
+            .environmentObject(self.networkManager.noticeState)
     }
 }

@@ -72,6 +72,10 @@ public extension Store where Item == LaunchpadRepo {
 public class LaunchpadController: ObservableObject {
     @Stored(in: .launchpadStore) var contributedRepos
 
+    public init(launchpads: Store<LaunchpadRepo> = .launchpadStore) {
+        self._contributedRepos = Stored(in: launchpads)
+    }
+
     func addRepo(repo: LaunchpadRepo) async {
         try? await self.$contributedRepos.insert(repo)
     }

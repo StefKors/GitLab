@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct BaseNoticeItem: View {
+public struct BaseNoticeItem: View {
     @EnvironmentObject public var noticeState: NoticeState
-    @Environment(\.openURL) var openURL
-    @State var isHovering: Bool = false
+    @Environment(\.openURL) private var openURL
+    @State private var isHovering: Bool = false
 
-    var notice: NoticeMessage
+    public var notice: NoticeMessage
 
-    var body: some View {
+    public init(notice: NoticeMessage) {
+        self.notice = notice
+    }
+
+    public var body: some View {
         HStack(alignment: .center, spacing: 0) {
             if let statusCode = notice.statusCode {
                 VStack(alignment: .center) {
@@ -97,11 +101,11 @@ struct BaseNoticeItem: View {
     }
 }
 
-struct NoticeTypeBackground: ViewModifier {
+public struct NoticeTypeBackground: ViewModifier {
     var notice: NoticeMessage
     
     let radius: CGFloat = 8
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         if notice.type == .branch {
             content
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
@@ -112,28 +116,3 @@ struct NoticeTypeBackground: ViewModifier {
     }
 }
 
-struct BaseNoticeItem_Previews: PreviewProvider {
-    static let informationNotice = NoticeMessage(
-        label: "Recieved 502 from API, data might be out of date",
-        statusCode: nil,
-        type: .information
-    )
-    static let warningNotice = NoticeMessage(
-        label: "Recieved 502 from API, data might be out of date",
-        statusCode: 502,
-        type: .warning
-    )
-    static let errorNotice = NoticeMessage(
-        label: "Recieved 502 from API, data might be",
-        statusCode: 404,
-        type: .error
-    )
-
-    static var previews: some View {
-        VStack(spacing: 25) {
-            BaseNoticeItem(notice: informationNotice)
-            BaseNoticeItem(notice: warningNotice)
-            BaseNoticeItem(notice: errorNotice)
-        }.padding()
-    }
-}
