@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UserInterface
 
 @main
 struct GitLabApp: App {
@@ -24,6 +23,7 @@ struct GitLabApp: App {
                 Image("Icon-Gradients-PNG")
             })
         })
+
         .menuBarExtraStyle(.window)
         
         Settings {

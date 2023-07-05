@@ -152,9 +152,28 @@ public struct JobsEdge: Codable, Defaults.Serializable, Equatable {
     public let node: HeadPipeline?
 }
 
+
 // MARK: - Jobs
 public struct Jobs: Codable, Defaults.Serializable, Equatable {
     public let edges: [JobsEdge]?
+}
+
+extension Jobs {
+    // static let preview = Jobs(edges: [
+    //     JobsEdge(node: .previewTestFailed),
+    //     JobsEdge(node: .previewTestRunning1)
+    // ])
+    static let previewBuildJobs = Jobs(edges: [
+        JobsEdge(node: .previewBuildiOS),
+        JobsEdge(node: .previewBuildMacOS)
+    ])
+    static let previewTestJobs = Jobs(edges: [
+        JobsEdge(node: .previewTestFailed),
+        JobsEdge(node: .previewTestRunning1),
+        JobsEdge(node: .previewTestRunning2),
+        JobsEdge(node: .previewTestPending1),
+        JobsEdge(node: .previewTestPending2)
+    ])
 }
 
 // MARK: - FluffyNode
@@ -165,6 +184,36 @@ public struct FluffyNode: Codable, Defaults.Serializable, Equatable {
     public let jobs: Jobs?
 }
 
+extension FluffyNode {
+    // static let preview = FluffyNode(
+    //     id: "id-id-id",
+    //     status: .running,
+    //     name: "Test",
+    //     jobs: .previewBuildJobs
+    // )
+
+    static let previewBuild = FluffyNode(
+        id: "id-id-id",
+        status: .running,
+        name: "Build",
+        jobs: .previewBuildJobs
+    )
+
+    static let previewTest = FluffyNode(
+        id: "id-id-id",
+        status: .running,
+        name: "Test",
+        jobs: .previewTestJobs
+    )
+
+    static let previewNoChildren = FluffyNode(
+        id: "id-id-id",
+        status: .success,
+        name: "Build",
+        jobs: nil
+    )
+}
+
 // MARK: - StagesEdge
 public struct StagesEdge: Codable, Defaults.Serializable, Equatable {
     public let node: FluffyNode?
@@ -173,6 +222,11 @@ public struct StagesEdge: Codable, Defaults.Serializable, Equatable {
 // MARK: - Stages
 public struct Stages: Codable, Defaults.Serializable, Equatable {
     public let edges: [StagesEdge]?
+}
+
+extension Stages {
+    static let previewParent = Stages(edges: [StagesEdge(node: .previewTest)])
+    static let previewChild = Stages(edges: [StagesEdge(node: .previewNoChildren)])
 }
 
 // MARK: - HeadPipeline
@@ -186,10 +240,93 @@ public struct HeadPipeline: Codable, Defaults.Serializable, Equatable {
     public let mergeRequestEventType: MergeRequestEventType?
 }
 
+extension HeadPipeline {
+    // previewBuildiOS
+    // previewBuildMacOS
+    // previewTestFailed
+    // previewTestRunning1
+    // previewTestRunning2
+    // previewTestPending1
+    // previewTestPending2
+    static let previewBuildiOS = HeadPipeline(
+        id: "id-id-id",
+        active: true,
+        status: .running,
+        stages: .previewChild,
+        name: "build:ios-dev",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergeTrain
+    )
+
+    static let previewBuildMacOS = HeadPipeline(
+        id: "id-id-id",
+        active: false,
+        status: .success,
+        stages: .previewChild,
+        name: "build:macos-dev",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergedResult
+    )
+
+    static let previewTestFailed = HeadPipeline(
+        id: "id-id-id",
+        active: false,
+        status: .failed,
+        stages: .previewChild,
+        name: "test:macos-uitest",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergedResult
+    )
+
+    static let previewTestRunning1 = HeadPipeline(
+        id: "id-id-id",
+        active: false,
+        status: .running,
+        stages: .previewChild,
+        name: "test:macos-uitest",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergedResult
+    )
+
+    static let previewTestRunning2 = HeadPipeline(
+        id: "id-id-id",
+        active: false,
+        status: .running,
+        stages: .previewChild,
+        name: "test:macos-unit",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergedResult
+    )
+
+    static let previewTestPending1 = HeadPipeline(
+        id: "id-id-id",
+        active: false,
+        status: .waitingForResource,
+        stages: .previewChild,
+        name: "test:ios-unit",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergedResult
+    )
+
+    static let previewTestPending2 = HeadPipeline(
+        id: "id-id-id",
+        active: false,
+        status: .pending,
+        stages: .previewChild,
+        name: "test:ios-uitest",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergedResult
+    )
+}
+
 // MARK: - DetailedStatus
 public struct DetailedStatus: Codable, Defaults.Serializable, Equatable {
     public let id: String?
     public let detailsPath: String?
+}
+
+extension DetailedStatus {
+    static let preview = DetailedStatus(id: "id-id-id", detailsPath: "/details?...")
 }
 
 // MARK: - TargetProject

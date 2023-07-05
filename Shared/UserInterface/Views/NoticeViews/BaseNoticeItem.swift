@@ -9,6 +9,7 @@ import SwiftUI
 
 public struct BaseNoticeItem: View {
     @EnvironmentObject public var noticeState: NoticeState
+    // @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) private var openURL
     @State private var isHovering: Bool = false
 
@@ -47,16 +48,18 @@ public struct BaseNoticeItem: View {
                             }
 
                             if let url = notice.webLink {
-                                Button(action: {
-                                    openURL(url)
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                                        withAnimation(.interpolatingSpring(stiffness: 500, damping: 15)) {
-                                            noticeState.dismissNotice(id: notice.id)
-                                        }
-                                    }
-                                }, label: {
+                                // Button(action: {
+                                //     openURL(url)
+                                //     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                                //         withAnimation(.interpolatingSpring(stiffness: 500, damping: 15)) {
+                                //             noticeState.dismissNotice(id: notice.id)
+                                //         }
+                                //     }
+                                // }, label: {
+                                GroupBox {
                                     Label("Create merge request", image: "merge-request")
-                                })
+                                }
+                                // })
                             }
                         }.fixedSize(horizontal: false, vertical: true)
                         Spacer()
@@ -78,8 +81,9 @@ public struct BaseNoticeItem: View {
         }
         .modifier(NoticeTypeBackground(notice: notice))
         // TODO: fix on ios
-#if os(macOS)
         .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
+        // .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
+#if os(macOS)
 #endif
     }
 
@@ -116,3 +120,43 @@ public struct NoticeTypeBackground: ViewModifier {
     }
 }
 
+struct BaseNoticeItem_Previews: PreviewProvider {
+    static let networkManager = NetworkManager()
+    static var previews: some View {
+        VStack(spacing: 25) {
+            BaseNoticeItem(notice: .previewInformationNotice)
+            BaseNoticeItem(notice: .previewWarningNotice)
+            BaseNoticeItem(notice: .previewErrorNotice)
+            BaseNoticeItem(notice: .previewBranchPushNotice)
+            Button("generate") {
+                do {
+                    let renderView = BaseNoticeItem(notice: .previewBranchPushNotice)
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                    // needed to render in the correct colorScheme
+                        .colorScheme(.dark)
+
+                    let renderer = ImageRenderer(content: renderView)
+                    renderer.scale = 4.0
+                    renderer.isOpaque = false
+                    // renderer.proposedSize = .init(width: 120, height: 120)
+                    guard let image = renderer.nsImage  else { return }
+                    let folder = NSTemporaryDirectory() + "PreviewIcon/"
+                    try? FileManager.default.removeItem(atPath: folder)
+                    try FileManager.default.createDirectory(atPath: folder, withIntermediateDirectories: true)
+                    let path = folder + "icon.png"
+                    let imageRep = NSBitmapImageRep(data: image.tiffRepresentation!)
+                    let pngData = imageRep?.representation(using: .png, properties: [:])
+                    try pngData?.write(to: URL(filePath: path))
+                    print(path.description)
+                } catch {
+                    print("error \(error.localizedDescription)")
+                }
+            }
+        }
+        .padding()
+        .frame(height: 400)
+        .environmentObject(self.networkManager)
+        .environmentObject(self.networkManager.noticeState)
+    }
+}

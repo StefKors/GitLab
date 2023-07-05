@@ -53,3 +53,27 @@ public struct NoticeMessage: Codable, Defaults.Serializable, Equatable, Hashable
         dismissed = true
     }
 }
+
+extension NoticeMessage {
+    static let previewInformationNotice = NoticeMessage(
+        label: "Recieved 502 from API, data might be out of date",
+        statusCode: nil,
+        type: .information
+    )
+    static let previewWarningNotice = NoticeMessage(
+        label: "Recieved 502 from API, data might be out of date",
+        statusCode: 502,
+        type: .warning
+    )
+    static let previewErrorNotice = NoticeMessage(
+        label: "Recieved 502 from API, data might be",
+        statusCode: 404,
+        type: .error
+    )
+    static let previewBranchPushNotice = NoticeMessage(
+        label: "You pushed to [GL-405/stef/create-release](http://www.example.com) at [StefKors/GitLab](http://www.example.com)",
+        webLink: URL(string: "http://www.example.com"),
+        type: .branch,
+        createdAt: Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate - 1000)
+    )
+}

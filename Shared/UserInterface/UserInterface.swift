@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-public struct UserInterface: View {
-    @EnvironmentObject public var model: NetworkManager
+ struct UserInterface: View {
+    @EnvironmentObject  var model: NetworkManager
 
-    public init() { }
+     init() { }
 
     @State private var selectedView: QueryType = .authoredMergeRequests
     
@@ -23,7 +23,7 @@ public struct UserInterface: View {
         }
     }
 
-    public var body: some View {
+     var body: some View {
         ZStack(alignment: .topTrailing) {
             LazyVStack(alignment: .center, spacing: 10) {
                 if NetworkManager.apiToken.isEmpty {
@@ -74,9 +74,9 @@ public struct UserInterface: View {
     }
 }
 
-public struct UserInterface_Previews: PreviewProvider {
-    public static let networkManager = NetworkManager()
-    public static var previews: some View {
+ struct UserInterface_Previews: PreviewProvider {
+     static let networkManager = NetworkManager()
+     static var previews: some View {
         UserInterface()
             .environmentObject(self.networkManager)
             .environmentObject(self.networkManager.noticeState)

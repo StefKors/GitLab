@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/StefKors/CachedAsyncImage.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "e3c1f7c6c935ebfc46d865548e6d28cbdaf836d5"
+        "revision" : "467a3d17479887943ab917a379e62bbaff60ac8a",
+        "version" : "2.1.1"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Get.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "7c06b8fd058d99c00d15e02ec0fab416164345a0"
+        "revision" : "12830cc64f31789ae6f4352d2d51d03a25fc3741",
+        "version" : "2.1.6"
       }
     },
     {

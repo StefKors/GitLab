@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UserInterface
 
 @main
 struct GitLab_iOSApp: App {
