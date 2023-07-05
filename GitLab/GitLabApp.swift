@@ -24,7 +24,6 @@ struct GitLabApp: App {
                 Image("Icon-Gradients-PNG")
             })
         })
-        // MenuBarExtra("GitLab Desktop", image: "Icon-Gradients-PNG") {
         .menuBarExtraStyle(.window)
         
         Settings {
