@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSUIElement</key>
-	<false/>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>INSendMessageIntent</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -26,11 +20,19 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LSUIElement</key>
+	<false/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>INSendMessageIntent</string>
+	</array>
 </dict>
 </plist>
