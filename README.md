@@ -39,23 +39,15 @@
 </picture>
 </p>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-light.png">
-  <img alt="Screenshot of the app" src="Images/Screenshot-light.png">
-</picture>
+-------
 
-## Feature Ideas
-- [x] Button + shortcut copy text + MR name for slack
-- [x] Right click menu
-- [ ] Notifications for comments
-- [x] Click on job to open job url
-- [ ] See comments since last view
-- [ ] MR Activity view
-- [x] Settings menu
-- [x] Switch between app / menubar view
-- [ ] Choose Icon in menubar
-- [x] Choose Icon in dock
-- [ ] Show information in menubar icon (notifications/unreads ect)
-- [x] Open MR of recently pushed branch
-- [x] Recent projects buttons
+
+Built by ![Stef Kors](https://stefkors.com)
+
+
+-------
+
+<img alt="Screenshot of Statement" src="Images/Screenshot-1.png">
+<img alt="Screenshot of Statement" src="Images/Screenshot-2.png">
+<img alt="Screenshot of Statement" src="Images/Screenshot-3.png">
+<img alt="Screenshot of Statement" src="Images/Screenshot-4.png">
