@@ -903,7 +903,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -935,7 +935,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1088,7 +1088,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.15;
+				MARKETING_VERSION = 1;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1124,7 +1124,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.15;
+				MARKETING_VERSION = 1;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
