@@ -625,23 +625,23 @@
 		8AF80CDF2A55817400819B80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */,
-				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
-				8AF80CE22A55817400819B80 /* PushEvents.swift */,
-				8AF80CE32A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift */,
-				8AF80CE42A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift */,
-				8AF80CE52A55817400819B80 /* NotificationManager.swift */,
-				8AF80CE62A55817400819B80 /* NetworkManager.swift */,
-				8AF80CE72A55817400819B80 /* MergeRequests.swift */,
-				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
 				8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */,
-				8AF80CEA2A55817400819B80 /* NetworkManager+fetchProjects.swift */,
+				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
+				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
+				8AF80CE72A55817400819B80 /* MergeRequests.swift */,
+				8AF80CE62A55817400819B80 /* NetworkManager.swift */,
 				8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */,
+				8AF80CE32A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift */,
+				8AF80CEA2A55817400819B80 /* NetworkManager+fetchProjects.swift */,
+				8AF80CE42A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift */,
+				8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */,
+				8AF80CEF2A55817400819B80 /* NetworkReachability.swift */,
+				8AF80CF02A55817400819B80 /* NoticeState */,
+				8AF80CE52A55817400819B80 /* NotificationManager.swift */,
+				8AF80CE22A55817400819B80 /* PushEvents.swift */,
 				8AF80CEC2A55817400819B80 /* TargetProjects.swift */,
 				8AF80CED2A55817400819B80 /* UserDefaults.swift */,
 				8AF80CEE2A55817400819B80 /* UserDefaultsFix.swift */,
-				8AF80CEF2A55817400819B80 /* NetworkReachability.swift */,
-				8AF80CF02A55817400819B80 /* NoticeState */,
 			);
 			path = Models;
 			sourceTree = "<group>";

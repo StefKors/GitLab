@@ -21,7 +21,7 @@ extension NetworkManager {
                 id: project.id,
                 name: project.name ?? "",
                 image:  await self?.getProjectImage(project),
-                group: project.group?.fullName ?? project.namespace.fullName,
+                group: project.group?.fullName ?? project.namespace?.fullName ?? "", 
                 url: url,
                 hasUpdatedSinceLaunch: true
             )

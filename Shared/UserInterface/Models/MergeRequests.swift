@@ -335,7 +335,7 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
     public let name, path: String?
     public let webURL: URL?
     public let avatarUrl: URL?
-    public let namespace: NameSpace
+    public let namespace: NameSpace?
     public let repository: Repository?
     public let group: Group?
     public let fetchedAvatarData: Data?

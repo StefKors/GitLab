@@ -46,7 +46,7 @@ extension NetworkManager {
                let projectURL = project.webURL, let branchURL = URL(string: "\(projectURL.absoluteString)/-/tree/\(branchRef)"),
                let createdAt = event.createdAt,
                let date = GitLabISO8601DateFormatter.date(from: createdAt) {
-                let groupName = project.group?.fullName ?? project.namespace.fullName
+                let groupName = project.group?.fullName ?? project.namespace?.fullName ?? ""
                 print("creating notice")
                 let notice = NoticeMessage(
                     label: "You pushed to [\(branchRef)](\(branchURL)) at [\(groupName)/\(projectName)](\(projectURL))",
