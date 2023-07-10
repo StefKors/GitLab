@@ -30,12 +30,7 @@ public class NetworkManager: ObservableObject {
     public var launchpadState: LaunchpadController
 
     // Stored App State:
-    @Default(.apiToken) public static var apiToken
-    @Default(.showDockIcon) public var showDockIcon {
-        didSet {
-            setDockIconPolicy()
-        }
-    }
+    @AppStorage("apiToken") static var apiToken: String = ""
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
     @Default(.targetProjectsDict) public var targetProjectsDict
@@ -46,7 +41,6 @@ public class NetworkManager: ObservableObject {
 
     public init(launchState: LaunchpadController = .init()) {
         self.launchpadState = launchState
-        self.setDockIconPolicy()
 #if canImport(AppKit)
         NSApplication.shared.dockTile.showsApplicationBadge = false
 #endif
@@ -86,23 +80,6 @@ public class NetworkManager: ObservableObject {
         await fetchLatestBranchPush()
         await fetchAuthoredMergeRequests()
         await fetchReviewRequestedMergeRequests()
-    }
-
-    public func setDockIconPolicy() {
-#if os(macOS)
-        // if showDockIcon {
-        //     // The application is an ordinary app that appears in the Dock and may
-        //     // have a user interface.
-        //     // NSApplication.shared.setActivationPolicy(.regular)
-        //     NSApplication.shared.setActivationPolicy(.regular)
-        // } else {
-        //     // The application does not appear in the Dock and does not have a menu
-        //     // bar, but it may be activated programmatically or by clicking on one
-        //     // of its windows.
-        //     NSApplication.setActivationPolicy(.accessory)
-        // 
-        // }
-#endif
     }
 }
 

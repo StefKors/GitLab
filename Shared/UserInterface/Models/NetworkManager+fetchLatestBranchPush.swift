@@ -12,6 +12,7 @@ import Defaults
 
 extension NetworkManager {
     public func fetchLatestBranchPush() async {
+
         do {
             let response: PushEvents = try await client.send(branchPushReq).value
 

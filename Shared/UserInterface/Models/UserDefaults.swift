@@ -10,8 +10,6 @@ import Defaults
 
 extension Defaults.Keys {
     // MARK: - NetworkManager
-    static let apiToken = Key<String>("apiToken", default: "")
-    static let showDockIcon = Key<Bool>("showDockIcon", default: false)
     static let authoredMergeRequests = Key<[MergeRequest]>("authoredMergeRequests", default: [])
     static let reviewRequestedMergeRequests = Key<[MergeRequest]>("reviewRequestedMergeRequests", default: [])
     static let targetProjectsDict = Key<[String: TargetProject]>("targetProjectsDict-9999999", default: [:])

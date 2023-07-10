@@ -55,7 +55,6 @@ struct LaunchpadItem: View {
         }
         .animation(.interactiveSpring(), value: isHovering)
         .onTapGesture {
-            print(repo)
             openURL(repo.url)
         }
         .onHover { hovering in
