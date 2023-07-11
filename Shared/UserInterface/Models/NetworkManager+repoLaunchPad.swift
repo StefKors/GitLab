@@ -45,7 +45,7 @@ extension NetworkManager {
             method: .get,
             query: [("ref", branch)],
             headers: [
-                "Private-Token": Self.apiToken
+                "Private-Token": apiToken
             ]
         )
 

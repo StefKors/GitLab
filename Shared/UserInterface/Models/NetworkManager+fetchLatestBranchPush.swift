@@ -61,12 +61,12 @@ extension NetworkManager {
 
         } catch APIError.unacceptableStatusCode(let statusCode) {
             // Handle Bad GitLab Reponse
-            let warningNotice = NoticeMessage(
-                label: "[Branch Push] Recieved \(statusCode) from API, data might be out of date",
-                statusCode: statusCode,
-                type: .warning
-            )
-            noticeState.addNotice(notice: warningNotice)
+            // let warningNotice = NoticeMessage(
+            //     label: "[Branch Push] Recieved \(statusCode) from API, data might be out of date",
+            //     statusCode: statusCode,
+            //     type: .warning
+            // )
+            // noticeState.addNotice(notice: warningNotice)
         } catch {
             // Handle Offline Notice
             let isGitLabReachable = reachable(host: "gitlab.com")

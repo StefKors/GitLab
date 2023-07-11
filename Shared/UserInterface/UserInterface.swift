@@ -26,7 +26,7 @@ import SwiftUI
      var body: some View {
         ZStack(alignment: .topTrailing) {
             LazyVStack(alignment: .center, spacing: 10) {
-                if NetworkManager.apiToken.isEmpty {
+                if model.apiToken.isEmpty {
                     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
                 } else if model.tokenExpired {
                     BaseTextView(message: "Token Expired")

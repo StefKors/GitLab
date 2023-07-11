@@ -54,15 +54,15 @@ struct LastUpdateMessageView: View {
             Spacer()
             
 #if os(macOS)
-            // if #available(macOS 14.0, *) {
-            //     SettingsLink {
-            //         Label("Settings", systemImage: "gear")
-            //     }
-            // } else {
+            if #available(macOS 14.0, *) {
+                SettingsLink {
+                    Label("Settings", systemImage: "gear")
+                }
+            } else {
                 Button(action: openSettings, label: {
                     Label("Settings", systemImage: "gear")
                 })
-            // }
+            }
             Button(action: quitApp, label: {
                 Label("Quit", systemImage: "power")
             })

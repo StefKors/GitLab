@@ -28,58 +28,81 @@ public class NetworkManager: ObservableObject {
     // Subview States: Use with @EnvironmentObject
     public var noticeState = NoticeState()
     public var launchpadState: LaunchpadController
-
+    
     // Stored App State:
-    @AppStorage("apiToken") static var apiToken: String = ""
+    @AppStorage("apiToken") static var storedToken: String = ""
+    
+    var apiToken: String {
+        return Self.storedToken.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     @Default(.authoredMergeRequests) public var authoredMergeRequests
     @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
     @Default(.targetProjectsDict) public var targetProjectsDict
-
+    
     // Not Persisted AppState
     @Published public var lastUpdate: Date?
     @Published public var tokenExpired: Bool = false
-
+    
     public init(launchState: LaunchpadController = .init()) {
         self.launchpadState = launchState
 #if canImport(AppKit)
         NSApplication.shared.dockTile.showsApplicationBadge = false
 #endif
     }
-
+    
     /// https://gitlab.com/-/graphql-explorer
     public static func getQuery(_ type: QueryType) -> String {
         "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
     }
-
+    
     public let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
-    public let branchPushReq: Request<PushEvents> = Request.init(path: "/v4/events", query: [
-        ("after", "2022-06-25"),
-        ("scope", "read_user"),
-        ("action", "pushed"),
-        ("private_token", apiToken)
-    ])
-
-    public let authoredMergeRequestsReq: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
-        ("query", getQuery(.authoredMergeRequests)),
-        ("private_token", apiToken)
-    ])
-
-    public let reviewRequestedMergeRequestsReq: Request<GitLabQuery> = Request.init(path: "/graphql", method: .post, query: [
-        ("query", getQuery(.reviewRequestedMergeRequests)),
-        ("private_token", apiToken)
-    ])
-
+    public var branchPushReq: Request<PushEvents> {
+        Request.init(path: "/v4/events", query: [
+            ("after", "2022-06-25"),
+            ("scope", "read_user"),
+            ("action", "pushed"),
+            ("private_token", apiToken)
+        ])
+    }
+    
+    public var authoredMergeRequestsReq: Request<GitLabQuery> {
+        Request.init(path: "/graphql", method: .post, query: [
+            ("query", Self.getQuery(.authoredMergeRequests)),
+            ("private_token", apiToken)
+        ])
+    }
+    
+    public var reviewRequestedMergeRequestsReq: Request<GitLabQuery> {
+        Request.init(path: "/graphql", method: .post, query: [
+            ("query", Self.getQuery(.reviewRequestedMergeRequests)),
+            ("private_token", apiToken)
+        ])
+    }
+    
     // uses custom delegate to handle correctly encoding url path
-    public let launchPadClient = APIClient(configuration: APIClient.Configuration(
-        baseURL: URL(string: "https://gitlab.com"),
-        delegate: LaunchPadClientDelegate()
-    ))
-
+    public var launchPadClient: APIClient {
+        APIClient(configuration: APIClient.Configuration(
+            baseURL: URL(string: "https://gitlab.com"),
+            delegate: LaunchPadClientDelegate()
+        ))
+    }
+    
     public func fetch() async {
         /// Parallel?
         await fetchLatestBranchPush()
         await fetchAuthoredMergeRequests()
         await fetchReviewRequestedMergeRequests()
+    }
+    
+    func validateToken() async -> AccessToken? {
+        let accessTokenReq: Request<AccessToken> = Request.init(path: "/v4/personal_access_tokens/self", query: [
+            ("private_token", apiToken)
+        ])
+        
+        let response: AccessToken? = try? await client.send(accessTokenReq).value
+        
+        return response
     }
 }
 

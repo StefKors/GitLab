@@ -21,7 +21,7 @@ extension NetworkManager {
 
             let req: Request<TargetProjectsQuery> = Request.init(path: "/graphql", query: [
                 ("query", projectQuery),
-                ("private_token", Self.apiToken)
+                ("private_token", apiToken)
             ])
 
             let fullProject: TargetProjectsQuery = try await client.send(req).value
