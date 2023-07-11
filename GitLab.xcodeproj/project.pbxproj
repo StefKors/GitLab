@@ -65,7 +65,6 @@
 		8A7935E42A5583E400F8FB6C /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D062A55817400819B80 /* UserInterface.swift */; };
 		8A7935E52A5583E400F8FB6C /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D082A55817400819B80 /* BaseTextView.swift */; };
 		8A7935E62A5583E400F8FB6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0A2A55817400819B80 /* SettingsView.swift */; };
-		8A7935E72A5583E400F8FB6C /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0B2A55817400819B80 /* AdvancedSettingsView.swift */; };
 		8A7935E82A5583E400F8FB6C /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */; };
 		8A7935E92A5583E400F8FB6C /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0E2A55817400819B80 /* NoticeListView.swift */; };
 		8A7935EA2A5583E400F8FB6C /* BaseNoticeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0F2A55817400819B80 /* BaseNoticeItem.swift */; };
@@ -90,6 +89,9 @@
 		8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
+		8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
+		8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
+		8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
 		8AF80D222A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
@@ -169,8 +171,6 @@
 		8AF80D912A55817400819B80 /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D082A55817400819B80 /* BaseTextView.swift */; };
 		8AF80D932A55817400819B80 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0A2A55817400819B80 /* SettingsView.swift */; };
 		8AF80D942A55817400819B80 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0A2A55817400819B80 /* SettingsView.swift */; };
-		8AF80D962A55817400819B80 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0B2A55817400819B80 /* AdvancedSettingsView.swift */; };
-		8AF80D972A55817400819B80 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0B2A55817400819B80 /* AdvancedSettingsView.swift */; };
 		8AF80D992A55817400819B80 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */; };
 		8AF80D9A2A55817400819B80 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */; };
 		8AF80D9C2A55817400819B80 /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0E2A55817400819B80 /* NoticeListView.swift */; };
@@ -320,6 +320,7 @@
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC0C2092A5D3D720096772B /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformationView.swift; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -362,7 +363,6 @@
 		8AF80D062A55817400819B80 /* UserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
 		8AF80D082A55817400819B80 /* BaseTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		8AF80D0A2A55817400819B80 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		8AF80D0B2A55817400819B80 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
 		8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		8AF80D0E2A55817400819B80 /* NoticeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeListView.swift; sourceTree = "<group>"; };
 		8AF80D0F2A55817400819B80 /* BaseNoticeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNoticeItem.swift; sourceTree = "<group>"; };
@@ -707,6 +707,7 @@
 				8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */,
 				8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */,
 				8AF80D202A55817400819B80 /* LaunchpadItem.swift */,
+				8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -715,7 +716,6 @@
 			isa = PBXGroup;
 			children = (
 				8AF80D0A2A55817400819B80 /* SettingsView.swift */,
-				8AF80D0B2A55817400819B80 /* AdvancedSettingsView.swift */,
 				8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */,
 			);
 			path = SettingsViews;
@@ -1016,6 +1016,7 @@
 				8AF80DCA2A55817400819B80 /* MergeRequestRowView.swift in Sources */,
 				8AF80DC42A55817400819B80 /* WebLink.swift in Sources */,
 				8AF80D552A55817400819B80 /* NoticeType.swift in Sources */,
+				8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8AF80D792A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8AF80D372A55817400819B80 /* MergeRequests.swift in Sources */,
 				8AF80D7F2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
@@ -1054,7 +1055,6 @@
 				8AF80D852A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
 				8AF80D912A55817400819B80 /* BaseTextView.swift in Sources */,
 				8AF80D4C2A55817400819B80 /* UserDefaultsFix.swift in Sources */,
-				8AF80D972A55817400819B80 /* AdvancedSettingsView.swift in Sources */,
 				8AF80DBE2A55817400819B80 /* TitleWebLink.swift in Sources */,
 				8AF80D882A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D7C2A55817400819B80 /* CIRetryIcon.swift in Sources */,
@@ -1101,6 +1101,7 @@
 				8A7935C62A5583E400F8FB6C /* NotificationManager.swift in Sources */,
 				8A7935C72A5583E400F8FB6C /* NetworkManager.swift in Sources */,
 				8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */,
+				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */,
 				8A7935CB2A5583E400F8FB6C /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
@@ -1132,7 +1133,6 @@
 				8A7935E42A5583E400F8FB6C /* UserInterface.swift in Sources */,
 				8A7935E52A5583E400F8FB6C /* BaseTextView.swift in Sources */,
 				8A7935E62A5583E400F8FB6C /* SettingsView.swift in Sources */,
-				8A7935E72A5583E400F8FB6C /* AdvancedSettingsView.swift in Sources */,
 				8A7935E82A5583E400F8FB6C /* AccountSettingsView.swift in Sources */,
 				8A7935E92A5583E400F8FB6C /* NoticeListView.swift in Sources */,
 				8A7935EA2A5583E400F8FB6C /* BaseNoticeItem.swift in Sources */,
@@ -1190,6 +1190,7 @@
 				8AF80D872A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D692A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
 				8AF80D7B2A55817400819B80 /* CIRetryIcon.swift in Sources */,
+				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
@@ -1213,7 +1214,6 @@
 				8AF80DB42A55817400819B80 /* CIStatusView.swift in Sources */,
 				8AF80D902A55817400819B80 /* BaseTextView.swift in Sources */,
 				8AF80D302A55817400819B80 /* NotificationManager.swift in Sources */,
-				8AF80D962A55817400819B80 /* AdvancedSettingsView.swift in Sources */,
 				8AF80D9C2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80D542A55817400819B80 /* NoticeType.swift in Sources */,
 				8AF80D452A55817400819B80 /* TargetProjects.swift in Sources */,

@@ -30,3 +30,17 @@ struct AccessToken: Codable, Defaults.Serializable, Equatable, Hashable {
         case expiresAt = "expires_at"
     }
 }
+
+extension AccessToken {
+    static let preview = AccessToken(
+        id: 123123,
+        name: "gitlab_token",
+        revoked: false,
+        createdAt: "2023-07-06T11:21:49.117Z",
+        scopes: ["read_api"],
+        userID: 234234,
+        lastUsedAt: "2023-07-11T07:39:06.346Z",
+        active: true,
+        expiresAt: "2024-07-05"
+    )
+}
