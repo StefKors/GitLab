@@ -31,7 +31,8 @@ public class NetworkManager: ObservableObject {
     
     // Stored App State:
     @AppStorage("apiToken") static var storedToken: String = ""
-    
+    @AppStorage("baseURL") var baseURL: String = "https://gitlab.com"
+
     var apiToken: String {
         return Self.storedToken.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -56,7 +57,9 @@ public class NetworkManager: ObservableObject {
         "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum approved approvalsLeft userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
     }
     
-    public let client = APIClient(baseURL: URL(string: "https://gitlab.com/api"))
+    public var client: APIClient {
+        APIClient(baseURL: URL(string: "\(baseURL)/api"))
+    }
     public var branchPushReq: Request<PushEvents> {
         Request.init(path: "/v4/events", query: [
             ("after", "2022-06-25"),
@@ -83,7 +86,7 @@ public class NetworkManager: ObservableObject {
     // uses custom delegate to handle correctly encoding url path
     public var launchPadClient: APIClient {
         APIClient(configuration: APIClient.Configuration(
-            baseURL: URL(string: "https://gitlab.com"),
+            baseURL: URL(string: baseURL),
             delegate: LaunchPadClientDelegate()
         ))
     }

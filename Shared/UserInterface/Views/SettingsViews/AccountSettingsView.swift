@@ -12,6 +12,7 @@ public struct AccountSettingsView: View {
     @EnvironmentObject public var model: NetworkManager
 
     @AppStorage("apiToken") var apiToken: String = ""
+    @AppStorage("baseURL") var baseURL: String = "https://gitlab.com"
 
     @State private var tokenInformation: AccessToken? = nil
     @State private var showTokenError: Bool = false
@@ -73,6 +74,20 @@ public struct AccountSettingsView: View {
                 }
             }
 
+            Section("Instance") {
+                TextField("Base URL", text: $baseURL, prompt: Text("Enter token here..."))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .onSubmit(of: .text) {
+                        Task {
+                            model.noticeState.clearNetworkNotices()
+                            model.tokenExpired = false
+                            await model.fetch()
+                        }
+                    }
+
+                Button("Reset to Default", action: setDefaultBaseURL)
+            }
+
             Section("Notifications") {
                 HStack {
                     Text("Clear all Notifications")
@@ -83,6 +98,15 @@ public struct AccountSettingsView: View {
             }
         }
         .formStyle(.grouped)
+    }
+
+    func setDefaultBaseURL() {
+        self.baseURL = "https://gitlab.com"
+        model.noticeState.clearNetworkNotices()
+        model.tokenExpired = false
+        Task {
+            await model.fetch()
+        }
     }
 
     func clearNotifications() {

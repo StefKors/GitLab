@@ -10,6 +10,8 @@ import SwiftUI
 struct ApprovedReviewIcon: View {
     var approvedBy: [Author]
 
+    @AppStorage("baseURL") private var baseURL: String = "https://gitlab.com"
+
     var body: some View {
         HStack {
             Text("Approved")
@@ -17,7 +19,7 @@ struct ApprovedReviewIcon: View {
                 ForEach(approvedBy, id: \.id, content: { author in
                     if let username = author.username,
                        let avatarUrl = author.avatarUrl,
-                       let baseURL = URL(string: "https://gitlab.com"),
+                       let baseURL = URL(string: baseURL),
                        let url = URL(string: avatarUrl.absoluteString, relativeTo: baseURL) {
                         AsyncImage(url: url) { image in
                             image.resizable()
