@@ -64,7 +64,7 @@ struct LastUpdateMessageView: View {
                 })
             // }
             Button(action: quitApp, label: {
-                Label("Quit", systemImage: "power")
+                Text("Quit \(Bundle.main.displayName ?? "")")
             })
 #endif
         }
@@ -87,6 +87,14 @@ struct LastUpdateMessageView: View {
 #if os(macOS)
         NSApp.sendAction(Selector(("terminate:")), to: nil, from: nil)
 #endif
+    }
+}
+
+extension Bundle {
+    // Name of the app - title under the icon.
+    var displayName: String? {
+        return object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ??
+        object(forInfoDictionaryKey: "CFBundleName") as? String
     }
 }
 
