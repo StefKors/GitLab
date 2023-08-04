@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="GitLab/Assets.xcassets/AppIcon.appiconset/mac1024.png" height="128">
-  <img src="GitLab/Assets.xcassets/AppIcon-Development.appiconset/icon_512x512@2x.png" height="128">
+  <img src="GitLab/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png" height="128">
+  <img src="GitLab/Assets.xcassets/AppIcon_dev.appiconset/icon_512x512@2x.png" height="124">
+  <img src="GitLab/Assets.xcassets/AppIcon_alt.appiconset/mac1024.png" height="124">
   <h1 align="center">GitLab Widget</h1>
 </p>
 
