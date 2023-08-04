@@ -11,10 +11,6 @@ import Foundation
 struct MergeStatusView: View {
     var MR: MergeRequest
 
-    var isApproved: Bool {
-        MR.approved ?? false
-    }
-
     var isOnMergeTrain: Bool {
         MR.headPipeline?.mergeRequestEventType == .mergeTrain
     }
@@ -28,7 +24,7 @@ struct MergeStatusView: View {
             // ShareMergeRequestIcon(MR: MR)
             if isOnMergeTrain {
                 MergeTrainIcon()
-            } else if isApproved, let approvers = approvers, !approvers.isEmpty {
+            } else if let approvers = approvers, !approvers.isEmpty {
                 ApprovedReviewIcon(approvedBy: approvers)
             } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
                 ShareMergeRequestIcon(MR: MR)

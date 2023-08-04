@@ -44,8 +44,6 @@ public struct MergeRequest: Codable, Defaults.Serializable, Equatable {
     public let webURL: URL?
     public let mergeStatusEnum: MergeStatus?
     public let approvedBy: ApprovedMergeRequests?
-    public let approved: Bool?
-    public let approvalsLeft: Int?
     public let userDiscussionsCount: Int?
     public let userNotesCount: Int?
     public let headPipeline: HeadPipeline?
@@ -55,7 +53,7 @@ public struct MergeRequest: Codable, Defaults.Serializable, Equatable {
     enum CodingKeys: String, CodingKey {
         case state, id, title, draft
         case webURL = "webUrl"
-        case reference, targetProject, approvedBy, mergeStatusEnum, approved, approvalsLeft, userDiscussionsCount, userNotesCount, headPipeline
+        case reference, targetProject, approvedBy, mergeStatusEnum, userDiscussionsCount, userNotesCount, headPipeline
     }
 }
 
