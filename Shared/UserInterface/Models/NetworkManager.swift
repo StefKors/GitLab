@@ -98,9 +98,9 @@ public class NetworkManager: ObservableObject {
         await fetchReviewRequestedMergeRequests()
     }
     
-    func validateToken() async -> AccessToken? {
+    func validateToken(token: String) async -> AccessToken? {
         let accessTokenReq: Request<AccessToken> = Request.init(path: "/v4/personal_access_tokens/self", query: [
-            ("private_token", apiToken)
+            ("private_token", token)
         ])
         
         let response: AccessToken? = try? await client.send(accessTokenReq).value
