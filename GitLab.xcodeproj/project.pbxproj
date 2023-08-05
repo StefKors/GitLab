@@ -1462,7 +1462,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(com.stefkors.GitLab.CURRENT_PROJECT_VERSION)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1476,7 +1476,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = "$(com.stefkors.GitLab.MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1494,7 +1494,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(com.stefkors.GitLab.CURRENT_PROJECT_VERSION)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1508,7 +1508,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1;
+				MARKETING_VERSION = "$(com.stefkors.GitLab.MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
