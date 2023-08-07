@@ -14,11 +14,15 @@ public extension GitLabQuery {
     var authoredMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
             return edge.node
+        }) ?? self.data?.user?.authoredMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
         }) ?? []
     }
 
     var reviewRequestedMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
+        }) ?? self.data?.user?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
             return edge.node
         }) ?? []
     }
@@ -27,6 +31,7 @@ public extension GitLabQuery {
 // MARK: - DataClass
 public struct DataClass: Codable, Defaults.Serializable, Equatable {
     public let currentUser: CurrentUser?
+    public let user: CurrentUser?
 }
 
 // MARK: - CurrentUser
