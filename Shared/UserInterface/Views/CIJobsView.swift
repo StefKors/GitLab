@@ -13,6 +13,8 @@ public struct CIJobsView: View {
     @State var isHovering: Bool = false
     @State var tapState: Bool = false
 
+    @EnvironmentObject  var model: NetworkManager
+
     public init(stage: FluffyNode) {
         self.stage = stage
     }
@@ -34,7 +36,7 @@ public struct CIJobsView: View {
                                 if let job = jobs[index] {
                                     HStack {
                                         if let path = job.detailedStatus?.detailsPath,
-                                           let destination = URL(string: "https://gitlab.com" + path) {
+                                           let destination = URL(string: model.$baseURL.wrappedValue + path) {
                                             Link(destination: destination, label: {
                                                 CIStatusView(status: job.status)
                                                 Text(job.name ?? "")
