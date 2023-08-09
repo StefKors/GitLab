@@ -56,6 +56,21 @@ public struct MergeRequest: Codable, Defaults.Serializable, Equatable {
         case reference, targetProject, approvedBy, mergeStatusEnum, userDiscussionsCount, userNotesCount, headPipeline
     }
 
+    public init(id: String?, title: String?, state: MergeRequestState?, draft: Bool?, webURL: URL?, mergeStatusEnum: MergeStatus?, approvedBy: ApprovedMergeRequests?, userDiscussionsCount: Int?, userNotesCount: Int?, headPipeline: HeadPipeline?, reference: String?, targetProject: TargetProject?) {
+        self.id = id
+        self.title = title
+        self.state = state
+        self.draft = draft
+        self.webURL = webURL
+        self.mergeStatusEnum = mergeStatusEnum
+        self.approvedBy = approvedBy
+        self.userDiscussionsCount = userDiscussionsCount
+        self.userNotesCount = userNotesCount
+        self.headPipeline = headPipeline
+        self.reference = reference
+        self.targetProject = targetProject
+    }
+
     public init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<MergeRequest.CodingKeys> = try decoder.container(keyedBy: MergeRequest.CodingKeys.self)
         
@@ -137,6 +152,13 @@ public struct Author: Codable, Defaults.Serializable, Equatable {
         case avatarUrl = "avatarUrl"
     }
 
+    public init(id: String?, name: String?, username: String?, avatarUrl: URL?) {
+        self.id = id
+        self.name = name
+        self.username = username
+        self.avatarUrl = avatarUrl
+    }
+    
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Author.CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
@@ -156,6 +178,13 @@ public struct EventAuthor: Codable, Defaults.Serializable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id, name, username
         case avatarUrl = "avatarUrl"
+    }
+
+    public init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
+        self.id = id
+        self.name = name
+        self.username = username
+        self.avatarUrl = avatarUrl
     }
 
     public init(from decoder: Decoder) throws {
@@ -400,7 +429,19 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
         case group
         case fetchedAvatarData
     }
-    
+
+    public init(id: String, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
+        self.id = id
+        self.name = name
+        self.path = path
+        self.webURL = webURL
+        self.avatarUrl = avatarUrl
+        self.namespace = namespace
+        self.repository = repository
+        self.group = group
+        self.fetchedAvatarData = fetchedAvatarData
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
         
@@ -445,6 +486,14 @@ public struct Group: Codable, Defaults.Serializable, Equatable, Hashable {
     enum CodingKeys: String, CodingKey {
         case id, name, fullName, fullPath
         case webURL = "webUrl"
+    }
+
+    public init(id: String?, name: String?, fullName: String?, fullPath: String?, webURL: URL?) {
+        self.id = id
+        self.name = name
+        self.fullName = fullName
+        self.fullPath = fullPath
+        self.webURL = webURL
     }
 
     public init(from decoder: Decoder) throws {

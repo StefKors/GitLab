@@ -1,6 +1,6 @@
 //
 //  BaseNoticeItem.swift
-//  
+//
 //
 //  Created by Stef Kors on 25/07/2022.
 //
@@ -48,18 +48,16 @@ public struct BaseNoticeItem: View {
                             }
 
                             if let url = notice.webLink {
-                                // Button(action: {
-                                //     openURL(url)
-                                //     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                                //         withAnimation(.interpolatingSpring(stiffness: 500, damping: 15)) {
-                                //             noticeState.dismissNotice(id: notice.id)
-                                //         }
-                                //     }
-                                // }, label: {
-                                GroupBox {
+                                Button(action: {
+                                    openURL(url)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                                        withAnimation(.interpolatingSpring(stiffness: 500, damping: 15)) {
+                                            noticeState.dismissNotice(id: notice.id)
+                                        }
+                                    }
+                                }, label: {
                                     Label("Create merge request", image: "merge-request")
-                                }
-                                // })
+                                })
                             }
                         }.fixedSize(horizontal: false, vertical: true)
                         Spacer()
@@ -107,7 +105,7 @@ public struct BaseNoticeItem: View {
 
 public struct NoticeTypeBackground: ViewModifier {
     var notice: NoticeMessage
-    
+
     let radius: CGFloat = 8
     public func body(content: Content) -> some View {
         if notice.type == .branch {
