@@ -18,11 +18,6 @@ extension NetworkManager {
             let response: GitLabQuery = try await client.send(authoredMergeRequestsReq).value
 
             await MainActor.run {
-                if response.data?.currentUser == nil {
-                    tokenExpired = true
-                } else {
-                    tokenExpired = false
-                }
                 // MARK: - Handle Notifications
                 let newMergeRequests = response.authoredMergeRequests
                 let newApproveByDict = newMergeRequests.approvedByDict
