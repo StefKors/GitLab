@@ -47,8 +47,11 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
         self.name = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.name)
         self.image = try container.decodeIfPresent(Data.self, forKey: LaunchpadRepo.CodingKeys.image)
         self.group = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.group)
-        self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
-
+        if let url = try container.decodeURLWithEncodingIfPresent(forKey: LaunchpadRepo.CodingKeys.url) {
+            self.url = url
+        } else {
+            self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
+        }
     }
 
     public func encode(to encoder: Encoder) throws {
