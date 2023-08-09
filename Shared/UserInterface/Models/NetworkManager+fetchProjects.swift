@@ -43,10 +43,10 @@ extension NetworkManager {
             noticeState.addNotice(notice: warningNotice)
         } catch {
             // Handle Offline Notice
-            let isGitLabReachable = reachable(host: "gitlab.com")
+            let isGitLabReachable = reachable(host: self.$baseURL.wrappedValue)
             if isGitLabReachable == false {
                 let informationNotice = NoticeMessage(
-                    label: "Unable to reach gitlab.com",
+                    label: "Unable to reach \(self.$baseURL.wrappedValue)",
                     type: .network
                 )
                 noticeState.addNotice(notice: informationNotice)

@@ -347,6 +347,38 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
         case group
         case fetchedAvatarData
     }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        // Decode id
+        id = try container.decode(String.self, forKey: .id)
+
+        // Decode optional strings
+        name = try container.decodeIfPresent(String.self, forKey: .name)
+        path = try container.decodeIfPresent(String.self, forKey: .path)
+
+        // Decode URLs
+        webURL = try container.decodeIfPresent(URL.self, forKey: .webURL)
+
+        // Should re-encode any non-escaped utf8 strings (should be applied to every other URL in the decode structures but I don't know if it's worth it or even possible to generalize it).
+        if let avatarString = try? container.decodeIfPresent(String.self, forKey: .avatarUrl) {
+            if let url = URL(string: avatarString) {
+                avatarUrl = url
+            } else {
+                let encodedString = avatarString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                avatarUrl = URL(string: encodedString ?? "")
+            }
+        } else {
+            avatarUrl = nil
+        }
+
+        // Decode the rest of the members
+        namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
+        repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
+        group = try container.decodeIfPresent(Group.self, forKey: .group)
+        fetchedAvatarData = try container.decodeIfPresent(Data.self, forKey: .fetchedAvatarData)
+    }
 }
 
 // MARK: - NameSpace
