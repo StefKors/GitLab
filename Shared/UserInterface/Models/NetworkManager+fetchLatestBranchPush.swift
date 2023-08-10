@@ -35,9 +35,9 @@ extension NetworkManager {
 
             let event = response.first(where: { event in
                 guard let createdAt = event.createdAt,
-                      let date = GitLabISO8601DateFormatter.date(from: createdAt) else { return false }
-                let pastHour: Double = 60 * 60 * 1 // 60 min
-                return event.actionName == .pushedNew && abs(date.timeIntervalSinceNow) < pastHour
+                      let dateCreated = GitLabISO8601DateFormatter.date(from: createdAt),
+                      let dateCreatedPlusHour = Calendar.current.date(byAdding: .hour, value: 1, to: dateCreated) else { return false }
+                return event.actionName == .pushedNew && dateCreated < dateCreatedPlusHour
             })
 
             if let event = event,
@@ -69,10 +69,10 @@ extension NetworkManager {
             // noticeState.addNotice(notice: warningNotice)
         } catch {
             // Handle Offline Notice
-            let isGitLabReachable = reachable(host: "gitlab.com")
+            let isGitLabReachable = reachable(host: self.$baseURL.wrappedValue)
             if isGitLabReachable == false {
                 let informationNotice = NoticeMessage(
-                    label: "Unable to reach gitlab.com",
+                    label: "Unable to reach \(self.$baseURL.wrappedValue)",
                     type: .network
                 )
                 noticeState.addNotice(notice: informationNotice)

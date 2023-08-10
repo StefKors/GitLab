@@ -14,11 +14,15 @@ public extension GitLabQuery {
     var authoredMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
             return edge.node
+        }) ?? self.data?.user?.authoredMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
         }) ?? []
     }
 
     var reviewRequestedMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
+            return edge.node
+        }) ?? self.data?.user?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
             return edge.node
         }) ?? []
     }
@@ -27,6 +31,7 @@ public extension GitLabQuery {
 // MARK: - DataClass
 public struct DataClass: Codable, Defaults.Serializable, Equatable {
     public let currentUser: CurrentUser?
+    public let user: CurrentUser?
 }
 
 // MARK: - CurrentUser
@@ -54,6 +59,56 @@ public struct MergeRequest: Codable, Defaults.Serializable, Equatable {
         case state, id, title, draft
         case webURL = "webUrl"
         case reference, targetProject, approvedBy, mergeStatusEnum, userDiscussionsCount, userNotesCount, headPipeline
+    }
+
+    public init(id: String?, title: String?, state: MergeRequestState?, draft: Bool?, webURL: URL?, mergeStatusEnum: MergeStatus?, approvedBy: ApprovedMergeRequests?, userDiscussionsCount: Int?, userNotesCount: Int?, headPipeline: HeadPipeline?, reference: String?, targetProject: TargetProject?) {
+        self.id = id
+        self.title = title
+        self.state = state
+        self.draft = draft
+        self.webURL = webURL
+        self.mergeStatusEnum = mergeStatusEnum
+        self.approvedBy = approvedBy
+        self.userDiscussionsCount = userDiscussionsCount
+        self.userNotesCount = userNotesCount
+        self.headPipeline = headPipeline
+        self.reference = reference
+        self.targetProject = targetProject
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container: KeyedDecodingContainer<MergeRequest.CodingKeys> = try decoder.container(keyedBy: MergeRequest.CodingKeys.self)
+        
+        self.state = try container.decodeIfPresent(MergeRequestState.self, forKey: MergeRequest.CodingKeys.state)
+        self.id = try container.decodeIfPresent(String.self, forKey: MergeRequest.CodingKeys.id)
+        self.title = try container.decodeIfPresent(String.self, forKey: MergeRequest.CodingKeys.title)
+        self.draft = try container.decodeIfPresent(Bool.self, forKey: MergeRequest.CodingKeys.draft)
+        self.webURL = try container.decodeURLWithEncodingIfPresent(forKey: MergeRequest.CodingKeys.webURL)
+        self.reference = try container.decodeIfPresent(String.self, forKey: MergeRequest.CodingKeys.reference)
+        self.targetProject = try container.decodeIfPresent(TargetProject.self, forKey: MergeRequest.CodingKeys.targetProject)
+        self.approvedBy = try container.decodeIfPresent(ApprovedMergeRequests.self, forKey: MergeRequest.CodingKeys.approvedBy)
+        self.mergeStatusEnum = try container.decodeIfPresent(MergeStatus.self, forKey: MergeRequest.CodingKeys.mergeStatusEnum)
+        self.userDiscussionsCount = try container.decodeIfPresent(Int.self, forKey: MergeRequest.CodingKeys.userDiscussionsCount)
+        self.userNotesCount = try container.decodeIfPresent(Int.self, forKey: MergeRequest.CodingKeys.userNotesCount)
+        self.headPipeline = try container.decodeIfPresent(HeadPipeline.self, forKey: MergeRequest.CodingKeys.headPipeline)
+        
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container: KeyedEncodingContainer<MergeRequest.CodingKeys> = encoder.container(keyedBy: MergeRequest.CodingKeys.self)
+        
+        try container.encodeIfPresent(self.state, forKey: MergeRequest.CodingKeys.state)
+        try container.encodeIfPresent(self.id, forKey: MergeRequest.CodingKeys.id)
+        try container.encodeIfPresent(self.title, forKey: MergeRequest.CodingKeys.title)
+        try container.encodeIfPresent(self.draft, forKey: MergeRequest.CodingKeys.draft)
+        try container.encodeIfPresent(self.webURL, forKey: MergeRequest.CodingKeys.webURL)
+        try container.encodeIfPresent(self.reference, forKey: MergeRequest.CodingKeys.reference)
+        try container.encodeIfPresent(self.targetProject, forKey: MergeRequest.CodingKeys.targetProject)
+        try container.encodeIfPresent(self.approvedBy, forKey: MergeRequest.CodingKeys.approvedBy)
+        try container.encodeIfPresent(self.mergeStatusEnum, forKey: MergeRequest.CodingKeys.mergeStatusEnum)
+        try container.encodeIfPresent(self.userDiscussionsCount, forKey: MergeRequest.CodingKeys.userDiscussionsCount)
+        try container.encodeIfPresent(self.userNotesCount, forKey: MergeRequest.CodingKeys.userNotesCount)
+        try container.encodeIfPresent(self.headPipeline, forKey: MergeRequest.CodingKeys.headPipeline)
     }
 }
 
@@ -101,6 +156,22 @@ public struct Author: Codable, Defaults.Serializable, Equatable {
         case id, name, username
         case avatarUrl = "avatarUrl"
     }
+
+    public init(id: String?, name: String?, username: String?, avatarUrl: URL?) {
+        self.id = id
+        self.name = name
+        self.username = username
+        self.avatarUrl = avatarUrl
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Author.CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.username = try container.decodeIfPresent(String.self, forKey: .username)
+        // Should re-encode any non-escaped utf8 strings
+        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
+    }
 }
 
 /// (same as Author above ^ but with int for id
@@ -112,6 +183,22 @@ public struct EventAuthor: Codable, Defaults.Serializable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id, name, username
         case avatarUrl = "avatarUrl"
+    }
+
+    public init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
+        self.id = id
+        self.name = name
+        self.username = username
+        self.avatarUrl = avatarUrl
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: EventAuthor.CodingKeys.self)
+        self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.username = try container.decodeIfPresent(String.self, forKey: .username)
+        // Should re-encode any non-escaped utf8 strings
+        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
     }
 }
 
@@ -347,6 +434,32 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
         case group
         case fetchedAvatarData
     }
+
+    public init(id: String, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
+        self.id = id
+        self.name = name
+        self.path = path
+        self.webURL = webURL
+        self.avatarUrl = avatarUrl
+        self.namespace = namespace
+        self.repository = repository
+        self.group = group
+        self.fetchedAvatarData = fetchedAvatarData
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
+        
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.path = try container.decodeIfPresent(String.self, forKey: .path)
+        self.webURL = try container.decodeURLWithEncodingIfPresent(forKey: .webURL)
+        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
+        self.namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
+        self.repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
+        self.group = try container.decodeIfPresent(Group.self, forKey: .group)
+        self.fetchedAvatarData = try container.decodeIfPresent(Data.self, forKey: .fetchedAvatarData)
+    }
 }
 
 // MARK: - NameSpace
@@ -378,6 +491,24 @@ public struct Group: Codable, Defaults.Serializable, Equatable, Hashable {
     enum CodingKeys: String, CodingKey {
         case id, name, fullName, fullPath
         case webURL = "webUrl"
+    }
+
+    public init(id: String?, name: String?, fullName: String?, fullPath: String?, webURL: URL?) {
+        self.id = id
+        self.name = name
+        self.fullName = fullName
+        self.fullPath = fullPath
+        self.webURL = webURL
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.fullName = try container.decodeIfPresent(String.self, forKey: .fullName)
+        self.fullPath = try container.decodeIfPresent(String.self, forKey: .fullPath)
+        // Should re-encode any non-escaped utf8 strings
+        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
     }
 }
 

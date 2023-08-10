@@ -53,10 +53,34 @@ public class NetworkManager: ObservableObject {
     }
     
     /// https://gitlab.com/-/graphql-explorer
+    /// Return query for a the "currentUser"
+    /// - Parameter type: QueryType
+    /// - Returns: GraphQL query with MR information
     public static func getQuery(_ type: QueryType) -> String {
-        "query { currentUser { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
+        Self.buildQuery(target: "currentUser", type: type)
     }
     
+    /// Return query for a specific user name
+    /// - Parameters:
+    ///   - username: Username to fetch results for
+    ///   - type: QueryType
+    /// - Returns: GraphQL query with MR information
+    public static func getQuery(username: String, type: QueryType) -> String {
+        let user = "user(username: \"\(username)\""
+        return Self.buildQuery(target: user, type: type)
+    }
+    
+    /// Private method to build the GraphQL query based on the user information. Prefer getQuery methods instead
+    /// - Parameters:
+    ///   - target: target string to fetch results for. Either string should be either `"currentUser"` or `"user(username: \"\(username)\""`
+    ///   - type: QueryType
+    /// - Returns: GraphQL query with MR information
+    fileprivate static func buildQuery(target: String, type: QueryType) -> String {
+        "query { \(target) { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
+    }
+
+
+
     public var client: APIClient {
         APIClient(baseURL: URL(string: "\(baseURL)/api"))
     }

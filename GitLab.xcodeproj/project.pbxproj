@@ -97,6 +97,10 @@
 		8AC14B332A71611100A96707 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC14B312A71611100A96707 /* Account.swift */; };
 		8AC14B342A71611100A96707 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC14B312A71611100A96707 /* Account.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
+		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
+		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
 		8AF80D222A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
 		8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE12A55817400819B80 /* LaunchpadState.swift */; };
@@ -330,6 +334,8 @@
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+repoLaunchPad.swift"; sourceTree = "<group>"; };
 		8AF80CE12A55817400819B80 /* LaunchpadState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchpadState.swift; sourceTree = "<group>"; };
 		8AF80CE22A55817400819B80 /* PushEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEvents.swift; sourceTree = "<group>"; };
@@ -608,6 +614,13 @@
 				8AC14B312A71611100A96707 /* Account.swift */,
 			);
 			path = SwiftData;
+		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
+				8ADEBF9D2A83A227007C22CD /* URL.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8AC4B4112865C1480054C601 /* Frameworks */ = {
@@ -634,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC14B352A71611600A96707 /* SwiftData */,
+				8A63DE6F2A83A1FC002DD636 /* Extensions */,
 				8AF80CDF2A55817400819B80 /* Models */,
 				8AF80CF42A55817400819B80 /* Icons */,
 				8AF80D062A55817400819B80 /* UserInterface.swift */,
@@ -902,7 +916,6 @@
 		8A5FC0EE26EFD08E004136AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
@@ -1122,6 +1135,7 @@
 				8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */,
+				8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */,
 				8A7935CB2A5583E400F8FB6C /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8A7935CC2A5583E400F8FB6C /* TargetProjects.swift in Sources */,
@@ -1134,6 +1148,7 @@
 				8A7935D22A5583E400F8FB6C /* NoticeState.swift in Sources */,
 				8A7935D32A5583E400F8FB6C /* CISkippedIcon.swift in Sources */,
 				8A7935D42A5583E400F8FB6C /* CIManualIcon.swift in Sources */,
+				8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */,
 				8A7935D52A5583E400F8FB6C /* CICanceledIcon.swift in Sources */,
 				8A7935D62A5583E400F8FB6C /* CIFailedIcon.swift in Sources */,
 				8A7935D72A5583E400F8FB6C /* CIPreparingIcon.swift in Sources */,
@@ -1220,8 +1235,10 @@
 				8AF80D632A55817400819B80 /* CIFailedIcon.swift in Sources */,
 				8AF80D572A55817400819B80 /* NoticeState.swift in Sources */,
 				8AF80DC32A55817400819B80 /* WebLink.swift in Sources */,
+				8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */,
 				8AF80DC62A55817400819B80 /* CIJobsView.swift in Sources */,
 				8AF80D8A2A55817400819B80 /* CIProgressIcon.swift in Sources */,
+				8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
 				8AF80DAB2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
 				8AF80D272A55817400819B80 /* PushEvents.swift in Sources */,
@@ -1493,7 +1510,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.17;
+				MARKETING_VERSION = 1.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1525,7 +1542,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.17;
+				MARKETING_VERSION = 1.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1684,7 +1701,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.17;
+				MARKETING_VERSION = 1.18;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1720,7 +1737,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.17;
+				MARKETING_VERSION = 1.18;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1737,14 +1754,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 324R3F66LU;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				INFOPLIST_FILE = GitLabTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1760,14 +1777,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 324R3F66LU;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				INFOPLIST_FILE = GitLabTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1782,7 +1799,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 324R3F66LU;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				INFOPLIST_FILE = GitLabUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1803,7 +1820,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 324R3F66LU;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				INFOPLIST_FILE = GitLabUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
