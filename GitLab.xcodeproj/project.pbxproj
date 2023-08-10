@@ -614,6 +614,7 @@
 				8AC14B312A71611100A96707 /* Account.swift */,
 			);
 			path = SwiftData;
+		};
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
