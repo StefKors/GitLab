@@ -93,9 +93,6 @@
 		8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
-		8AC14B322A71611100A96707 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC14B312A71611100A96707 /* Account.swift */; };
-		8AC14B332A71611100A96707 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC14B312A71611100A96707 /* Account.swift */; };
-		8AC14B342A71611100A96707 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC14B312A71611100A96707 /* Account.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
@@ -219,6 +216,9 @@
 		8AF80DD72A5581A600819B80 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD62A5581A600819B80 /* Get */; };
 		8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD92A5581B700819B80 /* CachedAsyncImage */; };
 		8AF80DDD2A5581C400819B80 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DDC2A5581C400819B80 /* Boutique */; };
+		8AFDAA982A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8AFDAA992A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
 		8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -330,7 +330,6 @@
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC0C2092A5D3D720096772B /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformationView.swift; sourceTree = "<group>"; };
-		8AC14B312A71611100A96707 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -394,6 +393,7 @@
 		8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeRequestRowView.swift; sourceTree = "<group>"; };
 		8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarButtonStyle.swift; sourceTree = "<group>"; };
 		8AF80D202A55817400819B80 /* LaunchpadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchpadItem.swift; sourceTree = "<group>"; };
+		8AFDAA972A84FB26001937AC /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -608,13 +608,6 @@
 			path = GitLabUITests;
 			sourceTree = "<group>";
 		};
-		8AC14B352A71611600A96707 /* SwiftData */ = {
-			isa = PBXGroup;
-			children = (
-				8AC14B312A71611100A96707 /* Account.swift */,
-			);
-			path = SwiftData;
-		};
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,7 +640,7 @@
 		8AF80CDE2A55817400819B80 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
-				8AC14B352A71611600A96707 /* SwiftData */,
+				8AFDAA962A84FAED001937AC /* SwiftData */,
 				8A63DE6F2A83A1FC002DD636 /* Extensions */,
 				8AF80CDF2A55817400819B80 /* Models */,
 				8AF80CF42A55817400819B80 /* Icons */,
@@ -767,6 +760,14 @@
 				8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */,
 			);
 			path = NotificationViews;
+			sourceTree = "<group>";
+		};
+		8AFDAA962A84FAED001937AC /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				8AFDAA972A84FB26001937AC /* Account.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1067,7 +1068,6 @@
 				8AF80DB52A55817400819B80 /* CIStatusView.swift in Sources */,
 				8AF80D5E2A55817400819B80 /* CIManualIcon.swift in Sources */,
 				8AF80D222A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
-				8AC14B332A71611100A96707 /* Account.swift in Sources */,
 				8AF80D342A55817400819B80 /* NetworkManager.swift in Sources */,
 				8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AF80D312A55817400819B80 /* NotificationManager.swift in Sources */,
@@ -1086,6 +1086,7 @@
 				8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */,
 				8AF80D942A55817400819B80 /* SettingsView.swift in Sources */,
 				8AF80D852A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
+				8AFDAA992A84FB26001937AC /* Account.swift in Sources */,
 				8AF80D912A55817400819B80 /* BaseTextView.swift in Sources */,
 				8AF80D4C2A55817400819B80 /* UserDefaultsFix.swift in Sources */,
 				8AF80DBE2A55817400819B80 /* TitleWebLink.swift in Sources */,
@@ -1140,7 +1141,6 @@
 				8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */,
 				8A7935CB2A5583E400F8FB6C /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8A7935CC2A5583E400F8FB6C /* TargetProjects.swift in Sources */,
-				8AC14B342A71611100A96707 /* Account.swift in Sources */,
 				8A7935CD2A5583E400F8FB6C /* UserDefaults.swift in Sources */,
 				8A7935CE2A5583E400F8FB6C /* UserDefaultsFix.swift in Sources */,
 				8A7935CF2A5583E400F8FB6C /* NetworkReachability.swift in Sources */,
@@ -1166,6 +1166,7 @@
 				8A7935E12A5583E400F8FB6C /* NeedsReviewIcon.swift in Sources */,
 				8A7935E22A5583E400F8FB6C /* MergeTrainIcon.swift in Sources */,
 				8A7935E32A5583E400F8FB6C /* CIProgressIcon.swift in Sources */,
+				8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */,
 				8A7935E42A5583E400F8FB6C /* UserInterface.swift in Sources */,
 				8A7935E52A5583E400F8FB6C /* BaseTextView.swift in Sources */,
 				8A7935E62A5583E400F8FB6C /* SettingsView.swift in Sources */,
@@ -1220,6 +1221,7 @@
 				8AF80DC02A55817400819B80 /* LaunchPadView.swift in Sources */,
 				8AF80D482A55817400819B80 /* UserDefaults.swift in Sources */,
 				8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */,
+				8AFDAA982A84FB26001937AC /* Account.swift in Sources */,
 				8AF80D3F2A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
 				8AF80D4B2A55817400819B80 /* UserDefaultsFix.swift in Sources */,
 				8AF80DA82A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
@@ -1227,7 +1229,6 @@
 				8AF80D692A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
 				8AF80D7B2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
-				8AC14B322A71611100A96707 /* Account.swift in Sources */,
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
