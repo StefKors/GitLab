@@ -13,17 +13,17 @@ struct MenubarContentView: View {
 
     var body: some View {
         UserInterface()
-            .onChange(of: scenePhase) { newPhase in
-                if newPhase == .active {
-                    print("Active")
-                } else if newPhase == .inactive {
-                    print("Inactive")
-                } else if newPhase == .background {
-                    print("Background")
-                }
-
-                scene = newPhase
-            }
+            // .onChange(of: scenePhase) { newPhase in
+            //     if newPhase == .active {
+            //         print("Active")
+            //     } else if newPhase == .inactive {
+            //         print("Inactive")
+            //     } else if newPhase == .background {
+            //         print("Background")
+            //     }
+            // 
+            //     scene = newPhase
+            // }
     }
 }
 

@@ -10,7 +10,7 @@ import Get
 
 extension NetworkManager {
 
-    public func addLaunchpadProject(_ project: TargetProject) {
+     func addLaunchpadProject(_ project: TargetProject) {
         // guard project.avatarUrl != nil, let url = project.webURL else {
         guard let url = project.webURL else {
             return

@@ -6,29 +6,41 @@
 //
 
 import SwiftUI
+import SwiftData
 
- struct UserInterface: View {
-    @EnvironmentObject  var model: NetworkManager
+enum NetworkState: String, Codable, CaseIterable, Identifiable {
+    case fetching
+    case idle
+    var id: Self { self }
+}
 
-     init() { }
+
+struct UserInterface: View {
+    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var network: NetworkManager
 
     @State private var selectedView: QueryType = .authoredMergeRequests
-    
-    var mergeRequests: [MergeRequest] {
-        switch selectedView {
-        case .authoredMergeRequests:
-            return model.authoredMergeRequests
-        case .reviewRequestedMergeRequests:
-            return model.reviewRequestedMergeRequests
-        }
-    }
 
-     var body: some View {
+    // var mergeRequests: [MergeRequest] {
+    //     // switch selectedView {
+    //     // case .authoredMergeRequests:
+    //     //     return model.authoredMergeRequests
+    //     // case .reviewRequestedMergeRequests:
+    //     //     return model.reviewRequestedMergeRequests
+    //     // }
+    //     return []
+    // }
+
+    @Query private var mergeRequests: [MergeRequest]
+    @State private var lastUpdate: Date? = nil
+    @State private var networkState: NetworkState = .idle
+
+    var body: some View {
         ZStack(alignment: .topTrailing) {
             LazyVStack(alignment: .center, spacing: 10) {
-                if model.apiToken.isEmpty {
+                if network.apiToken.isEmpty {
                     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
-                } else if model.tokenExpired {
+                } else if network.tokenExpired {
                     BaseTextView(message: "Token Expired")
                 } else {
                     Picker(selection: $selectedView, content: {
@@ -41,7 +53,7 @@ import SwiftUI
                         .padding(.top)
                         .padding(.bottom, 0)
 
-                    LaunchpadView(launchpadController: model.launchpadState)
+                    LaunchpadView(launchpadController: network.launchpadState)
 
                     // Disabled in favor for real notifications`
                     NoticeListView()
@@ -51,32 +63,65 @@ import SwiftUI
                         BaseTextView(message: "All done 🥳")
                     }
                     VStack(alignment: .leading) {
-                        ForEach(mergeRequests.indices, id: \.self) { index in
-                            MergeRequestRowView(MR: mergeRequests[index])
-                                .id(mergeRequests[index].id)
-                                .padding(.vertical, 4)
-                            let isLast = index == mergeRequests.count - 1
-                            if !isLast {
-                                Divider()
-                            }
-                        }.padding(.horizontal)
+                        List(mergeRequests) { mergeRequest in
+                            MergeRequestRowView(MR: mergeRequest)
+                                .padding(.bottom, 4)
+                                .listRowSeparator(.visible)
+                                .listRowSeparatorTint(Color.secondary.opacity(0.2))
+                                    // .id(mergeRequests[index].id)
+                                // let isLast = index == mergeRequests.count - 1
+                                // if !isLast {
+                                    // Divider()
+                                // }
+                        }
+                        // .padding(.horizontal)
+                        // .listStyle(.bordered)
                     }
                 }
-                LastUpdateMessageView()
+                Text("\(lastUpdate?.debugDescription ?? "nil")")
+                LastUpdateMessageView(lastUpdate: $lastUpdate, networkState: $networkState)
             }
-            .onAppear {
-                Task(priority: .background) {
-                    await model.fetch()
-                }
+            .task(id: networkState) {
+                await fetchReviewRequestedMRs()
+                await fetchAuthoredMRs()
+                lastUpdate = .now
+                networkState = .idle
             }
+            // .onAppear {
+            //     Task(priority: .background) {
+            //         await network.fetch()
+            //     }
+            // }
         }
         .frame(width: 500)
     }
+
+    private func fetchReviewRequestedMRs() async {
+        let results = await network.fetchReviewRequestedMergeRequests()
+        if let results {
+            for result in results {
+                withAnimation {
+                    modelContext.insert(result)
+                }
+            }
+        }
+    }
+
+    private func fetchAuthoredMRs() async {
+        let results = await network.fetchAuthoredMergeRequests()
+        if let results {
+            for result in results {
+                withAnimation {
+                    modelContext.insert(result)
+                }
+            }
+        }
+    }
 }
 
- struct UserInterface_Previews: PreviewProvider {
-     static let networkManager = NetworkManager()
-     static var previews: some View {
+struct UserInterface_Previews: PreviewProvider {
+    static let networkManager = NetworkManager()
+    static var previews: some View {
         UserInterface()
             .environmentObject(self.networkManager)
             .environmentObject(self.networkManager.noticeState)

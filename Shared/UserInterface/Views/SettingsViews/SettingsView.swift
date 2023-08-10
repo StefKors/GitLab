@@ -8,14 +8,14 @@
 import SwiftUI
 // import Cocoa
 
-public struct SettingsView: View {
+ struct SettingsView: View {
     private enum Tabs: Hashable {
         case Account
     }
 
-    public init() { }
+     init() { }
 
-    public var body: some View {
+     var body: some View {
         TabView {
             AccountSettingsView()
                 .tabItem {

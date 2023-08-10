@@ -1,6 +1,6 @@
 //
 //  LastUpdateMessageView.swift
-//  
+//
 //
 //  Created by Stef Kors on 26/07/2022.
 //
@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct LastUpdateMessageView: View {
-    @EnvironmentObject var model: NetworkManager
-    
-    public let initialTimeRemaining = 10
-    @State public var isHovering: Bool = false
-    @State public var timeRemaining = 10
-    public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @Binding var lastUpdate: Date?
+    @Binding var networkState: NetworkState
+    private let initialTimeRemaining = 10
+    @State private var isHovering: Bool = false
+    @State private var timeRemaining = 10
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
-    public var dateValue: String? {
-        guard let date = model.lastUpdate else {
+    private var dateValue: String? {
+        guard let date = lastUpdate else {
             return nil
         }
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: date)
     }
-    
+
     var body: some View {
         HStack {
-            if let lastUpdate = dateValue {
-                Text("Last updated at: \(lastUpdate)")
+            if let date = dateValue {
+                Text("Last updated at: \(date)")
                     .transition(.opacity.animation(.easeInOut(duration: 0.35).delay(0.2)))
                     .foregroundColor(.gray)
                     .onHover { hovering in
@@ -39,20 +39,18 @@ struct LastUpdateMessageView: View {
                         if timeRemaining > 0 {
                             timeRemaining -= 1
                         }
-                        
+
                         if timeRemaining <= 0 {
                             timeRemaining = initialTimeRemaining
-                            Task(priority: .background) {
-                                await model.fetch()
-                            }
+                            networkState = .fetching
                         }
                     }
             } else {
                 LastUpdateMessagePlaceholderView()
             }
-            
+
             Spacer()
-            
+
 #if os(macOS)
             if #available(macOS 14.0, *) {
                 SettingsLink {
@@ -71,7 +69,7 @@ struct LastUpdateMessageView: View {
         .font(.system(size: 10))
         .padding()
     }
-    
+
     func openSettings() {
 #if os(macOS)
         if #available(macOS 13.0, *) {
@@ -100,6 +98,6 @@ extension Bundle {
 
 struct LastUpdateMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        LastUpdateMessageView()
+        LastUpdateMessageView(lastUpdate: .constant(Date.now), networkState: .constant(.idle))
     }
 }

@@ -11,7 +11,7 @@ import Defaults
 import SwiftUI
 import Boutique
 
-public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
+struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
     internal init(id: String, name: String, image: Data? = nil, group: String, url: URL, hasUpdatedSinceLaunch: Bool = false) {
         self.id = id
         self.name = name
@@ -21,17 +21,17 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
         self.hasUpdatedSinceLaunch = hasUpdatedSinceLaunch
     }
     
-    public var id: String
-    public var name: String
-    public var image: Data?
-    public var group: String
-    public var url: URL
-    public var hasUpdatedSinceLaunch: Bool = false
-
-    public static func ==(lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
+    var id: String
+    var name: String
+    var image: Data?
+    var group: String
+    var url: URL
+    var hasUpdatedSinceLaunch: Bool = false
+    
+    static func ==(lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
         return lhs.id == rhs.id
     }
-
+    
     enum CodingKeys: CodingKey {
         case id
         case name
@@ -39,10 +39,10 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
         case group
         case url
     }
-
-    public init(from decoder: Decoder) throws {
+    
+    init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer<LaunchpadRepo.CodingKeys> = try decoder.container(keyedBy: LaunchpadRepo.CodingKeys.self)
-
+        
         self.id = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.id)
         self.name = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.name)
         self.image = try container.decodeIfPresent(Data.self, forKey: LaunchpadRepo.CodingKeys.image)
@@ -53,10 +53,10 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
             self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
         }
     }
-
-    public func encode(to encoder: Encoder) throws {
+    
+    func encode(to encoder: Encoder) throws {
         var container: KeyedEncodingContainer<LaunchpadRepo.CodingKeys> = encoder.container(keyedBy: LaunchpadRepo.CodingKeys.self)
-
+        
         try container.encode(self.id, forKey: LaunchpadRepo.CodingKeys.id)
         try container.encode(self.name, forKey: LaunchpadRepo.CodingKeys.name)
         try container.encodeIfPresent(self.image, forKey: LaunchpadRepo.CodingKeys.image)
@@ -65,32 +65,32 @@ public struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
     }
 }
 
-public extension Store where Item == LaunchpadRepo {
+extension Store where Item == LaunchpadRepo {
     static let launchpadStore = Store<LaunchpadRepo>(
         storage: SQLiteStorageEngine.default(appendingPath: "LaunchpadRepos"),
         cacheIdentifier: \.id
     )
 }
 
-public class LaunchpadController: ObservableObject {
+class LaunchpadController: ObservableObject {
     @Stored(in: .launchpadStore) var contributedRepos
-
-    public init(launchpads: Store<LaunchpadRepo> = .launchpadStore) {
+    
+    init(launchpads: Store<LaunchpadRepo> = .launchpadStore) {
         self._contributedRepos = Stored(in: launchpads)
     }
-
+    
     func addRepo(repo: LaunchpadRepo) async {
         try? await self.$contributedRepos.insert(repo)
     }
-
-
+    
+    
     func removeRepo(repo: LaunchpadRepo) async {
         try? await self.$contributedRepos.remove(repo)
     }
-
-
+    
+    
     func clearAllRepos() async {
         try? await self.$contributedRepos.removeAll()
     }
-
+    
 }

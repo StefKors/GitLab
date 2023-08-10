@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-public struct PipelineView: View {
-    public var stages: [FluffyNode?]
+ struct PipelineView: View {
+     var stages: [FluffyNode?]
 
-    public init (stages: [FluffyNode?]) {
+     init (stages: [FluffyNode?]) {
         self.stages = stages
     }
 
-    public var body: some View {
+     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             ForEach(stages.indices, id: \.self) { index in
                 if let stage = stages[index] {

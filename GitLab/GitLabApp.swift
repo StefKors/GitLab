@@ -12,11 +12,14 @@ import SwiftData
 struct GitLabApp: App {
     @StateObject var networkManager = NetworkManager()
 
+    let container = try! ModelContainer(for: [Account.self, MergeRequest.self])
+
     var body: some Scene {
         MenuBarExtra(content: {
             MenubarContentView()
                 .environmentObject(self.networkManager)
                 .environmentObject(self.networkManager.noticeState)
+                .modelContainer(container)
         }, label: {
             Label(title: {
                 Text("GitLab Desktop")
@@ -24,7 +27,7 @@ struct GitLabApp: App {
                 Image("Icon-Gradients-PNG")
             })
         })
-        .modelContainer(for: Account.self)
+
         .menuBarExtraStyle(.window)
         
         Settings {
@@ -32,6 +35,6 @@ struct GitLabApp: App {
                 .environmentObject(self.networkManager)
                 .environmentObject(self.networkManager.noticeState)
         }
-        .modelContainer(for: Account.self)
+        .modelContainer(container)
     }
 }

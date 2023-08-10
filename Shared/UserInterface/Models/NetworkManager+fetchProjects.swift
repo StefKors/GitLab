@@ -8,10 +8,9 @@
 import Foundation
 import Get
 import SwiftUI
-import Defaults
 
 extension NetworkManager {
-    public func fetchProjects(ids: [Int]) async {
+     func fetchProjects(ids: [Int]) async {
         do {
             let projectIds: String = ids.map { id in
                 return "\"gid://gitlab/Project/\(id)\""
@@ -57,8 +56,8 @@ extension NetworkManager {
         }
     }
 
-    public func updateDict(_ targetProject: TargetProject) {
+     func updateDict(_ targetProject: TargetProject) {
         self.addLaunchpadProject(targetProject)
-        self.targetProjectsDict[targetProject.id] = targetProject
+        // self.targetProjectsDict[targetProject.id] = targetProject
     }
 }

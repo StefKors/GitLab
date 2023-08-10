@@ -11,79 +11,84 @@ import SwiftUI
 import Defaults
 
 extension NetworkManager {
-    public func fetchAuthoredMergeRequests() async {
+     func fetchAuthoredMergeRequests() async  -> [MergeRequest]? {
         do {
             print("fetch: start fetchAuthoredMergeRequests")
-            let beforeApprovedByDict = authoredMergeRequests.approvedByDict
+            // let beforeApprovedByDict = authoredMergeRequests.approvedByDict
             let response: GitLabQuery = try await client.send(authoredMergeRequestsReq).value
 
-            await MainActor.run {
-                // MARK: - Handle Notifications
-                let newMergeRequests = response.authoredMergeRequests
-                let newApproveByDict = newMergeRequests.approvedByDict
-
-                if beforeApprovedByDict != newApproveByDict {
-                    for (reference, newAuthors) in newApproveByDict {
-                        let beforeAuthors = (beforeApprovedByDict[reference] ?? [])
-
-                        let diff = newAuthors.difference(from: beforeAuthors)
-                        // MARK: - Notification Approved MRs
-                        let approvers = diff.insertions.insertedElements.compactMap({ $0.name })
-                        if !approvers.isEmpty,
-                           let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
-                           let url = eventMR.webURL,
-                           let title = eventMR.title,
-                           let headPipeline = eventMR.headPipeline,
-                           let jsonData = try? JSONEncoder().encode(headPipeline) {
-
-                            let userInfo = [
-                                "OPEN_URL" : url.absoluteString,
-                                "PIPELINE_STATUS": jsonData
-                            ] as [String : Any]
-                            NotificationManager.shared.sendNotification(
-                                title: title,
-                                subtitle: "\(reference) is approved by \(approvers.formatted())",
-                                userInfo: userInfo
-                            )
-
-                        }
-
-                        // MARK: - Notification Revoked MRs
-                        let revokers = diff.removals.removedElements.compactMap({ $0.name })
-                        if !revokers.isEmpty,
-                           let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
-                           let url = eventMR.webURL,
-                           let title = eventMR.title,
-                           let headPipeline = eventMR.headPipeline,
-                           let jsonData = try? JSONEncoder().encode(headPipeline) {
-
-                            let userInfo = [
-                                "OPEN_URL" : url.absoluteString,
-                                "PIPELINE_STATUS": jsonData
-                            ] as [String : Any]
-                            NotificationManager.shared.sendNotification(
-                                title: title,
-                                subtitle: "\(reference) approval revoked by \(revokers.formatted())",
-                                userInfo: userInfo
-                            )
-
-                        }
-                    }
-                }
-
-                // MARK: - Update published values
-                // queryResponse = response
-                print("fetch: updated data fetchAuthoredMergeRequests")
-                authoredMergeRequests = newMergeRequests
-                lastUpdate = .now
-                noticeState.clearNetworkNotices()
-
-                for mr in response.authoredMergeRequests {
-                    if let project = mr.targetProject {
-                        addLaunchpadProject(project)
-                    }
-                }
+            return response.authoredMergeRequests.map { mr in
+                mr.type = .authoredMergeRequests
+                return mr
             }
+
+            // await MainActor.run {
+                // // MARK: - Handle Notifications
+                // let newMergeRequests = response.authoredMergeRequests
+                // let newApproveByDict = newMergeRequests.approvedByDict
+                // 
+                // if beforeApprovedByDict != newApproveByDict {
+                //     for (reference, newAuthors) in newApproveByDict {
+                //         let beforeAuthors = (beforeApprovedByDict[reference] ?? [])
+                // 
+                //         let diff = newAuthors.difference(from: beforeAuthors)
+                //         // MARK: - Notification Approved MRs
+                //         let approvers = diff.insertions.insertedElements.compactMap({ $0.name })
+                //         if !approvers.isEmpty,
+                //            let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
+                //            let url = eventMR.webURL,
+                //            let title = eventMR.title,
+                //            let headPipeline = eventMR.headPipeline,
+                //            let jsonData = try? JSONEncoder().encode(headPipeline) {
+                // 
+                //             let userInfo = [
+                //                 "OPEN_URL" : url.absoluteString,
+                //                 "PIPELINE_STATUS": jsonData
+                //             ] as [String : Any]
+                //             NotificationManager.shared.sendNotification(
+                //                 title: title,
+                //                 subtitle: "\(reference) is approved by \(approvers.formatted())",
+                //                 userInfo: userInfo
+                //             )
+                // 
+                //         }
+                // 
+                //         // MARK: - Notification Revoked MRs
+                //         let revokers = diff.removals.removedElements.compactMap({ $0.name })
+                //         if !revokers.isEmpty,
+                //            let eventMR = newMergeRequests.first(where: { $0.reference == reference }),
+                //            let url = eventMR.webURL,
+                //            let title = eventMR.title,
+                //            let headPipeline = eventMR.headPipeline,
+                //            let jsonData = try? JSONEncoder().encode(headPipeline) {
+                // 
+                //             let userInfo = [
+                //                 "OPEN_URL" : url.absoluteString,
+                //                 "PIPELINE_STATUS": jsonData
+                //             ] as [String : Any]
+                //             NotificationManager.shared.sendNotification(
+                //                 title: title,
+                //                 subtitle: "\(reference) approval revoked by \(revokers.formatted())",
+                //                 userInfo: userInfo
+                //             )
+                // 
+                //         }
+                //     }
+                // }
+                // 
+                // // MARK: - Update published values
+                // // queryResponse = response
+                // print("fetch: updated data fetchAuthoredMergeRequests")
+                // authoredMergeRequests = newMergeRequests
+                // lastUpdate = .now
+                // noticeState.clearNetworkNotices()
+                // 
+                // for mr in response.authoredMergeRequests {
+                //     if let project = mr.targetProject {
+                //         addLaunchpadProject(project)
+                //     }
+                // }
+            // }
         } catch APIError.unacceptableStatusCode(let statusCode) {
             // Handle Bad GitLab Reponse
             let warningNotice = NoticeMessage(
@@ -105,5 +110,7 @@ extension NetworkManager {
 
             print("\(Date.now) Fetch fetchAuthoredMergeRequests failed with unexpected error: \(error).")
         }
+
+         return nil
     }
 }

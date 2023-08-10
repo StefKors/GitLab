@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Stef Kors on 26/07/2022.
 //
@@ -8,25 +8,27 @@
 import Foundation
 import Get
 import SwiftUI
-import Defaults
 
 extension NetworkManager {
-    public func fetchReviewRequestedMergeRequests() async {
+    func fetchReviewRequestedMergeRequests() async -> [MergeRequest]? {
         do {
             print("fetch: start fetchReviewRequestedMergeRequests")
-            let beforeMergeRequests = reviewRequestedMergeRequests
-          
             let response: GitLabQuery = try await client.send(reviewRequestedMergeRequestsReq).value
-            await MainActor.run {
-                // MARK: - Update published values
-                if beforeMergeRequests.isEmpty || (beforeMergeRequests != response.reviewRequestedMergeRequests) {
-                    // queryResponse = response
-                    reviewRequestedMergeRequests = response.reviewRequestedMergeRequests
-                    lastUpdate = .now
-                    print("fetch: updated data fetchReviewRequestedMergeRequests")
-                    noticeState.clearNetworkNotices()
-                }
+            return response.reviewRequestedMergeRequests.map { mr in
+                mr.type = .reviewRequestedMergeRequests
+                return mr
             }
+
+            // await MainActor.run {
+            //     // MARK: - Update published values
+            //     if beforeMergeRequests.isEmpty || (beforeMergeRequests != response.reviewRequestedMergeRequests) {
+            //         // queryResponse = response
+            //         reviewRequestedMergeRequests = response.reviewRequestedMergeRequests
+            //         lastUpdate = .now
+            //         print("fetch: updated data fetchReviewRequestedMergeRequests")
+            //         noticeState.clearNetworkNotices()
+            //     }
+            // }
         } catch APIError.unacceptableStatusCode(let statusCode) {
             // Handle Bad GitLab Reponse
             let warningNotice = NoticeMessage(
@@ -48,5 +50,6 @@ extension NetworkManager {
 
             print("\(Date.now) Fetch fetchReviewRequestedMergeRequests failed with unexpected error: \(error).")
         }
+        return nil
     }
 }

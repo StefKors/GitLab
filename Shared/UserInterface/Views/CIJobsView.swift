@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct CIJobsView: View {
+ struct CIJobsView: View {
     var stage: FluffyNode
     @State var presentPopover: Bool = false
     @State var isHovering: Bool = false
@@ -15,11 +15,11 @@ public struct CIJobsView: View {
 
     @EnvironmentObject  var model: NetworkManager
 
-    public init(stage: FluffyNode) {
+     init(stage: FluffyNode) {
         self.stage = stage
     }
 
-    public var body: some View {
+     var body: some View {
         HStack {
             CIStatusView(status: stage.status?.toPipelineStatus())
                 .onTapGesture {

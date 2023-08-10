@@ -3,14 +3,13 @@
 //
 
 import Foundation
-import Defaults
 
 // MARK: - GitLabQuery
-public struct GitLabQuery: Codable, Defaults.Serializable, Equatable {
-    public let data: DataClass?
+struct GitLabQuery: Codable, Equatable {
+    let data: DataClass?
 }
 
-public extension GitLabQuery {
+extension GitLabQuery {
     var authoredMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
             return edge.node
@@ -29,101 +28,16 @@ public extension GitLabQuery {
 }
 
 // MARK: - DataClass
-public struct DataClass: Codable, Defaults.Serializable, Equatable {
-    public let currentUser: CurrentUser?
-    public let user: CurrentUser?
+struct DataClass: Codable, Equatable {
+    let currentUser: CurrentUser?
+    let user: CurrentUser?
 }
 
 // MARK: - CurrentUser
-public struct CurrentUser: Codable, Defaults.Serializable, Equatable {
-    public let name: String?
-    public let authoredMergeRequests: AuthoredMergeRequests?
-    public let reviewRequestedMergeRequests: ReviewRequestedMergeRequests?
-}
-
-// MARK: - MergeRequest
-public struct MergeRequest: Codable, Defaults.Serializable, Equatable {
-    public let id, title: String?
-    public let state: MergeRequestState?
-    public let draft: Bool?
-    public let webURL: URL?
-    public let mergeStatusEnum: MergeStatus?
-    public let approvedBy: ApprovedMergeRequests?
-    public let userDiscussionsCount: Int?
-    public let userNotesCount: Int?
-    public let headPipeline: HeadPipeline?
-    public let reference: String?
-    public let targetProject: TargetProject?
-
-    enum CodingKeys: String, CodingKey {
-        case state, id, title, draft
-        case webURL = "webUrl"
-        case reference, targetProject, approvedBy, mergeStatusEnum, userDiscussionsCount, userNotesCount, headPipeline
-    }
-
-    public init(id: String?, title: String?, state: MergeRequestState?, draft: Bool?, webURL: URL?, mergeStatusEnum: MergeStatus?, approvedBy: ApprovedMergeRequests?, userDiscussionsCount: Int?, userNotesCount: Int?, headPipeline: HeadPipeline?, reference: String?, targetProject: TargetProject?) {
-        self.id = id
-        self.title = title
-        self.state = state
-        self.draft = draft
-        self.webURL = webURL
-        self.mergeStatusEnum = mergeStatusEnum
-        self.approvedBy = approvedBy
-        self.userDiscussionsCount = userDiscussionsCount
-        self.userNotesCount = userNotesCount
-        self.headPipeline = headPipeline
-        self.reference = reference
-        self.targetProject = targetProject
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container: KeyedDecodingContainer<MergeRequest.CodingKeys> = try decoder.container(keyedBy: MergeRequest.CodingKeys.self)
-        
-        self.state = try container.decodeIfPresent(MergeRequestState.self, forKey: MergeRequest.CodingKeys.state)
-        self.id = try container.decodeIfPresent(String.self, forKey: MergeRequest.CodingKeys.id)
-        self.title = try container.decodeIfPresent(String.self, forKey: MergeRequest.CodingKeys.title)
-        self.draft = try container.decodeIfPresent(Bool.self, forKey: MergeRequest.CodingKeys.draft)
-        self.webURL = try container.decodeURLWithEncodingIfPresent(forKey: MergeRequest.CodingKeys.webURL)
-        self.reference = try container.decodeIfPresent(String.self, forKey: MergeRequest.CodingKeys.reference)
-        self.targetProject = try container.decodeIfPresent(TargetProject.self, forKey: MergeRequest.CodingKeys.targetProject)
-        self.approvedBy = try container.decodeIfPresent(ApprovedMergeRequests.self, forKey: MergeRequest.CodingKeys.approvedBy)
-        self.mergeStatusEnum = try container.decodeIfPresent(MergeStatus.self, forKey: MergeRequest.CodingKeys.mergeStatusEnum)
-        self.userDiscussionsCount = try container.decodeIfPresent(Int.self, forKey: MergeRequest.CodingKeys.userDiscussionsCount)
-        self.userNotesCount = try container.decodeIfPresent(Int.self, forKey: MergeRequest.CodingKeys.userNotesCount)
-        self.headPipeline = try container.decodeIfPresent(HeadPipeline.self, forKey: MergeRequest.CodingKeys.headPipeline)
-        
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container: KeyedEncodingContainer<MergeRequest.CodingKeys> = encoder.container(keyedBy: MergeRequest.CodingKeys.self)
-        
-        try container.encodeIfPresent(self.state, forKey: MergeRequest.CodingKeys.state)
-        try container.encodeIfPresent(self.id, forKey: MergeRequest.CodingKeys.id)
-        try container.encodeIfPresent(self.title, forKey: MergeRequest.CodingKeys.title)
-        try container.encodeIfPresent(self.draft, forKey: MergeRequest.CodingKeys.draft)
-        try container.encodeIfPresent(self.webURL, forKey: MergeRequest.CodingKeys.webURL)
-        try container.encodeIfPresent(self.reference, forKey: MergeRequest.CodingKeys.reference)
-        try container.encodeIfPresent(self.targetProject, forKey: MergeRequest.CodingKeys.targetProject)
-        try container.encodeIfPresent(self.approvedBy, forKey: MergeRequest.CodingKeys.approvedBy)
-        try container.encodeIfPresent(self.mergeStatusEnum, forKey: MergeRequest.CodingKeys.mergeStatusEnum)
-        try container.encodeIfPresent(self.userDiscussionsCount, forKey: MergeRequest.CodingKeys.userDiscussionsCount)
-        try container.encodeIfPresent(self.userNotesCount, forKey: MergeRequest.CodingKeys.userNotesCount)
-        try container.encodeIfPresent(self.headPipeline, forKey: MergeRequest.CodingKeys.headPipeline)
-    }
-}
-
-extension BidirectionalCollection where Element == MergeRequest {
-    /// Goes through all merge requests and returns the approvedBy authors
-    /// - Returns: in the format of `["!4": [Author]]`
-    public var approvedByDict: [String: [Author]] {
-        var beforeDict: [String: [Author]] = [:]
-        self.forEach({ mr in
-            guard let id = mr.reference else { return }
-            let approved = mr.approvedBy?.edges?.compactMap({ $0.node })
-            beforeDict[id] = approved
-        })
-        return beforeDict
-    }
+struct CurrentUser: Codable, Equatable {
+    let name: String?
+    let authoredMergeRequests: AuthoredMergeRequests?
+    let reviewRequestedMergeRequests: ReviewRequestedMergeRequests?
 }
 
 extension BidirectionalCollection where Element == CollectionDifference<Author>.Change {
@@ -148,23 +62,23 @@ extension BidirectionalCollection where Element == CollectionDifference<Author>.
     }
 }
 
-public struct Author: Codable, Defaults.Serializable, Equatable {
-    public let id, name, username: String?
-    public let avatarUrl: URL?
+struct Author: Codable, Equatable {
+    let id, name, username: String?
+    let avatarUrl: URL?
 
     enum CodingKeys: String, CodingKey {
         case id, name, username
         case avatarUrl = "avatarUrl"
     }
 
-    public init(id: String?, name: String?, username: String?, avatarUrl: URL?) {
+    init(id: String?, name: String?, username: String?, avatarUrl: URL?) {
         self.id = id
         self.name = name
         self.username = username
         self.avatarUrl = avatarUrl
     }
-    
-    public init(from decoder: Decoder) throws {
+
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Author.CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
@@ -175,24 +89,24 @@ public struct Author: Codable, Defaults.Serializable, Equatable {
 }
 
 /// (same as Author above ^ but with int for id
-public struct EventAuthor: Codable, Defaults.Serializable, Equatable {
-    public let id: Int?
-    public let name, username: String?
-    public let avatarUrl: URL?
+struct EventAuthor: Codable, Equatable {
+    let id: Int?
+    let name, username: String?
+    let avatarUrl: URL?
 
     enum CodingKeys: String, CodingKey {
         case id, name, username
         case avatarUrl = "avatarUrl"
     }
 
-    public init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
+    init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
         self.id = id
         self.name = name
         self.username = username
         self.avatarUrl = avatarUrl
     }
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: EventAuthor.CodingKeys.self)
         self.id = try container.decodeIfPresent(Int.self, forKey: .id)
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
@@ -203,44 +117,44 @@ public struct EventAuthor: Codable, Defaults.Serializable, Equatable {
 }
 
 // MARK: - ApprovedMergeRequestsEdge
-public struct ApprovedMergeRequestsEdge: Codable, Defaults.Serializable, Equatable {
-    public let node: Author?
+struct ApprovedMergeRequestsEdge: Codable, Equatable {
+    let node: Author?
 }
 
 // MARK: - ApprovedMergeRequests
-public struct ApprovedMergeRequests: Codable, Defaults.Serializable, Equatable {
-    public let edges: [ApprovedMergeRequestsEdge]?
+struct ApprovedMergeRequests: Codable, Equatable {
+    let edges: [ApprovedMergeRequestsEdge]?
 }
 
 // MARK: - AuthoredMergeRequestsEdge
-public struct AuthoredMergeRequestsEdge: Codable, Defaults.Serializable, Equatable {
-    public let node: MergeRequest?
+struct AuthoredMergeRequestsEdge: Codable, Equatable {
+    let node: MergeRequest?
 }
 
 // MARK: - AuthoredMergeRequests
-public struct AuthoredMergeRequests: Codable, Defaults.Serializable, Equatable {
-    public let edges: [AuthoredMergeRequestsEdge]?
+struct AuthoredMergeRequests: Codable, Equatable {
+    let edges: [AuthoredMergeRequestsEdge]?
 }
 
 // MARK: - ReviewRequestedMergeRequests
-public struct ReviewRequestedMergeRequests: Codable, Defaults.Serializable, Equatable {
-    public let edges: [ReviewRequestedMergeRequestsEdge]?
+struct ReviewRequestedMergeRequests: Codable, Equatable {
+    let edges: [ReviewRequestedMergeRequestsEdge]?
 }
 
 // MARK: - ReviewRequestedMergeRequestsEdge
-public struct ReviewRequestedMergeRequestsEdge: Codable, Defaults.Serializable, Equatable {
-    public let node: MergeRequest?
+struct ReviewRequestedMergeRequestsEdge: Codable, Equatable {
+    let node: MergeRequest?
 }
 
 // MARK: - JobsEdge
-public struct JobsEdge: Codable, Defaults.Serializable, Equatable {
-    public let node: HeadPipeline?
+struct JobsEdge: Codable, Equatable {
+    let node: HeadPipeline?
 }
 
 
 // MARK: - Jobs
-public struct Jobs: Codable, Defaults.Serializable, Equatable {
-    public let edges: [JobsEdge]?
+struct Jobs: Codable, Equatable {
+    let edges: [JobsEdge]?
 }
 
 extension Jobs {
@@ -262,11 +176,11 @@ extension Jobs {
 }
 
 // MARK: - FluffyNode
-public struct FluffyNode: Codable, Defaults.Serializable, Equatable {
-    public let id: String?
-    public let status: StageStatusType?
-    public let name: String?
-    public let jobs: Jobs?
+struct FluffyNode: Codable, Equatable {
+    let id: String?
+    let status: StageStatusType?
+    let name: String?
+    let jobs: Jobs?
 }
 
 extension FluffyNode {
@@ -300,13 +214,13 @@ extension FluffyNode {
 }
 
 // MARK: - StagesEdge
-public struct StagesEdge: Codable, Defaults.Serializable, Equatable {
-    public let node: FluffyNode?
+struct StagesEdge: Codable, Equatable {
+    let node: FluffyNode?
 }
 
 // MARK: - Stages
-public struct Stages: Codable, Defaults.Serializable, Equatable {
-    public let edges: [StagesEdge]?
+struct Stages: Codable, Equatable {
+    let edges: [StagesEdge]?
 }
 
 extension Stages {
@@ -315,14 +229,14 @@ extension Stages {
 }
 
 // MARK: - HeadPipeline
-public struct HeadPipeline: Codable, Defaults.Serializable, Equatable {
-    public let id: String?
-    public let active: Bool?
-    public let status: PipelineStatus?
-    public let stages: Stages?
-    public let name: String?
-    public let detailedStatus: DetailedStatus?
-    public let mergeRequestEventType: MergeRequestEventType?
+struct HeadPipeline: Codable, Equatable {
+    let id: String?
+    let active: Bool?
+    let status: PipelineStatus?
+    let stages: Stages?
+    let name: String?
+    let detailedStatus: DetailedStatus?
+    let mergeRequestEventType: MergeRequestEventType?
 }
 
 extension HeadPipeline {
@@ -405,9 +319,9 @@ extension HeadPipeline {
 }
 
 // MARK: - DetailedStatus
-public struct DetailedStatus: Codable, Defaults.Serializable, Equatable {
-    public let id: String?
-    public let detailsPath: String?
+struct DetailedStatus: Codable, Equatable {
+    let id: String?
+    let detailsPath: String?
 }
 
 extension DetailedStatus {
@@ -415,15 +329,15 @@ extension DetailedStatus {
 }
 
 // MARK: - TargetProject
-public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable, Identifiable {
-    public let id: String
-    public let name, path: String?
-    public let webURL: URL?
-    public let avatarUrl: URL?
-    public let namespace: NameSpace?
-    public let repository: Repository?
-    public let group: Group?
-    public let fetchedAvatarData: Data?
+struct TargetProject: Codable, Equatable, Hashable, Identifiable {
+    let id: String
+    let name, path: String?
+    let webURL: URL?
+    let avatarUrl: URL?
+    let namespace: NameSpace?
+    let repository: Repository?
+    let group: Group?
+    let fetchedAvatarData: Data?
 
     enum CodingKeys: String, CodingKey {
         case id, name, path
@@ -435,7 +349,7 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
         case fetchedAvatarData
     }
 
-    public init(id: String, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
+    init(id: String, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
         self.id = id
         self.name = name
         self.path = path
@@ -447,13 +361,13 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
         self.fetchedAvatarData = fetchedAvatarData
     }
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
-        
+
         self.id = try container.decode(String.self, forKey: .id)
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
         self.path = try container.decodeIfPresent(String.self, forKey: .path)
-        self.webURL = try container.decodeURLWithEncodingIfPresent(forKey: .webURL)
+        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
         self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
         self.namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
         self.repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
@@ -463,10 +377,10 @@ public struct TargetProject: Codable, Defaults.Serializable, Equatable, Hashable
 }
 
 // MARK: - NameSpace
-public struct NameSpace: Codable, Defaults.Serializable, Equatable, Hashable, Identifiable {
-    public let id: String
-    public let fullPath: String
-    public let fullName: String
+struct NameSpace: Codable, Equatable, Hashable, Identifiable {
+    let id: String
+    let fullPath: String
+    let fullName: String
 
     enum CodingKeys: String, CodingKey {
         case id, fullPath, fullName
@@ -474,9 +388,9 @@ public struct NameSpace: Codable, Defaults.Serializable, Equatable, Hashable, Id
 }
 
 // MARK: - Repository
-public struct Repository: Codable, Defaults.Serializable, Equatable, Hashable {
+struct Repository: Codable, Equatable, Hashable {
     /// Main Branch
-    public let rootRef: String?
+    let rootRef: String?
 
     enum CodingKeys: String, CodingKey {
         case rootRef = "rootRef"
@@ -484,16 +398,16 @@ public struct Repository: Codable, Defaults.Serializable, Equatable, Hashable {
 }
 
 // MARK: - Group
-public struct Group: Codable, Defaults.Serializable, Equatable, Hashable {
-    public let id, name, fullName, fullPath: String?
-    public let webURL: URL?
+struct Group: Codable, Equatable, Hashable {
+    let id, name, fullName, fullPath: String?
+    let webURL: URL?
 
     enum CodingKeys: String, CodingKey {
         case id, name, fullName, fullPath
         case webURL = "webUrl"
     }
 
-    public init(id: String?, name: String?, fullName: String?, fullPath: String?, webURL: URL?) {
+    init(id: String?, name: String?, fullName: String?, fullPath: String?, webURL: URL?) {
         self.id = id
         self.name = name
         self.fullName = fullName
@@ -501,7 +415,7 @@ public struct Group: Codable, Defaults.Serializable, Equatable, Hashable {
         self.webURL = webURL
     }
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decodeIfPresent(String.self, forKey: .id)
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
@@ -513,7 +427,7 @@ public struct Group: Codable, Defaults.Serializable, Equatable, Hashable {
 }
 
 // MARK: - PipelineStatus
-public enum PipelineStatus: String, Codable, Defaults.Serializable, Equatable {
+enum PipelineStatus: String, Codable, Equatable {
     /// Pipeline has been created.
     case created = "CREATED"
     /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
@@ -539,7 +453,7 @@ public enum PipelineStatus: String, Codable, Defaults.Serializable, Equatable {
 }
 
 // MARK: - MergeStatus
-public enum MergeStatus: String, Codable, Defaults.Serializable, Equatable {
+enum MergeStatus: String, Codable, Equatable {
     case cannotBeMerged = "CANNOT_BE_MERGED"
     case cannotBeMergedRecheck = "CANNOT_BE_MERGED_RECHECK"
     case canBeMerged = "CAN_BE_MERGED"
@@ -548,7 +462,7 @@ public enum MergeStatus: String, Codable, Defaults.Serializable, Equatable {
 }
 
 // MARK: - MergeRequestState
-public enum MergeRequestState: String, Codable, Defaults.Serializable, Equatable {
+enum MergeRequestState: String, Codable, Equatable {
     case merged = "merged"
     case opened = "opened"
     case closed = "closed"
@@ -557,7 +471,7 @@ public enum MergeRequestState: String, Codable, Defaults.Serializable, Equatable
 }
 
 // MARK: - MergeRequestEventType
-public enum MergeRequestEventType: String, Codable, Defaults.Serializable, Equatable {
+enum MergeRequestEventType: String, Codable, Equatable {
     /// Pipeline run on the changes from the source branch combined with the target branch.
     case mergedResult = "MERGED_RESULT"
     /// Pipeline run on the changes in the merge request source branch.
@@ -566,7 +480,7 @@ public enum MergeRequestEventType: String, Codable, Defaults.Serializable, Equat
     case mergeTrain = "MERGE_TRAIN"
 }
 
-public enum StageStatusType: String, Codable, Defaults.Serializable, Equatable {
+enum StageStatusType: String, Codable, Equatable {
     /// Pipeline has been created.
     case created = "created"
     /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
@@ -590,13 +504,13 @@ public enum StageStatusType: String, Codable, Defaults.Serializable, Equatable {
     /// Pipeline is scheduled to run.
     case scheduled = "scheduled"
 
-    public func toPipelineStatus() -> PipelineStatus? {
+    func toPipelineStatus() -> PipelineStatus? {
         PipelineStatus(rawValue: self.rawValue.uppercased())
     }
 }
 
 // MARK: - ProjectImageResponse
-public struct ProjectImageResponse: Codable, Defaults.Serializable, Equatable, Hashable {
+struct ProjectImageResponse: Codable, Equatable, Hashable {
     let fileName, filePath: String?
     let size: Int?
     let encoding, contentSha256, ref, blobID: String?

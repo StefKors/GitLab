@@ -38,9 +38,9 @@ struct LaunchpadView: View {
         .scrollIndicators(.hidden)
         .conditionalScrollBounce()
         .padding(.leading)
-        .onReceive(launchpadController.$contributedRepos.$items, perform: {
-            // We can even create complex pipelines, for example filtering all notes bigger than a tweet
-            self.repos = $0
-        })
+        // .onReceive(launchpadController.$contributedRepos.$items, perform: {
+        //     // We can even create complex pipelines, for example filtering all notes bigger than a tweet
+        //     self.repos = $0
+        // })
     }
 }

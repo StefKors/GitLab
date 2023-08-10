@@ -8,13 +8,21 @@
 import SwiftUI
 import SwiftData
 
+enum GitProvider: String, Codable, CaseIterable {
+    case GitLab
+}
+
 @Model final class Account {
+    @Attribute(.unique) var id: UUID
     var token: String
     var instance: String
+    var provider: GitProvider
 
-    init(token: String, instance: String) {
+    init(token: String, instance: String, provider: GitProvider = .GitLab) {
+        self.id = UUID()
         self.token = token
         self.instance = instance
+        self.provider = provider
     }
 }
 
