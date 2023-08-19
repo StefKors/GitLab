@@ -94,6 +94,12 @@
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8AE024872A91128C000548D7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
+		8AE024882A91128C000548D7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4142865C1480054C601 /* SwiftUI.framework */; };
+		8AE0248B2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */; };
+		8AE0248D2A91128C000548D7 /* GitLabDesktopWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */; };
+		8AE0248F2A911290000548D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE0248E2A911290000548D7 /* Assets.xcassets */; };
+		8AE024942A911290000548D7 /* GitLabDesktopWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
@@ -267,6 +273,13 @@
 			remoteGlobalIDString = 8A5FC0F526EFD08E004136AB;
 			remoteInfo = GitLab;
 		};
+		8AE024922A911290000548D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A5FC0EE26EFD08E004136AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8AE024852A91128C000548D7;
+			remoteInfo = GitLabDesktopWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -276,6 +289,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8AE024942A911290000548D7 /* GitLabDesktopWidgetExtension.appex in Embed Foundation Extensions */,
 				8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -343,6 +357,12 @@
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GitLabDesktopWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidgetBundle.swift; sourceTree = "<group>"; };
+		8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidget.swift; sourceTree = "<group>"; };
+		8AE0248E2A911290000548D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AE024902A911290000548D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE024912A911290000548D7 /* GitLabDesktopWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitLabDesktopWidget.entitlements; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+repoLaunchPad.swift"; sourceTree = "<group>"; };
 		8AF80CE12A55817400819B80 /* LaunchpadState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchpadState.swift; sourceTree = "<group>"; };
@@ -469,6 +489,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AE024832A91128C000548D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE024882A91128C000548D7 /* SwiftUI.framework in Frameworks */,
+				8AE024872A91128C000548D7 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -554,6 +583,7 @@
 				8A13B85D2A66A3E30090A6D9 /* Credits.rtf */,
 				8AF80BE92A5580E700819B80 /* Shared */,
 				8A07E5672890492C0042EACB /* README.md */,
+				8AE024892A91128C000548D7 /* GitLabDesktopWidget */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A31CB3B2866334000C94AC1 /* GitLab iOS */,
@@ -577,6 +607,7 @@
 				8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */,
 				8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */,
 				8A36AF102869B4110008B949 /* NotificationContent.appex */,
+				8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -639,6 +670,18 @@
 				8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AE024892A91128C000548D7 /* GitLabDesktopWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */,
+				8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */,
+				8AE0248E2A911290000548D7 /* Assets.xcassets */,
+				8AE024902A911290000548D7 /* Info.plist */,
+				8AE024912A911290000548D7 /* GitLabDesktopWidget.entitlements */,
+			);
+			path = GitLabDesktopWidget;
 			sourceTree = "<group>";
 		};
 		8AF80BE92A5580E700819B80 /* Shared */ = {
@@ -879,6 +922,7 @@
 			);
 			dependencies = (
 				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
+				8AE024932A911290000548D7 /* PBXTargetDependency */,
 			);
 			name = GitLab;
 			packageProductDependencies = (
@@ -927,13 +971,30 @@
 			productReference = 8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8AE024852A91128C000548D7 /* GitLabDesktopWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AE024972A911290000548D7 /* Build configuration list for PBXNativeTarget "GitLabDesktopWidgetExtension" */;
+			buildPhases = (
+				8AE024822A91128C000548D7 /* Sources */,
+				8AE024832A91128C000548D7 /* Frameworks */,
+				8AE024842A91128C000548D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GitLabDesktopWidgetExtension;
+			productName = GitLabDesktopWidgetExtension;
+			productReference = 8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8A5FC0EE26EFD08E004136AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
@@ -960,6 +1021,9 @@
 					8A5FC11526EFD08F004136AB = {
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 8A5FC0F526EFD08E004136AB;
+					};
+					8AE024852A91128C000548D7 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -989,6 +1053,7 @@
 				8A31CB482866334100C94AC1 /* GitLab iOSTests */,
 				8A31CB522866334100C94AC1 /* GitLab iOSUITests */,
 				8A36AF0F2869B4110008B949 /* NotificationContent */,
+				8AE024852A91128C000548D7 /* GitLabDesktopWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1047,6 +1112,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AE024842A91128C000548D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE0248F2A911290000548D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1306,6 +1379,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AE024822A91128C000548D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE0248B2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift in Sources */,
+				8AE0248D2A91128C000548D7 /* GitLabDesktopWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1333,6 +1415,11 @@
 			isa = PBXTargetDependency;
 			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
 			targetProxy = 8A5FC11726EFD08F004136AB /* PBXContainerItemProxy */;
+		};
+		8AE024932A911290000548D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8AE024852A91128C000548D7 /* GitLabDesktopWidgetExtension */;
+			targetProxy = 8AE024922A911290000548D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1858,6 +1945,71 @@
 			};
 			name = Release;
 		};
+		8AE024952A911290000548D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = GitLabDesktopWidget/GitLabDesktopWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GitLabDesktopWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GitLabDesktopWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.GitLabDesktopWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8AE024962A911290000548D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = GitLabDesktopWidget/GitLabDesktopWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GitLabDesktopWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GitLabDesktopWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.GitLabDesktopWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1929,6 +2081,15 @@
 			buildConfigurations = (
 				8A5FC12626EFD08F004136AB /* Debug */,
 				8A5FC12726EFD08F004136AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AE024972A911290000548D7 /* Build configuration list for PBXNativeTarget "GitLabDesktopWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AE024952A911290000548D7 /* Debug */,
+				8AE024962A911290000548D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
