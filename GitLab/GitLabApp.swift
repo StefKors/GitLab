@@ -33,15 +33,16 @@ import SwiftData
 
 @main
 struct GitLabApp: App {
-    @StateObject var networkManager = NetworkManager()
+    // Non-Persisted state objects
+    @StateObject private var noticeState = NoticeState()
 
-    let container = try! ModelContainer(for: [Account.self, MergeRequest.self])
+    // Persistance objects
+    let container = try! ModelContainer(for: [Account.self, MergeRequest.self, LaunchpadRepo.self])
 
     var body: some Scene {
         MenuBarExtra(content: {
-            MenubarContentView()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+            UserInterface()
+                .environmentObject(self.noticeState)
                 .modelContainer(container)
         }, label: {
             Label(title: {
@@ -55,8 +56,7 @@ struct GitLabApp: App {
         
         Settings {
             SettingsView()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+                .environmentObject(self.noticeState)
         }
         .modelContainer(container)
     }

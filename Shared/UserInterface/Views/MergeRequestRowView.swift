@@ -11,7 +11,7 @@ struct MergeRequestRowView: View {
     var MR: MergeRequest
     var macOSUI: some View {
         VStack(alignment: .leading, spacing: 5) {
-            TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webURL)
+            TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl)
                 .multilineTextAlignment(.leading)
                 .truncationMode(.middle)
                 .padding(.trailing)

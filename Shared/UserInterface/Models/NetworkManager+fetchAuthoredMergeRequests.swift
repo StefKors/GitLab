@@ -8,16 +8,17 @@
 import Foundation
 import Get
 import SwiftUI
-import Defaults
 
 extension NetworkManager {
-     func fetchAuthoredMergeRequests() async  -> [MergeRequest]? {
-        do {
+    func fetchAuthoredMergeRequests(with account: Account) async throws -> [MergeRequest]? {
+        // do {
             print("fetch: start fetchAuthoredMergeRequests")
+            let client = APIClient(baseURL: URL(string: "\(account.instance)/api"))
             // let beforeApprovedByDict = authoredMergeRequests.approvedByDict
-            let response: GitLabQuery = try await client.send(authoredMergeRequestsReq).value
+            let response: GitLabQuery = try await client.send(authoredMergeRequestsReq(with: account)).value
 
             return response.authoredMergeRequests.map { mr in
+                // mr.id = UUID().uuidString
                 mr.type = .authoredMergeRequests
                 return mr
             }
@@ -89,28 +90,28 @@ extension NetworkManager {
                 //     }
                 // }
             // }
-        } catch APIError.unacceptableStatusCode(let statusCode) {
-            // Handle Bad GitLab Reponse
-            let warningNotice = NoticeMessage(
-                label: "Recieved \(statusCode) from API, data might be out of date",
-                statusCode: statusCode,
-                type: .warning
-            )
-            noticeState.addNotice(notice: warningNotice)
-        } catch {
-            // Handle Offline Notice
-            let isGitLabReachable = reachable(host: self.$baseURL.wrappedValue)
-            if isGitLabReachable == false {
-                let informationNotice = NoticeMessage(
-                    label: "Unable to reach \(self.$baseURL.wrappedValue)",
-                    type: .network
-                )
-                noticeState.addNotice(notice: informationNotice)
-            }
-
-            print("\(Date.now) Fetch fetchAuthoredMergeRequests failed with unexpected error: \(error).")
-        }
-
-         return nil
+        // } catch APIError.unacceptableStatusCode(let statusCode) {
+        //     // Handle Bad GitLab Reponse
+        //     let warningNotice = NoticeMessage(
+        //         label: "Recieved \(statusCode) from API, data might be out of date",
+        //         statusCode: statusCode,
+        //         type: .warning
+        //     )
+        //     noticeState.addNotice(notice: warningNotice)
+        // } catch {
+        //     // Handle Offline Notice
+        //     let isGitLabReachable = reachable(host: self.$baseURL.wrappedValue)
+        //     if isGitLabReachable == false {
+        //         let informationNotice = NoticeMessage(
+        //             label: "Unable to reach \(self.$baseURL.wrappedValue)",
+        //             type: .network
+        //         )
+        //         noticeState.addNotice(notice: informationNotice)
+        //     }
+        // 
+        //     print("\(Date.now) Fetch fetchAuthoredMergeRequests failed with unexpected error: \(error).")
+        // }
+        // 
+        //  return nil
     }
 }

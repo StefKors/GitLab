@@ -7,11 +7,10 @@
 
 
 import Foundation
-import Defaults
 import SwiftUI
-import Boutique
+import SwiftData
 
-struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
+@Model final class LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
     internal init(id: String, name: String, image: Data? = nil, group: String, url: URL, hasUpdatedSinceLaunch: Bool = false) {
         self.id = id
         self.name = name
@@ -21,12 +20,12 @@ struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
         self.hasUpdatedSinceLaunch = hasUpdatedSinceLaunch
     }
     
-    var id: String
+    @Attribute(.unique) var id: String
     var name: String
     var image: Data?
     var group: String
     var url: URL
-    var hasUpdatedSinceLaunch: Bool = false
+    var hasUpdatedSinceLaunch: Bool
     
     static func ==(lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
         return lhs.id == rhs.id
@@ -63,34 +62,4 @@ struct LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
         try container.encode(self.group, forKey: LaunchpadRepo.CodingKeys.group)
         try container.encode(self.url, forKey: LaunchpadRepo.CodingKeys.url)
     }
-}
-
-extension Store where Item == LaunchpadRepo {
-    static let launchpadStore = Store<LaunchpadRepo>(
-        storage: SQLiteStorageEngine.default(appendingPath: "LaunchpadRepos"),
-        cacheIdentifier: \.id
-    )
-}
-
-class LaunchpadController: ObservableObject {
-    @Stored(in: .launchpadStore) var contributedRepos
-    
-    init(launchpads: Store<LaunchpadRepo> = .launchpadStore) {
-        self._contributedRepos = Stored(in: launchpads)
-    }
-    
-    func addRepo(repo: LaunchpadRepo) async {
-        try? await self.$contributedRepos.insert(repo)
-    }
-    
-    
-    func removeRepo(repo: LaunchpadRepo) async {
-        try? await self.$contributedRepos.remove(repo)
-    }
-    
-    
-    func clearAllRepos() async {
-        try? await self.$contributedRepos.removeAll()
-    }
-    
 }

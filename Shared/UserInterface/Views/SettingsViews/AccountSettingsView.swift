@@ -17,7 +17,6 @@ struct AlertDetails: Identifiable {
 
  struct AccountSettingsView: View {
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject  var model: NetworkManager
 
     @AppStorage("apiToken") var apiToken: String = ""
     @AppStorage("baseURL") var baseURL: String = "https://gitlab.com"

@@ -12,17 +12,17 @@ struct GitLabQuery: Codable, Equatable {
 extension GitLabQuery {
     var authoredMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.authoredMergeRequests?.edges?.compactMap({ edge in
-            return edge.node
+            return MergeRequest(edge.node)
         }) ?? self.data?.user?.authoredMergeRequests?.edges?.compactMap({ edge in
-            return edge.node
+            return MergeRequest(edge.node)
         }) ?? []
     }
 
     var reviewRequestedMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
-            return edge.node
+            return MergeRequest(edge.node)
         }) ?? self.data?.user?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
-            return edge.node
+            return MergeRequest(edge.node)
         }) ?? []
     }
 }
@@ -128,7 +128,7 @@ struct ApprovedMergeRequests: Codable, Equatable {
 
 // MARK: - AuthoredMergeRequestsEdge
 struct AuthoredMergeRequestsEdge: Codable, Equatable {
-    let node: MergeRequest?
+    let node: MergeRequestCodable?
 }
 
 // MARK: - AuthoredMergeRequests
@@ -143,7 +143,7 @@ struct ReviewRequestedMergeRequests: Codable, Equatable {
 
 // MARK: - ReviewRequestedMergeRequestsEdge
 struct ReviewRequestedMergeRequestsEdge: Codable, Equatable {
-    let node: MergeRequest?
+    let node: MergeRequestCodable?
 }
 
 // MARK: - JobsEdge

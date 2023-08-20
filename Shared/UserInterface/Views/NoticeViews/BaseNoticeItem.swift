@@ -119,7 +119,8 @@ import SwiftUI
 }
 
 struct BaseNoticeItem_Previews: PreviewProvider {
-    static let networkManager = NetworkManager()
+    // static let networkManager = NetworkManager()
+    static let noticeState = NoticeState()
     static var previews: some View {
         VStack(spacing: 25) {
             BaseNoticeItem(notice: .previewInformationNotice)
@@ -154,7 +155,7 @@ struct BaseNoticeItem_Previews: PreviewProvider {
         }
         .padding()
         .frame(height: 400)
-        .environmentObject(self.networkManager)
-        .environmentObject(self.networkManager.noticeState)
+        // .environmentObject(self.networkManager)
+        .environmentObject(self.noticeState)
     }
 }

@@ -21,10 +21,7 @@ extension View {
 }
 
 struct LaunchpadView: View {
-    @StateObject var launchpadController: LaunchpadController
-    @State private var repos: [LaunchpadRepo] = []
-
-    @State private var selectedView: Int = 0
+    let repos: [LaunchpadRepo]
 
     var body: some View {
         ScrollView(.horizontal) {
@@ -38,9 +35,5 @@ struct LaunchpadView: View {
         .scrollIndicators(.hidden)
         .conditionalScrollBounce()
         .padding(.leading)
-        // .onReceive(launchpadController.$contributedRepos.$items, perform: {
-        //     // We can even create complex pipelines, for example filtering all notes bigger than a tweet
-        //     self.repos = $0
-        // })
     }
 }

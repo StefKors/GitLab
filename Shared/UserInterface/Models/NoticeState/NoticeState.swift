@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Defaults
 
 class NoticeState: ObservableObject {
     @Published  var notices: [NoticeMessage] = [] {

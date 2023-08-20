@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Defaults
 import CachedAsyncImage
 
 struct LaunchpadItem: View {

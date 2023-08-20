@@ -24,7 +24,6 @@
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
-		8A7935B92A55827600F8FB6C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935B82A55827600F8FB6C /* Defaults */; };
 		8A7935BC2A55830D00F8FB6C /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
 		8A7935BE2A55830F00F8FB6C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36AF142869B4110008B949 /* NotificationViewController.swift */; };
 		8A7935C02A55837500F8FB6C /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* Structs.swift */; };
@@ -84,7 +83,6 @@
 		8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
 		8A7935FB2A5583F700F8FB6C /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FA2A5583F700F8FB6C /* Get */; };
 		8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */; };
-		8A7935FF2A5583FD00F8FB6C /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FE2A5583FD00F8FB6C /* Boutique */; };
 		8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
@@ -212,10 +210,8 @@
 		8AF80DCD2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
 		8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
 		8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
-		8AF80DD42A55819300819B80 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD32A55819300819B80 /* Defaults */; };
 		8AF80DD72A5581A600819B80 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD62A5581A600819B80 /* Get */; };
 		8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD92A5581B700819B80 /* CachedAsyncImage */; };
-		8AF80DDD2A5581C400819B80 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DDC2A5581C400819B80 /* Boutique */; };
 		8AFDAA982A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
 		8AFDAA992A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
 		8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
@@ -234,7 +230,6 @@
 		8AFDAACD2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
 		8AFDAACE2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
 		8AFDAACF2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
-		8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,7 +421,6 @@
 		8AFDAAC42A850793001937AC /* AccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRow.swift; sourceTree = "<group>"; };
 		8AFDAAC82A85112E001937AC /* GitProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProviderView.swift; sourceTree = "<group>"; };
 		8AFDAACC2A85231F001937AC /* MergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequest.swift; sourceTree = "<group>"; };
-		8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,11 +449,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7935B92A55827600F8FB6C /* Defaults in Frameworks */,
 				8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */,
 				8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */,
 				8A36AF112869B4110008B949 /* UserNotifications.framework in Frameworks */,
-				8A7935FF2A5583FD00F8FB6C /* Boutique in Frameworks */,
 				8A7935FB2A5583F700F8FB6C /* Get in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,8 +462,6 @@
 			files = (
 				8AF80DD72A5581A600819B80 /* Get in Frameworks */,
 				8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */,
-				8AF80DD42A55819300819B80 /* Defaults in Frameworks */,
-				8AF80DDD2A5581C400819B80 /* Boutique in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +606,6 @@
 			isa = PBXGroup;
 			children = (
 				8A5FC0F926EFD08E004136AB /* GitLabApp.swift */,
-				8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
 				8A5FC10626EFD08F004136AB /* GitLab.entitlements */,
@@ -710,7 +699,6 @@
 			children = (
 				8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */,
 				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
-				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
 				8AF80CE72A55817400819B80 /* Structs.swift */,
 				8AF80CE62A55817400819B80 /* NetworkManager.swift */,
 				8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */,
@@ -824,6 +812,7 @@
 			children = (
 				8AFDAA972A84FB26001937AC /* Account.swift */,
 				8AFDAACC2A85231F001937AC /* MergeRequest.swift */,
+				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -900,10 +889,8 @@
 			);
 			name = NotificationContent;
 			packageProductDependencies = (
-				8A7935B82A55827600F8FB6C /* Defaults */,
 				8A7935FA2A5583F700F8FB6C /* Get */,
 				8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */,
-				8A7935FE2A5583FD00F8FB6C /* Boutique */,
 			);
 			productName = NotificationContent;
 			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
@@ -926,10 +913,8 @@
 			);
 			name = GitLab;
 			packageProductDependencies = (
-				8AF80DD32A55819300819B80 /* Defaults */,
 				8AF80DD62A5581A600819B80 /* Get */,
 				8AF80DD92A5581B700819B80 /* CachedAsyncImage */,
-				8AF80DDC2A5581C400819B80 /* Boutique */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* GitLab.app */;
@@ -1037,10 +1022,8 @@
 			);
 			mainGroup = 8A5FC0ED26EFD08E004136AB;
 			packageReferences = (
-				8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */,
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
-				8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -1340,7 +1323,6 @@
 				8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
 				8AF80DAB2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
 				8AF80D272A55817400819B80 /* PushEvents.swift in Sources */,
-				8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */,
 				8AF80D662A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80DA22A55817400819B80 /* RefreshStatus.swift in Sources */,
 				8AF80DBD2A55817400819B80 /* TitleWebLink.swift in Sources */,
@@ -2097,14 +2079,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Defaults.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -2121,22 +2095,9 @@
 				minimumVersion = 2.1.1;
 			};
 		};
-		8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mergesort/Boutique.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A7935B82A55827600F8FB6C /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
 		8A7935FA2A5583F700F8FB6C /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
@@ -2147,16 +2108,6 @@
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
 		};
-		8A7935FE2A5583FD00F8FB6C /* Boutique */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */;
-			productName = Boutique;
-		};
-		8AF80DD32A55819300819B80 /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
 		8AF80DD62A5581A600819B80 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
@@ -2166,11 +2117,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
-		};
-		8AF80DDC2A5581C400819B80 /* Boutique */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */;
-			productName = Boutique;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

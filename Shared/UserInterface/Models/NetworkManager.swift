@@ -23,29 +23,8 @@ enum RequestError: Error {
     case sessionError(error: Error)
 }
 
-class NetworkManager: ObservableObject {
-    // Subview States: Use with @EnvironmentObject
-    var noticeState = NoticeState()
-    var launchpadState: LaunchpadController
-    
-    // Stored App State:
-    @AppStorage("apiToken") static var storedToken: String = ""
-    @AppStorage("baseURL") var baseURL: String = "https://gitlab.com"
-    
-    var apiToken: String {
-        return Self.storedToken.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-    
-    // Not Persisted AppState
-    @Published  var lastUpdate: Date?
-    @Published  var tokenExpired: Bool = false
-    
-    init(launchState: LaunchpadController = .init()) {
-        self.launchpadState = launchState
-#if canImport(AppKit)
-        NSApplication.shared.dockTile.showsApplicationBadge = false
-#endif
-    }
+class NetworkManager {
+    static let shared = NetworkManager()
     
     /// https://gitlab.com/-/graphql-explorer
     /// Return query for a the "currentUser"
@@ -73,48 +52,35 @@ class NetworkManager: ObservableObject {
     fileprivate static func buildQuery(target: String, type: QueryType) -> String {
         "query { \(target) { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath } } } } } } } } } } } } }"
     }
-    
-    
-    
-    var client: APIClient {
-        APIClient(baseURL: URL(string: "\(baseURL)/api"))
-    }
-    var branchPushReq: Request<PushEvents> {
+
+    func branchPushReq(with account: Account) -> Request<PushEvents> {
         Request.init(path: "/v4/events", query: [
             ("after", "2022-06-25"),
             ("scope", "read_user"),
             ("action", "pushed"),
-            ("private_token", apiToken)
+            ("private_token", account.token)
         ])
     }
     
-    var authoredMergeRequestsReq: Request<GitLabQuery> {
+    func authoredMergeRequestsReq(with account: Account) -> Request<GitLabQuery> {
         Request.init(path: "/graphql", method: .post, query: [
             ("query", Self.getQuery(.authoredMergeRequests)),
-            ("private_token", apiToken)
+            ("private_token", account.token)
         ])
     }
     
-    var reviewRequestedMergeRequestsReq: Request<GitLabQuery> {
+    func reviewRequestedMergeRequestsReq(with account: Account) -> Request<GitLabQuery> {
         Request.init(path: "/graphql", method: .post, query: [
             ("query", Self.getQuery(.reviewRequestedMergeRequests)),
-            ("private_token", apiToken)
+            ("private_token", account.token)
         ])
     }
     
-    // uses custom delegate to handle correctly encoding url path
-    var launchPadClient: APIClient {
-        APIClient(configuration: APIClient.Configuration(
-            baseURL: URL(string: baseURL),
-            delegate: LaunchPadClientDelegate()
-        ))
-    }
-    
-    func fetch() async {
+    func fetch(with account: Account) async throws {
         /// Parallel?
         // await fetchLatestBranchPush()
-        await fetchAuthoredMergeRequests()
-        await fetchReviewRequestedMergeRequests()
+        // try await fetchAuthoredMergeRequests(with: account)
+        // try await fetchReviewRequestedMergeRequests(with: account)
     }
     
     func validateToken(instance: String, token: String) async -> AccessToken? {

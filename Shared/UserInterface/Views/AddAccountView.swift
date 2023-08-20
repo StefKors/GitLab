@@ -17,7 +17,6 @@ fileprivate enum SubmitState {
 struct AddAccountView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject  var network: NetworkManager
 
     @State private var token: String = ""
     @State private var instance: String = "https://www.gitlab.com"
@@ -108,7 +107,7 @@ struct AddAccountView: View {
                 self.state = .validating
             }
 
-            if let validatedToken = await network.validateToken(instance: instance, token: token) {
+            if let validatedToken = await NetworkManager.shared.validateToken(instance: instance, token: token) {
                 withAnimation {
                     self.state = .success(token: validatedToken)
                 }

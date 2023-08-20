@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Defaults
 import SwiftUI
 
-struct NoticeMessage: Codable, Defaults.Serializable, Equatable, Hashable, Identifiable  {
+struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
     var id: UUID
     var label: String
     var statusCode: Int?
