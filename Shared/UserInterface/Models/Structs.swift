@@ -72,7 +72,7 @@ struct Author: Codable, Equatable {
     }
 
     init(id: String?, name: String?, username: String?, avatarUrl: URL?) {
-        self.id = id
+        self.id = id ?? UUID().uuidString
         self.name = name
         self.username = username
         self.avatarUrl = avatarUrl
@@ -100,7 +100,7 @@ struct EventAuthor: Codable, Equatable {
     }
 
     init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
-        self.id = id
+        self.id = id ?? Int.random(in: 0...999999)
         self.name = name
         self.username = username
         self.avatarUrl = avatarUrl
@@ -181,6 +181,13 @@ struct FluffyNode: Codable, Equatable {
     let status: StageStatusType?
     let name: String?
     let jobs: Jobs?
+
+    init(id: String?, status: StageStatusType?, name: String?, jobs: Jobs?) {
+        self.id = id ?? UUID().uuidString
+        self.status = status
+        self.name = name
+        self.jobs = jobs
+    }
 }
 
 extension FluffyNode {
@@ -237,6 +244,24 @@ struct HeadPipeline: Codable, Equatable {
     let name: String?
     let detailedStatus: DetailedStatus?
     let mergeRequestEventType: MergeRequestEventType?
+
+    init(
+        id: String?,
+        active: Bool?,
+        status: PipelineStatus?,
+        stages: Stages?,
+        name: String?,
+        detailedStatus: DetailedStatus?,
+        mergeRequestEventType: MergeRequestEventType?
+    ) {
+        self.id = id ?? UUID().uuidString
+        self.active = active
+        self.status = status
+        self.stages = stages
+        self.name = name
+        self.detailedStatus = detailedStatus
+        self.mergeRequestEventType = mergeRequestEventType
+    }
 }
 
 extension HeadPipeline {
@@ -322,6 +347,11 @@ extension HeadPipeline {
 struct DetailedStatus: Codable, Equatable {
     let id: String?
     let detailsPath: String?
+
+    init(id: String?, detailsPath: String?) {
+        self.id = id ?? UUID().uuidString
+        self.detailsPath = detailsPath
+    }
 }
 
 extension DetailedStatus {
@@ -350,7 +380,7 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
     }
 
     init(id: String, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
-        self.id = id
+        self.id = id ?? UUID().uuidString
         self.name = name
         self.path = path
         self.webURL = webURL
@@ -385,6 +415,12 @@ struct NameSpace: Codable, Equatable, Hashable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case id, fullPath, fullName
     }
+
+    init(id: String, fullPath: String, fullName: String) {
+        self.id = id ?? UUID().uuidString
+        self.fullPath = fullPath
+        self.fullName = fullName
+    }
 }
 
 // MARK: - Repository
@@ -408,7 +444,7 @@ struct Group: Codable, Equatable, Hashable {
     }
 
     init(id: String?, name: String?, fullName: String?, fullPath: String?, webURL: URL?) {
-        self.id = id
+        self.id = id ?? UUID().uuidString
         self.name = name
         self.fullName = fullName
         self.fullPath = fullPath

@@ -37,7 +37,7 @@ struct GitLabApp: App {
     @StateObject private var noticeState = NoticeState()
 
     // Persistance objects
-    let container = try! ModelContainer(for: [Account.self, MergeRequest.self, LaunchpadRepo.self])
+    let container = try! ModelContainer(for: Account.self, MergeRequest.self, LaunchpadRepo.self)
 
     var body: some Scene {
         MenuBarExtra(content: {

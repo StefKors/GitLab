@@ -98,6 +98,10 @@
 		8AE0248D2A91128C000548D7 /* GitLabDesktopWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */; };
 		8AE0248F2A911290000548D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE0248E2A911290000548D7 /* Assets.xcassets */; };
 		8AE024942A911290000548D7 /* GitLabDesktopWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AE024DB2A92457C000548D7 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE024DA2A92457C000548D7 /* Get */; };
+		8AE024DD2A92457C000548D7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE024DC2A92457C000548D7 /* CachedAsyncImage */; };
+		8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
+		8AE024DF2A924731000548D7 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
@@ -428,6 +432,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE024DB2A92457C000548D7 /* Get in Frameworks */,
+				8AE024DD2A92457C000548D7 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +840,8 @@
 			);
 			name = "GitLab iOS";
 			packageProductDependencies = (
+				8AE024DA2A92457C000548D7 /* Get */,
+				8AE024DC2A92457C000548D7 /* CachedAsyncImage */,
 			);
 			productName = "GitLab iOS";
 			productReference = 8A31CB3A2866334000C94AC1 /* GitLab iOS.app */;
@@ -1125,6 +1133,7 @@
 				8AF80D792A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8AF80D372A55817400819B80 /* Structs.swift in Sources */,
 				8AF80D7F2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
+				8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D9A2A55817400819B80 /* AccountSettingsView.swift in Sources */,
 				8AF80D3D2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AF80DB82A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
@@ -1159,6 +1168,7 @@
 				8AF80D732A55817400819B80 /* DiscussionCountIcon.swift in Sources */,
 				8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */,
 				8AF80D942A55817400819B80 /* SettingsView.swift in Sources */,
+				8AE024DF2A924731000548D7 /* URL.swift in Sources */,
 				8AF80D852A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
 				8AFDAA992A84FB26001937AC /* Account.swift in Sources */,
 				8AF80D912A55817400819B80 /* BaseTextView.swift in Sources */,
@@ -2104,6 +2114,16 @@
 			productName = Get;
 		};
 		8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
+			productName = CachedAsyncImage;
+		};
+		8AE024DA2A92457C000548D7 /* Get */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
+			productName = Get;
+		};
+		8AE024DC2A92457C000548D7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;

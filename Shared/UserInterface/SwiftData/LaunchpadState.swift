@@ -51,6 +51,7 @@ import SwiftData
         } else {
             self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
         }
+        self.hasUpdatedSinceLaunch = false
     }
     
     func encode(to encoder: Encoder) throws {

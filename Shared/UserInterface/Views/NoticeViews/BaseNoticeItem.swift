@@ -78,10 +78,10 @@ import SwiftUI
             .padding()
         }
         .modifier(NoticeTypeBackground(notice: notice))
+#if os(macOS)
         // TODO: fix on ios
         .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
         // .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
-#if os(macOS)
 #endif
     }
 
@@ -128,6 +128,7 @@ struct BaseNoticeItem_Previews: PreviewProvider {
             BaseNoticeItem(notice: .previewErrorNotice)
             BaseNoticeItem(notice: .previewBranchPushNotice)
             Button("generate") {
+#if os(macOS)
                 do {
                     let renderView = BaseNoticeItem(notice: .previewBranchPushNotice)
                         .padding(.bottom)
@@ -151,6 +152,7 @@ struct BaseNoticeItem_Previews: PreviewProvider {
                 } catch {
                     print("error \(error.localizedDescription)")
                 }
+#endif
             }
         }
         .padding()

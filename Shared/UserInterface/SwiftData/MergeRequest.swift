@@ -10,9 +10,8 @@ import SwiftData
 
 // MARK: - MergeRequest
 @Model final class MergeRequest {
-    // this ID is failing with SwiftData
-    // var id: String
-    var mergerequestID: String?
+    @Attribute(.unique) var id: UUID
+    @Attribute(.unique) var mergerequestID: String?
     var title: String?
     var state: MergeRequestState?
     var draft: Bool?
@@ -21,7 +20,8 @@ import SwiftData
     var approvedBy: ApprovedMergeRequests?
     var userDiscussionsCount: Int?
     var userNotesCount: Int?
-    var headPipeline: HeadPipeline?
+    // TODO: Fix otherwise crash
+    @Transient var headPipeline: HeadPipeline?
     var reference: String?
     var targetProject: TargetProject?
     var type: QueryType?
@@ -41,7 +41,7 @@ import SwiftData
         targetProject: TargetProject? = nil,
         type: QueryType? = nil
     ) {
-        // self.id = UUID().uuidString
+        self.id = UUID()
         self.mergerequestID = mergerequestID
         self.title = title
         self.state = state

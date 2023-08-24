@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct GitLab_iOSApp: App {
-    @StateObject var networkManager = NetworkManager()
+    // Non-Persisted state objects
+    @StateObject private var noticeState = NoticeState()
+
+    // Persistance objects
+    let container = try! ModelContainer(for: [Account.self, MergeRequest.self, LaunchpadRepo.self])
 
     var body: some Scene {
         WindowGroup {
             UserInterface()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+                .environmentObject(self.noticeState)
+                .modelContainer(container)
         }
     }
 }
