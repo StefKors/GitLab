@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import UserNotifications
+// import UserNotifications
 import SwiftData
 
 struct AlertDetails: Identifiable {
@@ -64,13 +64,13 @@ struct AlertDetails: Identifiable {
                 // .presentationContentInteraction(.resizes)
             })
 
-            Section("Notifications") {
-                HStack {
-                    Text("Clear all Notifications")
-                    Spacer()
-                    Button("Clear", action: clearNotifications)
-                }
-            }
+            // Section("Notifications") {
+            //     HStack {
+            //         Text("Clear all Notifications")
+            //         Spacer()
+            //         Button("Clear", action: clearNotifications)
+            //     }
+            // }
         }
         .formStyle(.grouped)
         .alert(
@@ -111,27 +111,27 @@ struct AlertDetails: Identifiable {
         showingAlert.toggle()
     }
 
-    func clearNotifications() {
-        let notifs = UNUserNotificationCenter.current()
-        notifs.getDeliveredNotifications { delivereds in
-            for delivered in delivereds {
-                print("has delivered notif \(delivered.description)")
-            }
-        }
-
-        notifs.getPendingNotificationRequests { pendings in
-            for pending in pendings {
-                print("has pending notif \(pending.description)")
-            }
-        }
-
-        notifs.removeAllDeliveredNotifications()
-        if #available(macOS 13.0, *) {
-            notifs.setBadgeCount(0) { error in
-                print("error? \(String(describing: error?.localizedDescription))")
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-    }
+    // func clearNotifications() {
+    //     let notifs = UNUserNotificationCenter.current()
+    //     notifs.getDeliveredNotifications { delivereds in
+    //         for delivered in delivereds {
+    //             print("has delivered notif \(delivered.description)")
+    //         }
+    //     }
+    // 
+    //     notifs.getPendingNotificationRequests { pendings in
+    //         for pending in pendings {
+    //             print("has pending notif \(pending.description)")
+    //         }
+    //     }
+    // 
+    //     notifs.removeAllDeliveredNotifications()
+    //     if #available(macOS 13.0, *) {
+    //         notifs.setBadgeCount(0) { error in
+    //             print("error? \(String(describing: error?.localizedDescription))")
+    //         }
+    //     } else {
+    //         // Fallback on earlier versions
+    //     }
+    // }
 }

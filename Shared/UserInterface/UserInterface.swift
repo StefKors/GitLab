@@ -20,6 +20,8 @@ enum NetworkState: String, Codable, CaseIterable, Identifiable {
 /// TODO: show assigned issues
 /// TODO: widget?
 /// TODO: timeline view updates
+/// TODO: Reinstate clear notifications setting
+/// TODO: Split networking
 struct UserInterface: View {
     @Environment(\.modelContext) private var modelContext
 
@@ -45,87 +47,91 @@ struct UserInterface: View {
     @State private var startDate: Date = .now
 
     var body: some View {
-        TimelineView(.periodic(from: startDate, by: 12)) { context in
-            //     AnalogTimerView(
-            //         date: context.date,
-            //         showSeconds: context.cadence <= .seconds)
+        VStack {
+            Text("accounts: \(accounts.count)")
+            Text("mergeRequests: \(mergeRequests.count)")
 
-            ZStack(alignment: .topTrailing) {
-                LazyVStack(alignment: .center, spacing: 10) {
-                    Text(context.date, format: .dateTime)
-                    // Text(context.cadence )
+            TimelineView(.periodic(from: startDate, by: 12)) { context in
+                //     AnalogTimerView(
+                //         date: context.date,
+                //         showSeconds: context.cadence <= .seconds)
 
-                    // if network.apiToken.isEmpty {
-                    //     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
-                    // } else if network.tokenExpired {
-                    //     BaseTextView(message: "Token Expired")
-                    // } else {
-                    Picker(selection: $selectedView, content: {
-                        Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
-                        Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
-                    }, label: {
-                        EmptyView()
-                    }).pickerStyle(.segmented)
-                        .padding(.horizontal)
-                        .padding(.top)
-                        .padding(.bottom, 0)
+                ZStack(alignment: .topTrailing) {
+                    LazyVStack(alignment: .center, spacing: 10) {
+                        Text(context.date, format: .dateTime)
+                        // Text(context.cadence )
 
-                    LaunchpadView(repos: repos)
+                        // if network.apiToken.isEmpty {
+                        //     BaseTextView(message: "No Token Found, Add Gitlab Token in Preferences")
+                        // } else if network.tokenExpired {
+                        //     BaseTextView(message: "Token Expired")
+                        // } else {
+                        Picker(selection: $selectedView, content: {
+                            Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
+                            Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
+                        }, label: {
+                            EmptyView()
+                        }).pickerStyle(.segmented)
+                            .padding(.horizontal)
+                            .padding(.top)
+                            .padding(.bottom, 0)
 
-                    // Disabled in favor for real notifications`
-                    NoticeListView()
-                        .padding(.horizontal)
+                        LaunchpadView(repos: repos)
 
-                    if mergeRequests.isEmpty {
-                        BaseTextView(message: "All done 🥳")
-                    }
+                        // Disabled in favor for real notifications`
+                        NoticeListView()
+                            .padding(.horizontal)
 
-                    VStack(alignment: .leading) {
-                        List(mergeRequests) { mergeRequest in
-                            MergeRequestRowView(MR: mergeRequest)
-                                .padding(.bottom, 4)
-                                .listRowSeparator(.visible)
-                                .listRowSeparatorTint(Color.secondary.opacity(0.2))
-                            // .id(mergeRequests[index].id)
-                            // let isLast = index == mergeRequests.count - 1
-                            // if !isLast {
-                            // Divider()
-                            // }
+                        if accounts.isEmpty {
+                            BaseTextView(message: "Setup your accounts in the settings")
+                        } else if mergeRequests.isEmpty {
+                            BaseTextView(message: "All done 🥳")
                         }
-                        // .padding(.horizontal)
-                        // .listStyle(.bordered)
+
+                        VStack(alignment: .leading) {
+                            List(mergeRequests, id: \.id) { mergeRequest in
+                                MergeRequestRowView(MR: mergeRequest)
+                                    .padding(.bottom, 4)
+                                    .listRowSeparator(.visible)
+                                    .listRowSeparatorTint(Color.secondary.opacity(0.2))
+                                // .id(mergeRequests[index].id)
+                                // let isLast = index == mergeRequests.count - 1
+                                // if !isLast {
+                                // Divider()
+                                // }
+                            }
+                            // .padding(.horizontal)
+                            // .listStyle(.bordered)
+                        }
+                        // }
+                        Text(context.date, format: Date.FormatStyle(date: .long, time: .shortened))
+                        LastUpdateMessageView(lastUpdate: $lastUpdate, networkState: $networkState)
                     }
+                    .task(id: context.date) {
+                        print("task: date update & fetch")
+                        // try? modelContext.delete(model: MergeRequest.self)
+                        // print("OK DB cleared !")
+                        await fetchReviewRequestedMRs()
+                        await fetchAuthoredMRs()
+                    }
+                    // .onAppear {
+                    //     try? modelContext.delete(model: MergeRequest.self)
+                    //     print("OK Groups cleared !")
                     // }
-                    Text("\(lastUpdate?.debugDescription ?? "nil")")
-                    LastUpdateMessageView(lastUpdate: $lastUpdate, networkState: $networkState)
+                    // .task(id: networkState) {
+                    //     // await fetchReviewRequestedMRs()
+                    //     // await fetchAuthoredMRs()
+                    //     lastUpdate = .now
+                    //     networkState = .idle
+                    // }
+                    // .onAppear {
+                    //     Task(priority: .background) {
+                    //         await network.fetch()
+                    //     }
+                    // }
                 }
-                .task(id: context.date) {
-                    print("task: date update")
-                }
-                .task {
-                    print("task: fetch")
-                    // try? modelContext.delete(model: MergeRequest.self)
-                    // print("OK DB cleared !")
-                    await fetchReviewRequestedMRs()
-                    await fetchAuthoredMRs()
-                }
-                // .onAppear {
-                //     try? modelContext.delete(model: MergeRequest.self)
-                //     print("OK Groups cleared !")
-                // }
-                // .task(id: networkState) {
-                //     // await fetchReviewRequestedMRs()
-                //     // await fetchAuthoredMRs()
-                //     lastUpdate = .now
-                //     networkState = .idle
-                // }
-                // .onAppear {
-                //     Task(priority: .background) {
-                //         await network.fetch()
-                //     }
-                // }
+                .frame(width: 500)
             }
-            .frame(width: 500)
         }
     }
 
@@ -135,11 +141,11 @@ struct UserInterface: View {
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
             let results = try? await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)
+            print("fetch review results: \(results?.count)")
             if let results {
                 for result in results {
                     withAnimation {
                         modelContext.insert(result)
-
                     }
                 }
             }
@@ -150,6 +156,7 @@ struct UserInterface: View {
     private func fetchAuthoredMRs() async {
         for account in accounts {
             let results = try? await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)
+            print("fetch authored results: \(results?.count)")
             if let results {
                 for result in results {
                     withAnimation {
@@ -170,3 +177,5 @@ struct UserInterface: View {
 //             .environmentObject(self.networkManager.noticeState)
 //     }
 // }
+
+

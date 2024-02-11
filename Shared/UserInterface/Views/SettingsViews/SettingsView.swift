@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
-// import Cocoa
+import SwiftData
 
- struct SettingsView: View {
+struct SettingsView: View {
+    // Persistance objects
     private enum Tabs: Hashable {
         case Account
     }
 
-     init() { }
+    init() { }
 
-     var body: some View {
+    var body: some View {
         TabView {
             AccountSettingsView()
                 .tabItem {

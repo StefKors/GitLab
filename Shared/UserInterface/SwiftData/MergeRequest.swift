@@ -8,10 +8,16 @@
 import SwiftUI
 import SwiftData
 
+extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
+}
+
 // MARK: - MergeRequest
 @Model final class MergeRequest {
-    @Attribute(.unique) var id: UUID
-    @Attribute(.unique) var mergerequestID: String?
+    @Attribute(.unique) var id: String
     var title: String?
     var state: MergeRequestState?
     var draft: Bool?
@@ -27,7 +33,7 @@ import SwiftData
     var type: QueryType?
 
     init(
-        mergerequestID: String? = nil,
+        id: String? = nil,
         title: String? = nil,
         state: MergeRequestState? = nil,
         draft: Bool? = nil,
@@ -41,8 +47,7 @@ import SwiftData
         targetProject: TargetProject? = nil,
         type: QueryType? = nil
     ) {
-        self.id = UUID()
-        self.mergerequestID = mergerequestID
+        self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
         self.title = title
         self.state = state
         self.draft = draft
@@ -60,7 +65,7 @@ import SwiftData
     convenience init?(_ codablevariant: MergeRequestCodable?) {
         guard let codablevariant else { return nil }
         self.init(
-            mergerequestID: codablevariant.id,
+            id: codablevariant.id,
             title: codablevariant.title,
             state: codablevariant.state,
             draft: codablevariant.draft,

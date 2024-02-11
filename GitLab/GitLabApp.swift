@@ -33,17 +33,21 @@ import SwiftData
 
 @main
 struct GitLabApp: App {
-    // Non-Persisted state objects
-    @StateObject private var noticeState = NoticeState()
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([Account.self, MergeRequest.self, LaunchpadRepo.self])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
-    // Persistance objects
-    let container = try! ModelContainer(for: Account.self, MergeRequest.self, LaunchpadRepo.self)
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         MenuBarExtra(content: {
-            UserInterface()
-                .environmentObject(self.noticeState)
-                .modelContainer(container)
+            MainGitLabView()
+                .modelContainer(sharedModelContainer)
         }, label: {
             Label(title: {
                 Text("GitLab Desktop")
@@ -51,13 +55,13 @@ struct GitLabApp: App {
                 Image("Icon-Gradients-PNG")
             })
         })
-
+//        .modelContainer(sharedModelContainer)
         .menuBarExtraStyle(.window)
         
         Settings {
             SettingsView()
-                .environmentObject(self.noticeState)
+                .modelContainer(sharedModelContainer)
         }
-        .modelContainer(container)
+//        .modelContainer(sharedModelContainer)
     }
 }

@@ -13,13 +13,13 @@ enum GitProvider: String, Codable, CaseIterable {
 }
 
 @Model final class Account {
-    @Attribute(.unique) var id: UUID
+    @Attribute(.unique) var id: String
     var token: String
     var instance: String
     var provider: GitProvider
 
     init(token: String, instance: String, provider: GitProvider = .GitLab) {
-        self.id = UUID()
+        self.id = UUID().uuidString
         self.token = token
         self.instance = instance
         self.provider = provider

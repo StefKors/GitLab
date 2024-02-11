@@ -14,13 +14,22 @@ struct GitLab_iOSApp: App {
     @StateObject private var noticeState = NoticeState()
 
     // Persistance objects
-    let container = try! ModelContainer(for: [Account.self, MergeRequest.self, LaunchpadRepo.self])
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([Account.self, MergeRequest.self, LaunchpadRepo.self])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         WindowGroup {
             UserInterface()
                 .environmentObject(self.noticeState)
-                .modelContainer(container)
+                .modelContainer(sharedModelContainer)
         }
     }
 }

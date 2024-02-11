@@ -15,19 +15,20 @@ struct MergeRequestRowView: View {
                 .multilineTextAlignment(.leading)
                 .truncationMode(.middle)
                 .padding(.trailing)
-                .fixedSize(horizontal: false, vertical: true)
-            HStack(alignment: .center, spacing: 4) {
-                WebLink(
-                    linkText: "\(MR.targetProject?.group?.fullPath ?? "")/\(MR.targetProject?.path ?? "")\(MR.reference ?? "")",
-                    destination: MR.targetProject?.webURL
-                )
-                Spacer()
-                if let count = MR.userNotesCount, count > 1 {
-                    DiscussionCountIcon(count: count)
-                }
-                MergeStatusView(MR: MR)
-                PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [])
-            }
+            Text(MR.id)
+                // .fixedSize(horizontal: false, vertical: true)
+            // HStack(alignment: .center, spacing: 4) {
+            //     WebLink(
+            //         linkText: "\(MR.targetProject?.group?.fullPath ?? "")/\(MR.targetProject?.path ?? "")\(MR.reference ?? "")",
+            //         destination: MR.targetProject?.webURL
+            //     )
+            //     Spacer()
+            //     if let count = MR.userNotesCount, count > 1 {
+            //         DiscussionCountIcon(count: count)
+            //     }
+            //     MergeStatusView(MR: MR)
+            //     PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [])
+            // }
         }
     }
 
