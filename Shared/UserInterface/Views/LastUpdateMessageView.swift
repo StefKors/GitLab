@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LastUpdateMessageView: View {
-    @Binding var lastUpdate: Date?
+    let lastUpdate: Date
     @Binding var networkState: NetworkState
     private let initialTimeRemaining = 10
     @State private var isHovering: Bool = false
@@ -16,14 +16,14 @@ struct LastUpdateMessageView: View {
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     private var dateValue: String? {
-        guard let date = lastUpdate else {
-            return nil
-        }
+//        guard let date = lastUpdate else {
+//            return nil
+//        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: lastUpdate)
     }
 
     var body: some View {
@@ -98,6 +98,6 @@ extension Bundle {
 
 struct LastUpdateMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        LastUpdateMessageView(lastUpdate: .constant(Date.now), networkState: .constant(.idle))
+        LastUpdateMessageView(lastUpdate: Date.now, networkState: .constant(.idle))
     }
 }

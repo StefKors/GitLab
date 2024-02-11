@@ -18,6 +18,7 @@ extension String {
 // MARK: - MergeRequest
 @Model final class MergeRequest {
     @Attribute(.unique) var id: String
+    var mergerequestID: String?
     var title: String?
     var state: MergeRequestState?
     var draft: Bool?
@@ -47,6 +48,7 @@ extension String {
         targetProject: TargetProject? = nil,
         type: QueryType? = nil
     ) {
+        self.mergerequestID = id
         self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
         self.title = title
         self.state = state
@@ -149,11 +151,9 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         self.id = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.id) ?? UUID().uuidString
         self.title = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.title)
         self.draft = try container.decodeIfPresent(Bool.self, forKey: MergeRequestCodable.CodingKeys.draft)
-        // TODO: reinstate this
-        self.webUrl = nil //try container.decodeURLWithEncodingIfPresent(forKey: MergeRequestCodable.CodingKeys.webURL)
+        self.webUrl = try container.decodeIfPresent(URL.self, forKey: MergeRequestCodable.CodingKeys.webUrl)
         self.reference = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.reference)
-        // TODO: reinstate this
-        self.targetProject = nil //try container.decodeIfPresent(TargetProject.self, forKey: MergeRequestCodable.CodingKeys.targetProject)
+        self.targetProject = try container.decodeIfPresent(TargetProject.self, forKey: MergeRequestCodable.CodingKeys.targetProject)
         self.approvedBy = try container.decodeIfPresent(ApprovedMergeRequests.self, forKey: MergeRequestCodable.CodingKeys.approvedBy)
         self.mergeStatusEnum = try container.decodeIfPresent(MergeStatus.self, forKey: MergeRequestCodable.CodingKeys.mergeStatusEnum)
         self.userDiscussionsCount = try container.decodeIfPresent(Int.self, forKey: MergeRequestCodable.CodingKeys.userDiscussionsCount)

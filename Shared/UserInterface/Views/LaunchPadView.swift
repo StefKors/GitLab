@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-extension View {
-    @ViewBuilder
-    func conditionalScrollBounce() -> some View {
-        if #available(macOS 13.3, *) {
-            self
-                .scrollBounceBehavior(.basedOnSize)
-        }
-        else {
-            self
-        }
-    }
-}
-
 struct LaunchpadView: View {
     let repos: [LaunchpadRepo]
 
@@ -31,9 +18,10 @@ struct LaunchpadView: View {
                 }
                 Spacer()
             }
+            .scrollBounceBehavior(.basedOnSize)
         }
+        .scrollClipDisabled()
         .scrollIndicators(.hidden)
-        .conditionalScrollBounce()
         .padding(.leading)
     }
 }

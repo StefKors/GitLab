@@ -11,7 +11,7 @@ import SwiftUI
 import SwiftData
 
 @Model final class LaunchpadRepo: Codable, Equatable, Hashable, Identifiable  {
-    internal init(id: String, name: String, image: Data? = nil, group: String, url: URL, hasUpdatedSinceLaunch: Bool = false) {
+    init(id: String, name: String, image: Data? = nil, group: String, url: URL, hasUpdatedSinceLaunch: Bool = false) {
         self.id = id
         self.name = name
         self.image = image
@@ -46,11 +46,12 @@ import SwiftData
         self.name = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.name)
         self.image = try container.decodeIfPresent(Data.self, forKey: LaunchpadRepo.CodingKeys.image)
         self.group = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.group)
-        if let url = try container.decodeURLWithEncodingIfPresent(forKey: LaunchpadRepo.CodingKeys.url) {
-            self.url = url
-        } else {
-            self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
-        }
+//        if let url = try container.decodeURLWithEncodingIfPresent(forKey: LaunchpadRepo.CodingKeys.url) {
+//            self.url = url
+//        } else {
+//            self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
+//        }
+        self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
         self.hasUpdatedSinceLaunch = false
     }
     

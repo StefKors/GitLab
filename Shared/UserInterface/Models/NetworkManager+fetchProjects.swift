@@ -17,7 +17,7 @@ extension NetworkManager {
         }.joined(separator: ", ")
         
         let projectQuery = "{ projects(ids: [\(projectIds)]) { edges { node { id name path webUrl avatarUrl repository { rootRef } namespace { id fullPath fullName } group { id name fullName     fullPath webUrl } } } } }"
-        
+
         let req: Request<TargetProjectsQuery> = Request.init(path: "/graphql", query: [
             ("query", projectQuery),
             ("private_token", account.token)
@@ -26,7 +26,7 @@ extension NetworkManager {
         let client = APIClient(baseURL: URL(string: "\(account.instance)/api"))
         
         let fullProject: TargetProjectsQuery = try await client.send(req).value
-        
+
         let projects = fullProject.data?.projects?.edges?.compactMap({ edge in
             return edge.node
         })

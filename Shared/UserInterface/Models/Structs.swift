@@ -78,14 +78,14 @@ struct Author: Codable, Equatable {
         self.avatarUrl = avatarUrl
     }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Author.CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-        self.username = try container.decodeIfPresent(String.self, forKey: .username)
-        // Should re-encode any non-escaped utf8 strings
-        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
-    }
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: Author.CodingKeys.self)
+//        self.id = try container.decode(String.self, forKey: .id)
+//        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+//        self.username = try container.decodeIfPresent(String.self, forKey: .username)
+//        // Should re-encode any non-escaped utf8 strings
+//        self.avatarUrl = //try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
+//    }
 }
 
 /// (same as Author above ^ but with int for id
@@ -361,6 +361,7 @@ extension DetailedStatus {
 // MARK: - TargetProject
 struct TargetProject: Codable, Equatable, Hashable, Identifiable {
     let id: String
+    let projectID: String?
     let name, path: String?
     let webURL: URL?
     let avatarUrl: URL?
@@ -370,7 +371,7 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
     let fetchedAvatarData: Data?
 
     enum CodingKeys: String, CodingKey {
-        case id, name, path
+        case id, projectID, name, path
         case webURL = "webUrl"
         case avatarUrl = "avatarUrl"
         case namespace
@@ -379,8 +380,9 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
         case fetchedAvatarData
     }
 
-    init(id: String, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
-        self.id = id ?? UUID().uuidString
+    init(id: String?, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
+        self.projectID = id
+        self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
         self.name = name
         self.path = path
         self.webURL = webURL
@@ -391,19 +393,20 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
         self.fetchedAvatarData = fetchedAvatarData
     }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
-
-        self.id = try container.decode(String.self, forKey: .id)
-        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-        self.path = try container.decodeIfPresent(String.self, forKey: .path)
-        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
-        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
-        self.namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
-        self.repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
-        self.group = try container.decodeIfPresent(Group.self, forKey: .group)
-        self.fetchedAvatarData = try container.decodeIfPresent(Data.self, forKey: .fetchedAvatarData)
-    }
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
+//
+//        self.id = try container.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
+//        self.projectID = try container.decodeIfPresent(String.self, forKey: .projectID)
+//        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+//        self.path = try container.decodeIfPresent(String.self, forKey: .path)
+//        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
+//        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
+//        self.namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
+//        self.repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
+//        self.group = try container.decodeIfPresent(Group.self, forKey: .group)
+//        self.fetchedAvatarData = try container.decodeIfPresent(Data.self, forKey: .fetchedAvatarData)
+//    }
 }
 
 // MARK: - NameSpace
@@ -450,16 +453,16 @@ struct Group: Codable, Equatable, Hashable {
         self.fullPath = fullPath
         self.webURL = webURL
     }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decodeIfPresent(String.self, forKey: .id)
-        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-        self.fullName = try container.decodeIfPresent(String.self, forKey: .fullName)
-        self.fullPath = try container.decodeIfPresent(String.self, forKey: .fullPath)
-        // Should re-encode any non-escaped utf8 strings
-        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
-    }
+//
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+//        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+//        self.fullName = try container.decodeIfPresent(String.self, forKey: .fullName)
+//        self.fullPath = try container.decodeIfPresent(String.self, forKey: .fullPath)
+//        // Should re-encode any non-escaped utf8 strings
+//        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
+//    }
 }
 
 // MARK: - PipelineStatus

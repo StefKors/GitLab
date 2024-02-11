@@ -1066,8 +1066,9 @@
 		8A5FC0EE26EFD08E004136AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
 						CreatedOnToolsVersion = 13.4.1;
