@@ -154,6 +154,10 @@
 		8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
 		8A7935FB2A5583F700F8FB6C /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FA2A5583F700F8FB6C /* Get */; };
 		8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */; };
+		8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8ABBD2072B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8ABBD2092B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
 		8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
@@ -161,6 +165,14 @@
 		8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
+		8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD57092B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD570E2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE024872A91128C000548D7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
@@ -422,11 +434,14 @@
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Difference.swift"; sourceTree = "<group>"; };
 		8AC0C2092A5D3D720096772B /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformationView.swift; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
+		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GitLabDesktopWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidgetBundle.swift; sourceTree = "<group>"; };
@@ -725,6 +740,7 @@
 			children = (
 				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
 				8ADEBF9D2A83A227007C22CD /* URL.swift */,
+				8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -858,6 +874,8 @@
 				8AF80D202A55817400819B80 /* LaunchpadItem.swift */,
 				8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */,
 				8AFDAABC2A850763001937AC /* AddAccountView.swift */,
+				8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */,
+				8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1206,6 +1224,7 @@
 				8AF80D282A55817400819B80 /* PushEvents.swift in Sources */,
 				8AF80D252A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80DCA2A55817400819B80 /* MergeRequestRowView.swift in Sources */,
+				8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80DC42A55817400819B80 /* WebLink.swift in Sources */,
 				8AF80D552A55817400819B80 /* NoticeType.swift in Sources */,
 				8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
@@ -1227,6 +1246,7 @@
 				8AFDAABE2A850763001937AC /* AddAccountView.swift in Sources */,
 				8AF80D8B2A55817400819B80 /* CIProgressIcon.swift in Sources */,
 				8AF80D402A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
+				8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8AF80D9D2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80DB52A55817400819B80 /* CIStatusView.swift in Sources */,
 				8AF80D5E2A55817400819B80 /* CIManualIcon.swift in Sources */,
@@ -1239,6 +1259,7 @@
 				8AF80DA62A55817400819B80 /* PipelineView.swift in Sources */,
 				8AF80DA02A55817400819B80 /* BaseNoticeItem.swift in Sources */,
 				8AF80DC12A55817400819B80 /* LaunchPadView.swift in Sources */,
+				8ABBD2072B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AF80D462A55817400819B80 /* TargetProjects.swift in Sources */,
 				8AF80D822A55817400819B80 /* CICreatedIcon.swift in Sources */,
 				8AF80DAC2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
@@ -1301,6 +1322,7 @@
 				8A7935C72A5583E400F8FB6C /* NetworkManager.swift in Sources */,
 				8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
+				8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */,
@@ -1320,9 +1342,11 @@
 				8A7935D82A5583E400F8FB6C /* ApprovedReviewIcon.swift in Sources */,
 				8A7935D92A5583E400F8FB6C /* CISuccessIcon.swift in Sources */,
 				8A7935DA2A5583E400F8FB6C /* CIWaitingForResourceIcon.swift in Sources */,
+				8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
 				8A7935DC2A5583E400F8FB6C /* CIScheduledIcon.swift in Sources */,
 				8A7935DD2A5583E400F8FB6C /* CIPendingIcon.swift in Sources */,
+				8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AFDAABF2A850763001937AC /* AddAccountView.swift in Sources */,
 				8A7935DE2A5583E400F8FB6C /* CIRetryIcon.swift in Sources */,
 				8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */,
@@ -1376,6 +1400,7 @@
 				8AF80D5D2A55817400819B80 /* CIManualIcon.swift in Sources */,
 				8AF80D932A55817400819B80 /* SettingsView.swift in Sources */,
 				8AF80D9F2A55817400819B80 /* BaseNoticeItem.swift in Sources */,
+				8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8AF80DB72A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
 				8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */,
@@ -1395,9 +1420,11 @@
 				8AFDAA982A84FB26001937AC /* Account.swift in Sources */,
 				8AF80D3F2A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
 				8AFDAABD2A850763001937AC /* AddAccountView.swift in Sources */,
+				8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8AF80DA82A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
 				8AF80D872A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D692A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
+				8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80D7B2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
@@ -1467,6 +1494,7 @@
 				8A2E61442A975C18001B6EAE /* GitLabISO8601DateFormatter.swift in Sources */,
 				8A2E61452A975C18001B6EAE /* Structs.swift in Sources */,
 				8A2E61462A975C18001B6EAE /* NetworkManager.swift in Sources */,
+				8ABBD2092B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8A2E61472A975C18001B6EAE /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8A2E61482A975C18001B6EAE /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8A2E61492A975C18001B6EAE /* NetworkManager+fetchProjects.swift in Sources */,
@@ -1486,9 +1514,11 @@
 				8A2E61582A975C18001B6EAE /* CIPreparingIcon.swift in Sources */,
 				8A2E61592A975C18001B6EAE /* ApprovedReviewIcon.swift in Sources */,
 				8A2E615A2A975C18001B6EAE /* CISuccessIcon.swift in Sources */,
+				8ADD57092B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A2E615B2A975C18001B6EAE /* CIWaitingForResourceIcon.swift in Sources */,
 				8A2E615C2A975C18001B6EAE /* DiscussionCountIcon.swift in Sources */,
 				8A2E615D2A975C18001B6EAE /* CIScheduledIcon.swift in Sources */,
+				8ADD570E2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8A2E615E2A975C18001B6EAE /* CIPendingIcon.swift in Sources */,
 				8A2E615F2A975C18001B6EAE /* CIRetryIcon.swift in Sources */,
 				8A2E61602A975C18001B6EAE /* ShareMergeRequestIcon.swift in Sources */,

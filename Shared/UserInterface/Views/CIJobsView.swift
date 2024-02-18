@@ -9,8 +9,14 @@ import SwiftUI
 
 struct CIJobsView: View {
     // TODO: account / instance from env
-    let instance: String = "https://www.gitlab.com"
     let stage: FluffyNode
+    var instance: String
+
+    init(stage: FluffyNode, instance: String? = nil) {
+        self.stage = stage
+        self.instance = instance ?? "https://www.gitlab.com"
+    }
+
     @State var presentPopover: Bool = false
     @State var isHovering: Bool = false
     @State var tapState: Bool = false

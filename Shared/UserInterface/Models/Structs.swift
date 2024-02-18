@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import SwiftData
 
 // MARK: - GitLabQuery
 struct GitLabQuery: Codable, Equatable {
@@ -236,14 +237,15 @@ extension Stages {
 }
 
 // MARK: - HeadPipeline
-struct HeadPipeline: Codable, Equatable {
-    let id: String?
-    let active: Bool?
-    let status: PipelineStatus?
-    let stages: Stages?
-    let name: String?
-    let detailedStatus: DetailedStatus?
-    let mergeRequestEventType: MergeRequestEventType?
+
+@Model final class HeadPipeline: Codable {
+    var id: String?
+    var active: Bool?
+    var status: PipelineStatus?
+    var stages: Stages?
+    var name: String?
+    var detailedStatus: DetailedStatus?
+    var mergeRequestEventType: MergeRequestEventType?
 
     init(
         id: String?,
@@ -261,6 +263,38 @@ struct HeadPipeline: Codable, Equatable {
         self.name = name
         self.detailedStatus = detailedStatus
         self.mergeRequestEventType = mergeRequestEventType
+    }
+
+    enum CodingKeys: CodingKey {
+        case id
+        case active
+        case status
+        case stages
+        case name
+        case detailedStatus
+        case mergeRequestEventType
+    }
+
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(self.id, forKey: .id)
+        try container.encodeIfPresent(self.active, forKey: .active)
+        try container.encodeIfPresent(self.status, forKey: .status)
+        try container.encodeIfPresent(self.stages, forKey: .stages)
+        try container.encodeIfPresent(self.name, forKey: .name)
+        try container.encodeIfPresent(self.detailedStatus, forKey: .detailedStatus)
+        try container.encodeIfPresent(self.mergeRequestEventType, forKey: .mergeRequestEventType)
+    }
+
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+        self.active = try container.decodeIfPresent(Bool.self, forKey: .active)
+        self.status = try container.decodeIfPresent(PipelineStatus.self, forKey: .status)
+        self.stages = try container.decodeIfPresent(Stages.self, forKey: .stages)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.detailedStatus = try container.decodeIfPresent(DetailedStatus.self, forKey: .detailedStatus)
+        self.mergeRequestEventType = try container.decodeIfPresent(MergeRequestEventType.self, forKey: .mergeRequestEventType)
     }
 }
 
@@ -342,6 +376,115 @@ extension HeadPipeline {
         mergeRequestEventType: .mergedResult
     )
 }
+
+//struct ChildPipeline: Codable, Equatable {
+//    let id: String?
+//    let active: Bool?
+//    let status: PipelineStatus?
+////    let stages: Stages?
+//    let name: String?
+//    let detailedStatus: DetailedStatus?
+//    let mergeRequestEventType: MergeRequestEventType?
+//
+//    init(
+//        id: String?,
+//        active: Bool?,
+//        status: PipelineStatus?,
+////        stages: Stages?,
+//        name: String?,
+//        detailedStatus: DetailedStatus?,
+//        mergeRequestEventType: MergeRequestEventType?
+//    ) {
+//        self.id = id ?? UUID().uuidString
+//        self.active = active
+//        self.status = status
+////        self.stages = stages
+//        self.name = name
+//        self.detailedStatus = detailedStatus
+//        self.mergeRequestEventType = mergeRequestEventType
+//    }
+//}
+//
+//extension ChildPipeline {
+//    // previewBuildiOS
+//    // previewBuildMacOS
+//    // previewTestFailed
+//    // previewTestRunning1
+//    // previewTestRunning2
+//    // previewTestPending1
+//    // previewTestPending2
+//    static let previewBuildiOS = ChildPipeline(
+//        id: "id-id-id",
+//        active: true,
+//        status: .running,
+////        stages: .previewChild,
+//        name: "build:ios-dev",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergeTrain
+//    )
+//
+//    static let previewBuildMacOS = ChildPipeline(
+//        id: "id-id-id",
+//        active: false,
+//        status: .success,
+////        stages: .previewChild,
+//        name: "build:macos-dev",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergedResult
+//    )
+//
+//    static let previewTestFailed = ChildPipeline(
+//        id: "id-id-id",
+//        active: false,
+//        status: .failed,
+////        stages: .previewChild,
+//        name: "test:macos-uitest",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergedResult
+//    )
+//
+//    static let previewTestRunning1 = ChildPipeline(
+//        id: "id-id-id",
+//        active: false,
+//        status: .running,
+////        stages: .previewChild,
+//        name: "test:macos-uitest",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergedResult
+//    )
+//
+//    static let previewTestRunning2 = ChildPipeline(
+//        id: "id-id-id",
+//        active: false,
+//        status: .running,
+////        stages: .previewChild,
+//        name: "test:macos-unit",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergedResult
+//    )
+//
+//    static let previewTestPending1 = ChildPipeline(
+//        id: "id-id-id",
+//        active: false,
+//        status: .waitingForResource,
+////        stages: .previewChild,
+//        name: "test:ios-unit",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergedResult
+//    )
+//
+//    static let previewTestPending2 = ChildPipeline(
+//        id: "id-id-id",
+//        active: false,
+//        status: .pending,
+////        stages: .previewChild,
+//        name: "test:ios-uitest",
+//        detailedStatus: .preview,
+//        mergeRequestEventType: .mergedResult
+//    )
+//}
+//
+//
 
 // MARK: - DetailedStatus
 struct DetailedStatus: Codable, Equatable {

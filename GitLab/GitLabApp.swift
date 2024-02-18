@@ -45,6 +45,13 @@ struct GitLabApp: App {
     }()
 
     var body: some Scene {
+        Window("GitLab", id: "GitLab-Window") {
+            MainGitLabView()
+                .modelContainer(sharedModelContainer)
+                .frame(width: 500)
+        }
+        .windowResizability(.contentMinSize)
+
         MenuBarExtra(content: {
             MainGitLabView()
                 .modelContainer(sharedModelContainer)

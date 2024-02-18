@@ -17,11 +17,7 @@ extension NetworkManager {
             // let beforeApprovedByDict = authoredMergeRequests.approvedByDict
             let response: GitLabQuery = try await client.send(authoredMergeRequestsReq(with: account)).value
 
-            return response.authoredMergeRequests.map { mr in
-                // mr.id = UUID().uuidString
-                mr.type = .authoredMergeRequests
-                return mr
-            }
+            return response.authoredMergeRequests
 
             // await MainActor.run {
                 // // MARK: - Handle Notifications
@@ -46,11 +42,11 @@ extension NetworkManager {
                 //                 "OPEN_URL" : url.absoluteString,
                 //                 "PIPELINE_STATUS": jsonData
                 //             ] as [String : Any]
-                //             NotificationManager.shared.sendNotification(
-                //                 title: title,
-                //                 subtitle: "\(reference) is approved by \(approvers.formatted())",
-                //                 userInfo: userInfo
-                //             )
+//                             NotificationManager.shared.sendNotification(
+//                                 title: title,
+//                                 subtitle: "\(reference) is approved by \(approvers.formatted())",
+//                                 userInfo: userInfo
+//                             )
                 // 
                 //         }
                 // 

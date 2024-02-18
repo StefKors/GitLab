@@ -35,7 +35,7 @@ struct UserInterface: View {
     @State private var timelineDate: Date = .now
 
     var filteredMergeRequests: [MergeRequest] {
-        return mergeRequests.filter { $0.type == selectedView }
+        mergeRequests.filter { $0.type == selectedView }
     }
 
     var body: some View {
@@ -47,10 +47,11 @@ struct UserInterface: View {
                         Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
                     }, label: {
                         EmptyView()
-                    }).pickerStyle(.segmented)
-                        .padding(.horizontal)
-                        .padding(.top)
-                        .padding(.bottom, 0)
+                    })
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal)
+                    .padding(.top)
+                    .padding(.bottom, 0)
 
                     LaunchpadView(repos: repos)
 
@@ -59,14 +60,17 @@ struct UserInterface: View {
                         .padding(.horizontal)
 
                     VStack(alignment: .leading) {
-                        List(filteredMergeRequests, id: \.id) { mergeRequest in
-                            MergeRequestRowView(MR: mergeRequest)
-                                .padding(.bottom, 4)
-                                .listRowSeparator(.visible)
-                                .listRowSeparatorTint(Color.secondary.opacity(0.2))
+                        if accounts.count > 1 {
+                            SectionedMergeRequestList(
+                                accounts: accounts,
+                                mergeRequests: filteredMergeRequests,
+                                selectedView: selectedView
+                            )
+                        } else {
+                            PlainMergeRequestList(mergeRequests: filteredMergeRequests)
                         }
-                        .animation(.snappy, value: filteredMergeRequests)
                     }
+                    .padding(.horizontal)
 
                     if accounts.isEmpty {
                         BaseTextView(message: "Setup your accounts in the settings")
@@ -78,7 +82,6 @@ struct UserInterface: View {
                     LastUpdateMessageView(lastUpdate: context.date, networkState: $networkState)
                 }
                 .task(id: context.date) {
-                    print("task: date update & fetch")
                     await fetchReviewRequestedMRs()
                     await fetchAuthoredMRs()
                     await fetchRepos()
@@ -88,31 +91,44 @@ struct UserInterface: View {
         }
     }
 
+    /// TODO: Cleanup and move both into the same function
     @MainActor
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
-            let results = try? await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)
-            if let results {
-                for result in results {
-                    withAnimation {
-                        modelContext.insert(result)
-                    }
-                }
+            let results: [MergeRequest] = ((try? await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)) ?? []).map { mr in
+                mr.account = account
+                mr.type = .reviewRequestedMergeRequests
+                return mr
             }
+            removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
         }
     }
 
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
-            let results = try? await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)
-            if let results {
-                for result in results {
-                    withAnimation {
-                        modelContext.insert(result)
-                    }
-                }
+            let results: [MergeRequest] = ((try? await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)) ?? []).map { mr in
+                mr.account = account
+                mr.type = .authoredMergeRequests
+                return mr
             }
+            removeAndInsertMRs(.authoredMergeRequests, account: account, results: results)
+        }
+    }
+
+    private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
+        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
+        let updated = results.map { $0.mergerequestID }
+        let difference = existing.difference(from: updated)
+
+        for mergeRequest in account.mergeRequests {
+            if difference.contains(mergeRequest.mergerequestID) {
+                modelContext.delete(mergeRequest)
+            }
+        }
+
+        for result in results {
+            modelContext.insert(result)
         }
     }
 
@@ -135,3 +151,10 @@ struct UserInterface: View {
         }
     }
 }
+
+
+//NotificationManager.shared.sendNotification(
+//    title: title,
+//    subtitle: "\(reference) is approved by \(approvers.formatted())",
+//    userInfo: userInfo
+//)

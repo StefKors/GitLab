@@ -9,16 +9,13 @@ import SwiftUI
 
  struct PipelineView: View {
      var stages: [FluffyNode?]
-
-     init (stages: [FluffyNode?]) {
-        self.stages = stages
-    }
+     var instance: String?
 
      var body: some View {
         HStack(alignment: .center, spacing: 0) {
             ForEach(stages.indices, id: \.self) { index in
                 if let stage = stages[index] {
-                    CIJobsView(stage: stage)
+                    CIJobsView(stage: stage, instance: instance)
                     let isLast = index == stages.count - 1
                     if !isLast {
                         Rectangle()

@@ -13,6 +13,7 @@ struct GitProviderView: View {
         switch provider {
         case .GitLab:
             Image("GitLab-Outline")
+                .resizable()
         }
     }
 }

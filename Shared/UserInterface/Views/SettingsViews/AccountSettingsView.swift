@@ -36,6 +36,7 @@ struct AlertDetails: Identifiable {
                         ForEach(accounts) { account in
                             HStack {
                                 GitProviderView(provider: account.provider)
+                                    .frame(width: 25, height: 25, alignment: .center)
                                 AccountRow(account: account)
                                 Spacer()
                     

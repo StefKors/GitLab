@@ -28,13 +28,17 @@ extension String {
     var userDiscussionsCount: Int?
     var userNotesCount: Int?
     // TODO: Fix otherwise crash
-    @Transient var headPipeline: HeadPipeline?
+    var headPipeline: HeadPipeline?
     var reference: String?
     var targetProject: TargetProject?
     var type: QueryType?
 
+//    @Relationship(inverse: \Account.mergeRequests)
+    var account: Account?
+
     init(
         id: String? = nil,
+        mergerequestID: String? = nil,
         title: String? = nil,
         state: MergeRequestState? = nil,
         draft: Bool? = nil,
@@ -46,9 +50,10 @@ extension String {
         headPipeline: HeadPipeline? = nil,
         reference: String? = nil,
         targetProject: TargetProject? = nil,
-        type: QueryType? = nil
+        type: QueryType? = nil,
+        account: Account? = nil
     ) {
-        self.mergerequestID = id
+        self.mergerequestID = mergerequestID
         self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
         self.title = title
         self.state = state
@@ -62,12 +67,14 @@ extension String {
         self.reference = reference
         self.targetProject = targetProject
         self.type = type
+        self.account = account
     }
 
     convenience init?(_ codablevariant: MergeRequestCodable?) {
         guard let codablevariant else { return nil }
         self.init(
             id: codablevariant.id,
+            mergerequestID: codablevariant.id,
             title: codablevariant.title,
             state: codablevariant.state,
             draft: codablevariant.draft,
@@ -81,6 +88,12 @@ extension String {
             targetProject: codablevariant.targetProject,
             type: codablevariant.type
         )
+    }
+}
+
+extension MergeRequest: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return "MergeRequest(mergerequestID: \(mergerequestID ?? "nil"), title: \(title ?? "nil"))"
     }
 }
 

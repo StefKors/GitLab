@@ -16,11 +16,7 @@ extension NetworkManager {
         let client = APIClient(baseURL: URL(string: "\(account.instance)/api"))
         let response: GitLabQuery = try await client.send(reviewRequestedMergeRequestsReq(with: account)).value
         print("after fetch: finished fetchReviewRequestedMergeRequests")
-        return response.reviewRequestedMergeRequests.map { mr in
-            // mr.id = UUID().uuidString
-            mr.type = .reviewRequestedMergeRequests
-            return mr
-        }
+        return response.reviewRequestedMergeRequests
         // 
         //     // await MainActor.run {
         //     //     // MARK: - Update published values
