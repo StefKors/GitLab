@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-public struct MenuBarButtonStyle: ButtonStyle {
+ struct MenuBarButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
     var color: Color?
     var size: CGFloat = 44
 
-    public func makeBody(configuration: Configuration) -> some View {
+     func makeBody(configuration: Configuration) -> some View {
         let isMouseDown: Bool = configuration.isPressed || !isEnabled
         GroupBox {
             configuration.label
@@ -32,7 +32,7 @@ public struct MenuBarButtonStyle: ButtonStyle {
 }
 
 extension ButtonStyle where Self == MenuBarButtonStyle {
-    public static var menubar: Self { MenuBarButtonStyle() }
+     static var menubar: Self { MenuBarButtonStyle() }
 }
 
 struct MenuBarButtonStyle_Previews: PreviewProvider {

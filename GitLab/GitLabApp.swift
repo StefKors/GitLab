@@ -6,30 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct GitLabApp: App {
-    @StateObject var networkManager = NetworkManager()
+    var sharedModelContainer: ModelContainer = .shared
 
     var body: some Scene {
+//        Window("GitLab", id: "GitLab-Window") {
+//            MainGitLabView()
+//                .modelContainer(sharedModelContainer)
+//                .frame(width: 500)
+//        }
+//        .windowResizability(.contentMinSize)
+
         MenuBarExtra(content: {
-            MenubarContentView()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+            MainGitLabView()
+                .modelContainer(sharedModelContainer)
         }, label: {
             Label(title: {
                 Text("GitLab Desktop")
             }, icon: {
-                Image("Icon-Gradients-PNG")
+                Image(.iconGradientsPNG)
             })
         })
-
         .menuBarExtraStyle(.window)
         
         Settings {
             SettingsView()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+                .modelContainer(sharedModelContainer)
         }
     }
 }

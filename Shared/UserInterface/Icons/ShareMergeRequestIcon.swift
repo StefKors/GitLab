@@ -56,7 +56,7 @@ struct ShareMergeRequestIcon: View {
         let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
         let content = """
 \(MR.title ?? "") \(emoji)
-\(MR.webURL?.absoluteString ?? "")
+\(MR.webUrl?.absoluteString ?? "")
 """
 #if canImport(AppKit)
         let pasteboard = NSPasteboard.general

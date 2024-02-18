@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct NoticeListView: View {
-    @EnvironmentObject public var noticeState: NoticeState
+    @EnvironmentObject  var noticeState: NoticeState
 
     var body: some View {
         VStack {

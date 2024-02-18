@@ -1,6 +1,6 @@
 //
 //  MergeRequestRowView.swift
-//  
+//
 //
 //  Created by Stef Kors on 24/06/2022.
 //
@@ -11,12 +11,17 @@ struct MergeRequestRowView: View {
     var MR: MergeRequest
     var macOSUI: some View {
         VStack(alignment: .leading, spacing: 5) {
-            TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webURL)
+            TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl)
                 .multilineTextAlignment(.leading)
                 .truncationMode(.middle)
                 .padding(.trailing)
-                .fixedSize(horizontal: false, vertical: true)
+
             HStack(alignment: .center, spacing: 4) {
+                if let provider = MR.account?.provider {
+                    GitProviderView(provider: provider)
+                        .frame(width: 18, height: 18, alignment: .center)
+                }
+
                 WebLink(
                     linkText: "\(MR.targetProject?.group?.fullPath ?? "")/\(MR.targetProject?.path ?? "")\(MR.reference ?? "")",
                     destination: MR.targetProject?.webURL
@@ -26,7 +31,7 @@ struct MergeRequestRowView: View {
                     DiscussionCountIcon(count: count)
                 }
                 MergeStatusView(MR: MR)
-                PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [])
+                PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [], instance: MR.account?.instance)
             }
         }
     }

@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Defaults
 
 // MARK: - AccessToken
-struct AccessToken: Codable, Defaults.Serializable, Equatable, Hashable {
+struct AccessToken: Codable, Equatable, Hashable {
     let id: Int?
     let name: String?
     let revoked: Bool?

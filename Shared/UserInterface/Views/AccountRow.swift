@@ -1,0 +1,29 @@
+//
+//  AccountRow.swift
+//  GitLab
+//
+//  Created by Stef Kors on 10/08/2023.
+//
+
+import SwiftUI
+
+struct AccountRow: View {
+    let account: Account
+    var body: some View {
+        VStack(alignment: .leading) {
+            if let url = URL(string: account.instance), let host = url.host() {
+                Text(host)
+            } else {
+                Text(account.instance)
+            }
+            Text(String(repeating: "⏺", count: account.token.count))
+                .lineLimit(1)
+                .truncationMode(.middle)
+                .foregroundStyle(.secondary)
+        }
+    }
+}
+
+#Preview {
+    AccountRow(account: .preview)
+}

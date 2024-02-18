@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import Defaults
 
-public enum NoticeType: String, Defaults.Serializable, CaseIterable, Codable {
+ enum NoticeType: String, CaseIterable, Codable {
     case information
     case warning
     case error

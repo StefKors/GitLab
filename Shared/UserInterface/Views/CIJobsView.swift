@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-public struct CIJobsView: View {
-    var stage: FluffyNode
+struct CIJobsView: View {
+    // TODO: account / instance from env
+    let stage: FluffyNode
+    var instance: String
+
+    init(stage: FluffyNode, instance: String? = nil) {
+        self.stage = stage
+        self.instance = instance ?? "https://www.gitlab.com"
+    }
+
     @State var presentPopover: Bool = false
     @State var isHovering: Bool = false
     @State var tapState: Bool = false
-
-    @EnvironmentObject  var model: NetworkManager
-
-    public init(stage: FluffyNode) {
-        self.stage = stage
-    }
-
-    public var body: some View {
+    
+    var body: some View {
         HStack {
             CIStatusView(status: stage.status?.toPipelineStatus())
                 .onTapGesture {
@@ -36,7 +38,7 @@ public struct CIJobsView: View {
                                 if let job = jobs[index] {
                                     HStack {
                                         if let path = job.detailedStatus?.detailsPath,
-                                           let destination = URL(string: model.$baseURL.wrappedValue + path) {
+                                           let destination = URL(string: instance + path) {
                                             Link(destination: destination, label: {
                                                 CIStatusView(status: job.status)
                                                 Text(job.name ?? "")

@@ -6,24 +6,23 @@
 //
 
 import Foundation
-import Defaults
 
 // MARK: - GitLabQuery
-public struct TargetProjectsQuery: Codable, Defaults.Serializable, Equatable {
-    public let data: TargetProjectsDataClass?
+struct TargetProjectsQuery: Codable, Equatable {
+    let data: TargetProjectsDataClass?
 }
 
 // MARK: - TargetProjectsDataClass
-public struct TargetProjectsDataClass: Codable, Defaults.Serializable, Equatable {
-    public let projects: ProjectsEdges?
+struct TargetProjectsDataClass: Codable, Equatable {
+    let projects: ProjectsEdges?
 }
 
 // MARK: - ProjectsEdges
-public struct ProjectsEdges: Codable, Defaults.Serializable, Equatable {
-    public let edges: [TargetProjectsEdge]?
+struct ProjectsEdges: Codable, Equatable {
+    let edges: [TargetProjectsEdge]?
 }
 
 // MARK: - TargetProjectsEdge
-public struct TargetProjectsEdge: Codable, Defaults.Serializable, Equatable {
-    public let node: TargetProject?
+struct TargetProjectsEdge: Codable, Equatable {
+    let node: TargetProject?
 }

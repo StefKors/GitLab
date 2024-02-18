@@ -48,7 +48,6 @@ Built by ![Stef Kors](https://stefkors.com)
 
 -------
 
-<img alt="Screenshot of Statement" src="Images/Screenshot-1.png">
-<img alt="Screenshot of Statement" src="Images/Screenshot-2.png">
-<img alt="Screenshot of Statement" src="Images/Screenshot-3.png">
-<img alt="Screenshot of Statement" src="Images/Screenshot-4.png">
+<img alt="Screenshot of GitLab" src="Images/Screenshot-1.png">
+<img alt="Screenshot of GitLab" src="Images/Screenshot-2.png">
+<img alt="Screenshot of GitLab" src="Images/Screenshot-3.png">

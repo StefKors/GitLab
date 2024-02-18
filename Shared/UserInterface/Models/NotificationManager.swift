@@ -14,7 +14,7 @@ import AppKit
 import UIKit
 #endif
 
-
+/// TODO: enable / handle correctly in widget?
 class NotificationManager {
 
     static var shared = NotificationManager()

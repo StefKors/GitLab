@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-public struct ExpandHitBoxModifier: ViewModifier {
+ struct ExpandHitBoxModifier: ViewModifier {
     let amount: CGFloat
-    public func body(content: Content) -> some View {
+     func body(content: Content) -> some View {
         content
             .contentShape(.interaction, Rectangle().inset(by: -amount), eoFill: .init())
     }
@@ -18,7 +18,7 @@ public struct ExpandHitBoxModifier: ViewModifier {
 extension View {
     /// Used to expand the hitbox of buttons larger than their shape size
     /// - Parameter amount: Amount to expand
-    public func expandHitBox(_ amount: CGFloat) -> some View {
+     func expandHitBox(_ amount: CGFloat) -> some View {
         return self.modifier(ExpandHitBoxModifier(amount: amount))
     }
 }
