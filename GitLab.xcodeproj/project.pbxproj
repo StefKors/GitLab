@@ -173,6 +173,10 @@
 		8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
 		8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
 		8ADD570E2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57132B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE024872A91128C000548D7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
@@ -442,6 +446,7 @@
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
+		8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GitLabDesktopWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidgetBundle.swift; sourceTree = "<group>"; };
@@ -741,6 +746,7 @@
 				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
 				8ADEBF9D2A83A227007C22CD /* URL.swift */,
 				8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */,
+				8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1280,6 +1286,7 @@
 				8AF80D5B2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8AF80DAF2A55817400819B80 /* MergeStatusView.swift in Sources */,
 				8AF80D2E2A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
+				8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80D672A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80D582A55817400819B80 /* NoticeState.swift in Sources */,
 				8AF80D762A55817400819B80 /* CIScheduledIcon.swift in Sources */,
@@ -1380,6 +1387,7 @@
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
 				8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */,
 				8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */,
+				8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AFDAAC72A850793001937AC /* AccountRow.swift in Sources */,
 				8A7935BC2A55830D00F8FB6C /* CIJobsNotificationView.swift in Sources */,
 				8A7935C02A55837500F8FB6C /* Structs.swift in Sources */,
@@ -1458,6 +1466,7 @@
 				8AF80D452A55817400819B80 /* TargetProjects.swift in Sources */,
 				8AF80D422A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8AF80D7E2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
+				8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80DC92A55817400819B80 /* MergeRequestRowView.swift in Sources */,
 				8AF80D2D2A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
 				8AF80D512A55817400819B80 /* NoticeMessage.swift in Sources */,
@@ -1552,6 +1561,7 @@
 				8A2E617B2A975C18001B6EAE /* MergeRequestRowView.swift in Sources */,
 				8A2E617C2A975C18001B6EAE /* MenuBarButtonStyle.swift in Sources */,
 				8A2E617D2A975C18001B6EAE /* LaunchpadItem.swift in Sources */,
+				8ADD57132B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8A2E617E2A975C18001B6EAE /* TokenInformationView.swift in Sources */,
 				8A2E617F2A975C18001B6EAE /* AddAccountView.swift in Sources */,
 				8AE0248B2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift in Sources */,
@@ -2043,7 +2053,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2066,7 +2076,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

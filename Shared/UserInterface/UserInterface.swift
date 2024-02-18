@@ -86,7 +86,7 @@ struct UserInterface: View {
                     await fetchAuthoredMRs()
                     await fetchRepos()
                 }
-                .frame(width: 500)
+                .frame(idealWidth: 500, maxWidth: 500)
             }
         }
     }
@@ -151,6 +151,13 @@ struct UserInterface: View {
         }
     }
 }
+
+#Preview {
+    UserInterface()
+        .modelContainer(.previews)
+        .environmentObject(NoticeState())
+}
+
 
 
 //NotificationManager.shared.sendNotification(
