@@ -58,7 +58,7 @@ class NoticeState: ObservableObject {
     }
     
     func clearAllNotices() {
-        for (index, notice) in notices.enumerated() {
+        for (index, _) in notices.enumerated() {
             notices[index].dismiss()
         }
     }

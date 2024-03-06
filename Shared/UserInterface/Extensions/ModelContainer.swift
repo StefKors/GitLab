@@ -11,7 +11,7 @@ import SwiftData
 extension ModelContainer {
     static var previews: ModelContainer = {
         let schema = Schema([Account.self, MergeRequest.self, LaunchpadRepo.self])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])

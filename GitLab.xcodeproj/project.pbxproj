@@ -177,6 +177,10 @@
 		8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
 		8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
 		8ADD57132B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57152B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
+		8ADD57162B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
+		8ADD57172B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
+		8ADD57182B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE024872A91128C000548D7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
@@ -447,6 +451,7 @@
 		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
+		8ADD57142B82291B001F8E8F /* WidgetInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WidgetInterface.swift; path = Views/WidgetInterface.swift; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AE024862A91128C000548D7 /* GitLabDesktopWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GitLabDesktopWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidgetBundle.swift; sourceTree = "<group>"; };
@@ -791,6 +796,7 @@
 				8AF80CDF2A55817400819B80 /* Models */,
 				8AF80CF42A55817400819B80 /* Icons */,
 				8AF80D062A55817400819B80 /* UserInterface.swift */,
+				8ADD57142B82291B001F8E8F /* WidgetInterface.swift */,
 				8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */,
 				8AF80D072A55817400819B80 /* Views */,
 			);
@@ -1238,6 +1244,7 @@
 				8AF80D792A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8AF80D372A55817400819B80 /* Structs.swift in Sources */,
 				8AF80D7F2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
+				8ADD57162B82291B001F8E8F /* WidgetInterface.swift in Sources */,
 				8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D9A2A55817400819B80 /* AccountSettingsView.swift in Sources */,
 				8AF80D3D2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
@@ -1359,6 +1366,7 @@
 				8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8AFDAACB2A85112E001937AC /* GitProviderView.swift in Sources */,
 				8A7935DF2A5583E400F8FB6C /* ShareMergeRequestIcon.swift in Sources */,
+				8ADD57172B82291B001F8E8F /* WidgetInterface.swift in Sources */,
 				8A7935E02A5583E400F8FB6C /* CICreatedIcon.swift in Sources */,
 				8A7935E12A5583E400F8FB6C /* NeedsReviewIcon.swift in Sources */,
 				8A2E61872A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
@@ -1438,6 +1446,7 @@
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
+				8ADD57152B82291B001F8E8F /* WidgetInterface.swift in Sources */,
 				8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */,
 				8AF80D602A55817400819B80 /* CICanceledIcon.swift in Sources */,
 				8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
@@ -1533,6 +1542,7 @@
 				8A2E61602A975C18001B6EAE /* ShareMergeRequestIcon.swift in Sources */,
 				8A2E61612A975C18001B6EAE /* CICreatedIcon.swift in Sources */,
 				8A2E61622A975C18001B6EAE /* NeedsReviewIcon.swift in Sources */,
+				8ADD57182B82291B001F8E8F /* WidgetInterface.swift in Sources */,
 				8A2E61632A975C18001B6EAE /* MergeTrainIcon.swift in Sources */,
 				8A2E61642A975C18001B6EAE /* CIProgressIcon.swift in Sources */,
 				8A2E61882A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
@@ -1994,7 +2004,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.18;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2029,7 +2039,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.18;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";

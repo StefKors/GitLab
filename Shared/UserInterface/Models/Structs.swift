@@ -563,7 +563,7 @@ struct NameSpace: Codable, Equatable, Hashable, Identifiable {
     }
 
     init(id: String, fullPath: String, fullName: String) {
-        self.id = id ?? UUID().uuidString
+        self.id = id
         self.fullPath = fullPath
         self.fullName = fullName
     }

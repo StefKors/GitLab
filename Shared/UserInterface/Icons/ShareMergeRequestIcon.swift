@@ -38,7 +38,7 @@ struct ShareMergeRequestIcon: View {
                 .allowsHitTesting(false)
         }
         .frame(height: 20)
-        .onChange(of: chosenEmoji) { newValue in
+        .onChange(of: chosenEmoji) { newValue, _ in
             let animation: Animation = .interpolatingSpring(stiffness: 130, damping: 12)
             withAnimation(animation) {
                 isVisible = true
