@@ -77,6 +77,40 @@ struct ProjectLink: View {
     .scenePadding()
 }
 
+struct AutoSizingWebLinks: View {
+    var MR: MergeRequest
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack {
+                WebLink(
+                    linkText: "\(MR.targetProject?.group?.fullPath ?? "")/\(MR.targetProject?.path ?? "")/\(MR.reference ?? "")",
+                    destination: MR.targetProject?.webURL
+                )
+            }
+            .frame(minWidth: 50, idealWidth: 200, maxWidth: 400, alignment: .leading)
+
+            HStack {
+                WebLink(
+                    linkText: "\(MR.targetProject?.path ?? "")/\(MR.reference ?? "")",
+                    destination: MR.targetProject?.webURL
+                )
+            }
+            .frame(minWidth: 50, idealWidth: 100, maxWidth: 400, alignment: .leading)
+
+            HStack {
+                WebLink(
+                    linkText: "\(MR.reference ?? "")",
+                    destination: MR.targetProject?.webURL
+                )
+            }
+            .frame(minWidth: 50, idealWidth: 50, maxWidth: 400, alignment: .leading)
+        }
+        .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
+    }
+}
+
+
 struct HorizontalMergeRequestSubRowView: View {
     var MR: MergeRequest
 
@@ -87,11 +121,8 @@ struct HorizontalMergeRequestSubRowView: View {
                     .frame(width: 18, height: 18, alignment: .center)
             }
 
-            WebLink(
-                linkText: "\(MR.targetProject?.group?.fullPath ?? "")/\(MR.targetProject?.path ?? "")\(MR.reference ?? "")",
-                destination: MR.targetProject?.webURL
-            )
-            Spacer()
+            AutoSizingWebLinks(MR: MR)
+
             if let count = MR.userNotesCount, count > 1 {
                 DiscussionCountIcon(count: count)
             }
@@ -112,13 +143,11 @@ struct DoubleLineMergeRequestSubRowView: View {
                         .frame(width: 18, height: 18, alignment: .center)
                 }
 
-                WebLink(
-                    linkText: "\(MR.targetProject?.group?.fullPath ?? "")/\(MR.targetProject?.path ?? "")\(MR.reference ?? "")",
-                    destination: MR.targetProject?.webURL
-                )
+                AutoSizingWebLinks(MR: MR)
 
                 Spacer()
             }
+            .background(.red)
 
             HStack(alignment: .center, spacing: 4) {
                 if let count = MR.userNotesCount, count > 1 {
@@ -141,9 +170,11 @@ struct MergeRequestRowView: View {
                 .padding(.trailing)
 
             ViewThatFits {
-                DoubleLineMergeRequestSubRowView(MR: MR)
-
                 HorizontalMergeRequestSubRowView(MR: MR)
+                    .frame(minWidth: 180, idealWidth: 200, alignment: .leading)
+
+                DoubleLineMergeRequestSubRowView(MR: MR)
+                    .frame(minWidth: 50, idealWidth: 100, alignment: .leading)
             }
         }
     }

@@ -15,16 +15,27 @@ struct WebLink: View {
     
     var body: some View {
         if let url = destination {
-            Link(linkText, destination: url)
-                .onHover { hovering in
-                    isHovering = hovering
-                }
-                .foregroundColor(isHovering ? .primary : .secondary)
-                .animation(.interactiveSpring(), value: isHovering)
+            Link(destination: url, label: {
+                Text(linkText)
+                    .onHover { hovering in
+                        isHovering = hovering
+                    }
+                    .foregroundColor(isHovering ? .primary : .secondary)
+                    .animation(.interactiveSpring(), value: isHovering)
+//                    .lineLimit(1)
+//                    .truncationMode(.head)
+            })
+//            Link(linkText, destination: url)
         } else {
             Text(linkText)
                 .foregroundColor(.secondary)
+//                .lineLimit(1)
+//                .truncationMode(.head)
         }
     }
 }
 
+#Preview {
+    WebLink(linkText: "groupname/projectname!issuenumber", destination: URL(string: "https://gitlab.com"))
+        .frame(width: 200)
+}

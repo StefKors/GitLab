@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "mac1024.png",
       "idiom" : "universal"
     }
   ],
@@ -9,6 +10,6 @@
     "version" : 1
   },
   "properties" : {
-    "localizable" : true
+    "template-rendering-intent" : "original"
   }
 }

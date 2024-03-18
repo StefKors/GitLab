@@ -7,139 +7,55 @@
 
 import SwiftUI
 import SwiftData
-
-
-/// TODO: Show different accounts
-/// TODO: Show different git providers (GL / GH)
-/// TODO: Filter by type
-/// TODO: show assigned issues
-/// TODO: widget?
-/// TODO: timeline view updates
-/// TODO: Reinstate clear notifications setting
-/// TODO: Split networking
-struct WidgetInterface: View {
-    @Environment(\.modelContext) private var modelContext
-
-    @Query private var mergeRequests: [MergeRequest]
-    @Query private var accounts: [Account]
-    @Query private var repos: [LaunchpadRepo]
-
-    @State private var networkState: NetworkState = .idle
-    @State private var selectedView: QueryType = .authoredMergeRequests
-
-    @State private var timelineDate: Date = .now
-
-    var filteredMergeRequests: [MergeRequest] {
-        mergeRequests.filter { $0.type == selectedView }
-    }
-
-    var body: some View {
-        VStack {
-            TimelineView(.periodic(from: timelineDate, by: 12)) { context in
-                VStack(alignment: .center, spacing: 10) {
-//                    Text("Your Merge Requests")
-
-                    VStack(alignment: .leading) {
-                        if accounts.count > 1 {
-                            SectionedMergeRequestList(
-                                accounts: accounts,
-                                mergeRequests: filteredMergeRequests,
-                                selectedView: selectedView
-                            )
-                        } else {
-                            PlainMergeRequestList(mergeRequests: filteredMergeRequests)
-                        }
-                    }
-                    .padding(.horizontal)
-
-                    if accounts.isEmpty {
-                        BaseTextView(message: "Setup your accounts in the settings")
-                    } else if filteredMergeRequests.isEmpty {
-                        BaseTextView(message: "All done 🥳")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .task(id: context.date) {
-                    await fetchReviewRequestedMRs()
-                    await fetchAuthoredMRs()
-                    await fetchRepos()
-                }
-                .frame(idealWidth: 300, maxWidth: 300)
-            }
-        }
-    }
-
-    /// TODO: Cleanup and move both into the same function
-    @MainActor
-    private func fetchReviewRequestedMRs() async {
-        for account in accounts {
-            let results: [MergeRequest] = ((try? await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)) ?? []).map { mr in
-                mr.account = account
-                mr.type = .reviewRequestedMergeRequests
-                return mr
-            }
-            removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
-        }
-    }
-
-    @MainActor
-    private func fetchAuthoredMRs() async {
-        for account in accounts {
-            let results: [MergeRequest] = ((try? await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)) ?? []).map { mr in
-                mr.account = account
-                mr.type = .authoredMergeRequests
-                return mr
-            }
-            removeAndInsertMRs(.authoredMergeRequests, account: account, results: results)
-        }
-    }
-
-    private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
-        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
-        let updated = results.map { $0.mergerequestID }
-        let difference = existing.difference(from: updated)
-
-        for mergeRequest in account.mergeRequests {
-            if difference.contains(mergeRequest.mergerequestID) {
-                modelContext.delete(mergeRequest)
-            }
-        }
-
-        for result in results {
-            modelContext.insert(result)
-        }
-    }
-
-    @MainActor
-    private func fetchRepos() async {
-        for account in accounts {
-            let ids = mergeRequests.compactMap { mr in
-                return mr.targetProject?.id.split(separator: "/").last
-            }.compactMap({ Int($0) })
-
-            let results = try? await NetworkManager.shared.fetchProjects(with: account, ids: Array(Set(ids)))
-
-            if let results {
-                for result in results {
-                    withAnimation {
-                        modelContext.insert(result)
-                    }
-                }
-            }
-        }
-    }
-}
-
-#Preview {
-    WidgetInterface()
-        .modelContainer(.previews)
-        .environmentObject(NoticeState())
-}
-
-
-
-//NotificationManager.shared.sendNotification(
-//    title: title,
-//    subtitle: "\(reference) is approved by \(approvers.formatted())",
-//    userInfo: userInfo
-//)
+//
+//struct WidgetInterface: View {
+//    // last update
+//    var lastUpdate: Date?
+//    var mergeRequests: [MergeRequest] = []
+//    var accounts: [Account] = []
+//    var repos: [LaunchpadRepo] = []
+//
+//    @State private var selectedView: QueryType = .reviewRequestedMergeRequests
+//    @State private var timelineDate: Date = .now
+//
+//    var filteredMergeRequests: [MergeRequest] {
+//        mergeRequests //.filter { $0.type == selectedView }
+//    }
+//
+//    var body: some View {
+//        VStack(alignment: .leading, spacing: 10) {
+//            VStack(alignment: .leading) {
+//                if accounts.count > 1 {
+//                    SectionedMergeRequestList(
+//                        accounts: accounts,
+//                        mergeRequests: filteredMergeRequests,
+//                        selectedView: selectedView
+//                    )
+//                } else {
+//                    PlainMergeRequestList(mergeRequests: filteredMergeRequests)
+//                }
+//            }
+//
+//            if let lastUpdate {
+//                Text(lastUpdate.description)
+//            }
+//
+//            Text("mergeRequests \(mergeRequests.count.description)")
+//            Text("accounts \(accounts.count.description)")
+//            Text("repos \(repos.count.description)")
+//            if accounts.isEmpty {
+//                BaseTextView(message: "Setup your accounts in the settings")
+//            } else if filteredMergeRequests.isEmpty {
+//
+//                BaseTextView(message: "All done 🥳")
+//                    .foregroundStyle(.secondary)
+//            }
+//
+//
+//        }.frame(alignment: .top)
+//    }
+//}
+//
+//#Preview {
+//    WidgetInterface()
+//}

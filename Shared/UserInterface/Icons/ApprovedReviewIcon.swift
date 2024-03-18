@@ -12,7 +12,7 @@ struct ApprovedReviewIcon: View {
 
     @AppStorage("baseURL") private var baseURL: String = "https://gitlab.com"
 
-    var body: some View {
+    var largeView: some View {
         HStack {
             Text("Approved")
             HStack(spacing: -4) {
@@ -47,6 +47,25 @@ struct ApprovedReviewIcon: View {
         )
         .padding(1)
         .help("Merge request approved")
+    }
+
+    var smallView: some View {
+            Image(systemName: "checkmark.circle")
+            .symbolRenderingMode(.hierarchical)
+                .foregroundColor(.green)
+                .font(.system(size: 18))
+                .help("Merge request approved")
+                .clipShape(Rectangle())
+//        .frame(width: 20, height: 20)
+    }
+
+    var body: some View {
+        ViewThatFits {
+            largeView
+
+            smallView
+        }
+
     }
 }
 
