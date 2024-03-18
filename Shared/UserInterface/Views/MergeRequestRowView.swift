@@ -160,6 +160,33 @@ struct DoubleLineMergeRequestSubRowView: View {
     }
 }
 
+// Choose view based on widget family
+//struct EmojiRangerWidgetEntryView: View {
+//    var entry: SimpleEntry
+//
+//    @Environment(\.widgetFamily) var family
+//
+//    @ViewBuilder
+//    var body: some View {
+//        switch family {
+//
+//            // Code for other widget sizes.
+//
+//        case .systemLarge:
+//            if #available(iOS 17.0, *) {
+//                HStack(alignment: .top) {
+//                    Button(intent: SuperCharge()) {
+//                        Image(systemName: "bolt.fill")
+//                    }
+//                }
+//                .tint(.white)
+//                .padding()
+//            }
+//            // ...rest of view
+//        }
+//    }
+//}
+
 struct MergeRequestRowView: View {
     var MR: MergeRequest
     var macOSUI: some View {

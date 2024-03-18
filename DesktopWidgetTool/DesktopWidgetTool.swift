@@ -9,6 +9,8 @@ import WidgetKit
 import SwiftUI
 import SwiftData
 
+// Interactions & open link from widgets https://stackoverflow.com/a/77190038/3199999
+
 struct WidgetInterface: View {
     // last update
     var lastUpdate: Date?
