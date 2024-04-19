@@ -12,44 +12,22 @@ import SwiftData
 // Interactions & open link from widgets https://stackoverflow.com/a/77190038/3199999
 
 struct WidgetInterface: View {
-    // last update
-    var lastUpdate: Date?
     var mergeRequests: [MergeRequest]
     var accounts: [Account]
     var repos: [LaunchpadRepo]
-
-    @State private var selectedView: QueryType = .reviewRequestedMergeRequests
-    @State private var timelineDate: Date = .now
-
-    var filteredMergeRequests: [MergeRequest] {
-        mergeRequests //.filter { $0.type == selectedView }
-    }
+    var selectedView: QueryType
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-                if accounts.count > 1 {
-                    SectionedMergeRequestList(
-                        accounts: accounts,
-                        mergeRequests: filteredMergeRequests,
-                        selectedView: selectedView
-                    )
-                } else {
-                    PlainMergeRequestList(mergeRequests: filteredMergeRequests)
-                }
-
-//            if let lastUpdate {
-//                Text(lastUpdate.description)
-//            }
-
-//            Text("mergeRequests \(mergeRequests.count.description)")
-//            Text("accounts \(accounts.count.description)")
-//            Text("repos \(repos.count.description)")
-//            if accounts.isEmpty {
-//                BaseTextView(message: "Setup your accounts in the settings")
-//            } else if filteredMergeRequests.isEmpty {
-//                BaseTextView(message: "All done 🥳")
-//                    .foregroundStyle(.secondary)
-//            }
+            if accounts.count > 1 {
+                SectionedMergeRequestList(
+                    accounts: accounts,
+                    mergeRequests: mergeRequests,
+                    selectedView: selectedView
+                )
+            } else {
+                PlainMergeRequestList(mergeRequests: mergeRequests)
+            }
         }
         .fixedSize(horizontal: false, vertical: true)
         .frame(alignment: .top)
@@ -62,7 +40,8 @@ struct Provider: TimelineProvider {
             date: Date(),
             mergeRequests: [],
             accounts: [],
-            repos: []
+            repos: [],
+            selectedView: .authoredMergeRequests
         )
     }
 
@@ -72,6 +51,7 @@ struct Provider: TimelineProvider {
         Task { @MainActor in
             print("getSnapshot is called")
             let now = Date.now
+            let selectedView: QueryType = .authoredMergeRequests
 
             let context = ModelContainer.shared.mainContext
             let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
@@ -82,7 +62,8 @@ struct Provider: TimelineProvider {
                 date: now,
                 mergeRequests: mergeRequests,
                 accounts: accounts,
-                repos: repos
+                repos: repos,
+                selectedView: selectedView
             )
             completion(entry)
         }
@@ -93,6 +74,7 @@ struct Provider: TimelineProvider {
             var entries: [SimpleEntry] = []
             print("getTimeline2 is called")
             let now = Date.now
+            let selectedView: QueryType = .authoredMergeRequests
 
             let context = ModelContainer.shared.mainContext
             //            @Query private var mergeRequests: [MergeRequest]
@@ -130,7 +112,8 @@ struct Provider: TimelineProvider {
                     date: now,
                     mergeRequests: mergeRequests,
                     accounts: accounts,
-                    repos: repos
+                    repos: repos,
+                    selectedView: selectedView
                 )
             )
 
@@ -168,6 +151,7 @@ struct SimpleEntry: TimelineEntry {
     let mergeRequests: [MergeRequest]
     let accounts: [Account]
     let repos: [LaunchpadRepo]
+    let selectedView: QueryType
 }
 
 
@@ -176,14 +160,40 @@ struct GitLabDesktopWidgetEntryView : View {
 
     var body: some View {
         WidgetInterface(
-            lastUpdate: entry.date,
             mergeRequests: entry.mergeRequests,
             accounts: entry.accounts,
-            repos: entry.repos
+            repos: entry.repos,
+            selectedView: entry.selectedView
         )
     }
 }
 
+// Choose view based on widget family
+//struct EmojiRangerWidgetEntryView: View {
+//    var entry: SimpleEntry
+//
+//    @Environment(\.widgetFamily) var family
+//
+//    @ViewBuilder
+//    var body: some View {
+//        switch family {
+//
+//            // Code for other widget sizes.
+//
+//        case .systemLarge:
+//            if #available(iOS 17.0, *) {
+//                HStack(alignment: .top) {
+//                    Button(intent: SuperCharge()) {
+//                        Image(systemName: "bolt.fill")
+//                    }
+//                }
+//                .tint(.white)
+//                .padding()
+//            }
+//            // ...rest of view
+//        }
+//    }
+//}
 
 struct DesktopWidgetTool: Widget {
     let kind: String = "DesktopWidgetTool"
