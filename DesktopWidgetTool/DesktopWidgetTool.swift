@@ -143,6 +143,26 @@ struct Provider: TimelineProvider {
     }
 }
 
+//let now = Date.now
+//
+//let context = ModelContainer.shared.mainContext
+//let mergeRequests = (
+//    try? context.fetch(
+//        FetchDescriptor<MergeRequest>(predicate: #Predicate {
+//            $0.type == type
+//        })
+//    )
+//) ?? []
+//let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
+//let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>())) ?? []
+//
+//return SimpleEntry(
+//    date: now,
+//    mergeRequests: mergeRequests,
+//    accounts: accounts,
+//    repos: repos
+//)
+
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let mergeRequests: [MergeRequest]

@@ -552,6 +552,20 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
 //    }
 }
 
+extension TargetProject {
+    static let preview = TargetProject(
+        id: "gid://gitlab/Project/116",
+        name: "instagram",
+        path: "/instagram",
+        webURL: URL(string: "https://gitlab.com"),
+        avatarUrl: nil,
+        namespace: .preview,
+        repository: nil,
+        group: .preview,
+        fetchedAvatarData: nil
+    )
+}
+
 // MARK: - NameSpace
 struct NameSpace: Codable, Equatable, Hashable, Identifiable {
     let id: String
@@ -567,6 +581,10 @@ struct NameSpace: Codable, Equatable, Hashable, Identifiable {
         self.fullPath = fullPath
         self.fullName = fullName
     }
+}
+
+extension NameSpace {
+    static let preview = NameSpace(id: "gid://gitlab/Group/5", fullPath: "meta", fullName: "meta")
 }
 
 // MARK: - Repository
@@ -606,6 +624,16 @@ struct Group: Codable, Equatable, Hashable {
 //        // Should re-encode any non-escaped utf8 strings
 //        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
 //    }
+}
+
+extension Group {
+    static let preview = Group(
+        id: "gid://gitlab/Group/5",
+        name: "meta",
+        fullName: "meta",
+        fullPath: "meta",
+        webURL: URL(string:"https://gitlab.com")
+    )
 }
 
 // MARK: - PipelineStatus

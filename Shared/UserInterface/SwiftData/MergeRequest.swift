@@ -91,6 +91,44 @@ extension String {
     }
 }
 
+extension MergeRequest {
+    static let preview = MergeRequest(
+        id: "gid://gitlab/MergeRequest/2676",
+        mergerequestID: "gid://gitlab/MergeRequest/2676",
+        title: "Resolve \"Sidebar Cleanup\"",
+        state: .opened,
+        draft: false,
+        webUrl: URL(string: "https://gitlab.com/proj"),
+        mergeStatusEnum: .canBeMerged,
+        approvedBy: nil,
+        userDiscussionsCount: 12,
+        userNotesCount: 12,
+        headPipeline: nil,
+        reference: "2676",
+        targetProject: .preview,
+        type: .authoredMergeRequests,
+        account: nil
+    )
+
+    static let preview2 = MergeRequest(
+        id: "gid://gitlab/MergeRequest/512",
+        mergerequestID: "gid://gitlab/MergeRequest/512",
+        title: "Fix: Account settings redesign list performance",
+        state: .opened,
+        draft: true,
+        webUrl: URL(string: "https://gitlab.com/proj"),
+        mergeStatusEnum: .checking,
+        approvedBy: nil,
+        userDiscussionsCount: nil,
+        userNotesCount: nil,
+        headPipeline: nil,
+        reference: "512",
+        targetProject: .preview,
+        type: .authoredMergeRequests,
+        account: nil
+    )
+}
+
 extension MergeRequest: CustomDebugStringConvertible {
     var debugDescription: String {
         return "MergeRequest(mergerequestID: \(mergerequestID ?? "nil"), title: \(title ?? "nil"))"

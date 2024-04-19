@@ -1,4 +1,5 @@
 {
+  "originHash" : "2a06bdaff6864ba8fd3d180b93a1d7654ccffbbd662bf8961c590b0a27d94d84",
   "pins" : [
     {
       "identity" : "cachedasyncimage",
@@ -19,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
