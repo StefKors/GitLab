@@ -11,7 +11,7 @@ import SwiftData
 
 // Interactions & open link from widgets https://stackoverflow.com/a/77190038/3199999
 
-struct WidgetInterface: View {
+struct LargeWidgetInterface: View {
     var mergeRequests: [MergeRequest]
     var accounts: [Account]
     var repos: [LaunchpadRepo]
@@ -38,8 +38,8 @@ struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(
             date: Date(),
-            mergeRequests: [],
-            accounts: [],
+            mergeRequests: [.preview],
+            accounts: [.preview],
             repos: [],
             selectedView: .authoredMergeRequests
         )
@@ -158,13 +158,25 @@ struct SimpleEntry: TimelineEntry {
 struct GitLabDesktopWidgetEntryView : View {
     var entry: Provider.Entry
 
+    @Environment(\.widgetFamily) var family
+
+    @ViewBuilder
     var body: some View {
-        WidgetInterface(
-            mergeRequests: entry.mergeRequests,
-            accounts: entry.accounts,
-            repos: entry.repos,
-            selectedView: entry.selectedView
-        )
+        switch family {
+
+        case .systemLarge:
+            LargeWidgetInterface(
+                mergeRequests: entry.mergeRequests,
+                accounts: entry.accounts,
+                repos: entry.repos,
+                selectedView: entry.selectedView
+            )
+
+        default:
+            VStack {
+                Text("default widget view")
+            }
+        }
     }
 }
 
@@ -196,16 +208,15 @@ struct GitLabDesktopWidgetEntryView : View {
 //}
 
 struct DesktopWidgetTool: Widget {
-    let kind: String = "DesktopWidgetTool"
-
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        StaticConfiguration(kind: "DesktopWidgetTool", provider: Provider()) { entry in
             GitLabDesktopWidgetEntryView(entry: entry)
                 .frame(maxHeight: .infinity, alignment: .top)
                 .containerBackground(.thickMaterial, for: .widget)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Game Status")
+        .description("Shows an overview of your game status")
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 

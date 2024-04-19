@@ -25,7 +25,7 @@ struct SettingsView: View {
                 }
                 .tag(Tabs.Account)
         }
-        .frame(width: 600, height: 500)
+        .frame(idealWidth: 600, idealHeight: 500)
         .navigationTitle("Settings")
     }
 }

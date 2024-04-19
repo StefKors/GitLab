@@ -27,9 +27,22 @@ struct GitLab_iOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            UserInterface()
-                .environmentObject(self.noticeState)
-                .modelContainer(sharedModelContainer)
+            NavigationView {
+                NavigationStack {
+                    UserInterface()
+                }
+                .toolbar {
+                    ToolbarItem {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            Label("Settings", systemImage: "gear")
+                        }
+                    }
+                }
+            }
+            .environmentObject(self.noticeState)
+            .modelContainer(sharedModelContainer)
         }
     }
 }

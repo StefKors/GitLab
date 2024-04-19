@@ -44,16 +44,16 @@ struct AddAccountView: View {
                     }
 
                 // Menu("Options") {
-                    TextField("Base URL", text: $instance, prompt: Text("https://www.gitlab.com"))
-                        .onChange(of: instance, initial: false) { oldValue, newValue in
-                            state = .readyToSubmit
-                        }
-                        .searchable(text: $instance) {
-                            Text("🍎").searchCompletion("apple")
-                            Text("🍐").searchCompletion("pear")
-                            Text("🍌").searchCompletion("banana")
-                        }
-                    // Button("custom item", action: {})
+                TextField("Base URL", text: $instance, prompt: Text("https://www.gitlab.com"))
+                    .onChange(of: instance, initial: false) { oldValue, newValue in
+                        state = .readyToSubmit
+                    }
+                    .searchable(text: $instance) {
+                        Text("🍎").searchCompletion("apple")
+                        Text("🍐").searchCompletion("pear")
+                        Text("🍌").searchCompletion("banana")
+                    }
+                // Button("custom item", action: {})
                 // }
 
 
@@ -98,7 +98,12 @@ struct AddAccountView: View {
         .scrollDisabled(true)
         .formStyle(.grouped)
         .textFieldStyle(RoundedBorderTextFieldStyle())
+#if os(macOS)
         .scenePadding()
+#else
+        .presentationDragIndicator(.hidden)
+        .presentationDetents([.medium])
+#endif
     }
 
     func handleSubmit() {
@@ -132,6 +137,16 @@ struct AddAccountView: View {
     }
 }
 
-#Preview {
+#Preview("MacOS") {
     AddAccountView()
+}
+
+
+#Preview("iOS") {
+    VStack {
+        Spacer()
+    }
+    .sheet(isPresented: .constant(true), content: {
+        AddAccountView()
+    })
 }

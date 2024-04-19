@@ -59,9 +59,42 @@ struct AlertDetails: Identifiable {
                 }
             }
             .sheet(isPresented: $showCreateSheet, content: {
+#if os(macOS)
                 AddAccountView()
                     .interactiveDismissDisabled(false)
                     .presentationCompactAdaptation(.fullScreenCover)
+#else
+                NavigationView {
+                    VStack {
+                        Text("sdf")
+                        // add sectioned view that goes step by step
+                        // 1. server
+                        // 2. key
+                        // 3. verify
+                        // 4. close
+
+//                                            AddAccountView()
+                    }
+                    .border(Color.black)
+                    .navigationBarBackButtonHidden(false)
+                    .toolbar(.visible, for: .navigationBar)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button("Cancel") {
+
+                            }
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button("Done") {
+
+                            }
+                        }
+                    }
+                }
+//                    .interactiveDismissDisabled(false)
+//                    .presentationCompactAdaptation(.sheet)
+                    .presentationDetents([.medium])
+#endif
                 // .presentationContentInteraction(.resizes)
             })
 
@@ -135,4 +168,9 @@ struct AlertDetails: Identifiable {
     //         // Fallback on earlier versions
     //     }
     // }
+}
+
+#Preview {
+    AccountSettingsView()
+        .modelContainer(.shared)
 }
