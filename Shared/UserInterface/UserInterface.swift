@@ -39,7 +39,7 @@ struct UserInterface: View {
     }
 
     var body: some View {
-        VStack {
+        HStack(alignment: .top) {
             TimelineView(.periodic(from: timelineDate, by: 12)) { context in
                 VStack(alignment: .center, spacing: 10) {
                     Picker(selection: $selectedView, content: {

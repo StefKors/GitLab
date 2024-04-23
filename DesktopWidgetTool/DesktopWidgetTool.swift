@@ -34,11 +34,45 @@ struct LargeWidgetInterface: View {
     }
 }
 
+struct MediumWidgetInterface: View {
+    var mergeRequests: [MergeRequest]
+    var accounts: [Account]
+    var repos: [LaunchpadRepo]
+    var selectedView: QueryType
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Image(.mergeRequest)
+                Text(mergeRequests.debugDescription)
+            }
+            .font(.headline)
+
+            ForEach(mergeRequests, id: \.id) { MR in
+                HStack(alignment: .center, spacing: 4) {
+                    GitProviderView(provider: MR.account?.provider)
+                        .frame(width: 18, height: 18, alignment: .center)
+
+                    TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl)
+                        .multilineTextAlignment(.leading)
+                        .truncationMode(.tail)
+                        .padding(.trailing)
+                }
+//                .padding(.bottom, 4)
+//                .listRowSeparator(.visible)
+//                .listRowSeparatorTint(Color.secondary.opacity(0.2))
+            }
+        }
+        .fixedSize(horizontal: false, vertical: true)
+        .frame(alignment: .top)
+    }
+}
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(
             date: Date(),
-            mergeRequests: [.preview],
+            mergeRequests: [.preview, .preview, .preview, .preview],
             accounts: [.preview],
             repos: [],
             selectedView: .authoredMergeRequests
@@ -47,9 +81,7 @@ struct Provider: TimelineProvider {
 
     // TODO: demo data? or at placeholder?
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        print("getSnapshot")
         Task { @MainActor in
-            print("getSnapshot is called")
             let now = Date.now
             let selectedView: QueryType = .authoredMergeRequests
 
@@ -164,8 +196,16 @@ struct GitLabDesktopWidgetEntryView : View {
     var body: some View {
         switch family {
 
-        case .systemLarge:
+        case .systemLarge, .systemExtraLarge:
             LargeWidgetInterface(
+                mergeRequests: entry.mergeRequests,
+                accounts: entry.accounts,
+                repos: entry.repos,
+                selectedView: entry.selectedView
+            )
+
+        case .systemMedium:
+            MediumWidgetInterface(
                 mergeRequests: entry.mergeRequests,
                 accounts: entry.accounts,
                 repos: entry.repos,
@@ -214,9 +254,9 @@ struct DesktopWidgetTool: Widget {
                 .frame(maxHeight: .infinity, alignment: .top)
                 .containerBackground(.thickMaterial, for: .widget)
         }
-        .configurationDisplayName("Game Status")
-        .description("Shows an overview of your game status")
-        .supportedFamilies([.systemMedium, .systemLarge])
+        .configurationDisplayName("Authored Merge Requests")
+        .description("All your Authored Merge Requests directly visible.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
     }
 }
 

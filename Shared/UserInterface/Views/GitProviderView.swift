@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct GitProviderView: View {
-    let provider: GitProvider
+    let provider: GitProvider?
     var body: some View {
-        switch provider {
-        case .GitLab:
-            Image("GitLab-Outline")
-                .resizable()
+        if let provider {
+            switch provider {
+            case .GitLab:
+                Image("GitLab-Outline")
+                    .resizable()
+            }
         }
     }
 }

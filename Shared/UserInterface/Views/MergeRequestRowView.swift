@@ -69,11 +69,11 @@ struct MergeRequestRowView: View {
                 .padding(.trailing)
 
             ViewThatFits {
-                HorizontalMergeRequestSubRowView(MR: MR)
-                    .frame(minWidth: 180, idealWidth: 200, alignment: .leading)
-
                 DoubleLineMergeRequestSubRowView(MR: MR)
-                    .frame(minWidth: 50, idealWidth: 100, alignment: .leading)
+                    .frame(minWidth: 50, idealWidth: 60, alignment: .leading)
+
+                HorizontalMergeRequestSubRowView(MR: MR)
+                    .frame(minWidth: 100, idealWidth: 120, alignment: .leading)
             }
         }
     }

@@ -22,8 +22,8 @@ struct GitLabApp: App {
 
         MenuBarExtra(content: {
             MainGitLabView()
-                .frame(minWidth: 500)
                 .modelContainer(sharedModelContainer)
+                .frame(minWidth: 500, minHeight: 200, idealHeight: 300)
         }, label: {
             Label(title: {
                 Text("GitLab Desktop")
