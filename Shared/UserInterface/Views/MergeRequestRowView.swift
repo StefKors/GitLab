@@ -69,8 +69,8 @@ struct MergeRequestRowView: View {
                 .padding(.trailing)
 
             ViewThatFits {
-                DoubleLineMergeRequestSubRowView(MR: MR)
-                    .frame(minWidth: 50, idealWidth: 60, alignment: .leading)
+//                DoubleLineMergeRequestSubRowView(MR: MR)
+//                    .frame(minWidth: 50, idealWidth: 60, alignment: .leading)
 
                 HorizontalMergeRequestSubRowView(MR: MR)
                     .frame(minWidth: 100, idealWidth: 120, alignment: .leading)

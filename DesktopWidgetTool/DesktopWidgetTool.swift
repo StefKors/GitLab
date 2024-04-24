@@ -42,28 +42,32 @@ struct MediumWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Image(.mergeRequest)
-                Text(mergeRequests.debugDescription)
+            HStack(spacing: 2) {
+                Image(.mergeRequest).resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 20)
+                Text(mergeRequests.count.description)
             }
-            .font(.headline)
 
-            ForEach(mergeRequests, id: \.id) { MR in
-                HStack(alignment: .center, spacing: 4) {
-                    GitProviderView(provider: MR.account?.provider)
-                        .frame(width: 18, height: 18, alignment: .center)
+            .font(.largeTitle)
 
-                    TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl)
-                        .multilineTextAlignment(.leading)
-                        .truncationMode(.tail)
-                        .padding(.trailing)
+            VStack(alignment: .leading, spacing: 2) {
+                ForEach(mergeRequests, id: \.id) { MR in
+                    HStack(alignment: .top, spacing: 4) {
+                        GitProviderView(provider: MR.account?.provider)
+                            .frame(width: 18, height: 18, alignment: .center)
+
+                        TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl, weight: .regular)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                    }
                 }
 //                .padding(.bottom, 4)
 //                .listRowSeparator(.visible)
 //                .listRowSeparatorTint(Color.secondary.opacity(0.2))
             }
         }
-        .fixedSize(horizontal: false, vertical: true)
         .frame(alignment: .top)
     }
 }

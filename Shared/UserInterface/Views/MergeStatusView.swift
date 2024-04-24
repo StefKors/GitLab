@@ -25,7 +25,7 @@ struct MergeStatusView: View {
             if isOnMergeTrain {
                 MergeTrainIcon()
             } else if let approvers = approvers, !approvers.isEmpty {
-                ApprovedReviewIcon(approvedBy: approvers)
+                ApprovedReviewIcon(approvedBy: approvers, account: MR.account)
             } else if let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
                 ShareMergeRequestIcon(MR: MR)
             } else {

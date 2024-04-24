@@ -59,11 +59,12 @@ struct ShortTitleWebLink: View {
 struct TitleWebLink: View {
     var linkText: String
     var destination: URL?
+    var weight: Font.Weight = .bold
     @State var isHovering = false
     
     var body: some View {
         let text = Text(linkText)
-            .fontWeight(.bold)
+            .fontWeight(weight)
             .foregroundColor(isHovering ? .accentColor  : .primary)
             .animation(.interactiveSpring(), value: isHovering)
             .multilineTextAlignment(.leading)

@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ApprovedReviewIcon: View {
     var approvedBy: [Author]
-
-    @AppStorage("baseURL") private var baseURL: String = "https://gitlab.com"
-
+    var account: Account?
+    
+    var instance: String {
+        account?.instance ?? "https://gitlab.com"
+    }
+    
     var largeView: some View {
         HStack {
             Text("Approved")
@@ -19,7 +22,7 @@ struct ApprovedReviewIcon: View {
                 ForEach(approvedBy, id: \.id, content: { author in
                     if let username = author.username,
                        let avatarUrl = author.avatarUrl,
-                       let baseURL = URL(string: baseURL),
+                       let baseURL = URL(string: instance),
                        let url = URL(string: avatarUrl.absoluteString, relativeTo: baseURL) {
                         AsyncImage(url: url) { image in
                             image.resizable()
@@ -48,24 +51,25 @@ struct ApprovedReviewIcon: View {
         .padding(1)
         .help("Merge request approved")
     }
-
+    
+    /// TODO: Diff in style from CI completed check circle
     var smallView: some View {
-            Image(systemName: "checkmark.circle")
+        Image(systemName: "checkmark.circle")
             .symbolRenderingMode(.hierarchical)
-                .foregroundColor(.green)
-                .font(.system(size: 18))
-                .help("Merge request approved")
-                .clipShape(Rectangle())
-//        .frame(width: 20, height: 20)
+            .foregroundColor(.green)
+            .font(.system(size: 18))
+            .help("Merge request approved")
+            .clipShape(Rectangle())
+        //        .frame(width: 20, height: 20)
     }
-
+    
     var body: some View {
         ViewThatFits {
             largeView
-
+            
             smallView
         }
-
+        
     }
 }
 
