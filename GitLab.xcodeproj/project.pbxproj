@@ -334,6 +334,10 @@
 		8AFDAACD2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
 		8AFDAACE2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
 		8AFDAACF2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
+		8AFF87EF2BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
+		8AFF87F02BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
+		8AFF87F12BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
+		8AFF87F22BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,6 +543,7 @@
 		8AFDAAC42A850793001937AC /* AccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRow.swift; sourceTree = "<group>"; };
 		8AFDAAC82A85112E001937AC /* GitProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProviderView.swift; sourceTree = "<group>"; };
 		8AFDAACC2A85231F001937AC /* MergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequest.swift; sourceTree = "<group>"; };
+		8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -822,6 +827,7 @@
 		8AF80CDE2A55817400819B80 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				8AFF87ED2BDA711500D21D16 /* EnvironmentValues */,
 				8AFDAA962A84FAED001937AC /* SwiftData */,
 				8A63DE6F2A83A1FC002DD636 /* Extensions */,
 				8AF80CDF2A55817400819B80 /* Models */,
@@ -959,6 +965,14 @@
 				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
 			);
 			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		8AFF87ED2BDA711500D21D16 /* EnvironmentValues */ = {
+			isa = PBXGroup;
+			children = (
+				8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */,
+			);
+			path = EnvironmentValues;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1286,6 +1300,7 @@
 				8AF80DA92A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
 				8AF80D432A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */,
+				8AFF87F02BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8AFDAACA2A85112E001937AC /* GitProviderView.swift in Sources */,
 				8AF80DCD2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */,
 				8AF80DB22A55817400819B80 /* LastUpdateMessagePlaceholderView.swift in Sources */,
@@ -1416,6 +1431,7 @@
 				8A7935E92A5583E400F8FB6C /* NoticeListView.swift in Sources */,
 				8A9D87912BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8A7935EA2A5583E400F8FB6C /* BaseNoticeItem.swift in Sources */,
+				8AFF87F12BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8A7935EB2A5583E400F8FB6C /* RefreshStatus.swift in Sources */,
 				8A7935EC2A5583E400F8FB6C /* PipelineView.swift in Sources */,
 				8A7935ED2A5583E400F8FB6C /* ExpandHitBoxModifier.swift in Sources */,
@@ -1498,6 +1514,7 @@
 				8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
 				8A9D878F2BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8AF80DAB2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
+				8AFF87EF2BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8AF80D272A55817400819B80 /* PushEvents.swift in Sources */,
 				8AF80D662A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80DA22A55817400819B80 /* RefreshStatus.swift in Sources */,
@@ -1556,6 +1573,7 @@
 				8AE8A7052B989EFA002B3C9E /* URL.swift in Sources */,
 				8AE8A7062B989EFA002B3C9E /* AccountRow.swift in Sources */,
 				8AE8A7072B989EFA002B3C9E /* CIPendingIcon.swift in Sources */,
+				8AFF87F22BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */,
 				8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */,
 				8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */,

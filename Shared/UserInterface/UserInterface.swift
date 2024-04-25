@@ -79,6 +79,8 @@ struct UserInterface: View {
                             .foregroundStyle(.secondary)
                     }
 
+                    Spacer()
+
                     LastUpdateMessageView(lastUpdate: context.date, networkState: $networkState)
                 }
                 .task(id: context.date) {

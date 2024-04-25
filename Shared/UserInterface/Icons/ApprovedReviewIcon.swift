@@ -7,36 +7,55 @@
 
 import SwiftUI
 
+struct UserAvatarView: View {
+    let author: Author
+    let account: Account?
+
+    @Environment(\.isInWidget) private var isInWidget
+
+    var body: some View {
+        VStack {
+            if isInWidget, let avatarUrl = author.avatarUrl, let data = try? Data(contentsOf: avatarUrl), let image = NSImage(data: data) {
+                Image(nsImage: image)
+                    .resizable()
+            } else
+            // Previously we used account.instace to create the base url
+            if let avatarUrl = author.avatarUrl {
+                AsyncImage(url: avatarUrl) { image in
+                    image.resizable()
+                } placeholder: {
+                    Image(systemName: "person.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 14))
+                }
+            }
+        }
+        .aspectRatio(contentMode: .fill)
+        .clipShape(Circle())
+        .frame(width: 14, height: 14)
+        .help(author.username ?? "")
+    }
+}
+
+#Preview {
+    UserAvatarView(author: .preview, account: .preview)
+}
+
 struct ApprovedReviewIcon: View {
     var approvedBy: [Author]
     var account: Account?
-    
+
     var instance: String {
         account?.instance ?? "https://gitlab.com"
     }
-    
+
     var largeView: some View {
         HStack {
             Text("Approved")
             HStack(spacing: -4) {
                 ForEach(approvedBy, id: \.id, content: { author in
-                    if let username = author.username,
-                       let avatarUrl = author.avatarUrl,
-                       let baseURL = URL(string: instance),
-                       let url = URL(string: avatarUrl.absoluteString, relativeTo: baseURL) {
-                        AsyncImage(url: url) { image in
-                            image.resizable()
-                        } placeholder: {
-                            Image(systemName: "person.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 14))
-                        }
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .frame(width: 14, height: 14)
-                        .help(username)
-                    }
+                    UserAvatarView(author: author, account: account)
                 })
             }
         }
@@ -51,7 +70,7 @@ struct ApprovedReviewIcon: View {
         .padding(1)
         .help("Merge request approved")
     }
-    
+
     /// TODO: Diff in style from CI completed check circle
     var smallView: some View {
         Image(systemName: "checkmark.circle")
@@ -62,22 +81,17 @@ struct ApprovedReviewIcon: View {
             .clipShape(Rectangle())
         //        .frame(width: 20, height: 20)
     }
-    
+
     var body: some View {
         ViewThatFits {
             largeView
-            
+
             smallView
         }
-        
+
     }
 }
 
-// struct ApprovedReviewIcon_Previews: PreviewProvider {
-//     static let networkManager = NetworkManager()
-//     static var previews: some View {
-//         ApprovedReviewIcon(approvedBy: [Author(id: "id", name: "Nicolas Cage", username: "cage2000", avatarUrl: URL(string: "/uploads/-/system/user/avatar/8609834/avatar.png")!)])
-//             .environmentObject(self.networkManager)
-//             .environmentObject(self.networkManager.noticeState)
-//     }
-// }
+#Preview {
+    ApprovedReviewIcon(approvedBy: [.preview], account: .preview)
+}

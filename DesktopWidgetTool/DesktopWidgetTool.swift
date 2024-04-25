@@ -63,9 +63,6 @@ struct MediumWidgetInterface: View {
                             .truncationMode(.tail)
                     }
                 }
-//                .padding(.bottom, 4)
-//                .listRowSeparator(.visible)
-//                .listRowSeparatorTint(Color.secondary.opacity(0.2))
             }
         }
         .frame(alignment: .top)
@@ -122,27 +119,19 @@ struct Provider: TimelineProvider {
             print("mergeRequests \(mergeRequests.count.description)")
             print("accounts \(accounts.count.description)")
             print("repos \(repos.count.description)")
-            /// Used in Widget only.
-            /// If we try to use the ``Item`` with ``@Model`` macro attached,
-            /// the Xcode preview won't work as expected.
-            //            struct SimpleItem {
-            //            var id: String
-            //            var text: String
-            //            var completedDate: Date?
-            //        }
-            //            let simpleItems = items.map { SimpleItem(id: $0.id, text: $0.text, completedDate: $0.completedDate) }
 
-            //            let recentlyCompletedOrIncompleted = simpleItems.filter { item in
-            //                if let completedDate = item.completedDate {
-            //                    return abs(completedDate.timeIntervalSince(now)) < 2
-            //                } else {
-            //                    return true
-            //                }
-            //            }
-            //
-            //            let incompleted = simpleItems.filter { $0.completedDate == nil }
+            /// find all images and fetch them now because async image doesn't work in Widget Views
+//            let images = fetchImages(mergeRequests)
 
-            // First display items that are recently completed, which completedDate should within 2 seconds from now
+
+            //let mergeRequests = (
+            //    try? context.fetch(
+            //        FetchDescriptor<MergeRequest>(predicate: #Predicate {
+            //            $0.type == type
+            //        })
+            //    )
+            //) ?? []
+
             entries.append(
                 SimpleEntry(
                     date: now,
@@ -153,34 +142,29 @@ struct Provider: TimelineProvider {
                 )
             )
 
-            // Then display incomplted items
-            //            entries.append(SimpleEntry(date: now.addingTimeInterval(0.5), items: incompleted))
-
             let timeline = Timeline(entries: entries, policy: .never)
             completion(timeline)
         }
     }
-}
 
-//let now = Date.now
-//
-//let context = ModelContainer.shared.mainContext
-//let mergeRequests = (
-//    try? context.fetch(
-//        FetchDescriptor<MergeRequest>(predicate: #Predicate {
-//            $0.type == type
-//        })
-//    )
-//) ?? []
-//let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
-//let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>())) ?? []
-//
-//return SimpleEntry(
-//    date: now,
-//    mergeRequests: mergeRequests,
-//    accounts: accounts,
-//    repos: repos
-//)
+
+    private func fetchImages(_ mergeRequests: [MergeRequest]) -> [URL:Data] {
+        var images: [URL: Data] = [:]
+        for mr in mergeRequests {
+            let approvers = mr.approvedBy?.edges?.compactMap({ $0.node }) ?? []
+            for approver in approvers {
+
+                // TODO: cache?
+                if let url = approver.avatarUrl,
+                   let data = try? Data(contentsOf: url) {
+                    images[url] = data
+                }
+            }
+        }
+
+        return images
+    }
+}
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
@@ -189,7 +173,6 @@ struct SimpleEntry: TimelineEntry {
     let repos: [LaunchpadRepo]
     let selectedView: QueryType
 }
-
 
 struct GitLabDesktopWidgetEntryView : View {
     var entry: Provider.Entry
@@ -224,39 +207,13 @@ struct GitLabDesktopWidgetEntryView : View {
     }
 }
 
-// Choose view based on widget family
-//struct EmojiRangerWidgetEntryView: View {
-//    var entry: SimpleEntry
-//
-//    @Environment(\.widgetFamily) var family
-//
-//    @ViewBuilder
-//    var body: some View {
-//        switch family {
-//
-//            // Code for other widget sizes.
-//
-//        case .systemLarge:
-//            if #available(iOS 17.0, *) {
-//                HStack(alignment: .top) {
-//                    Button(intent: SuperCharge()) {
-//                        Image(systemName: "bolt.fill")
-//                    }
-//                }
-//                .tint(.white)
-//                .padding()
-//            }
-//            // ...rest of view
-//        }
-//    }
-//}
-
 struct DesktopWidgetTool: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "DesktopWidgetTool", provider: Provider()) { entry in
             GitLabDesktopWidgetEntryView(entry: entry)
                 .frame(maxHeight: .infinity, alignment: .top)
                 .containerBackground(.thickMaterial, for: .widget)
+                .isInWidget(true)
         }
         .configurationDisplayName("Authored Merge Requests")
         .description("All your Authored Merge Requests directly visible.")

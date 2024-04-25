@@ -62,7 +62,7 @@ struct LastUpdateMessageView: View {
                 })
             }
             Button(action: quitApp, label: {
-                Text("Quit \(Bundle.main.displayName ?? "")")
+                Text("Quit")
             })
 #endif
         }

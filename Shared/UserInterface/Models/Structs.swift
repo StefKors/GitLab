@@ -89,6 +89,15 @@ struct Author: Codable, Equatable {
 //    }
 }
 
+extension Author {
+    static let preview = Author(
+        id: "gid://author",
+        name: "Stef Kors",
+        username: "stefstefstef",
+        avatarUrl: URL(string: "https://secure.gravatar.com/avatar/4b417eb926cf0acf000c1ac5079c448d?s=80&d=identicon")
+    )
+}
+
 /// (same as Author above ^ but with int for id
 struct EventAuthor: Codable, Equatable {
     let id: Int?
