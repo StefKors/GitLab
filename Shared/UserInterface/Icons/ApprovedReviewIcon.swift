@@ -15,6 +15,8 @@ struct UserAvatarView: View {
 
     var body: some View {
         VStack {
+            // TODO: ios support
+            // TODO: cache data fetch response
             if isInWidget, let avatarUrl = author.avatarUrl, let data = try? Data(contentsOf: avatarUrl), let image = NSImage(data: data) {
                 Image(nsImage: image)
                     .resizable()
