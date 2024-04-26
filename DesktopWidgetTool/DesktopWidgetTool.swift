@@ -11,6 +11,61 @@ import SwiftData
 
 // Interactions & open link from widgets https://stackoverflow.com/a/77190038/3199999
 
+
+
+struct WidgetLaunchPadRow: View {
+    let repos: [LaunchpadRepo]
+    let length: Int
+    var body: some View {
+        HStack() {
+            ForEach(repos.prefix(length), id: \.id) { repo in
+                LaunchpadItem(repo: repo)
+            }
+        }
+        .frame(alignment: .leading)
+    }
+}
+
+#Preview {
+    WidgetLaunchPadRow(repos: [], length: 4)
+}
+
+struct ExtraLargeWidgetInterface: View {
+    var mergeRequests: [MergeRequest]
+    var accounts: [Account]
+    var repos: [LaunchpadRepo]
+    var selectedView: QueryType
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ViewThatFits {
+                WidgetLaunchPadRow(repos: repos, length: 10)
+                WidgetLaunchPadRow(repos: repos, length: 9)
+                WidgetLaunchPadRow(repos: repos, length: 8)
+                WidgetLaunchPadRow(repos: repos, length: 7)
+                WidgetLaunchPadRow(repos: repos, length: 6)
+                WidgetLaunchPadRow(repos: repos, length: 5)
+                WidgetLaunchPadRow(repos: repos, length: 4)
+                WidgetLaunchPadRow(repos: repos, length: 3)
+                WidgetLaunchPadRow(repos: repos, length: 2)
+                WidgetLaunchPadRow(repos: repos, length: 1)
+            }
+
+            if accounts.count > 1 {
+                SectionedMergeRequestList(
+                    accounts: accounts,
+                    mergeRequests: mergeRequests,
+                    selectedView: selectedView
+                )
+            } else {
+                PlainMergeRequestList(mergeRequests: mergeRequests)
+            }
+        }
+        .fixedSize(horizontal: false, vertical: true)
+        .frame(alignment: .top)
+    }
+}
+
 struct LargeWidgetInterface: View {
     var mergeRequests: [MergeRequest]
     var accounts: [Account]
@@ -48,7 +103,6 @@ struct MediumWidgetInterface: View {
                     .frame(height: 20)
                 Text(mergeRequests.count.description)
             }
-
             .font(.largeTitle)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -87,9 +141,10 @@ struct Provider: TimelineProvider {
             let selectedView: QueryType = .authoredMergeRequests
 
             let context = ModelContainer.shared.mainContext
+
             let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
-            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>())) ?? []
+            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
             let entry =   SimpleEntry(
                 date: now,
@@ -105,24 +160,15 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task { @MainActor in
             var entries: [SimpleEntry] = []
-            print("getTimeline2 is called")
+
             let now = Date.now
             let selectedView: QueryType = .authoredMergeRequests
 
             let context = ModelContainer.shared.mainContext
-            //            @Query private var mergeRequests: [MergeRequest]
-            //            @Query private var accounts: [Account]
-            //            @Query private var repos: [LaunchpadRepo]
+
             let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
-            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>())) ?? []
-            print("mergeRequests \(mergeRequests.count.description)")
-            print("accounts \(accounts.count.description)")
-            print("repos \(repos.count.description)")
-
-            /// find all images and fetch them now because async image doesn't work in Widget Views
-//            let images = fetchImages(mergeRequests)
-
+            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
             //let mergeRequests = (
             //    try? context.fetch(
@@ -142,7 +188,7 @@ struct Provider: TimelineProvider {
                 )
             )
 
-            let timeline = Timeline(entries: entries, policy: .never)
+            let timeline = Timeline(entries: entries, policy: .after(now.addingTimeInterval(5 * 60)))
             completion(timeline)
         }
     }
@@ -182,8 +228,15 @@ struct GitLabDesktopWidgetEntryView : View {
     @ViewBuilder
     var body: some View {
         switch family {
+        case .systemExtraLarge:
+            ExtraLargeWidgetInterface(
+                mergeRequests: entry.mergeRequests,
+                accounts: entry.accounts,
+                repos: entry.repos,
+                selectedView: entry.selectedView
+            )
 
-        case .systemLarge, .systemExtraLarge:
+        case .systemLarge:
             LargeWidgetInterface(
                 mergeRequests: entry.mergeRequests,
                 accounts: entry.accounts,
