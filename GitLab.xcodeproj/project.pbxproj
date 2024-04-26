@@ -94,6 +94,15 @@
 		8A9D87902BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
 		8A9D87912BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
 		8A9D87922BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
+		8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */; };
+		8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969032BDBC0760078E5CD /* LargeMergeRequestWidgetInterface.swift */; };
+		8AB969112BDBC0EB0078E5CD /* MediumMergeRequestWidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969052BDBC0A40078E5CD /* MediumMergeRequestWidgetInterface.swift */; };
+		8AB969142BDBC0FA0078E5CD /* WidgetLaunchPadRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969072BDBC0C60078E5CD /* WidgetLaunchPadRow.swift */; };
+		8AB9691F2BDBC1BF0078E5CD /* MergeRequestWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9691D2BDBC18B0078E5CD /* MergeRequestWidgetEntryView.swift */; };
+		8AB969222BDBC2170078E5CD /* LaunchPadWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969202BDBC2130078E5CD /* LaunchPadWidgetEntryView.swift */; };
+		8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969232BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift */; };
+		8AB969262BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969252BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift */; };
+		8AB969282BDBC7580078E5CD /* WrappingHStack(1).swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969272BDBC7580078E5CD /* WrappingHStack(1).swift */; };
 		8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
 		8ABBD2072B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
 		8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
@@ -457,6 +466,15 @@
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLink.swift; sourceTree = "<group>"; };
 		8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingWebLinks.swift; sourceTree = "<group>"; };
+		8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
+		8AB969032BDBC0760078E5CD /* LargeMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
+		8AB969052BDBC0A40078E5CD /* MediumMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
+		8AB969072BDBC0C60078E5CD /* WidgetLaunchPadRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLaunchPadRow.swift; sourceTree = "<group>"; };
+		8AB9691D2BDBC18B0078E5CD /* MergeRequestWidgetEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeRequestWidgetEntryView.swift; sourceTree = "<group>"; };
+		8AB969202BDBC2130078E5CD /* LaunchPadWidgetEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchPadWidgetEntryView.swift; path = DesktopWidgetTool/LaunchPadWidget/LaunchPadWidgetEntryView.swift; sourceTree = SOURCE_ROOT; };
+		8AB969232BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLaunchPadWidgetView.swift; sourceTree = "<group>"; };
+		8AB969252BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumLaunchPadWidgetView.swift; sourceTree = "<group>"; };
+		8AB969272BDBC7580078E5CD /* WrappingHStack(1).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WrappingHStack(1).swift"; path = "../../../../Downloads/WrappingHStack(1).swift"; sourceTree = "<group>"; };
 		8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Difference.swift"; sourceTree = "<group>"; };
 		8AC0C2092A5D3D720096772B /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformationView.swift; sourceTree = "<group>"; };
@@ -780,6 +798,28 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8AB968FF2BDBBFE60078E5CD /* MergeRequestWiget */ = {
+			isa = PBXGroup;
+			children = (
+				8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */,
+				8AB969032BDBC0760078E5CD /* LargeMergeRequestWidgetInterface.swift */,
+				8AB969052BDBC0A40078E5CD /* MediumMergeRequestWidgetInterface.swift */,
+				8AB9691D2BDBC18B0078E5CD /* MergeRequestWidgetEntryView.swift */,
+			);
+			path = MergeRequestWiget;
+			sourceTree = "<group>";
+		};
+		8AB969002BDBBFF10078E5CD /* LaunchPadWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8AB969272BDBC7580078E5CD /* WrappingHStack(1).swift */,
+				8AB969202BDBC2130078E5CD /* LaunchPadWidgetEntryView.swift */,
+				8AB969232BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift */,
+				8AB969252BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift */,
+			);
+			path = LaunchPadWidget;
+			sourceTree = "<group>";
+		};
 		8AC4B4112865C1480054C601 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,8 +847,11 @@
 		8AE8A6EB2B989E9A002B3C9E /* DesktopWidgetTool */ = {
 			isa = PBXGroup;
 			children = (
+				8AB969002BDBBFF10078E5CD /* LaunchPadWidget */,
+				8AB968FF2BDBBFE60078E5CD /* MergeRequestWiget */,
 				8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */,
 				8AE8A6EE2B989E9A002B3C9E /* DesktopWidgetTool.swift */,
+				8AB969072BDBC0C60078E5CD /* WidgetLaunchPadRow.swift */,
 				8AE8A6F02B989E9B002B3C9E /* Assets.xcassets */,
 				8AE8A6F22B989E9B002B3C9E /* Info.plist */,
 				8AE8A6F32B989E9B002B3C9E /* DesktopWidgetTool.entitlements */,
@@ -1569,11 +1612,13 @@
 				8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */,
 				8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */,
 				8AE8A7032B989EFA002B3C9E /* AccountListEmptyView.swift in Sources */,
+				8AB9691F2BDBC1BF0078E5CD /* MergeRequestWidgetEntryView.swift in Sources */,
 				8AE8A7042B989EFA002B3C9E /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8AE8A7052B989EFA002B3C9E /* URL.swift in Sources */,
 				8AE8A7062B989EFA002B3C9E /* AccountRow.swift in Sources */,
 				8AE8A7072B989EFA002B3C9E /* CIPendingIcon.swift in Sources */,
 				8AFF87F22BDA713800D21D16 /* IsInWidget.swift in Sources */,
+				8AB969222BDBC2170078E5CD /* LaunchPadWidgetEntryView.swift in Sources */,
 				8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */,
 				8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */,
 				8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */,
@@ -1605,6 +1650,7 @@
 				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
 				8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */,
 				8AE8A7212B989EFA002B3C9E /* CIJobsView.swift in Sources */,
+				8AB969282BDBC7580078E5CD /* WrappingHStack(1).swift in Sources */,
 				8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */,
 				8AE8A7232B989EFA002B3C9E /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8AE8A7242B989EFA002B3C9E /* MergeTrainIcon.swift in Sources */,
@@ -1618,10 +1664,15 @@
 				8AE8A72C2B989EFA002B3C9E /* NetworkReachability.swift in Sources */,
 				8AE8A72D2B989EFA002B3C9E /* MergeRequestLabelView.swift in Sources */,
 				8AE8A72E2B989EFA002B3C9E /* SettingsView.swift in Sources */,
+				8AB969142BDBC0FA0078E5CD /* WidgetLaunchPadRow.swift in Sources */,
 				8AE8A72F2B989EFA002B3C9E /* AddAccountView.swift in Sources */,
 				8AE8A7302B989EFA002B3C9E /* CIPreparingIcon.swift in Sources */,
 				8AE8A7312B989EFA002B3C9E /* NetworkManager+fetchProjects.swift in Sources */,
+				8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */,
+				8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */,
+				8AB969112BDBC0EB0078E5CD /* MediumMergeRequestWidgetInterface.swift in Sources */,
 				8AE8A7322B989EFA002B3C9E /* NeedsReviewIcon.swift in Sources */,
+				8AB969262BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift in Sources */,
 				8AE8A7332B989EFA002B3C9E /* NoticeListView.swift in Sources */,
 				8AE8A7342B989EFA002B3C9E /* LastUpdateMessageView.swift in Sources */,
 				8AE8A7352B989EFA002B3C9E /* DiscussionCountIcon.swift in Sources */,
@@ -1634,6 +1685,7 @@
 				8AE8A73C2B989EFA002B3C9E /* NoticeMessage.swift in Sources */,
 				8AE8A73D2B989EFA002B3C9E /* RefreshStatus.swift in Sources */,
 				8AE8A73E2B989EFA002B3C9E /* CIJobsNotificationView.swift in Sources */,
+				8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */,
 				8AE8A6EF2B989E9A002B3C9E /* DesktopWidgetTool.swift in Sources */,
 				8AE8A6ED2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift in Sources */,
 			);
