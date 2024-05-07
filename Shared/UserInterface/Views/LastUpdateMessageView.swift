@@ -67,7 +67,9 @@ struct LastUpdateMessageView: View {
 #endif
         }
         .font(.system(size: 10))
-        .padding()
+        .padding(.bottom)
+        .padding(.horizontal)
+        .padding(.top, 4)
     }
 
     func openSettings() {

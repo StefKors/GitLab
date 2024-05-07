@@ -59,18 +59,23 @@ struct UserInterface: View {
                     NoticeListView()
                         .padding(.horizontal)
 
-                    VStack(alignment: .leading) {
-                        if accounts.count > 1 {
-                            SectionedMergeRequestList(
-                                accounts: accounts,
-                                mergeRequests: filteredMergeRequests,
-                                selectedView: selectedView
-                            )
-                        } else {
-                            PlainMergeRequestList(mergeRequests: filteredMergeRequests)
+                    ScrollView(.vertical) {
+                        VStack(alignment: .leading) {
+                            if accounts.count > 1 {
+                                SectionedMergeRequestList(
+                                    accounts: accounts,
+                                    mergeRequests: filteredMergeRequests,
+                                    selectedView: selectedView
+                                )
+                            } else {
+                                PlainMergeRequestList(mergeRequests: filteredMergeRequests)
+                            }
+
+                            Spacer()
                         }
+                        .padding(.horizontal)
+                        .scrollBounceBehavior(.basedOnSize)
                     }
-                    .padding(.horizontal)
 
                     if accounts.isEmpty {
                         BaseTextView(message: "Setup your accounts in the settings")
@@ -78,8 +83,6 @@ struct UserInterface: View {
                         BaseTextView(message: "All done 🥳")
                             .foregroundStyle(.secondary)
                     }
-
-                    Spacer()
 
                     LastUpdateMessageView(lastUpdate: context.date, networkState: $networkState)
                 }
