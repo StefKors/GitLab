@@ -59,11 +59,11 @@ struct Provider: TimelineProvider {
             let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
             var moreRepos = repos
-            moreRepos.append(contentsOf: repos)
-            moreRepos.append(contentsOf: repos)
-            moreRepos.append(contentsOf: repos)
-            moreRepos.append(contentsOf: repos)
-            moreRepos.append(contentsOf: repos)
+//            moreRepos.append(contentsOf: repos)
+//            moreRepos.append(contentsOf: repos)
+//            moreRepos.append(contentsOf: repos)
+//            moreRepos.append(contentsOf: repos)
+//            moreRepos.append(contentsOf: repos)
 
             //let mergeRequests = (
             //    try? context.fetch(

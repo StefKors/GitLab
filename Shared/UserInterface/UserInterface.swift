@@ -61,16 +61,11 @@ struct UserInterface: View {
 
                     ScrollView(.vertical) {
                         VStack(alignment: .leading) {
-                            if accounts.count > 1 {
-                                SectionedMergeRequestList(
-                                    accounts: accounts,
-                                    mergeRequests: filteredMergeRequests,
-                                    selectedView: selectedView
-                                )
-                            } else {
-                                PlainMergeRequestList(mergeRequests: filteredMergeRequests)
-                            }
-
+                            MergeRequestList(
+                                mergeRequests: filteredMergeRequests,
+                                accounts: accounts,
+                                selectedView: selectedView
+                            )
                             Spacer()
                         }
                         .padding(.horizontal)

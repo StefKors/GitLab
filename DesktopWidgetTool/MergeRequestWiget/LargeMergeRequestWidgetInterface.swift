@@ -15,17 +15,52 @@ struct LargeMergeRequestWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            if accounts.count > 1 {
-                SectionedMergeRequestList(
-                    accounts: accounts,
-                    mergeRequests: mergeRequests,
-                    selectedView: selectedView
-                )
-            } else {
-                PlainMergeRequestList(mergeRequests: mergeRequests)
+            ViewThatFits(in: .vertical) {
+                ViewThatFits {
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(9)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(8)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(7)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(6)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(5)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(4)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(3)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    MergeRequestList(
+                        mergeRequests: Array(mergeRequests.prefix(3)),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                }
             }
         }
-        .fixedSize(horizontal: false, vertical: true)
+//        .fixedSize(horizontal: false, vertical: true)
         .frame(alignment: .top)
     }
 }
