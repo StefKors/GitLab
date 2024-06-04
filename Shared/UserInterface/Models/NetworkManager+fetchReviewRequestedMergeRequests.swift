@@ -12,10 +12,10 @@ import SwiftUI
 extension NetworkManager {
     func fetchReviewRequestedMergeRequests(with account: Account) async throws -> [MergeRequest]? {
         // do {
-        print("fetch: start fetchReviewRequestedMergeRequests")
+//        print("fetch: start fetchReviewRequestedMergeRequests")
         let client = APIClient(baseURL: URL(string: "\(account.instance)/api"))
         let response: GitLabQuery = try await client.send(reviewRequestedMergeRequestsReq(with: account)).value
-        print("after fetch: finished fetchReviewRequestedMergeRequests")
+//        print("after fetch: finished fetchReviewRequestedMergeRequests")
         return response.reviewRequestedMergeRequests
         // 
         //     // await MainActor.run {

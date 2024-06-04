@@ -36,7 +36,7 @@ struct Provider: TimelineProvider {
 
             let entry =   SimpleEntry(
                 date: now,
-                mergeRequests: mergeRequests,
+                mergeRequests: Array(mergeRequests.prefix(5)),
                 accounts: accounts,
                 repos: repos,
                 selectedView: selectedView
@@ -76,7 +76,7 @@ struct Provider: TimelineProvider {
             entries.append(
                 SimpleEntry(
                     date: now,
-                    mergeRequests: mergeRequests,
+                    mergeRequests: Array(mergeRequests.prefix(5)),
                     accounts: accounts,
                     repos: moreRepos,
                     selectedView: selectedView

@@ -9,11 +9,10 @@ import SwiftUI
 
 struct LastUpdateMessageView: View {
     let lastUpdate: Date
-    @Binding var networkState: NetworkState
     private let initialTimeRemaining = 10
     @State private var isHovering: Bool = false
     @State private var timeRemaining = 10
-    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+//    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     private var dateValue: String? {
 //        guard let date = lastUpdate else {
@@ -28,26 +27,25 @@ struct LastUpdateMessageView: View {
 
     var body: some View {
         HStack {
-            if let date = dateValue {
-                Text("Last updated at: \(date)")
-                    .transition(.opacity.animation(.easeInOut(duration: 0.35).delay(0.2)))
-                    .foregroundColor(.gray)
-                    .onHover { hovering in
-                        isHovering = hovering
-                    }
-                    .onReceive(timer) { _ in
-                        if timeRemaining > 0 {
-                            timeRemaining -= 1
-                        }
-
-                        if timeRemaining <= 0 {
-                            timeRemaining = initialTimeRemaining
-                            networkState = .fetching
-                        }
-                    }
-            } else {
-                LastUpdateMessagePlaceholderView()
-            }
+//            if let date = dateValue {
+////                Text("Last updated at: \(date)")
+////                    .transition(.opacity.animation(.easeInOut(duration: 0.35).delay(0.2)))
+////                    .foregroundColor(.gray)
+////                    .onHover { hovering in
+////                        isHovering = hovering
+////                    }
+////                    .onReceive(timer) { _ in
+////                        if timeRemaining > 0 {
+////                            timeRemaining -= 1
+////                        }
+////
+////                        if timeRemaining <= 0 {
+////                            timeRemaining = initialTimeRemaining
+////                        }
+////                    }
+//            } else {
+//                LastUpdateMessagePlaceholderView()
+//            }
 
             Spacer()
 
@@ -100,6 +98,6 @@ extension Bundle {
 
 struct LastUpdateMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        LastUpdateMessageView(lastUpdate: Date.now, networkState: .constant(.idle))
+        LastUpdateMessageView(lastUpdate: Date.now)
     }
 }

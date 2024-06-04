@@ -8,10 +8,25 @@
 import SwiftUI
 import SwiftData
 
-enum NetworkState: String, Codable, CaseIterable, Identifiable {
-    case fetching
-    case idle
-    var id: Self { self }
+struct NetworkEvent: Identifiable {
+    let status: Int
+    let label: String
+    let timestamp: Date = .now
+    let id: UUID = UUID()
+}
+
+class NetworkState: ObservableObject {
+    @Published var events: [NetworkEvent] = []
+
+    func success(label: String) {
+        let event = NetworkEvent(status: 200, label: label)
+        events.append(event)
+    }
+
+    func fail(label: String) {
+        let event = NetworkEvent(status: 404, label: label)
+        events.append(event)
+    }
 }
 
 /// TODO: Show different accounts
@@ -29,10 +44,11 @@ struct UserInterface: View {
     @Query private var accounts: [Account]
     @Query private var repos: [LaunchpadRepo]
 
-    @State private var networkState: NetworkState = .idle
     @State private var selectedView: QueryType = .authoredMergeRequests
 
     @State private var timelineDate: Date = .now
+
+    @StateObject private var networkState: NetworkState = .init()
 
     var filteredMergeRequests: [MergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
@@ -79,14 +95,14 @@ struct UserInterface: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    LastUpdateMessageView(lastUpdate: context.date, networkState: $networkState)
+                    LastUpdateMessageView(lastUpdate: context.date)
                 }
                 .task(id: context.date) {
                     await fetchReviewRequestedMRs()
                     await fetchAuthoredMRs()
                     await fetchRepos()
                 }
-                .frame(idealWidth: 500, maxWidth: 500)
+//                .frame(idealWidth: 500, maxWidth: 500)
             }
         }
     }
@@ -95,12 +111,23 @@ struct UserInterface: View {
     @MainActor
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
-            let results: [MergeRequest] = ((try? await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)) ?? []).map { mr in
-                mr.account = account
-                mr.type = .reviewRequestedMergeRequests
-                return mr
+            do {
+                let results = try await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)?.map { mr in
+                    mr.account = account
+                    mr.type = .reviewRequestedMergeRequests
+                    return mr
+                }
+                if let results {
+                    results.map { mr in
+                        mr.reference
+                    }
+                    // TODO: track fetch request history
+//                    networkState.success(label: "fetched \(results.)")
+                    removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
+                }
+            } catch {
+
             }
-            removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
         }
     }
 

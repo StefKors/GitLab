@@ -90,6 +90,7 @@ class NetworkManager {
         
         do {
             let response: AccessToken? = try await APIClient(baseURL: URL(string: "\(instance)/api")).send(accessTokenReq).value
+            
             return response
         } catch {
             print(error.localizedDescription)
