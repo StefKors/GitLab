@@ -57,15 +57,3 @@ public struct CIJobsView: View {
         // }
     }
 }
-
-struct CIStatusView_Tappable_Previews: PreviewProvider {
-    static var previews: some View {
-        Button(action: {
-            print("Tapped \(Date().timeIntervalSinceNow)")
-        }, label: {
-            CIStatusView(status: .running)
-        })
-        .buttonStyle(.borderless)
-        .padding()
-    }
-}
