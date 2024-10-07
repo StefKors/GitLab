@@ -21,11 +21,12 @@ public struct CIJobsView: View {
 
     public var body: some View {
         HStack {
-            CIStatusView(status: stage.status?.toPipelineStatus())
-                .onTapGesture {
-                    tapState.toggle()
-                    presentPopover.toggle()
-                }
+            Button(action: {
+                tapState.toggle()
+                presentPopover.toggle()
+            }, label: {
+                CIStatusView(status: stage.status?.toPipelineStatus())
+            }).buttonStyle(.borderless)
                 .popover(isPresented: $presentPopover, content: {
                     if let jobs = stage.jobs?.edges?.map({ $0.node }) {
                         VStack(alignment: .leading, spacing: 4) {
@@ -53,5 +54,17 @@ public struct CIJobsView: View {
         // .onHover { hovering in
         //     isHovering = hovering
         // }
+    }
+}
+
+struct CIStatusView_Tappable_Previews: PreviewProvider {
+    static var previews: some View {
+        Button(action: {
+            print("Tapped \(Date().timeIntervalSinceNow)")
+        }, label: {
+            CIStatusView(status: .running)
+        })
+        .buttonStyle(.borderless)
+        .padding()
     }
 }
