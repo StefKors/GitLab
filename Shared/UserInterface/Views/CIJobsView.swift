@@ -36,7 +36,6 @@ public struct CIJobsView: View {
             CIStatusView(status: status)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    print(stage, hasFailedChildJob)
                     presentPopover.toggle()
                 }
                 .popover(isPresented: $presentPopover, content: {
