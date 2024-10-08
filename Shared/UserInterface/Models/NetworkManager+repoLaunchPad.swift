@@ -10,28 +10,26 @@ import Get
 
 extension NetworkManager {
 
-    public func addLaunchpadProject(_ project: TargetProject) {
+    func addLaunchpadProject(with account: Account, _ project: TargetProject) async -> LaunchpadRepo? {
         // guard project.avatarUrl != nil, let url = project.webURL else {
         guard let url = project.webURL else {
-            return
+            return nil
         }
 
-        Task(priority: .background) { [weak self] in
-            let repo = LaunchpadRepo(
-                id: project.id,
-                name: project.name ?? "",
-                image:  await self?.getProjectImage(project),
-                group: project.group?.fullName ?? project.namespace?.fullName ?? "", 
-                url: url,
-                hasUpdatedSinceLaunch: true
-            )
+        let repo = LaunchpadRepo(
+            id: project.id,
+            name: project.name ?? "",
+            image:  await self.getProjectImage(with: account, project),
+            group: project.group?.fullName ?? project.namespace?.fullName ?? "",
+            url: url,
+            hasUpdatedSinceLaunch: true
+        )
 
-            await self?.launchpadState.addRepo(repo: repo)
-        }
+        return repo
     }
 
 
-    fileprivate func getProjectImage(_ project: TargetProject) async -> Data? {
+    fileprivate func getProjectImage(with account: Account, _ project: TargetProject) async -> Data? {
         let id = project.id.components(separatedBy: "/").last ?? ""
         let branch = project.repository?.rootRef ?? "main"
 
@@ -45,9 +43,14 @@ extension NetworkManager {
             method: .get,
             query: [("ref", branch)],
             headers: [
-                "Private-Token": apiToken
+                "Private-Token": account.token
             ]
         )
+        // uses custom delegate to handle correctly encoding url path
+        let launchPadClient = APIClient(configuration: APIClient.Configuration(
+            baseURL: URL(string: account.instance),
+            delegate: LaunchPadClientDelegate()
+        ))
 
         do {
             let response: ProjectImageResponse? = try await launchPadClient.send(req).value
@@ -64,6 +67,7 @@ extension NetworkManager {
     }
 }
 
+/// Use custom delegate to handle correctly encoding url path
 final class LaunchPadClientDelegate: APIClientDelegate {
     func client<T>(_ client: APIClient, makeURLForRequest request: Request<T>) throws -> URL? {
         guard let base = client.configuration.baseURL?.absoluteString,

@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-public struct CIStatusView: View {
-    public var status: PipelineStatus?
+ struct CIStatusView: View {
+     var status: PipelineStatus?
 
-    public init(status: PipelineStatus?) {
+     init(status: PipelineStatus?) {
         self.status = status
     }
 
-    public var body: some View {
+     var body: some View {
         if let CIStatus = status {
             switch CIStatus {
             case .created:

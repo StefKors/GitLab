@@ -45,6 +45,7 @@ struct CIJobsNotificationView_Previews: PreviewProvider {
         VStack {
             CIJobsNotificationView(stages: [.previewBuild, .previewTest])
             Button("generate") {
+#if os(macOS)
                 do {
                     let renderView = CIJobsNotificationView(stages: [.previewBuild, .previewTest])
                         // .padding()
@@ -67,6 +68,7 @@ struct CIJobsNotificationView_Previews: PreviewProvider {
                 } catch {
                     print("error \(error.localizedDescription)")
                 }
+#endif
             }
         }
             // .frame(width: 200, height: 200, alignment: .center)

@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
-// import Cocoa
+import SwiftData
 
-public struct SettingsView: View {
+struct SettingsView: View {
+    // Persistance objects
     private enum Tabs: Hashable {
         case Account
     }
 
-    public init() { }
+    init() { }
 
-    public var body: some View {
+    var body: some View {
         TabView {
             AccountSettingsView()
                 .tabItem {
@@ -24,7 +25,7 @@ public struct SettingsView: View {
                 }
                 .tag(Tabs.Account)
         }
-        .frame(width: 600, height: 300)
+        .frame(idealWidth: 600, idealHeight: 500)
         .navigationTitle("Settings")
     }
 }

@@ -6,16 +6,43 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct GitLab_iOSApp: App {
-    @StateObject var networkManager = NetworkManager()
+    // Non-Persisted state objects
+    @StateObject private var noticeState = NoticeState()
+
+    // Persistance objects
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([Account.self, MergeRequest.self, LaunchpadRepo.self])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         WindowGroup {
-            UserInterface()
-                .environmentObject(self.networkManager)
-                .environmentObject(self.networkManager.noticeState)
+            NavigationView {
+                NavigationStack {
+                    UserInterface()
+                }
+                .toolbar {
+                    ToolbarItem {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            Label("Settings", systemImage: "gear")
+                        }
+                    }
+                }
+            }
+            .environmentObject(self.noticeState)
+            .modelContainer(sharedModelContainer)
         }
     }
 }

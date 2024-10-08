@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
 		8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A13B85D2A66A3E30090A6D9 /* Credits.rtf */; };
+		8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
+		8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
+		8A2E61872A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
 		8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */; };
 		8A31CB412866334100C94AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB402866334100C94AC1 /* Assets.xcassets */; };
 		8A31CB442866334100C94AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB432866334100C94AC1 /* Preview Assets.xcassets */; };
@@ -24,10 +27,9 @@
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
 		8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */; };
-		8A7935B92A55827600F8FB6C /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935B82A55827600F8FB6C /* Defaults */; };
 		8A7935BC2A55830D00F8FB6C /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
 		8A7935BE2A55830F00F8FB6C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36AF142869B4110008B949 /* NotificationViewController.swift */; };
-		8A7935C02A55837500F8FB6C /* MergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* MergeRequests.swift */; };
+		8A7935C02A55837500F8FB6C /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* Structs.swift */; };
 		8A7935C12A5583E400F8FB6C /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
 		8A7935C22A5583E400F8FB6C /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE12A55817400819B80 /* LaunchpadState.swift */; };
 		8A7935C32A5583E400F8FB6C /* PushEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE22A55817400819B80 /* PushEvents.swift */; };
@@ -40,8 +42,6 @@
 		8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEA2A55817400819B80 /* NetworkManager+fetchProjects.swift */; };
 		8A7935CB2A5583E400F8FB6C /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */; };
 		8A7935CC2A5583E400F8FB6C /* TargetProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEC2A55817400819B80 /* TargetProjects.swift */; };
-		8A7935CD2A5583E400F8FB6C /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CED2A55817400819B80 /* UserDefaults.swift */; };
-		8A7935CE2A5583E400F8FB6C /* UserDefaultsFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEE2A55817400819B80 /* UserDefaultsFix.swift */; };
 		8A7935CF2A5583E400F8FB6C /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
 		8A7935D02A5583E400F8FB6C /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
 		8A7935D12A5583E400F8FB6C /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
@@ -86,21 +86,137 @@
 		8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
 		8A7935FB2A5583F700F8FB6C /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FA2A5583F700F8FB6C /* Get */; };
 		8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */; };
-		8A7935FF2A5583FD00F8FB6C /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FE2A5583FD00F8FB6C /* Boutique */; };
+		8A9D878A2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
+		8A9D878B2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
+		8A9D878C2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
+		8A9D878D2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
+		8A9D878F2BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
+		8A9D87902BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
+		8A9D87912BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
+		8A9D87922BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */; };
+		8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */; };
+		8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969032BDBC0760078E5CD /* LargeMergeRequestWidgetInterface.swift */; };
+		8AB969112BDBC0EB0078E5CD /* MediumMergeRequestWidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969052BDBC0A40078E5CD /* MediumMergeRequestWidgetInterface.swift */; };
+		8AB969142BDBC0FA0078E5CD /* WidgetLaunchPadRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969072BDBC0C60078E5CD /* WidgetLaunchPadRow.swift */; };
+		8AB9691F2BDBC1BF0078E5CD /* MergeRequestWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9691D2BDBC18B0078E5CD /* MergeRequestWidgetEntryView.swift */; };
+		8AB969222BDBC2170078E5CD /* LaunchPadWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969202BDBC2130078E5CD /* LaunchPadWidgetEntryView.swift */; };
+		8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969232BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift */; };
+		8AB969262BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969252BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift */; };
+		8AB969282BDBC7580078E5CD /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB969272BDBC7580078E5CD /* WrappingHStack.swift */; };
+		8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8ABBD2072B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
 		8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
-		8AC7B4AF2CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */; };
-		8AC7B4B02CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */; };
-		8AC7B4B12CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B72CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B82CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
+		8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8ADD57152B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
+		8ADD57162B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
+		8ADD57172B82291B001F8E8F /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8AE024DB2A92457C000548D7 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE024DA2A92457C000548D7 /* Get */; };
+		8AE024DD2A92457C000548D7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE024DC2A92457C000548D7 /* CachedAsyncImage */; };
+		8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
+		8AE024DF2A924731000548D7 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
+		8AE8A6E92B989E9A002B3C9E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
+		8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4142865C1480054C601 /* SwiftUI.framework */; };
+		8AE8A6ED2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */; };
+		8AE8A6EF2B989E9A002B3C9E /* DesktopWidgetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8A6EE2B989E9A002B3C9E /* DesktopWidgetTool.swift */; };
+		8AE8A6F12B989E9B002B3C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE8A6F02B989E9B002B3C9E /* Assets.xcassets */; };
+		8AE8A6F62B989E9B002B3C9E /* DesktopWidgetToolExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AE8A6FA2B989EFA002B3C9E /* WidgetInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57142B82291B001F8E8F /* WidgetInterface.swift */; };
+		8AE8A6FB2B989EFA002B3C9E /* GitProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC82A85112E001937AC /* GitProviderView.swift */; };
+		8AE8A6FC2B989EFA002B3C9E /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
+		8AE8A6FD2B989EFA002B3C9E /* ApprovedReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFA2A55817400819B80 /* ApprovedReviewIcon.swift */; };
+		8AE8A6FE2B989EFA002B3C9E /* CIStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D162A55817400819B80 /* CIStatusView.swift */; };
+		8AE8A6FF2B989EFA002B3C9E /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
+		8AE8A7002B989EFA002B3C9E /* LaunchPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1B2A55817400819B80 /* LaunchPadView.swift */; };
+		8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
+		8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */; };
+		8AE8A7032B989EFA002B3C9E /* AccountListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */; };
+		8AE8A7042B989EFA002B3C9E /* NetworkManager+fetchLatestBranchPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE32A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift */; };
+		8AE8A7052B989EFA002B3C9E /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8AE8A7062B989EFA002B3C9E /* AccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC42A850793001937AC /* AccountRow.swift */; };
+		8AE8A7072B989EFA002B3C9E /* CIPendingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFF2A55817400819B80 /* CIPendingIcon.swift */; };
+		8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
+		8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF52A55817400819B80 /* CISkippedIcon.swift */; };
+		8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
+		8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF32A55817400819B80 /* NoticeState.swift */; };
+		8AE8A70C2B989EFA002B3C9E /* TargetProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEC2A55817400819B80 /* TargetProjects.swift */; };
+		8AE8A70D2B989EFA002B3C9E /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
+		8AE8A70E2B989EFA002B3C9E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE52A55817400819B80 /* NotificationManager.swift */; };
+		8AE8A70F2B989EFA002B3C9E /* CICanceledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF72A55817400819B80 /* CICanceledIcon.swift */; };
+		8AE8A7102B989EFA002B3C9E /* CIFailedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF82A55817400819B80 /* CIFailedIcon.swift */; };
+		8AE8A7112B989EFA002B3C9E /* CIWaitingForResourceIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFC2A55817400819B80 /* CIWaitingForResourceIcon.swift */; };
+		8AE8A7122B989EFA002B3C9E /* PipelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D112A55817400819B80 /* PipelineView.swift */; };
+		8AE8A7132B989EFA002B3C9E /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* Structs.swift */; };
+		8AE8A7142B989EFA002B3C9E /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
+		8AE8A7152B989EFA002B3C9E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE62A55817400819B80 /* NetworkManager.swift */; };
+		8AE8A7162B989EFA002B3C9E /* PushEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE22A55817400819B80 /* PushEvents.swift */; };
+		8AE8A7172B989EFA002B3C9E /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D082A55817400819B80 /* BaseTextView.swift */; };
+		8AE8A7182B989EFA002B3C9E /* MergeRequestRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */; };
+		8AE8A7192B989EFA002B3C9E /* CIScheduledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFE2A55817400819B80 /* CIScheduledIcon.swift */; };
+		8AE8A71A2B989EFA002B3C9E /* CIProgressIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D052A55817400819B80 /* CIProgressIcon.swift */; };
+		8AE8A71B2B989EFA002B3C9E /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
+		8AE8A71C2B989EFA002B3C9E /* MergeStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D142A55817400819B80 /* MergeStatusView.swift */; };
+		8AE8A71D2B989EFA002B3C9E /* CICreatedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D022A55817400819B80 /* CICreatedIcon.swift */; };
+		8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1A2A55817400819B80 /* TitleWebLink.swift */; };
+		8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
+		8AE8A7212B989EFA002B3C9E /* CIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* CIJobsView.swift */; };
+		8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8AE8A7232B989EFA002B3C9E /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */; };
+		8AE8A7242B989EFA002B3C9E /* MergeTrainIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D042A55817400819B80 /* MergeTrainIcon.swift */; };
+		8AE8A7252B989EFA002B3C9E /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE42A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift */; };
+		8AE8A7262B989EFA002B3C9E /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
+		8AE8A7272B989EFA002B3C9E /* CIManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF62A55817400819B80 /* CIManualIcon.swift */; };
+		8AE8A7282B989EFA002B3C9E /* CISuccessIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFB2A55817400819B80 /* CISuccessIcon.swift */; };
+		8AE8A7292B989EFA002B3C9E /* LastUpdateMessagePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D152A55817400819B80 /* LastUpdateMessagePlaceholderView.swift */; };
+		8AE8A72A2B989EFA002B3C9E /* ExpandHitBoxModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D122A55817400819B80 /* ExpandHitBoxModifier.swift */; };
+		8AE8A72B2B989EFA002B3C9E /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
+		8AE8A72C2B989EFA002B3C9E /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
+		8AE8A72D2B989EFA002B3C9E /* MergeRequestLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D172A55817400819B80 /* MergeRequestLabelView.swift */; };
+		8AE8A72E2B989EFA002B3C9E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0A2A55817400819B80 /* SettingsView.swift */; };
+		8AE8A72F2B989EFA002B3C9E /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAABC2A850763001937AC /* AddAccountView.swift */; };
+		8AE8A7302B989EFA002B3C9E /* CIPreparingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF92A55817400819B80 /* CIPreparingIcon.swift */; };
+		8AE8A7312B989EFA002B3C9E /* NetworkManager+fetchProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEA2A55817400819B80 /* NetworkManager+fetchProjects.swift */; };
+		8AE8A7322B989EFA002B3C9E /* NeedsReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D032A55817400819B80 /* NeedsReviewIcon.swift */; };
+		8AE8A7332B989EFA002B3C9E /* NoticeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0E2A55817400819B80 /* NoticeListView.swift */; };
+		8AE8A7342B989EFA002B3C9E /* LastUpdateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D132A55817400819B80 /* LastUpdateMessageView.swift */; };
+		8AE8A7352B989EFA002B3C9E /* DiscussionCountIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFD2A55817400819B80 /* DiscussionCountIcon.swift */; };
+		8AE8A7362B989EFA002B3C9E /* CIRetryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D002A55817400819B80 /* CIRetryIcon.swift */; };
+		8AE8A7372B989EFA002B3C9E /* ShareMergeRequestIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D012A55817400819B80 /* ShareMergeRequestIcon.swift */; };
+		8AE8A7382B989EFA002B3C9E /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D062A55817400819B80 /* UserInterface.swift */; };
+		8AE8A7392B989EFA002B3C9E /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
+		8AE8A73A2B989EFA002B3C9E /* BaseNoticeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0F2A55817400819B80 /* BaseNoticeItem.swift */; };
+		8AE8A73B2B989EFA002B3C9E /* WebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1C2A55817400819B80 /* WebLink.swift */; };
+		8AE8A73C2B989EFA002B3C9E /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
+		8AE8A73D2B989EFA002B3C9E /* RefreshStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D102A55817400819B80 /* RefreshStatus.swift */; };
+		8AE8A73E2B989EFA002B3C9E /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
+		8AE8A7402B989F57002B3C9E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8AE8A7412B989F57002B3C9E /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE12A55817400819B80 /* LaunchpadState.swift */; };
+		8AE8A7422B989F57002B3C9E /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
+		8AE8A7442B989F78002B3C9E /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE8A7432B989F78002B3C9E /* Get */; };
+		8AE8A7462B989F78002B3C9E /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE8A7452B989F78002B3C9E /* CachedAsyncImage */; };
 		8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
 		8AF80D222A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */; };
 		8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE12A55817400819B80 /* LaunchpadState.swift */; };
@@ -115,8 +231,8 @@
 		8AF80D312A55817400819B80 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE52A55817400819B80 /* NotificationManager.swift */; };
 		8AF80D332A55817400819B80 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE62A55817400819B80 /* NetworkManager.swift */; };
 		8AF80D342A55817400819B80 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE62A55817400819B80 /* NetworkManager.swift */; };
-		8AF80D362A55817400819B80 /* MergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* MergeRequests.swift */; };
-		8AF80D372A55817400819B80 /* MergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* MergeRequests.swift */; };
+		8AF80D362A55817400819B80 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* Structs.swift */; };
+		8AF80D372A55817400819B80 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* Structs.swift */; };
 		8AF80D392A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
 		8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
 		8AF80D3C2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
@@ -127,10 +243,6 @@
 		8AF80D432A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */; };
 		8AF80D452A55817400819B80 /* TargetProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEC2A55817400819B80 /* TargetProjects.swift */; };
 		8AF80D462A55817400819B80 /* TargetProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEC2A55817400819B80 /* TargetProjects.swift */; };
-		8AF80D482A55817400819B80 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CED2A55817400819B80 /* UserDefaults.swift */; };
-		8AF80D492A55817400819B80 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CED2A55817400819B80 /* UserDefaults.swift */; };
-		8AF80D4B2A55817400819B80 /* UserDefaultsFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEE2A55817400819B80 /* UserDefaultsFix.swift */; };
-		8AF80D4C2A55817400819B80 /* UserDefaultsFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEE2A55817400819B80 /* UserDefaultsFix.swift */; };
 		8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
 		8AF80D4F2A55817400819B80 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
 		8AF80D512A55817400819B80 /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
@@ -215,11 +327,34 @@
 		8AF80DCD2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
 		8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
 		8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
-		8AF80DD42A55819300819B80 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD32A55819300819B80 /* Defaults */; };
 		8AF80DD72A5581A600819B80 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD62A5581A600819B80 /* Get */; };
 		8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DD92A5581B700819B80 /* CachedAsyncImage */; };
-		8AF80DDD2A5581C400819B80 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF80DDC2A5581C400819B80 /* Boutique */; };
-		8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */; };
+		8AFAE1922BEB7C1C0030541E /* MergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE1912BEB7C1C0030541E /* MergeRequestList.swift */; };
+		8AFAE1932BEB7C1C0030541E /* MergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE1912BEB7C1C0030541E /* MergeRequestList.swift */; };
+		8AFAE1942BEB7C1C0030541E /* MergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE1912BEB7C1C0030541E /* MergeRequestList.swift */; };
+		8AFAE1952BEB7C1C0030541E /* MergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAE1912BEB7C1C0030541E /* MergeRequestList.swift */; };
+		8AFDAA982A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8AFDAA992A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8AFDAABD2A850763001937AC /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAABC2A850763001937AC /* AddAccountView.swift */; };
+		8AFDAABE2A850763001937AC /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAABC2A850763001937AC /* AddAccountView.swift */; };
+		8AFDAABF2A850763001937AC /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAABC2A850763001937AC /* AddAccountView.swift */; };
+		8AFDAAC12A850784001937AC /* AccountListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */; };
+		8AFDAAC22A850784001937AC /* AccountListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */; };
+		8AFDAAC32A850784001937AC /* AccountListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */; };
+		8AFDAAC52A850793001937AC /* AccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC42A850793001937AC /* AccountRow.swift */; };
+		8AFDAAC62A850793001937AC /* AccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC42A850793001937AC /* AccountRow.swift */; };
+		8AFDAAC72A850793001937AC /* AccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC42A850793001937AC /* AccountRow.swift */; };
+		8AFDAAC92A85112E001937AC /* GitProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC82A85112E001937AC /* GitProviderView.swift */; };
+		8AFDAACA2A85112E001937AC /* GitProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC82A85112E001937AC /* GitProviderView.swift */; };
+		8AFDAACB2A85112E001937AC /* GitProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAAC82A85112E001937AC /* GitProviderView.swift */; };
+		8AFDAACD2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
+		8AFDAACE2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
+		8AFDAACF2A85231F001937AC /* MergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAACC2A85231F001937AC /* MergeRequest.swift */; };
+		8AFF87EF2BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
+		8AFF87F02BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
+		8AFF87F12BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
+		8AFF87F22BDA713800D21D16 /* IsInWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +393,13 @@
 			remoteGlobalIDString = 8A5FC0F526EFD08E004136AB;
 			remoteInfo = GitLab;
 		};
+		8AE8A6F42B989E9B002B3C9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A5FC0EE26EFD08E004136AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8AE8A6E72B989E9A002B3C9E;
+			remoteInfo = DesktopWidgetToolExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -268,6 +410,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed Foundation Extensions */,
+				8AE8A6F62B989E9B002B3C9E /* DesktopWidgetToolExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +420,7 @@
 /* Begin PBXFileReference section */
 		8A07E5672890492C0042EACB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A13B85D2A66A3E30090A6D9 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGitLabView.swift; sourceTree = "<group>"; };
 		8A2F5B8A2A54C5BD00C0B52F /* Small Icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon16.png"; sourceTree = "<group>"; };
 		8A2F5B8B2A54C5BD00C0B52F /* Large Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Large Icon1024.png"; sourceTree = "<group>"; };
 		8A2F5B8C2A54C5BD00C0B52F /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -328,14 +472,42 @@
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLink.swift; sourceTree = "<group>"; };
+		8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingWebLinks.swift; sourceTree = "<group>"; };
+		8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
+		8AB969032BDBC0760078E5CD /* LargeMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
+		8AB969052BDBC0A40078E5CD /* MediumMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
+		8AB969072BDBC0C60078E5CD /* WidgetLaunchPadRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLaunchPadRow.swift; sourceTree = "<group>"; };
+		8AB9691D2BDBC18B0078E5CD /* MergeRequestWidgetEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeRequestWidgetEntryView.swift; sourceTree = "<group>"; };
+		8AB969202BDBC2130078E5CD /* LaunchPadWidgetEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchPadWidgetEntryView.swift; path = DesktopWidgetTool/LaunchPadWidget/LaunchPadWidgetEntryView.swift; sourceTree = SOURCE_ROOT; };
+		8AB969232BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLaunchPadWidgetView.swift; sourceTree = "<group>"; };
+		8AB969252BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediumLaunchPadWidgetView.swift; sourceTree = "<group>"; };
+		8AB969272BDBC7580078E5CD /* WrappingHStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
+		8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Difference.swift"; sourceTree = "<group>"; };
 		8AC0C2092A5D3D720096772B /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformationView.swift; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIWarningIcon.swift; sourceTree = "<group>"; };
+		8AC745352BD7AB37002C2C01 /* GitLab iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GitLab iOS.entitlements"; sourceTree = "<group>"; };
+		8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIWarningIcon.swift; sourceTree = "<group>"; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
+		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
+		8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
+		8ADD57142B82291B001F8E8F /* WidgetInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WidgetInterface.swift; path = Views/WidgetInterface.swift; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidgetBundle.swift; sourceTree = "<group>"; };
+		8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidget.swift; sourceTree = "<group>"; };
+		8AE0248E2A911290000548D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AE024902A911290000548D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE024912A911290000548D7 /* GitLabDesktopWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitLabDesktopWidget.entitlements; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
+		8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DesktopWidgetToolExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWidgetToolBundle.swift; sourceTree = "<group>"; };
+		8AE8A6EE2B989E9A002B3C9E /* DesktopWidgetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWidgetTool.swift; sourceTree = "<group>"; };
+		8AE8A6F02B989E9B002B3C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AE8A6F22B989E9B002B3C9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE8A6F32B989E9B002B3C9E /* DesktopWidgetTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DesktopWidgetTool.entitlements; sourceTree = "<group>"; };
 		8AF80CE02A55817400819B80 /* NetworkManager+repoLaunchPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+repoLaunchPad.swift"; sourceTree = "<group>"; };
 		8AF80CE12A55817400819B80 /* LaunchpadState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchpadState.swift; sourceTree = "<group>"; };
 		8AF80CE22A55817400819B80 /* PushEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushEvents.swift; sourceTree = "<group>"; };
@@ -343,14 +515,12 @@
 		8AF80CE42A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+fetchReviewRequestedMergeRequests.swift"; sourceTree = "<group>"; };
 		8AF80CE52A55817400819B80 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8AF80CE62A55817400819B80 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		8AF80CE72A55817400819B80 /* MergeRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeRequests.swift; sourceTree = "<group>"; };
+		8AF80CE72A55817400819B80 /* Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLabISO8601DateFormatter.swift; sourceTree = "<group>"; };
 		8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CachedAsyncImage+ImageCache.swift"; sourceTree = "<group>"; };
 		8AF80CEA2A55817400819B80 /* NetworkManager+fetchProjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+fetchProjects.swift"; sourceTree = "<group>"; };
 		8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+fetchAuthoredMergeRequests.swift"; sourceTree = "<group>"; };
 		8AF80CEC2A55817400819B80 /* TargetProjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetProjects.swift; sourceTree = "<group>"; };
-		8AF80CED2A55817400819B80 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		8AF80CEE2A55817400819B80 /* UserDefaultsFix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsFix.swift; sourceTree = "<group>"; };
 		8AF80CEF2A55817400819B80 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		8AF80CF12A55817400819B80 /* NoticeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeMessage.swift; sourceTree = "<group>"; };
 		8AF80CF22A55817400819B80 /* NoticeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeType.swift; sourceTree = "<group>"; };
@@ -394,7 +564,14 @@
 		8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeRequestRowView.swift; sourceTree = "<group>"; };
 		8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarButtonStyle.swift; sourceTree = "<group>"; };
 		8AF80D202A55817400819B80 /* LaunchpadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchpadItem.swift; sourceTree = "<group>"; };
-		8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarContentView.swift; sourceTree = "<group>"; };
+		8AFAE1912BEB7C1C0030541E /* MergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequestList.swift; sourceTree = "<group>"; };
+		8AFDAA972A84FB26001937AC /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		8AFDAABC2A850763001937AC /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
+		8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListEmptyView.swift; sourceTree = "<group>"; };
+		8AFDAAC42A850793001937AC /* AccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRow.swift; sourceTree = "<group>"; };
+		8AFDAAC82A85112E001937AC /* GitProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitProviderView.swift; sourceTree = "<group>"; };
+		8AFDAACC2A85231F001937AC /* MergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeRequest.swift; sourceTree = "<group>"; };
+		8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +579,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE024DB2A92457C000548D7 /* Get in Frameworks */,
+				8AE024DD2A92457C000548D7 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,11 +602,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A7935B92A55827600F8FB6C /* Defaults in Frameworks */,
 				8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */,
 				8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */,
 				8A36AF112869B4110008B949 /* UserNotifications.framework in Frameworks */,
-				8A7935FF2A5583FD00F8FB6C /* Boutique in Frameworks */,
 				8A7935FB2A5583F700F8FB6C /* Get in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,8 +615,6 @@
 			files = (
 				8AF80DD72A5581A600819B80 /* Get in Frameworks */,
 				8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */,
-				8AF80DD42A55819300819B80 /* Defaults in Frameworks */,
-				8AF80DDD2A5581C400819B80 /* Boutique in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +629,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AE8A6E52B989E9A002B3C9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE8A7442B989F78002B3C9E /* Get in Frameworks */,
+				8AE8A7462B989F78002B3C9E /* CachedAsyncImage in Frameworks */,
+				8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */,
+				8AE8A6E92B989E9A002B3C9E /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +678,7 @@
 		8A31CB3B2866334000C94AC1 /* GitLab iOS */ = {
 			isa = PBXGroup;
 			children = (
+				8AC745352BD7AB37002C2C01 /* GitLab iOS.entitlements */,
 				8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */,
 				8A31CB402866334100C94AC1 /* Assets.xcassets */,
 				8A31CB422866334100C94AC1 /* Preview Content */,
@@ -542,6 +729,8 @@
 				8A13B85D2A66A3E30090A6D9 /* Credits.rtf */,
 				8AF80BE92A5580E700819B80 /* Shared */,
 				8A07E5672890492C0042EACB /* README.md */,
+				8AE024892A91128C000548D7 /* GitLabDesktopWidget */,
+				8AE8A6EB2B989E9A002B3C9E /* DesktopWidgetTool */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A31CB3B2866334000C94AC1 /* GitLab iOS */,
@@ -565,6 +754,7 @@
 				8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */,
 				8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */,
 				8A36AF102869B4110008B949 /* NotificationContent.appex */,
+				8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -573,7 +763,6 @@
 			isa = PBXGroup;
 			children = (
 				8A5FC0F926EFD08E004136AB /* GitLabApp.swift */,
-				8AFEF17428E1EE60003F6241 /* MenubarContentView.swift */,
 				8A5FC0FD26EFD08F004136AB /* Assets.xcassets */,
 				8A5FC10526EFD08F004136AB /* Info.plist */,
 				8A5FC10626EFD08F004136AB /* GitLab.entitlements */,
@@ -613,8 +802,32 @@
 			children = (
 				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
 				8ADEBF9D2A83A227007C22CD /* URL.swift */,
+				8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */,
+				8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8AB968FF2BDBBFE60078E5CD /* MergeRequestWiget */ = {
+			isa = PBXGroup;
+			children = (
+				8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */,
+				8AB969032BDBC0760078E5CD /* LargeMergeRequestWidgetInterface.swift */,
+				8AB969052BDBC0A40078E5CD /* MediumMergeRequestWidgetInterface.swift */,
+				8AB9691D2BDBC18B0078E5CD /* MergeRequestWidgetEntryView.swift */,
+			);
+			path = MergeRequestWiget;
+			sourceTree = "<group>";
+		};
+		8AB969002BDBBFF10078E5CD /* LaunchPadWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8AB969272BDBC7580078E5CD /* WrappingHStack.swift */,
+				8AB969202BDBC2130078E5CD /* LaunchPadWidgetEntryView.swift */,
+				8AB969232BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift */,
+				8AB969252BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift */,
+			);
+			path = LaunchPadWidget;
 			sourceTree = "<group>";
 		};
 		8AC4B4112865C1480054C601 /* Frameworks */ = {
@@ -629,6 +842,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8AE024892A91128C000548D7 /* GitLabDesktopWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */,
+				8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */,
+				8AE0248E2A911290000548D7 /* Assets.xcassets */,
+				8AE024902A911290000548D7 /* Info.plist */,
+				8AE024912A911290000548D7 /* GitLabDesktopWidget.entitlements */,
+			);
+			path = GitLabDesktopWidget;
+			sourceTree = "<group>";
+		};
+		8AE8A6EB2B989E9A002B3C9E /* DesktopWidgetTool */ = {
+			isa = PBXGroup;
+			children = (
+				8AB969002BDBBFF10078E5CD /* LaunchPadWidget */,
+				8AB968FF2BDBBFE60078E5CD /* MergeRequestWiget */,
+				8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */,
+				8AE8A6EE2B989E9A002B3C9E /* DesktopWidgetTool.swift */,
+				8AB969072BDBC0C60078E5CD /* WidgetLaunchPadRow.swift */,
+				8AE8A6F02B989E9B002B3C9E /* Assets.xcassets */,
+				8AE8A6F22B989E9B002B3C9E /* Info.plist */,
+				8AE8A6F32B989E9B002B3C9E /* DesktopWidgetTool.entitlements */,
+			);
+			path = DesktopWidgetTool;
+			sourceTree = "<group>";
+		};
 		8AF80BE92A5580E700819B80 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,10 +880,14 @@
 		8AF80CDE2A55817400819B80 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				8AFF87ED2BDA711500D21D16 /* EnvironmentValues */,
+				8AFDAA962A84FAED001937AC /* SwiftData */,
 				8A63DE6F2A83A1FC002DD636 /* Extensions */,
 				8AF80CDF2A55817400819B80 /* Models */,
 				8AF80CF42A55817400819B80 /* Icons */,
 				8AF80D062A55817400819B80 /* UserInterface.swift */,
+				8ADD57142B82291B001F8E8F /* WidgetInterface.swift */,
+				8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */,
 				8AF80D072A55817400819B80 /* Views */,
 			);
 			path = UserInterface;
@@ -654,8 +898,7 @@
 			children = (
 				8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */,
 				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
-				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
-				8AF80CE72A55817400819B80 /* MergeRequests.swift */,
+				8AF80CE72A55817400819B80 /* Structs.swift */,
 				8AF80CE62A55817400819B80 /* NetworkManager.swift */,
 				8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */,
 				8AF80CE32A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift */,
@@ -667,8 +910,6 @@
 				8AF80CE52A55817400819B80 /* NotificationManager.swift */,
 				8AF80CE22A55817400819B80 /* PushEvents.swift */,
 				8AF80CEC2A55817400819B80 /* TargetProjects.swift */,
-				8AF80CED2A55817400819B80 /* UserDefaults.swift */,
-				8AF80CEE2A55817400819B80 /* UserDefaultsFix.swift */,
 				8AC0C2092A5D3D720096772B /* AccessToken.swift */,
 			);
 			path = Models;
@@ -687,7 +928,6 @@
 		8AF80CF42A55817400819B80 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */,
 				8AF80CF52A55817400819B80 /* CISkippedIcon.swift */,
 				8AF80CF62A55817400819B80 /* CIManualIcon.swift */,
 				8AF80CF72A55817400819B80 /* CICanceledIcon.swift */,
@@ -705,6 +945,7 @@
 				8AF80D032A55817400819B80 /* NeedsReviewIcon.swift */,
 				8AF80D042A55817400819B80 /* MergeTrainIcon.swift */,
 				8AF80D052A55817400819B80 /* CIProgressIcon.swift */,
+				8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -717,6 +958,8 @@
 				8AF80D0D2A55817400819B80 /* NoticeViews */,
 				8AF80D102A55817400819B80 /* RefreshStatus.swift */,
 				8AF80D112A55817400819B80 /* PipelineView.swift */,
+				8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */,
+				8AFDAAC82A85112E001937AC /* GitProviderView.swift */,
 				8AF80D122A55817400819B80 /* ExpandHitBoxModifier.swift */,
 				8AF80D132A55817400819B80 /* LastUpdateMessageView.swift */,
 				8AF80D142A55817400819B80 /* MergeStatusView.swift */,
@@ -727,11 +970,18 @@
 				8AF80D1A2A55817400819B80 /* TitleWebLink.swift */,
 				8AF80D1B2A55817400819B80 /* LaunchPadView.swift */,
 				8AF80D1C2A55817400819B80 /* WebLink.swift */,
+				8AFDAAC42A850793001937AC /* AccountRow.swift */,
 				8AF80D1D2A55817400819B80 /* CIJobsView.swift */,
 				8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */,
+				8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */,
+				8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */,
 				8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */,
 				8AF80D202A55817400819B80 /* LaunchpadItem.swift */,
 				8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */,
+				8AFDAABC2A850763001937AC /* AddAccountView.swift */,
+				8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */,
+				8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */,
+				8AFAE1912BEB7C1C0030541E /* MergeRequestList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -762,6 +1012,24 @@
 			path = NotificationViews;
 			sourceTree = "<group>";
 		};
+		8AFDAA962A84FAED001937AC /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				8AFDAA972A84FB26001937AC /* Account.swift */,
+				8AFDAACC2A85231F001937AC /* MergeRequest.swift */,
+				8AF80CE12A55817400819B80 /* LaunchpadState.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		8AFF87ED2BDA711500D21D16 /* EnvironmentValues */ = {
+			isa = PBXGroup;
+			children = (
+				8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */,
+			);
+			path = EnvironmentValues;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -779,6 +1047,8 @@
 			);
 			name = "GitLab iOS";
 			packageProductDependencies = (
+				8AE024DA2A92457C000548D7 /* Get */,
+				8AE024DC2A92457C000548D7 /* CachedAsyncImage */,
 			);
 			productName = "GitLab iOS";
 			productReference = 8A31CB3A2866334000C94AC1 /* GitLab iOS.app */;
@@ -834,10 +1104,8 @@
 			);
 			name = NotificationContent;
 			packageProductDependencies = (
-				8A7935B82A55827600F8FB6C /* Defaults */,
 				8A7935FA2A5583F700F8FB6C /* Get */,
 				8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */,
-				8A7935FE2A5583FD00F8FB6C /* Boutique */,
 			);
 			productName = NotificationContent;
 			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
@@ -856,13 +1124,12 @@
 			);
 			dependencies = (
 				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
+				8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */,
 			);
 			name = GitLab;
 			packageProductDependencies = (
-				8AF80DD32A55819300819B80 /* Defaults */,
 				8AF80DD62A5581A600819B80 /* Get */,
 				8AF80DD92A5581B700819B80 /* CachedAsyncImage */,
-				8AF80DDC2A5581C400819B80 /* Boutique */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* GitLab.app */;
@@ -904,6 +1171,27 @@
 			productReference = 8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8AE8A6E72B989E9A002B3C9E /* DesktopWidgetToolExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AE8A6F92B989E9B002B3C9E /* Build configuration list for PBXNativeTarget "DesktopWidgetToolExtension" */;
+			buildPhases = (
+				8AE8A6E42B989E9A002B3C9E /* Sources */,
+				8AE8A6E52B989E9A002B3C9E /* Frameworks */,
+				8AE8A6E62B989E9A002B3C9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DesktopWidgetToolExtension;
+			packageProductDependencies = (
+				8AE8A7432B989F78002B3C9E /* Get */,
+				8AE8A7452B989F78002B3C9E /* CachedAsyncImage */,
+			);
+			productName = DesktopWidgetToolExtension;
+			productReference = 8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -911,8 +1199,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1600;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -939,6 +1227,9 @@
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 8A5FC0F526EFD08E004136AB;
 					};
+					8AE8A6E72B989E9A002B3C9E = {
+						CreatedOnToolsVersion = 15.3;
+					};
 				};
 			};
 			buildConfigurationList = 8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "GitLab" */;
@@ -951,10 +1242,8 @@
 			);
 			mainGroup = 8A5FC0ED26EFD08E004136AB;
 			packageReferences = (
-				8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */,
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
-				8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -967,6 +1256,7 @@
 				8A31CB482866334100C94AC1 /* GitLab iOSTests */,
 				8A31CB522866334100C94AC1 /* GitLab iOSUITests */,
 				8A36AF0F2869B4110008B949 /* NotificationContent */,
+				8AE8A6E72B989E9A002B3C9E /* DesktopWidgetToolExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1028,6 +1318,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AE8A6E62B989E9A002B3C9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE8A6F12B989E9B002B3C9E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1040,24 +1338,33 @@
 				8AF80D282A55817400819B80 /* PushEvents.swift in Sources */,
 				8AF80D252A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80DCA2A55817400819B80 /* MergeRequestRowView.swift in Sources */,
+				8AC7B4B82CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
+				8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80DC42A55817400819B80 /* WebLink.swift in Sources */,
 				8AF80D552A55817400819B80 /* NoticeType.swift in Sources */,
 				8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
+				8AFDAAC22A850784001937AC /* AccountListEmptyView.swift in Sources */,
 				8AF80D792A55817400819B80 /* CIPendingIcon.swift in Sources */,
-				8AF80D372A55817400819B80 /* MergeRequests.swift in Sources */,
+				8AF80D372A55817400819B80 /* Structs.swift in Sources */,
 				8AF80D7F2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
-				8AC7B4B02CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */,
+				8ADD57162B82291B001F8E8F /* WidgetInterface.swift in Sources */,
+				8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D9A2A55817400819B80 /* AccountSettingsView.swift in Sources */,
+				8A9D878B2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8AF80D3D2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AF80DB82A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
 				8AF80DA92A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
 				8AF80D432A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */,
+				8AFF87F02BDA713800D21D16 /* IsInWidget.swift in Sources */,
+				8AFDAACA2A85112E001937AC /* GitProviderView.swift in Sources */,
 				8AF80DCD2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */,
 				8AF80DB22A55817400819B80 /* LastUpdateMessagePlaceholderView.swift in Sources */,
 				8AF80D702A55817400819B80 /* CIWaitingForResourceIcon.swift in Sources */,
+				8AFDAABE2A850763001937AC /* AddAccountView.swift in Sources */,
 				8AF80D8B2A55817400819B80 /* CIProgressIcon.swift in Sources */,
 				8AF80D402A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
+				8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8AF80D9D2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80DB52A55817400819B80 /* CIStatusView.swift in Sources */,
 				8AF80D5E2A55817400819B80 /* CIManualIcon.swift in Sources */,
@@ -1065,35 +1372,42 @@
 				8AF80D342A55817400819B80 /* NetworkManager.swift in Sources */,
 				8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AF80D312A55817400819B80 /* NotificationManager.swift in Sources */,
-				8AF80D492A55817400819B80 /* UserDefaults.swift in Sources */,
+				8AFAE1932BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
 				8AF80D2B2A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8AF80D522A55817400819B80 /* NoticeMessage.swift in Sources */,
 				8AF80DA62A55817400819B80 /* PipelineView.swift in Sources */,
 				8AF80DA02A55817400819B80 /* BaseNoticeItem.swift in Sources */,
 				8AF80DC12A55817400819B80 /* LaunchPadView.swift in Sources */,
+				8ABBD2072B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AF80D462A55817400819B80 /* TargetProjects.swift in Sources */,
 				8AF80D822A55817400819B80 /* CICreatedIcon.swift in Sources */,
 				8AF80DAC2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
 				8AF80DC72A55817400819B80 /* CIJobsView.swift in Sources */,
+				8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8AF80D4F2A55817400819B80 /* NetworkReachability.swift in Sources */,
+				8AFDAACE2A85231F001937AC /* MergeRequest.swift in Sources */,
 				8AF80D732A55817400819B80 /* DiscussionCountIcon.swift in Sources */,
 				8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */,
 				8AF80D942A55817400819B80 /* SettingsView.swift in Sources */,
+				8AE024DF2A924731000548D7 /* URL.swift in Sources */,
 				8AF80D852A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
+				8AFDAA992A84FB26001937AC /* Account.swift in Sources */,
 				8AF80D912A55817400819B80 /* BaseTextView.swift in Sources */,
-				8AF80D4C2A55817400819B80 /* UserDefaultsFix.swift in Sources */,
 				8AF80DBE2A55817400819B80 /* TitleWebLink.swift in Sources */,
 				8AF80D882A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D7C2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AF80D5B2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8AF80DAF2A55817400819B80 /* MergeStatusView.swift in Sources */,
 				8AF80D2E2A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
+				8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80D672A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80D582A55817400819B80 /* NoticeState.swift in Sources */,
 				8AF80D762A55817400819B80 /* CIScheduledIcon.swift in Sources */,
+				8A9D87902BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8AF80D8E2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D6D2A55817400819B80 /* CISuccessIcon.swift in Sources */,
 				8AF80D642A55817400819B80 /* CIFailedIcon.swift in Sources */,
+				8AFDAAC62A850793001937AC /* AccountRow.swift in Sources */,
 				8AF80D6A2A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
 				8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */,
 			);
@@ -1129,43 +1443,54 @@
 				8A7935C72A5583E400F8FB6C /* NetworkManager.swift in Sources */,
 				8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
+				8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */,
 				8A7935CB2A5583E400F8FB6C /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8A7935CC2A5583E400F8FB6C /* TargetProjects.swift in Sources */,
-				8A7935CD2A5583E400F8FB6C /* UserDefaults.swift in Sources */,
-				8A7935CE2A5583E400F8FB6C /* UserDefaultsFix.swift in Sources */,
 				8A7935CF2A5583E400F8FB6C /* NetworkReachability.swift in Sources */,
 				8A7935D02A5583E400F8FB6C /* NoticeMessage.swift in Sources */,
 				8A7935D12A5583E400F8FB6C /* NoticeType.swift in Sources */,
 				8A7935D22A5583E400F8FB6C /* NoticeState.swift in Sources */,
+				8AC7B4B72CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8A7935D32A5583E400F8FB6C /* CISkippedIcon.swift in Sources */,
 				8A7935D42A5583E400F8FB6C /* CIManualIcon.swift in Sources */,
 				8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */,
 				8A7935D52A5583E400F8FB6C /* CICanceledIcon.swift in Sources */,
+				8AFDAAC32A850784001937AC /* AccountListEmptyView.swift in Sources */,
 				8A7935D62A5583E400F8FB6C /* CIFailedIcon.swift in Sources */,
-				8AC7B4AF2CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */,
 				8A7935D72A5583E400F8FB6C /* CIPreparingIcon.swift in Sources */,
 				8A7935D82A5583E400F8FB6C /* ApprovedReviewIcon.swift in Sources */,
 				8A7935D92A5583E400F8FB6C /* CISuccessIcon.swift in Sources */,
 				8A7935DA2A5583E400F8FB6C /* CIWaitingForResourceIcon.swift in Sources */,
+				8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
 				8A7935DC2A5583E400F8FB6C /* CIScheduledIcon.swift in Sources */,
 				8A7935DD2A5583E400F8FB6C /* CIPendingIcon.swift in Sources */,
+				8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
+				8AFDAABF2A850763001937AC /* AddAccountView.swift in Sources */,
 				8A7935DE2A5583E400F8FB6C /* CIRetryIcon.swift in Sources */,
 				8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */,
+				8AFDAACB2A85112E001937AC /* GitProviderView.swift in Sources */,
 				8A7935DF2A5583E400F8FB6C /* ShareMergeRequestIcon.swift in Sources */,
+				8AFAE1942BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
+				8ADD57172B82291B001F8E8F /* WidgetInterface.swift in Sources */,
 				8A7935E02A5583E400F8FB6C /* CICreatedIcon.swift in Sources */,
 				8A7935E12A5583E400F8FB6C /* NeedsReviewIcon.swift in Sources */,
+				8A2E61872A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A7935E22A5583E400F8FB6C /* MergeTrainIcon.swift in Sources */,
 				8A7935E32A5583E400F8FB6C /* CIProgressIcon.swift in Sources */,
+				8A9D878C2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
+				8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */,
 				8A7935E42A5583E400F8FB6C /* UserInterface.swift in Sources */,
 				8A7935E52A5583E400F8FB6C /* BaseTextView.swift in Sources */,
 				8A7935E62A5583E400F8FB6C /* SettingsView.swift in Sources */,
 				8A7935E82A5583E400F8FB6C /* AccountSettingsView.swift in Sources */,
 				8A7935E92A5583E400F8FB6C /* NoticeListView.swift in Sources */,
+				8A9D87912BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8A7935EA2A5583E400F8FB6C /* BaseNoticeItem.swift in Sources */,
+				8AFF87F12BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8A7935EB2A5583E400F8FB6C /* RefreshStatus.swift in Sources */,
 				8A7935EC2A5583E400F8FB6C /* PipelineView.swift in Sources */,
 				8A7935ED2A5583E400F8FB6C /* ExpandHitBoxModifier.swift in Sources */,
@@ -1176,13 +1501,16 @@
 				8A7935F22A5583E400F8FB6C /* MergeRequestLabelView.swift in Sources */,
 				8A7935F32A5583E400F8FB6C /* TitleWebLink.swift in Sources */,
 				8A7935F42A5583E400F8FB6C /* LaunchPadView.swift in Sources */,
+				8AFDAACF2A85231F001937AC /* MergeRequest.swift in Sources */,
 				8A7935F52A5583E400F8FB6C /* WebLink.swift in Sources */,
 				8A7935F62A5583E400F8FB6C /* CIJobsView.swift in Sources */,
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
 				8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */,
 				8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */,
+				8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */,
+				8AFDAAC72A850793001937AC /* AccountRow.swift in Sources */,
 				8A7935BC2A55830D00F8FB6C /* CIJobsNotificationView.swift in Sources */,
-				8A7935C02A55837500F8FB6C /* MergeRequests.swift in Sources */,
+				8A7935C02A55837500F8FB6C /* Structs.swift in Sources */,
 				8A7935BE2A55830F00F8FB6C /* NotificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1200,48 +1528,59 @@
 				8AF80D5D2A55817400819B80 /* CIManualIcon.swift in Sources */,
 				8AF80D932A55817400819B80 /* SettingsView.swift in Sources */,
 				8AF80D9F2A55817400819B80 /* BaseNoticeItem.swift in Sources */,
+				8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8AF80DB72A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
 				8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */,
+				8AFDAAC12A850784001937AC /* AccountListEmptyView.swift in Sources */,
+				8AFDAACD2A85231F001937AC /* MergeRequest.swift in Sources */,
 				8AF80DCC2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */,
 				8AF80D752A55817400819B80 /* CIScheduledIcon.swift in Sources */,
 				8AF80D332A55817400819B80 /* NetworkManager.swift in Sources */,
 				8AF80D3C2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
+				8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80DAE2A55817400819B80 /* MergeStatusView.swift in Sources */,
 				8AF80D392A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AF80D2A2A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8AF80D782A55817400819B80 /* CIPendingIcon.swift in Sources */,
+				8AFDAAC52A850793001937AC /* AccountRow.swift in Sources */,
 				8AF80DC02A55817400819B80 /* LaunchPadView.swift in Sources */,
-				8AF80D482A55817400819B80 /* UserDefaults.swift in Sources */,
 				8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */,
+				8AFDAA982A84FB26001937AC /* Account.swift in Sources */,
 				8AF80D3F2A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
-				8AF80D4B2A55817400819B80 /* UserDefaultsFix.swift in Sources */,
+				8AFDAABD2A850763001937AC /* AddAccountView.swift in Sources */,
+				8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8AF80DA82A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
 				8AF80D872A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D692A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
+				8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80D7B2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
-				8AC7B4B12CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
+				8AFAE1922BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
+				8ADD57152B82291B001F8E8F /* WidgetInterface.swift in Sources */,
 				8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */,
 				8AF80D602A55817400819B80 /* CICanceledIcon.swift in Sources */,
+				8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8AF80D632A55817400819B80 /* CIFailedIcon.swift in Sources */,
 				8AF80D572A55817400819B80 /* NoticeState.swift in Sources */,
+				8A9D878A2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8AF80DC32A55817400819B80 /* WebLink.swift in Sources */,
 				8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */,
 				8AF80DC62A55817400819B80 /* CIJobsView.swift in Sources */,
 				8AF80D8A2A55817400819B80 /* CIProgressIcon.swift in Sources */,
 				8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
+				8A9D878F2BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8AF80DAB2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
+				8AFF87EF2BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8AF80D272A55817400819B80 /* PushEvents.swift in Sources */,
-				8AFEF17528E1EE60003F6241 /* MenubarContentView.swift in Sources */,
 				8AF80D662A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80DA22A55817400819B80 /* RefreshStatus.swift in Sources */,
 				8AF80DBD2A55817400819B80 /* TitleWebLink.swift in Sources */,
-				8AF80D362A55817400819B80 /* MergeRequests.swift in Sources */,
+				8AF80D362A55817400819B80 /* Structs.swift in Sources */,
 				8AF80D6F2A55817400819B80 /* CIWaitingForResourceIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* GitLabApp.swift in Sources */,
 				8AF80DB42A55817400819B80 /* CIStatusView.swift in Sources */,
@@ -1249,9 +1588,11 @@
 				8AF80D302A55817400819B80 /* NotificationManager.swift in Sources */,
 				8AF80D9C2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80D542A55817400819B80 /* NoticeType.swift in Sources */,
+				8AFDAAC92A85112E001937AC /* GitProviderView.swift in Sources */,
 				8AF80D452A55817400819B80 /* TargetProjects.swift in Sources */,
 				8AF80D422A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8AF80D7E2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
+				8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80DC92A55817400819B80 /* MergeRequestRowView.swift in Sources */,
 				8AF80D2D2A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
 				8AF80D512A55817400819B80 /* NoticeMessage.swift in Sources */,
@@ -1272,6 +1613,101 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5FC11B26EFD08F004136AB /* GitLabUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AE8A6E42B989E9A002B3C9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AE8A6FA2B989EFA002B3C9E /* WidgetInterface.swift in Sources */,
+				8AE8A6FB2B989EFA002B3C9E /* GitProviderView.swift in Sources */,
+				8AE8A6FC2B989EFA002B3C9E /* NoticeType.swift in Sources */,
+				8AE8A6FD2B989EFA002B3C9E /* ApprovedReviewIcon.swift in Sources */,
+				8AE8A6FE2B989EFA002B3C9E /* CIStatusView.swift in Sources */,
+				8AE8A6FF2B989EFA002B3C9E /* MainGitLabView.swift in Sources */,
+				8AE8A7002B989EFA002B3C9E /* LaunchPadView.swift in Sources */,
+				8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */,
+				8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */,
+				8AE8A7032B989EFA002B3C9E /* AccountListEmptyView.swift in Sources */,
+				8AB9691F2BDBC1BF0078E5CD /* MergeRequestWidgetEntryView.swift in Sources */,
+				8AE8A7042B989EFA002B3C9E /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
+				8AE8A7052B989EFA002B3C9E /* URL.swift in Sources */,
+				8AE8A7062B989EFA002B3C9E /* AccountRow.swift in Sources */,
+				8AE8A7072B989EFA002B3C9E /* CIPendingIcon.swift in Sources */,
+				8AFF87F22BDA713800D21D16 /* IsInWidget.swift in Sources */,
+				8AB969222BDBC2170078E5CD /* LaunchPadWidgetEntryView.swift in Sources */,
+				8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */,
+				8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */,
+				8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */,
+				8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */,
+				8AE8A70C2B989EFA002B3C9E /* TargetProjects.swift in Sources */,
+				8A9D878D2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
+				8AE8A70D2B989EFA002B3C9E /* CachedAsyncImage+ImageCache.swift in Sources */,
+				8AFAE1952BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
+				8AE8A70E2B989EFA002B3C9E /* NotificationManager.swift in Sources */,
+				8AE8A70F2B989EFA002B3C9E /* CICanceledIcon.swift in Sources */,
+				8AE8A7102B989EFA002B3C9E /* CIFailedIcon.swift in Sources */,
+				8AE8A7112B989EFA002B3C9E /* CIWaitingForResourceIcon.swift in Sources */,
+				8AE8A7122B989EFA002B3C9E /* PipelineView.swift in Sources */,
+				8AE8A7132B989EFA002B3C9E /* Structs.swift in Sources */,
+				8AE8A7142B989EFA002B3C9E /* LaunchpadItem.swift in Sources */,
+				8AE8A7152B989EFA002B3C9E /* NetworkManager.swift in Sources */,
+				8AE8A7162B989EFA002B3C9E /* PushEvents.swift in Sources */,
+				8AE8A7172B989EFA002B3C9E /* BaseTextView.swift in Sources */,
+				8AE8A7182B989EFA002B3C9E /* MergeRequestRowView.swift in Sources */,
+				8AE8A7192B989EFA002B3C9E /* CIScheduledIcon.swift in Sources */,
+				8AE8A71A2B989EFA002B3C9E /* CIProgressIcon.swift in Sources */,
+				8AE8A71B2B989EFA002B3C9E /* PlainMergeRequestList.swift in Sources */,
+				8AE8A71C2B989EFA002B3C9E /* MergeStatusView.swift in Sources */,
+				8AE8A7402B989F57002B3C9E /* Account.swift in Sources */,
+				8AE8A7412B989F57002B3C9E /* LaunchpadState.swift in Sources */,
+				8AE8A7422B989F57002B3C9E /* MergeRequest.swift in Sources */,
+				8A9D87922BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
+				8AE8A71D2B989EFA002B3C9E /* CICreatedIcon.swift in Sources */,
+				8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */,
+				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
+				8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */,
+				8AE8A7212B989EFA002B3C9E /* CIJobsView.swift in Sources */,
+				8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
+				8AB969282BDBC7580078E5CD /* WrappingHStack.swift in Sources */,
+				8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */,
+				8AE8A7232B989EFA002B3C9E /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
+				8AE8A7242B989EFA002B3C9E /* MergeTrainIcon.swift in Sources */,
+				8AE8A7252B989EFA002B3C9E /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
+				8AE8A7262B989EFA002B3C9E /* TokenInformationView.swift in Sources */,
+				8AE8A7272B989EFA002B3C9E /* CIManualIcon.swift in Sources */,
+				8AE8A7282B989EFA002B3C9E /* CISuccessIcon.swift in Sources */,
+				8AE8A7292B989EFA002B3C9E /* LastUpdateMessagePlaceholderView.swift in Sources */,
+				8AE8A72A2B989EFA002B3C9E /* ExpandHitBoxModifier.swift in Sources */,
+				8AE8A72B2B989EFA002B3C9E /* KeyedDecodingContainer.swift in Sources */,
+				8AE8A72C2B989EFA002B3C9E /* NetworkReachability.swift in Sources */,
+				8AE8A72D2B989EFA002B3C9E /* MergeRequestLabelView.swift in Sources */,
+				8AE8A72E2B989EFA002B3C9E /* SettingsView.swift in Sources */,
+				8AB969142BDBC0FA0078E5CD /* WidgetLaunchPadRow.swift in Sources */,
+				8AE8A72F2B989EFA002B3C9E /* AddAccountView.swift in Sources */,
+				8AE8A7302B989EFA002B3C9E /* CIPreparingIcon.swift in Sources */,
+				8AE8A7312B989EFA002B3C9E /* NetworkManager+fetchProjects.swift in Sources */,
+				8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */,
+				8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */,
+				8AB969112BDBC0EB0078E5CD /* MediumMergeRequestWidgetInterface.swift in Sources */,
+				8AE8A7322B989EFA002B3C9E /* NeedsReviewIcon.swift in Sources */,
+				8AB969262BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift in Sources */,
+				8AE8A7332B989EFA002B3C9E /* NoticeListView.swift in Sources */,
+				8AE8A7342B989EFA002B3C9E /* LastUpdateMessageView.swift in Sources */,
+				8AE8A7352B989EFA002B3C9E /* DiscussionCountIcon.swift in Sources */,
+				8AE8A7362B989EFA002B3C9E /* CIRetryIcon.swift in Sources */,
+				8AE8A7372B989EFA002B3C9E /* ShareMergeRequestIcon.swift in Sources */,
+				8AE8A7382B989EFA002B3C9E /* UserInterface.swift in Sources */,
+				8AE8A7392B989EFA002B3C9E /* NetworkManager+repoLaunchPad.swift in Sources */,
+				8AE8A73A2B989EFA002B3C9E /* BaseNoticeItem.swift in Sources */,
+				8AE8A73B2B989EFA002B3C9E /* WebLink.swift in Sources */,
+				8AE8A73C2B989EFA002B3C9E /* NoticeMessage.swift in Sources */,
+				8AE8A73D2B989EFA002B3C9E /* RefreshStatus.swift in Sources */,
+				8AE8A73E2B989EFA002B3C9E /* CIJobsNotificationView.swift in Sources */,
+				8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */,
+				8AE8A6EF2B989E9A002B3C9E /* DesktopWidgetTool.swift in Sources */,
+				8AE8A6ED2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,6 +1739,11 @@
 			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
 			targetProxy = 8A5FC11726EFD08F004136AB /* PBXContainerItemProxy */;
 		};
+		8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8AE8A6E72B989E9A002B3C9E /* DesktopWidgetToolExtension */;
+			targetProxy = 8AE8A6F42B989E9B002B3C9E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1324,6 +1765,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "GitLab iOS/GitLab iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab iOS/Preview Content\"";
@@ -1336,7 +1778,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1362,6 +1804,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = "GitLab iOS/GitLab iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab iOS/Preview Content\"";
@@ -1374,7 +1817,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1397,13 +1840,14 @@
 		8A31CB5D2866334100C94AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stefkors.GitLab-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1418,13 +1862,14 @@
 		8A31CB5E2866334100C94AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stefkors.GitLab-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1440,12 +1885,13 @@
 		8A31CB5F2866334100C94AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stefkors.GitLab-iOSUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1460,12 +1906,13 @@
 		8A31CB602866334100C94AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stefkors.GitLab-iOSUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1484,8 +1931,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = NotificationContent/NotificationContent.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -1500,10 +1946,11 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1516,8 +1963,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = NotificationContent/NotificationContent.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -1532,10 +1978,11 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1596,7 +2043,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1654,7 +2102,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -1666,13 +2115,13 @@
 		8A5FC12026EFD08F004136AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_BETA;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = GitLab/GitLab.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1688,8 +2137,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.19;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1701,13 +2150,13 @@
 		8A5FC12126EFD08F004136AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = GitLab/GitLab.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1723,8 +2172,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.19;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1736,6 +2185,7 @@
 		8A5FC12326EFD08F004136AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1747,7 +2197,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1758,6 +2208,7 @@
 		8A5FC12426EFD08F004136AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1769,7 +2220,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1780,6 +2231,7 @@
 		8A5FC12626EFD08F004136AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
@@ -1790,6 +2242,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1800,6 +2253,7 @@
 		8A5FC12726EFD08F004136AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
@@ -1810,10 +2264,88 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = GitLab;
+			};
+			name = Release;
+		};
+		8AE8A6F72B989E9B002B3C9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = DesktopWidgetTool/DesktopWidgetTool.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DesktopWidgetTool/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DesktopWidgetTool;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.DesktopWidgetTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,7";
+			};
+			name = Debug;
+		};
+		8AE8A6F82B989E9B002B3C9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = DesktopWidgetTool/DesktopWidgetTool.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DesktopWidgetTool/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DesktopWidgetTool;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.DesktopWidgetTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Release;
 		};
@@ -1892,17 +2424,18 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8AE8A6F92B989E9B002B3C9E /* Build configuration list for PBXNativeTarget "DesktopWidgetToolExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AE8A6F72B989E9B002B3C9E /* Debug */,
+				8AE8A6F82B989E9B002B3C9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Defaults.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -1919,22 +2452,9 @@
 				minimumVersion = 2.1.1;
 			};
 		};
-		8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mergesort/Boutique.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.5;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A7935B82A55827600F8FB6C /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
 		8A7935FA2A5583F700F8FB6C /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
@@ -1945,15 +2465,25 @@
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
 		};
-		8A7935FE2A5583FD00F8FB6C /* Boutique */ = {
+		8AE024DA2A92457C000548D7 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */;
-			productName = Boutique;
+			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
+			productName = Get;
 		};
-		8AF80DD32A55819300819B80 /* Defaults */ = {
+		8AE024DC2A92457C000548D7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DD22A55819300819B80 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
+			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
+			productName = CachedAsyncImage;
+		};
+		8AE8A7432B989F78002B3C9E /* Get */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
+			productName = Get;
+		};
+		8AE8A7452B989F78002B3C9E /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
+			productName = CachedAsyncImage;
 		};
 		8AF80DD62A5581A600819B80 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1964,11 +2494,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
-		};
-		8AF80DDC2A5581C400819B80 /* Boutique */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AF80DDB2A5581C400819B80 /* XCRemoteSwiftPackageReference "Boutique" */;
-			productName = Boutique;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

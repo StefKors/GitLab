@@ -7,19 +7,19 @@
 
 import SwiftUI
 
-public struct BaseNoticeItem: View {
-    @EnvironmentObject public var noticeState: NoticeState
+ struct BaseNoticeItem: View {
+    @EnvironmentObject  var noticeState: NoticeState
     // @Environment(\.colorScheme) private var colorScheme
     @Environment(\.openURL) private var openURL
     @State private var isHovering: Bool = false
 
-    public var notice: NoticeMessage
+     var notice: NoticeMessage
 
-    public init(notice: NoticeMessage) {
+     init(notice: NoticeMessage) {
         self.notice = notice
     }
 
-    public var body: some View {
+     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             if let statusCode = notice.statusCode {
                 VStack(alignment: .center) {
@@ -78,10 +78,10 @@ public struct BaseNoticeItem: View {
             .padding()
         }
         .modifier(NoticeTypeBackground(notice: notice))
+#if os(macOS)
         // TODO: fix on ios
         .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
         // .shadow(color: Color(NSColor.shadowColor).opacity(0.15), radius: 5, x: 0, y: 3)
-#if os(macOS)
 #endif
     }
 
@@ -103,11 +103,11 @@ public struct BaseNoticeItem: View {
     }
 }
 
-public struct NoticeTypeBackground: ViewModifier {
+ struct NoticeTypeBackground: ViewModifier {
     var notice: NoticeMessage
 
     let radius: CGFloat = 8
-    public func body(content: Content) -> some View {
+     func body(content: Content) -> some View {
         if notice.type == .branch {
             content
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
@@ -119,7 +119,8 @@ public struct NoticeTypeBackground: ViewModifier {
 }
 
 struct BaseNoticeItem_Previews: PreviewProvider {
-    static let networkManager = NetworkManager()
+    // static let networkManager = NetworkManager()
+    static let noticeState = NoticeState()
     static var previews: some View {
         VStack(spacing: 25) {
             BaseNoticeItem(notice: .previewInformationNotice)
@@ -127,6 +128,7 @@ struct BaseNoticeItem_Previews: PreviewProvider {
             BaseNoticeItem(notice: .previewErrorNotice)
             BaseNoticeItem(notice: .previewBranchPushNotice)
             Button("generate") {
+#if os(macOS)
                 do {
                     let renderView = BaseNoticeItem(notice: .previewBranchPushNotice)
                         .padding(.bottom)
@@ -150,11 +152,12 @@ struct BaseNoticeItem_Previews: PreviewProvider {
                 } catch {
                     print("error \(error.localizedDescription)")
                 }
+#endif
             }
         }
         .padding()
         .frame(height: 400)
-        .environmentObject(self.networkManager)
-        .environmentObject(self.networkManager.noticeState)
+        // .environmentObject(self.networkManager)
+        .environmentObject(self.noticeState)
     }
 }

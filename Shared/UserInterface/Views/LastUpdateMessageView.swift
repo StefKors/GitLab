@@ -1,6 +1,6 @@
 //
 //  LastUpdateMessageView.swift
-//  
+//
 //
 //  Created by Stef Kors on 26/07/2022.
 //
@@ -8,70 +8,34 @@
 import SwiftUI
 
 struct LastUpdateMessageView: View {
-    @EnvironmentObject var model: NetworkManager
-    
-    public let initialTimeRemaining = 10
-    @State public var isHovering: Bool = false
-    @State public var timeRemaining = 10
-    public let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    public var dateValue: String? {
-        guard let date = model.lastUpdate else {
-            return nil
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: date)
-    }
-    
     var body: some View {
         HStack {
-            if let lastUpdate = dateValue {
-                Text("Last updated at: \(lastUpdate)")
-                    .transition(.opacity.animation(.easeInOut(duration: 0.35).delay(0.2)))
-                    .foregroundColor(.gray)
-                    .onHover { hovering in
-                        isHovering = hovering
-                    }
-                    .onReceive(timer) { _ in
-                        if timeRemaining > 0 {
-                            timeRemaining -= 1
-                        }
-                        
-                        if timeRemaining <= 0 {
-                            timeRemaining = initialTimeRemaining
-                            Task(priority: .background) {
-                                await model.fetch()
-                            }
-                        }
-                    }
-            } else {
-                LastUpdateMessagePlaceholderView()
-            }
-            
             Spacer()
-            
+
 #if os(macOS)
-            // if #available(macOS 14.0, *) {
-            //     SettingsLink {
-            //         Label("Settings", systemImage: "gear")
-            //     }
-            // } else {
+            if #available(macOS 14.0, *) {
+                SettingsLink {
+                    Label("Settings", systemImage: "gear")
+                }
+                .buttonStyle(.menubar)
+            } else {
                 Button(action: openSettings, label: {
                     Label("Settings", systemImage: "gear")
                 })
-            // }
+                .buttonStyle(.menubar)
+            }
             Button(action: quitApp, label: {
-                Text("Quit \(Bundle.main.displayName ?? "")")
+                Text("Quit")
             })
+            .buttonStyle(.menubar)
 #endif
         }
         .font(.system(size: 10))
-        .padding()
+        .padding(.bottom)
+        .padding(.horizontal)
+        .padding(.top, 4)
     }
-    
+
     func openSettings() {
 #if os(macOS)
         if #available(macOS 13.0, *) {
