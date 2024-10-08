@@ -1,6 +1,6 @@
 //
 //  CIJobsView.swift
-//  
+//
 //
 //  Created by Stef Kors on 28/06/2022.
 //
@@ -10,20 +10,32 @@ import SwiftUI
 public struct CIJobsView: View {
     var stage: FluffyNode
     @State var presentPopover: Bool = false
-    @State var isHovering: Bool = false
-    @State var tapState: Bool = false
 
-    @EnvironmentObject  var model: NetworkManager
+    @EnvironmentObject var model: NetworkManager
 
     public init(stage: FluffyNode) {
         self.stage = stage
     }
 
+    public var hasFailedChildJob: Bool {
+        stage.jobs?.edges?.contains(where: { $0.node?.status == .failed }) ?? false
+    }
+
+    public var status: PipelineStatus? {
+        if let stageStatus = stage.status?.toPipelineStatus() {
+            if stageStatus == .success, hasFailedChildJob {
+                return .warning
+            }
+        }
+
+        return stage.status?.toPipelineStatus()
+    }
+
     public var body: some View {
         HStack {
-            CIStatusView(status: stage.status?.toPipelineStatus())
+            CIStatusView(status: status)
+                .contentShape(Rectangle())
                 .onTapGesture {
-                    tapState.toggle()
                     presentPopover.toggle()
                 }
                 .popover(isPresented: $presentPopover, content: {
@@ -49,9 +61,5 @@ public struct CIJobsView: View {
                     }
                 })
         }
-        .animation(.spring(response: 0.35, dampingFraction: 1, blendDuration: 0), value: isHovering)
-        // .onHover { hovering in
-        //     isHovering = hovering
-        // }
     }
 }

@@ -1,12 +1,13 @@
 {
+  "originHash" : "9c016fcb029f1a29ed162bc12c9d8d33d3f6b80352c46cd4a1fac795c86684de",
   "pins" : [
     {
       "identity" : "bodega",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mergesort/Bodega.git",
       "state" : {
-        "revision" : "3e7c1c58ad9a46aa8551cebfe87770003cdaaaca",
-        "version" : "2.0.2"
+        "revision" : "bfd8871e9c2590d31b200e54c75428a71483afdf",
+        "version" : "2.1.3"
       }
     },
     {
@@ -14,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mergesort/Boutique.git",
       "state" : {
-        "revision" : "ad47507dc0e1c4cf1693fd08567457d9caf664b7",
-        "version" : "2.2.0"
+        "revision" : "28e295c131e6d7d766c13feda9f8c3b683adc1a5",
+        "version" : "2.4.5"
       }
     },
     {
@@ -64,5 +65,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
