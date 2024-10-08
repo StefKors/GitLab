@@ -112,6 +112,10 @@
 		8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
+		8AC7B4B72CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B82CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
 		8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
@@ -485,6 +489,7 @@
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AC745352BD7AB37002C2C01 /* GitLab iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GitLab iOS.entitlements"; sourceTree = "<group>"; };
+		8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIWarningIcon.swift; sourceTree = "<group>"; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
@@ -940,6 +945,7 @@
 				8AF80D032A55817400819B80 /* NeedsReviewIcon.swift */,
 				8AF80D042A55817400819B80 /* MergeTrainIcon.swift */,
 				8AF80D052A55817400819B80 /* CIProgressIcon.swift */,
+				8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -1332,6 +1338,7 @@
 				8AF80D282A55817400819B80 /* PushEvents.swift in Sources */,
 				8AF80D252A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80DCA2A55817400819B80 /* MergeRequestRowView.swift in Sources */,
+				8AC7B4B82CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80DC42A55817400819B80 /* WebLink.swift in Sources */,
 				8AF80D552A55817400819B80 /* NoticeType.swift in Sources */,
@@ -1446,6 +1453,7 @@
 				8A7935D02A5583E400F8FB6C /* NoticeMessage.swift in Sources */,
 				8A7935D12A5583E400F8FB6C /* NoticeType.swift in Sources */,
 				8A7935D22A5583E400F8FB6C /* NoticeState.swift in Sources */,
+				8AC7B4B72CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8A7935D32A5583E400F8FB6C /* CISkippedIcon.swift in Sources */,
 				8A7935D42A5583E400F8FB6C /* CIManualIcon.swift in Sources */,
 				8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */,
@@ -1530,6 +1538,7 @@
 				8AF80D752A55817400819B80 /* CIScheduledIcon.swift in Sources */,
 				8AF80D332A55817400819B80 /* NetworkManager.swift in Sources */,
 				8AF80D3C2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
+				8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80DAE2A55817400819B80 /* MergeStatusView.swift in Sources */,
 				8AF80D392A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AF80D2A2A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
@@ -1660,6 +1669,7 @@
 				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
 				8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */,
 				8AE8A7212B989EFA002B3C9E /* CIJobsView.swift in Sources */,
+				8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AB969282BDBC7580078E5CD /* WrappingHStack.swift in Sources */,
 				8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */,
 				8AE8A7232B989EFA002B3C9E /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,

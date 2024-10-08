@@ -18,7 +18,7 @@ extension GitLabQuery {
             return MergeRequest(edge.node)
         }) ?? []
     }
-
+    
     var reviewRequestedMergeRequests: [MergeRequest] {
         return self.data?.currentUser?.reviewRequestedMergeRequests?.edges?.compactMap({ edge in
             return MergeRequest(edge.node)
@@ -51,7 +51,7 @@ extension BidirectionalCollection where Element == CollectionDifference<Author>.
             return element
         })
     }
-
+    
     /// Return all elements of changed type `.remove`
     var removedElements: [Author] {
         return self.compactMap({ insertion -> Author? in
@@ -66,27 +66,27 @@ extension BidirectionalCollection where Element == CollectionDifference<Author>.
 struct Author: Codable, Equatable {
     let id, name, username: String?
     let avatarUrl: URL?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name, username
         case avatarUrl = "avatarUrl"
     }
-
+    
     init(id: String?, name: String?, username: String?, avatarUrl: URL?) {
         self.id = id ?? UUID().uuidString
         self.name = name
         self.username = username
         self.avatarUrl = avatarUrl
     }
-
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: Author.CodingKeys.self)
-//        self.id = try container.decode(String.self, forKey: .id)
-//        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-//        self.username = try container.decodeIfPresent(String.self, forKey: .username)
-//        // Should re-encode any non-escaped utf8 strings
-//        self.avatarUrl = //try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
-//    }
+    
+    //    init(from decoder: Decoder) throws {
+    //        let container = try decoder.container(keyedBy: Author.CodingKeys.self)
+    //        self.id = try container.decode(String.self, forKey: .id)
+    //        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+    //        self.username = try container.decodeIfPresent(String.self, forKey: .username)
+    //        // Should re-encode any non-escaped utf8 strings
+    //        self.avatarUrl = //try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
+    //    }
 }
 
 extension Author {
@@ -103,19 +103,19 @@ struct EventAuthor: Codable, Equatable {
     let id: Int?
     let name, username: String?
     let avatarUrl: URL?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name, username
         case avatarUrl = "avatarUrl"
     }
-
+    
     init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
         self.id = id ?? Int.random(in: 0...999999)
         self.name = name
         self.username = username
         self.avatarUrl = avatarUrl
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: EventAuthor.CodingKeys.self)
         self.id = try container.decodeIfPresent(Int.self, forKey: .id)
@@ -191,7 +191,7 @@ struct FluffyNode: Codable, Equatable {
     let status: StageStatusType?
     let name: String?
     let jobs: Jobs?
-
+    
     init(id: String?, status: StageStatusType?, name: String?, jobs: Jobs?) {
         self.id = id ?? UUID().uuidString
         self.status = status
@@ -207,21 +207,21 @@ extension FluffyNode {
     //     name: "Test",
     //     jobs: .previewBuildJobs
     // )
-
+    
     static let previewBuild = FluffyNode(
         id: "id-id-id",
         status: .running,
         name: "Build",
         jobs: .previewBuildJobs
     )
-
+    
     static let previewTest = FluffyNode(
         id: "id-id-id",
         status: .running,
         name: "Test",
         jobs: .previewTestJobs
     )
-
+    
     static let previewNoChildren = FluffyNode(
         id: "id-id-id",
         status: .success,
@@ -255,7 +255,7 @@ extension Stages {
     var name: String?
     var detailedStatus: DetailedStatus?
     var mergeRequestEventType: MergeRequestEventType?
-
+    
     init(
         id: String?,
         active: Bool?,
@@ -273,7 +273,7 @@ extension Stages {
         self.detailedStatus = detailedStatus
         self.mergeRequestEventType = mergeRequestEventType
     }
-
+    
     enum CodingKeys: CodingKey {
         case id
         case active
@@ -283,7 +283,7 @@ extension Stages {
         case detailedStatus
         case mergeRequestEventType
     }
-
+    
     func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(self.id, forKey: .id)
@@ -294,7 +294,7 @@ extension Stages {
         try container.encodeIfPresent(self.detailedStatus, forKey: .detailedStatus)
         try container.encodeIfPresent(self.mergeRequestEventType, forKey: .mergeRequestEventType)
     }
-
+    
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decodeIfPresent(String.self, forKey: .id)
@@ -324,7 +324,7 @@ extension HeadPipeline {
         detailedStatus: .preview,
         mergeRequestEventType: .mergeTrain
     )
-
+    
     static let previewBuildMacOS = HeadPipeline(
         id: "id-id-id",
         active: false,
@@ -334,7 +334,7 @@ extension HeadPipeline {
         detailedStatus: .preview,
         mergeRequestEventType: .mergedResult
     )
-
+    
     static let previewTestFailed = HeadPipeline(
         id: "id-id-id",
         active: false,
@@ -344,7 +344,7 @@ extension HeadPipeline {
         detailedStatus: .preview,
         mergeRequestEventType: .mergedResult
     )
-
+    
     static let previewTestRunning1 = HeadPipeline(
         id: "id-id-id",
         active: false,
@@ -354,7 +354,7 @@ extension HeadPipeline {
         detailedStatus: .preview,
         mergeRequestEventType: .mergedResult
     )
-
+    
     static let previewTestRunning2 = HeadPipeline(
         id: "id-id-id",
         active: false,
@@ -364,7 +364,7 @@ extension HeadPipeline {
         detailedStatus: .preview,
         mergeRequestEventType: .mergedResult
     )
-
+    
     static let previewTestPending1 = HeadPipeline(
         id: "id-id-id",
         active: false,
@@ -374,7 +374,7 @@ extension HeadPipeline {
         detailedStatus: .preview,
         mergeRequestEventType: .mergedResult
     )
-
+    
     static let previewTestPending2 = HeadPipeline(
         id: "id-id-id",
         active: false,
@@ -499,15 +499,33 @@ extension HeadPipeline {
 struct DetailedStatus: Codable, Equatable {
     let id: String?
     let detailsPath: String?
-
-    init(id: String?, detailsPath: String?) {
+    let text: String?
+    let label: String?
+    let group: String?
+    let tooltip: String?
+    let icon: String?
+    
+    init(id: String?, detailsPath: String?, text: String?, label: String?, group: String?, tooltip: String?, icon: String?) {
         self.id = id ?? UUID().uuidString
         self.detailsPath = detailsPath
+        self.text = text
+        self.label = label
+        self.group = group
+        self.tooltip = tooltip
+        self.icon = icon
     }
 }
 
 extension DetailedStatus {
-    static let preview = DetailedStatus(id: "id-id-id", detailsPath: "/details?...")
+    static let preview = DetailedStatus(
+        id: "id-id-id",
+        detailsPath: "/details?...",
+        text: "passed",
+        label: "passed",
+        group: "success",
+        tooltip: "passed",
+        icon: "status_success"
+    )
 }
 
 // MARK: - TargetProject
@@ -521,7 +539,7 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
     let repository: Repository?
     let group: Group?
     let fetchedAvatarData: Data?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, projectID, name, path
         case webURL = "webUrl"
@@ -531,7 +549,7 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
         case group
         case fetchedAvatarData
     }
-
+    
     init(id: String?, name: String?, path: String?, webURL: URL?, avatarUrl: URL?, namespace: NameSpace?, repository: Repository?, group: Group?, fetchedAvatarData: Data?) {
         self.projectID = id
         self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
@@ -544,21 +562,21 @@ struct TargetProject: Codable, Equatable, Hashable, Identifiable {
         self.group = group
         self.fetchedAvatarData = fetchedAvatarData
     }
-
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
-//
-//        self.id = try container.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
-//        self.projectID = try container.decodeIfPresent(String.self, forKey: .projectID)
-//        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-//        self.path = try container.decodeIfPresent(String.self, forKey: .path)
-//        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
-//        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
-//        self.namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
-//        self.repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
-//        self.group = try container.decodeIfPresent(Group.self, forKey: .group)
-//        self.fetchedAvatarData = try container.decodeIfPresent(Data.self, forKey: .fetchedAvatarData)
-//    }
+    
+    //    init(from decoder: Decoder) throws {
+    //        let container = try decoder.container(keyedBy: TargetProject.CodingKeys.self)
+    //
+    //        self.id = try container.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
+    //        self.projectID = try container.decodeIfPresent(String.self, forKey: .projectID)
+    //        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+    //        self.path = try container.decodeIfPresent(String.self, forKey: .path)
+    //        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
+    //        self.avatarUrl = try? container.decodeURLWithEncodingIfPresent(forKey: .avatarUrl)
+    //        self.namespace = try container.decodeIfPresent(NameSpace.self, forKey: .namespace)
+    //        self.repository = try container.decodeIfPresent(Repository.self, forKey: .repository)
+    //        self.group = try container.decodeIfPresent(Group.self, forKey: .group)
+    //        self.fetchedAvatarData = try container.decodeIfPresent(Data.self, forKey: .fetchedAvatarData)
+    //    }
 }
 
 extension TargetProject {
@@ -580,11 +598,11 @@ struct NameSpace: Codable, Equatable, Hashable, Identifiable {
     let id: String
     let fullPath: String
     let fullName: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, fullPath, fullName
     }
-
+    
     init(id: String, fullPath: String, fullName: String) {
         self.id = id
         self.fullPath = fullPath
@@ -600,7 +618,7 @@ extension NameSpace {
 struct Repository: Codable, Equatable, Hashable {
     /// Main Branch
     let rootRef: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case rootRef = "rootRef"
     }
@@ -610,12 +628,12 @@ struct Repository: Codable, Equatable, Hashable {
 struct Group: Codable, Equatable, Hashable {
     let id, name, fullName, fullPath: String?
     let webURL: URL?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name, fullName, fullPath
         case webURL = "webUrl"
     }
-
+    
     init(id: String?, name: String?, fullName: String?, fullPath: String?, webURL: URL?) {
         self.id = id ?? UUID().uuidString
         self.name = name
@@ -623,16 +641,16 @@ struct Group: Codable, Equatable, Hashable {
         self.fullPath = fullPath
         self.webURL = webURL
     }
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.id = try container.decodeIfPresent(String.self, forKey: .id)
-//        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-//        self.fullName = try container.decodeIfPresent(String.self, forKey: .fullName)
-//        self.fullPath = try container.decodeIfPresent(String.self, forKey: .fullPath)
-//        // Should re-encode any non-escaped utf8 strings
-//        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
-//    }
+    //
+    //    init(from decoder: Decoder) throws {
+    //        let container = try decoder.container(keyedBy: CodingKeys.self)
+    //        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+    //        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+    //        self.fullName = try container.decodeIfPresent(String.self, forKey: .fullName)
+    //        self.fullPath = try container.decodeIfPresent(String.self, forKey: .fullPath)
+    //        // Should re-encode any non-escaped utf8 strings
+    //        self.webURL = try? container.decodeURLWithEncodingIfPresent(forKey: .webURL)
+    //    }
 }
 
 extension Group {
@@ -710,6 +728,8 @@ enum StageStatusType: String, Codable, Equatable {
     case pending = "pending"
     /// Pipeline is running.
     case running = "running"
+    /// Custom status for when pipeline passes with success but a child job failed
+    case warning = "WARNING"
     /// At least one stage of the pipeline failed.
     case failed = "failed"
     /// Pipeline completed successfully.
@@ -722,7 +742,7 @@ enum StageStatusType: String, Codable, Equatable {
     case manual = "manual"
     /// Pipeline is scheduled to run.
     case scheduled = "scheduled"
-
+    
     func toPipelineStatus() -> PipelineStatus? {
         PipelineStatus(rawValue: self.rawValue.uppercased())
     }
@@ -736,7 +756,7 @@ struct ProjectImageResponse: Codable, Equatable, Hashable {
     let commitID, lastCommitID: String?
     let executeFilemode: Bool?
     let content: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case fileName = "file_name"
         case filePath = "file_path"

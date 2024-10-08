@@ -20,10 +20,25 @@ struct CIJobsView: View {
     @State var presentPopover: Bool = false
     @State var isHovering: Bool = false
     @State var tapState: Bool = false
-    
+
+    private var hasFailedChildJob: Bool {
+        stage.jobs?.edges?.contains(where: { $0.node?.status == .failed }) ?? false
+    }
+
+    private var status: PipelineStatus? {
+        if let stageStatus = stage.status?.toPipelineStatus() {
+            if stageStatus == .success, hasFailedChildJob {
+                return .warning
+            }
+        }
+
+        return stage.status?.toPipelineStatus()
+    }
+
     var body: some View {
         HStack {
-            CIStatusView(status: stage.status?.toPipelineStatus())
+            CIStatusView(status: status)
+                .contentShape(Rectangle())
                 .onTapGesture {
                     tapState.toggle()
                     presentPopover.toggle()
