@@ -8,45 +8,8 @@
 import SwiftUI
 
 struct LastUpdateMessageView: View {
-    let lastUpdate: Date
-    private let initialTimeRemaining = 10
-    @State private var isHovering: Bool = false
-    @State private var timeRemaining = 10
-//    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    private var dateValue: String? {
-//        guard let date = lastUpdate else {
-//            return nil
-//        }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: lastUpdate)
-    }
-
     var body: some View {
         HStack {
-//            if let date = dateValue {
-////                Text("Last updated at: \(date)")
-////                    .transition(.opacity.animation(.easeInOut(duration: 0.35).delay(0.2)))
-////                    .foregroundColor(.gray)
-////                    .onHover { hovering in
-////                        isHovering = hovering
-////                    }
-////                    .onReceive(timer) { _ in
-////                        if timeRemaining > 0 {
-////                            timeRemaining -= 1
-////                        }
-////
-////                        if timeRemaining <= 0 {
-////                            timeRemaining = initialTimeRemaining
-////                        }
-////                    }
-//            } else {
-//                LastUpdateMessagePlaceholderView()
-//            }
-
             Spacer()
 
 #if os(macOS)
@@ -54,14 +17,17 @@ struct LastUpdateMessageView: View {
                 SettingsLink {
                     Label("Settings", systemImage: "gear")
                 }
+                .buttonStyle(.menubar)
             } else {
                 Button(action: openSettings, label: {
                     Label("Settings", systemImage: "gear")
                 })
+                .buttonStyle(.menubar)
             }
             Button(action: quitApp, label: {
                 Text("Quit")
             })
+            .buttonStyle(.menubar)
 #endif
         }
         .font(.system(size: 10))
@@ -98,6 +64,6 @@ extension Bundle {
 
 struct LastUpdateMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        LastUpdateMessageView(lastUpdate: Date.now)
+        LastUpdateMessageView()
     }
 }

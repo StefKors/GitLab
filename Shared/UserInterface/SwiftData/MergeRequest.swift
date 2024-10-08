@@ -17,6 +17,9 @@ extension String {
 
 // MARK: - MergeRequest
 @Model class MergeRequest {
+    #Unique<MergeRequest>([\.id], [\.mergerequestID])
+    #Index<MergeRequest>([\.id], [\.mergerequestID])
+
     @Attribute(.unique) var id: String
     var mergerequestID: String?
     var title: String?

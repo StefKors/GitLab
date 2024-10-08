@@ -47,6 +47,7 @@ struct UserInterface: View {
     @State private var selectedView: QueryType = .authoredMergeRequests
 
     @State private var timelineDate: Date = .now
+    let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 
     @StateObject private var networkState: NetworkState = .init()
 
@@ -56,7 +57,7 @@ struct UserInterface: View {
 
     var body: some View {
         HStack(alignment: .top) {
-            TimelineView(.periodic(from: timelineDate, by: 12)) { context in
+//            TimelineView(.periodic(from: timelineDate, by: 12)) { context in
                 VStack(alignment: .center, spacing: 10) {
                     Picker(selection: $selectedView, content: {
                         Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
@@ -75,10 +76,9 @@ struct UserInterface: View {
                     NoticeListView()
                         .padding(.horizontal)
 
-                    ScrollView(.vertical) {
                         VStack(alignment: .leading) {
                             MergeRequestList(
-                                mergeRequests: filteredMergeRequests,
+                                mergeRequests: filteredMergeRequests.reversed(),
                                 accounts: accounts,
                                 selectedView: selectedView
                             )
@@ -86,7 +86,6 @@ struct UserInterface: View {
                         }
                         .padding(.horizontal)
                         .scrollBounceBehavior(.basedOnSize)
-                    }
 
                     if accounts.isEmpty {
                         BaseTextView(message: "Setup your accounts in the settings")
@@ -95,15 +94,17 @@ struct UserInterface: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    LastUpdateMessageView(lastUpdate: context.date)
+                    LastUpdateMessageView()
                 }
-                .task(id: context.date) {
-                    await fetchReviewRequestedMRs()
-                    await fetchAuthoredMRs()
-                    await fetchRepos()
+
+                .onReceive(timer) { time in
+                    timelineDate = .now
+                    Task {
+                        await fetchReviewRequestedMRs()
+                        await fetchAuthoredMRs()
+                        await fetchRepos()
+                    }
                 }
-//                .frame(idealWidth: 500, maxWidth: 500)
-            }
         }
     }
 
@@ -118,9 +119,9 @@ struct UserInterface: View {
                     return mr
                 }
                 if let results {
-                    results.map { mr in
-                        mr.reference
-                    }
+//                    results.map { mr in
+//                        mr.reference
+//                    }
                     // TODO: track fetch request history
 //                    networkState.success(label: "fetched \(results.)")
                     removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
@@ -144,22 +145,23 @@ struct UserInterface: View {
     }
 
     private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
-//        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
-//        let updated = results.map { $0.mergerequestID }
-//        let difference = existing.difference(from: updated)
-//
-//        for mergeRequest in account.mergeRequests {
-//            if difference.contains(mergeRequest.mergerequestID) {
-//                modelContext.delete(mergeRequest)
-//            }
-//        }
+        print("inserting \(results.count) merge requests \(type.rawValue)")
+        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
+        let updated = results.map { $0.mergerequestID }
+        let difference = existing.difference(from: updated)
 
-        DispatchQueue.main.async {
+        for mergeRequest in account.mergeRequests {
+            if difference.contains(mergeRequest.mergerequestID) {
+                modelContext.delete(mergeRequest)
+            }
+        }
+
+//        DispatchQueue.main.async {
             for result in results {
                 modelContext.insert(result)
             }
             try? modelContext.save()
-        }
+//        }
     }
 
     @MainActor

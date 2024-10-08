@@ -29,6 +29,8 @@ struct ShareMergeRequestIcon: View {
                 }
             }
             .font(.system(size: 11))
+            .padding(.horizontal, 6)
+            .buttonStyle(.menubar)
 
             Text(chosenEmoji)
                 .font(.system(size: 36))
