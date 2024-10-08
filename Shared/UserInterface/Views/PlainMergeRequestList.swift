@@ -20,11 +20,11 @@ struct PlainMergeRequestList: View {
 //                .padding(.bottom, 4)
                 .listRowSeparator(.visible)
                 .listRowSeparatorTint(Color.secondary.opacity(0.2))
-
-            if mergeRequest != lastMR {
-                Divider()
-//                    .padding(.bottom, 4)
-            }
+                .id(mergeRequest.id)
+//            if mergeRequest != lastMR {
+//                Divider()
+////                    .padding(.bottom, 4)
+//            }
         }
     }
 }

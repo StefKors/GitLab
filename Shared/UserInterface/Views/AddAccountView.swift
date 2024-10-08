@@ -48,11 +48,7 @@ struct AddAccountView: View {
                     .onChange(of: instance, initial: false) { oldValue, newValue in
                         state = .readyToSubmit
                     }
-                    .searchable(text: $instance) {
-                        Text("🍎").searchCompletion("apple")
-                        Text("🍐").searchCompletion("pear")
-                        Text("🍌").searchCompletion("banana")
-                    }
+
                 // Button("custom item", action: {})
                 // }
 

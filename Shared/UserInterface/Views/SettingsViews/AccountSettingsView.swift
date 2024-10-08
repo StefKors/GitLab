@@ -18,9 +18,6 @@ struct AlertDetails: Identifiable {
  struct AccountSettingsView: View {
     @Environment(\.modelContext) private var modelContext
 
-    @AppStorage("apiToken") var apiToken: String = ""
-    @AppStorage("baseURL") var baseURL: String = "https://gitlab.com"
-
     @Query var accounts: [Account]
     @State private var showingAlert: Bool = false
     @State private var details: AlertDetails? = nil

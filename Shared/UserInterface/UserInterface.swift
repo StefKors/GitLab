@@ -144,18 +144,21 @@ struct UserInterface: View {
     }
 
     private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
-        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
-        let updated = results.map { $0.mergerequestID }
-        let difference = existing.difference(from: updated)
+//        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
+//        let updated = results.map { $0.mergerequestID }
+//        let difference = existing.difference(from: updated)
+//
+//        for mergeRequest in account.mergeRequests {
+//            if difference.contains(mergeRequest.mergerequestID) {
+//                modelContext.delete(mergeRequest)
+//            }
+//        }
 
-        for mergeRequest in account.mergeRequests {
-            if difference.contains(mergeRequest.mergerequestID) {
-                modelContext.delete(mergeRequest)
+        DispatchQueue.main.async {
+            for result in results {
+                modelContext.insert(result)
             }
-        }
-
-        for result in results {
-            modelContext.insert(result)
+            try? modelContext.save()
         }
     }
 
@@ -168,12 +171,16 @@ struct UserInterface: View {
 
             let results = try? await NetworkManager.shared.fetchProjects(with: account, ids: Array(Set(ids)))
 
-            if let results {
-                for result in results {
-                    withAnimation {
-                        modelContext.insert(result)
+            // DispatchQueue due to SwiftData issues
+            DispatchQueue.main.async {
+                if let results {
+                    for result in results {
+                        withAnimation {
+                            modelContext.insert(result)
+                        }
                     }
                 }
+                try? modelContext.save()
             }
         }
     }

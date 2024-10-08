@@ -16,7 +16,7 @@ extension NetworkManager {
             let client = APIClient(baseURL: URL(string: "\(account.instance)/api"))
             // let beforeApprovedByDict = authoredMergeRequests.approvedByDict
             let response: GitLabQuery = try await client.send(authoredMergeRequestsReq(with: account)).value
-
+            // TODO: tracking requests to check when updates are triggered
             return response.authoredMergeRequests
 
             // await MainActor.run {

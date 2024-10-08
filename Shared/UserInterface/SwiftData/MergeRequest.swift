@@ -16,7 +16,7 @@ extension String {
 }
 
 // MARK: - MergeRequest
-@Model final class MergeRequest {
+@Model class MergeRequest {
     @Attribute(.unique) var id: String
     var mergerequestID: String?
     var title: String?
