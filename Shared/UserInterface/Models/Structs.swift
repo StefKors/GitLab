@@ -675,6 +675,8 @@ enum PipelineStatus: String, Codable, Equatable {
     case pending = "PENDING"
     /// Pipeline is running.
     case running = "RUNNING"
+    /// Custom status for when pipeline passes with success but a child job failed
+    case warning = "WARNING"
     /// At least one stage of the pipeline failed.
     case failed = "FAILED"
     /// Pipeline completed successfully.
