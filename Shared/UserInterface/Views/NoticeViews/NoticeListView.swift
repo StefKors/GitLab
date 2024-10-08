@@ -18,7 +18,6 @@ struct NoticeListView: View {
                     .id(notice.id)
             }
         }
-        .transition(.move(edge: .bottom))
         .animation(.spring(), value: noticeState.notices)
     }
 }

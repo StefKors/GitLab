@@ -93,6 +93,9 @@
 		8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C20F2A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
 		8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
+		8AC7B4AF2CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B02CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */; };
+		8AC7B4B12CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
@@ -329,6 +332,7 @@
 		8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformationView.swift; sourceTree = "<group>"; };
 		8AC4B4122865C1480054C601 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIWarningIcon.swift; sourceTree = "<group>"; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
@@ -683,6 +687,7 @@
 		8AF80CF42A55817400819B80 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				8AC7B4AE2CB57DDC00CBD21C /* CIWarningIcon.swift */,
 				8AF80CF52A55817400819B80 /* CISkippedIcon.swift */,
 				8AF80CF62A55817400819B80 /* CIManualIcon.swift */,
 				8AF80CF72A55817400819B80 /* CICanceledIcon.swift */,
@@ -905,8 +910,9 @@
 		8A5FC0EE26EFD08E004136AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -1040,6 +1046,7 @@
 				8AF80D792A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8AF80D372A55817400819B80 /* MergeRequests.swift in Sources */,
 				8AF80D7F2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
+				8AC7B4B02CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80D9A2A55817400819B80 /* AccountSettingsView.swift in Sources */,
 				8AF80D3D2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AF80DB82A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
@@ -1138,6 +1145,7 @@
 				8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */,
 				8A7935D52A5583E400F8FB6C /* CICanceledIcon.swift in Sources */,
 				8A7935D62A5583E400F8FB6C /* CIFailedIcon.swift in Sources */,
+				8AC7B4AF2CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */,
 				8A7935D72A5583E400F8FB6C /* CIPreparingIcon.swift in Sources */,
 				8A7935D82A5583E400F8FB6C /* ApprovedReviewIcon.swift in Sources */,
 				8A7935D92A5583E400F8FB6C /* CISuccessIcon.swift in Sources */,
@@ -1215,6 +1223,7 @@
 				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
+				8AC7B4B12CB57DDC00CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */,
 				8AF80D602A55817400819B80 /* CICanceledIcon.swift in Sources */,
@@ -1388,7 +1397,6 @@
 		8A31CB5D2866334100C94AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -1410,7 +1418,6 @@
 		8A31CB5E2866334100C94AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -1433,7 +1440,6 @@
 		8A31CB5F2866334100C94AC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1454,7 +1460,6 @@
 		8A31CB602866334100C94AC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1661,7 +1666,6 @@
 		8A5FC12026EFD08F004136AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -1697,7 +1701,6 @@
 		8A5FC12126EFD08F004136AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -1733,7 +1736,6 @@
 		8A5FC12326EFD08F004136AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1756,7 +1758,6 @@
 		8A5FC12426EFD08F004136AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1779,7 +1780,6 @@
 		8A5FC12626EFD08F004136AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
@@ -1800,7 +1800,6 @@
 		8A5FC12726EFD08F004136AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
@@ -1925,7 +1924,7 @@
 			repositoryURL = "https://github.com/mergesort/Boutique.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
+				minimumVersion = 2.4.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

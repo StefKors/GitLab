@@ -27,6 +27,8 @@ public struct CIStatusView: View {
                 CISuccessIcon()
             case .failed:
                 CIFailedIcon()
+            case .warning:
+                CIWarningIcon()
             case .canceled:
                 CICanceledIcon()
             case .skipped:
@@ -53,6 +55,7 @@ struct CIStatusView_Previews: PreviewProvider {
                 CIStatusView(status: .running)
                 CIStatusView(status: .success)
                 CIStatusView(status: .failed)
+                CIStatusView(status: .warning)
             }
             HStack {
                 CIStatusView(status: .canceled)

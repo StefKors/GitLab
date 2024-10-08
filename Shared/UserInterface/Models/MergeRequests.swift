@@ -408,10 +408,23 @@ extension HeadPipeline {
 public struct DetailedStatus: Codable, Defaults.Serializable, Equatable {
     public let id: String?
     public let detailsPath: String?
+    public let text: String?
+    public let label: String?
+    public let group: String?
+    public let tooltip: String?
+    public let icon: String?
 }
 
 extension DetailedStatus {
-    static let preview = DetailedStatus(id: "id-id-id", detailsPath: "/details?...")
+    static let preview = DetailedStatus(
+        id: "id-id-id",
+        detailsPath: "/details?...",
+        text: "passed",
+        label: "passed",
+        group: "success",
+        tooltip: "passed",
+        icon: "status_success"
+    )
 }
 
 // MARK: - TargetProject
@@ -524,6 +537,8 @@ public enum PipelineStatus: String, Codable, Defaults.Serializable, Equatable {
     case pending = "PENDING"
     /// Pipeline is running.
     case running = "RUNNING"
+    /// Custom status for when pipeline passes with success but a child job failed
+    case warning = "WARNING"
     /// At least one stage of the pipeline failed.
     case failed = "FAILED"
     /// Pipeline completed successfully.
