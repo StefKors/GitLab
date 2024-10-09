@@ -58,7 +58,7 @@ struct Provider: TimelineProvider {
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
             let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
-            var moreRepos = repos
+//            var moreRepos = repos
 //            moreRepos.append(contentsOf: repos)
 //            moreRepos.append(contentsOf: repos)
 //            moreRepos.append(contentsOf: repos)
@@ -78,7 +78,7 @@ struct Provider: TimelineProvider {
                     date: now,
                     mergeRequests: Array(mergeRequests.prefix(5)),
                     accounts: accounts,
-                    repos: moreRepos,
+                    repos: repos,
                     selectedView: selectedView
                 )
             )
