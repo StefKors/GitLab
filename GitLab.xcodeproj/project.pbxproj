@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
+		8A0F41652CB5CCA1006BD170 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
 		8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A13B85D2A66A3E30090A6D9 /* Credits.rtf */; };
 		8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
 		8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
@@ -137,7 +138,6 @@
 		8AE024DF2A924731000548D7 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
-		8AE8A6E92B989E9A002B3C9E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
 		8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4142865C1480054C601 /* SwiftUI.framework */; };
 		8AE8A6ED2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */; };
 		8AE8A6EF2B989E9A002B3C9E /* DesktopWidgetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8A6EE2B989E9A002B3C9E /* DesktopWidgetTool.swift */; };
@@ -639,7 +639,7 @@
 				8AE8A7442B989F78002B3C9E /* Get in Frameworks */,
 				8AE8A7462B989F78002B3C9E /* CachedAsyncImage in Frameworks */,
 				8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */,
-				8AE8A6E92B989E9A002B3C9E /* WidgetKit.framework in Frameworks */,
+				8A0F41652CB5CCA1006BD170 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1936,7 +1936,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationContent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationContent;
@@ -1968,7 +1968,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationContent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationContent;
@@ -2128,7 +2128,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitLab Widget";
@@ -2163,7 +2163,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitLab/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitLab Widget";
@@ -2280,16 +2280,16 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = DesktopWidgetTool/DesktopWidgetTool.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DesktopWidgetTool/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DesktopWidgetTool;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2302,12 +2302,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Debug;
 		};
@@ -2319,16 +2318,16 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = DesktopWidgetTool/DesktopWidgetTool.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DesktopWidgetTool/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DesktopWidgetTool;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2341,11 +2340,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Release;
 		};

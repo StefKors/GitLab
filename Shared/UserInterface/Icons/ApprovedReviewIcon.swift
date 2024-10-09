@@ -5,6 +5,12 @@
 //  Created by Stef Kors on 22/06/2022.
 //
 
+#if os(iOS)
+typealias PlatformImage = UIImage
+#elseif os(macOS)
+typealias PlatformImage = NSImage
+#endif
+
 import SwiftUI
 
 struct UserAvatarView: View {
@@ -17,9 +23,15 @@ struct UserAvatarView: View {
         VStack {
             // TODO: ios support
             // TODO: cache data fetch response
-            if isInWidget, let avatarUrl = author.avatarUrl, let data = try? Data(contentsOf: avatarUrl), let image = NSImage(data: data) {
+            if isInWidget, let avatarUrl = author.avatarUrl, let data = try? Data(contentsOf: avatarUrl), let image = PlatformImage(data: data) {
+#if os(iOS)
+                Image(uiImage: image)
+                    .resizable()
+#elseif os(macOS)
                 Image(nsImage: image)
                     .resizable()
+#endif
+
             } else
             // Previously we used account.instace to create the base url
             if let avatarUrl = author.avatarUrl {
