@@ -5,7 +5,7 @@
   <h1 align="center">GitLab Widget</h1>
 </p>
 
-![GitLab Widget](https://gitlab.com/beamgroup/gitlab-widget) is a menu bar application that makes it easier to work with GitLab. The Widget makes it easy to see the merge requests you opened and the merge requests you should review. It will also notify you when any of your merge requests get approved.
+[GitLab Widget](https://github.com/StefKors/GitLab) is a menu bar application that makes it easier to work with GitLab. The Widget makes it easy to see the merge requests you opened and the merge requests you should review. It will also notify you when any of your merge requests get approved.
 
 #### Supported Platforms
 <p align="left">
@@ -42,12 +42,14 @@
 
 -------
 
-
-Built by ![Stef Kors](https://stefkors.com)
-
-
--------
-
 <img alt="Screenshot of GitLab" src="Images/Screenshot-1.png">
 <img alt="Screenshot of GitLab" src="Images/Screenshot-2.png">
 <img alt="Screenshot of GitLab" src="Images/Screenshot-3.png">
+
+-------
+
+
+Built by [Stef Kors](https://stefkors.com)
+
+
+-------
