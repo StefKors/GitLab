@@ -11,7 +11,8 @@ import SwiftUI
 @main
 struct DesktopWidgetToolBundle: WidgetBundle {
     var body: some Widget {
-        MergeRequestWidget()
+        ReviewRequestedMergeRequestWidget()
+        AuthoredMergeRequestWidget()
 
         LaunchPadWidget()
     }

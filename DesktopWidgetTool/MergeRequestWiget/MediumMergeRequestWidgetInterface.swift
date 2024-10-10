@@ -10,19 +10,35 @@ import WidgetKit
 
 struct MediumMergeRequestWidgetInterface: View {
     var mergeRequests: [MergeRequest]
-//    var accounts: [Account]
-//    var repos: [LaunchpadRepo]
-//    var selectedView: QueryType
+    var accounts: [Account]
+    var repos: [LaunchpadRepo]
+    var selectedView: QueryType
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 2) {
-                Image(.mergeRequest).resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 20)
-                Text(mergeRequests.count.description)
+            HStack {
+                HStack(spacing: 2) {
+                    Image(.mergeRequest).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
+                    Text(mergeRequests.count.description)
+
+
+                }
+                .font(.largeTitle)
+
+                if selectedView == .reviewRequestedMergeRequests {
+                    Text("Needs Review")
+                        .font(.title3)
+                        .foregroundColor(.accentColor)
+                        .padding(EdgeInsets(top: 4, leading:    10, bottom: 4, trailing: 10))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.accentColor)
+                                .opacity(0.6)
+                        )
+                }
             }
-            .font(.largeTitle)
 
             VStack(alignment: .leading, spacing: 2) {
                 ForEach(Array(mergeRequests.prefix(5)), id: \.id) { MR in
@@ -46,9 +62,9 @@ struct MediumMergeRequestWidgetInterface: View {
 
 #Preview {
     MediumMergeRequestWidgetInterface(
-        mergeRequests: [.preview, .preview, .preview, .preview]
-//        accounts: [.preview],
-//        repos: [],
-//        selectedView: .authoredMergeRequests
+        mergeRequests: [.preview, .preview, .preview, .preview],
+        accounts: [.preview],
+        repos: [],
+        selectedView: .authoredMergeRequests
     )
 }

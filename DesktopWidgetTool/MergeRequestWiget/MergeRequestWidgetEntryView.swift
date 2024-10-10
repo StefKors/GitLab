@@ -18,7 +18,7 @@ struct MergeRequestWidgetEntryView : View {
         switch family {
         case .systemExtraLarge:
             ExtraLargeMergeRequestWidgetInterface(
-                mergeRequests: entry.mergeRequests,
+                mergeRequests: entry.mergeRequests.filter({ $0.type == entry.selectedView}),
                 accounts: entry.accounts,
                 repos: entry.repos,
                 selectedView: entry.selectedView
@@ -26,7 +26,7 @@ struct MergeRequestWidgetEntryView : View {
 
         case .systemLarge:
             LargeMergeRequestWidgetInterface(
-                mergeRequests: entry.mergeRequests,
+                mergeRequests: entry.mergeRequests.filter({ $0.type == entry.selectedView}),
                 accounts: entry.accounts,
                 repos: entry.repos,
                 selectedView: entry.selectedView
@@ -34,10 +34,10 @@ struct MergeRequestWidgetEntryView : View {
 
         case .systemMedium:
             MediumMergeRequestWidgetInterface(
-                mergeRequests: entry.mergeRequests
-//                accounts: entry.accounts,
-//                repos: entry.repos,
-//                selectedView: entry.selectedView
+                mergeRequests: entry.mergeRequests.filter({ $0.type == entry.selectedView}),
+                accounts: entry.accounts,
+                repos: entry.repos,
+                selectedView: entry.selectedView
             )
 
         default:
