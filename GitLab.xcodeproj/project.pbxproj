@@ -455,7 +455,7 @@
 		8A36AF172869B4110008B949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		8A36AF192869B4110008B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContent.entitlements; sourceTree = "<group>"; };
-		8A5FC0F626EFD08E004136AB /* GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merge Requests for GitLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* GitLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabApp.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -744,7 +744,7 @@
 		8A5FC0F726EFD08E004136AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8A5FC0F626EFD08E004136AB /* GitLab.app */,
+				8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */,
 				8A5FC10B26EFD08F004136AB /* GitLabTests.xctest */,
 				8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */,
 				8A31CB3A2866334000C94AC1 /* GitLab iOS.app */,
@@ -1136,7 +1136,7 @@
 				8AF80DD92A5581B700819B80 /* CachedAsyncImage */,
 			);
 			productName = GitLab;
-			productReference = 8A5FC0F626EFD08E004136AB /* GitLab.app */;
+			productReference = 8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8A5FC10A26EFD08F004136AB /* GitLabTests */ = {
@@ -2043,6 +2043,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Merge Requests for GitLab";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.20;
@@ -2103,6 +2104,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Merge Requests for GitLab";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.20;
@@ -2143,7 +2145,7 @@
 				MARKETING_VERSION = 2.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Merge Requests for GitLab";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -2178,7 +2180,7 @@
 				MARKETING_VERSION = 2.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Merge Requests for GitLab";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
