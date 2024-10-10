@@ -6,19 +6,18 @@
 //
 
 import Foundation
-import Defaults
 import SwiftUI
 
-public struct NoticeMessage: Codable, Defaults.Serializable, Equatable, Hashable, Identifiable  {
-    public var id: UUID
-    public var label: String
-    public var statusCode: Int?
-    public var webLink: URL?
-    public var dismissed: Bool
-    public var type: NoticeType
-    public var createdAt: Date
-
-    public init(
+struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
+    var id: UUID
+    var label: String
+    var statusCode: Int?
+    var webLink: URL?
+    var dismissed: Bool
+    var type: NoticeType
+    var createdAt: Date
+    
+    init(
         id: UUID = UUID(),
         label: String,
         statusCode: Int? = nil,
@@ -35,8 +34,8 @@ public struct NoticeMessage: Codable, Defaults.Serializable, Equatable, Hashable
         self.type = type
         self.createdAt = createdAt
     }
-
-    public var color: Color {
+    
+    var color: Color {
         switch self.type {
         case .branch:
             return .green
@@ -48,8 +47,8 @@ public struct NoticeMessage: Codable, Defaults.Serializable, Equatable, Hashable
             return .blue
         }
     }
-
-    public mutating func dismiss() {
+    
+    mutating func dismiss() {
         dismissed = true
     }
 }

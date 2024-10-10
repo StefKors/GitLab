@@ -8,14 +8,13 @@
 import Foundation
 import Get
 import SwiftUI
-import Defaults
 #if canImport(AppKit)
 import AppKit
 #else
 import UIKit
 #endif
 
-public enum AppIcons: String, Defaults.Serializable, CaseIterable {
+enum AppIcons: String, CaseIterable {
     case ReleaseIcon
     case DevIcon
 }
@@ -24,39 +23,14 @@ enum RequestError: Error {
     case sessionError(error: Error)
 }
 
-public class NetworkManager: ObservableObject {
-    // Subview States: Use with @EnvironmentObject
-    public var noticeState = NoticeState()
-    public var launchpadState: LaunchpadController
-    
-    // Stored App State:
-    @AppStorage("apiToken") static var storedToken: String = ""
-    @AppStorage("baseURL") var baseURL: String = "https://gitlab.com"
-
-    var apiToken: String {
-        return Self.storedToken.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-    
-    @Default(.authoredMergeRequests) public var authoredMergeRequests
-    @Default(.reviewRequestedMergeRequests) public var reviewRequestedMergeRequests
-    @Default(.targetProjectsDict) public var targetProjectsDict
-    
-    // Not Persisted AppState
-    @Published public var lastUpdate: Date?
-    @Published public var tokenExpired: Bool = false
-    
-    public init(launchState: LaunchpadController = .init()) {
-        self.launchpadState = launchState
-#if canImport(AppKit)
-        NSApplication.shared.dockTile.showsApplicationBadge = false
-#endif
-    }
+class NetworkManager {
+    static let shared = NetworkManager()
     
     /// https://gitlab.com/-/graphql-explorer
     /// Return query for a the "currentUser"
     /// - Parameter type: QueryType
     /// - Returns: GraphQL query with MR information
-    public static func getQuery(_ type: QueryType) -> String {
+    static func getQuery(_ type: QueryType) -> String {
         Self.buildQuery(target: "currentUser", type: type)
     }
     
@@ -65,7 +39,7 @@ public class NetworkManager: ObservableObject {
     ///   - username: Username to fetch results for
     ///   - type: QueryType
     /// - Returns: GraphQL query with MR information
-    public static func getQuery(username: String, type: QueryType) -> String {
+    static func getQuery(username: String, type: QueryType) -> String {
         let user = "user(username: \"\(username)\""
         return Self.buildQuery(target: user, type: type)
     }
@@ -76,60 +50,53 @@ public class NetworkManager: ObservableObject {
     ///   - type: QueryType
     /// - Returns: GraphQL query with MR information
     fileprivate static func buildQuery(target: String, type: QueryType) -> String {
-        "query { \(target) { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath text label group tooltip icon } } } } } } } } } } } } }"
+        "query { \(target) { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference targetProject { id name path webUrl avatarUrl namespace { id fullName fullPath } repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath text label group tooltip icon } } } } } } } } } } } } }"
     }
 
-
-
-    public var client: APIClient {
-        APIClient(baseURL: URL(string: "\(baseURL)/api"))
-    }
-    public var branchPushReq: Request<PushEvents> {
+    func branchPushReq(with account: Account) -> Request<PushEvents> {
         Request.init(path: "/v4/events", query: [
             ("after", "2022-06-25"),
             ("scope", "read_user"),
             ("action", "pushed"),
-            ("private_token", apiToken)
+            ("private_token", account.token)
         ])
     }
     
-    public var authoredMergeRequestsReq: Request<GitLabQuery> {
+    func authoredMergeRequestsReq(with account: Account) -> Request<GitLabQuery> {
         Request.init(path: "/graphql", method: .post, query: [
             ("query", Self.getQuery(.authoredMergeRequests)),
-            ("private_token", apiToken)
+            ("private_token", account.token)
         ])
     }
-    
-    public var reviewRequestedMergeRequestsReq: Request<GitLabQuery> {
+
+    func reviewRequestedMergeRequestsReq(with account: Account) -> Request<GitLabQuery> {
         Request.init(path: "/graphql", method: .post, query: [
             ("query", Self.getQuery(.reviewRequestedMergeRequests)),
-            ("private_token", apiToken)
+            ("private_token", account.token)
         ])
     }
     
-    // uses custom delegate to handle correctly encoding url path
-    public var launchPadClient: APIClient {
-        APIClient(configuration: APIClient.Configuration(
-            baseURL: URL(string: baseURL),
-            delegate: LaunchPadClientDelegate()
-        ))
-    }
-    
-    public func fetch() async {
+    func fetch(with account: Account) async throws {
         /// Parallel?
-        await fetchLatestBranchPush()
-        await fetchAuthoredMergeRequests()
-        await fetchReviewRequestedMergeRequests()
+        // await fetchLatestBranchPush()
+        // try await fetchAuthoredMergeRequests(with: account)
+        // try await fetchReviewRequestedMergeRequests(with: account)
     }
     
-    func validateToken() async -> AccessToken? {
+    func validateToken(instance: String, token: String) async -> AccessToken? {
         let accessTokenReq: Request<AccessToken> = Request.init(path: "/v4/personal_access_tokens/self", query: [
-            ("private_token", apiToken)
+            ("private_token", token)
         ])
         
-        let response: AccessToken? = try? await client.send(accessTokenReq).value
+        do {
+            let response: AccessToken? = try await APIClient(baseURL: URL(string: "\(instance)/api")).send(accessTokenReq).value
+            
+            return response
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
         
-        return response
     }
 }
 
@@ -142,8 +109,8 @@ extension Date {
     }
 }
 
-public enum QueryType: String, CaseIterable, Identifiable {
+enum QueryType: String, Codable, CaseIterable, Identifiable {
     case authoredMergeRequests
     case reviewRequestedMergeRequests
-    public var id: Self { self }
+    var id: Self { self }
 }

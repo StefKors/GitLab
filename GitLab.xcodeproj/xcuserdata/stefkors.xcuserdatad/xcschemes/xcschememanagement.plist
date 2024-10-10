@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DesktopWidgetToolExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>GitLab iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -22,7 +27,7 @@
 		<key>NotificationContent.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -38,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>8A31CB522866334100C94AC1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A36AF0F2869B4110008B949</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -58,6 +68,11 @@
 			<true/>
 		</dict>
 		<key>8AC4B40F2865C1480054C601</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8AE8A6E72B989E9A002B3C9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

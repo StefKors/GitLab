@@ -29,6 +29,8 @@ struct ShareMergeRequestIcon: View {
                 }
             }
             .font(.system(size: 11))
+            .padding(.horizontal, 6)
+            .buttonStyle(.menubar)
 
             Text(chosenEmoji)
                 .font(.system(size: 36))
@@ -38,7 +40,7 @@ struct ShareMergeRequestIcon: View {
                 .allowsHitTesting(false)
         }
         .frame(height: 20)
-        .onChange(of: chosenEmoji) { newValue in
+        .onChange(of: chosenEmoji) { newValue, _ in
             let animation: Animation = .interpolatingSpring(stiffness: 130, damping: 12)
             withAnimation(animation) {
                 isVisible = true
@@ -56,7 +58,7 @@ struct ShareMergeRequestIcon: View {
         let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
         let content = """
 \(MR.title ?? "") \(emoji)
-\(MR.webURL?.absoluteString ?? "")
+\(MR.webUrl?.absoluteString ?? "")
 """
 #if canImport(AppKit)
         let pasteboard = NSPasteboard.general
