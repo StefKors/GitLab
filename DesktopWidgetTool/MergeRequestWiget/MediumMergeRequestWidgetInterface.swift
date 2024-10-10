@@ -10,9 +10,9 @@ import WidgetKit
 
 struct MediumMergeRequestWidgetInterface: View {
     var mergeRequests: [MergeRequest]
-    var accounts: [Account]
-    var repos: [LaunchpadRepo]
-    var selectedView: QueryType
+//    var accounts: [Account]
+//    var repos: [LaunchpadRepo]
+//    var selectedView: QueryType
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -25,7 +25,7 @@ struct MediumMergeRequestWidgetInterface: View {
             .font(.largeTitle)
 
             VStack(alignment: .leading, spacing: 2) {
-                ForEach(mergeRequests, id: \.id) { MR in
+                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { MR in
                     HStack(alignment: .top, spacing: 4) {
                         GitProviderView(provider: MR.account?.provider)
                             .frame(width: 18, height: 18, alignment: .center)
@@ -46,9 +46,9 @@ struct MediumMergeRequestWidgetInterface: View {
 
 #Preview {
     MediumMergeRequestWidgetInterface(
-        mergeRequests: [.preview, .preview, .preview, .preview],
-        accounts: [.preview],
-        repos: [],
-        selectedView: .authoredMergeRequests
+        mergeRequests: [.preview, .preview, .preview, .preview]
+//        accounts: [.preview],
+//        repos: [],
+//        selectedView: .authoredMergeRequests
     )
 }

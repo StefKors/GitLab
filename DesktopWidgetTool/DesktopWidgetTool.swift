@@ -36,7 +36,7 @@ struct Provider: TimelineProvider {
 
             let entry =   SimpleEntry(
                 date: now,
-                mergeRequests: Array(mergeRequests.prefix(5)),
+                mergeRequests: mergeRequests, //Array(mergeRequests.prefix(5)),
                 accounts: accounts,
                 repos: repos,
                 selectedView: selectedView
@@ -76,7 +76,7 @@ struct Provider: TimelineProvider {
             entries.append(
                 SimpleEntry(
                     date: now,
-                    mergeRequests: Array(mergeRequests.prefix(5)),
+                    mergeRequests: mergeRequests, //Array(mergeRequests.prefix(5)),
                     accounts: accounts,
                     repos: repos,
                     selectedView: selectedView
@@ -111,7 +111,7 @@ extension SimpleEntry {
 
 struct MergeRequestWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DesktopWidgetTool", provider: Provider()) { entry in
+        StaticConfiguration(kind: "MergerequestWidget", provider: Provider()) { entry in
             MergeRequestWidgetEntryView(entry: entry)
                 .frame(maxHeight: .infinity, alignment: .top)
                 .containerBackground(.thickMaterial, for: .widget)

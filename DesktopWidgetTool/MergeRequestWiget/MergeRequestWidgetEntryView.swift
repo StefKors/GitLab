@@ -34,17 +34,17 @@ struct MergeRequestWidgetEntryView : View {
 
         case .systemMedium:
             MediumMergeRequestWidgetInterface(
-                mergeRequests: entry.mergeRequests,
-                accounts: entry.accounts,
-                repos: entry.repos,
-                selectedView: entry.selectedView
+                mergeRequests: entry.mergeRequests
+//                accounts: entry.accounts,
+//                repos: entry.repos,
+//                selectedView: entry.selectedView
             )
 
         default:
-            SmallLaunchPadWidgetView(repos: entry.repos)
-//            VStack {
-//                Text("default widget view")
-//            }
+//            SmallLaunchPadWidgetView(repos: entry.repos)
+            VStack {
+                Text("default widget view")
+            }
         }
     }
 }
