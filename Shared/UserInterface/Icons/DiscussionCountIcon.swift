@@ -18,13 +18,13 @@ struct DiscussionCountIcon: View {
                         .font(.system(size: 14))
                     Text("\(count)")
                         .font(.system(size: 12))
-                        .help("\(count) discussions")
+                        .help(String(localized: "\(count) discussions"))
                 }
             } else {
                 Image(systemName: "gift.circle")
                     .symbolRenderingMode(.hierarchical)
                     .font(.system(size: 18))
-                    .help("Too much discussions")
+                    .help(String(localized: "Too much discussions"))
             }
         }
     }

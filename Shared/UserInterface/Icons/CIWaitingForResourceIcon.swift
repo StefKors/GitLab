@@ -12,7 +12,7 @@ struct CIWaitingForResourceIcon: View {
         Image(systemName: "circle.circle")
             .foregroundColor(.secondary)
             .font(.system(size: 18))
-            .help("CI pipeline waiting for resources")
+            .help(String(localized: "CI pipeline waiting for resources"))
             .clipShape(Rectangle())
     }
 }

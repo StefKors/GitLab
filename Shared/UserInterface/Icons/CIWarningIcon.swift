@@ -12,7 +12,7 @@ struct CIWarningIcon: View {
         Image(systemName: "exclamationmark.circle")
             .foregroundColor(.orange)
             .font(.system(size: 18))
-            .help("CI Warning")
+            .help(String(localized: "CI Warning"))
             .clipShape(Rectangle())
     }
 }

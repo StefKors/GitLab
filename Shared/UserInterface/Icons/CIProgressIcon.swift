@@ -33,7 +33,7 @@ struct CIProgressIcon: View {
             })
         }
         .padding(1)
-        .help("CI in progress")
+        .help(String(localized: "CI in progress"))
         .clipShape(Rectangle())
     }
 }

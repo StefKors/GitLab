@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="DesktopWidgetTool/InfoPlist.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>DesktopWidgetTool</source>
+        <target state="new">DesktopWidgetTool</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>DesktopWidgetToolExtension</source>
+        <target state="new">DesktopWidgetToolExtension</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source/>
+        <target state="new"/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="DesktopWidgetTool/Localizable.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id=" " xml:space="preserve">
+        <source> </source>
+        <target state="new"> </target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target state="new">%@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld" xml:space="preserve">
+        <source>%lld</source>
+        <target state="new">%lld</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld discussions" xml:space="preserve">
+        <source>%lld discussions</source>
+        <target state="new">%lld discussions</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Account" xml:space="preserve">
+        <source>Account</source>
+        <target state="new">Account</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Active:" xml:space="preserve">
+        <source>Active:</source>
+        <target state="new">Active:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Add Account" xml:space="preserve">
+        <source>Add Account</source>
+        <target state="new">Add Account</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Add your GitLab Account" xml:space="preserve">
+        <source>Add your GitLab Account</source>
+        <target state="new">Add your GitLab Account</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="All your Authored Merge Requests directly visible." xml:space="preserve">
+        <source>All your Authored Merge Requests directly visible.</source>
+        <target state="new">All your Authored Merge Requests directly visible.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Approved" xml:space="preserve">
+        <source>Approved</source>
+        <target state="new">Approved</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Authored Merge Requests" xml:space="preserve">
+        <source>Authored Merge Requests</source>
+        <target state="new">Authored Merge Requests</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Base URL" xml:space="preserve">
+        <source>Base URL</source>
+        <target state="new">Base URL</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI Created" xml:space="preserve">
+        <source>CI Created</source>
+        <target state="new">CI Created</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI Failed" xml:space="preserve">
+        <source>CI Failed</source>
+        <target state="new">CI Failed</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI Success" xml:space="preserve">
+        <source>CI Success</source>
+        <target state="new">CI Success</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI Warning" xml:space="preserve">
+        <source>CI Warning</source>
+        <target state="new">CI Warning</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI canceled" xml:space="preserve">
+        <source>CI canceled</source>
+        <target state="new">CI canceled</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI in progress" xml:space="preserve">
+        <source>CI in progress</source>
+        <target state="new">CI in progress</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI pipeline pending" xml:space="preserve">
+        <source>CI pipeline pending</source>
+        <target state="new">CI pipeline pending</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI pipeline preparing" xml:space="preserve">
+        <source>CI pipeline preparing</source>
+        <target state="new">CI pipeline preparing</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI pipeline scheduled" xml:space="preserve">
+        <source>CI pipeline scheduled</source>
+        <target state="new">CI pipeline scheduled</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="CI pipeline waiting for resources" xml:space="preserve">
+        <source>CI pipeline waiting for resources</source>
+        <target state="new">CI pipeline waiting for resources</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Close" xml:space="preserve">
+        <source>Close</source>
+        <target state="new">Close</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." xml:space="preserve">
+        <source>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</source>
+        <target state="new">Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Create merge request" xml:space="preserve">
+        <source>Create merge request</source>
+        <target state="new">Create merge request</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Created at:" xml:space="preserve">
+        <source>Created at:</source>
+        <target state="new">Created at:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Delete" xml:space="preserve">
+        <source>Delete</source>
+        <target state="new">Delete</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Dismiss" xml:space="preserve">
+        <source>Dismiss</source>
+        <target state="new">Dismiss</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Draft" xml:space="preserve">
+        <source>Draft</source>
+        <target state="new">Draft</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Enter token here..." xml:space="preserve">
+        <source>Enter token here...</source>
+        <target state="new">Enter token here...</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Expires at:" xml:space="preserve">
+        <source>Expires at:</source>
+        <target state="new">Expires at:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Failed" xml:space="preserve">
+        <source>Failed</source>
+        <target state="new">Failed</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="GitLab Token" xml:space="preserve">
+        <source>GitLab Token</source>
+        <target state="new">GitLab Token</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
+        <source>Last updated at: 19 September 2022 at 12:43</source>
+        <target state="new">Last updated at: 19 September 2022 at 12:43</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Last used at:" xml:space="preserve">
+        <source>Last used at:</source>
+        <target state="new">Last used at:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Manual CI step" xml:space="preserve">
+        <source>Manual CI step</source>
+        <target state="new">Manual CI step</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Merge Train 🚂" xml:space="preserve">
+        <source>Merge Train 🚂</source>
+        <target state="new">Merge Train 🚂</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Merge request approved" xml:space="preserve">
+        <source>Merge request approved</source>
+        <target state="new">Merge request approved</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Name:" xml:space="preserve">
+        <source>Name:</source>
+        <target state="new">Name:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Needs Review" xml:space="preserve">
+        <source>Needs Review</source>
+        <target state="new">Needs Review</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Quick access to your recently used Repositories" xml:space="preserve">
+        <source>Quick access to your recently used Repositories</source>
+        <target state="new">Quick access to your recently used Repositories</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Quit" xml:space="preserve">
+        <source>Quit</source>
+        <target state="new">Quit</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Remove %@" xml:space="preserve">
+        <source>Remove %@</source>
+        <target state="new">Remove %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Repo Launchpad" xml:space="preserve">
+        <source>Repo Launchpad</source>
+        <target state="new">Repo Launchpad</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Retry CI pipeline" xml:space="preserve">
+        <source>Retry CI pipeline</source>
+        <target state="new">Retry CI pipeline</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Review requested" xml:space="preserve">
+        <source>Review requested</source>
+        <target state="new">Review requested</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Revoked:" xml:space="preserve">
+        <source>Revoked:</source>
+        <target state="new">Revoked:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Save" xml:space="preserve">
+        <source>Save</source>
+        <target state="new">Save</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Scopes:" xml:space="preserve">
+        <source>Scopes:</source>
+        <target state="new">Scopes:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target state="new">Settings</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target state="new">Share</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Skipped CI step" xml:space="preserve">
+        <source>Skipped CI step</source>
+        <target state="new">Skipped CI step</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Submit" xml:space="preserve">
+        <source>Submit</source>
+        <target state="new">Submit</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="This %@ account will be removed immediatly. You can't undo this action." xml:space="preserve">
+        <source>This %@ account will be removed immediatly. You can't undo this action.</source>
+        <target state="new">This %@ account will be removed immediatly. You can't undo this action.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Too much discussions" xml:space="preserve">
+        <source>Too much discussions</source>
+        <target state="new">Too much discussions</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Validating..." xml:space="preserve">
+        <source>Validating...</source>
+        <target state="new">Validating...</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Your Merge Requests" xml:space="preserve">
+        <source>Your Merge Requests</source>
+        <target state="new">Your Merge Requests</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="default widget view" xml:space="preserve">
+        <source>default widget view</source>
+        <target state="new">default widget view</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="https://www.gitlab.com" xml:space="preserve">
+        <source>https://www.gitlab.com</source>
+        <target state="new">https://www.gitlab.com</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="updating" xml:space="preserve">
+        <source>updating</source>
+        <target state="new">updating</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GitLab iOS/en.lproj/GitLab iOS-InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>GitLab</source>
+        <target>GitLab</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>GitLab iOS</source>
+        <target>GitLab iOS</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GitLab iOS/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id=" " xml:space="preserve">
+        <source> </source>
+        <target> </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld" xml:space="preserve">
+        <source>%lld</source>
+        <target>%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld discussions" xml:space="preserve">
+        <source>%lld discussions</source>
+        <target>%lld discussions</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Account" xml:space="preserve">
+        <source>Account</source>
+        <target>Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Active:" xml:space="preserve">
+        <source>Active:</source>
+        <target>Active:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add Account" xml:space="preserve">
+        <source>Add Account</source>
+        <target>Add Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add your GitLab Account" xml:space="preserve">
+        <source>Add your GitLab Account</source>
+        <target>Add your GitLab Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Approved" xml:space="preserve">
+        <source>Approved</source>
+        <target>Approved</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Base URL" xml:space="preserve">
+        <source>Base URL</source>
+        <target>Base URL</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Created" xml:space="preserve">
+        <source>CI Created</source>
+        <target>CI Created</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Failed" xml:space="preserve">
+        <source>CI Failed</source>
+        <target>CI Failed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Success" xml:space="preserve">
+        <source>CI Success</source>
+        <target>CI Success</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Warning" xml:space="preserve">
+        <source>CI Warning</source>
+        <target>CI Warning</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI canceled" xml:space="preserve">
+        <source>CI canceled</source>
+        <target>CI canceled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI in progress" xml:space="preserve">
+        <source>CI in progress</source>
+        <target>CI in progress</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline pending" xml:space="preserve">
+        <source>CI pipeline pending</source>
+        <target>CI pipeline pending</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline preparing" xml:space="preserve">
+        <source>CI pipeline preparing</source>
+        <target>CI pipeline preparing</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline scheduled" xml:space="preserve">
+        <source>CI pipeline scheduled</source>
+        <target>CI pipeline scheduled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline waiting for resources" xml:space="preserve">
+        <source>CI pipeline waiting for resources</source>
+        <target>CI pipeline waiting for resources</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cancel" xml:space="preserve">
+        <source>Cancel</source>
+        <target>Cancel</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Close" xml:space="preserve">
+        <source>Close</source>
+        <target>Close</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." xml:space="preserve">
+        <source>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</source>
+        <target>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create merge request" xml:space="preserve">
+        <source>Create merge request</source>
+        <target>Create merge request</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Created at:" xml:space="preserve">
+        <source>Created at:</source>
+        <target>Created at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete" xml:space="preserve">
+        <source>Delete</source>
+        <target>Delete</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Dismiss" xml:space="preserve">
+        <source>Dismiss</source>
+        <target>Dismiss</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Done" xml:space="preserve">
+        <source>Done</source>
+        <target>Done</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Draft" xml:space="preserve">
+        <source>Draft</source>
+        <target>Draft</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enter token here..." xml:space="preserve">
+        <source>Enter token here...</source>
+        <target>Enter token here...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Expires at:" xml:space="preserve">
+        <source>Expires at:</source>
+        <target>Expires at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed" xml:space="preserve">
+        <source>Failed</source>
+        <target>Failed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="GitLab Token" xml:space="preserve">
+        <source>GitLab Token</source>
+        <target>GitLab Token</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
+        <source>Last updated at: 19 September 2022 at 12:43</source>
+        <target>Last updated at: 19 September 2022 at 12:43</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last used at:" xml:space="preserve">
+        <source>Last used at:</source>
+        <target>Last used at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Manual CI step" xml:space="preserve">
+        <source>Manual CI step</source>
+        <target>Manual CI step</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Merge Train 🚂" xml:space="preserve">
+        <source>Merge Train 🚂</source>
+        <target>Merge Train 🚂</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Merge request approved" xml:space="preserve">
+        <source>Merge request approved</source>
+        <target>Merge request approved</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Name:" xml:space="preserve">
+        <source>Name:</source>
+        <target>Name:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Needs Review" xml:space="preserve">
+        <source>Needs Review</source>
+        <target>Needs Review</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remove %@" xml:space="preserve">
+        <source>Remove %@</source>
+        <target>Remove %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Retry CI pipeline" xml:space="preserve">
+        <source>Retry CI pipeline</source>
+        <target>Retry CI pipeline</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Review requested" xml:space="preserve">
+        <source>Review requested</source>
+        <target>Review requested</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Revoked:" xml:space="preserve">
+        <source>Revoked:</source>
+        <target>Revoked:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Save" xml:space="preserve">
+        <source>Save</source>
+        <target>Save</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scopes:" xml:space="preserve">
+        <source>Scopes:</source>
+        <target>Scopes:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Share</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Skipped CI step" xml:space="preserve">
+        <source>Skipped CI step</source>
+        <target>Skipped CI step</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Submit" xml:space="preserve">
+        <source>Submit</source>
+        <target>Submit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This %@ account will be removed immediatly. You can't undo this action." xml:space="preserve">
+        <source>This %@ account will be removed immediatly. You can't undo this action.</source>
+        <target>This %@ account will be removed immediatly. You can't undo this action.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Too much discussions" xml:space="preserve">
+        <source>Too much discussions</source>
+        <target>Too much discussions</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Validating..." xml:space="preserve">
+        <source>Validating...</source>
+        <target>Validating...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your Merge Requests" xml:space="preserve">
+        <source>Your Merge Requests</source>
+        <target>Your Merge Requests</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="https://www.gitlab.com" xml:space="preserve">
+        <source>https://www.gitlab.com</source>
+        <target>https://www.gitlab.com</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="sdf" xml:space="preserve">
+        <source>sdf</source>
+        <target>sdf</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="updating" xml:space="preserve">
+        <source>updating</source>
+        <target>updating</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GitLab iOS/Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id="Enabled" xml:space="preserve">
+        <source>Enabled</source>
+        <target>Enabled</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Group" xml:space="preserve">
+        <source>Group</source>
+        <target>Group</target>
+        <note>A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences.</note>
+      </trans-unit>
+      <trans-unit id="Name" xml:space="preserve">
+        <source>Name</source>
+        <target>Name</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="none given" xml:space="preserve">
+        <source>none given</source>
+        <target>none given</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GitLab/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>GitLab</source>
+        <target>GitLab</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="GitLab/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id=" " xml:space="preserve">
+        <source> </source>
+        <target> </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Account" xml:space="preserve">
+        <source>Account</source>
+        <target>Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Active:" xml:space="preserve">
+        <source>Active:</source>
+        <target>Active:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add your GitLab Account" xml:space="preserve">
+        <source>Add your GitLab Account</source>
+        <target>Add your GitLab Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Approved" xml:space="preserve">
+        <source>Approved</source>
+        <target>Approved</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." xml:space="preserve">
+        <source>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</source>
+        <target>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Created at:" xml:space="preserve">
+        <source>Created at:</source>
+        <target>Created at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Draft" xml:space="preserve">
+        <source>Draft</source>
+        <target>Draft</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enter token here..." xml:space="preserve">
+        <source>Enter token here...</source>
+        <target>Enter token here...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Expires at:" xml:space="preserve">
+        <source>Expires at:</source>
+        <target>Expires at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed" xml:space="preserve">
+        <source>Failed</source>
+        <target>Failed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="GitLab Desktop" xml:space="preserve">
+        <source>GitLab Desktop</source>
+        <target>GitLab Desktop</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
+        <source>Last updated at: 19 September 2022 at 12:43</source>
+        <target>Last updated at: 19 September 2022 at 12:43</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last used at:" xml:space="preserve">
+        <source>Last used at:</source>
+        <target>Last used at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Merge Train 🚂" xml:space="preserve">
+        <source>Merge Train 🚂</source>
+        <target>Merge Train 🚂</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Name:" xml:space="preserve">
+        <source>Name:</source>
+        <target>Name:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Needs Review" xml:space="preserve">
+        <source>Needs Review</source>
+        <target>Needs Review</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Quit" xml:space="preserve">
+        <source>Quit</source>
+        <target>Quit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remove %@" xml:space="preserve">
+        <source>Remove %@</source>
+        <target>Remove %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Review requested" xml:space="preserve">
+        <source>Review requested</source>
+        <target>Review requested</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Revoked:" xml:space="preserve">
+        <source>Revoked:</source>
+        <target>Revoked:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Save" xml:space="preserve">
+        <source>Save</source>
+        <target>Save</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scopes:" xml:space="preserve">
+        <source>Scopes:</source>
+        <target>Scopes:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Share</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Submit" xml:space="preserve">
+        <source>Submit</source>
+        <target>Submit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This %@ account will be removed immediatly. You can't undo this action." xml:space="preserve">
+        <source>This %@ account will be removed immediatly. You can't undo this action.</source>
+        <target>This %@ account will be removed immediatly. You can't undo this action.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Validating..." xml:space="preserve">
+        <source>Validating...</source>
+        <target>Validating...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your Merge Requests" xml:space="preserve">
+        <source>Your Merge Requests</source>
+        <target>Your Merge Requests</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="https://www.gitlab.com" xml:space="preserve">
+        <source>https://www.gitlab.com</source>
+        <target>https://www.gitlab.com</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="sdf" xml:space="preserve">
+        <source>sdf</source>
+        <target>sdf</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="updating" xml:space="preserve">
+        <source>updating</source>
+        <target>updating</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="NotificationContent/Base.lproj/MainInterface.storyboard" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id="Qoh-ff-zg7.title" xml:space="preserve">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Qoh-ff-zg7";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="NotificationContent/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>NotificationContent</source>
+        <target>NotificationContent</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>NotificationContent</source>
+        <target>NotificationContent</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source/>
+        <target/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="NotificationContent/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="16.0" build-num="16A242d"/>
+    </header>
+    <body>
+      <trans-unit id=" " xml:space="preserve">
+        <source> </source>
+        <target> </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld" xml:space="preserve">
+        <source>%lld</source>
+        <target>%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld discussions" xml:space="preserve">
+        <source>%lld discussions</source>
+        <target>%lld discussions</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Account" xml:space="preserve">
+        <source>Account</source>
+        <target>Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Active:" xml:space="preserve">
+        <source>Active:</source>
+        <target>Active:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add Account" xml:space="preserve">
+        <source>Add Account</source>
+        <target>Add Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add your GitLab Account" xml:space="preserve">
+        <source>Add your GitLab Account</source>
+        <target>Add your GitLab Account</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Approved" xml:space="preserve">
+        <source>Approved</source>
+        <target>Approved</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Base URL" xml:space="preserve">
+        <source>Base URL</source>
+        <target>Base URL</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Created" xml:space="preserve">
+        <source>CI Created</source>
+        <target>CI Created</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Failed" xml:space="preserve">
+        <source>CI Failed</source>
+        <target>CI Failed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Success" xml:space="preserve">
+        <source>CI Success</source>
+        <target>CI Success</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI Warning" xml:space="preserve">
+        <source>CI Warning</source>
+        <target>CI Warning</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI canceled" xml:space="preserve">
+        <source>CI canceled</source>
+        <target>CI canceled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI in progress" xml:space="preserve">
+        <source>CI in progress</source>
+        <target>CI in progress</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline pending" xml:space="preserve">
+        <source>CI pipeline pending</source>
+        <target>CI pipeline pending</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline preparing" xml:space="preserve">
+        <source>CI pipeline preparing</source>
+        <target>CI pipeline preparing</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline scheduled" xml:space="preserve">
+        <source>CI pipeline scheduled</source>
+        <target>CI pipeline scheduled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CI pipeline waiting for resources" xml:space="preserve">
+        <source>CI pipeline waiting for resources</source>
+        <target>CI pipeline waiting for resources</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Close" xml:space="preserve">
+        <source>Close</source>
+        <target>Close</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." xml:space="preserve">
+        <source>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</source>
+        <target>Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Create merge request" xml:space="preserve">
+        <source>Create merge request</source>
+        <target>Create merge request</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Created at:" xml:space="preserve">
+        <source>Created at:</source>
+        <target>Created at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete" xml:space="preserve">
+        <source>Delete</source>
+        <target>Delete</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Dismiss" xml:space="preserve">
+        <source>Dismiss</source>
+        <target>Dismiss</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Draft" xml:space="preserve">
+        <source>Draft</source>
+        <target>Draft</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enter token here..." xml:space="preserve">
+        <source>Enter token here...</source>
+        <target>Enter token here...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Expires at:" xml:space="preserve">
+        <source>Expires at:</source>
+        <target>Expires at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed" xml:space="preserve">
+        <source>Failed</source>
+        <target>Failed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="GitLab Token" xml:space="preserve">
+        <source>GitLab Token</source>
+        <target>GitLab Token</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
+        <source>Last updated at: 19 September 2022 at 12:43</source>
+        <target>Last updated at: 19 September 2022 at 12:43</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last used at:" xml:space="preserve">
+        <source>Last used at:</source>
+        <target>Last used at:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Manual CI step" xml:space="preserve">
+        <source>Manual CI step</source>
+        <target>Manual CI step</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Merge Train 🚂" xml:space="preserve">
+        <source>Merge Train 🚂</source>
+        <target>Merge Train 🚂</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Merge request approved" xml:space="preserve">
+        <source>Merge request approved</source>
+        <target>Merge request approved</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Name:" xml:space="preserve">
+        <source>Name:</source>
+        <target>Name:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Needs Review" xml:space="preserve">
+        <source>Needs Review</source>
+        <target>Needs Review</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Quit" xml:space="preserve">
+        <source>Quit</source>
+        <target>Quit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Remove %@" xml:space="preserve">
+        <source>Remove %@</source>
+        <target>Remove %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Retry CI pipeline" xml:space="preserve">
+        <source>Retry CI pipeline</source>
+        <target>Retry CI pipeline</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Review requested" xml:space="preserve">
+        <source>Review requested</source>
+        <target>Review requested</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Revoked:" xml:space="preserve">
+        <source>Revoked:</source>
+        <target>Revoked:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Save" xml:space="preserve">
+        <source>Save</source>
+        <target>Save</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Scopes:" xml:space="preserve">
+        <source>Scopes:</source>
+        <target>Scopes:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Share</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Skipped CI step" xml:space="preserve">
+        <source>Skipped CI step</source>
+        <target>Skipped CI step</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Submit" xml:space="preserve">
+        <source>Submit</source>
+        <target>Submit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This %@ account will be removed immediatly. You can't undo this action." xml:space="preserve">
+        <source>This %@ account will be removed immediatly. You can't undo this action.</source>
+        <target>This %@ account will be removed immediatly. You can't undo this action.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Too much discussions" xml:space="preserve">
+        <source>Too much discussions</source>
+        <target>Too much discussions</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Validating..." xml:space="preserve">
+        <source>Validating...</source>
+        <target>Validating...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Your Merge Requests" xml:space="preserve">
+        <source>Your Merge Requests</source>
+        <target>Your Merge Requests</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="https://www.gitlab.com" xml:space="preserve">
+        <source>https://www.gitlab.com</source>
+        <target>https://www.gitlab.com</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="updating" xml:space="preserve">
+        <source>updating</source>
+        <target>updating</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

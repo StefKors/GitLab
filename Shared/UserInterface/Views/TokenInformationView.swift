@@ -79,8 +79,6 @@ struct TokenInformationView: View {
                             GroupBox {
                                 Text(scope)
                             }
-                            // .padding(2)
-                            // .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 4))
                         }
                     }
                 }

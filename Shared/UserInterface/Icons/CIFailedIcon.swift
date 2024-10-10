@@ -12,7 +12,7 @@ struct CIFailedIcon: View {
         Image(systemName: "exclamationmark.circle")
             .foregroundColor(.red)
             .font(.system(size: 18))
-            .help("CI Failed")
+            .help(String(localized: "CI Failed"))
             .clipShape(Rectangle())
     }
 }

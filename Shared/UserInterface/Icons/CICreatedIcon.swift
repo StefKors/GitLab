@@ -13,7 +13,7 @@ struct CICreatedIcon: View {
             .foregroundColor(.secondary)
             .symbolRenderingMode(.hierarchical)
             .font(.system(size: 18))
-            .help("CI Created")
+            .help(String(localized: "CI Created"))
             .clipShape(Rectangle())
     }
 }

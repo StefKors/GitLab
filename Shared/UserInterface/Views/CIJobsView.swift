@@ -18,7 +18,6 @@ struct CIJobsView: View {
     }
 
     @State var presentPopover: Bool = false
-    @State var isHovering: Bool = false
     @State var tapState: Bool = false
 
     private var hasFailedChildJob: Bool {
@@ -66,9 +65,5 @@ struct CIJobsView: View {
                     }
                 })
         }
-        .animation(.spring(response: 0.35, dampingFraction: 1, blendDuration: 0), value: isHovering)
-        // .onHover { hovering in
-        //     isHovering = hovering
-        // }
     }
 }

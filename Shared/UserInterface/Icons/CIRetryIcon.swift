@@ -12,7 +12,7 @@ struct CIRetryIcon: View {
         Image(systemName: "exclamationmark.arrow.circlepath")
             .foregroundColor(.red)
             .font(.system(size: 18))
-            .help("Retry CI pipeline")
+            .help(String(localized: "Retry CI pipeline"))
             .clipShape(Rectangle())
     }
 }

@@ -12,7 +12,7 @@ struct CIManualIcon: View {
         Image(systemName: "gearshape.circle")
             .foregroundColor(.secondary)
             .font(.system(size: 18))
-            .help("Manual CI step")
+            .help(String(localized: "Manual CI step"))
             .clipShape(Rectangle())
     }
 }

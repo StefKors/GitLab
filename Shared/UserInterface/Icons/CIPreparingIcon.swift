@@ -12,7 +12,7 @@ struct CIPreparingIcon: View {
         Image(systemName: "circle.dotted")
             .foregroundColor(.secondary)
             .font(.system(size: 18))
-            .help("CI pipeline preparing")
+            .help(String(localized: "CI pipeline preparing"))
             .clipShape(Rectangle())
     }
 }

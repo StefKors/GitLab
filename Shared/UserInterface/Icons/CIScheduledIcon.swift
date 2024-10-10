@@ -12,7 +12,7 @@ struct CIScheduledIcon: View {
         Image(systemName: "clock.circle")
             .foregroundColor(.primary)
             .font(.system(size: 18))
-            .help("CI pipeline scheduled")
+            .help(String(localized: "CI pipeline scheduled"))
             .clipShape(Rectangle())
     }
 }

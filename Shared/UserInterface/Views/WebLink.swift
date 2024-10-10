@@ -22,15 +22,10 @@ struct WebLink: View {
                     }
                     .foregroundColor(isHovering ? .primary : .secondary)
                     .animation(.interactiveSpring(), value: isHovering)
-//                    .lineLimit(1)
-//                    .truncationMode(.head)
             })
-//            Link(linkText, destination: url)
         } else {
             Text(linkText)
                 .foregroundColor(.secondary)
-//                .lineLimit(1)
-//                .truncationMode(.head)
         }
     }
 }

@@ -1,0 +1,12 @@
+{
+  "developmentRegion" : "en",
+  "project" : "GitLab.xcodeproj",
+  "targetLocale" : "en",
+  "toolInfo" : {
+    "toolBuildNumber" : "16A242d",
+    "toolID" : "com.apple.dt.xcode",
+    "toolName" : "Xcode",
+    "toolVersion" : "16.0"
+  },
+  "version" : "1.0"
+}

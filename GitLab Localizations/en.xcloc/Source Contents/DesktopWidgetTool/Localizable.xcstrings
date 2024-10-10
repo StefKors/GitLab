@@ -1,0 +1,186 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " " : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld discussions" : {
+
+    },
+    "Account" : {
+
+    },
+    "Active:" : {
+
+    },
+    "Add Account" : {
+
+    },
+    "Add your GitLab Account" : {
+
+    },
+    "All your Authored Merge Requests directly visible." : {
+
+    },
+    "Approved" : {
+
+    },
+    "Authored Merge Requests" : {
+
+    },
+    "Base URL" : {
+
+    },
+    "CI canceled" : {
+
+    },
+    "CI Created" : {
+
+    },
+    "CI Failed" : {
+
+    },
+    "CI in progress" : {
+
+    },
+    "CI pipeline pending" : {
+
+    },
+    "CI pipeline preparing" : {
+
+    },
+    "CI pipeline scheduled" : {
+
+    },
+    "CI pipeline waiting for resources" : {
+
+    },
+    "CI Success" : {
+
+    },
+    "CI Warning" : {
+
+    },
+    "Close" : {
+
+    },
+    "Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." : {
+
+    },
+    "Create merge request" : {
+
+    },
+    "Created at:" : {
+
+    },
+    "default widget view" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Dismiss" : {
+
+    },
+    "Draft" : {
+
+    },
+    "Enter token here..." : {
+
+    },
+    "Expires at:" : {
+
+    },
+    "Failed" : {
+
+    },
+    "GitLab Token" : {
+
+    },
+    "https://www.gitlab.com" : {
+
+    },
+    "Last updated at: 19 September 2022 at 12:43" : {
+
+    },
+    "Last used at:" : {
+
+    },
+    "Manual CI step" : {
+
+    },
+    "Merge request approved" : {
+
+    },
+    "Merge Train 🚂" : {
+
+    },
+    "Name:" : {
+
+    },
+    "Needs Review" : {
+
+    },
+    "Quick access to your recently used Repositories" : {
+
+    },
+    "Quit" : {
+
+    },
+    "Remove %@" : {
+
+    },
+    "Repo Launchpad" : {
+
+    },
+    "Retry CI pipeline" : {
+
+    },
+    "Review requested" : {
+
+    },
+    "Revoked:" : {
+
+    },
+    "Save" : {
+
+    },
+    "Scopes:" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Share" : {
+
+    },
+    "Skipped CI step" : {
+
+    },
+    "Submit" : {
+
+    },
+    "This %@ account will be removed immediatly. You can't undo this action." : {
+
+    },
+    "Too much discussions" : {
+
+    },
+    "updating" : {
+
+    },
+    "Validating..." : {
+
+    },
+    "Your Merge Requests" : {
+
+    }
+  },
+  "version" : "1.0"
+}

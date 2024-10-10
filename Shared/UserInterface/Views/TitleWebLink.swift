@@ -34,8 +34,8 @@ struct TitleWebLink: View {
         return linkText
     }
 
-    var body: some View {
-        let text = HStack {
+    var TitleLabel: some View {
+        HStack {
             if linkText.isDraft {
                 Text("Draft")
                     .font(.footnote)
@@ -50,18 +50,18 @@ struct TitleWebLink: View {
                 .foregroundColor(isHovering ? .accentColor  : .primary)
                 .multilineTextAlignment(.leading)
         }
-//            .animation(.easeInOut(duration: 0.2), value: isHovering)
+    }
 
-
+    var body: some View {
 
         if let url = destination {
             Link(destination: url, label: {
-                text
+                TitleLabel
             }).onHover { hovering in
                 isHovering = hovering
             }
         } else {
-            text
+            TitleLabel
         }
     }
 

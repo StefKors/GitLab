@@ -18,8 +18,6 @@ import SwiftUI
             configuration.label
         }
         .opacity(isMouseDown ? 0 : 1)
-        // .offset(y: isMouseDown ? 10 : 0)
-        // .scaleEffect(isMouseDown ? 0.7 : 1)
         .animation(.spring(), value: isMouseDown)
     }
 

@@ -1,0 +1,96 @@
+/* No comment provided by engineer. */
+" " = " ";
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"Account" = "Account";
+
+/* No comment provided by engineer. */
+"Active:" = "Active:";
+
+/* No comment provided by engineer. */
+"Add your GitLab Account" = "Add your GitLab Account";
+
+/* No comment provided by engineer. */
+"Approved" = "Approved";
+
+/* No comment provided by engineer. */
+"Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." = "Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.";
+
+/* No comment provided by engineer. */
+"Created at:" = "Created at:";
+
+/* No comment provided by engineer. */
+"Draft" = "Draft";
+
+/* No comment provided by engineer. */
+"Enter token here..." = "Enter token here...";
+
+/* No comment provided by engineer. */
+"Expires at:" = "Expires at:";
+
+/* No comment provided by engineer. */
+"Failed" = "Failed";
+
+/* No comment provided by engineer. */
+"GitLab Desktop" = "GitLab Desktop";
+
+/* No comment provided by engineer. */
+"https://www.gitlab.com" = "https://www.gitlab.com";
+
+/* No comment provided by engineer. */
+"Last updated at: 19 September 2022 at 12:43" = "Last updated at: 19 September 2022 at 12:43";
+
+/* No comment provided by engineer. */
+"Last used at:" = "Last used at:";
+
+/* No comment provided by engineer. */
+"Merge Train 🚂" = "Merge Train 🚂";
+
+/* No comment provided by engineer. */
+"Name:" = "Name:";
+
+/* No comment provided by engineer. */
+"Needs Review" = "Needs Review";
+
+/* No comment provided by engineer. */
+"Quit" = "Quit";
+
+/* No comment provided by engineer. */
+"Remove %@" = "Remove %@";
+
+/* No comment provided by engineer. */
+"Review requested" = "Review requested";
+
+/* No comment provided by engineer. */
+"Revoked:" = "Revoked:";
+
+/* No comment provided by engineer. */
+"Save" = "Save";
+
+/* No comment provided by engineer. */
+"Scopes:" = "Scopes:";
+
+/* No comment provided by engineer. */
+"sdf" = "sdf";
+
+/* No comment provided by engineer. */
+"Share" = "Share";
+
+/* No comment provided by engineer. */
+"Submit" = "Submit";
+
+/* No comment provided by engineer. */
+"This %@ account will be removed immediatly. You can't undo this action." = "This %@ account will be removed immediatly. You can't undo this action.";
+
+/* No comment provided by engineer. */
+"updating" = "updating";
+
+/* No comment provided by engineer. */
+"Validating..." = "Validating...";
+
+/* No comment provided by engineer. */
+"Your Merge Requests" = "Your Merge Requests";
+
