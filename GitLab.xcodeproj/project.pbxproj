@@ -2044,6 +2044,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Merge Requests for GitLab";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.20;
@@ -2105,6 +2106,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Merge Requests for GitLab";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.20;
