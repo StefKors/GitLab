@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>RT5BSWJB4U.</string>
+		<string>"RT5BSWJB4U."</string>
 	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>
