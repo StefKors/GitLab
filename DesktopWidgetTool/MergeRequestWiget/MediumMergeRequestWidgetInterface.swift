@@ -16,16 +16,32 @@ struct MediumMergeRequestWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 2) {
-                Image(.mergeRequest).resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 20)
-                Text(mergeRequests.count.description)
+            HStack {
+                HStack(spacing: 2) {
+                    Image(.mergeRequest).resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
+                    Text(mergeRequests.count.description)
+
+
+                }
+                .font(.largeTitle)
+
+                if selectedView == .reviewRequestedMergeRequests {
+                    Text("Needs Review")
+                        .font(.title3)
+                        .foregroundColor(.accentColor)
+                        .padding(EdgeInsets(top: 4, leading:    10, bottom: 4, trailing: 10))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.accentColor)
+                                .opacity(0.6)
+                        )
+                }
             }
-            .font(.largeTitle)
 
             VStack(alignment: .leading, spacing: 2) {
-                ForEach(mergeRequests, id: \.id) { MR in
+                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { MR in
                     HStack(alignment: .top, spacing: 4) {
                         GitProviderView(provider: MR.account?.provider)
                             .frame(width: 18, height: 18, alignment: .center)
