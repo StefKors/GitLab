@@ -134,6 +134,8 @@ struct ApprovedMergeRequestsEdge: Codable, Equatable {
 // MARK: - ApprovedMergeRequests
 struct ApprovedMergeRequests: Codable, Equatable {
     let edges: [ApprovedMergeRequestsEdge]?
+
+    static let preview = ApprovedMergeRequests(edges: [ApprovedMergeRequestsEdge(node: .preview)])
 }
 
 // MARK: - AuthoredMergeRequestsEdge

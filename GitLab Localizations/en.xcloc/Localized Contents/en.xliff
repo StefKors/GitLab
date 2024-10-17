@@ -157,6 +157,11 @@
         <target state="new">Created at:</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Debug" xml:space="preserve">
+        <source>Debug</source>
+        <target state="new">Debug</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
         <source>Delete</source>
         <target state="new">Delete</target>
@@ -177,6 +182,11 @@
         <target state="new">Enter token here...</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Events are only recorded when debug window is open." xml:space="preserve">
+        <source>Events are only recorded when debug window is open.</source>
+        <target state="new">Events are only recorded when debug window is open.</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Expires at:" xml:space="preserve">
         <source>Expires at:</source>
         <target state="new">Expires at:</target>
@@ -192,11 +202,6 @@
         <target state="new">GitLab Token</target>
         <note/>
       </trans-unit>
-      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
-        <source>Last updated at: 19 September 2022 at 12:43</source>
-        <target state="new">Last updated at: 19 September 2022 at 12:43</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="Last used at:" xml:space="preserve">
         <source>Last used at:</source>
         <target state="new">Last used at:</target>
@@ -205,6 +210,11 @@
       <trans-unit id="Manual CI step" xml:space="preserve">
         <source>Manual CI step</source>
         <target state="new">Manual CI step</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Merge Requests you should review." xml:space="preserve">
+        <source>Merge Requests you should review.</source>
+        <target state="new">Merge Requests you should review.</target>
         <note/>
       </trans-unit>
       <trans-unit id="Merge Train 🚂" xml:space="preserve">
@@ -227,6 +237,16 @@
         <target state="new">Needs Review</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Network Events" xml:space="preserve">
+        <source>Network Events</source>
+        <target state="new">Network Events</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Open on Web" xml:space="preserve">
+        <source>Open on Web</source>
+        <target state="new">Open on Web</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Quick access to your recently used Repositories" xml:space="preserve">
         <source>Quick access to your recently used Repositories</source>
         <target state="new">Quick access to your recently used Repositories</target>
@@ -247,9 +267,19 @@
         <target state="new">Repo Launchpad</target>
         <note/>
       </trans-unit>
+      <trans-unit id="Response" xml:space="preserve">
+        <source>Response</source>
+        <target state="new">Response</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="Retry CI pipeline" xml:space="preserve">
         <source>Retry CI pipeline</source>
         <target state="new">Retry CI pipeline</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Review Requested Merge Requests" xml:space="preserve">
+        <source>Review Requested Merge Requests</source>
+        <target state="new">Review Requested Merge Requests</target>
         <note/>
       </trans-unit>
       <trans-unit id="Review requested" xml:space="preserve">
@@ -270,6 +300,11 @@
       <trans-unit id="Scopes:" xml:space="preserve">
         <source>Scopes:</source>
         <target state="new">Scopes:</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Search request data" xml:space="preserve">
+        <source>Search request data</source>
+        <target state="new">Search request data</target>
         <note/>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -312,14 +347,39 @@
         <target state="new">Your Merge Requests</target>
         <note/>
       </trans-unit>
+      <trans-unit id="^[%lld reviews requested](inflect: true)" xml:space="preserve">
+        <source>^[%lld reviews requested](inflect: true)</source>
+        <target state="new">^[%lld reviews requested](inflect: true)</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="default widget view" xml:space="preserve">
         <source>default widget view</source>
         <target state="new">default widget view</target>
         <note/>
       </trans-unit>
+      <trans-unit id="duration" xml:space="preserve">
+        <source>duration</source>
+        <target state="new">duration</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="https://www.gitlab.com" xml:space="preserve">
         <source>https://www.gitlab.com</source>
         <target state="new">https://www.gitlab.com</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="label" xml:space="preserve">
+        <source>label</source>
+        <target state="new">label</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="status" xml:space="preserve">
+        <source>status</source>
+        <target state="new">status</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="timestamp" xml:space="preserve">
+        <source>timestamp</source>
+        <target state="new">timestamp</target>
         <note/>
       </trans-unit>
       <trans-unit id="updating" xml:space="preserve">
@@ -476,6 +536,11 @@
         <target>Created at:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Debug" xml:space="preserve">
+        <source>Debug</source>
+        <target>Debug</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
         <source>Delete</source>
         <target>Delete</target>
@@ -501,6 +566,11 @@
         <target>Enter token here...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Events are only recorded when debug window is open." xml:space="preserve">
+        <source>Events are only recorded when debug window is open.</source>
+        <target>Events are only recorded when debug window is open.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Expires at:" xml:space="preserve">
         <source>Expires at:</source>
         <target>Expires at:</target>
@@ -514,11 +584,6 @@
       <trans-unit id="GitLab Token" xml:space="preserve">
         <source>GitLab Token</source>
         <target>GitLab Token</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
-        <source>Last updated at: 19 September 2022 at 12:43</source>
-        <target>Last updated at: 19 September 2022 at 12:43</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last used at:" xml:space="preserve">
@@ -551,9 +616,24 @@
         <target>Needs Review</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Network Events" xml:space="preserve">
+        <source>Network Events</source>
+        <target>Network Events</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open on Web" xml:space="preserve">
+        <source>Open on Web</source>
+        <target>Open on Web</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Remove %@" xml:space="preserve">
         <source>Remove %@</source>
         <target>Remove %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Response" xml:space="preserve">
+        <source>Response</source>
+        <target>Response</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Retry CI pipeline" xml:space="preserve">
@@ -579,6 +659,11 @@
       <trans-unit id="Scopes:" xml:space="preserve">
         <source>Scopes:</source>
         <target>Scopes:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Search request data" xml:space="preserve">
+        <source>Search request data</source>
+        <target>Search request data</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -621,14 +706,39 @@
         <target>Your Merge Requests</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="^[%lld reviews requested](inflect: true)" xml:space="preserve">
+        <source>^[%lld reviews requested](inflect: true)</source>
+        <target>^[%lld reviews requested](inflect: true)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="duration" xml:space="preserve">
+        <source>duration</source>
+        <target>duration</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="https://www.gitlab.com" xml:space="preserve">
         <source>https://www.gitlab.com</source>
         <target>https://www.gitlab.com</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="label" xml:space="preserve">
+        <source>label</source>
+        <target>label</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="sdf" xml:space="preserve">
         <source>sdf</source>
         <target>sdf</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="status" xml:space="preserve">
+        <source>status</source>
+        <target>status</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="timestamp" xml:space="preserve">
+        <source>timestamp</source>
+        <target>timestamp</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="updating" xml:space="preserve">
@@ -671,8 +781,8 @@
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>GitLab</source>
-        <target>GitLab</target>
+        <source>Merge Requests for GitLab</source>
+        <target>Merge Requests for GitLab</target>
         <note>Bundle name</note>
       </trans-unit>
     </body>
@@ -722,6 +832,11 @@
         <target>Created at:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Debug" xml:space="preserve">
+        <source>Debug</source>
+        <target>Debug</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Draft" xml:space="preserve">
         <source>Draft</source>
         <target>Draft</target>
@@ -730,6 +845,11 @@
       <trans-unit id="Enter token here..." xml:space="preserve">
         <source>Enter token here...</source>
         <target>Enter token here...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Events are only recorded when debug window is open." xml:space="preserve">
+        <source>Events are only recorded when debug window is open.</source>
+        <target>Events are only recorded when debug window is open.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expires at:" xml:space="preserve">
@@ -745,11 +865,6 @@
       <trans-unit id="GitLab Desktop" xml:space="preserve">
         <source>GitLab Desktop</source>
         <target>GitLab Desktop</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
-        <source>Last updated at: 19 September 2022 at 12:43</source>
-        <target>Last updated at: 19 September 2022 at 12:43</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last used at:" xml:space="preserve">
@@ -770,6 +885,11 @@
       <trans-unit id="Needs Review" xml:space="preserve">
         <source>Needs Review</source>
         <target>Needs Review</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Network Events" xml:space="preserve">
+        <source>Network Events</source>
+        <target>Network Events</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Quit" xml:space="preserve">
@@ -825,6 +945,11 @@
       <trans-unit id="Your Merge Requests" xml:space="preserve">
         <source>Your Merge Requests</source>
         <target>Your Merge Requests</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="^[%@ reviews requested](inflect: true)" xml:space="preserve">
+        <source>^[%@ reviews requested](inflect: true)</source>
+        <target>^[%@ reviews requested](inflect: true)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="https://www.gitlab.com" xml:space="preserve">
@@ -1003,6 +1128,11 @@
         <target>Created at:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Debug" xml:space="preserve">
+        <source>Debug</source>
+        <target>Debug</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
         <source>Delete</source>
         <target>Delete</target>
@@ -1023,6 +1153,11 @@
         <target>Enter token here...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Events are only recorded when debug window is open." xml:space="preserve">
+        <source>Events are only recorded when debug window is open.</source>
+        <target>Events are only recorded when debug window is open.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Expires at:" xml:space="preserve">
         <source>Expires at:</source>
         <target>Expires at:</target>
@@ -1036,11 +1171,6 @@
       <trans-unit id="GitLab Token" xml:space="preserve">
         <source>GitLab Token</source>
         <target>GitLab Token</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Last updated at: 19 September 2022 at 12:43" xml:space="preserve">
-        <source>Last updated at: 19 September 2022 at 12:43</source>
-        <target>Last updated at: 19 September 2022 at 12:43</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last used at:" xml:space="preserve">
@@ -1073,6 +1203,16 @@
         <target>Needs Review</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Network Events" xml:space="preserve">
+        <source>Network Events</source>
+        <target>Network Events</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open on Web" xml:space="preserve">
+        <source>Open on Web</source>
+        <target>Open on Web</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Quit" xml:space="preserve">
         <source>Quit</source>
         <target>Quit</target>
@@ -1081,6 +1221,11 @@
       <trans-unit id="Remove %@" xml:space="preserve">
         <source>Remove %@</source>
         <target>Remove %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Response" xml:space="preserve">
+        <source>Response</source>
+        <target>Response</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Retry CI pipeline" xml:space="preserve">
@@ -1106,6 +1251,11 @@
       <trans-unit id="Scopes:" xml:space="preserve">
         <source>Scopes:</source>
         <target>Scopes:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Search request data" xml:space="preserve">
+        <source>Search request data</source>
+        <target>Search request data</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -1148,9 +1298,34 @@
         <target>Your Merge Requests</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="^[%lld reviews requested](inflect: true)" xml:space="preserve">
+        <source>^[%lld reviews requested](inflect: true)</source>
+        <target>^[%lld reviews requested](inflect: true)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="duration" xml:space="preserve">
+        <source>duration</source>
+        <target>duration</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="https://www.gitlab.com" xml:space="preserve">
         <source>https://www.gitlab.com</source>
         <target>https://www.gitlab.com</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="label" xml:space="preserve">
+        <source>label</source>
+        <target>label</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="status" xml:space="preserve">
+        <source>status</source>
+        <target>status</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="timestamp" xml:space="preserve">
+        <source>timestamp</source>
+        <target>timestamp</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="updating" xml:space="preserve">

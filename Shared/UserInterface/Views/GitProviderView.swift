@@ -15,11 +15,22 @@ struct GitProviderView: View {
             case .GitLab:
                 Image("GitLab-Outline")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
+            case .GitHub:
+                Image("Github-Outline")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(2)
             }
         }
     }
 }
 
 #Preview {
-    GitProviderView(provider: .GitLab)
+    HStack {
+        GitProviderView(provider: .GitLab)
+        GitProviderView(provider: .GitHub)
+    }
+    .frame(width: 100, height: 20)
+    .scenePadding()
 }

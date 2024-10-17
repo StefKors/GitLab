@@ -23,9 +23,7 @@ struct LaunchPadWidgetEntryView : View {
             MediumLaunchPadWidgetView(repos: entry.repos)
 
         default:
-            VStack {
-                Text("default widget view")
-            }
+            MediumLaunchPadWidgetView(repos: entry.repos)
         }
     }
 }

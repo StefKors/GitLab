@@ -103,20 +103,20 @@ extension MergeRequest {
         draft: false,
         webUrl: URL(string: "https://gitlab.com/proj"),
         mergeStatusEnum: .canBeMerged,
-        approvedBy: nil,
+        approvedBy: .preview,
         userDiscussionsCount: 12,
         userNotesCount: 12,
         headPipeline: nil,
         reference: "2676",
         targetProject: .preview,
         type: .authoredMergeRequests,
-        account: nil
+        account: .preview
     )
 
     static let preview2 = MergeRequest(
         id: "gid://gitlab/MergeRequest/512",
         mergerequestID: "gid://gitlab/MergeRequest/512",
-        title: "Fix: Account settings redesign list performance",
+        title: "Draft: Account settings redesign list performance",
         state: .opened,
         draft: true,
         webUrl: URL(string: "https://gitlab.com/proj"),
@@ -128,7 +128,43 @@ extension MergeRequest {
         reference: "512",
         targetProject: .preview,
         type: .authoredMergeRequests,
-        account: nil
+        account: .preview
+    )
+
+    static let preview3 = MergeRequest(
+        id: "gid://gitlab/MergeRequest/2345",
+        mergerequestID: "gid://gitlab/MergeRequest/2345",
+        title: "Draft: Team Workspaces V0",
+        state: .opened,
+        draft: true,
+        webUrl: URL(string: "https://gitlab.com/proj"),
+        mergeStatusEnum: .checking,
+        approvedBy: .preview,
+        userDiscussionsCount: nil,
+        userNotesCount: nil,
+        headPipeline: nil,
+        reference: "512",
+        targetProject: .preview,
+        type: .authoredMergeRequests,
+        account: .preview
+    )
+
+    static let previewGithub = MergeRequest(
+        id: "gid://gitlab/MergeRequest/988",
+        mergerequestID: "gid://gitlab/MergeRequest/988",
+        title: "Github Integration SDK",
+        state: .opened,
+        draft: false,
+        webUrl: URL(string: "https://gitlab.com/proj"),
+        mergeStatusEnum: .checking,
+        approvedBy: .preview,
+        userDiscussionsCount: nil,
+        userNotesCount: nil,
+        headPipeline: nil,
+        reference: "512",
+        targetProject: .preview,
+        type: .authoredMergeRequests,
+        account: .previewGitHub
     )
 }
 

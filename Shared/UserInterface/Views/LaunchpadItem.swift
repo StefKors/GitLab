@@ -6,67 +6,43 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
-
-struct LaunchpadImage: View {
-    let repo: LaunchpadRepo
-
-    var body: some View {
-        HStack {
-            if let image = repo.image {
-#if os(macOS)
-                Image(nsImage: NSImage(data: image)!)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-                    .shadow(radius: 3)
-#else
-                Image(uiImage: UIImage(data: image)!)
-                    .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-                    .shadow(radius: 3)
-#endif
-            } else {
-                RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    .fill(Color.secondary)
-                    .shadow(radius: 3)
-                    .overlay(content: {
-                        if let char = repo.name.first {
-                            Text(String(char).capitalized)
-                                .font(.headline.bold())
-                                .foregroundColor(.primary)
-                                .colorInvert()
-                        }
-                    })
-                    .padding(2)
-            }
-        }
-        .frame(width: 32.0, height: 32.0)
-    }
-}
 
 struct LaunchpadItem: View {
     var repo: LaunchpadRepo
 
     @Environment(\.openURL) private var openURL
+    @Environment(\.dismissWindow) private var dismissWindow
+    
     @State private var isHovering = false
 
     var body: some View {
-        HStack() {
-            LaunchpadImage(repo: repo)
+//        Button {
+//            // TODO:
+//            print("todo: set filter")
+//        } label: {
+            HStack() {
+                LaunchpadImage(repo: repo)
 
-            VStack(alignment: .leading) {
-                Text(repo.name)
-                    .foregroundColor(isHovering ? .accentColor  : .primary)
-                Text(repo.group)
-                    .foregroundColor(.secondary)
+                VStack(alignment: .leading) {
+                    Text(repo.name)
+                    Text(repo.group)
+                        .foregroundColor(.secondary)
+                }
+
+                Button {
+                    openURL(repo.url)
+                    dismissWindow()
+                } label: {
+                    Label("Open on Web", systemImage: "arrow.up.forward")
+                        .labelStyle(.iconOnly)
+                }
+                .buttonStyle(.menubar)
             }
-        }
-        .animation(.interactiveSpring(), value: isHovering)
-        .onTapGesture {
-            openURL(repo.url)
-        }
-        .onHover { hovering in
-            isHovering = hovering
-        }
+//        }.buttonStyle(.shaded)
     }
+}
+
+#Preview {
+    LaunchpadItem(repo: .preview)
+        .scenePadding()
 }

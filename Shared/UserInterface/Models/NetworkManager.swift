@@ -14,15 +14,6 @@ import AppKit
 import UIKit
 #endif
 
-enum AppIcons: String, CaseIterable {
-    case ReleaseIcon
-    case DevIcon
-}
-
-enum RequestError: Error {
-    case sessionError(error: Error)
-}
-
 class NetworkManager {
     static let shared = NetworkManager()
     
@@ -100,17 +91,3 @@ class NetworkManager {
     }
 }
 
-extension Date {
-    static var oneHourAgo: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-DD"
-        let date = Calendar.current.date(byAdding: .hour, value: -1, to: .now)!
-        return formatter.string(from: date)
-    }
-}
-
-enum QueryType: String, Codable, CaseIterable, Identifiable {
-    case authoredMergeRequests
-    case reviewRequestedMergeRequests
-    var id: Self { self }
-}

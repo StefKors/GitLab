@@ -9,6 +9,54 @@
 /* Begin PBXBuildFile section */
 		8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
 		8A0F41652CB5CCA1006BD170 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
+		8A111F1B2CC1118A00DEB0DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
+		8A111F1C2CC1118A00DEB0DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
+		8A111F1D2CC1118A00DEB0DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
+		8A111F1E2CC1118A00DEB0DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
+		8A111F202CC1161500DEB0DD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1F2CC1161500DEB0DD /* String.swift */; };
+		8A111F212CC1161500DEB0DD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1F2CC1161500DEB0DD /* String.swift */; };
+		8A111F222CC1161500DEB0DD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1F2CC1161500DEB0DD /* String.swift */; };
+		8A111F232CC1161500DEB0DD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1F2CC1161500DEB0DD /* String.swift */; };
+		8A111F252CC116DE00DEB0DD /* MRTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F242CC116DE00DEB0DD /* MRTitleView.swift */; };
+		8A111F262CC116DE00DEB0DD /* MRTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F242CC116DE00DEB0DD /* MRTitleView.swift */; };
+		8A111F272CC116DE00DEB0DD /* MRTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F242CC116DE00DEB0DD /* MRTitleView.swift */; };
+		8A111F282CC116DE00DEB0DD /* MRTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F242CC116DE00DEB0DD /* MRTitleView.swift */; };
+		8A111F2A2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F292CC11A8C00DEB0DD /* ShadedButton.swift */; };
+		8A111F2B2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F292CC11A8C00DEB0DD /* ShadedButton.swift */; };
+		8A111F2C2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F292CC11A8C00DEB0DD /* ShadedButton.swift */; };
+		8A111F2D2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F292CC11A8C00DEB0DD /* ShadedButton.swift */; };
+		8A111F302CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F2F2CC11D3B00DEB0DD /* LaunchpadImage.swift */; };
+		8A111F312CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F2F2CC11D3B00DEB0DD /* LaunchpadImage.swift */; };
+		8A111F322CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F2F2CC11D3B00DEB0DD /* LaunchpadImage.swift */; };
+		8A111F332CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F2F2CC11D3B00DEB0DD /* LaunchpadImage.swift */; };
+		8A111F352CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */; };
+		8A111F362CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */; };
+		8A111F372CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */; };
+		8A111F382CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */; };
+		8A111F3A2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */; };
+		8A111F3B2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */; };
+		8A111F3C2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */; };
+		8A111F3D2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */; };
+		8A111F3F2CC12C5F00DEB0DD /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */; };
+		8A111F402CC12C5F00DEB0DD /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */; };
+		8A111F412CC12C5F00DEB0DD /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */; };
+		8A111F422CC12C5F00DEB0DD /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */; };
+		8A111F442CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
+		8A111F452CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
+		8A111F462CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
+		8A111F472CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
+		8A111F492CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
+		8A111F4A2CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
+		8A111F4B2CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
+		8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
+		8A111F4E2CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
+		8A111F4F2CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
+		8A111F502CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
+		8A111F512CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
+		8A111F532CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
+		8A111F542CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
+		8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
+		8A111F562CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
 		8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A13B85D2A66A3E30090A6D9 /* Credits.rtf */; };
 		8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
 		8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
@@ -120,6 +168,14 @@
 		8AC7B4B82CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
 		8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
 		8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */; };
+		8ACBFD392CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */; };
+		8ACBFD3A2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */; };
+		8ACBFD3B2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */; };
+		8ACBFD3C2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */; };
+		8ACBFD3E2CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD3D2CC280F300A8753B /* WidgetApprovedReviewIcon.swift */; };
+		8ACBFD3F2CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD3D2CC280F300A8753B /* WidgetApprovedReviewIcon.swift */; };
+		8ACBFD402CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD3D2CC280F300A8753B /* WidgetApprovedReviewIcon.swift */; };
+		8ACBFD412CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACBFD3D2CC280F300A8753B /* WidgetApprovedReviewIcon.swift */; };
 		8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8AD294BE298AA72C006F1932 /* Settings.bundle */; };
 		8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
 		8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
@@ -136,6 +192,19 @@
 		8AE024DD2A92457C000548D7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE024DC2A92457C000548D7 /* CachedAsyncImage */; };
 		8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE024DF2A924731000548D7 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8AE2741E2CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */; };
+		8AE2741F2CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */; };
+		8AE274202CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */; };
+		8AE274212CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */; };
+		8AE274232CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */; };
+		8AE274242CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */; };
+		8AE274252CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */; };
+		8AE274262CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */; };
+		8AE274282CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
+		8AE274292CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
+		8AE2742A2CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
+		8AE2742B2CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
+		8AE274302CC3E4FA0059244E /* TranslucentWindowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4142865C1480054C601 /* SwiftUI.framework */; };
@@ -415,6 +484,18 @@
 
 /* Begin PBXFileReference section */
 		8A07E5672890492C0042EACB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8A111F1A2CC1118900DEB0DD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8A111F1F2CC1161500DEB0DD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		8A111F242CC116DE00DEB0DD /* MRTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRTitleView.swift; sourceTree = "<group>"; };
+		8A111F292CC11A8C00DEB0DD /* ShadedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadedButton.swift; sourceTree = "<group>"; };
+		8A111F2F2CC11D3B00DEB0DD /* LaunchpadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchpadImage.swift; sourceTree = "<group>"; };
+		8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMergeRequestSubRowView.swift; sourceTree = "<group>"; };
+		8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLineMergeRequestSubRowView.swift; sourceTree = "<group>"; };
+		8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
+		8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
+		8A111F482CC1386600DEB0DD /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
+		8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEvent.swift; sourceTree = "<group>"; };
+		8A111F522CC1388900DEB0DD /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
 		8A13B85D2A66A3E30090A6D9 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGitLabView.swift; sourceTree = "<group>"; };
 		8A2F5B8A2A54C5BD00C0B52F /* Small Icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon16.png"; sourceTree = "<group>"; };
@@ -488,16 +569,17 @@
 		8AC4B4142865C1480054C601 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		8AC745352BD7AB37002C2C01 /* GitLab iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GitLab iOS.entitlements"; sourceTree = "<group>"; };
 		8AC7B4B62CB5BFD400CBD21C /* CIWarningIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIWarningIcon.swift; sourceTree = "<group>"; };
+		8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluralWidgetTitle.swift; sourceTree = "<group>"; };
+		8ACBFD3D2CC280F300A8753B /* WidgetApprovedReviewIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetApprovedReviewIcon.swift; sourceTree = "<group>"; };
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
-		8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidgetBundle.swift; sourceTree = "<group>"; };
-		8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabDesktopWidget.swift; sourceTree = "<group>"; };
-		8AE0248E2A911290000548D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8AE024902A911290000548D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8AE024912A911290000548D7 /* GitLabDesktopWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitLabDesktopWidget.entitlements; sourceTree = "<group>"; };
+		8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMRRowIcon.swift; sourceTree = "<group>"; };
+		8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
+		8AE274272CC3DD060059244E /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentWindowStyle.swift; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DesktopWidgetToolExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWidgetToolBundle.swift; sourceTree = "<group>"; };
@@ -642,6 +724,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A111F2E2CC11AAC00DEB0DD /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				8A111F292CC11A8C00DEB0DD /* ShadedButton.swift */,
+				8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */,
+			);
+			path = ButtonStyles;
+			sourceTree = "<group>";
+		};
 		8A2F5B892A54C5BD00C0B52F /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,7 +817,6 @@
 				8A13B85D2A66A3E30090A6D9 /* Credits.rtf */,
 				8AF80BE92A5580E700819B80 /* Shared */,
 				8A07E5672890492C0042EACB /* README.md */,
-				8AE024892A91128C000548D7 /* GitLabDesktopWidget */,
 				8AE8A6EB2B989E9A002B3C9E /* DesktopWidgetTool */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
@@ -797,10 +887,13 @@
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A111F1F2CC1161500DEB0DD /* String.swift */,
+				8A111F1A2CC1118900DEB0DD /* Data.swift */,
 				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
 				8ADEBF9D2A83A227007C22CD /* URL.swift */,
 				8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */,
 				8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */,
+				8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -847,18 +940,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8AE024892A91128C000548D7 /* GitLabDesktopWidget */ = {
-			isa = PBXGroup;
-			children = (
-				8AE0248A2A91128C000548D7 /* GitLabDesktopWidgetBundle.swift */,
-				8AE0248C2A91128C000548D7 /* GitLabDesktopWidget.swift */,
-				8AE0248E2A911290000548D7 /* Assets.xcassets */,
-				8AE024902A911290000548D7 /* Info.plist */,
-				8AE024912A911290000548D7 /* GitLabDesktopWidget.entitlements */,
-			);
-			path = GitLabDesktopWidget;
-			sourceTree = "<group>";
-		};
 		8AE8A6EB2B989E9A002B3C9E /* DesktopWidgetTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,6 +966,7 @@
 		8AF80CDE2A55817400819B80 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				8A111F2E2CC11AAC00DEB0DD /* ButtonStyles */,
 				8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */,
 				8AFF87ED2BDA711500D21D16 /* EnvironmentValues */,
 				8AFDAA962A84FAED001937AC /* SwiftData */,
@@ -892,6 +974,7 @@
 				8AF80CDF2A55817400819B80 /* Models */,
 				8AF80CF42A55817400819B80 /* Icons */,
 				8AF80D062A55817400819B80 /* UserInterface.swift */,
+				8AE274272CC3DD060059244E /* MainContentView.swift */,
 				8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */,
 				8AF80D072A55817400819B80 /* Views */,
 			);
@@ -901,6 +984,10 @@
 		8AF80CDF2A55817400819B80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8A111F522CC1388900DEB0DD /* NetworkInfo.swift */,
+				8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */,
+				8A111F482CC1386600DEB0DD /* NetworkState.swift */,
+				8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */,
 				8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */,
 				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
 				8AF80CE72A55817400819B80 /* Structs.swift */,
@@ -939,6 +1026,8 @@
 				8AF80CF82A55817400819B80 /* CIFailedIcon.swift */,
 				8AF80CF92A55817400819B80 /* CIPreparingIcon.swift */,
 				8AF80CFA2A55817400819B80 /* ApprovedReviewIcon.swift */,
+				8ACBFD3D2CC280F300A8753B /* WidgetApprovedReviewIcon.swift */,
+				8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */,
 				8AF80CFB2A55817400819B80 /* CISuccessIcon.swift */,
 				8AF80CFC2A55817400819B80 /* CIWaitingForResourceIcon.swift */,
 				8AF80CFD2A55817400819B80 /* DiscussionCountIcon.swift */,
@@ -958,6 +1047,10 @@
 		8AF80D072A55817400819B80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */,
+				8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */,
+				8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */,
+				8A111F242CC116DE00DEB0DD /* MRTitleView.swift */,
 				8AF80D082A55817400819B80 /* BaseTextView.swift */,
 				8AF80D092A55817400819B80 /* SettingsViews */,
 				8AF80D0D2A55817400819B80 /* NoticeViews */,
@@ -976,11 +1069,13 @@
 				8AF80D1C2A55817400819B80 /* WebLink.swift */,
 				8AFDAAC42A850793001937AC /* AccountRow.swift */,
 				8AF80D1D2A55817400819B80 /* CIJobsView.swift */,
+				8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */,
+				8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */,
 				8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */,
 				8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */,
 				8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */,
-				8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */,
 				8AF80D202A55817400819B80 /* LaunchpadItem.swift */,
+				8A111F2F2CC11D3B00DEB0DD /* LaunchpadImage.swift */,
 				8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */,
 				8AFDAABC2A850763001937AC /* AddAccountView.swift */,
 				8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */,
@@ -1358,12 +1453,15 @@
 				8AF80DB82A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
 				8AF80DA92A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
 				8AF80D432A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
+				8A111F4F2CC1387F00DEB0DD /* NetworkEvent.swift in Sources */,
 				8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */,
+				8A111F282CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
 				8AFF87F02BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8AFDAACA2A85112E001937AC /* GitProviderView.swift in Sources */,
 				8AF80DCD2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */,
 				8AF80D702A55817400819B80 /* CIWaitingForResourceIcon.swift in Sources */,
 				8AFDAABE2A850763001937AC /* AddAccountView.swift in Sources */,
+				8A111F442CC1384E00DEB0DD /* NetworkStateView.swift in Sources */,
 				8AF80D8B2A55817400819B80 /* CIProgressIcon.swift in Sources */,
 				8AF80D402A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
 				8ADD57072B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
@@ -1374,6 +1472,7 @@
 				8AF80D342A55817400819B80 /* NetworkManager.swift in Sources */,
 				8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AF80D312A55817400819B80 /* NotificationManager.swift in Sources */,
+				8AE274212CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8AFAE1932BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
 				8AF80D2B2A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8AF80D522A55817400819B80 /* NoticeMessage.swift in Sources */,
@@ -1382,14 +1481,20 @@
 				8AF80DC12A55817400819B80 /* LaunchPadView.swift in Sources */,
 				8ABBD2072B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AF80D462A55817400819B80 /* TargetProjects.swift in Sources */,
+				8A111F422CC12C5F00DEB0DD /* QueryType.swift in Sources */,
+				8A111F322CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8AF80D822A55817400819B80 /* CICreatedIcon.swift in Sources */,
 				8AF80DAC2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
 				8AF80DC72A55817400819B80 /* CIJobsView.swift in Sources */,
 				8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
+				8A111F2A2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
+				8A111F212CC1161500DEB0DD /* String.swift in Sources */,
 				8AF80D4F2A55817400819B80 /* NetworkReachability.swift in Sources */,
 				8AFDAACE2A85231F001937AC /* MergeRequest.swift in Sources */,
+				8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8AF80D732A55817400819B80 /* DiscussionCountIcon.swift in Sources */,
 				8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */,
+				8A111F382CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
 				8AF80D942A55817400819B80 /* SettingsView.swift in Sources */,
 				8AE024DF2A924731000548D7 /* URL.swift in Sources */,
 				8AF80D852A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
@@ -1398,21 +1503,28 @@
 				8AF80DBE2A55817400819B80 /* TitleWebLink.swift in Sources */,
 				8AF80D882A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D7C2A55817400819B80 /* CIRetryIcon.swift in Sources */,
+				8AE274282CC3DD060059244E /* MainContentView.swift in Sources */,
 				8AF80D5B2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
 				8AF80DAF2A55817400819B80 /* MergeStatusView.swift in Sources */,
+				8ACBFD392CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
 				8AF80D2E2A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
 				8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80D672A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80D582A55817400819B80 /* NoticeState.swift in Sources */,
 				8AF80D762A55817400819B80 /* CIScheduledIcon.swift in Sources */,
 				8A9D87902BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
+				8A111F3D2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
+				8A111F1B2CC1118A00DEB0DD /* Data.swift in Sources */,
 				8AF80D8E2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D6D2A55817400819B80 /* CISuccessIcon.swift in Sources */,
 				8AF80D642A55817400819B80 /* CIFailedIcon.swift in Sources */,
+				8A111F492CC1386600DEB0DD /* NetworkState.swift in Sources */,
+				8AE274262CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8AFDAAC62A850793001937AC /* AccountRow.swift in Sources */,
 				8AF80D6A2A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
 				8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */,
+				8ACBFD402CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1443,12 +1555,17 @@
 				8A7935C32A5583E400F8FB6C /* PushEvents.swift in Sources */,
 				8A7935C42A5583E400F8FB6C /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8A7935C52A5583E400F8FB6C /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
+				8A111F3B2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
+				8A111F352CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
 				8A7935C62A5583E400F8FB6C /* NotificationManager.swift in Sources */,
+				8ACBFD3E2CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
 				8A7935C72A5583E400F8FB6C /* NetworkManager.swift in Sources */,
 				8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
+				8A111F562CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */,
+				8AE2741E2CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8A7935CA2A5583E400F8FB6C /* NetworkManager+fetchProjects.swift in Sources */,
 				8A7935CB2A5583E400F8FB6C /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
@@ -1459,8 +1576,10 @@
 				8A7935D22A5583E400F8FB6C /* NoticeState.swift in Sources */,
 				8AC7B4B72CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8A7935D32A5583E400F8FB6C /* CISkippedIcon.swift in Sources */,
+				8ACBFD3A2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
 				8A7935D42A5583E400F8FB6C /* CIManualIcon.swift in Sources */,
 				8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */,
+				8A111F262CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
 				8A7935D52A5583E400F8FB6C /* CICanceledIcon.swift in Sources */,
 				8AFDAAC32A850784001937AC /* AccountListEmptyView.swift in Sources */,
 				8A7935D62A5583E400F8FB6C /* CIFailedIcon.swift in Sources */,
@@ -1471,9 +1590,12 @@
 				8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
 				8A7935DC2A5583E400F8FB6C /* CIScheduledIcon.swift in Sources */,
+				8A111F402CC12C5F00DEB0DD /* QueryType.swift in Sources */,
 				8A7935DD2A5583E400F8FB6C /* CIPendingIcon.swift in Sources */,
 				8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AFDAABF2A850763001937AC /* AddAccountView.swift in Sources */,
+				8A111F232CC1161500DEB0DD /* String.swift in Sources */,
+				8A111F2B2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8A7935DE2A5583E400F8FB6C /* CIRetryIcon.swift in Sources */,
 				8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8AFDAACB2A85112E001937AC /* GitProviderView.swift in Sources */,
@@ -1484,10 +1606,12 @@
 				8A2E61872A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A7935E22A5583E400F8FB6C /* MergeTrainIcon.swift in Sources */,
 				8A7935E32A5583E400F8FB6C /* CIProgressIcon.swift in Sources */,
+				8AE274232CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8A9D878C2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */,
 				8A7935E42A5583E400F8FB6C /* UserInterface.swift in Sources */,
 				8A7935E52A5583E400F8FB6C /* BaseTextView.swift in Sources */,
+				8A111F302CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8A7935E62A5583E400F8FB6C /* SettingsView.swift in Sources */,
 				8A7935E82A5583E400F8FB6C /* AccountSettingsView.swift in Sources */,
 				8A7935E92A5583E400F8FB6C /* NoticeListView.swift in Sources */,
@@ -1495,6 +1619,8 @@
 				8A7935EA2A5583E400F8FB6C /* BaseNoticeItem.swift in Sources */,
 				8AFF87F12BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8A7935EB2A5583E400F8FB6C /* RefreshStatus.swift in Sources */,
+				8A111F512CC1387F00DEB0DD /* NetworkEvent.swift in Sources */,
+				8A111F462CC1384E00DEB0DD /* NetworkStateView.swift in Sources */,
 				8A7935EC2A5583E400F8FB6C /* PipelineView.swift in Sources */,
 				8A7935ED2A5583E400F8FB6C /* ExpandHitBoxModifier.swift in Sources */,
 				8A7935EE2A5583E400F8FB6C /* LastUpdateMessageView.swift in Sources */,
@@ -1507,9 +1633,12 @@
 				8A7935F52A5583E400F8FB6C /* WebLink.swift in Sources */,
 				8A7935F62A5583E400F8FB6C /* CIJobsView.swift in Sources */,
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
+				8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */,
 				8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */,
 				8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */,
+				8A111F1C2CC1118A00DEB0DD /* Data.swift in Sources */,
+				8AE2742B2CC3DD060059244E /* MainContentView.swift in Sources */,
 				8AFDAAC72A850793001937AC /* AccountRow.swift in Sources */,
 				8A7935BC2A55830D00F8FB6C /* CIJobsNotificationView.swift in Sources */,
 				8A7935C02A55837500F8FB6C /* Structs.swift in Sources */,
@@ -1527,12 +1656,18 @@
 				8AF80D842A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
 				8AF80DA52A55817400819B80 /* PipelineView.swift in Sources */,
 				8AF80D6C2A55817400819B80 /* CISuccessIcon.swift in Sources */,
+				8A111F3A2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
+				8A111F362CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
+				8AE274302CC3E4FA0059244E /* TranslucentWindowStyle.swift in Sources */,
 				8AF80D5D2A55817400819B80 /* CIManualIcon.swift in Sources */,
+				8ACBFD412CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
 				8AF80D932A55817400819B80 /* SettingsView.swift in Sources */,
 				8AF80D9F2A55817400819B80 /* BaseNoticeItem.swift in Sources */,
 				8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */,
+				8A111F542CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8AF80DB72A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
+				8AE2741F2CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */,
 				8AFDAAC12A850784001937AC /* AccountListEmptyView.swift in Sources */,
 				8AFDAACD2A85231F001937AC /* MergeRequest.swift in Sources */,
@@ -1543,8 +1678,10 @@
 				8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80DAE2A55817400819B80 /* MergeStatusView.swift in Sources */,
 				8AF80D392A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
+				8ACBFD3C2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
 				8AF80D2A2A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8AF80D782A55817400819B80 /* CIPendingIcon.swift in Sources */,
+				8A111F272CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
 				8AFDAAC52A850793001937AC /* AccountRow.swift in Sources */,
 				8AF80DC02A55817400819B80 /* LaunchPadView.swift in Sources */,
 				8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */,
@@ -1555,9 +1692,12 @@
 				8AF80DA82A55817400819B80 /* ExpandHitBoxModifier.swift in Sources */,
 				8AF80D872A55817400819B80 /* MergeTrainIcon.swift in Sources */,
 				8AF80D692A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
+				8A111F412CC12C5F00DEB0DD /* QueryType.swift in Sources */,
 				8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80D7B2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
+				8A111F202CC1161500DEB0DD /* String.swift in Sources */,
+				8A111F2D2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8AF80D242A55817400819B80 /* LaunchpadState.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
@@ -1568,10 +1708,12 @@
 				8AF80D632A55817400819B80 /* CIFailedIcon.swift in Sources */,
 				8AF80D572A55817400819B80 /* NoticeState.swift in Sources */,
 				8A9D878A2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
+				8AE274252CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8AF80DC32A55817400819B80 /* WebLink.swift in Sources */,
 				8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */,
 				8AF80DC62A55817400819B80 /* CIJobsView.swift in Sources */,
 				8AF80D8A2A55817400819B80 /* CIProgressIcon.swift in Sources */,
+				8A111F312CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D212A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
 				8A9D878F2BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
@@ -1579,6 +1721,8 @@
 				8AFF87EF2BDA713800D21D16 /* IsInWidget.swift in Sources */,
 				8AF80D272A55817400819B80 /* PushEvents.swift in Sources */,
 				8AF80D662A55817400819B80 /* CIPreparingIcon.swift in Sources */,
+				8A111F502CC1387F00DEB0DD /* NetworkEvent.swift in Sources */,
+				8A111F452CC1384E00DEB0DD /* NetworkStateView.swift in Sources */,
 				8AF80DA22A55817400819B80 /* RefreshStatus.swift in Sources */,
 				8AF80DBD2A55817400819B80 /* TitleWebLink.swift in Sources */,
 				8AF80D362A55817400819B80 /* Structs.swift in Sources */,
@@ -1591,9 +1735,12 @@
 				8AF80D542A55817400819B80 /* NoticeType.swift in Sources */,
 				8AFDAAC92A85112E001937AC /* GitProviderView.swift in Sources */,
 				8AF80D452A55817400819B80 /* TargetProjects.swift in Sources */,
+				8A111F4A2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8AF80D422A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8AF80D7E2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
 				8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */,
+				8A111F1E2CC1118A00DEB0DD /* Data.swift in Sources */,
+				8AE274292CC3DD060059244E /* MainContentView.swift in Sources */,
 				8AF80DC92A55817400819B80 /* MergeRequestRowView.swift in Sources */,
 				8AF80D2D2A55817400819B80 /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
 				8AF80D512A55817400819B80 /* NoticeMessage.swift in Sources */,
@@ -1625,6 +1772,7 @@
 				8AE8A6FC2B989EFA002B3C9E /* NoticeType.swift in Sources */,
 				8AE8A6FD2B989EFA002B3C9E /* ApprovedReviewIcon.swift in Sources */,
 				8AE8A6FE2B989EFA002B3C9E /* CIStatusView.swift in Sources */,
+				8A111F3C2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
 				8AE8A6FF2B989EFA002B3C9E /* MainGitLabView.swift in Sources */,
 				8AE8A7002B989EFA002B3C9E /* LaunchPadView.swift in Sources */,
 				8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */,
@@ -1636,21 +1784,28 @@
 				8AE8A7062B989EFA002B3C9E /* AccountRow.swift in Sources */,
 				8AE8A7072B989EFA002B3C9E /* CIPendingIcon.swift in Sources */,
 				8AFF87F22BDA713800D21D16 /* IsInWidget.swift in Sources */,
+				8A111F1D2CC1118A00DEB0DD /* Data.swift in Sources */,
 				8AB969222BDBC2170078E5CD /* LaunchPadWidgetEntryView.swift in Sources */,
 				8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */,
 				8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */,
 				8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */,
 				8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */,
 				8AE8A70C2B989EFA002B3C9E /* TargetProjects.swift in Sources */,
+				8A111F472CC1384E00DEB0DD /* NetworkStateView.swift in Sources */,
+				8AE274202CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8A9D878D2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
+				8ACBFD3B2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
+				8A111F532CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8AE8A70D2B989EFA002B3C9E /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AFAE1952BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
 				8AE8A70E2B989EFA002B3C9E /* NotificationManager.swift in Sources */,
 				8AE8A70F2B989EFA002B3C9E /* CICanceledIcon.swift in Sources */,
+				8A111F4E2CC1387F00DEB0DD /* NetworkEvent.swift in Sources */,
 				8AE8A7102B989EFA002B3C9E /* CIFailedIcon.swift in Sources */,
 				8AE8A7112B989EFA002B3C9E /* CIWaitingForResourceIcon.swift in Sources */,
 				8AE8A7122B989EFA002B3C9E /* PipelineView.swift in Sources */,
 				8AE8A7132B989EFA002B3C9E /* Structs.swift in Sources */,
+				8A111F3F2CC12C5F00DEB0DD /* QueryType.swift in Sources */,
 				8AE8A7142B989EFA002B3C9E /* LaunchpadItem.swift in Sources */,
 				8AE8A7152B989EFA002B3C9E /* NetworkManager.swift in Sources */,
 				8AE8A7162B989EFA002B3C9E /* PushEvents.swift in Sources */,
@@ -1664,6 +1819,7 @@
 				8AE8A7412B989F57002B3C9E /* LaunchpadState.swift in Sources */,
 				8AE8A7422B989F57002B3C9E /* MergeRequest.swift in Sources */,
 				8A9D87922BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
+				8A111F252CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
 				8AE8A71D2B989EFA002B3C9E /* CICreatedIcon.swift in Sources */,
 				8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */,
 				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
@@ -1672,27 +1828,34 @@
 				8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AB969282BDBC7580078E5CD /* WrappingHStack.swift in Sources */,
 				8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */,
+				8ACBFD3F2CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
 				8AE8A7232B989EFA002B3C9E /* NetworkManager+fetchAuthoredMergeRequests.swift in Sources */,
 				8AE8A7242B989EFA002B3C9E /* MergeTrainIcon.swift in Sources */,
 				8AE8A7252B989EFA002B3C9E /* NetworkManager+fetchReviewRequestedMergeRequests.swift in Sources */,
 				8AE8A7262B989EFA002B3C9E /* TokenInformationView.swift in Sources */,
 				8AE8A7272B989EFA002B3C9E /* CIManualIcon.swift in Sources */,
 				8AE8A7282B989EFA002B3C9E /* CISuccessIcon.swift in Sources */,
+				8AE2742A2CC3DD060059244E /* MainContentView.swift in Sources */,
 				8AE8A72A2B989EFA002B3C9E /* ExpandHitBoxModifier.swift in Sources */,
 				8AE8A72B2B989EFA002B3C9E /* KeyedDecodingContainer.swift in Sources */,
 				8AE8A72C2B989EFA002B3C9E /* NetworkReachability.swift in Sources */,
+				8A111F332CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8AE8A72D2B989EFA002B3C9E /* MergeRequestLabelView.swift in Sources */,
 				8AE8A72E2B989EFA002B3C9E /* SettingsView.swift in Sources */,
 				8AB969142BDBC0FA0078E5CD /* WidgetLaunchPadRow.swift in Sources */,
 				8AE8A72F2B989EFA002B3C9E /* AddAccountView.swift in Sources */,
 				8AE8A7302B989EFA002B3C9E /* CIPreparingIcon.swift in Sources */,
 				8AE8A7312B989EFA002B3C9E /* NetworkManager+fetchProjects.swift in Sources */,
+				8A111F2C2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */,
 				8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */,
+				8AE274242CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8AB969112BDBC0EB0078E5CD /* MediumMergeRequestWidgetInterface.swift in Sources */,
 				8AE8A7322B989EFA002B3C9E /* NeedsReviewIcon.swift in Sources */,
+				8A111F4B2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8AB969262BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift in Sources */,
 				8AE8A7332B989EFA002B3C9E /* NoticeListView.swift in Sources */,
+				8A111F222CC1161500DEB0DD /* String.swift in Sources */,
 				8AE8A7342B989EFA002B3C9E /* LastUpdateMessageView.swift in Sources */,
 				8AE8A7352B989EFA002B3C9E /* DiscussionCountIcon.swift in Sources */,
 				8AE8A7362B989EFA002B3C9E /* CIRetryIcon.swift in Sources */,
@@ -1703,6 +1866,7 @@
 				8AE8A73B2B989EFA002B3C9E /* WebLink.swift in Sources */,
 				8AE8A73C2B989EFA002B3C9E /* NoticeMessage.swift in Sources */,
 				8AE8A73D2B989EFA002B3C9E /* RefreshStatus.swift in Sources */,
+				8A111F372CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
 				8AE8A73E2B989EFA002B3C9E /* CIJobsNotificationView.swift in Sources */,
 				8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */,
 				8A91E21A2CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
