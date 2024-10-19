@@ -31,26 +31,6 @@ struct MediumLaunchPadWidgetView: View {
             WrappingHStack {
                 WidgetLaunchPadRow(repos: repos, length: 6)
             }
-            
-            WrappingHStack {
-                WidgetLaunchPadRow(repos: repos, length: 5)
-            }
-            
-            WrappingHStack {
-                WidgetLaunchPadRow(repos: repos, length: 4)
-            }
-            
-            WrappingHStack {
-                WidgetLaunchPadRow(repos: repos, length: 3)
-            }
-            
-            WrappingHStack {
-                WidgetLaunchPadRow(repos: repos, length: 2)
-            }
-            
-            WrappingHStack {
-                WidgetLaunchPadRow(repos: repos, length: 1)
-            }
         }
     }
 }

@@ -41,21 +41,6 @@ struct LargeMergeRequestWidgetInterface: View {
                     accounts: accounts,
                     selectedView: selectedView
                 )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(4)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(3)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(3)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
             }
         }
         //        .fixedSize(horizontal: false, vertical: true)

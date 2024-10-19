@@ -24,8 +24,6 @@ struct ExtraLargeMergeRequestWidgetInterface: View {
                 WidgetLaunchPadRow(repos: repos, length: 5)
                 WidgetLaunchPadRow(repos: repos, length: 4)
                 WidgetLaunchPadRow(repos: repos, length: 3)
-                WidgetLaunchPadRow(repos: repos, length: 2)
-                WidgetLaunchPadRow(repos: repos, length: 1)
             }
 
             ViewThatFits(in: .vertical) {
@@ -51,21 +49,6 @@ struct ExtraLargeMergeRequestWidgetInterface: View {
                 )
                 MergeRequestList(
                     mergeRequests: Array(mergeRequests.prefix(5)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(4)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(3)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(3)),
                     accounts: accounts,
                     selectedView: selectedView
                 )
