@@ -13,6 +13,9 @@
     "%lld discussions" : {
 
     },
+    "^[%lld reviews requested](inflect: true)" : {
+
+    },
     "Account" : {
 
     },
@@ -79,6 +82,9 @@
     "Created at:" : {
 
     },
+    "Debug" : {
+
+    },
     "default widget view" : {
 
     },
@@ -91,7 +97,13 @@
     "Draft" : {
 
     },
+    "duration" : {
+
+    },
     "Enter token here..." : {
+
+    },
+    "Events are only recorded when debug window is open." : {
 
     },
     "Expires at:" : {
@@ -106,7 +118,7 @@
     "https://www.gitlab.com" : {
 
     },
-    "Last updated at: 19 September 2022 at 12:43" : {
+    "label" : {
 
     },
     "Last used at:" : {
@@ -118,6 +130,9 @@
     "Merge request approved" : {
 
     },
+    "Merge Requests you should review." : {
+
+    },
     "Merge Train 🚂" : {
 
     },
@@ -125,6 +140,12 @@
 
     },
     "Needs Review" : {
+
+    },
+    "Network Events" : {
+
+    },
+    "Open on Web" : {
 
     },
     "Quick access to your recently used Repositories" : {
@@ -139,10 +160,16 @@
     "Repo Launchpad" : {
 
     },
+    "Response" : {
+
+    },
     "Retry CI pipeline" : {
 
     },
     "Review requested" : {
+
+    },
+    "Review Requested Merge Requests" : {
 
     },
     "Revoked:" : {
@@ -154,6 +181,9 @@
     "Scopes:" : {
 
     },
+    "Search request data" : {
+
+    },
     "Settings" : {
 
     },
@@ -163,10 +193,16 @@
     "Skipped CI step" : {
 
     },
+    "status" : {
+
+    },
     "Submit" : {
 
     },
     "This %@ account will be removed immediatly. You can't undo this action." : {
+
+    },
+    "timestamp" : {
 
     },
     "Too much discussions" : {

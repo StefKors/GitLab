@@ -11,6 +11,9 @@
 "%lld discussions" = "%lld discussions";
 
 /* No comment provided by engineer. */
+"^[%lld reviews requested](inflect: true)" = "^[%lld reviews requested](inflect: true)";
+
+/* No comment provided by engineer. */
 "Account" = "Account";
 
 /* No comment provided by engineer. */
@@ -71,6 +74,9 @@
 "Created at:" = "Created at:";
 
 /* No comment provided by engineer. */
+"Debug" = "Debug";
+
+/* No comment provided by engineer. */
 "Delete" = "Delete";
 
 /* No comment provided by engineer. */
@@ -80,7 +86,13 @@
 "Draft" = "Draft";
 
 /* No comment provided by engineer. */
+"duration" = "duration";
+
+/* No comment provided by engineer. */
 "Enter token here..." = "Enter token here...";
+
+/* No comment provided by engineer. */
+"Events are only recorded when debug window is open." = "Events are only recorded when debug window is open.";
 
 /* No comment provided by engineer. */
 "Expires at:" = "Expires at:";
@@ -95,7 +107,7 @@
 "https://www.gitlab.com" = "https://www.gitlab.com";
 
 /* No comment provided by engineer. */
-"Last updated at: 19 September 2022 at 12:43" = "Last updated at: 19 September 2022 at 12:43";
+"label" = "label";
 
 /* No comment provided by engineer. */
 "Last used at:" = "Last used at:";
@@ -116,10 +128,19 @@
 "Needs Review" = "Needs Review";
 
 /* No comment provided by engineer. */
+"Network Events" = "Network Events";
+
+/* No comment provided by engineer. */
+"Open on Web" = "Open on Web";
+
+/* No comment provided by engineer. */
 "Quit" = "Quit";
 
 /* No comment provided by engineer. */
 "Remove %@" = "Remove %@";
+
+/* No comment provided by engineer. */
+"Response" = "Response";
 
 /* No comment provided by engineer. */
 "Retry CI pipeline" = "Retry CI pipeline";
@@ -137,6 +158,9 @@
 "Scopes:" = "Scopes:";
 
 /* No comment provided by engineer. */
+"Search request data" = "Search request data";
+
+/* No comment provided by engineer. */
 "Settings" = "Settings";
 
 /* No comment provided by engineer. */
@@ -146,10 +170,16 @@
 "Skipped CI step" = "Skipped CI step";
 
 /* No comment provided by engineer. */
+"status" = "status";
+
+/* No comment provided by engineer. */
 "Submit" = "Submit";
 
 /* No comment provided by engineer. */
 "This %@ account will be removed immediatly. You can't undo this action." = "This %@ account will be removed immediatly. You can't undo this action.";
+
+/* No comment provided by engineer. */
+"timestamp" = "timestamp";
 
 /* No comment provided by engineer. */
 "Too much discussions" = "Too much discussions";

@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Stef Kors on 29/07/2022.
 //
@@ -10,85 +10,61 @@ import Get
 import SwiftUI
 
 extension NetworkManager {
-     // func fetchLatestBranchPush() async {
-     // 
-     //    do {
-     //        let response: PushEvents = try await client.send(branchPushReq).value
-     // 
-     //        let pushedBranch = response.first(where: { event in
-     //            event.actionName == .pushedNew
-     //        })
-     // 
-     //        print(pushedBranch.debugDescription)
-     // 
-     //        // Check cached projects otherwise fetch project from API
-     //        if let projectID = pushedBranch?.projectID {
-     //            let hasCachedproject = targetProjectsDict["gid://gitlab/Project/\(projectID)"]
-     // 
-     //            if hasCachedproject.isNil {
-     //                // fetching because dict is empty
-     //                print("fetching because dict is empty")
-     //                await fetchProjects(ids: [projectID])
-     //            }
-     //        }
-     // 
-     //        let event = response.first(where: { event in
-     //            guard let createdAt = event.createdAt,
-     //                  let dateCreated = GitLabISO8601DateFormatter.date(from: createdAt),
-     //                  let dateCreatedPlusHour = Calendar.current.date(byAdding: .hour, value: 1, to: dateCreated) else { return false }
-     //            return event.actionName == .pushedNew && dateCreated < dateCreatedPlusHour
-     //        })
-     // 
-     //        if let event = event,
-     //           let project = targetProjectsDict["gid://gitlab/Project/\(event.projectID)"],
-     //           let projectName = project.name,
-     //           let branchRef = event.pushData?.ref,
-     //           let projectURL = project.webURL, let branchURL = URL(string: "\(projectURL.absoluteString)/-/tree/\(branchRef)"),
-     //           let createdAt = event.createdAt,
-     //           let date = GitLabISO8601DateFormatter.date(from: createdAt) {
-     //            let groupName = project.group?.fullName ?? project.namespace?.fullName ?? ""
-     //            print("creating notice")
-     //            let notice = NoticeMessage(
-     //                label: "You pushed to [\(branchRef)](\(branchURL)) at [\(groupName)/\(projectName)](\(projectURL))",
-     //                webLink: makeMRUrl(url: project.webURL, branchRef: branchRef),
-     //                type: .branch,
-     //                createdAt: date
-     //            )
-     // 
-     //            noticeState.addNotice(notice: notice)
-     //        }
-     // 
-     //    } catch APIError.unacceptableStatusCode(let statusCode) {
-     //        // Handle Bad GitLab Reponse
-     //        // let warningNotice = NoticeMessage(
-     //        //     label: "[Branch Push] Recieved \(statusCode) from API, data might be out of date",
-     //        //     statusCode: statusCode,
-     //        //     type: .warning
-     //        // )
-     //        // noticeState.addNotice(notice: warningNotice)
-     //    } catch {
-     //        // Handle Offline Notice
-     //        let isGitLabReachable = reachable(host: self.$baseURL.wrappedValue)
-     //        if isGitLabReachable == false {
-     //            let informationNotice = NoticeMessage(
-     //                label: "Unable to reach \(self.$baseURL.wrappedValue)",
-     //                type: .network
-     //            )
-     //            noticeState.addNotice(notice: informationNotice)
-     //            return
-     //        }
-     // 
-     //        print("\(Date.now) Fetch fetchLatestBranchPush failed with unexpected error: \(error).")
-     //    }
-    // }
+    func fetchLatestBranchPush(with account: Account, repos: [LaunchpadRepo]) async throws -> NoticeMessage? {
+        let req: Request<PushEvents> = Request.init(path: "/v4/events", query: [
+            ("after", getYesterdayDate()),
+            ("scope", "read_user"),
+            ("action", "pushed"),
+            ("private_token", account.token)
+        ])
+
+        let client = APIClient(baseURL: URL(string: "\(account.instance)/api"))
+
+        let response: PushEvents = try await client.send(req).value
+
+        let pushedBranch = response.first(where: { event in
+            event.actionName == .pushedNew
+        })
+
+        if let notice = eventToNotice(event: pushedBranch, repos: repos) {
+            return notice
+        }
+
+        return nil
+    }
 }
 
 extension NetworkManager {
+    fileprivate func getYesterdayDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        // yesterday
+        let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        return dateFormatter.string(from: date)
+    }
+
     fileprivate func makeMRUrl(url: URL?, branchRef: String) -> URL? {
         guard let url = url else {
             return nil
         }
         let fullURLPath = url.absoluteString + "/-/merge_requests/new?merge_request[source_branch]=" + branchRef
         return URL(string: fullURLPath)
+    }
+
+    fileprivate func eventToNotice(event: PushEvent?, repos: [LaunchpadRepo]) -> NoticeMessage? {
+        guard let event,
+              let project = repos.first(where: { $0.id == "gid://gitlab/Project/\(event.projectID)" }),
+              let branchRef = event.pushData?.ref,
+              let branchURL = URL(string: "\(project.url.absoluteString)/-/tree/\(branchRef)"),
+              let createdAt = event.createdAt,
+              let date = GitLabISO8601DateFormatter.date(from: createdAt) else {
+            return nil
+        }
+        return NoticeMessage(
+            label: "You pushed to [\(branchRef)](\(branchURL)) at [\(project.group)/\(project.name)](\(project.url))",
+            webLink: makeMRUrl(url: project.url, branchRef: branchRef),
+            type: .branch,
+            createdAt: date
+        )
     }
 }

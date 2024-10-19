@@ -31,7 +31,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-               BuildableName = "GitLab.app"
+               BuildableName = "Merge Requests for GitLab.app"
                BlueprintName = "GitLab"
                ReferencedContainer = "container:GitLab.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-            BuildableName = "GitLab.app"
+            BuildableName = "Merge Requests for GitLab.app"
             BlueprintName = "GitLab"
             ReferencedContainer = "container:GitLab.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-            BuildableName = "GitLab.app"
+            BuildableName = "Merge Requests for GitLab.app"
             BlueprintName = "GitLab"
             ReferencedContainer = "container:GitLab.xcodeproj">
          </BuildableReference>

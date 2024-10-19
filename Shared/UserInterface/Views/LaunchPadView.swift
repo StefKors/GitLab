@@ -18,10 +18,10 @@ struct LaunchpadView: View {
                 }
                 Spacer()
             }
-            .scrollBounceBehavior(.basedOnSize)
         }
+        .scrollBounceBehavior(.basedOnSize)
         .scrollClipDisabled()
         .scrollIndicators(.hidden)
-        .padding(.leading)
+//        .padding(.leading)
     }
 }

@@ -10,6 +10,7 @@ import SwiftData
 
 enum GitProvider: String, Codable, CaseIterable {
     case GitLab
+    case GitHub
 }
 
 @Model final class Account {
@@ -31,5 +32,6 @@ enum GitProvider: String, Codable, CaseIterable {
 }
 
 extension Account {
-    static let preview = Account(token: "sdflkjdsfkljdsflkj", instance: "https://gitlab.com")
+    static let preview = Account(token: "sdflkjdsfkljdsflkj", instance: "https://gitlab.com", provider: .GitLab)
+    static let previewGitHub = Account(token: "sdflkjdsfkljdsflkj", instance: "https://github.com", provider: .GitHub)
 }

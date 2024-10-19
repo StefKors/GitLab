@@ -53,6 +53,7 @@ struct AutoSizingWebLinks: View {
 
         }
         .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
+        .buttonStyle(.plain)
     }
 
     //    var body: some View {

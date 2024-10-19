@@ -12,55 +12,53 @@ struct LargeMergeRequestWidgetInterface: View {
     var accounts: [Account]
     var repos: [LaunchpadRepo]
     var selectedView: QueryType
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             ViewThatFits(in: .vertical) {
-                ViewThatFits {
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(9)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(8)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(7)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(6)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(5)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(4)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(3)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                    MergeRequestList(
-                        mergeRequests: Array(mergeRequests.prefix(3)),
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
-                }
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(9)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(8)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(7)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(6)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(5)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(4)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(3)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
+                MergeRequestList(
+                    mergeRequests: Array(mergeRequests.prefix(3)),
+                    accounts: accounts,
+                    selectedView: selectedView
+                )
             }
         }
-//        .fixedSize(horizontal: false, vertical: true)
+        //        .fixedSize(horizontal: false, vertical: true)
         .frame(alignment: .top)
     }
 }

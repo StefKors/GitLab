@@ -17,10 +17,13 @@ struct PlainMergeRequestList: View {
     var body: some View {
         ForEach(mergeRequests, id: \.id) { mergeRequest in
             MergeRequestRowView(MR: mergeRequest)
-                .listRowSeparator(.visible)
-                .listRowSeparatorTint(Color.secondary.opacity(0.2))
+                .transition(.opacity)
+//                .listRowSeparator(.visible)
+//                .listRowSeparatorTint(Color.secondary.opacity(0.2))
             if mergeRequest != lastMR {
                 Divider()
+                    .padding(.horizontal, 4)
+                    .transition(.opacity)
             }
         }
     }

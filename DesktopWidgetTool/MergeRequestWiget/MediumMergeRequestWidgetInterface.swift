@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WidgetKit
 
 struct MediumMergeRequestWidgetInterface: View {
     var mergeRequests: [MergeRequest]
@@ -14,32 +13,68 @@ struct MediumMergeRequestWidgetInterface: View {
     var repos: [LaunchpadRepo]
     var selectedView: QueryType
 
+    private var filteredMRs: [MergeRequest] {
+        if selectedView == .reviewRequestedMergeRequests {
+            return mergeRequests.filter { mr in
+                mr.approvedBy?.edges?.count == 0
+            }
+        }
+
+        return mergeRequests
+    }
+
+    private var providers: [GitProvider] {
+        Array(Set(accounts.map(\.provider)))
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 2) {
-                Image(.mergeRequest).resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 20)
-                Text(mergeRequests.count.description)
+            HStack(alignment: .center, spacing: 6) {
+                if selectedView == .reviewRequestedMergeRequests {
+                    Text(Image(.mergeRequest))
+                    Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
+                }
+
+                if selectedView == .authoredMergeRequests {
+                    Text(Image(.branch))
+                    Text("^[\(mergeRequests.count) merge requests](inflect: true)")
+                }
             }
-            .font(.largeTitle)
 
-            VStack(alignment: .leading, spacing: 2) {
-                ForEach(mergeRequests, id: \.id) { MR in
-                    HStack(alignment: .top, spacing: 4) {
-                        GitProviderView(provider: MR.account?.provider)
-                            .frame(width: 18, height: 18, alignment: .center)
-
-                        TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl, weight: .regular)
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(1)
-                            .truncationMode(.tail)
-                    }
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { MR in
+                    WidgetMRRowIcon(MR: MR, providers: providers)
                 }
             }
         }
         .frame(alignment: .top)
     }
+}
+
+
+#Preview {
+    VStack {
+        GroupBox {
+            MediumMergeRequestWidgetInterface(
+                mergeRequests: [.preview, .preview, .preview3, .preview2],
+                accounts: [.preview],
+                repos: [],
+                selectedView: .reviewRequestedMergeRequests
+            )
+            .padding(20)
+        }
+
+        GroupBox {
+            MediumMergeRequestWidgetInterface(
+                mergeRequests: [.preview, .previewGithub, .preview3, .preview2],
+                accounts: [.preview, .previewGitHub],
+                repos: [],
+                selectedView: .authoredMergeRequests
+            )
+            .padding(20)
+        }
+    }
+    .scenePadding()
 }
 
 
@@ -52,3 +87,4 @@ struct MediumMergeRequestWidgetInterface: View {
         selectedView: .authoredMergeRequests
     )
 }
+

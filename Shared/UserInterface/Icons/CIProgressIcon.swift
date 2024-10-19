@@ -9,15 +9,16 @@ import SwiftUI
 
 struct CIProgressIcon: View {
     private let animation = Animation.linear(duration: 2.0).repeatForever(autoreverses: false)
-    @State var isAtMaxScale = false
-    
+    @State private var isAtMaxScale = false
+    @State private var firstLaunch = true
+
     var body: some View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 2.0)
                 .opacity(0.3)
                 .foregroundColor(.accentColor)
-            
+
             Circle()
                 .trim(from: 0.0, to: .pi/10)
                 .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, lineJoin: .round))
@@ -27,10 +28,14 @@ struct CIProgressIcon: View {
         }
         .frame(width: 16, height: 16)
         .rotationEffect(Angle(degrees: self.isAtMaxScale ? 360.0 : 0.0))
-        .onAppear {
-            withAnimation(self.animation, {
-                self.isAtMaxScale.toggle()
-            })
+        .task(id: "once") {
+            // avoid animation from triggering itself again
+            if firstLaunch {
+                self.firstLaunch = false
+                withAnimation(self.animation, {
+                    self.isAtMaxScale.toggle()
+                })
+            }
         }
         .padding(1)
         .help(String(localized: "CI in progress"))

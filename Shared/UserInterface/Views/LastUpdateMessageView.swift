@@ -9,31 +9,36 @@ import SwiftUI
 
 struct LastUpdateMessageView: View {
     var body: some View {
-        HStack {
-            Spacer()
+        VStack(spacing: 0) {
+            Divider()
+
+            HStack {
+                Spacer()
 
 #if os(macOS)
-            if #available(macOS 14.0, *) {
-                SettingsLink {
-                    Label("Settings", systemImage: "gear")
+                if #available(macOS 14.0, *) {
+                    SettingsLink {
+                        Label("Settings", systemImage: "gear")
+                    }
+                    .buttonStyle(.menubar)
+                } else {
+                    Button(action: openSettings, label: {
+                        Label("Settings", systemImage: "gear")
+                    })
+                    .buttonStyle(.menubar)
                 }
-                .buttonStyle(.menubar)
-            } else {
-                Button(action: openSettings, label: {
-                    Label("Settings", systemImage: "gear")
+                Button(action: quitApp, label: {
+                    Text("Quit")
                 })
                 .buttonStyle(.menubar)
-            }
-            Button(action: quitApp, label: {
-                Text("Quit")
-            })
-            .buttonStyle(.menubar)
 #endif
+            }
+            .font(.system(size: 10))
+            .padding(.vertical, 6)
+            .padding(.horizontal, 6)
+//            .padding(.top, 4)
         }
-        .font(.system(size: 10))
-        .padding(.bottom)
-        .padding(.horizontal)
-        .padding(.top, 4)
+        .background(.thinMaterial)
     }
 
     func openSettings() {

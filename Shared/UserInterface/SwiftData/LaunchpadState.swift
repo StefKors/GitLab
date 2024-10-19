@@ -64,4 +64,13 @@ import SwiftData
         try container.encode(self.group, forKey: LaunchpadRepo.CodingKeys.group)
         try container.encode(self.url, forKey: LaunchpadRepo.CodingKeys.url)
     }
+
+    static let preview = LaunchpadRepo(
+        id: "uuid",
+        name: "GitLab",
+        image: .previewRepoImage,
+        group: "StefKors",
+        url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
+        hasUpdatedSinceLaunch: false
+    )
 }

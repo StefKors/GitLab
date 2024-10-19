@@ -7,27 +7,7 @@
 
 import SwiftUI
 import SwiftData
-
-struct NetworkEvent: Identifiable {
-    let status: Int
-    let label: String
-    let timestamp: Date = .now
-    let id: UUID = UUID()
-}
-
-class NetworkState: ObservableObject {
-    @Published var events: [NetworkEvent] = []
-
-    func success(label: String) {
-        let event = NetworkEvent(status: 200, label: label)
-        events.append(event)
-    }
-
-    func fail(label: String) {
-        let event = NetworkEvent(status: 404, label: label)
-        events.append(event)
-    }
-}
+import Get
 
 /// TODO: Show different accounts
 /// TODO: Show different git providers (GL / GH)
@@ -39,159 +19,215 @@ class NetworkState: ObservableObject {
 /// TODO: Split networking
 struct UserInterface: View {
     @Environment(\.modelContext) private var modelContext
-
+    
     @Query private var mergeRequests: [MergeRequest]
     @Query private var accounts: [Account]
     @Query private var repos: [LaunchpadRepo]
-
+    
     @State private var selectedView: QueryType = .authoredMergeRequests
-
+    
     @State private var timelineDate: Date = .now
-    let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
-
-    @StateObject private var networkState: NetworkState = .init()
-
-    var filteredMergeRequests: [MergeRequest] {
+    private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+    
+    @EnvironmentObject private var noticeState: NoticeState
+    @EnvironmentObject private var networkState: NetworkState
+    
+    private var filteredMergeRequests: [MergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
     }
-
+    
     var body: some View {
-        HStack(alignment: .top) {
-//            TimelineView(.periodic(from: timelineDate, by: 12)) { context in
-                VStack(alignment: .center, spacing: 10) {
-                    Picker(selection: $selectedView, content: {
-                        Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
-                        Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
-                    }, label: {
-                        EmptyView()
-                    })
-                    .pickerStyle(.segmented)
-                    .padding(.horizontal)
-                    .padding(.top)
-                    .padding(.bottom, 0)
-
-                    LaunchpadView(repos: repos)
-
-                    // Disabled in favor for real notifications?
-                    NoticeListView()
-                        .padding(.horizontal)
-
-                        VStack(alignment: .leading) {
-                            MergeRequestList(
-                                mergeRequests: filteredMergeRequests.reversed(),
-                                accounts: accounts,
-                                selectedView: selectedView
-                            )
-                            Spacer()
-                        }
-                        .padding(.horizontal)
-                        .scrollBounceBehavior(.basedOnSize)
-
-                    if accounts.isEmpty {
-                        BaseTextView(message: "Setup your accounts in the settings")
-                    } else if filteredMergeRequests.isEmpty {
-                        BaseTextView(message: "All done 🥳")
-                            .foregroundStyle(.secondary)
-                    }
-
-                    LastUpdateMessageView()
-                }
-
-                .onReceive(timer) { time in
-                    timelineDate = .now
-                    Task {
-                        await fetchReviewRequestedMRs()
-                        await fetchAuthoredMRs()
-                        await fetchRepos()
-                    }
-                }
+        VStack(alignment: .center, spacing: 10) {
+            Picker(selection: $selectedView, content: {
+                Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
+                Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
+#if DEBUG
+                Text("Debug").tag(QueryType.networkDebug)
+#endif
+            }, label: {
+                EmptyView()
+            })
+            .pickerStyle(.segmented)
+            .padding(.horizontal, 6)
+            .padding(.top, 6)
+            .padding(.bottom, 0)
+            
+            if selectedView == .networkDebug {
+                NetworkStateView()
+            } else {
+                MainContentView(
+                    repos: repos,
+                    filteredMergeRequests: filteredMergeRequests,
+                    accounts: accounts,
+                    selectedView: $selectedView
+                )
+            }
+        }
+        
+        .frame(maxHeight: .infinity, alignment: .top)
+        .onChange(of: selectedView) { _, newValue in
+            if newValue == .networkDebug {
+                networkState.record = true
+            } else {
+                networkState.record = false
+            }
+        }
+        .task(id: "once") {
+            Task {
+                await fetchReviewRequestedMRs()
+                await fetchAuthoredMRs()
+                await fetchRepos()
+                await branchPushes()
+            }
+        }
+        .onReceive(timer) { time in
+            timelineDate = .now
+            Task {
+                await fetchReviewRequestedMRs()
+                await fetchAuthoredMRs()
+                await fetchRepos()
+                await branchPushes()
+            }
         }
     }
-
+    
     /// TODO: Cleanup and move both into the same function
     @MainActor
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
-            do {
-                let results = try await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)?.map { mr in
+            let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
+            let results = await wrapRequest(info: info) {
+                try await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)?.map { mr in
                     mr.account = account
                     mr.type = .reviewRequestedMergeRequests
                     return mr
                 }
-                if let results {
-//                    results.map { mr in
-//                        mr.reference
-//                    }
-                    // TODO: track fetch request history
-//                    networkState.success(label: "fetched \(results.)")
-                    removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
-                }
-            } catch {
-
+            }
+            
+            if let results {
+                removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
             }
         }
     }
-
+    
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
-            let results: [MergeRequest] = ((try? await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)) ?? []).map { mr in
-                mr.account = account
-                mr.type = .authoredMergeRequests
-                return mr
+            let info = NetworkInfo(label: "Fetch Authored Merge Requests", account: account, method: .get)
+            let results = await wrapRequest(info: info) {
+                try await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)?.map { mr in
+                    mr.account = account
+                    mr.type = .authoredMergeRequests
+                    return mr
+                }
             }
-            removeAndInsertMRs(.authoredMergeRequests, account: account, results: results)
+            
+            if let results {
+                removeAndInsertMRs(.authoredMergeRequests, account: account, results: results)
+            }
         }
     }
-
+    
     private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
         print("inserting \(results.count) merge requests \(type.rawValue)")
         let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
         let updated = results.map { $0.mergerequestID }
         let difference = existing.difference(from: updated)
-
+        
         for mergeRequest in account.mergeRequests {
             if difference.contains(mergeRequest.mergerequestID) {
                 modelContext.delete(mergeRequest)
             }
         }
-
-//        DispatchQueue.main.async {
-            for result in results {
-                modelContext.insert(result)
-            }
-            try? modelContext.save()
-//        }
+        
+        for result in results {
+            modelContext.insert(result)
+        }
+        try? modelContext.save()
     }
-
+    
     @MainActor
     private func fetchRepos() async {
         for account in accounts {
-            let ids = mergeRequests.compactMap { mr in
+            let ids = Array(Set(mergeRequests.compactMap { mr in
                 return mr.targetProject?.id.split(separator: "/").last
-            }.compactMap({ Int($0) })
-
-            let results = try? await NetworkManager.shared.fetchProjects(with: account, ids: Array(Set(ids)))
-
-            // DispatchQueue due to SwiftData issues
-            DispatchQueue.main.async {
-                if let results {
-                    for result in results {
-                        withAnimation {
-                            modelContext.insert(result)
-                        }
-                    }
+            }.compactMap({ Int($0) })))
+            
+            let info = NetworkInfo(label: "Fetch Projects \(ids)", account: account, method: .get)
+            let results = await wrapRequest(info: info) {
+                try await NetworkManager.shared.fetchProjects(with: account, ids: ids)
+            }
+            
+            if let results {
+                for result in results {
+                    modelContext.insert(result)
                 }
                 try? modelContext.save()
             }
         }
     }
+    
+    @MainActor
+    private func branchPushes() async {
+        for account in accounts {
+            let info = NetworkInfo(label: "Branch Push", account: account, method: .get)
+            let notice = await wrapRequest(info: info) {
+                try await NetworkManager.shared.fetchLatestBranchPush(with: account, repos: repos)
+            }
+            
+            if let notice {
+                noticeState.addNotice(notice: notice)
+            }
+        }
+    }
+    
+    @MainActor
+    private func wrapRequest<T>(info: NetworkInfo, do request: () async throws -> T?) async -> T? {
+        let event = NetworkEvent(info: info, status: nil, response: nil)
+        networkState.add(event)
+        do {
+            let result = try await request()
+            event.status = 200
+            event.response = result.debugDescription
+            networkState.update(event)
+            return result
+        } catch APIError.unacceptableStatusCode(let statusCode) {
+            event.status = statusCode
+            event.response = "Unacceptable Status Code: \(statusCode)"
+            networkState.update(event)
+        } catch let error {
+            event.status = 0
+            event.response = error.localizedDescription
+            networkState.update(event)
+        }
+        
+        return nil
+        
+    }
+}
+
+
+public protocol OptionalType: ExpressibleByNilLiteral {
+    associatedtype WrappedType
+    var asOptional: WrappedType? { get }
+}
+
+extension Optional: OptionalType {
+    public var asOptional: Wrapped? {
+        return self
+    }
 }
 
 #Preview {
-    UserInterface()
-        .modelContainer(.previews)
-        .environmentObject(NoticeState())
+    HStack(alignment: .top) {
+        UserInterface()
+            .modelContainer(.previews)
+            .environmentObject(NoticeState())
+            .environmentObject(NetworkState())
+            .frame(maxHeight: .infinity, alignment: .top)
+            .scenePadding()
+    }
+    .scenePadding()
 }
 
 

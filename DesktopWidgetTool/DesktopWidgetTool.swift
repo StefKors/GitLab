@@ -12,6 +12,8 @@ import SwiftData
 // Interactions & open link from widgets https://stackoverflow.com/a/77190038/3199999
 
 struct Provider: TimelineProvider {
+    var selectedView: QueryType
+
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(
             date: Date(),
@@ -22,11 +24,14 @@ struct Provider: TimelineProvider {
         )
     }
 
+    init(selectedView: QueryType) {
+        self.selectedView = selectedView
+    }
+
     // TODO: demo data? or at placeholder?
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         Task { @MainActor in
             let now = Date.now
-            let selectedView: QueryType = .authoredMergeRequests
 
             let context = ModelContainer.shared.mainContext
 
@@ -36,7 +41,7 @@ struct Provider: TimelineProvider {
 
             let entry =   SimpleEntry(
                 date: now,
-                mergeRequests: Array(mergeRequests.prefix(5)),
+                mergeRequests: mergeRequests, //Array(mergeRequests.prefix(5)),
                 accounts: accounts,
                 repos: repos,
                 selectedView: selectedView
@@ -50,7 +55,6 @@ struct Provider: TimelineProvider {
             var entries: [SimpleEntry] = []
 
             let now = Date.now
-            let selectedView: QueryType = .authoredMergeRequests
 
             let context = ModelContainer.shared.mainContext
 
@@ -76,7 +80,7 @@ struct Provider: TimelineProvider {
             entries.append(
                 SimpleEntry(
                     date: now,
-                    mergeRequests: Array(mergeRequests.prefix(5)),
+                    mergeRequests: mergeRequests, //Array(mergeRequests.prefix(5)),
                     accounts: accounts,
                     repos: repos,
                     selectedView: selectedView
@@ -109,9 +113,9 @@ extension SimpleEntry {
     )
 }
 
-struct MergeRequestWidget: Widget {
+struct AuthoredMergeRequestWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "DesktopWidgetTool", provider: Provider()) { entry in
+        StaticConfiguration(kind: "AuthoredMergeRequestWidget", provider: Provider(selectedView: .authoredMergeRequests)) { entry in
             MergeRequestWidgetEntryView(entry: entry)
                 .frame(maxHeight: .infinity, alignment: .top)
                 .containerBackground(.thickMaterial, for: .widget)
@@ -123,18 +127,24 @@ struct MergeRequestWidget: Widget {
     }
 }
 
-/// MacOS widget support for previews is non existent
-#Preview("widget",
-         as: .systemMedium,
-         widget:{
-    MergeRequestWidget()
-}) {
-    Provider()
+struct ReviewRequestedMergeRequestWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "ReviewRequestedMergeRequestWidget", provider: Provider(selectedView: .reviewRequestedMergeRequests)) { entry in
+            MergeRequestWidgetEntryView(entry: entry)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .containerBackground(.thickMaterial, for: .widget)
+                .isInWidget(true)
+        }
+        .configurationDisplayName("Review Requested Merge Requests")
+        .description("Merge Requests you should review.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+    }
 }
+
 
 struct LaunchPadWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "LaunchpadWidget", provider: Provider()) { entry in
+        StaticConfiguration(kind: "LaunchpadWidget", provider: Provider(selectedView: .authoredMergeRequests)) { entry in
             LaunchPadWidgetEntryView(entry: entry)
                 .frame(maxHeight: .infinity, alignment: .top)
                 .containerBackground(.thickMaterial, for: .widget)

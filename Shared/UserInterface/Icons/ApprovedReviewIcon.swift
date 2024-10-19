@@ -13,57 +13,105 @@ typealias PlatformImage = NSImage
 
 import SwiftUI
 
-
 struct ApprovedReviewIcon: View {
     var approvedBy: [Author]
     var account: Account?
 
-    var instance: String {
+    private var instance: String {
         account?.instance ?? "https://gitlab.com"
     }
 
+    @State private var isHovering: Bool = false
+
     var largeView: some View {
-        HStack {
-            Text("Approved")
-            HStack(spacing: -4) {
-                ForEach(approvedBy, id: \.id, content: { author in
-                    UserAvatarView(author: author, account: account)
-                })
-            }
+        HStack() {
+            Image(systemName: "checkmark")
+                .font(.system(size: 9, weight: .semibold))
+                .help(String(localized: "Merge request approved"))
+                .clipShape(Rectangle())
+                .padding(.vertical, 2)
+
+
+                HStack {
+                    Text("Approved")
+                        .fixedSize()
+                    HStack(spacing: -4) {
+                        ForEach(approvedBy, id: \.id, content: { author in
+                            UserAvatarView(author: author, account: account)
+                        })
+                    }
+                }
+                    .font(.system(size: 11, weight: .regular))
+                    .transition(
+                        .opacity
+                            .combined(with: .scale(0, anchor: .leading)
+                                .animation(.snappy.delay(0.1))
+                                .combined(with: .blurReplace)
+                            )
+                            .animation(.snappy)
+                    )
+
         }
-        .font(.system(size: 11))
-        .foregroundColor(.green)
-        .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 2))
-        .overlay(
+        .foregroundColor(.green.mix(with: .black, by: 0.2))
+        .padding(.leading, 6)
+        .padding(.trailing, 2)
+        .padding(.vertical, 2)
+        .background(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.green, lineWidth: 2)
-                .opacity(0.3)
+                .fill(Color.green)
+                .opacity(0.2)
         )
-        .padding(1)
+        .onHover(perform: { state in
+            withAnimation(.snappy) {
+                isHovering = state
+            }
+        })
         .help(String(localized: "Merge request approved"))
     }
 
     /// TODO: Diff in style from CI completed check circle
     var smallView: some View {
-        Image(systemName: "checkmark.circle")
+        Image(systemName: "checkmark")
             .symbolRenderingMode(.hierarchical)
-            .foregroundColor(.green)
-            .font(.system(size: 18))
+            .foregroundColor(.green.mix(with: .black, by: 0.2))
+            .padding(4)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.green)
+                    .opacity(0.2)
+            )
+            .font(.system(size: 10, weight: .semibold))
             .help(String(localized: "Merge request approved"))
             .clipShape(Rectangle())
         //        .frame(width: 20, height: 20)
     }
 
     var body: some View {
-        ViewThatFits {
-            largeView
-
-            smallView
-        }
+        largeView
+//        ViewThatFits {
+//            largeView
+//
+//            smallView
+//        }
 
     }
 }
 
 #Preview {
-    ApprovedReviewIcon(approvedBy: [.preview], account: .preview)
+    VStack {
+
+        ApprovedReviewIcon(approvedBy: [.preview], account: .preview)
+            .scenePadding()
+
+        GroupBox {
+            HStack {
+                ApprovedReviewIcon(approvedBy: [.preview], account: .preview)
+                    .scenePadding()
+
+                Text("title")
+            }
+            .frame(maxWidth: 100)
+        }
+    }
+    .scenePadding()
 }

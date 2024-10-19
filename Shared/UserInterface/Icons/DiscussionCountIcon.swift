@@ -13,18 +13,18 @@ struct DiscussionCountIcon: View {
         if let count = count, count > 1 {
             if count <= 50 {
                 HStack(spacing: 2) {
-                    Image(systemName: "bubble.left.and.bubble.right")
+                    Text(Image(systemName: "bubble.left.and.bubble.right"))
                         .symbolRenderingMode(.hierarchical)
-                        .font(.system(size: 14))
                     Text("\(count)")
-                        .font(.system(size: 12))
+
                         .help(String(localized: "\(count) discussions"))
                 }
+                .font(.system(size: 12))
             } else {
-                Image(systemName: "gift.circle")
+                Text(Image(systemName: "gift.circle"))
                     .symbolRenderingMode(.hierarchical)
-                    .font(.system(size: 18))
                     .help(String(localized: "Too much discussions"))
+                    .font(.system(size: 12))
             }
         }
     }
