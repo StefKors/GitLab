@@ -19,29 +19,31 @@ import Get
 /// TODO: Split networking
 struct UserInterface: View {
     @Environment(\.modelContext) private var modelContext
-
+    
     @Query private var mergeRequests: [MergeRequest]
     @Query private var accounts: [Account]
     @Query private var repos: [LaunchpadRepo]
-
+    
     @State private var selectedView: QueryType = .authoredMergeRequests
-
+    
     @State private var timelineDate: Date = .now
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
-
+    
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
-
+    
     private var filteredMergeRequests: [MergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
     }
-
+    
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
             Picker(selection: $selectedView, content: {
                 Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
                 Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
+#if DEBUG
                 Text("Debug").tag(QueryType.networkDebug)
+#endif
             }, label: {
                 EmptyView()
             })
@@ -49,8 +51,7 @@ struct UserInterface: View {
             .padding(.horizontal, 6)
             .padding(.top, 6)
             .padding(.bottom, 0)
-
-
+            
             if selectedView == .networkDebug {
                 NetworkStateView()
             } else {
@@ -62,7 +63,7 @@ struct UserInterface: View {
                 )
             }
         }
-
+        
         .frame(maxHeight: .infinity, alignment: .top)
         .onChange(of: selectedView) { _, newValue in
             if newValue == .networkDebug {
@@ -89,7 +90,7 @@ struct UserInterface: View {
             }
         }
     }
-
+    
     /// TODO: Cleanup and move both into the same function
     @MainActor
     private func fetchReviewRequestedMRs() async {
@@ -102,13 +103,13 @@ struct UserInterface: View {
                     return mr
                 }
             }
-
+            
             if let results {
                 removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
             }
         }
     }
-
+    
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
@@ -120,43 +121,43 @@ struct UserInterface: View {
                     return mr
                 }
             }
-
+            
             if let results {
                 removeAndInsertMRs(.authoredMergeRequests, account: account, results: results)
             }
         }
     }
-
+    
     private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
         print("inserting \(results.count) merge requests \(type.rawValue)")
         let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
         let updated = results.map { $0.mergerequestID }
         let difference = existing.difference(from: updated)
-
+        
         for mergeRequest in account.mergeRequests {
             if difference.contains(mergeRequest.mergerequestID) {
                 modelContext.delete(mergeRequest)
             }
         }
-
+        
         for result in results {
             modelContext.insert(result)
         }
         try? modelContext.save()
     }
-
+    
     @MainActor
     private func fetchRepos() async {
         for account in accounts {
             let ids = Array(Set(mergeRequests.compactMap { mr in
                 return mr.targetProject?.id.split(separator: "/").last
             }.compactMap({ Int($0) })))
-
+            
             let info = NetworkInfo(label: "Fetch Projects \(ids)", account: account, method: .get)
             let results = await wrapRequest(info: info) {
                 try await NetworkManager.shared.fetchProjects(with: account, ids: ids)
             }
-
+            
             if let results {
                 for result in results {
                     modelContext.insert(result)
@@ -165,7 +166,7 @@ struct UserInterface: View {
             }
         }
     }
-
+    
     @MainActor
     private func branchPushes() async {
         for account in accounts {
@@ -173,13 +174,13 @@ struct UserInterface: View {
             let notice = await wrapRequest(info: info) {
                 try await NetworkManager.shared.fetchLatestBranchPush(with: account, repos: repos)
             }
-
+            
             if let notice {
                 noticeState.addNotice(notice: notice)
             }
         }
     }
-
+    
     @MainActor
     private func wrapRequest<T>(info: NetworkInfo, do request: () async throws -> T?) async -> T? {
         let event = NetworkEvent(info: info, status: nil, response: nil)
@@ -199,9 +200,9 @@ struct UserInterface: View {
             event.response = error.localizedDescription
             networkState.update(event)
         }
-
+        
         return nil
-
+        
     }
 }
 
