@@ -39,7 +39,7 @@ struct Provider: TimelineProvider {
                 try? context.fetch(
                     FetchDescriptor<MergeRequest>(
                         predicate: nil,
-                        sortBy: [.init(\.createdAt)]
+                        sortBy: [.init(\.createdAt, order: .reverse)]
                     )
                 )
             ) ?? []
@@ -69,7 +69,7 @@ struct Provider: TimelineProvider {
                 try? context.fetch(
                     FetchDescriptor<MergeRequest>(
                         predicate: nil,
-                        sortBy: [.init(\.createdAt)]
+                        sortBy: [.init(\.createdAt, order: .reverse)]
                     )
                 )
             ) ?? []

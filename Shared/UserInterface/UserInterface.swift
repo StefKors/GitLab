@@ -20,7 +20,7 @@ import Get
 struct UserInterface: View {
     @Environment(\.modelContext) private var modelContext
     
-    @Query(sort: \MergeRequest.createdAt) private var mergeRequests: [MergeRequest]
+    @Query(sort: \MergeRequest.createdAt, order: .reverse) private var mergeRequests: [MergeRequest]
 //    @Query private var mergeRequests: [MergeRequest]
     @Query private var accounts: [Account]
     @Query private var repos: [LaunchpadRepo]

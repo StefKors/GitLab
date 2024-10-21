@@ -36,7 +36,7 @@ struct MainContentView: View {
             } else {
                 VStack(alignment: .leading) {
                     MergeRequestList(
-                        mergeRequests: filteredMergeRequests.reversed(),
+                        mergeRequests: filteredMergeRequests,
                         accounts: accounts,
                         selectedView: selectedView
                     )
