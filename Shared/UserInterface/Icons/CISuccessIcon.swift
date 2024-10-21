@@ -11,7 +11,7 @@ struct CISuccessIcon: View {
     var body: some View {
         Image(systemName: "checkmark.circle")
             .foregroundStyle(.green)
-            .font(.system(size: 18))
+            .font(.system(size: 16))
             .help(String(localized: "CI Success"))
             .clipShape(Rectangle())
     }

@@ -210,6 +210,11 @@ extension Jobs {
         JobsEdge(node: .previewTestPending1),
         JobsEdge(node: .previewTestPending2)
     ])
+
+    static let previewSuccess = Jobs(edges: [
+        JobsEdge(node: .preview),
+        JobsEdge(node: .preview)
+    ])
 }
 
 // MARK: - FluffyNode
@@ -234,26 +239,61 @@ extension FluffyNode {
     //     name: "Test",
     //     jobs: .previewBuildJobs
     // )
-    
+
+    static let previewFailed = FluffyNode(
+        id: "id-id-id-1",
+        status: .failed,
+        name: "Deploy",
+        jobs: .previewBuildJobs
+    )
+
     static let previewBuild = FluffyNode(
-        id: "id-id-id",
-        status: .running,
+        id: "id-id-id-2",
+        status: .pending,
         name: "Build",
         jobs: .previewBuildJobs
     )
     
     static let previewTest = FluffyNode(
-        id: "id-id-id",
+        id: "id-id-id-3",
         status: .running,
         name: "Test",
         jobs: .previewTestJobs
     )
     
     static let previewNoChildren = FluffyNode(
-        id: "id-id-id",
+        id: "id-id-id-4",
         status: .success,
-        name: "Build",
+        name: "playwright",
         jobs: nil
+    )
+
+    static let previewSkipped = FluffyNode(
+        id: "id-id-id-5",
+        status: .skipped,
+        name: "jest",
+        jobs: .previewBuildJobs
+    )
+
+    static let previewSuccess = FluffyNode(
+        id: "id-id-id-6",
+        status: .success,
+        name: "e2e test",
+        jobs: .previewSuccess
+    )
+
+    static let previewSuccess2 = FluffyNode(
+        id: "id-id-id-7",
+        status: .success,
+        name: "production deployment",
+        jobs: .previewSuccess
+    )
+
+    static let previewSuccess3 = FluffyNode(
+        id: "id-id-id-8",
+        status: .success,
+        name: "staging deployment",
+        jobs: .previewSuccess
     )
 }
 
@@ -270,6 +310,22 @@ struct Stages: Codable, Equatable {
 extension Stages {
     static let previewParent = Stages(edges: [StagesEdge(node: .previewTest)])
     static let previewChild = Stages(edges: [StagesEdge(node: .previewNoChildren)])
+    static let previewMultiple = Stages(
+        edges: [
+            StagesEdge(node: .previewTest),
+            StagesEdge(node: .previewBuild),
+            StagesEdge(node: .previewSkipped),
+            StagesEdge(node: .previewFailed)
+        ]
+    )
+
+    static let previewMultipleSuccess = Stages(
+        edges: [
+            StagesEdge(node: .previewSuccess),
+            StagesEdge(node: .previewSuccess2),
+            StagesEdge(node: .previewSuccess3)
+        ]
+    )
 }
 
 // MARK: - HeadPipeline
@@ -332,6 +388,46 @@ extension Stages {
         self.detailedStatus = try container.decodeIfPresent(DetailedStatus.self, forKey: .detailedStatus)
         self.mergeRequestEventType = try container.decodeIfPresent(MergeRequestEventType.self, forKey: .mergeRequestEventType)
     }
+
+    static let preview = HeadPipeline(
+        id: "pipeline-id",
+        active: true,
+        status: .running,
+        stages: .previewChild,
+        name: "deploy",
+        detailedStatus: .preview,
+        mergeRequestEventType: .none
+    )
+
+    static let previewMultiple = HeadPipeline(
+        id: "pipeline-id-2",
+        active: true,
+        status: .running,
+        stages: .previewMultiple,
+        name: "deploy",
+        detailedStatus: .preview,
+        mergeRequestEventType: .none
+    )
+
+    static let previewMultipleSuccess = HeadPipeline(
+        id: "pipeline-id-3",
+        active: true,
+        status: .success,
+        stages: .previewMultipleSuccess,
+        name: "deploy",
+        detailedStatus: .preview,
+        mergeRequestEventType: .none
+    )
+
+    static let previewMultipleSuccessMergeTrain = HeadPipeline(
+        id: "pipeline-id-4",
+        active: true,
+        status: .success,
+        stages: .previewMultipleSuccess,
+        name: "deploy",
+        detailedStatus: .preview,
+        mergeRequestEventType: .mergeTrain
+    )
 }
 
 extension HeadPipeline {

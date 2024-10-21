@@ -55,7 +55,7 @@ struct MainContentView: View {
 #Preview {
     MainContentView(
         repos: [.preview],
-        filteredMergeRequests: [.preview, .preview2, .preview3],
+        filteredMergeRequests: [.preview, .preview2, .preview3, .preview4],
         accounts: [.preview],
         selectedView: .constant(.authoredMergeRequests)
     )

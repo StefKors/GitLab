@@ -115,7 +115,7 @@ extension MergeRequest {
         approvedBy: .preview3,
         userDiscussionsCount: 12,
         userNotesCount: 12,
-        headPipeline: nil,
+        headPipeline: .previewMultiple,
         reference: "2676",
         targetProject: .preview,
         type: .authoredMergeRequests,
@@ -133,7 +133,7 @@ extension MergeRequest {
         approvedBy: nil,
         userDiscussionsCount: nil,
         userNotesCount: nil,
-        headPipeline: nil,
+        headPipeline: .previewTestFailed,
         reference: "512",
         targetProject: .preview,
         type: .authoredMergeRequests,
@@ -151,8 +151,27 @@ extension MergeRequest {
         approvedBy: .preview2,
         userDiscussionsCount: nil,
         userNotesCount: nil,
-        headPipeline: nil,
+        headPipeline: .preview,
         reference: "512",
+        targetProject: .preview,
+        type: .authoredMergeRequests,
+        account: .preview
+    )
+
+
+    static let preview4 = MergeRequest(
+        id: "gid://gitlab/MergeRequest/654",
+        mergerequestID: "gid://gitlab/MergeRequest/654",
+        title: "Improve CI script performance by caching build artifacts",
+        state: .opened,
+        draft: false,
+        webUrl: URL(string: "https://gitlab.com/proj"),
+        mergeStatusEnum: .checking,
+        approvedBy: .preview4,
+        userDiscussionsCount: nil,
+        userNotesCount: nil,
+        headPipeline: .previewMultipleSuccessMergeTrain,
+        reference: "654",
         targetProject: .preview,
         type: .authoredMergeRequests,
         account: .preview
