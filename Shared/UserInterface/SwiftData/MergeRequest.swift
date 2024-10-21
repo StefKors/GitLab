@@ -15,6 +15,18 @@ extension String {
     }
 }
 
+extension Date {
+    /// from a date string like "2023-07-03T11:47:21Z" to a date object
+    static func from(_ string: String?) -> Date? {
+        guard let string else { return nil }
+        let fixedFormatter = DateFormatter()
+//        fixedFormatter.locale = Locale(identifier: "en_US_POSIX")
+        fixedFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        fixedFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return fixedFormatter.date(from: string)
+    }
+}
+
 // MARK: - MergeRequest
 @Model class MergeRequest {
     #Unique<MergeRequest>([\.id], [\.mergerequestID])
@@ -23,8 +35,9 @@ extension String {
     @Attribute(.unique) var id: String
     var mergerequestID: String?
     var title: String?
-    var createdAt: String?
-    var updatedAt: String?
+    var createdAt: Date?
+    var updatedAt: Date?
+// TODO: support labels
 //    var labels: String?
     var state: MergeRequestState?
     var draft: Bool?
@@ -64,8 +77,8 @@ extension String {
         self.mergerequestID = mergerequestID
         self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
         self.title = title
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
+        self.createdAt = Date.from(createdAt)
+        self.updatedAt = Date.from(updatedAt)
         self.state = state
         self.draft = draft
         self.webUrl = webUrl
@@ -108,6 +121,8 @@ extension MergeRequest {
         id: "gid://gitlab/MergeRequest/2676",
         mergerequestID: "gid://gitlab/MergeRequest/2676",
         title: "Resolve \"Sidebar Cleanup\"",
+        createdAt: "2023-07-06T11:47:21Z",
+        updatedAt: "2023-07-06T11:51:41Z",
         state: .opened,
         draft: false,
         webUrl: URL(string: "https://gitlab.com/proj"),
@@ -126,6 +141,8 @@ extension MergeRequest {
         id: "gid://gitlab/MergeRequest/512",
         mergerequestID: "gid://gitlab/MergeRequest/512",
         title: "Draft: Account settings redesign list performance",
+        createdAt: "2023-07-05T11:47:21Z",
+        updatedAt: "2023-07-05T11:51:41Z",
         state: .opened,
         draft: true,
         webUrl: URL(string: "https://gitlab.com/proj"),
@@ -144,6 +161,8 @@ extension MergeRequest {
         id: "gid://gitlab/MergeRequest/2345",
         mergerequestID: "gid://gitlab/MergeRequest/2345",
         title: "Draft: Team Workspaces V0",
+        createdAt: "2023-07-04T11:47:21Z",
+        updatedAt: "2023-07-04T11:51:41Z",
         state: .opened,
         draft: true,
         webUrl: URL(string: "https://gitlab.com/proj"),
@@ -163,6 +182,8 @@ extension MergeRequest {
         id: "gid://gitlab/MergeRequest/654",
         mergerequestID: "gid://gitlab/MergeRequest/654",
         title: "Improve CI script performance by caching build artifacts",
+        createdAt: "2023-07-03T11:47:21Z",
+        updatedAt: "2023-07-03T11:51:41Z",
         state: .opened,
         draft: false,
         webUrl: URL(string: "https://gitlab.com/proj"),
@@ -181,6 +202,8 @@ extension MergeRequest {
         id: "gid://gitlab/MergeRequest/988",
         mergerequestID: "gid://gitlab/MergeRequest/988",
         title: "Github Integration SDK",
+        createdAt: "2023-05-03T11:47:21Z",
+        updatedAt: "2023-05-03T11:51:41Z",
         state: .opened,
         draft: false,
         webUrl: URL(string: "https://gitlab.com/proj"),

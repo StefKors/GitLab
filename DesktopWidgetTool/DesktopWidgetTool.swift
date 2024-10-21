@@ -35,7 +35,14 @@ struct Provider: TimelineProvider {
 
             let context = ModelContainer.shared.mainContext
 
-            let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
+            let mergeRequests = (
+                try? context.fetch(
+                    FetchDescriptor<MergeRequest>(
+                        predicate: nil,
+                        sortBy: [.init(\.createdAt)]
+                    )
+                )
+            ) ?? []
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
             let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
@@ -58,7 +65,14 @@ struct Provider: TimelineProvider {
 
             let context = ModelContainer.shared.mainContext
 
-            let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
+            let mergeRequests = (
+                try? context.fetch(
+                    FetchDescriptor<MergeRequest>(
+                        predicate: nil,
+                        sortBy: [.init(\.createdAt)]
+                    )
+                )
+            ) ?? []
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
             let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
