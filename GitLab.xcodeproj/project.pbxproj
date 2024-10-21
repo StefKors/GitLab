@@ -209,6 +209,10 @@
 		8AE274332CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
 		8AE274342CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
 		8AE274352CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
+		8AE2743C2CC67A530059244E /* IfViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2743B2CC67A530059244E /* IfViewModifier.swift */; };
+		8AE2743D2CC67A530059244E /* IfViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2743B2CC67A530059244E /* IfViewModifier.swift */; };
+		8AE2743E2CC67A530059244E /* IfViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2743B2CC67A530059244E /* IfViewModifier.swift */; };
+		8AE2743F2CC67A530059244E /* IfViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2743B2CC67A530059244E /* IfViewModifier.swift */; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4142865C1480054C601 /* SwiftUI.framework */; };
@@ -585,6 +589,7 @@
 		8AE274272CC3DD060059244E /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentWindowStyle.swift; sourceTree = "<group>"; };
 		8AE274312CC66BBC0059244E /* AvatarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarRowView.swift; sourceTree = "<group>"; };
+		8AE2743B2CC67A530059244E /* IfViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfViewModifier.swift; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DesktopWidgetToolExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWidgetToolBundle.swift; sourceTree = "<group>"; };
@@ -892,6 +897,7 @@
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8AE2743B2CC67A530059244E /* IfViewModifier.swift */,
 				8A111F1F2CC1161500DEB0DD /* String.swift */,
 				8A111F1A2CC1118900DEB0DD /* Data.swift */,
 				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
@@ -1493,6 +1499,7 @@
 				8AF80D822A55817400819B80 /* CICreatedIcon.swift in Sources */,
 				8AF80DAC2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
 				8AF80DC72A55817400819B80 /* CIJobsView.swift in Sources */,
+				8AE2743D2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A111F2A2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8A111F212CC1161500DEB0DD /* String.swift in Sources */,
@@ -1593,6 +1600,7 @@
 				8A7935D72A5583E400F8FB6C /* CIPreparingIcon.swift in Sources */,
 				8A7935D82A5583E400F8FB6C /* ApprovedReviewIcon.swift in Sources */,
 				8A7935D92A5583E400F8FB6C /* CISuccessIcon.swift in Sources */,
+				8AE2743F2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8A7935DA2A5583E400F8FB6C /* CIWaitingForResourceIcon.swift in Sources */,
 				8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
@@ -1742,6 +1750,7 @@
 				8AF80D302A55817400819B80 /* NotificationManager.swift in Sources */,
 				8AF80D9C2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80D542A55817400819B80 /* NoticeType.swift in Sources */,
+				8AE2743E2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8AFDAAC92A85112E001937AC /* GitProviderView.swift in Sources */,
 				8AF80D452A55817400819B80 /* TargetProjects.swift in Sources */,
 				8A111F4A2CC1386600DEB0DD /* NetworkState.swift in Sources */,
@@ -1880,6 +1889,7 @@
 				8AE8A73E2B989EFA002B3C9E /* CIJobsNotificationView.swift in Sources */,
 				8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */,
 				8A91E21A2CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
+				8AE2743C2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8AE8A6EF2B989E9A002B3C9E /* DesktopWidgetTool.swift in Sources */,
 				8AE8A6ED2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift in Sources */,
 			);

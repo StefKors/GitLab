@@ -184,13 +184,13 @@ struct ReviewRequestedMergeRequestsEdge: Codable, Equatable {
 }
 
 // MARK: - JobsEdge
-struct JobsEdge: Codable, Equatable {
+struct JobsEdge: Codable, Equatable, Hashable {
     let node: HeadPipeline?
 }
 
 
 // MARK: - Jobs
-struct Jobs: Codable, Equatable {
+struct Jobs: Codable, Equatable, Hashable {
     let edges: [JobsEdge]?
 }
 
@@ -218,7 +218,7 @@ extension Jobs {
 }
 
 // MARK: - FluffyNode
-struct FluffyNode: Codable, Equatable {
+struct FluffyNode: Codable, Equatable, Identifiable, Hashable {
     let id: String?
     let status: StageStatusType?
     let name: String?
@@ -842,7 +842,7 @@ enum MergeRequestEventType: String, Codable, Equatable {
     case mergeTrain = "MERGE_TRAIN"
 }
 
-enum StageStatusType: String, Codable, Equatable {
+enum StageStatusType: String, Codable, Equatable, Hashable {
     /// Pipeline has been created.
     case created = "created"
     /// A resource (for example, a runner) that the pipeline requires to run is unavailable.

@@ -1,6 +1,6 @@
 //
 //  CIJobsView.swift
-//  
+//
 //
 //  Created by Stef Kors on 28/06/2022.
 //
@@ -34,35 +34,37 @@ struct CIJobsView: View {
         return stage.status?.toPipelineStatus()
     }
 
+    private var jobs: [HeadPipeline] {
+        stage.jobs?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
+    }
+
     var body: some View {
         HStack {
             CIStatusView(status: status)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    tapState.toggle()
-                    presentPopover.toggle()
+                    if !jobs.isEmpty {
+                        tapState.toggle()
+                        presentPopover.toggle()
+                    }
                 }
                 .popover(isPresented: $presentPopover, content: {
-                    if let jobs = stage.jobs?.edges?.map({ $0.node }) {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(stage.name?.capitalized ?? "")
-                                .fontWeight(.bold)
-                                .padding(.bottom, 4)
-                            ForEach(jobs.indices, id: \.self) { index in
-                                if let job = jobs[index] {
-                                    HStack {
-                                        if let path = job.detailedStatus?.detailsPath,
-                                           let destination = URL(string: instance + path) {
-                                            Link(destination: destination, label: {
-                                                CIStatusView(status: job.status)
-                                                Text(job.name ?? "")
-                                            })
-                                        }
-                                    }
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(stage.name?.capitalized ?? "")
+                            .fontWeight(.bold)
+                            .padding(.bottom, 4)
+                        ForEach(jobs, id: \.id) { job in
+                            if let path = job.detailedStatus?.detailsPath,
+                               let destination = URL(string: instance + path) {
+                                HStack {
+                                    Link(destination: destination, label: {
+                                        CIStatusView(status: job.status)
+                                        Text(job.name ?? "")
+                                    })
                                 }
                             }
-                        }.padding()
-                    }
+                        }
+                    }.padding()
                 })
         }
     }

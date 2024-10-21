@@ -11,7 +11,7 @@ struct CISkippedIcon: View {
     var body: some View {
         Image(systemName: "chevron.right.circle")
             .foregroundStyle(.secondary)
-            .font(.system(size: 18))
+            .font(.system(size: 16))
             .help(String(localized: "Skipped CI step"))
             .clipShape(Rectangle())
     }

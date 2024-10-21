@@ -29,7 +29,10 @@ struct DoubleLineMergeRequestSubRowView: View {
                     DiscussionCountIcon(count: count)
                 }
                 MergeStatusView(MR: MR)
-                PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [], instance: MR.account?.instance)
+
+                if let pipeline = MR.headPipeline {
+                    PipelineView(pipeline: pipeline, instance: MR.account?.instance)
+                }
             }
         }
     }

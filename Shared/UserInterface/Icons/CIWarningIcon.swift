@@ -11,7 +11,7 @@ struct CIWarningIcon: View {
     var body: some View {
         Image(systemName: "exclamationmark.circle")
             .foregroundStyle(.orange)
-            .font(.system(size: 18))
+            .font(.system(size: 16))
             .help(String(localized: "CI Warning"))
             .clipShape(Rectangle())
     }

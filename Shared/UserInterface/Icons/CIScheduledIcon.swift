@@ -11,7 +11,7 @@ struct CIScheduledIcon: View {
     var body: some View {
         Image(systemName: "clock.circle")
             .foregroundStyle(.primary)
-            .font(.system(size: 18))
+            .font(.system(size: 16))
             .help(String(localized: "CI pipeline scheduled"))
             .clipShape(Rectangle())
     }
