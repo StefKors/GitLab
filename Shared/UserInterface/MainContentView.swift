@@ -18,37 +18,41 @@ struct MainContentView: View {
     @Binding var selectedView: QueryType
 
     var body: some View {
-        LaunchpadView(repos: repos)
-            .padding(.horizontal, 6)
+        VStack(alignment: .center, spacing: 10) {
+            LaunchpadView(repos: repos)
+                .padding(.horizontal, 6)
 
-        Divider()
+            Divider()
 
-        // Disabled in favor for real notifications?
-        NoticeListView()
-            .padding(.horizontal, 6)
+            // Disabled in favor for real notifications?
+            NoticeListView()
+                .padding(.horizontal, 6)
 
-        VStack(alignment: .leading) {
-            MergeRequestList(
-                mergeRequests: filteredMergeRequests.reversed(),
-                accounts: accounts,
-                selectedView: selectedView
-            )
+            if accounts.isEmpty {
+                BaseTextView(message: "Setup your accounts in the settings")
+            } else if filteredMergeRequests.isEmpty {
+                BaseTextView(message: "All done 🥳")
+                    .foregroundStyle(.secondary)
+            } else {
+                VStack(alignment: .leading) {
+                    MergeRequestList(
+                        mergeRequests: filteredMergeRequests.reversed(),
+                        accounts: accounts,
+                        selectedView: selectedView
+                    )
+                    Spacer()
+                }
+//                .contentTransition(.interpolate)
+                .animation(.snappy(duration: 0.3), value: selectedView)
+                .padding(.horizontal, 6)
+                .useScrollView(when: withScrollView)
+                .scrollBounceBehavior(.basedOnSize)
+            }
+
             Spacer()
+            LastUpdateMessageView()
         }
-        .contentTransition(.interpolate)
-        .animation(.snappy(duration: 0.3), value: selectedView)
-        .padding(.horizontal, 6)
-        .useScrollView(when: withScrollView)
-        .scrollBounceBehavior(.basedOnSize)
-
-        if accounts.isEmpty {
-            BaseTextView(message: "Setup your accounts in the settings")
-        } else if filteredMergeRequests.isEmpty {
-            BaseTextView(message: "All done 🥳")
-                .foregroundStyle(.secondary)
-        }
-
-        LastUpdateMessageView()
+        .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 

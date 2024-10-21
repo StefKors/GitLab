@@ -14,6 +14,7 @@ struct BaseTextView: View {
             Text(message)
                 .padding(.top, 3)
         }
+        .frame(maxHeight: .infinity, alignment: .center)
     }
 }
 

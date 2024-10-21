@@ -11,9 +11,9 @@ import SwiftUI
 struct UserAvatarView: View {
     let author: Author
     let account: Account?
-    
+
     @Environment(\.isInWidget) private var isInWidget
-    
+
     var body: some View {
         VStack {
             // TODO: ios support
@@ -34,13 +34,21 @@ struct UserAvatarView: View {
                         .resizable()
                         .transition(.opacity.combined(with: .scale).combined(with: .blurReplace))
                 } placeholder: {
-                    Text(Image(systemName: "person.fill"))
-                        .foregroundStyle(.primary)
-                        .foregroundStyle(.secondary)
-                        .font(.system(size: 8, weight: .semibold))
-                        .clipShape(Circle())
-                        .frame(width: 14, height: 14)
-                        .transition(.opacity.combined(with: .scale).combined(with: .blurReplace))
+                    if let name = (author.name ?? author.username)?.first {
+                        Text(String(name))
+                            .foregroundStyle(.primary)
+                            .frame(width: 14, height: 14, alignment: .center)
+                            .font(.system(size: 8, weight: .semibold))
+                            .textCase(.uppercase)
+                            .contentTransition(.interpolate)
+                    } else {
+                        Text(Image(systemName: "person.fill"))
+                            .foregroundStyle(.primary)
+                            .foregroundStyle(.secondary)
+                            .font(.system(size: 8, weight: .semibold))
+                            .clipShape(Circle())
+                            .frame(width: 14, height: 14)
+                    }
                 }
             } else if let name = (author.name ?? author.username)?.first {
                 Text(String(name))
@@ -79,20 +87,20 @@ struct UserAvatarView: View {
 
 #Preview {
     VStack {
-        
+
         UserAvatarView(author: .preview, account: .preview)
-        
+
         HStack(spacing: -4) {
             UserAvatarView(author: .preview, account: .preview)
             UserAvatarView(author: .preview2, account: .preview)
             UserAvatarView(author: .preview3, account: .preview)
         }
-        
+
         HStack(spacing: -4) {
             UserAvatarView(author: .preview3, account: .preview)
             UserAvatarView(author: .preview4, account: .preview)
             UserAvatarView(author: .preview3, account: .preview)
         }
-        
+
     }.scenePadding()
 }
