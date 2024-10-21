@@ -18,19 +18,20 @@ struct ShadedButtonStyle: ButtonStyle {
             .padding(.trailing, 4)
             .background(.quaternary.opacity(opacity(isHovering, configuration.isPressed)), in: RoundedRectangle(cornerRadius: 6))
             .animation(.smooth(duration: 0.1), value: isHovering)
+            .animation(.smooth(duration: 0.1), value: configuration.isPressed)
             .onHover { hovering in
                 isHovering = hovering
             }
     }
 
     func opacity(_ isHovering: Bool, _ isPressed: Bool) -> CGFloat {
-        if isPressed {
-            return 1
-        } else if isHovering {
-            return 0.5
-        } else {
-            return 0
-        }
+            if isPressed {
+                return 0.5
+            } else if isHovering {
+                return 0 // 0.5
+            } else {
+                return 0
+            }
     }
 }
 

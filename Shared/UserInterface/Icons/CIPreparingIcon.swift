@@ -10,7 +10,7 @@ import SwiftUI
 struct CIPreparingIcon: View {
     var body: some View {
         Image(systemName: "circle.dotted")
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .font(.system(size: 18))
             .help(String(localized: "CI pipeline preparing"))
             .clipShape(Rectangle())

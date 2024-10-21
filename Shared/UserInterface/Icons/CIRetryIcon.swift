@@ -10,7 +10,7 @@ import SwiftUI
 struct CIRetryIcon: View {
     var body: some View {
         Image(systemName: "exclamationmark.arrow.circlepath")
-            .foregroundColor(.red)
+            .foregroundStyle(.red)
             .font(.system(size: 18))
             .help(String(localized: "Retry CI pipeline"))
             .clipShape(Rectangle())

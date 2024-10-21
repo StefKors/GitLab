@@ -23,6 +23,9 @@ extension String {
     @Attribute(.unique) var id: String
     var mergerequestID: String?
     var title: String?
+    var createdAt: String?
+    var updatedAt: String?
+//    var labels: String?
     var state: MergeRequestState?
     var draft: Bool?
     var webUrl: URL?
@@ -43,6 +46,8 @@ extension String {
         id: String? = nil,
         mergerequestID: String? = nil,
         title: String? = nil,
+        createdAt: String? = nil,
+        updatedAt: String? = nil,
         state: MergeRequestState? = nil,
         draft: Bool? = nil,
         webUrl: URL? = nil,
@@ -59,6 +64,8 @@ extension String {
         self.mergerequestID = mergerequestID
         self.id = id?.deletingPrefix("gid://").replacingOccurrences(of: "/", with: "-") ?? UUID().uuidString
         self.title = title
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
         self.state = state
         self.draft = draft
         self.webUrl = webUrl
@@ -79,6 +86,8 @@ extension String {
             id: codablevariant.id,
             mergerequestID: codablevariant.id,
             title: codablevariant.title,
+            createdAt: codablevariant.createdAt,
+            updatedAt: codablevariant.updatedAt,
             state: codablevariant.state,
             draft: codablevariant.draft,
             webUrl: codablevariant.webUrl,
@@ -103,7 +112,7 @@ extension MergeRequest {
         draft: false,
         webUrl: URL(string: "https://gitlab.com/proj"),
         mergeStatusEnum: .canBeMerged,
-        approvedBy: .preview,
+        approvedBy: .preview3,
         userDiscussionsCount: 12,
         userNotesCount: 12,
         headPipeline: nil,
@@ -139,7 +148,7 @@ extension MergeRequest {
         draft: true,
         webUrl: URL(string: "https://gitlab.com/proj"),
         mergeStatusEnum: .checking,
-        approvedBy: .preview,
+        approvedBy: .preview2,
         userDiscussionsCount: nil,
         userNotesCount: nil,
         headPipeline: nil,
@@ -182,6 +191,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
 
     var id: String?
     var title: String?
+    var createdAt: String?
+    var updatedAt: String?
     var state: MergeRequestState?
     var draft: Bool?
     var webUrl: URL?
@@ -197,7 +208,7 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
 
     enum CodingKeys: String, CodingKey {
         case type
-        case state, uuid, id, title, draft
+        case state, uuid, id, title, createdAt, updatedAt, draft
         case webUrl = "webUrl"
         case reference, targetProject, approvedBy, mergeStatusEnum, userDiscussionsCount, userNotesCount, headPipeline
     }
@@ -206,6 +217,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         type: QueryType?,
         id: String,
         title: String?,
+        createdAt: String?,
+        updatedAt: String?,
         state: MergeRequestState?,
         draft: Bool?,
         webUrl: URL?,
@@ -219,6 +232,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
     ) {
         self.id = id
         self.title = title
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
         self.state = state
         self.draft = draft
         self.webUrl = webUrl
@@ -240,6 +255,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
 
         self.id = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.id) ?? UUID().uuidString
         self.title = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.title)
+        self.createdAt = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.createdAt)
+        self.updatedAt = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.updatedAt)
         self.draft = try container.decodeIfPresent(Bool.self, forKey: MergeRequestCodable.CodingKeys.draft)
         self.webUrl = try container.decodeIfPresent(URL.self, forKey: MergeRequestCodable.CodingKeys.webUrl)
         self.reference = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.reference)
@@ -258,6 +275,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         try container.encodeIfPresent(self.state, forKey: MergeRequestCodable.CodingKeys.state)
         try container.encode(self.id, forKey: MergeRequestCodable.CodingKeys.id)
         try container.encodeIfPresent(self.title, forKey: MergeRequestCodable.CodingKeys.title)
+        try container.encodeIfPresent(self.createdAt, forKey: MergeRequestCodable.CodingKeys.createdAt)
+        try container.encodeIfPresent(self.updatedAt, forKey: MergeRequestCodable.CodingKeys.updatedAt)
         try container.encodeIfPresent(self.draft, forKey: MergeRequestCodable.CodingKeys.draft)
         try container.encodeIfPresent(self.webUrl, forKey: MergeRequestCodable.CodingKeys.webUrl)
         try container.encodeIfPresent(self.reference, forKey: MergeRequestCodable.CodingKeys.reference)

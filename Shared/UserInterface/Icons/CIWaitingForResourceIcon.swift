@@ -10,7 +10,7 @@ import SwiftUI
 struct CIWaitingForResourceIcon: View {
     var body: some View {
         Image(systemName: "circle.circle")
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .font(.system(size: 18))
             .help(String(localized: "CI pipeline waiting for resources"))
             .clipShape(Rectangle())

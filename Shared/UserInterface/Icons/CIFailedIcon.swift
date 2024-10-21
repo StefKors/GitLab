@@ -10,7 +10,7 @@ import SwiftUI
 struct CIFailedIcon: View {
     var body: some View {
         Image(systemName: "exclamationmark.circle")
-            .foregroundColor(.red)
+            .foregroundStyle(.red)
             .font(.system(size: 18))
             .help(String(localized: "CI Failed"))
             .clipShape(Rectangle())

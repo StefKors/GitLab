@@ -10,7 +10,7 @@ import SwiftUI
 struct CICreatedIcon: View {
     var body: some View {
         Image(systemName: "smallcircle.filled.circle")
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .symbolRenderingMode(.hierarchical)
             .font(.system(size: 18))
             .help(String(localized: "CI Created"))

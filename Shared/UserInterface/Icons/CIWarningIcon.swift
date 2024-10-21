@@ -10,7 +10,7 @@ import SwiftUI
 struct CIWarningIcon: View {
     var body: some View {
         Image(systemName: "exclamationmark.circle")
-            .foregroundColor(.orange)
+            .foregroundStyle(.orange)
             .font(.system(size: 18))
             .help(String(localized: "CI Warning"))
             .clipShape(Rectangle())

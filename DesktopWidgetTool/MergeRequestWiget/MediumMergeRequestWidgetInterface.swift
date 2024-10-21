@@ -29,16 +29,32 @@ struct MediumMergeRequestWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .center, spacing: 6) {
-                if selectedView == .reviewRequestedMergeRequests {
-                    Text(Image(.mergeRequest))
-                    Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
-                }
+            if selectedView == .reviewRequestedMergeRequests {
+                ViewThatFits(in: .horizontal, content: {
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.mergeRequest))
+                        Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
+                    }
+                    
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.mergeRequest))
+                        Text(mergeRequests.count.description)
+                    }
+                })
+            }
 
-                if selectedView == .authoredMergeRequests {
-                    Text(Image(.branch))
-                    Text("^[\(mergeRequests.count) merge requests](inflect: true)")
-                }
+            if selectedView == .authoredMergeRequests {
+                ViewThatFits(in: .horizontal, content: {
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.branch))
+                        Text("^[\(mergeRequests.count) merge requests](inflect: true)")
+                    }
+
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.branch))
+                        Text(mergeRequests.count.description)
+                    }
+                })
             }
 
             VStack(alignment: .leading, spacing: 4) {

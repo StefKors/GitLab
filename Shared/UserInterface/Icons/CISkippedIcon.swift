@@ -10,7 +10,7 @@ import SwiftUI
 struct CISkippedIcon: View {
     var body: some View {
         Image(systemName: "chevron.right.circle")
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .font(.system(size: 18))
             .help(String(localized: "Skipped CI step"))
             .clipShape(Rectangle())

@@ -59,7 +59,7 @@ struct AddAccountView: View {
                 Text("Account").bold()
 
                 Text("Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.")
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             } footer: {
                 Button("Close") {
                     dismiss()

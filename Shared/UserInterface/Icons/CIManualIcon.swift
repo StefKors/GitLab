@@ -10,7 +10,7 @@ import SwiftUI
 struct CIManualIcon: View {
     var body: some View {
         Image(systemName: "gearshape.circle")
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .font(.system(size: 18))
             .help(String(localized: "Manual CI step"))
             .clipShape(Rectangle())

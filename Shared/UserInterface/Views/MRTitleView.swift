@@ -31,13 +31,13 @@ struct MRTitleView: View {
                     .padding(.vertical, 2)
                     .padding(.horizontal, 6)
                     .background(.quaternary, in: Capsule())
-                    .foregroundColor(isHovering ? .accentColor  : .secondary)
+                    .foregroundStyle(isHovering ? Color.accentColor  : .secondary)
                     .transition(.opacity.combined(with: .blurReplace).combined(with: .move(edge: .leading)))
             }
 
             Text(linkText.removeDraft)
                 .fontWeight(weight)
-                .foregroundColor(isHovering ? .accentColor  : .primary)
+                .foregroundStyle(isHovering ? Color.accentColor  : .primary)
                 .multilineTextAlignment(.leading)
                 .contentTransition(.interpolate)
         }

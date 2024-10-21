@@ -26,27 +26,73 @@ struct UserAvatarView: View {
                 Image(nsImage: image)
                     .resizable()
 #endif
-
             } else
             // Previously we used account.instace to create the base url
             if let avatarUrl = author.avatarUrl {
                 AsyncImage(url: avatarUrl) { image in
-                    image.resizable()
+                    image
+                        .resizable()
+                        .transition(.opacity.combined(with: .scale).combined(with: .blurReplace))
                 } placeholder: {
-                    Image(systemName: "person.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundColor(.secondary)
-                        .font(.system(size: 14))
+                    Text(Image(systemName: "person.fill"))
+                        .foregroundStyle(.primary)
+                        .foregroundStyle(.secondary)
+                        .font(.system(size: 8, weight: .semibold))
+                        .clipShape(Circle())
+                        .frame(width: 14, height: 14)
+                        .transition(.opacity.combined(with: .scale).combined(with: .blurReplace))
                 }
+            } else if let name = (author.name ?? author.username)?.first {
+                Text(String(name))
+                    .foregroundStyle(.primary)
+                    .frame(width: 14, height: 14, alignment: .center)
+                    .font(.system(size: 8, weight: .semibold))
+                    .textCase(.uppercase)
+                    .contentTransition(.interpolate)
+            } else {
+                Text(Image(systemName: "person.fill"))
+                    .foregroundStyle(.primary)
+                    .foregroundStyle(.secondary)
+                    .font(.system(size: 8, weight: .semibold))
+                    .clipShape(Circle())
+                    .frame(width: 14, height: 14)
             }
         }
         .aspectRatio(contentMode: .fill)
+        .background {
+            Circle()
+                .stroke(lineWidth: 1)
+                .foregroundStyle(.primary)
+                .background(.tertiary)
+                .background(.background)
+        }
+        .overlay(content: {
+            Circle()
+                .stroke(lineWidth: 2)
+                .foregroundStyle(.primary)
+        })
         .clipShape(Circle())
         .frame(width: 14, height: 14)
-        .help(author.username ?? "")
+        .help((author.name ?? author.username) ?? "")
     }
 }
 
 #Preview {
-    UserAvatarView(author: .preview, account: .preview)
+    VStack {
+
+        UserAvatarView(author: .preview, account: .preview)
+
+        HStack(spacing: -4) {
+            UserAvatarView(author: .preview, account: .preview)
+            UserAvatarView(author: .preview2, account: .preview)
+            UserAvatarView(author: .preview3, account: .preview)
+        }
+
+        HStack(spacing: -4) {
+            UserAvatarView(author: .preview3, account: .preview)
+            UserAvatarView(author: .preview4, account: .preview)
+            UserAvatarView(author: .preview3, account: .preview)
+        }
+
+    }.scenePadding()
 }

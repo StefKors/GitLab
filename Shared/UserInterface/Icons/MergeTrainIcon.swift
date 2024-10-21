@@ -11,7 +11,7 @@ struct MergeTrainIcon: View {
     var body: some View {
         Text("Merge Train 🚂")
             .font(.system(size: 11))
-            .foregroundColor(.secondary)
+            .foregroundStyle(.secondary)
             .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
             .overlay(
                 RoundedRectangle(cornerRadius: 20)

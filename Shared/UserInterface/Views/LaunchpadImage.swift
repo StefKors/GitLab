@@ -33,7 +33,7 @@ struct LaunchpadImage: View {
                         if let char = repo.name.first {
                             Text(String(char).capitalized)
                                 .font(.headline.bold())
-                                .foregroundColor(.primary)
+                                .foregroundStyle(.primary)
                                 .colorInvert()
                         }
                     })

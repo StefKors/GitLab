@@ -22,6 +22,10 @@ struct ExtraWindow: View {
         mergeRequests.filter { $0.type == selectedView }
     }
 
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.appearsActive) private var appearsActive
+    @State private var hasLoaded: Bool = false
+
     var body: some View {
         VStack {
             Divider()
@@ -33,6 +37,15 @@ struct ExtraWindow: View {
                 selectedView: $selectedView
             )
         }
+        .overlay(content: {
+            Rectangle()
+                .fill(.windowBackground)
+                .opacity(appearsActive && hasLoaded ? 0 : 0.4)
+                .allowsHitTesting(false)
+                .task {
+                    hasLoaded = true
+                }
+        })
         .environmentObject(self.noticeState)
         .environmentObject(self.networkState)
         .onOpenURL { url in
@@ -87,7 +100,6 @@ struct GitLabApp: App {
         .windowIdealSize(.fitToContent)
 
         MenuBarExtra(content: {
-
             MainGitLabView()
                 .modelContainer(sharedModelContainer)
                 .frame(width: 600)

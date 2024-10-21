@@ -11,7 +11,7 @@ struct NeedsReviewIcon: View {
     var body: some View {
         Text("Needs Review")
             .font(.system(size: 11))
-            .foregroundColor(.accentColor)
+            .foregroundStyle(Color.accentColor)
             .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
@@ -46,7 +46,7 @@ struct NeedsReviewIcon_Previews: PreviewProvider {
 
                 Text("Needs Review")
                     .font(.title3)
-                    .foregroundColor(.accentColor)
+                    .foregroundStyle(Color.accentColor)
                     .padding(EdgeInsets(top: 4, leading:    10, bottom: 4, trailing: 10))
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)

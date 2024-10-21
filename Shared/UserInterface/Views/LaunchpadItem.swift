@@ -26,7 +26,7 @@ struct LaunchpadItem: View {
                 VStack(alignment: .leading) {
                     Text(repo.name)
                     Text(repo.group)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
 
                 Button {

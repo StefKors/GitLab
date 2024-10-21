@@ -20,12 +20,12 @@ struct WebLink: View {
                     .onHover { hovering in
                         isHovering = hovering
                     }
-                    .foregroundColor(isHovering ? .primary : .secondary)
+                    .foregroundStyle(isHovering ? .primary : .secondary)
                     .animation(.interactiveSpring(), value: isHovering)
             })
         } else {
             Text(linkText)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 }

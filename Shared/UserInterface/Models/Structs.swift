@@ -96,6 +96,27 @@ extension Author {
         username: "stefstefstef",
         avatarUrl: URL(string: "https://secure.gravatar.com/avatar/4b417eb926cf0acf000c1ac5079c448d?s=80&d=identicon")
     )
+
+    static let preview2 = Author(
+        id: "gid://author2",
+        name: "John Doe",
+        username: "JohnDoe",
+        avatarUrl: nil
+    )
+
+    static let preview3 = Author(
+        id: "gid://author3",
+        name: "Walter Mitty",
+        username: "walt",
+        avatarUrl: nil
+    )
+
+    static let preview4 = Author(
+        id: "gid://author4",
+        name: nil,
+        username: nil,
+        avatarUrl: nil
+    )
 }
 
 /// (same as Author above ^ but with int for id
@@ -136,6 +157,10 @@ struct ApprovedMergeRequests: Codable, Equatable {
     let edges: [ApprovedMergeRequestsEdge]?
 
     static let preview = ApprovedMergeRequests(edges: [ApprovedMergeRequestsEdge(node: .preview)])
+    static let preview2 = ApprovedMergeRequests(edges: [ApprovedMergeRequestsEdge(node: .preview2)])
+    static let preview3 = ApprovedMergeRequests(edges: [ApprovedMergeRequestsEdge(node: .preview), ApprovedMergeRequestsEdge(node: .preview2), ApprovedMergeRequestsEdge(node: .preview3)])
+
+    static let preview4 = ApprovedMergeRequests(edges: [ApprovedMergeRequestsEdge(node: .preview4)])
 }
 
 // MARK: - AuthoredMergeRequestsEdge

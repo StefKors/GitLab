@@ -12,38 +12,53 @@ struct LargeMergeRequestWidgetInterface: View {
     var accounts: [Account]
     var repos: [LaunchpadRepo]
     var selectedView: QueryType
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            ViewThatFits(in: .vertical) {
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(9)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(8)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(7)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(6)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
-                MergeRequestList(
-                    mergeRequests: Array(mergeRequests.prefix(5)),
-                    accounts: accounts,
-                    selectedView: selectedView
-                )
+
+    private var filteredMRs: [MergeRequest] {
+        if selectedView == .reviewRequestedMergeRequests {
+            return mergeRequests.filter { mr in
+                mr.approvedBy?.edges?.count == 0
             }
         }
-        //        .fixedSize(horizontal: false, vertical: true)
+
+        return mergeRequests
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            if selectedView == .reviewRequestedMergeRequests {
+                ViewThatFits(in: .horizontal, content: {
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.mergeRequest))
+                        Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
+                    }
+
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.mergeRequest))
+                        Text(mergeRequests.count.description)
+                    }
+                })
+            }
+
+            if selectedView == .authoredMergeRequests {
+                ViewThatFits(in: .horizontal, content: {
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.branch))
+                        Text("^[\(mergeRequests.count) merge requests](inflect: true)")
+                    }
+
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.branch))
+                        Text(mergeRequests.count.description)
+                    }
+                })
+            }
+
+            MergeRequestList(
+                mergeRequests: Array(filteredMRs.prefix(4)),
+                accounts: accounts,
+                selectedView: selectedView
+            )
+        }
         .frame(alignment: .top)
     }
 }
