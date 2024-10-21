@@ -205,6 +205,10 @@
 		8AE2742A2CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
 		8AE2742B2CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
 		8AE274302CC3E4FA0059244E /* TranslucentWindowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */; };
+		8AE274322CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
+		8AE274332CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
+		8AE274342CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
+		8AE274352CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
 		8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE7A3D82A83A4000004506F /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
 		8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4142865C1480054C601 /* SwiftUI.framework */; };
@@ -580,6 +584,7 @@
 		8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
 		8AE274272CC3DD060059244E /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentWindowStyle.swift; sourceTree = "<group>"; };
+		8AE274312CC66BBC0059244E /* AvatarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarRowView.swift; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DesktopWidgetToolExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE8A6EC2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWidgetToolBundle.swift; sourceTree = "<group>"; };
@@ -1047,6 +1052,7 @@
 		8AF80D072A55817400819B80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8AE274312CC66BBC0059244E /* AvatarRowView.swift */,
 				8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */,
 				8ACBFD382CC270AC00A8753B /* PluralWidgetTitle.swift */,
 				8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */,
@@ -1448,6 +1454,7 @@
 				8AF80D7F2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
 				8AE024DE2A92471A000548D7 /* KeyedDecodingContainer.swift in Sources */,
 				8AF80D9A2A55817400819B80 /* AccountSettingsView.swift in Sources */,
+				8AE274332CC66BBC0059244E /* AvatarRowView.swift in Sources */,
 				8A9D878B2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8AF80D3D2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AF80DB82A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
@@ -1591,6 +1598,7 @@
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
 				8A7935DC2A5583E400F8FB6C /* CIScheduledIcon.swift in Sources */,
 				8A111F402CC12C5F00DEB0DD /* QueryType.swift in Sources */,
+				8AE274322CC66BBC0059244E /* AvatarRowView.swift in Sources */,
 				8A7935DD2A5583E400F8FB6C /* CIPendingIcon.swift in Sources */,
 				8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AFDAABF2A850763001937AC /* AddAccountView.swift in Sources */,
@@ -1682,6 +1690,7 @@
 				8AF80D2A2A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift in Sources */,
 				8AF80D782A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8A111F272CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
+				8AE274342CC66BBC0059244E /* AvatarRowView.swift in Sources */,
 				8AFDAAC52A850793001937AC /* AccountRow.swift in Sources */,
 				8AF80DC02A55817400819B80 /* LaunchPadView.swift in Sources */,
 				8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */,
@@ -1815,6 +1824,7 @@
 				8AE8A71A2B989EFA002B3C9E /* CIProgressIcon.swift in Sources */,
 				8AE8A71B2B989EFA002B3C9E /* PlainMergeRequestList.swift in Sources */,
 				8AE8A71C2B989EFA002B3C9E /* MergeStatusView.swift in Sources */,
+				8AE274352CC66BBC0059244E /* AvatarRowView.swift in Sources */,
 				8AE8A7402B989F57002B3C9E /* Account.swift in Sources */,
 				8AE8A7412B989F57002B3C9E /* LaunchpadState.swift in Sources */,
 				8AE8A7422B989F57002B3C9E /* MergeRequest.swift in Sources */,

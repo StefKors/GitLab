@@ -11,9 +11,9 @@ import SwiftUI
 struct UserAvatarView: View {
     let author: Author
     let account: Account?
-
+    
     @Environment(\.isInWidget) private var isInWidget
-
+    
     var body: some View {
         VStack {
             // TODO: ios support
@@ -79,20 +79,20 @@ struct UserAvatarView: View {
 
 #Preview {
     VStack {
-
+        
         UserAvatarView(author: .preview, account: .preview)
-
+        
         HStack(spacing: -4) {
             UserAvatarView(author: .preview, account: .preview)
             UserAvatarView(author: .preview2, account: .preview)
             UserAvatarView(author: .preview3, account: .preview)
         }
-
+        
         HStack(spacing: -4) {
             UserAvatarView(author: .preview3, account: .preview)
             UserAvatarView(author: .preview4, account: .preview)
             UserAvatarView(author: .preview3, account: .preview)
         }
-
+        
     }.scenePadding()
 }

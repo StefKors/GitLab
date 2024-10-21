@@ -63,7 +63,7 @@ extension BidirectionalCollection where Element == CollectionDifference<Author>.
     }
 }
 
-struct Author: Codable, Equatable {
+struct Author: Codable, Equatable, Identifiable, Hashable {
     let id, name, username: String?
     let avatarUrl: URL?
     
