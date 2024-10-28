@@ -64,6 +64,7 @@ extension NetworkManager {
             label: "You pushed to [\(branchRef)](\(branchURL)) at [\(project.group)/\(project.name)](\(project.url))",
             webLink: makeMRUrl(url: project.url, branchRef: branchRef),
             type: .branch,
+            branchRef: branchRef,
             createdAt: date
         )
     }

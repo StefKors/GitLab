@@ -14,6 +14,7 @@ typealias PlatformImage = NSImage
 import SwiftUI
 
 struct ApprovedReviewIcon: View {
+    @Environment(\.colorScheme) private var colorScheme
     var approvedBy: [Author]
     var account: Account?
     
@@ -34,7 +35,7 @@ struct ApprovedReviewIcon: View {
             Image(systemName: "checkmark")
                 .font(.system(size: 9, weight: .semibold))
                 .help(String(localized: "Merge request approved"))
-                .clipShape(Rectangle())
+//                .clipShape(Rectangle())
                 .padding(.vertical, 2)
             
             
@@ -55,14 +56,13 @@ struct ApprovedReviewIcon: View {
             )
             
         }
-        .foregroundStyle(.green)
+        .foregroundStyle(.green.mix(with: .black, by: colorScheme == .dark ? 0 : 0.2))
         .padding(.leading, 6)
         .padding(.trailing, approvedBy.count > 0 ? 2 : 8)
         .padding(.vertical, 2)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.green)
-                .opacity(0.2)
+                .fill(Color.green.gradient.quinary)
         )
         .animation(.smooth, value: approvedBy)
         //        .onHover(perform: { state in

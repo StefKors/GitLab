@@ -15,6 +15,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
     var webLink: URL?
     var dismissed: Bool
     var type: NoticeType
+    var branchRef: String?
     var createdAt: Date
     
     init(
@@ -24,6 +25,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
         webLink: URL? = nil,
         dismissed: Bool = false,
         type: NoticeType,
+        branchRef: String? = nil,
         createdAt: Date = .now
     ) {
         self.id = id
@@ -32,6 +34,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
         self.webLink = webLink
         self.dismissed = dismissed
         self.type = type
+        self.branchRef = branchRef
         self.createdAt = createdAt
     }
     

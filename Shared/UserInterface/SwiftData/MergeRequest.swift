@@ -39,6 +39,8 @@ extension Date {
     var updatedAt: Date?
 // TODO: support labels
 //    var labels: String?
+    var sourceBranch: String?
+    var targetBranch: String?
     var state: MergeRequestState?
     var draft: Bool?
     var webUrl: URL?
@@ -61,6 +63,8 @@ extension Date {
         title: String? = nil,
         createdAt: String? = nil,
         updatedAt: String? = nil,
+        sourceBranch: String? = nil,
+        targetBranch: String? = nil,
         state: MergeRequestState? = nil,
         draft: Bool? = nil,
         webUrl: URL? = nil,
@@ -79,6 +83,8 @@ extension Date {
         self.title = title
         self.createdAt = Date.from(createdAt)
         self.updatedAt = Date.from(updatedAt)
+        self.sourceBranch = sourceBranch
+        self.targetBranch = targetBranch
         self.state = state
         self.draft = draft
         self.webUrl = webUrl
@@ -101,6 +107,8 @@ extension Date {
             title: codablevariant.title,
             createdAt: codablevariant.createdAt,
             updatedAt: codablevariant.updatedAt,
+            sourceBranch: codablevariant.sourceBranch,
+            targetBranch: codablevariant.targetBranch,
             state: codablevariant.state,
             draft: codablevariant.draft,
             webUrl: codablevariant.webUrl,
@@ -235,6 +243,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
     var title: String?
     var createdAt: String?
     var updatedAt: String?
+    var sourceBranch: String?
+    var targetBranch: String?
     var state: MergeRequestState?
     var draft: Bool?
     var webUrl: URL?
@@ -250,7 +260,7 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
 
     enum CodingKeys: String, CodingKey {
         case type
-        case state, uuid, id, title, createdAt, updatedAt, draft
+        case state, uuid, id, title, createdAt, updatedAt, sourceBranch, targetBranch, draft
         case webUrl = "webUrl"
         case reference, targetProject, approvedBy, mergeStatusEnum, userDiscussionsCount, userNotesCount, headPipeline
     }
@@ -261,6 +271,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         title: String?,
         createdAt: String?,
         updatedAt: String?,
+        sourceBranch: String?,
+        targetBranch: String?,
         state: MergeRequestState?,
         draft: Bool?,
         webUrl: URL?,
@@ -276,6 +288,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         self.title = title
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.sourceBranch = sourceBranch
+        self.targetBranch = targetBranch
         self.state = state
         self.draft = draft
         self.webUrl = webUrl
@@ -299,6 +313,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         self.title = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.title)
         self.createdAt = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.createdAt)
         self.updatedAt = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.updatedAt)
+        self.sourceBranch = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.sourceBranch)
+        self.targetBranch = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.targetBranch)
         self.draft = try container.decodeIfPresent(Bool.self, forKey: MergeRequestCodable.CodingKeys.draft)
         self.webUrl = try container.decodeIfPresent(URL.self, forKey: MergeRequestCodable.CodingKeys.webUrl)
         self.reference = try container.decodeIfPresent(String.self, forKey: MergeRequestCodable.CodingKeys.reference)
@@ -319,6 +335,8 @@ class MergeRequestCodable: Codable, Equatable, Identifiable {
         try container.encodeIfPresent(self.title, forKey: MergeRequestCodable.CodingKeys.title)
         try container.encodeIfPresent(self.createdAt, forKey: MergeRequestCodable.CodingKeys.createdAt)
         try container.encodeIfPresent(self.updatedAt, forKey: MergeRequestCodable.CodingKeys.updatedAt)
+        try container.encodeIfPresent(self.sourceBranch, forKey: MergeRequestCodable.CodingKeys.sourceBranch)
+        try container.encodeIfPresent(self.targetBranch, forKey: MergeRequestCodable.CodingKeys.targetBranch)
         try container.encodeIfPresent(self.draft, forKey: MergeRequestCodable.CodingKeys.draft)
         try container.encodeIfPresent(self.webUrl, forKey: MergeRequestCodable.CodingKeys.webUrl)
         try container.encodeIfPresent(self.reference, forKey: MergeRequestCodable.CodingKeys.reference)

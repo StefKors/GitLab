@@ -110,6 +110,10 @@ import SwiftUI
      func body(content: Content) -> some View {
         if notice.type == .branch {
             content
+                .background {
+                    RoundedRectangle(cornerRadius: radius, style: .continuous)
+                        .stroke(.quinary, lineWidth: 1)
+                }
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
         } else {
             content

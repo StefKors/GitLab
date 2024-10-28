@@ -12,7 +12,7 @@ struct ExtraWindow: View {
     @Environment(\.openURL) private var openURL
     @StateObject private var noticeState = NoticeState()
     @StateObject private var networkState = NetworkState()
-    @Query(sort: \MergeRequest.createdAt) private var mergeRequests: [MergeRequest]
+    @Query(sort: \MergeRequest.createdAt, order: .reverse) private var mergeRequests: [MergeRequest]
     @Query private var accounts: [Account]
     @Query private var repos: [LaunchpadRepo]
 

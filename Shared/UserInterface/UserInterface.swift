@@ -66,6 +66,7 @@ struct UserInterface: View {
         }
         
         .frame(maxHeight: .infinity, alignment: .top)
+        .background(.regularMaterial)
         .onChange(of: selectedView) { _, newValue in
             if newValue == .networkDebug {
                 networkState.record = true
@@ -175,13 +176,27 @@ struct UserInterface: View {
             let notice = await wrapRequest(info: info) {
                 try await NetworkManager.shared.fetchLatestBranchPush(with: account, repos: repos)
             }
-            
+
             if let notice {
+                if notice.type == .branch, let branch = notice.branchRef  {
+
+                    let matchedMR = filteredMergeRequests.first { mr in
+                        return mr.sourceBranch == branch
+                    }
+
+                    let alreadyHasMR = matchedMR != nil
+
+                    if alreadyHasMR || notice.createdAt.isWithinLastHours(1) {
+                        return
+                    }
+                }
                 noticeState.addNotice(notice: notice)
             }
         }
     }
-    
+
+
+
     @MainActor
     private func wrapRequest<T>(info: NetworkInfo, do request: () async throws -> T?) async -> T? {
         let event = NetworkEvent(info: info, status: nil, response: nil)

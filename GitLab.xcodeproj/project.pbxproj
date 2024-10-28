@@ -134,6 +134,10 @@
 		8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
 		8A7935FB2A5583F700F8FB6C /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FA2A5583F700F8FB6C /* Get */; };
 		8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */; };
+		8A7C0ACD2CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
+		8A7C0ACE2CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
+		8A7C0ACF2CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
+		8A7C0AD02CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
 		8A91E2172CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
@@ -556,6 +560,7 @@
 		8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompare.swift; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A91E2142CB7B5FE00BE51B9 /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
 		8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
@@ -897,6 +902,7 @@
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */,
 				8AE2743B2CC67A530059244E /* IfViewModifier.swift */,
 				8A111F1F2CC1161500DEB0DD /* String.swift */,
 				8A111F1A2CC1118900DEB0DD /* Data.swift */,
@@ -1481,6 +1487,7 @@
 				8AF80D9D2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80DB52A55817400819B80 /* CIStatusView.swift in Sources */,
 				8AF80D5E2A55817400819B80 /* CIManualIcon.swift in Sources */,
+				8A7C0ACE2CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8AF80D222A55817400819B80 /* NetworkManager+repoLaunchPad.swift in Sources */,
 				8AF80D342A55817400819B80 /* NetworkManager.swift in Sources */,
 				8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
@@ -1647,6 +1654,7 @@
 				8A7935F42A5583E400F8FB6C /* LaunchPadView.swift in Sources */,
 				8AFDAACF2A85231F001937AC /* MergeRequest.swift in Sources */,
 				8A7935F52A5583E400F8FB6C /* WebLink.swift in Sources */,
+				8A7C0ACF2CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8A7935F62A5583E400F8FB6C /* CIJobsView.swift in Sources */,
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
 				8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */,
@@ -1703,6 +1711,7 @@
 				8AF80DC02A55817400819B80 /* LaunchPadView.swift in Sources */,
 				8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */,
 				8AFDAA982A84FB26001937AC /* Account.swift in Sources */,
+				8A7C0ACD2CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8AF80D3F2A55817400819B80 /* NetworkManager+fetchProjects.swift in Sources */,
 				8AFDAABD2A850763001937AC /* AddAccountView.swift in Sources */,
 				8ADD57062B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
@@ -1827,6 +1836,7 @@
 				8AE8A7142B989EFA002B3C9E /* LaunchpadItem.swift in Sources */,
 				8AE8A7152B989EFA002B3C9E /* NetworkManager.swift in Sources */,
 				8AE8A7162B989EFA002B3C9E /* PushEvents.swift in Sources */,
+				8A7C0AD02CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8AE8A7172B989EFA002B3C9E /* BaseTextView.swift in Sources */,
 				8AE8A7182B989EFA002B3C9E /* MergeRequestRowView.swift in Sources */,
 				8AE8A7192B989EFA002B3C9E /* CIScheduledIcon.swift in Sources */,
