@@ -87,7 +87,6 @@ class NetworkManager {
             print(error.localizedDescription)
             return nil
         }
-        
     }
 }
 

@@ -138,6 +138,11 @@
 		8A7C0ACE2CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
 		8A7C0ACF2CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
 		8A7C0AD02CCFEBD100E479CA /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
+		8A7C0AD32CD2928000E479CA /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7C0AD22CD2928000E479CA /* OctoKit */; };
+		8A7C0AD52CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */; };
+		8A7C0AD62CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */; };
+		8A7C0AD72CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */; };
+		8A7C0AD82CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */; };
 		8A91E2172CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
@@ -561,6 +566,7 @@
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompare.swift; sourceTree = "<group>"; };
+		8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerGitHub.swift; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A91E2142CB7B5FE00BE51B9 /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
 		8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
@@ -706,6 +712,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7C0AD32CD2928000E479CA /* OctoKit in Frameworks */,
 				8AF80DD72A5581A600819B80 /* Get in Frameworks */,
 				8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */,
 			);
@@ -1009,6 +1016,7 @@
 				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
 				8AF80CE72A55817400819B80 /* Structs.swift */,
 				8AF80CE62A55817400819B80 /* NetworkManager.swift */,
+				8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */,
 				8AF80CEB2A55817400819B80 /* NetworkManager+fetchAuthoredMergeRequests.swift */,
 				8AF80CE32A55817400819B80 /* NetworkManager+fetchLatestBranchPush.swift */,
 				8AF80CEA2A55817400819B80 /* NetworkManager+fetchProjects.swift */,
@@ -1247,6 +1255,7 @@
 			packageProductDependencies = (
 				8AF80DD62A5581A600819B80 /* Get */,
 				8AF80DD92A5581B700819B80 /* CachedAsyncImage */,
+				8A7C0AD22CD2928000E479CA /* OctoKit */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */;
@@ -1361,6 +1370,7 @@
 			packageReferences = (
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
+				8A7C0AD12CD2928000E479CA /* XCRemoteSwiftPackageReference "octokit" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -1517,6 +1527,7 @@
 				8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */,
 				8A111F382CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
 				8AF80D942A55817400819B80 /* SettingsView.swift in Sources */,
+				8A7C0AD82CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
 				8AE024DF2A924731000548D7 /* URL.swift in Sources */,
 				8AF80D852A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
 				8AFDAA992A84FB26001937AC /* Account.swift in Sources */,
@@ -1657,6 +1668,7 @@
 				8A7C0ACF2CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8A7935F62A5583E400F8FB6C /* CIJobsView.swift in Sources */,
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
+				8A7C0AD72CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
 				8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */,
 				8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */,
@@ -1728,6 +1740,7 @@
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8AFAE1922BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
+				8A7C0AD62CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
 				8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */,
 				8AF80D602A55817400819B80 /* CICanceledIcon.swift in Sources */,
 				8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
@@ -1840,6 +1853,7 @@
 				8AE8A7172B989EFA002B3C9E /* BaseTextView.swift in Sources */,
 				8AE8A7182B989EFA002B3C9E /* MergeRequestRowView.swift in Sources */,
 				8AE8A7192B989EFA002B3C9E /* CIScheduledIcon.swift in Sources */,
+				8A7C0AD52CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
 				8AE8A71A2B989EFA002B3C9E /* CIProgressIcon.swift in Sources */,
 				8AE8A71B2B989EFA002B3C9E /* PlainMergeRequestList.swift in Sources */,
 				8AE8A71C2B989EFA002B3C9E /* MergeStatusView.swift in Sources */,
@@ -2634,6 +2648,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A7C0AD12CD2928000E479CA /* XCRemoteSwiftPackageReference "octokit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdishbynature/octokit.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.0;
+			};
+		};
 		8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -2662,6 +2684,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
+		};
+		8A7C0AD22CD2928000E479CA /* OctoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A7C0AD12CD2928000E479CA /* XCRemoteSwiftPackageReference "octokit" */;
+			productName = OctoKit;
 		};
 		8AE024DA2A92457C000548D7 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
