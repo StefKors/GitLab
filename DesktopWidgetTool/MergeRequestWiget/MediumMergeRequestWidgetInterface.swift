@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct MediumMergeRequestWidgetInterface: View {
-    var mergeRequests: [MergeRequest]
+    var mergeRequests: [UniversalMergeRequest]
     var accounts: [Account]
     var repos: [LaunchpadRepo]
     var selectedView: QueryType
 
-    private var filteredMRs: [MergeRequest] {
+    private var filteredMRs: [UniversalMergeRequest] {
         if selectedView == .reviewRequestedMergeRequests {
             return mergeRequests.filter { mr in
-                mr.approvedBy?.edges?.count == 0
+                mr.isApproved == false
             }
         }
 
@@ -82,7 +82,7 @@ struct MediumMergeRequestWidgetInterface: View {
 
         GroupBox {
             MediumMergeRequestWidgetInterface(
-                mergeRequests: [.preview, .previewGithub, .preview3, .preview2],
+                mergeRequests: [.preview, .previewGitHub, .preview3, .preview2],
                 accounts: [.preview, .previewGitHub],
                 repos: [],
                 selectedView: .authoredMergeRequests

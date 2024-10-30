@@ -19,12 +19,14 @@ import Get
 /// TODO: Split networking
 struct UserInterface: View {
     @Environment(\.modelContext) private var modelContext
-    
-    @Query(sort: \MergeRequest.createdAt, order: .reverse) private var mergeRequests: [MergeRequest]
-//    @Query private var mergeRequests: [MergeRequest]
+
     @Query private var accounts: [Account]
     @Query private var repos: [LaunchpadRepo]
-    
+    @Query(
+        sort: \UniversalMergeRequest.createdAt,
+        order: .reverse
+    ) private var mergeRequests: [UniversalMergeRequest]
+
     @State private var selectedView: QueryType = .authoredMergeRequests
     
     @State private var timelineDate: Date = .now
@@ -33,7 +35,7 @@ struct UserInterface: View {
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
     
-    private var filteredMergeRequests: [MergeRequest] {
+    private var filteredMergeRequests: [UniversalMergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
     }
     
@@ -97,17 +99,19 @@ struct UserInterface: View {
     @MainActor
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
-            let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
-            let results = await wrapRequest(info: info) {
-                try await NetworkManager.shared.fetchReviewRequestedMergeRequests(with: account)?.map { mr in
-                    mr.account = account
-                    mr.type = .reviewRequestedMergeRequests
-                    return mr
+            if account.provider == .GitLab {
+                let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
+                let results = await wrapRequest(info: info) {
+                    try await NetworkManagerGitLab.shared.fetchReviewRequestedMergeRequests(with: account)
                 }
-            }
-            
-            if let results {
-                removeAndInsertMRs(.reviewRequestedMergeRequests, account: account, results: results)
+
+                if let results {
+                    removeAndInsertUniversal(
+                        .reviewRequestedMergeRequests,
+                        account: account,
+                        results: results
+                    )
+                }
             }
         }
     }
@@ -115,56 +119,120 @@ struct UserInterface: View {
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
-            let info = NetworkInfo(label: "Fetch Authored Merge Requests", account: account, method: .get)
-            let results = await wrapRequest(info: info) {
-                try await NetworkManager.shared.fetchAuthoredMergeRequests(with: account)?.map { mr in
-                    mr.account = account
-                    mr.type = .authoredMergeRequests
-                    return mr
+            if account.provider == .GitLab {
+                let info = NetworkInfo(
+                    label: "Fetch Authored Merge Requests",
+                    account: account,
+                    method: .get
+                )
+                let results = await wrapRequest(info: info) {
+                    try await NetworkManagerGitLab.shared.fetchAuthoredMergeRequests(with: account)
                 }
-            }
-            
-            if let results {
-                removeAndInsertMRs(.authoredMergeRequests, account: account, results: results)
+
+                if let results {
+                    removeAndInsertUniversal(
+                        .authoredMergeRequests,
+                        account: account,
+                        results: results
+                    )
+                }
+            } else {
+                let info = NetworkInfo(
+                    label: "Fetch Authored Pull Requests",
+                    account: account,
+                    method: .get
+                )
+                let results = await wrapRequest(info: info) {
+                    try await NetworkManagerGitHub.shared.fetchAuthoredPullRequests(with: account)
+                }
+
+                if let results {
+                    removeAndInsertUniversal(
+                        .authoredMergeRequests,
+                        account: account,
+                        results: results
+                    )
+                }
             }
         }
     }
-    
-    private func removeAndInsertMRs(_ type: QueryType, account: Account, results: [MergeRequest]) {
-        print("inserting \(results.count) merge requests \(type.rawValue)")
-        let existing = account.mergeRequests.filter({ $0.type == type }).map({ $0.mergerequestID })
-        let updated = results.map { $0.mergerequestID }
-        let difference = existing.difference(from: updated)
-        
-        for mergeRequest in account.mergeRequests {
-            if difference.contains(mergeRequest.mergerequestID) {
-                modelContext.delete(mergeRequest)
+
+    private func removeAndInsertUniversal(_ type: QueryType, account: Account, results: [GitLab.MergeRequest]) {
+        // Map results to universal request
+        let requests = results.map { result in
+            return UniversalMergeRequest(
+                request: result,
+                account: account,
+                provider: .GitLab,
+                type: type
+            )
+        }
+        // Call universal remove and insert
+        removeAndInsertUniversal(type, account: account, requests: requests)
+    }
+
+    private func removeAndInsertUniversal(_ type: QueryType, account: Account, results: [GitHub.PullRequestsNode]) {
+        // Map results to universal request
+        let requests = results.map { result in
+            return UniversalMergeRequest(
+                request: result,
+                account: account,
+                provider: .GitHub,
+                type: type
+            )
+        }
+        // Call universal remove and insert
+        removeAndInsertUniversal(type, account: account, requests: requests)
+    }
+
+    private func removeAndInsertUniversal(_ type: QueryType, account: Account, requests: [UniversalMergeRequest]) {
+        try? modelContext.transaction {
+            // Get array of ids of current of type
+            let existing = mergeRequests.filter({ $0.type == type }).map({ $0.requestID })
+            // Get arary of new of current of type
+            let updated = requests.map { $0.requestID }
+            // Compute difference
+            let difference = existing.difference(from: updated)
+            print("difference: \(difference) \(existing) \(updated)")
+            // Delete existing
+            for pullRequest in account.requests {
+                if difference.contains(pullRequest.requestID) {
+                    print("removing \(pullRequest.requestID)")
+                    modelContext.delete(pullRequest)
+                }
             }
+            // Insert updated
+            for request in requests {
+                modelContext.insert(request)
+            }
+            // Persist operation
+            try? modelContext.save()
         }
-        
-        for result in results {
-            modelContext.insert(result)
-        }
-        try? modelContext.save()
     }
     
     @MainActor
     private func fetchRepos() async {
         for account in accounts {
-            let ids = Array(Set(mergeRequests.compactMap { mr in
-                return mr.targetProject?.id.split(separator: "/").last
-            }.compactMap({ Int($0) })))
-            
-            let info = NetworkInfo(label: "Fetch Projects \(ids)", account: account, method: .get)
-            let results = await wrapRequest(info: info) {
-                try await NetworkManager.shared.fetchProjects(with: account, ids: ids)
-            }
-            
-            if let results {
-                for result in results {
-                    modelContext.insert(result)
+            if account.provider == .GitLab {
+                let ids = Array(Set(mergeRequests.compactMap { mr in
+                    if mr.provider == .GitLab {
+                        return mr.mergeRequest?.targetProject?.id.split(separator: "/").last
+                    } else {
+                        return nil
+                    }
+                }.compactMap({ Int($0) })))
+
+                let info = NetworkInfo(label: "Fetch Projects \(ids)", account: account, method: .get)
+                let results = await wrapRequest(info: info) {
+                    try await NetworkManagerGitLab.shared.fetchProjects(with: account, ids: ids)
                 }
-                try? modelContext.save()
+
+                if let results {
+                    for result in results {
+                        modelContext.insert(result)
+                    }
+                    try? modelContext.save()
+                }
             }
         }
     }
@@ -172,30 +240,30 @@ struct UserInterface: View {
     @MainActor
     private func branchPushes() async {
         for account in accounts {
-            let info = NetworkInfo(label: "Branch Push", account: account, method: .get)
-            let notice = await wrapRequest(info: info) {
-                try await NetworkManager.shared.fetchLatestBranchPush(with: account, repos: repos)
-            }
-            
-            if let notice {
-                if notice.type == .branch, let branch = notice.branchRef  {
-
-                    let matchedMR = filteredMergeRequests.first { mr in
-                        return mr.sourceBranch == branch
-                    }
-
-                    let alreadyHasMR = matchedMR != nil
-
-                    if alreadyHasMR || !notice.createdAt.isWithinLastHours(1) {
-                        return
-                    }
+            if account.provider == .GitLab {
+                let info = NetworkInfo(label: "Branch Push", account: account, method: .get)
+                let notice = await wrapRequest(info: info) {
+                    try await NetworkManagerGitLab.shared.fetchLatestBranchPush(with: account, repos: repos)
                 }
-                noticeState.addNotice(notice: notice)
+
+                if let notice {
+                    if notice.type == .branch, let branch = notice.branchRef  {
+
+                        let matchedMR = filteredMergeRequests.first { mr in
+                            return mr.sourceBranch == branch
+                        }
+
+                        let alreadyHasMR = matchedMR != nil
+
+                        if alreadyHasMR || !notice.createdAt.isWithinLastHours(1) {
+                            return
+                        }
+                    }
+                    noticeState.addNotice(notice: notice)
+                }
             }
         }
     }
-
-
 
     @MainActor
     private func wrapRequest<T>(info: NetworkInfo, do request: () async throws -> T?) async -> T? {
@@ -222,18 +290,6 @@ struct UserInterface: View {
     }
 }
 
-
-public protocol OptionalType: ExpressibleByNilLiteral {
-    associatedtype WrappedType
-    var asOptional: WrappedType? { get }
-}
-
-extension Optional: OptionalType {
-    public var asOptional: Wrapped? {
-        return self
-    }
-}
-
 #Preview {
     HStack(alignment: .top) {
         UserInterface()
@@ -245,8 +301,6 @@ extension Optional: OptionalType {
     }
     .scenePadding()
 }
-
-
 
 //NotificationManager.shared.sendNotification(
 //    title: title,

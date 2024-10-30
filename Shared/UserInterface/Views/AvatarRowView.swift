@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AvatarRowView: View {
-    let approvedBy: [Author]
+    let approvedBy: [Approval]
     let account: Account?
 
     private let maxSize = 3
@@ -18,7 +18,7 @@ struct AvatarRowView: View {
         approvedBy.count - maxSize
     }
 
-    private var approvers: [Author] {
+    private var approvers: [Approval] {
         if approvedBy.count > maxSize {
             return Array(approvedBy.prefix(maxSize - 1))
         } else {

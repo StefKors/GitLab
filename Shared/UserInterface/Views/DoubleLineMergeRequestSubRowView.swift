@@ -9,15 +9,13 @@
 import SwiftUI
 
 struct DoubleLineMergeRequestSubRowView: View {
-    var MR: MergeRequest
+    var MR: UniversalMergeRequest
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center, spacing: 4) {
-                if let provider = MR.account?.provider {
-                    GitProviderView(provider: provider)
-                        .frame(width: 18, height: 18, alignment: .center)
-                }
+                GitProviderView(provider: MR.account.provider)
+                    .frame(width: 18, height: 18, alignment: .center)
 
                 AutoSizingWebLinks(MR: MR)
 
@@ -25,13 +23,14 @@ struct DoubleLineMergeRequestSubRowView: View {
             }
 
             HStack(alignment: .center, spacing: 4) {
-                if let count = MR.userNotesCount, count > 1 {
+                if let count = MR.discussionCount, count > 1 {
                     DiscussionCountIcon(count: count)
                 }
                 MergeStatusView(MR: MR)
 
-                if let pipeline = MR.headPipeline {
-                    PipelineView(pipeline: pipeline, instance: MR.account?.instance)
+                // TODO: support github pipelines
+                if let pipeline = MR.mergeRequest?.headPipeline {
+                    PipelineView(pipeline: pipeline, instance: MR.account.instance)
                 }
             }
         }

@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct MergeRequestRowView: View {
-    var MR: MergeRequest
-    
+    var MR: UniversalMergeRequest
+
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
     
     var body: some View {
         Button {
-            if let url = MR.webUrl {
+            if let url = MR.url {
                 openURL(url)
                 dismissWindow()
             }
         } label: {
             VStack(alignment: .leading, spacing: 5) {
-                MRTitleView(linkText: MR.title ?? "untitled")
+                MRTitleView(linkText: MR.title ?? "untitled", isDraft: MR.isDraft)
                     .multilineTextAlignment(.leading)
                     .truncationMode(.middle)
                     .padding(.trailing)
-                
+
                 HorizontalMergeRequestSubRowView(MR: MR)
             }
         }

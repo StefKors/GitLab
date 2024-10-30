@@ -8,9 +8,9 @@
 import SwiftUI
 
  struct CIJobsNotificationView: View {
-     var stages: [FluffyNode?]
-    
-     init (stages: [FluffyNode?]?) {
+     var stages: [GitLab.FluffyNode?]
+
+     init (stages: [GitLab.FluffyNode?]?) {
         self.stages = stages ?? []
     }
     

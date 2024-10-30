@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct UserAvatarView: View {
-    let author: Author
+    let author: Approval
     let account: Account?
 
     @Environment(\.isInWidget) private var isInWidget
@@ -18,7 +18,7 @@ struct UserAvatarView: View {
         VStack {
             // TODO: ios support
             // TODO: cache data fetch response
-            if isInWidget, let avatarUrl = author.avatarUrl, let data = try? Data(contentsOf: avatarUrl), let image = PlatformImage(data: data) {
+            if isInWidget, let avatarUrl = author.picture, let data = try? Data(contentsOf: avatarUrl), let image = PlatformImage(data: data) {
 #if os(iOS)
                 Image(uiImage: image)
                     .resizable()
@@ -28,7 +28,7 @@ struct UserAvatarView: View {
 #endif
             } else
             // Previously we used account.instace to create the base url
-            if let avatarUrl = author.avatarUrl {
+            if let avatarUrl = author.picture {
                 AsyncImage(url: avatarUrl) { image in
                     image
                         .resizable()
@@ -87,7 +87,6 @@ struct UserAvatarView: View {
 
 #Preview {
     VStack {
-
         UserAvatarView(author: .preview, account: .preview)
 
         HStack(spacing: -4) {

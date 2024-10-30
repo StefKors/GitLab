@@ -9,10 +9,10 @@ import SwiftUI
 
 struct CIJobsView: View {
     // TODO: account / instance from env
-    let stage: FluffyNode
+    let stage: GitLab.FluffyNode
     var instance: String
 
-    init(stage: FluffyNode, instance: String? = nil) {
+    init(stage: GitLab.FluffyNode, instance: String? = nil) {
         self.stage = stage
         self.instance = instance ?? "https://www.gitlab.com"
     }
@@ -24,7 +24,7 @@ struct CIJobsView: View {
         stage.jobs?.edges?.contains(where: { $0.node?.status == .failed }) ?? false
     }
 
-    private var status: PipelineStatus? {
+    private var status: GitLab.PipelineStatus? {
         if let stageStatus = stage.status?.toPipelineStatus() {
             if stageStatus == .success, hasFailedChildJob {
                 return .warning
@@ -34,7 +34,7 @@ struct CIJobsView: View {
         return stage.status?.toPipelineStatus()
     }
 
-    private var jobs: [HeadPipeline] {
+    private var jobs: [GitLab.HeadPipeline] {
         stage.jobs?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
     }
 

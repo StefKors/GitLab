@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LargeMergeRequestWidgetInterface: View {
-    var mergeRequests: [MergeRequest]
+    var mergeRequests: [UniversalMergeRequest]
     var accounts: [Account]
     var repos: [LaunchpadRepo]
     var selectedView: QueryType
 
-    private var filteredMRs: [MergeRequest] {
+    private var filteredMRs: [UniversalMergeRequest] {
         if selectedView == .reviewRequestedMergeRequests {
             return mergeRequests.filter { mr in
-                mr.approvedBy?.edges?.count == 0
+                mr.isApproved == false
             }
         }
 

@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct AutoSizingWebLinks: View {
-    var MR: MergeRequest
+struct GitLabAutoSizingWebLinks: View {
+    var MR: GitLab.MergeRequest
 
+    // spaced with "thin width space"
+    // https://www.compart.com/en/unicode/U+2009
     var group: String {
         if let name = MR.targetProject?.group?.fullPath?.trimmingPrefix("/"), !name.isEmpty {
-            return name + "/"
+            return name + " / "
         }
 
         return ""
@@ -20,7 +22,7 @@ struct AutoSizingWebLinks: View {
 
     var path: String {
         if let name = MR.targetProject?.path?.trimmingPrefix("/"), !name.isEmpty {
-            return name + "/"
+            return name + " / "
         }
 
         return ""
@@ -42,7 +44,7 @@ struct AutoSizingWebLinks: View {
             )
 
             WebLink(
-                linkText: path,
+                linkText: path + reference,
                 destination: MR.targetProject?.webURL
             )
 
@@ -55,35 +57,78 @@ struct AutoSizingWebLinks: View {
         .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
         .buttonStyle(.plain)
     }
+}
 
-    //    var body: some View {
-    //        ViewThatFits(in: .horizontal) {
-    //            HStack {
-    //                WebLink(
-    //                    linkText: group + path + reference,
-    //                    destination: MR.targetProject?.webURL
-    //                )
-    //            }
-    //            .frame(minWidth: 50, idealWidth: 200, maxWidth: 400, alignment: .leading)
-    //
-    //            HStack {
-    //                WebLink(
-    //                    linkText: path + reference,
-    //                    destination: MR.targetProject?.webURL
-    //                )
-    //            }
-    //            .frame(minWidth: 50, idealWidth: 100, maxWidth: 400, alignment: .leading)
-    //
-    //            HStack {
-    //                WebLink(
-    //                    linkText: reference,
-    //                    destination: MR.targetProject?.webURL
-    //                )
-    //            }
-    //            .frame(minWidth: 50, idealWidth: 50, maxWidth: 400, alignment: .leading)
-    //        }
-    //        .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
-    //    }
+struct GitHubAutoSizingWebLinks: View {
+    var MR: GitHub.PullRequestsNode
+
+    // spaced with "thin width space"
+    // https://www.compart.com/en/unicode/U+2009
+    var group: String {
+        if let name = MR.repository?.owner?.login, !name.isEmpty {
+            return name + " / "
+        }
+
+        return ""
+    }
+
+    var path: String {
+        if let name = MR.repository?.name, !name.isEmpty {
+            return name + " / "
+        }
+
+        return ""
+    }
+
+    var reference: String {
+        if let name = MR.number?.description, !name.isEmpty {
+            return String(name)
+        }
+
+        return ""
+    }
+
+    var url: URL? {
+        if let url = MR.url {
+            return URL(string: url)
+        } else {
+            return nil
+        }
+    }
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            WebLink(
+                linkText: group + path + reference,
+                destination: url
+            )
+
+            WebLink(
+                linkText: path,
+                destination: url
+            )
+
+            WebLink(
+                linkText: reference,
+                destination: url
+            )
+
+        }
+        .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
+        .buttonStyle(.plain)
+    }
+}
+
+struct AutoSizingWebLinks: View {
+    var MR: UniversalMergeRequest
+
+    var body: some View {
+        if let request = MR.mergeRequest {
+            GitLabAutoSizingWebLinks(MR: request)
+        } else if let request = MR.pullRequest {
+            GitHubAutoSizingWebLinks(MR: request)
+        }
+    }
 }
 
 #Preview {

@@ -9,26 +9,24 @@
 import SwiftUI
 
 struct HorizontalMergeRequestSubRowView: View {
-    var MR: MergeRequest
+    var MR: UniversalMergeRequest
 
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
-            if let provider = MR.account?.provider {
-                GitProviderView(provider: provider)
-                    .frame(width: 18, height: 18, alignment: .center)
-            }
+            GitProviderView(provider: MR.account.provider)
+                .frame(width: 18, height: 18, alignment: .center)
 
             AutoSizingWebLinks(MR: MR)
 
             Spacer()
-            if let count = MR.userNotesCount, count > 1 {
+            if let count = MR.discussionCount, count > 1 {
                 DiscussionCountIcon(count: count)
             }
             MergeStatusView(MR: MR)
-            if let pipeline = MR.headPipeline {
-                PipelineView(pipeline: pipeline, instance: MR.account?.instance)
+            // TODO: support github pipelines
+            if let pipeline = MR.mergeRequest?.headPipeline {
+                PipelineView(pipeline: pipeline, instance: MR.account.instance)
             }
-//            PipelineView(stages: MR.headPipeline?.stages?.edges?.map({ $0.node }) ?? [], instance: MR.account?.instance)
         }
     }
 }
@@ -38,6 +36,8 @@ struct HorizontalMergeRequestSubRowView: View {
         HorizontalMergeRequestSubRowView(MR: .preview)
         HorizontalMergeRequestSubRowView(MR: .preview2)
         HorizontalMergeRequestSubRowView(MR: .preview3)
+        HorizontalMergeRequestSubRowView(MR: .preview4)
+        HorizontalMergeRequestSubRowView(MR: .previewGitHub)
     }
     .scenePadding()
 }

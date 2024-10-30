@@ -13,10 +13,10 @@ struct Values {
 }
 
 struct PipelineView: View {
-    var pipeline: HeadPipeline
+    var pipeline: GitLab.HeadPipeline
     var instance: String?
     
-    private var stages: [FluffyNode] {
+    private var stages: [GitLab.FluffyNode] {
         pipeline.stages?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
     }
     

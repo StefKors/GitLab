@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PlainMergeRequestList: View {
-    let mergeRequests: [MergeRequest]
+    let mergeRequests: [UniversalMergeRequest]
 
-    var lastMR: MergeRequest? {
+    var lastMR: UniversalMergeRequest? {
         mergeRequests.last
     }
 

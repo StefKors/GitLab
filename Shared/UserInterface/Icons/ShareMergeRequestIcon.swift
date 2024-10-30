@@ -14,7 +14,7 @@ import UIKit
 #endif
 
 struct ShareMergeRequestIcon: View {
-    let MR: MergeRequest
+    let MR: UniversalMergeRequest
     @State private var chosenEmoji: String = ""
     @State private var isVisible: Bool = false
 
@@ -58,7 +58,7 @@ struct ShareMergeRequestIcon: View {
         let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
         let content = """
 \(MR.title ?? "") \(emoji)
-\(MR.webUrl?.absoluteString ?? "")
+\(MR.url?.absoluteString ?? "")
 """
 #if canImport(AppKit)
         let pasteboard = NSPasteboard.general

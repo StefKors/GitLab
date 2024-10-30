@@ -23,7 +23,7 @@ class NotificationViewController: NSHostingController<CIJobsNotificationView>, U
 
     func didReceive(_ notification: UNNotification) {
         if let jsonData = notification.request.content.userInfo["PIPELINE_STATUS"] as? Data,
-           let headPipeline = try? JSONDecoder().decode(HeadPipeline.self, from: jsonData) {
+           let headPipeline = try? JSONDecoder().decode(GitLab.HeadPipeline.self, from: jsonData) {
             self.rootView = CIJobsNotificationView(stages: headPipeline.stages?.edges?.map({ $0.node }) ?? [])
         }
     }

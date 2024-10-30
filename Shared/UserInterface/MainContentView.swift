@@ -12,7 +12,7 @@ import Get
 
 struct MainContentView: View {
     let repos: [LaunchpadRepo]
-    let filteredMergeRequests: [MergeRequest]
+    let filteredMergeRequests: [UniversalMergeRequest]
     let accounts: [Account]
     var withScrollView: Bool = false
     @Binding var selectedView: QueryType

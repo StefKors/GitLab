@@ -9,14 +9,14 @@ import SwiftUI
 import Foundation
 
 struct MergeStatusView: View {
-    var MR: MergeRequest
-    
+    var MR: UniversalMergeRequest
+
     private var isOnMergeTrain: Bool {
-        MR.headPipeline?.mergeRequestEventType == .mergeTrain
+        MR.mergeRequest?.headPipeline?.mergeRequestEventType == .mergeTrain
     }
     
-    private var approvers: [Author]? {
-        MR.approvedBy?.edges?.compactMap({ $0.node })
+    private var approvers: [Approval]? {
+        MR.approvals
     }
     
     @Environment(\.isInWidget) private var isInWidget
@@ -26,7 +26,7 @@ struct MergeStatusView: View {
             MergeTrainIcon()
         } else if let approvers = approvers, !approvers.isEmpty {
             ApprovedReviewIcon(approvedBy: approvers, account: MR.account)
-        } else if !isInWidget, let title = MR.title, !(title.containsIgnoringCase("draft") || title.containsIgnoringCase("wip")) {
+        } else if !isInWidget, !MR.isDraft {
             ShareMergeRequestIcon(MR: MR)
         } else {
             // NeedsReviewIcon()

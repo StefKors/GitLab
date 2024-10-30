@@ -37,7 +37,7 @@ struct Provider: TimelineProvider {
 
             let mergeRequests = (
                 try? context.fetch(
-                    FetchDescriptor<MergeRequest>(
+                    FetchDescriptor<UniversalMergeRequest>(
                         predicate: nil,
                         sortBy: [.init(\.createdAt, order: .reverse)]
                     )
@@ -67,7 +67,7 @@ struct Provider: TimelineProvider {
 
             let mergeRequests = (
                 try? context.fetch(
-                    FetchDescriptor<MergeRequest>(
+                    FetchDescriptor<UniversalMergeRequest>(
                         predicate: nil,
                         sortBy: [.init(\.createdAt, order: .reverse)]
                     )
@@ -111,7 +111,7 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let mergeRequests: [MergeRequest]
+    let mergeRequests: [UniversalMergeRequest]
     let accounts: [Account]
     let repos: [LaunchpadRepo]
     let selectedView: QueryType

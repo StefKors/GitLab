@@ -1,5 +1,5 @@
 {
-  "originHash" : "bd5b2508eb1b73716d2dc923908544cb9594877862af54ce1e9fd44392aaea65",
+  "originHash" : "2a06bdaff6864ba8fd3d180b93a1d7654ccffbbd662bf8961c590b0a27d94d84",
   "pins" : [
     {
       "identity" : "cachedasyncimage",
@@ -17,33 +17,6 @@
       "state" : {
         "revision" : "12830cc64f31789ae6f4352d2d51d03a25fc3741",
         "version" : "2.1.6"
-      }
-    },
-    {
-      "identity" : "octokit.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nerdishbynature/octokit.swift",
-      "state" : {
-        "revision" : "44192458beb89180c3a3a1245d904aacac8be0ae",
-        "version" : "0.13.0"
-      }
-    },
-    {
-      "identity" : "requestkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nerdishbynature/RequestKit.git",
-      "state" : {
-        "revision" : "e4d905fed938807e36d87f28375f88b7c1c26840",
-        "version" : "3.3.0"
-      }
-    },
-    {
-      "identity" : "swiftformat",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nicklockwood/SwiftFormat",
-      "state" : {
-        "revision" : "86ed20990585f478c0daf309af645c2a528b59d8",
-        "version" : "0.54.6"
       }
     }
   ],

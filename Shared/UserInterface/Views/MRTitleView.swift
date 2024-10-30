@@ -12,20 +12,13 @@ struct MRTitleView: View {
     var linkText: String
     var isLink: Bool = false
     var weight: Font.Weight = .semibold
+    var isDraft: Bool = false
 
     @State private var isHovering = false
 
-    private var textLabel: String {
-        if linkText.isDraft {
-            return linkText.removeDraft
-        }
-
-        return linkText
-    }
-
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 4) {
-            if linkText.isDraft {
+        HStack(alignment: .center, spacing: 4) {
+            if isDraft {
                 Text("Draft")
                     .font(.footnote)
                     .padding(.vertical, 2)
@@ -51,6 +44,21 @@ struct MRTitleView: View {
 }
 
 #Preview {
-    MRTitleView(linkText: "Draft: Fix MRTitleView preview", isLink: true)
+    VStack(alignment: .leading) {
+        MRTitleView(
+            linkText: "GitHub Support + Improvements",
+            isLink: true,
+            isDraft: true
+        )
+        MRTitleView(
+            linkText: "Draft: Fix MRTitleView preview",
+            isLink: true
+        )
+        MRTitleView(
+            linkText: "Fix MRTitleView preview",
+            isLink: true,
+            isDraft: true
+        )
+    }
         .scenePadding()
 }

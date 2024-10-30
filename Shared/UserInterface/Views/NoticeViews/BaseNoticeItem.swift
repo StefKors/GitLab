@@ -7,19 +7,18 @@
 
 import SwiftUI
 
- struct BaseNoticeItem: View {
-    @EnvironmentObject  var noticeState: NoticeState
-    // @Environment(\.colorScheme) private var colorScheme
+struct BaseNoticeItem: View {
+    @EnvironmentObject private var noticeState: NoticeState
     @Environment(\.openURL) private var openURL
     @State private var isHovering: Bool = false
 
-     var notice: NoticeMessage
+    var notice: NoticeMessage
 
-     init(notice: NoticeMessage) {
+    init(notice: NoticeMessage) {
         self.notice = notice
     }
 
-     var body: some View {
+    var body: some View {
         HStack(alignment: .center, spacing: 0) {
             if let statusCode = notice.statusCode {
                 VStack(alignment: .center) {
@@ -103,11 +102,11 @@ import SwiftUI
     }
 }
 
- struct NoticeTypeBackground: ViewModifier {
+struct NoticeTypeBackground: ViewModifier {
     var notice: NoticeMessage
 
     let radius: CGFloat = 8
-     func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         if notice.type == .branch {
             content
                 .background {
@@ -123,7 +122,6 @@ import SwiftUI
 }
 
 struct BaseNoticeItem_Previews: PreviewProvider {
-    // static let networkManager = NetworkManager()
     static let noticeState = NoticeState()
     static var previews: some View {
         VStack(spacing: 25) {
@@ -139,7 +137,7 @@ struct BaseNoticeItem_Previews: PreviewProvider {
                         .padding(.horizontal)
                     // needed to render in the correct colorScheme
                         .colorScheme(.dark)
-
+                    
                     let renderer = ImageRenderer(content: renderView)
                     renderer.scale = 4.0
                     renderer.isOpaque = false

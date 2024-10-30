@@ -15,7 +15,7 @@ import SwiftUI
 
 struct ApprovedReviewIcon: View {
     @Environment(\.colorScheme) private var colorScheme
-    var approvedBy: [Author]
+    var approvedBy: [Approval]
     var account: Account?
     
     private var instance: String {
@@ -105,7 +105,7 @@ struct ApprovedReviewIcon: View {
 }
 
 #Preview("Change authors") {
-    @Previewable @State var authors: [Author] = [.preview]
+    @Previewable @State var authors: [Approval] = [.preview]
     VStack {
         
         ApprovedReviewIcon(approvedBy: authors, account: .preview)
@@ -114,14 +114,14 @@ struct ApprovedReviewIcon: View {
         HStack {
             
             Button("+") {
-                let author: Author? = [.preview, .preview2, .preview3, .preview4].randomElement()
+                let author: Approval? = [.preview, .preview2, .preview3, .preview4].randomElement()
                 if let author {
                     authors.append(author)
                 }
             }
             
             Button("reset") {
-                let author: Author? = [.preview, .preview2, .preview3, .preview4].randomElement()
+                let author: Approval? = [.preview, .preview2, .preview3, .preview4].randomElement()
                 if let author {
                     authors = [author]
                 }

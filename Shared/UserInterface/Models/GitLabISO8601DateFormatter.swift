@@ -20,3 +20,12 @@ var GitLabISO8601DateFormatter: ISO8601DateFormatter {
     ]
     return isoFormatter
 }
+
+extension Date {
+    static func fromGitLabISOString(_ string: String?) -> Date? {
+        guard let string, let date = GitLabISO8601DateFormatter.date(from: string) else {
+            return nil
+        }
+        return date
+    }
+}
