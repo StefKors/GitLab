@@ -30,9 +30,17 @@ struct AvatarRowView: View {
     var body: some View {
         HStack(spacing: -4) {
             ForEach(Array(approvers.enumerated()), id: \.element, content: { index, author in
+
                 UserAvatarView(author: author, account: account)
                     .foregroundStyle(.primary)
                     .transition(.move(edge: .trailing).combined(with: .opacity).combined(with: .scale).combined(with: .blurReplace).animation(.smooth))
+                    .mask {
+                        Circle()
+                            .subtracting(
+                                Circle()
+                                    .offset(x: index != 0 ? -8 : -20)
+                            )
+                    }
             })
 
             if approvedBy.count > maxSize {
@@ -46,8 +54,8 @@ struct AvatarRowView: View {
                         Circle()
                             .stroke(lineWidth: 1)
                             .foregroundStyle(.primary)
-                            .background(.tertiary)
-                            .background(.background)
+//                            .background(.tertiary)
+//                            .background(.background)
                     }
                     .overlay(content: {
                         Circle()

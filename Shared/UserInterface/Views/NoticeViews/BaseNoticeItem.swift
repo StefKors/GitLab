@@ -112,7 +112,7 @@ import SwiftUI
             content
                 .background {
                     RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .stroke(.quinary, lineWidth: 1)
+                        .stroke(.secondary.opacity(0.5), lineWidth: 1)
                 }
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
         } else {

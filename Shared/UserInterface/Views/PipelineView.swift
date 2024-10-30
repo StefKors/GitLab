@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct Values {
+    var spacing = Angle.zero
+    var offset: CGFloat = 1.0
+}
+
 struct PipelineView: View {
     var pipeline: HeadPipeline
     var instance: String?
@@ -40,12 +45,16 @@ struct PipelineView: View {
                                         .offset(x: index != 0 && allSucceeded ? -4 : -26)
                                 )
                         }
-                    
+                        .zIndex(2)
+
                     let isLast = index == stages.count - 1
                     if !isLast {
                         Rectangle()
                             .fill(.quaternary)
                             .frame(width: allSucceeded ? 0 : 6, height: 2, alignment: .center)
+                            .opacity(allSucceeded ? 0 : 1)
+                            .animation(.snappy.delay(isHovering ? 0.05 : 0), value: isHovering)
+                            .zIndex(1)
                     }
                     
                 }
@@ -53,7 +62,7 @@ struct PipelineView: View {
             })
         }
         .onHover { state in
-            withAnimation {
+            withAnimation(.easeInOut) {
                 isHovering = state
             }
         }
@@ -71,5 +80,9 @@ struct PipelineView: View {
             .scenePadding()
         PipelineView(pipeline: .previewMultipleSuccessMergeTrain, instance: nil)
             .scenePadding()
-    }.scenePadding()
+    }
+    .scaleEffect(2)
+    .scenePadding()
+    .scenePadding()
+    .scenePadding()
 }

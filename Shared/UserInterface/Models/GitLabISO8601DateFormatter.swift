@@ -13,7 +13,10 @@ var GitLabISO8601DateFormatter: ISO8601DateFormatter {
         .withFullDate,
         .withTime,
         .withDashSeparatorInDate,
-        .withColonSeparatorInTime
+        .withColonSeparatorInTime,
+        .withColonSeparatorInTimeZone,
+        .withFractionalSeconds,
+        .withTimeZone
     ]
     return isoFormatter
 }

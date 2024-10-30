@@ -176,7 +176,7 @@ struct UserInterface: View {
             let notice = await wrapRequest(info: info) {
                 try await NetworkManager.shared.fetchLatestBranchPush(with: account, repos: repos)
             }
-
+            
             if let notice {
                 if notice.type == .branch, let branch = notice.branchRef  {
 
@@ -186,7 +186,7 @@ struct UserInterface: View {
 
                     let alreadyHasMR = matchedMR != nil
 
-                    if alreadyHasMR || notice.createdAt.isWithinLastHours(1) {
+                    if alreadyHasMR || !notice.createdAt.isWithinLastHours(1) {
                         return
                     }
                 }

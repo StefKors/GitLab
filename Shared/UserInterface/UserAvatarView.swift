@@ -71,8 +71,8 @@ struct UserAvatarView: View {
             Circle()
                 .stroke(lineWidth: 1)
                 .foregroundStyle(.primary)
-                .background(.tertiary)
-                .background(.background)
+//                .background(.tertiary)
+//                .background(.background)
         }
         .overlay(content: {
             Circle()
