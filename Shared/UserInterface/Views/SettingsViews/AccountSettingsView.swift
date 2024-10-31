@@ -25,7 +25,7 @@ struct AlertDetails: Identifiable {
     let alertTitle: String = "Confirm deletion"
      var body: some View {
         Form {
-            Section("GitLab Token") {
+            Section("Tokens") {
                 if accounts.isEmpty {
                     AccountListEmptyView()
                 } else {

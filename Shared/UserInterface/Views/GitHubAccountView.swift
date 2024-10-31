@@ -53,7 +53,7 @@ struct GitHubAccountView: View {
         } header: {
             Text("Account").bold()
 
-            Text("Create a read-only GitHub [access-token](https://github.com/settings/tokens) that the app can use to query the API with.")
+            Text("Create a classic read-only GitHub [access-token](https://github.com/settings/tokens) that the app can use to query the API with. You need at least repo, workflow, org, and user permissions.")
                 .foregroundStyle(.secondary)
         } footer: {
             Button("Close") {

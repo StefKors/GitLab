@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountListEmptyView: View {
     var body: some View {
-        Text("Add your GitLab Account")
+        Text("Add your GitLab or GitHub Account")
     }
 }
 
