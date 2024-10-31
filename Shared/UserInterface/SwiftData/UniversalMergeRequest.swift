@@ -110,7 +110,7 @@ import SwiftData
     var approvals: [Approval]? {
         switch provider {
         case .GitHub: return pullRequest?.reviews?.nodes?.compactMap { node in
-            if let author = node.author {
+            if node.state == "APPROVED", let author = node.author {
                 return Approval(author: author)
             }
             return nil
@@ -125,7 +125,11 @@ import SwiftData
     }
 
     var isApproved: Bool {
-        (approvals?.count ?? 0) > 0
+        switch provider {
+        case .GitHub: return pullRequest?.reviewDecision == "APPROVED"
+        case .GitLab: return (approvals?.count ?? 0) > 0
+        }
+
     }
 }
 

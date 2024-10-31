@@ -134,6 +134,21 @@ class GitHub {
     // MARK: - ReviewsNode
     struct ReviewsNode: Codable, Equatable {
         let id: String?
+        let state: String?
+//        PENDING
+//        A review that has not yet been submitted.
+//
+//        COMMENTED
+//        An informational review.
+//
+//        APPROVED
+//        A review allowing the pull request to merge.
+//
+//        CHANGES_REQUESTED
+//        A review blocking the pull request from merging.
+//
+//        DISMISSED
+//        A review that has been dismissed.
         let author: Author?
     }
 
