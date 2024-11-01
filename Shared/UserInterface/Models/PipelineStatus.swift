@@ -33,7 +33,7 @@ enum PipelineStatus: String, Codable, Equatable {
     case manual = "MANUAL"
     /// Pipeline is scheduled to run.
     case scheduled = "SCHEDULED"
-    
+
     static func from(_ state: GitHub.CheckStatusState?) -> Self? {
         switch state {
         case .pending: return .pending
@@ -45,7 +45,7 @@ enum PipelineStatus: String, Codable, Equatable {
         case .none: return nil
         }
     }
-    
+
     static func from(_ state: GitHub.CheckConclusionState?) -> Self? {
         switch state {
         case .success: return .success

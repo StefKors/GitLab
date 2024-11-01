@@ -26,7 +26,6 @@ struct MergeRequestRowView: View {
                     .truncationMode(.middle)
                     .padding(.trailing
 
-
                     )
 
                 HorizontalMergeRequestSubRowView(request: request)
