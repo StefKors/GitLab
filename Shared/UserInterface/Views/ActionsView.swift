@@ -5,13 +5,14 @@
 //  Created by Stef Kors on 01/11/2024.
 //
 
+import OrderedCollections
 import SwiftUI
 
 struct ActionsView: View {
     let status: GitHub.StatusCheckRollup
     var instance: String?
 
-    private var stages: [GitHub.ContextsNode] {
+    private var allStages: [GitHub.ContextsNode] {
         status.contexts?.nodes?.compactMap({ $0 }) ?? []
     }
 
@@ -25,13 +26,26 @@ struct ActionsView: View {
 
     @State private var isHovering: Bool = false
 
+    private var groupedByWorkflow: OrderedDictionary<GitHub.Workflow, [GitHub.ContextsNode]> {
+        var dict: OrderedDictionary<GitHub.Workflow, [GitHub.ContextsNode]> = [:]
+
+        for stage in allStages {
+            if let workflow = stage.checkSuite?.workflowRun?.workflow {
+                dict[workflow, default: []].append(stage)
+            }
+        }
+
+        return dict
+    }
+
     var body: some View {
         HStack(alignment: .center, spacing: spacing) {
 
-            ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
+            ForEach(Array(groupedByWorkflow.keys.enumerated()), id: \.element) { index, workflow in
+                let stages = groupedByWorkflow[workflow] ?? []
                 HStack(spacing: 0) {
-                    GitHubCIJobsView(stage: stage, instance: instance)
-                        .id(stage.id)
+                    GitHubCIJobsView(workflow: workflow, stages: stages, instance: instance)
+                        .id(workflow.id)
                     // Create a staggered effect by masking children to appear correctly
                         .mask {
                             Circle()
@@ -54,11 +68,13 @@ struct ActionsView: View {
 
                 }
                 .zIndex(Double(stages.count - index))
-            })
+            }
         }
         .onHover { state in
             withAnimation(.easeInOut) {
-                isHovering = state
+                if Array(groupedByWorkflow.keys).count > 1 {
+                    isHovering = state
+                }
             }
         }
     }

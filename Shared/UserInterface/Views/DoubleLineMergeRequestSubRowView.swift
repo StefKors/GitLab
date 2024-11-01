@@ -27,12 +27,11 @@ struct DoubleLineMergeRequestSubRowView: View {
                 }
                 MergeStatusView(request: request)
 
-                // TODO: support github pipelines
                 if let pipeline = request.mergeRequest?.headPipeline {
                     PipelineView(pipeline: pipeline, instance: request.account.instance)
                 }
 
-                if let status = request.pullRequest?.commits?.nodes?.first?.commit?.statusCheckRollup {
+                if let status = request.pullRequest?.statusCheckRollup {
                     ActionsView(status: status, instance: request.account.instance)
                 }
             }

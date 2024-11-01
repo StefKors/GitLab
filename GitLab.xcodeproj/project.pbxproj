@@ -182,6 +182,10 @@
 		8A858F232CD527B10024795D /* PipelineStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F212CD527B10024795D /* PipelineStatus.swift */; };
 		8A858F242CD527B10024795D /* PipelineStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F212CD527B10024795D /* PipelineStatus.swift */; };
 		8A858F252CD527B10024795D /* PipelineStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F212CD527B10024795D /* PipelineStatus.swift */; };
+		8A858F282CD54D2B0024795D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8A858F272CD54D2B0024795D /* OrderedCollections */; };
+		8A858F2A2CD550750024795D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8A858F292CD550750024795D /* OrderedCollections */; };
+		8A858F2C2CD5507D0024795D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8A858F2B2CD5507D0024795D /* OrderedCollections */; };
+		8A858F2E2CD550820024795D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8A858F2D2CD550820024795D /* OrderedCollections */; };
 		8A91E2172CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
@@ -703,6 +707,7 @@
 			files = (
 				8AE024DB2A92457C000548D7 /* Get in Frameworks */,
 				8AE024DD2A92457C000548D7 /* CachedAsyncImage in Frameworks */,
+				8A858F2A2CD550750024795D /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +729,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A858F2C2CD5507D0024795D /* OrderedCollections in Frameworks */,
 				8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */,
 				8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */,
 				8A36AF112869B4110008B949 /* UserNotifications.framework in Frameworks */,
@@ -737,6 +743,7 @@
 			files = (
 				8AF80DD72A5581A600819B80 /* Get in Frameworks */,
 				8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */,
+				8A858F282CD54D2B0024795D /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +765,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A858F2E2CD550820024795D /* OrderedCollections in Frameworks */,
 				8AE8A7442B989F78002B3C9E /* Get in Frameworks */,
 				8AE8A7462B989F78002B3C9E /* CachedAsyncImage in Frameworks */,
 				8AE8A6EA2B989E9A002B3C9E /* SwiftUI.framework in Frameworks */,
@@ -1202,6 +1210,7 @@
 			packageProductDependencies = (
 				8AE024DA2A92457C000548D7 /* Get */,
 				8AE024DC2A92457C000548D7 /* CachedAsyncImage */,
+				8A858F292CD550750024795D /* OrderedCollections */,
 			);
 			productName = "GitLab iOS";
 			productReference = 8A31CB3A2866334000C94AC1 /* GitLab iOS.app */;
@@ -1259,6 +1268,7 @@
 			packageProductDependencies = (
 				8A7935FA2A5583F700F8FB6C /* Get */,
 				8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */,
+				8A858F2B2CD5507D0024795D /* OrderedCollections */,
 			);
 			productName = NotificationContent;
 			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
@@ -1284,6 +1294,7 @@
 			packageProductDependencies = (
 				8AF80DD62A5581A600819B80 /* Get */,
 				8AF80DD92A5581B700819B80 /* CachedAsyncImage */,
+				8A858F272CD54D2B0024795D /* OrderedCollections */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */;
@@ -1342,6 +1353,7 @@
 			packageProductDependencies = (
 				8AE8A7432B989F78002B3C9E /* Get */,
 				8AE8A7452B989F78002B3C9E /* CachedAsyncImage */,
+				8A858F2D2CD550820024795D /* OrderedCollections */,
 			);
 			productName = DesktopWidgetToolExtension;
 			productReference = 8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */;
@@ -1400,6 +1412,7 @@
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
 				8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -2703,6 +2716,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.4;
+			};
+		};
 		8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
@@ -2744,6 +2765,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		8A858F272CD54D2B0024795D /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		8A858F292CD550750024795D /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		8A858F2B2CD5507D0024795D /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		8A858F2D2CD550820024795D /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		8AD9D9E82CD4F0B600BE229B /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;

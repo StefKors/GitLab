@@ -41,7 +41,9 @@ class GitHub {
         let url: String?
         let state: PullRequestState?
         let isDraft: Bool?
-        let createdAt, updatedAt: Date?
+        let createdAt: Date?
+        let updatedAt: Date?
+        let headRefName: String?
         let baseRefName: String?
         let reviewDecision: ReviewDecision?
         let labels: Labels?
@@ -49,11 +51,10 @@ class GitHub {
         let mergeStateStatus: MergeStateStatus?
         let number: Int?
         let permalink: String?
+        let totalCommentsCount: Int?
         let repository: Repository?
         let reviews: Reviews?
-        let comments: Comments?
-        let reactions: Reactions?
-        let commits: Commits?
+        let statusCheckRollup: StatusCheckRollup?
 
         static let previewGitHub = PullRequestsNode(
             id: "PR_kwDOJOGhKc5diY36",
@@ -63,6 +64,7 @@ class GitHub {
             isDraft: false,
             createdAt: Date.from("2023-10-23T14:21:50Z"),
             updatedAt: Date.from("2023-12-11T11:55:38Z"),
+            headRefName: "summary-implementation",
             baseRefName: "main",
             reviewDecision: .reviewRequired, labels: nil,
             isInMergeQueue: false,
@@ -70,11 +72,13 @@ class GitHub {
             mergeStateStatus: .dirty,
             number: 12,
             permalink: "https://github.com/beamlegacy/beam/pull/12",
+            totalCommentsCount: 4,
             repository: .previewBeam,
             reviews: nil,
-            comments: nil,
-            reactions: nil,
-            commits: nil
+            statusCheckRollup: .preview
+//            comments: nil,
+//            reactions: nil,
+//            commits: nil
         )
     }
 
@@ -121,17 +125,17 @@ class GitHub {
         )
     }
 
-    // MARK: - Comments
-    struct Comments: Codable, Equatable {
-        let nodes: [CommentsNode]?
-    }
-
-    // MARK: - CommentsNode
-    struct CommentsNode: Codable, Equatable {
-        let id: String?
-        let author: Owner?
-        let bodyText: String?
-    }
+//    // MARK: - Comments
+//    struct Comments: Codable, Equatable {
+//        let nodes: [CommentsNode]?
+//    }
+//
+//    // MARK: - CommentsNode
+//    struct CommentsNode: Codable, Equatable {
+//        let id: String?
+//        let author: Owner?
+//        let bodyText: String?
+//    }
 
     // MARK: - Owner
     struct Owner: Codable, Equatable {
@@ -140,20 +144,20 @@ class GitHub {
         static let previewBeam = Owner(login: "beamLegacy")
     }
 
-    // MARK: - Commits
-    struct Commits: Codable, Equatable {
-        let nodes: [CommitsNode]?
-    }
-
-    // MARK: - CommitsNode
-    struct CommitsNode: Codable, Equatable {
-        let commit: Commit?
-    }
-
-    // MARK: - Commit
-    struct Commit: Codable, Equatable {
-        let statusCheckRollup: StatusCheckRollup?
-    }
+//    // MARK: - Commits
+//    struct Commits: Codable, Equatable {
+//        let nodes: [CommitsNode]?
+//    }
+//
+//    // MARK: - CommitsNode
+//    struct CommitsNode: Codable, Equatable {
+//        let commit: Commit?
+//    }
+//
+//    // MARK: - Commit
+//    struct Commit: Codable, Equatable {
+//        let statusCheckRollup: StatusCheckRollup?
+//    }
 
     // MARK: - StatusCheckRollup
     struct StatusCheckRollup: Codable, Equatable {
@@ -180,115 +184,138 @@ class GitHub {
         let nodes: [ContextsNode]?
     }
 
-    // MARK: - ContextsNode
+    // MARK: - ContextsNode (Like jobs in GitLab)
     struct ContextsNode: Codable, Equatable, Hashable {
         let id: String
         let name: String?
+        let status: CheckStatusState?
         let conclusion: CheckConclusionState?
         let detailsURL: String?
-        let context: String?
-        let description: String?
-        let state: StatusCheckState? // always null?
-        let status: CheckStatusState?
-        let targetURL: String?
-        let steps: Steps?
+        let title: String?
+        let url: String?
+        let checkSuite: CheckSuite?
 
         enum CodingKeys: String, CodingKey {
-            case id
-            case name, conclusion
+            case id = "id"
+            case name = "name"
+            case status = "status"
+            case conclusion = "conclusion"
             case detailsURL = "detailsUrl"
-            case context, description, state, status
-            case targetURL = "targetUrl"
-            case steps
+            case title = "title"
+            case url = "url"
+            case checkSuite = "checkSuite"
         }
 
         static let previewSuccess = ContextsNode(
             id: "CR_kwDOJO0j5s8AbbbbHiqSLJQ",
-            name: "Success",
-            conclusion: .success,
-            detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
-            context: "success",
-            description: "All tests passed",
-            state: .success,
+            name: "SwiftLint",
             status: .completed,
-            targetURL: "https://github.com/octocat/Hello-World/pull/1",
-            steps: Steps(nodes: [.previewCheckout, .previewSetup])
-
+            conclusion: .success,
+            detailsURL: "https://github.com/StefKors/GitLab/actions/runs/11632934479/job/32397042416",
+            title: "No header rules processed",
+            url: "https://github.com/StefKors/GitLab/runs/32397042416",
+            checkSuite: .previewLint
         )
 
         static let previewSuccess2 = ContextsNode(
-            id: "CR_kwDOJO0j5ssssssAAHiqSLJQ",
-            name: "Success",
-            conclusion: .success,
-            detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
-            context: "success",
-            description: "All tests passed",
-            state: .success,
+            id: "CR_kwDOJO0j5s8AbbbbHi23423234",
+            name: "SwiftLint",
             status: .completed,
-            targetURL: "https://github.com/octocat/Hello-World/pull/2",
-            steps: Steps(nodes: [.previewCheckout, .previewComplete])
-
+            conclusion: .success,
+            detailsURL: "https://github.com/StefKors/GitLab/actions/runs/11632934479/job/32397042416",
+            title: nil,
+            url: "https://github.com/StefKors/GitLab/runs/32397042416",
+            checkSuite: .previewLint
         )
 
         static let previewFailure = ContextsNode(
-            id: "CR_kwDOJO0j5s8AAAAHiqwer3425",
-            name: "Failure",
-            conclusion: .failure,
-            detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
-            context: "failure",
-            description: "All tests failed",
-            state: .failure,
+            id: "CR_kwDOJO0j523424",
+            name: "Build",
             status: .completed,
-            targetURL: "https://github.com/octocat/Hello-World/pull/1",
-            steps: Steps(nodes: [.previewCheckout, .previewBuild])
-
+            conclusion: .failure,
+            detailsURL: "https://github.com/StefKors/GitLab/actions/runs/11632934479/job/32397042416",
+            title: nil,
+            url: "https://github.com/StefKors/GitLab/runs/32397042416",
+            checkSuite: .previewNetlify
         )
 
         static let previewInProgress = ContextsNode(
-            id: "CR_kwDOJO0j53453453AAAHiqSLJQ",
-            name: "Pending",
-            conclusion: nil,
-            detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
-            context: "pending",
-            description: "All tests are pending",
-            state: .pending,
+            id: "CR_kwD09w8er-089wre",
+            name: "Build",
             status: .inProgress,
-            targetURL: "https://github.com/octocat/Hello-World/pull/1",
-            steps: Steps(nodes: [.previewCheckout, .previewTestsRunning])
-
+            conclusion: nil,
+            detailsURL: "https://github.com/StefKors/GitLab/actions/runs/11632934479/job/32397042416",
+            title: nil,
+            url: "https://github.com/StefKors/GitLab/runs/32397042416",
+            checkSuite: .previewNetlify
         )
 
         static let previewInProgress2 = ContextsNode(
-            id: "CR_kwDOJO0j545345345AAAHi234234JQ",
-            name: "Pending",
-            conclusion: nil,
-            detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
-            context: "pending",
-            description: "All tests are pending",
-            state: .pending,
+            id: "CR_kwslkfsadlfkjad",
+            name: "E2E Test",
             status: .inProgress,
-            targetURL: "https://github.com/octocat/Hello-World/pull/2",
-            steps: Steps(nodes: [.previewCheckout, .previewTestsRunning])
+            conclusion: nil,
+            detailsURL: "https://github.com/StefKors/GitLab/actions/runs/11632934479/job/32397042416",
+            title: nil,
+            url: "https://github.com/StefKors/GitLab/runs/32397042416",
+            checkSuite: .previewNetlify
+        )
 
+        static let previewFailed = ContextsNode(
+            id: "CR_kwslkfsadlfkjad",
+            name: "Deploy",
+            status: .completed,
+            conclusion: .failure,
+            detailsURL: "https://github.com/StefKors/GitLab/actions/runs/11632934479/job/32397042416",
+            title: nil,
+            url: "https://github.com/StefKors/GitLab/runs/32397042416",
+            checkSuite: .previewNetlify
         )
     }
 
-    //
-    // Hashable or Equatable:
-    // The compiler will not be able to synthesize the implementation of Hashable or Equatable
-    // for types that require the use of JSONAny, nor will the implementation of Hashable be
-    // synthesized for types that have collections (such as arrays or dictionaries).
+    // MARK: - CheckSuite
+    struct CheckSuite: Codable, Equatable, Hashable {
+        let workflowRun: WorkflowRun?
 
-    // MARK: - Steps
-    struct Steps: Codable, Equatable, Hashable {
-        let nodes: [StepsNode]?
+        enum CodingKeys: String, CodingKey {
+            case workflowRun = "workflowRun"
+        }
+
+        static let previewLint = CheckSuite(workflowRun: WorkflowRun(workflow: Workflow(id: "CR_kwDOJO0j5s8AbbbbHiqSLJQ", name: "lint")))
+        static let previewNetlify = CheckSuite(workflowRun: WorkflowRun(workflow: Workflow(id: "CR_lksjdflkjdsflksdjf", name: "Netlify")))
     }
 
-    //
-    // Hashable or Equatable:
-    // The compiler will not be able to synthesize the implementation of Hashable or Equatable
-    // for types that require the use of JSONAny, nor will the implementation of Hashable be
-    // synthesized for types that have collections (such as arrays or dictionaries).
+    // MARK: - WorkflowRun
+    struct WorkflowRun: Codable, Equatable, Hashable {
+        let workflow: Workflow?
+
+        enum CodingKeys: String, CodingKey {
+            case workflow = "workflow"
+        }
+    }
+
+    // MARK: - Workflow
+    struct Workflow: Codable, Equatable, Hashable {
+        let id: String?
+        let name: String?
+
+        enum CodingKeys: String, CodingKey {
+            case id = "id"
+            case name = "name"
+        }
+    }
+
+    // MARK: - Steps
+    /// Not used At the moment
+    struct Steps: Codable, Equatable, Hashable {
+        let nodes: [StepsNode]?
+
+//        steps: Steps(nodes: [.previewCheckout, .previewSetup])
+//        steps: Steps(nodes: [.previewCheckout, .previewComplete])
+//        steps: Steps(nodes: [.previewCheckout, .previewBuild])
+//        steps: Steps(nodes: [.previewCheckout, .previewTestsRunning])
+//        steps: Steps(nodes: [.previewCheckout, .previewTestsRunning])
+    }
 
     // MARK: - StepsNode
     struct StepsNode: Codable, Equatable, Hashable {

@@ -7,36 +7,63 @@
 
 import SwiftUI
 
-struct GitHubCIJobsView: View {
-    // TODO: account / instance from env
-    let stage: GitHub.ContextsNode
-    var instance: String
+// We reorder the data model to group Contexts (aka jobs) by workflow (aka pipeline)
 
-    init(stage: GitHub.ContextsNode, instance: String? = nil) {
-        self.stage = stage
-        self.instance = instance ?? "https://api.github.com"
-    }
+struct GitHubCIJobsView: View {
+    var workflow: GitHub.Workflow
+    // TODO: account / instance from env
+    var stages: [GitHub.ContextsNode]
+    var instance: String?
+//
+//    init(stages: [GitHub.ContextsNode], instance: String? = nil) {
+//        self.stages = stages
+//        self.instance = instance ?? "https://api.github.com"
+//    }
 
     @State var presentPopover: Bool = false
     @State var tapState: Bool = false
 
     private var hasFailedChildJob: Bool {
-        stage.steps?.nodes?.contains(where: { step in
+        stages.contains(where: { step in
             step.conclusion == .failure
-        }) ?? false
+        })
     }
 
     private var status: PipelineStatus? {
-        let stageStatus = PipelineStatus.from(stage.status)
-        if stageStatus == .success, hasFailedChildJob {
-            return .warning
+        let hasAnyInProgress = stages.contains { stage in
+            stage.status == .inProgress
         }
 
-        return stageStatus
-    }
+        if hasAnyInProgress {
+            return .running
+        }
 
-    private var steps: [GitHub.StepsNode] {
-        stage.steps?.nodes?.compactMap({ $0 }) ?? []
+        let hasAnyFailed = stages.contains { stage in
+            stage.conclusion == .failure
+        }
+
+        if hasAnyFailed {
+            return .failed
+        }
+
+        let hasAnyCancelled = stages.contains { stage in
+            stage.conclusion == .cancelled
+        }
+
+        if hasAnyCancelled {
+            return .canceled
+        }
+
+        let hasAllSucceeded = stages.allSatisfy { stage in
+            stage.conclusion == .success
+        }
+
+        if hasAllSucceeded {
+            return .success
+        }
+
+        // Not sure if this is correct...
+        return .warning
     }
 
     var body: some View {
@@ -44,23 +71,23 @@ struct GitHubCIJobsView: View {
             CIStatusView(status: status)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    if !steps.isEmpty {
+                    if !stages.isEmpty {
                         tapState.toggle()
                         presentPopover.toggle()
                     }
                 }
                 .popover(isPresented: $presentPopover, content: {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(stage.name?.capitalized ?? "")
+                        Text(workflow.name?.capitalized ?? "")
                             .fontWeight(.bold)
                             .padding(.bottom, 4)
-                        ForEach(steps, id: \.externalID) { step in
+                        ForEach(stages, id: \.id) { stage in
                             if let path = stage.detailsURL,
                                let destination = URL(string: path) {
                                 HStack {
                                     Link(destination: destination, label: {
-                                        CIStatusView(status: PipelineStatus.from(step.status))
-                                        Text(step.name ?? "")
+                                        CIStatusView(status: PipelineStatus.from(stage.status))
+                                        Text(stage.name ?? "")
                                     })
                                 }
                             }

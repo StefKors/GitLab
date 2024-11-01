@@ -63,7 +63,9 @@ struct PipelineView: View {
         }
         .onHover { state in
             withAnimation(.easeInOut) {
-                isHovering = state
+                if stages.count > 1 {
+                    isHovering = state
+                }
             }
         }
     }

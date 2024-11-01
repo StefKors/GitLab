@@ -101,7 +101,7 @@ import SwiftData
 
     var discussionCount: Int? {
         switch provider {
-        case .GitHub: return pullRequest?.comments?.nodes?.count
+        case .GitHub: return pullRequest?.totalCommentsCount ?? 0
         case .GitLab: return mergeRequest?.userDiscussionsCount
         }
     }
