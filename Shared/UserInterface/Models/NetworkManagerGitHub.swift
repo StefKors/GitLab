@@ -21,11 +21,10 @@ class NetworkManagerGitHub {
     ///   - type: QueryType
     /// - Returns: GraphQL query with MR information
     fileprivate static func buildQuery(type: QueryType) -> String {
-//        let state = type === QueryType.authoredMergeRequests ? "OPEN" : "CLOSED"
 //        let state = "OPEN"
-//        return "query { viewer { pullRequests(last: 100, states: OPEN) { nodes { id title url state isDraft url createdAt updatedAt baseRefName labels(first: 100) { nodes { id name color isDefault } } isInMergeQueue locked mergeStateStatus number permalink repository { name id isLocked url owner { login } } state reviewDecision reviews(first: 100) { nodes { id author { avatarUrl login } } } reactions(first: 100) { nodes { id user { avatarUrl name login } } } } } } }"
+        let query = "{ viewer { pullRequests(last: 100, states: OPEN) { nodes { id title url state isDraft url createdAt updatedAt baseRefName reviewDecision labels(first: 100) { nodes { id name color isDefault } } isInMergeQueue locked mergeStateStatus number permalink repository { name id isLocked isArchived url owner { login } } state reviewDecision reviews(first: 100) { nodes { id state author { avatarUrl login } } } comments(first: 100) { nodes { id author { login } bodyText } } reactions(first: 100) { nodes { id user { avatarUrl name login } } } commits(last: 1) { nodes { commit { statusCheckRollup { state contexts(last: 100) { nodes { ... on StatusContext { context description state targetUrl } ... on CheckRun { name conclusion detailsUrl } } } } } } } } } } }"
 
-        return "{\n\t\"query\": \"{ viewer { pullRequests(last: 100, states: OPEN) { nodes { id title url state isDraft url createdAt updatedAt baseRefName labels(first: 100) { nodes { id name color isDefault } } isInMergeQueue locked mergeStateStatus number permalink repository { name id isLocked isArchived url owner { login } } state reviewDecision reviews(first: 100) { nodes { id author { avatarUrl login } } } comments(first: 100) { nodes { id author { login } bodyText } } reactions(first: 100) { nodes { id user { avatarUrl name login } } } } } } }\",\n\t\"variables\": {}\n}"
+        return "{\n\t\"query\": \"\(query)\",\n\t\"variables\": {}\n}"
     }
 
 //    func getQuery() {
