@@ -242,7 +242,7 @@ class GitHub {
 
         static let previewPending = ContextsNode(
             name: "Pending",
-            conclusion: .neutral,
+            conclusion: nil,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
             context: "pending",
             description: "All tests are pending",
@@ -253,7 +253,7 @@ class GitHub {
 
         static let previewPending2 = ContextsNode(
             name: "Pending",
-            conclusion: "pending",
+            conclusion: nil,
             detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
             context: "pending",
             description: "All tests are pending",
