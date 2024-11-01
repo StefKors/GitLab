@@ -8,9 +8,9 @@
 import SwiftUI
 
  struct CIStatusView: View {
-     var status: GitLab.PipelineStatus?
+     var status: PipelineStatus?
 
-     init(status: GitLab.PipelineStatus?) {
+     init(status: PipelineStatus?) {
         self.status = status
     }
 

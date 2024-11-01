@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-fileprivate struct Values {
+private struct Values {
     var spacing = Angle.zero
     var offset: CGFloat = 1.0
 }

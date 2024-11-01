@@ -670,34 +670,6 @@ class GitLab {
         )
     }
 
-    // MARK: - PipelineStatus
-    enum PipelineStatus: String, Codable, Equatable {
-        /// Pipeline has been created.
-        case created = "CREATED"
-        /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
-        case waitingForResource = "WAITING_FOR_RESOURCE"
-        /// Pipeline is preparing to run.
-        case preparing = "PREPARING"
-        /// Pipeline has not started running yet.
-        case pending = "PENDING"
-        /// Pipeline is running.
-        case running = "RUNNING"
-        /// Custom status for when pipeline passes with success but a child job failed
-        case warning = "WARNING"
-        /// At least one stage of the pipeline failed.
-        case failed = "FAILED"
-        /// Pipeline completed successfully.
-        case success = "SUCCESS"
-        /// Pipeline was canceled before completion.
-        case canceled = "CANCELED"
-        /// Pipeline was skipped.
-        case skipped = "SKIPPED"
-        /// Pipeline needs to be manually started.
-        case manual = "MANUAL"
-        /// Pipeline is scheduled to run.
-        case scheduled = "SCHEDULED"
-    }
-
     // MARK: - MergeStatus
     enum MergeStatus: String, Codable, Equatable {
         case cannotBeMerged = "CANNOT_BE_MERGED"

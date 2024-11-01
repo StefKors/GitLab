@@ -188,9 +188,10 @@ class GitHub {
         let detailsURL: String?
         let context: String?
         let description: String?
-        let state: StatusCheckState?
+        let state: StatusCheckState? // always null?
         let status: CheckStatusState?
         let targetURL: String?
+        let steps: Steps?
 
         enum CodingKeys: String, CodingKey {
             case id
@@ -198,6 +199,7 @@ class GitHub {
             case detailsURL = "detailsUrl"
             case context, description, state, status
             case targetURL = "targetUrl"
+            case steps
         }
 
         static let previewSuccess = ContextsNode(
@@ -209,7 +211,9 @@ class GitHub {
             description: "All tests passed",
             state: .success,
             status: .completed,
-            targetURL: "https://github.com/octocat/Hello-World/pull/1"
+            targetURL: "https://github.com/octocat/Hello-World/pull/1",
+            steps: Steps(nodes: [.previewCheckout, .previewSetup])
+
         )
 
         static let previewSuccess2 = ContextsNode(
@@ -221,7 +225,9 @@ class GitHub {
             description: "All tests passed",
             state: .success,
             status: .completed,
-            targetURL: "https://github.com/octocat/Hello-World/pull/2"
+            targetURL: "https://github.com/octocat/Hello-World/pull/2",
+            steps: Steps(nodes: [.previewCheckout, .previewComplete])
+
         )
 
         static let previewFailure = ContextsNode(
@@ -233,7 +239,9 @@ class GitHub {
             description: "All tests failed",
             state: .failure,
             status: .completed,
-            targetURL: "https://github.com/octocat/Hello-World/pull/1"
+            targetURL: "https://github.com/octocat/Hello-World/pull/1",
+            steps: Steps(nodes: [.previewCheckout, .previewBuild])
+
         )
 
         static let previewInProgress = ContextsNode(
@@ -245,7 +253,9 @@ class GitHub {
             description: "All tests are pending",
             state: .pending,
             status: .inProgress,
-            targetURL: "https://github.com/octocat/Hello-World/pull/1"
+            targetURL: "https://github.com/octocat/Hello-World/pull/1",
+            steps: Steps(nodes: [.previewCheckout, .previewTestsRunning])
+
         )
 
         static let previewInProgress2 = ContextsNode(
@@ -257,7 +267,105 @@ class GitHub {
             description: "All tests are pending",
             state: .pending,
             status: .inProgress,
-            targetURL: "https://github.com/octocat/Hello-World/pull/2"
+            targetURL: "https://github.com/octocat/Hello-World/pull/2",
+            steps: Steps(nodes: [.previewCheckout, .previewTestsRunning])
+
+        )
+    }
+
+    //
+    // Hashable or Equatable:
+    // The compiler will not be able to synthesize the implementation of Hashable or Equatable
+    // for types that require the use of JSONAny, nor will the implementation of Hashable be
+    // synthesized for types that have collections (such as arrays or dictionaries).
+
+    // MARK: - Steps
+    struct Steps: Codable, Equatable, Hashable {
+        let nodes: [StepsNode]?
+    }
+
+    //
+    // Hashable or Equatable:
+    // The compiler will not be able to synthesize the implementation of Hashable or Equatable
+    // for types that require the use of JSONAny, nor will the implementation of Hashable be
+    // synthesized for types that have collections (such as arrays or dictionaries).
+
+    // MARK: - StepsNode
+    struct StepsNode: Codable, Equatable, Hashable {
+        let externalID, name: String?
+        let number, secondsToCompletion: Int?
+        let status: CheckStatusState?
+        let conclusion: CheckConclusionState?
+
+        enum CodingKeys: String, CodingKey {
+            case externalID = "externalId"
+            case name, number, secondsToCompletion, status, conclusion
+        }
+
+        static let previewSetup = StepsNode(
+            externalID: "93f6797a-d3bb-4a26-9981-5e0831ba29df",
+            name: "Set up job",
+            number: 1,
+            secondsToCompletion: 2,
+            status: .completed,
+            conclusion: .success
+        )
+        static let previewSwift = StepsNode(
+            externalID: "9511a5d9-44d1-5380-a997-0bfb480f7464",
+            name: "Run swift-actions/setup-swift@65540b95f51493d65f5e59e97dcef9629ddf11bf",
+            number: 2,
+            secondsToCompletion: 30,
+            status: .completed,
+            conclusion: .success
+        )
+        static let previewCheckout = StepsNode(
+            externalID: "c22f11ce-a3c9-5cf4-6a2d-2d5ca16e5748",
+            name: "Run actions/checkout@v4",
+            number: 3,
+            secondsToCompletion: 2,
+            status: .completed,
+            conclusion: .success
+        )
+        static let previewBuild = StepsNode(
+            externalID: "e1e32bd6-b618-583c-c296-d7781de5f1de",
+            name: "Build",
+            number: 4,
+            secondsToCompletion: 0,
+            status: .completed,
+            conclusion: .failure
+        )
+        static let previewTests = StepsNode(
+            externalID: "1de2774f-0b93-5355-32ed-5fe67637718a",
+            name: "Run tests",
+            number: 5,
+            secondsToCompletion: 0,
+            status: .completed,
+            conclusion: .skipped
+        )
+
+        static let previewTestsRunning = StepsNode(
+            externalID: "1de2774f-0b93-5355-32ed-sdfsdfsdf234",
+            name: "Run tests",
+            number: 15,
+            secondsToCompletion: 36,
+            status: .inProgress,
+            conclusion: .neutral
+        )
+        static let previewCheckout2 = StepsNode(
+            externalID: "f537545f-f3ca-4455-b3fb-b8053b932e0d",
+            name: "Post Run actions/checkout@v4",
+            number: 10,
+            secondsToCompletion: 0,
+            status: .completed,
+            conclusion: .success
+        )
+        static let previewComplete = StepsNode(
+            externalID: "e81b9bb7-8c50-451a-8091-8e0aa864e00f",
+            name: "Complete job",
+            number: 11,
+            secondsToCompletion: 1,
+            status: .completed,
+            conclusion: .success
         )
     }
 

@@ -21,21 +21,22 @@ struct GitHubCIJobsView: View {
     @State var tapState: Bool = false
 
     private var hasFailedChildJob: Bool {
-        stage. ?? false
+        stage.steps?.nodes?.contains(where: { step in
+            step.conclusion == .failure
+        }) ?? false
     }
 
-    private var status: GitLab.PipelineStatus? {
-        if let stageStatus = stage.status?.toPipelineStatus() {
-            if stageStatus == .success, hasFailedChildJob {
-                return .warning
-            }
+    private var status: PipelineStatus? {
+        let stageStatus = PipelineStatus.from(stage.status)
+        if stageStatus == .success, hasFailedChildJob {
+            return .warning
         }
 
-        return stage.status?.toPipelineStatus()
+        return stageStatus
     }
 
-    private var jobs: [GitLab.HeadPipeline] {
-        stage.jobs?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
+    private var steps: [GitHub.StepsNode] {
+        stage.steps?.nodes?.compactMap({ $0 }) ?? []
     }
 
     var body: some View {
@@ -43,7 +44,7 @@ struct GitHubCIJobsView: View {
             CIStatusView(status: status)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    if !jobs.isEmpty {
+                    if !steps.isEmpty {
                         tapState.toggle()
                         presentPopover.toggle()
                     }
@@ -53,13 +54,13 @@ struct GitHubCIJobsView: View {
                         Text(stage.name?.capitalized ?? "")
                             .fontWeight(.bold)
                             .padding(.bottom, 4)
-                        ForEach(jobs, id: \.id) { job in
-                            if let path = job.detailedStatus?.detailsPath,
-                               let destination = URL(string: instance + path) {
+                        ForEach(steps, id: \.externalID) { step in
+                            if let path = stage.detailsURL,
+                               let destination = URL(string: path) {
                                 HStack {
                                     Link(destination: destination, label: {
-                                        CIStatusView(status: job.status)
-                                        Text(job.name ?? "")
+                                        CIStatusView(status: PipelineStatus.from(step.status))
+                                        Text(step.name ?? "")
                                     })
                                 }
                             }

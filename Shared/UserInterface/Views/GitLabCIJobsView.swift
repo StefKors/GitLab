@@ -24,7 +24,7 @@ struct GitLabCIJobsView: View {
         stage.jobs?.edges?.contains(where: { $0.node?.status == .failed }) ?? false
     }
 
-    private var status: GitLab.PipelineStatus? {
+    private var status: PipelineStatus? {
         if let stageStatus = stage.status?.toPipelineStatus() {
             if stageStatus == .success, hasFailedChildJob {
                 return .warning

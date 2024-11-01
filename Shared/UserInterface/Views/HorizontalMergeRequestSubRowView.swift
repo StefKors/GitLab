@@ -22,9 +22,13 @@ struct HorizontalMergeRequestSubRowView: View {
                 DiscussionCountIcon(count: count, provider: request.provider)
             }
             MergeStatusView(request: request)
-            // TODO: support github pipelines
+
             if let pipeline = request.mergeRequest?.headPipeline {
                 PipelineView(pipeline: pipeline, instance: request.account.instance)
+            }
+
+            if let status = request.pullRequest?.commits?.nodes?.first?.commit?.statusCheckRollup {
+                ActionsView(status: status, instance: request.account.instance)
             }
         }
     }
