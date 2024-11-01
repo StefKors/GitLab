@@ -1286,7 +1286,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8AD9D9E92CD4F0B600BE229B /* PBXTargetDependency */,
 				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
 				8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */,
 			);
@@ -1347,7 +1346,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8A858F162CD4FAF90024795D /* PBXTargetDependency */,
 			);
 			name = DesktopWidgetToolExtension;
 			packageProductDependencies = (
@@ -1411,7 +1409,6 @@
 			packageReferences = (
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
-				8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
@@ -2006,14 +2003,6 @@
 			isa = PBXTargetDependency;
 			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
 			targetProxy = 8A5FC11726EFD08F004136AB /* PBXContainerItemProxy */;
-		};
-		8A858F162CD4FAF90024795D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8A858F152CD4FAF90024795D /* SwiftLintBuildToolPlugin */;
-		};
-		8AD9D9E92CD4F0B600BE229B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8AD9D9E82CD4F0B600BE229B /* SwiftLintBuildToolPlugin */;
 		};
 		8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2724,14 +2713,6 @@
 				minimumVersion = 1.1.4;
 			};
 		};
-		8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.57.0;
-			};
-		};
 		8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -2761,11 +2742,6 @@
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
 		};
-		8A858F152CD4FAF90024795D /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
-		};
 		8A858F272CD54D2B0024795D /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
@@ -2785,11 +2761,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
-		};
-		8AD9D9E82CD4F0B600BE229B /* SwiftLintBuildToolPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
-			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		8AE024DA2A92457C000548D7 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
