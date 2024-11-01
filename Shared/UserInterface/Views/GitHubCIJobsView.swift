@@ -86,7 +86,7 @@ struct GitHubCIJobsView: View {
                                let destination = URL(string: path) {
                                 HStack {
                                     Link(destination: destination, label: {
-                                        CIStatusView(status: PipelineStatus.from(stage.status))
+                                        CIStatusView(status: PipelineStatus.from(stage.conclusion))
                                         Text(stage.name ?? "")
                                     })
                                 }

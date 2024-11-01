@@ -56,7 +56,7 @@ struct ActionsView: View {
                         }
                         .zIndex(2)
 
-                    let isLast = index == stages.count - 1
+                    let isLast = index == Array(groupedByWorkflow.keys.enumerated()).count - 1
                     if !isLast {
                         Rectangle()
                             .fill(.quaternary)
