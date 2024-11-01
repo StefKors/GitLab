@@ -16,7 +16,6 @@ struct WidgetApprovedReviewIcon: View {
                 .help(String(localized: "Merge request approved"))
                 .clipShape(Rectangle())
 
-
             if isHovering {
                 Text("Approved")
 

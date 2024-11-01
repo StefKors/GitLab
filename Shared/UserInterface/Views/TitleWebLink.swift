@@ -14,7 +14,6 @@ struct TitleWebLink: View {
     var weight: Font.Weight = .bold
     var isDraft: Bool = false
 
-
     var body: some View {
         if let url = destination {
             Link(destination: url, label: {

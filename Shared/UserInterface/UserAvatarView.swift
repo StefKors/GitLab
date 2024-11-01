@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 10/10/2024.
 //
 
-
 import SwiftUI
 
 struct UserAvatarView: View {

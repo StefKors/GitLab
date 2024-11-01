@@ -15,7 +15,7 @@ import Foundation
 
 func reachable(host: String) -> Bool {
     var res: UnsafeMutablePointer<addrinfo>?
-    let n = getaddrinfo(host, nil, nil, &res)
+    let value = getaddrinfo(host, nil, nil, &res)
     freeaddrinfo(res)
-    return n == 0
+    return value == 0
 }

@@ -14,7 +14,7 @@ struct GitLabApp: App {
 
     @Environment(\.openURL) var openURL
 
-    @State var receivedURL: URL? = nil
+    @State var receivedURL: URL?
 
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
@@ -49,7 +49,6 @@ struct GitLabApp: App {
         })
         .menuBarExtraStyle(.window)
         .windowResizability(.contentSize)
-
 
         Settings {
             SettingsView()

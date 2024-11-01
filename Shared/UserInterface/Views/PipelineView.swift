@@ -15,24 +15,24 @@ struct Values {
 struct PipelineView: View {
     var pipeline: GitLab.HeadPipeline
     var instance: String?
-    
+
     private var stages: [GitLab.FluffyNode] {
         pipeline.stages?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
     }
-    
+
     private var allSucceeded: Bool {
         pipeline.status == .success && !isHovering
     }
-    
+
     private var spacing: CGFloat {
         allSucceeded ? -14 : 0
     }
-    
+
     @State private var isHovering: Bool = false
-    
+
     var body: some View {
         HStack(alignment: .center, spacing: spacing) {
-            
+
             ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
                 HStack(spacing: 0) {
                     CIJobsView(stage: stage, instance: instance)
@@ -56,7 +56,7 @@ struct PipelineView: View {
                             .animation(.snappy.delay(isHovering ? 0.05 : 0), value: isHovering)
                             .zIndex(1)
                     }
-                    
+
                 }
                 .zIndex(Double(stages.count - index))
             })
@@ -68,7 +68,6 @@ struct PipelineView: View {
         }
     }
 }
-
 
 #Preview {
     VStack(alignment: .trailing) {

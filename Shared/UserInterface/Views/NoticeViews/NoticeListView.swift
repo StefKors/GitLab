@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-
 struct NoticeListView: View {
     @EnvironmentObject  var noticeState: NoticeState
-    
+
     var body: some View {
         if !noticeState.notices.isEmpty {
             VStack {

@@ -26,8 +26,6 @@ struct ProjectLink: View {
         [reference].compactMap({ $0 }).joined(separator: "/")
     }
 
-
-
     var body: some View {
         ViewThatFits {
             WebLink(

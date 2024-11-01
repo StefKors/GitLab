@@ -41,7 +41,6 @@ class NetworkManagerGitHub {
         )
     }
 
-
     // https://docs.github.com/en/graphql/overview/explorer
     // https://api.github.com/graphql
     func fetchAuthoredPullRequests(with account: Account) async throws -> [GitHub.PullRequestsNode]? {

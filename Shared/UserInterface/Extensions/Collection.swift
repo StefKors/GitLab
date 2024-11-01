@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 31/10/2024.
 //
 
-
 extension BidirectionalCollection where Element == CollectionDifference<GitLab.Author>.Change {
     /// Return all elements of changed type `.insert`
     var insertedElements: [GitLab.Author] {
@@ -16,7 +15,7 @@ extension BidirectionalCollection where Element == CollectionDifference<GitLab.A
             return element
         })
     }
-    
+
     /// Return all elements of changed type `.remove`
     var removedElements: [GitLab.Author] {
         return self.compactMap({ insertion -> GitLab.Author? in
@@ -45,7 +44,7 @@ extension Sequence {
 
 extension Sequence where Element: Hashable {
     func uniqueElements() -> [Element] {
-        return uniqueElements(byProperty:  { $0 })
+        return uniqueElements(byProperty: { $0 })
     }
 }
 

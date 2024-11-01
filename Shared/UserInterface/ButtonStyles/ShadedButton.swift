@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ShadedButtonStyle: ButtonStyle {
     @State private var isHovering = false
 

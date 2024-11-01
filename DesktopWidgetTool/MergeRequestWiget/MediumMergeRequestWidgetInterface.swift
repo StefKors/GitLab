@@ -35,7 +35,7 @@ struct MediumMergeRequestWidgetInterface: View {
                         Text(Image(.mergeRequest))
                         Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
                     }
-                    
+
                     HStack(alignment: .center, spacing: 6) {
                         Text(Image(.mergeRequest))
                         Text(mergeRequests.count.description)
@@ -58,15 +58,14 @@ struct MediumMergeRequestWidgetInterface: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { MR in
-                    WidgetMRRowIcon(MR: MR, providers: providers)
+                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { request in
+                    WidgetMRRowIcon(request: request, providers: providers)
                 }
             }
         }
         .frame(alignment: .top)
     }
 }
-
 
 #Preview {
     VStack {
@@ -93,8 +92,6 @@ struct MediumMergeRequestWidgetInterface: View {
     .scenePadding()
 }
 
-
-
 #Preview {
     MediumMergeRequestWidgetInterface(
         mergeRequests: [.preview, .preview, .preview, .preview],
@@ -103,4 +100,3 @@ struct MediumMergeRequestWidgetInterface: View {
         selectedView: .authoredMergeRequests
     )
 }
-

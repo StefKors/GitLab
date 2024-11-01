@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct MergeRequestRowView: View {
-    var MR: UniversalMergeRequest
+    var request: UniversalMergeRequest
 
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
-    
+
     var body: some View {
         Button {
-            if let url = MR.url {
+            if let url = request.url {
                 openURL(url)
                 dismissWindow()
             }
         } label: {
             VStack(alignment: .leading, spacing: 5) {
-                MRTitleView(linkText: MR.title ?? "untitled", isDraft: MR.isDraft)
+                MRTitleView(linkText: request.title ?? "untitled", isDraft: request.isDraft)
                     .multilineTextAlignment(.leading)
                     .truncationMode(.middle)
                     .padding(.trailing)
 
-                HorizontalMergeRequestSubRowView(MR: MR)
+                HorizontalMergeRequestSubRowView(request: request)
             }
         }
         .buttonStyle(.shaded)
@@ -36,23 +36,23 @@ struct MergeRequestRowView: View {
 #Preview {
     VStack(alignment: .leading, spacing: 50, content: {
         VStack(alignment: .leading, content: {
-            MergeRequestRowView(MR: .preview)
-            MergeRequestRowView(MR: .preview3)
-            MergeRequestRowView(MR: .preview2)
+            MergeRequestRowView(request: .preview)
+            MergeRequestRowView(request: .preview3)
+            MergeRequestRowView(request: .preview2)
         })
         .frame(width: 190)
-        
+
         VStack(alignment: .leading, content: {
-            MergeRequestRowView(MR: .preview)
-            MergeRequestRowView(MR: .preview3)
-            MergeRequestRowView(MR: .preview2)
+            MergeRequestRowView(request: .preview)
+            MergeRequestRowView(request: .preview3)
+            MergeRequestRowView(request: .preview2)
         })
         .frame(width: 290)
-        
+
         VStack(alignment: .leading, content: {
-            MergeRequestRowView(MR: .preview)
-            MergeRequestRowView(MR: .preview3)
-            MergeRequestRowView(MR: .preview2)
+            MergeRequestRowView(request: .preview)
+            MergeRequestRowView(request: .preview3)
+            MergeRequestRowView(request: .preview2)
         })
     })
     .scenePadding()

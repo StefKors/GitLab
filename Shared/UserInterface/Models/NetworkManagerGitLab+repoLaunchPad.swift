@@ -17,7 +17,7 @@ extension NetworkManagerGitLab {
         let repo = LaunchpadRepo(
             id: project.id,
             name: project.name ?? "",
-            image:  await self.getProjectImage(with: account, project),
+            image: await self.getProjectImage(with: account, project),
             group: project.group?.fullName ?? project.namespace?.fullName ?? "",
             url: url,
             hasUpdatedSinceLaunch: true
@@ -25,7 +25,6 @@ extension NetworkManagerGitLab {
 
         return repo
     }
-
 
     fileprivate func getProjectImage(with account: Account, _ project: GitLab.TargetProject) async -> Data? {
         let id = project.id.components(separatedBy: "/").last ?? ""

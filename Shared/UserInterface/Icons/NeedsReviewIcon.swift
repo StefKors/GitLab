@@ -22,12 +22,12 @@ struct NeedsReviewIcon: View {
     }
 }
 
-//struct NeedsReviewIcon_Previews: PreviewProvider {
+// struct NeedsReviewIcon_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NeedsReviewIcon()
 //            .padding()
 //    }
-//}
+// }
 
 struct NeedsReviewIcon_Previews: PreviewProvider {
     static var previews: some View {
@@ -39,15 +39,13 @@ struct NeedsReviewIcon_Previews: PreviewProvider {
                     .frame(height: 20)
                 Text(12.description)
 
-
             }
             .font(.largeTitle)
-
 
                 Text("Needs Review")
                     .font(.title3)
                     .foregroundStyle(Color.accentColor)
-                    .padding(EdgeInsets(top: 4, leading:    10, bottom: 4, trailing: 10))
+                    .padding(EdgeInsets(top: 4, leading: 10, bottom: 4, trailing: 10))
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.accentColor)
@@ -58,4 +56,3 @@ struct NeedsReviewIcon_Previews: PreviewProvider {
             .padding()
     }
 }
-

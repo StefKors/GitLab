@@ -36,7 +36,6 @@ class GitLabTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-
     func testGitLabDateParsingBulk() throws {
         let inputs = [
             "2023-10-30T10:40:00+01:00",

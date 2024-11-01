@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
+struct NoticeMessage: Codable, Equatable, Hashable, Identifiable {
     var id: UUID
     var label: String
     var statusCode: Int?
@@ -17,7 +17,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
     var type: NoticeType
     var branchRef: String?
     var createdAt: Date
-    
+
     init(
         id: UUID = UUID(),
         label: String,
@@ -37,7 +37,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
         self.branchRef = branchRef
         self.createdAt = createdAt
     }
-    
+
     var color: Color {
         switch self.type {
         case .branch:
@@ -50,7 +50,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable  {
             return .blue
         }
     }
-    
+
     mutating func dismiss() {
         dismissed = true
     }

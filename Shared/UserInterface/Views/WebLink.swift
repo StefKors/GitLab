@@ -10,9 +10,9 @@ import SwiftUI
 struct WebLink: View {
     var linkText: String
     var destination: URL?
-    
+
     @State private var isHovering = false
-    
+
     var body: some View {
         if let url = destination {
             Link(destination: url, label: {

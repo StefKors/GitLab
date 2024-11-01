@@ -11,7 +11,7 @@ import SwiftData
 struct SettingsView: View {
     // Persistance objects
     private enum Tabs: Hashable {
-        case Account
+        case account
     }
 
     init() { }
@@ -23,7 +23,7 @@ struct SettingsView: View {
                     Image(systemName: "person.badge.shield.checkmark.fill")
                     Text("Account")
                 }
-                .tag(Tabs.Account)
+                .tag(Tabs.account)
         }
         .frame(idealWidth: 600, idealHeight: 500)
         .navigationTitle("Settings")

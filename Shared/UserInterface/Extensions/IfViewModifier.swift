@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 21/10/2024.
 //
 
-
 import SwiftUI
 
 extension View {

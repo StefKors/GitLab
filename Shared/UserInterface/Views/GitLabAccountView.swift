@@ -5,10 +5,9 @@
 //  Created by Stef Kors on 30/10/2024.
 //
 
-
 import SwiftUI
 
-fileprivate enum SubmitState {
+private enum SubmitState {
     case readyToSubmit
     case validating
     case success(token: AccessToken)
@@ -36,23 +35,21 @@ struct GitLabAccountView: View {
         token.isEmpty || instance.isEmpty
     }
 
-
     var body: some View {
         Section {
             TextField("GitLab Token", text: $token, prompt: Text("Enter token here..."))
-                .onChange(of: token, initial: false) { oldValue, newValue in
+                .onChange(of: token, initial: false) { _, _ in
                     state = .readyToSubmit
                 }
 
             // Menu("Options") {
             TextField("Base URL", text: $instance, prompt: Text("https://www.gitlab.com"))
-                .onChange(of: instance, initial: false) { oldValue, newValue in
+                .onChange(of: instance, initial: false) { _, _ in
                     state = .readyToSubmit
                 }
 
             // Button("custom item", action: {})
             // }
-
 
             TokenInformationView(token: tokenInformation)
 
@@ -65,7 +62,6 @@ struct GitLabAccountView: View {
             Button("Close") {
                 dismiss()
             }
-
 
             switch state {
             case .readyToSubmit:
@@ -92,7 +88,6 @@ struct GitLabAccountView: View {
             }
         }
     }
-
 
     func handleSubmit() {
         Task {
@@ -124,7 +119,6 @@ struct GitLabAccountView: View {
         }
     }
 }
-
 
 #Preview {
     Form {

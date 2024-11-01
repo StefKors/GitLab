@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 21/10/2024.
 //
 
-
 import SwiftUI
 
 struct AvatarRowView: View {
@@ -25,7 +24,6 @@ struct AvatarRowView: View {
             return Array(approvedBy.prefix(maxSize))
         }
     }
-
 
     var body: some View {
         HStack(spacing: -4) {
@@ -82,7 +80,6 @@ struct AvatarRowView: View {
 
         AvatarRowView(approvedBy: [.preview2, .preview3, .preview2, .preview3], account: .preview)
             .scenePadding()
-
 
         AvatarRowView(approvedBy: [.preview, .preview2, .preview3, .preview2, .preview3, .preview, .preview2, .preview3, .preview2, .preview3], account: .preview)
             .scenePadding()

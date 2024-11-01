@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DiscussionCountIcon: View {
-    var count: Int? = nil
+    var count: Int?
     var body: some View {
         if let count = count, count > 1 {
             if count <= 50 {

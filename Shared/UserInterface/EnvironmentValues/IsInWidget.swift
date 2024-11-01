@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 private struct IsInWidgetKey: EnvironmentKey {
     static let defaultValue = false
 }

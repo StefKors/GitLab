@@ -92,7 +92,6 @@ class GitLab {
             targetProject: .preview
         )
 
-
         static let preview4 = MergeRequest(
             id: "gid://gitlab/MergeRequest/654",
             title: "Improve CI script performance by caching build artifacts",
@@ -237,7 +236,6 @@ class GitLab {
     struct JobsEdge: Codable, Equatable, Hashable {
         let node: HeadPipeline?
     }
-
 
     // MARK: - Jobs
     struct Jobs: Codable, Equatable, Hashable {
@@ -632,12 +630,6 @@ class GitLab {
             case id, fullPath, fullName
         }
 
-        init(id: String, fullPath: String, fullName: String) {
-            self.id = id
-            self.fullPath = fullPath
-            self.fullName = fullName
-        }
-
         static let preview = NameSpace(id: "gid://gitlab/Group/5", fullPath: "meta", fullName: "meta")
     }
 
@@ -674,7 +666,7 @@ class GitLab {
             name: "meta",
             fullName: "meta",
             fullPath: "meta",
-            webURL: URL(string:"https://gitlab.com")
+            webURL: URL(string: "https://gitlab.com")
         )
     }
 

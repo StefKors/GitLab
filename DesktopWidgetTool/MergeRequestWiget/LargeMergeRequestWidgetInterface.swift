@@ -63,8 +63,6 @@ struct LargeMergeRequestWidgetInterface: View {
     }
 }
 
-
-
 #Preview {
     LargeMergeRequestWidgetInterface(
         mergeRequests: [.preview, .preview, .preview, .preview],

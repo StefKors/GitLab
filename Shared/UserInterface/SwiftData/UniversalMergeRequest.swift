@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 31/10/2024.
 //
 
-
 import SwiftUI
 import SwiftData
 
@@ -133,7 +132,6 @@ import SwiftData
     }
 }
 
-
 extension UniversalMergeRequest {
     static let preview = UniversalMergeRequest(
         request: .preview,
@@ -171,11 +169,11 @@ extension UniversalMergeRequest {
     )
 }
 
-//extension MergeRequest: CustomDebugStringConvertible {
+// extension MergeRequest: CustomDebugStringConvertible {
 //    var debugDescription: String {
 //        return "MergeRequest(mergerequestID: \(mergerequestID ?? "nil"), title: \(title ?? "nil"))"
 //    }
-//}
+// }
 
 struct Approval: Codable, Equatable, Identifiable, Hashable {
     let id: String

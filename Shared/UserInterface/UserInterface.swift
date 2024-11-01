@@ -28,17 +28,17 @@ struct UserInterface: View {
     ) private var mergeRequests: [UniversalMergeRequest]
 
     @State private var selectedView: QueryType = .authoredMergeRequests
-    
+
     @State private var timelineDate: Date = .now
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
-    
+
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
-    
+
     private var filteredMergeRequests: [UniversalMergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
     }
-    
+
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
             Picker(selection: $selectedView, content: {
@@ -54,7 +54,7 @@ struct UserInterface: View {
             .padding(.horizontal, 6)
             .padding(.top, 6)
             .padding(.bottom, 0)
-            
+
             if selectedView == .networkDebug {
                 NetworkStateView()
             } else {
@@ -66,7 +66,7 @@ struct UserInterface: View {
                 )
             }
         }
-        
+
         .frame(maxHeight: .infinity, alignment: .top)
         .background(.regularMaterial)
         .onChange(of: selectedView) { _, newValue in
@@ -84,7 +84,7 @@ struct UserInterface: View {
                 await branchPushes()
             }
         }
-        .onReceive(timer) { time in
+        .onReceive(timer) { _ in
             timelineDate = .now
             Task {
                 await fetchReviewRequestedMRs()
@@ -94,7 +94,7 @@ struct UserInterface: View {
             }
         }
     }
-    
+
     /// TODO: Cleanup and move both into the same function
     @MainActor
     private func fetchReviewRequestedMRs() async {
@@ -115,7 +115,7 @@ struct UserInterface: View {
             }
         }
     }
-    
+
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
@@ -209,14 +209,14 @@ struct UserInterface: View {
             try? modelContext.save()
         }
     }
-    
+
     @MainActor
     private func fetchRepos() async {
         for account in accounts {
             if account.provider == .GitLab {
-                let ids = Array(Set(mergeRequests.compactMap { mr in
-                    if mr.provider == .GitLab {
-                        return mr.mergeRequest?.targetProject?.id.split(separator: "/").last
+                let ids = Array(Set(mergeRequests.compactMap { request in
+                    if request.provider == .GitLab {
+                        return request.mergeRequest?.targetProject?.id.split(separator: "/").last
                     } else {
                         return nil
                     }
@@ -236,7 +236,7 @@ struct UserInterface: View {
             }
         }
     }
-    
+
     @MainActor
     private func branchPushes() async {
         for account in accounts {
@@ -247,10 +247,10 @@ struct UserInterface: View {
                 }
 
                 if let notice {
-                    if notice.type == .branch, let branch = notice.branchRef  {
+                    if notice.type == .branch, let branch = notice.branchRef {
 
-                        let matchedMR = filteredMergeRequests.first { mr in
-                            return mr.sourceBranch == branch
+                        let matchedMR = filteredMergeRequests.first { request in
+                            return request.sourceBranch == branch
                         }
 
                         let alreadyHasMR = matchedMR != nil
@@ -284,9 +284,9 @@ struct UserInterface: View {
             event.response = error.localizedDescription
             networkState.update(event)
         }
-        
+
         return nil
-        
+
     }
 }
 
@@ -302,8 +302,8 @@ struct UserInterface: View {
     .scenePadding()
 }
 
-//NotificationManager.shared.sendNotification(
+// NotificationManager.shared.sendNotification(
 //    title: title,
 //    subtitle: "\(reference) is approved by \(approvers.formatted())",
 //    userInfo: userInfo
-//)
+// )

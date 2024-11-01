@@ -14,7 +14,7 @@ import UIKit
 #endif
 
 struct ShareMergeRequestIcon: View {
-    let MR: UniversalMergeRequest
+    let request: UniversalMergeRequest
     @State private var chosenEmoji: String = ""
     @State private var isVisible: Bool = false
 
@@ -40,7 +40,7 @@ struct ShareMergeRequestIcon: View {
                 .allowsHitTesting(false)
         }
         .frame(height: 20)
-        .onChange(of: chosenEmoji) { newValue, _ in
+        .onChange(of: chosenEmoji) { _, _ in
             let animation: Animation = .interpolatingSpring(stiffness: 130, damping: 12)
             withAnimation(animation) {
                 isVisible = true
@@ -57,8 +57,8 @@ struct ShareMergeRequestIcon: View {
     func copyToPasteboard() {
         let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
         let content = """
-\(MR.title ?? "") \(emoji)
-\(MR.url?.absoluteString ?? "")
+\(request.title ?? "") \(emoji)
+\(request.url?.absoluteString ?? "")
 """
 #if canImport(AppKit)
         let pasteboard = NSPasteboard.general

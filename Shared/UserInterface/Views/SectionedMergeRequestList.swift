@@ -15,7 +15,7 @@ struct SectionedMergeRequestList: View {
         ForEach(accounts) { account in
             Section(header: Text(account.instance)) {
                 ForEach(account.requests, id: \.id) { mergeRequest in
-                    MergeRequestRowView(MR: mergeRequest)
+                    MergeRequestRowView(request: mergeRequest)
                         .padding(.bottom, 4)
                         .listRowSeparator(.visible)
                         .listRowSeparatorTint(Color.secondary.opacity(0.2))

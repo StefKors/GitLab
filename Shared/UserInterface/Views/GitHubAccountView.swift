@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-fileprivate enum SubmitState {
+private enum SubmitState {
     case readyToSubmit
     case validating
     case success(token: String)
@@ -35,16 +35,15 @@ struct GitHubAccountView: View {
         token.isEmpty || instance.isEmpty
     }
 
-
     var body: some View {
         Section {
             TextField("GitHub Token", text: $token, prompt: Text("Enter token here..."))
-                .onChange(of: token, initial: false) { oldValue, newValue in
+                .onChange(of: token, initial: false) { _, _ in
                     state = .readyToSubmit
                 }
 
             TextField("Base URL", text: $instance, prompt: Text("https://www.gitlab.com"))
-                .onChange(of: instance, initial: false) { oldValue, newValue in
+                .onChange(of: instance, initial: false) { _, _ in
                     state = .readyToSubmit
                 }
 
@@ -59,7 +58,6 @@ struct GitHubAccountView: View {
             Button("Close") {
                 dismiss()
             }
-
 
             switch state {
             case .readyToSubmit:
@@ -86,7 +84,6 @@ struct GitHubAccountView: View {
             }
         }
     }
-
 
     func handleSubmit() {
         Task {
@@ -128,7 +125,6 @@ struct GitHubAccountView: View {
         }
     }
 }
-
 
 #Preview {
     Form {

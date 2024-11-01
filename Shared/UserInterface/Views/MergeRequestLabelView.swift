@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct MergeRequestLabelView: View {
-    var MR: GitLab.MergeRequest
+    var request: GitLab.MergeRequest
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            TitleWebLink(linkText: MR.title ?? "untitled", destination: MR.webUrl, isDraft: MR.title?.isDraft ?? false)
+            TitleWebLink(linkText: request.title ?? "untitled", destination: request.webUrl, isDraft: request.title?.isDraft ?? false)
                 /// hacks we actually want line wrapping
                 .multilineTextAlignment(.leading)
                 .truncationMode(.middle)
             WebLink(
-                linkText: "\(MR.targetProject?.path ?? "")\("/")\(MR.targetProject?.group?.fullPath ?? "")\(MR.reference ?? "")",
-                destination: MR.targetProject?.webURL
+                linkText: "\(request.targetProject?.path ?? "")\("/")\(request.targetProject?.group?.fullPath ?? "")\(request.reference ?? "")",
+                destination: request.targetProject?.webURL
             )
         }.fixedSize(horizontal: false, vertical: true)
     }

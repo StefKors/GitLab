@@ -15,7 +15,7 @@ class GitHub {
 
         var authoredMergeRequests: [GitHub.PullRequestsNode] {
             return self.data.viewer?.pullRequests?.nodes?.compactMap({ node in
-                if (node.locked == false)  {
+                if node.locked == false {
                     return node
                 } else {
                     return nil

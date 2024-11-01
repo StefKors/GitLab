@@ -44,7 +44,6 @@ struct AddAccountView: View {
     AddAccountView()
 }
 
-
 #Preview("iOS") {
     VStack {
         Spacer()

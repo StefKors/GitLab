@@ -9,38 +9,37 @@ import SwiftUI
 import Foundation
 
 struct MergeStatusView: View {
-    var MR: UniversalMergeRequest
+    var request: UniversalMergeRequest
 
     private var isOnMergeTrain: Bool {
-        MR.mergeRequest?.headPipeline?.mergeRequestEventType == .mergeTrain
+        request.mergeRequest?.headPipeline?.mergeRequestEventType == .mergeTrain
     }
-    
+
     private var approvers: [Approval]? {
-        MR.approvals
+        request.approvals
     }
-    
+
     @Environment(\.isInWidget) private var isInWidget
-    
+
     var body: some View {
         if isOnMergeTrain {
             MergeTrainIcon()
         } else if let approvers = approvers, !approvers.isEmpty {
-            ApprovedReviewIcon(approvedBy: approvers, account: MR.account)
-        } else if !isInWidget, !MR.isDraft {
-            ShareMergeRequestIcon(MR: MR)
+            ApprovedReviewIcon(approvedBy: approvers, account: request.account)
+        } else if !isInWidget, !request.isDraft {
+            ShareMergeRequestIcon(request: request)
         } else {
             // NeedsReviewIcon()
         }
     }
 }
 
-
 extension String {
-    func contains(_ find: String) -> Bool{
+    func contains(_ find: String) -> Bool {
         return self.range(of: find) != nil
     }
-    
-    func containsIgnoringCase(_ find: String) -> Bool{
+
+    func containsIgnoringCase(_ find: String) -> Bool {
         return self.range(of: find, options: .caseInsensitive) != nil
     }
 }

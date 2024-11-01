@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 17/10/2024.
 //
 
-
 import SwiftUI
 
 struct MRTitleView: View {

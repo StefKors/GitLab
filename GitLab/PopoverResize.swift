@@ -33,7 +33,7 @@ public class PopoverResize: NSPopover {
     private var trackLeftBottom: NSView.TrackingRectTag?
     private var trackRightBottom: NSView.TrackingRectTag?
     private var trackBottom: NSView.TrackingRectTag?
-    private var sizeChanged: ((_ size: NSSize) -> Void)? = nil
+    private var sizeChanged: ((_ size: NSSize) -> Void)?
 
     private let cursorLeftRight = PopoverResize.getCursor("resizeeastwest")
     private let cursorLeftBottom = PopoverResize.getCursor("resizenortheastsouthwest")
@@ -184,7 +184,7 @@ public class PopoverResize: NSPopover {
         }
     }
 
-    private func setCursor(){
+    private func setCursor() {
         switch region {
         case .Left: fallthrough
         case .Right:

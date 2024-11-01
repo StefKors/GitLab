@@ -17,32 +17,31 @@ struct ApprovedReviewIcon: View {
     @Environment(\.colorScheme) private var colorScheme
     var approvedBy: [Approval]
     var account: Account?
-    
+
     private var instance: String {
         account?.instance ?? "https://gitlab.com"
     }
-    
+
     //    @State private var isHovering: Bool = false
-    
+
     private var names: String {
         approvedBy.map { author in
             return author.name ?? author.username ?? ""
         }.filter({ !$0.isEmpty}).formatted()
     }
-    
+
     var largeView: some View {
-        HStack() {
+        HStack {
             Image(systemName: "checkmark")
                 .font(.system(size: 9, weight: .semibold))
                 .help(String(localized: "Merge request approved"))
 //                .clipShape(Rectangle())
                 .padding(.vertical, 2)
-            
-            
+
             HStack {
                 Text("Approved")
                     .fixedSize()
-                
+
                 AvatarRowView(approvedBy: approvedBy, account: account)
             }
             .font(.system(size: 11, weight: .regular))
@@ -54,7 +53,7 @@ struct ApprovedReviewIcon: View {
                     )
                     .animation(.snappy)
             )
-            
+
         }
         .foregroundStyle(.green.mix(with: .black, by: colorScheme == .dark ? 0 : 0.2))
         .padding(.leading, 6)
@@ -72,10 +71,10 @@ struct ApprovedReviewIcon: View {
         //        })
         .help(String(localized: "Approved by \(names)"))
     }
-    
+
     /// TODO: Diff in style from CI completed check circle
     var smallView: some View {
-        HStack() {
+        HStack {
             Image(systemName: "checkmark")
                 .font(.system(size: 9, weight: .semibold))
                 .help(String(localized: "Merge request approved"))
@@ -91,12 +90,12 @@ struct ApprovedReviewIcon: View {
         )
         .animation(.smooth, value: approvedBy)
     }
-    
+
     var body: some View {
         VStack(alignment: .trailing) {
             ViewThatFits(in: .horizontal, content: {
                 largeView
-                
+
                 smallView
             })
         }
@@ -107,31 +106,31 @@ struct ApprovedReviewIcon: View {
 #Preview("Change authors") {
     @Previewable @State var authors: [Approval] = [.preview]
     VStack {
-        
+
         ApprovedReviewIcon(approvedBy: authors, account: .preview)
             .scenePadding()
-        
+
         HStack {
-            
+
             Button("+") {
                 let author: Approval? = [.preview, .preview2, .preview3, .preview4].randomElement()
                 if let author {
                     authors.append(author)
                 }
             }
-            
+
             Button("reset") {
                 let author: Approval? = [.preview, .preview2, .preview3, .preview4].randomElement()
                 if let author {
                     authors = [author]
                 }
             }
-            
+
             Button("-") {
                 _ = authors.popLast()
             }
         }
-        
+
     }.scenePadding()
 }
 
@@ -140,19 +139,16 @@ struct ApprovedReviewIcon: View {
     VStack {
         HStack {
             Text("MR Title")
-            
+
             Spacer()
-            
+
             if show {
                 ApprovedReviewIcon(approvedBy: [.preview2, .preview3], account: .preview)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .scenePadding()
-        
-        
-        
-        
+
         Button("toggle") {
             withAnimation {
                 show.toggle()
@@ -167,29 +163,28 @@ struct ApprovedReviewIcon: View {
             .scenePadding()
         ApprovedReviewIcon(approvedBy: [.preview2, .preview3], account: .preview)
             .scenePadding()
-        
+
         ApprovedReviewIcon(approvedBy: [.preview2, .preview3, .preview2], account: .preview)
             .scenePadding()
-        
+
         ApprovedReviewIcon(approvedBy: [.preview2, .preview3, .preview2, .preview3], account: .preview)
             .scenePadding()
-        
-        
+
         ApprovedReviewIcon(approvedBy: [.preview, .preview2, .preview3, .preview2, .preview3, .preview, .preview2, .preview3, .preview2, .preview3], account: .preview)
             .scenePadding()
-        
+
         ApprovedReviewIcon(approvedBy: [.preview, .preview2, .preview3], account: .preview)
             .scenePadding()
-        
+
         ApprovedReviewIcon(approvedBy: [.preview], account: .preview)
             .scenePadding()
-        
+
         GroupBox("Small", content: {
             ApprovedReviewIcon(approvedBy: [.preview, .preview2, .preview3, .preview2, .preview3, .preview, .preview2, .preview3, .preview2, .preview3], account: .preview)
                 .scenePadding()
         })
         .frame(maxWidth: 100)
-        
+
         GroupBox("Large", content: {
             ApprovedReviewIcon(approvedBy: [.preview, .preview2, .preview3, .preview2, .preview3, .preview, .preview2, .preview3, .preview2, .preview3], account: .preview)
                 .scenePadding()

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GitLabAutoSizingWebLinks: View {
-    var MR: GitLab.MergeRequest
+    var request: GitLab.MergeRequest
 
     // spaced with "thin width space"
     // https://www.compart.com/en/unicode/U+2009
     var group: String {
-        if let name = MR.targetProject?.group?.fullPath?.trimmingPrefix("/"), !name.isEmpty {
+        if let name = request.targetProject?.group?.fullPath?.trimmingPrefix("/"), !name.isEmpty {
             return name + " / "
         }
 
@@ -21,7 +21,7 @@ struct GitLabAutoSizingWebLinks: View {
     }
 
     var path: String {
-        if let name = MR.targetProject?.path?.trimmingPrefix("/"), !name.isEmpty {
+        if let name = request.targetProject?.path?.trimmingPrefix("/"), !name.isEmpty {
             return name + " / "
         }
 
@@ -29,7 +29,7 @@ struct GitLabAutoSizingWebLinks: View {
     }
 
     var reference: String {
-        if let name = MR.reference?.trimmingPrefix("/"), !name.isEmpty {
+        if let name = request.reference?.trimmingPrefix("/"), !name.isEmpty {
             return String(name)
         }
 
@@ -40,17 +40,17 @@ struct GitLabAutoSizingWebLinks: View {
         ViewThatFits(in: .horizontal) {
             WebLink(
                 linkText: group + path + reference,
-                destination: MR.targetProject?.webURL
+                destination: request.targetProject?.webURL
             )
 
             WebLink(
                 linkText: path + reference,
-                destination: MR.targetProject?.webURL
+                destination: request.targetProject?.webURL
             )
 
             WebLink(
                 linkText: reference,
-                destination: MR.targetProject?.webURL
+                destination: request.targetProject?.webURL
             )
 
         }
@@ -120,12 +120,12 @@ struct GitHubAutoSizingWebLinks: View {
 }
 
 struct AutoSizingWebLinks: View {
-    var MR: UniversalMergeRequest
+    var request: UniversalMergeRequest
 
     var body: some View {
-        if let request = MR.mergeRequest {
-            GitLabAutoSizingWebLinks(MR: request)
-        } else if let request = MR.pullRequest {
+        if let request = request.mergeRequest {
+            GitLabAutoSizingWebLinks(request: request)
+        } else if let request = request.pullRequest {
             GitHubAutoSizingWebLinks(MR: request)
         }
     }
@@ -133,16 +133,16 @@ struct AutoSizingWebLinks: View {
 
 #Preview {
     VStack(alignment: .leading) {
-        AutoSizingWebLinks(MR: .preview)
+        AutoSizingWebLinks(request: .preview)
             .frame(width: 40, alignment: .leading)
             .border(Color.blue)
-        AutoSizingWebLinks(MR: .preview)
+        AutoSizingWebLinks(request: .preview)
             .frame(width: 110, alignment: .leading)
             .border(Color.blue)
-        AutoSizingWebLinks(MR: .preview)
+        AutoSizingWebLinks(request: .preview)
             .frame(width: 190, alignment: .leading)
             .border(Color.blue)
-        AutoSizingWebLinks(MR: .preview)
+        AutoSizingWebLinks(request: .preview)
             .frame(width: 290, alignment: .leading)
             .border(Color.blue)
     }

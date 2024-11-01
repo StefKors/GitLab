@@ -24,7 +24,7 @@ class NetworkManagerGitLab {
     static func getQuery(_ type: QueryType) -> String {
         Self.buildQuery(target: "currentUser", type: type)
     }
-    
+
     /// Return query for a specific user name
     /// - Parameters:
     ///   - username: Username to fetch results for
@@ -34,7 +34,7 @@ class NetworkManagerGitLab {
         let user = "user(username: \"\(username)\""
         return Self.buildQuery(target: user, type: type)
     }
-    
+
     /// Private method to build the GraphQL query based on the user information. Prefer getQuery methods instead
     /// - Parameters:
     ///   - target: target string to fetch results for. Either string should be either `"currentUser"` or `"user(username: \"\(username)\""`
@@ -52,7 +52,7 @@ class NetworkManagerGitLab {
             ("private_token", account.token)
         ])
     }
-    
+
     func authoredMergeRequestsReq(with account: Account) -> Request<GitLab.GitLabQuery> {
         Request.init(path: "/graphql", method: .post, query: [
             ("query", Self.getQuery(.authoredMergeRequests)),
@@ -66,22 +66,22 @@ class NetworkManagerGitLab {
             ("private_token", account.token)
         ])
     }
-    
+
     func fetch(with account: Account) async throws {
         /// Parallel?
         // await fetchLatestBranchPush()
         // try await fetchAuthoredMergeRequests(with: account)
         // try await fetchReviewRequestedMergeRequests(with: account)
     }
-    
+
     func validateToken(instance: String, token: String) async -> AccessToken? {
         let accessTokenReq: Request<AccessToken> = Request.init(path: "/v4/personal_access_tokens/self", query: [
             ("private_token", token)
         ])
-        
+
         do {
             let response: AccessToken? = try await APIClient(baseURL: URL(string: "\(instance)/api")).send(accessTokenReq).value
-            
+
             return response
         } catch {
             print(error.localizedDescription)
@@ -154,8 +154,8 @@ extension NetworkManagerGitLab {
               let branchRef = event.pushData?.ref,
               let branchURL = URL(string: "\(project.url.absoluteString)/-/tree/\(branchRef)"),
               let createdAt = event.createdAt,
-              // Possible use Date.from(createdAt)?
-              let date = GitLabISO8601DateFormatter.date(from: createdAt) else {
+              // Possible use Date.from(createdAt) or GitLabISO8601DateFormatter?
+              let date = Date.from(createdAt) else {
             return nil
         }
         return NoticeMessage(

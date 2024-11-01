@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 31/10/2024.
 //
 
-
 import SwiftUI
 import SwiftData
 
@@ -53,7 +52,7 @@ struct ExtraWindow: View {
             openURL(url)
         }
         .toolbar {
-            ToolbarItem() {
+            ToolbarItem {
                 Picker(selection: $selectedView, content: {
                     Text("Merge Requests").tag(QueryType.authoredMergeRequests)
                     Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)

@@ -11,7 +11,7 @@ struct WidgetLaunchPadRow: View {
     let repos: [LaunchpadRepo]
     let length: Int
     var body: some View {
-        HStack() {
+        HStack {
             ForEach(repos.prefix(length), id: \.id) { repo in
                 LaunchpadItem(repo: repo)
             }

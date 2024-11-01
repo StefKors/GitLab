@@ -88,7 +88,7 @@
 		8A7935C22A5583E400F8FB6C /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE12A55817400819B80 /* LaunchpadState.swift */; };
 		8A7935C62A5583E400F8FB6C /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE52A55817400819B80 /* NotificationManager.swift */; };
 		8A7935C72A5583E400F8FB6C /* NetworkManagerGitLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE62A55817400819B80 /* NetworkManagerGitLab.swift */; };
-		8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
+		8A7935C82A5583E400F8FB6C /* gitlabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */; };
 		8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
 		8A7935CF2A5583E400F8FB6C /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
 		8A7935D02A5583E400F8FB6C /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
@@ -169,6 +169,7 @@
 		8A7C0AFE2CD3657100E479CA /* UniversalMergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */; };
 		8A7C0AFF2CD3657100E479CA /* UniversalMergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */; };
 		8A7C0B002CD3657100E479CA /* UniversalMergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */; };
+		8A858F142CD4F25E0024795D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8A858F132CD4F25B0024795D /* .swiftlint.yml */; };
 		8A91E2172CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
@@ -269,7 +270,7 @@
 		8AE8A7072B989EFA002B3C9E /* CIPendingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFF2A55817400819B80 /* CIPendingIcon.swift */; };
 		8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
 		8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF52A55817400819B80 /* CISkippedIcon.swift */; };
-		8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
+		8AE8A70A2B989EFA002B3C9E /* gitlabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */; };
 		8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF32A55817400819B80 /* NoticeState.swift */; };
 		8AE8A70D2B989EFA002B3C9E /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
 		8AE8A70E2B989EFA002B3C9E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE52A55817400819B80 /* NotificationManager.swift */; };
@@ -330,8 +331,8 @@
 		8AF80D342A55817400819B80 /* NetworkManagerGitLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE62A55817400819B80 /* NetworkManagerGitLab.swift */; };
 		8AF80D362A55817400819B80 /* StructsGitLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* StructsGitLab.swift */; };
 		8AF80D372A55817400819B80 /* StructsGitLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* StructsGitLab.swift */; };
-		8AF80D392A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
-		8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */; };
+		8AF80D392A55817400819B80 /* gitlabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */; };
+		8AF80D3A2A55817400819B80 /* gitlabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */; };
 		8AF80D3C2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
 		8AF80D3D2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
 		8AF80D4E2A55817400819B80 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
@@ -581,6 +582,7 @@
 		8A7C0AF22CD3650000E479CA /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMergeRequest.swift; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A858F132CD4F25B0024795D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		8A91E2142CB7B5FE00BE51B9 /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
 		8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLink.swift; sourceTree = "<group>"; };
@@ -626,7 +628,7 @@
 		8AF80CE52A55817400819B80 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8AF80CE62A55817400819B80 /* NetworkManagerGitLab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerGitLab.swift; sourceTree = "<group>"; };
 		8AF80CE72A55817400819B80 /* StructsGitLab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructsGitLab.swift; sourceTree = "<group>"; };
-		8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLabISO8601DateFormatter.swift; sourceTree = "<group>"; };
+		8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gitlabISO8601DateFormatter.swift; sourceTree = "<group>"; };
 		8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CachedAsyncImage+ImageCache.swift"; sourceTree = "<group>"; };
 		8AF80CEF2A55817400819B80 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		8AF80CF12A55817400819B80 /* NoticeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeMessage.swift; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 		8A5FC0ED26EFD08E004136AB = {
 			isa = PBXGroup;
 			children = (
+				8A858F132CD4F25B0024795D /* .swiftlint.yml */,
 				8A91E2152CB7B5FE00BE51B9 /* GitLab Localizations */,
 				8A13B85D2A66A3E30090A6D9 /* Credits.rtf */,
 				8AF80BE92A5580E700819B80 /* Shared */,
@@ -1019,7 +1022,7 @@
 			children = (
 				8AC0C2092A5D3D720096772B /* AccessToken.swift */,
 				8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */,
-				8AF80CE82A55817400819B80 /* GitLabISO8601DateFormatter.swift */,
+				8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */,
 				8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */,
 				8A111F522CC1388900DEB0DD /* NetworkInfo.swift */,
 				8AF80CE62A55817400819B80 /* NetworkManagerGitLab.swift */,
@@ -1255,6 +1258,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8AD9D9E92CD4F0B600BE229B /* PBXTargetDependency */,
 				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
 				8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */,
 			);
@@ -1376,6 +1380,7 @@
 			packageReferences = (
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
+				8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -1430,6 +1435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A858F142CD4F25E0024795D /* .swiftlint.yml in Resources */,
 				8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */,
 				8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */,
 				8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */,
@@ -1505,7 +1511,7 @@
 				8A7C0ACE2CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8AF80D222A55817400819B80 /* NetworkManagerGitLab+repoLaunchPad.swift in Sources */,
 				8AF80D342A55817400819B80 /* NetworkManagerGitLab.swift in Sources */,
-				8AF80D3A2A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
+				8AF80D3A2A55817400819B80 /* gitlabISO8601DateFormatter.swift in Sources */,
 				8AF80D312A55817400819B80 /* NotificationManager.swift in Sources */,
 				8AE274212CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8AFAE1932BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
@@ -1596,7 +1602,7 @@
 				8A7935C62A5583E400F8FB6C /* NotificationManager.swift in Sources */,
 				8ACBFD3E2CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
 				8A7935C72A5583E400F8FB6C /* NetworkManagerGitLab.swift in Sources */,
-				8A7935C82A5583E400F8FB6C /* GitLabISO8601DateFormatter.swift in Sources */,
+				8A7935C82A5583E400F8FB6C /* gitlabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8A111F562CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
@@ -1723,7 +1729,7 @@
 				8AF80D3C2A55817400819B80 /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AC7B4B92CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AF80DAE2A55817400819B80 /* MergeStatusView.swift in Sources */,
-				8AF80D392A55817400819B80 /* GitLabISO8601DateFormatter.swift in Sources */,
+				8AF80D392A55817400819B80 /* gitlabISO8601DateFormatter.swift in Sources */,
 				8ACBFD3C2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
 				8AF80D782A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8A111F272CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
@@ -1836,7 +1842,7 @@
 				8AB969222BDBC2170078E5CD /* LaunchPadWidgetEntryView.swift in Sources */,
 				8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */,
 				8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */,
-				8AE8A70A2B989EFA002B3C9E /* GitLabISO8601DateFormatter.swift in Sources */,
+				8AE8A70A2B989EFA002B3C9E /* gitlabISO8601DateFormatter.swift in Sources */,
 				8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */,
 				8A111F472CC1384E00DEB0DD /* NetworkStateView.swift in Sources */,
 				8AE274202CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
@@ -1956,6 +1962,10 @@
 			isa = PBXTargetDependency;
 			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
 			targetProxy = 8A5FC11726EFD08F004136AB /* PBXContainerItemProxy */;
+		};
+		8AD9D9E92CD4F0B600BE229B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 8AD9D9E82CD4F0B600BE229B /* SwiftLintBuildToolPlugin */;
 		};
 		8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2658,6 +2668,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
+			};
+		};
 		8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -2686,6 +2704,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
+		};
+		8AD9D9E82CD4F0B600BE229B /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		8AE024DA2A92457C000548D7 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;

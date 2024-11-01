@@ -20,7 +20,7 @@ struct AlertDetails: Identifiable {
 
     @Query var accounts: [Account]
     @State private var showingAlert: Bool = false
-    @State private var details: AlertDetails? = nil
+    @State private var details: AlertDetails?
     @State private var showCreateSheet: Bool = false
     let alertTitle: String = "Confirm deletion"
      var body: some View {
@@ -36,7 +36,7 @@ struct AlertDetails: Identifiable {
                                     .frame(width: 25, height: 25, alignment: .center)
                                 AccountRow(account: account)
                                 Spacer()
-                    
+
                                 Button(role: .destructive) {
                                     showAlert(for: account)
                                 } label: {

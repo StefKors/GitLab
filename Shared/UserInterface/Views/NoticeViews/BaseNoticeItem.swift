@@ -137,7 +137,7 @@ struct BaseNoticeItem_Previews: PreviewProvider {
                         .padding(.horizontal)
                     // needed to render in the correct colorScheme
                         .colorScheme(.dark)
-                    
+
                     let renderer = ImageRenderer(content: renderView)
                     renderer.scale = 4.0
                     renderer.isOpaque = false

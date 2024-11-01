@@ -25,7 +25,7 @@ class NetworkState: ObservableObject {
                 }
                 return event
             }
-            
+
             events = newEvents
         }
     }

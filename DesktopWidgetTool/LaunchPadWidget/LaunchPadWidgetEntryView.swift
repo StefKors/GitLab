@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct LaunchPadWidgetEntryView : View {
+struct LaunchPadWidgetEntryView: View {
     var entry: Provider.Entry
 
     @Environment(\.widgetFamily) var family
