@@ -12,3 +12,4 @@ disabled_rules:
   - nesting
   - redundant_string_enum_value
   - identifier_name
+  - type_name

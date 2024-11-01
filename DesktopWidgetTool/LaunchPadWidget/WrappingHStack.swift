@@ -110,12 +110,14 @@ public struct WrappingHStack: Layout {
 
 extension WrappingHStack {
     struct Row {
+        // swiftlint:disable:next large_tuple
         var elements: [(index: Int, size: CGSize, xOffset: CGFloat)] = []
         var yOffset: CGFloat = .zero
         var width: CGFloat = .zero
         var height: CGFloat = .zero
     }
 
+    // swiftlint:disable:next function_body_length
     private func arrangeRows(proposal: ProposedViewSize,
                              subviews: Subviews,
                              cache: inout Cache) -> [Row] {

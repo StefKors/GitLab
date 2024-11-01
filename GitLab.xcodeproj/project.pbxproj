@@ -1318,6 +1318,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8A858F162CD4FAF90024795D /* PBXTargetDependency */,
 			);
 			name = DesktopWidgetToolExtension;
 			packageProductDependencies = (
@@ -1962,6 +1963,10 @@
 			isa = PBXTargetDependency;
 			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
 			targetProxy = 8A5FC11726EFD08F004136AB /* PBXContainerItemProxy */;
+		};
+		8A858F162CD4FAF90024795D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 8A858F152CD4FAF90024795D /* SwiftLintBuildToolPlugin */;
 		};
 		8AD9D9E92CD4F0B600BE229B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2704,6 +2709,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */;
 			productName = CachedAsyncImage;
+		};
+		8A858F152CD4FAF90024795D /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD9D9E72CD4F05600BE229B /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		8AD9D9E82CD4F0B600BE229B /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;

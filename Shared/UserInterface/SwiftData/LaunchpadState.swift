@@ -26,7 +26,7 @@ import SwiftData
     var url: URL
     var hasUpdatedSinceLaunch: Bool
 
-    static func ==(lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
+    static func == (lhs: LaunchpadRepo, rhs: LaunchpadRepo) -> Bool {
         return lhs.id == rhs.id
     }
 

@@ -68,7 +68,7 @@ class NetworkManagerGitLab {
     }
 
     func fetch(with account: Account) async throws {
-        /// Parallel?
+        // Parallel?
         // await fetchLatestBranchPush()
         // try await fetchAuthoredMergeRequests(with: account)
         // try await fetchReviewRequestedMergeRequests(with: account)
