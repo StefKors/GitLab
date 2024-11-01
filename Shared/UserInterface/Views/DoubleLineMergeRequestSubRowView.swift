@@ -23,7 +23,7 @@ struct DoubleLineMergeRequestSubRowView: View {
 
             HStack(alignment: .center, spacing: 4) {
                 if let count = request.discussionCount, count > 1 {
-                    DiscussionCountIcon(count: count)
+                    DiscussionCountIcon(count: count, provider: request.provider)
                 }
                 MergeStatusView(request: request)
 

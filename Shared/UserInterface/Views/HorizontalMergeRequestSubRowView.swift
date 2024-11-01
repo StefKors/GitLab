@@ -19,7 +19,7 @@ struct HorizontalMergeRequestSubRowView: View {
 
             Spacer()
             if let count = request.discussionCount, count > 1 {
-                DiscussionCountIcon(count: count)
+                DiscussionCountIcon(count: count, provider: request.provider)
             }
             MergeStatusView(request: request)
             // TODO: support github pipelines
