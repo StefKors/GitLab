@@ -196,7 +196,7 @@ class GitHub {
     // MARK: - ContextsNode
     struct ContextsNode: Codable, Equatable {
         let name: String?
-        let conclusion: String?
+        let conclusion: CheckConclusionState?
         let detailsURL: String?
         let context: String?
         let description: String?
@@ -212,7 +212,7 @@ class GitHub {
 
         static let previewSuccess = ContextsNode(
             name: "Success",
-            conclusion: "success",
+            conclusion: .success,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
             context: "success",
             description: "All tests passed",
@@ -222,7 +222,7 @@ class GitHub {
 
         static let previewSuccess2 = ContextsNode(
             name: "Success",
-            conclusion: "success",
+            conclusion: .success,
             detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
             context: "success",
             description: "All tests passed",
@@ -232,7 +232,7 @@ class GitHub {
 
         static let previewFailure = ContextsNode(
             name: "Failure",
-            conclusion: "failure",
+            conclusion: .failure,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
             context: "failure",
             description: "All tests failed",
@@ -242,7 +242,7 @@ class GitHub {
 
         static let previewPending = ContextsNode(
             name: "Pending",
-            conclusion: "pending",
+            conclusion: .neutral,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
             context: "pending",
             description: "All tests are pending",
