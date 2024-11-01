@@ -38,21 +38,14 @@ struct GitLabAutoSizingWebLinks: View {
 
     var body: some View {
         ViewThatFits(in: .horizontal) {
-            WebLink(
-                linkText: group + path + reference,
-                destination: request.targetProject?.webURL
-            )
+            Text(group + path + reference)
+                .foregroundStyle(.secondary)
 
-            WebLink(
-                linkText: path + reference,
-                destination: request.targetProject?.webURL
-            )
+            Text(path + reference)
+                .foregroundStyle(.secondary)
 
-            WebLink(
-                linkText: reference,
-                destination: request.targetProject?.webURL
-            )
-
+            Text(reference)
+                .foregroundStyle(.secondary)
         }
         .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
         .buttonStyle(.plain)
@@ -98,21 +91,14 @@ struct GitHubAutoSizingWebLinks: View {
 
     var body: some View {
         ViewThatFits(in: .horizontal) {
-            WebLink(
-                linkText: group + path + reference,
-                destination: url
-            )
+            Text(group + path + reference)
+                .foregroundStyle(.secondary)
 
-            WebLink(
-                linkText: path,
-                destination: url
-            )
+            Text(path + reference)
+                .foregroundStyle(.secondary)
 
-            WebLink(
-                linkText: reference,
-                destination: url
-            )
-
+            Text(reference)
+                .foregroundStyle(.secondary)
         }
         .frame(minWidth: 50, idealWidth: 320, maxWidth: 400, alignment: .leading)
         .buttonStyle(.plain)
