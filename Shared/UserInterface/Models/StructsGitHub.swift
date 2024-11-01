@@ -162,7 +162,7 @@ class GitHub {
 
         static let preview = StatusCheckRollup(
             state: .pending,
-            contexts: Contexts(nodes: [.previewSuccess, .previewSuccess2, .previewPending])
+            contexts: Contexts(nodes: [.previewSuccess, .previewSuccess2, .previewInProgress])
         )
 
         static let previewSuccess = StatusCheckRollup(
@@ -171,7 +171,7 @@ class GitHub {
         )
         static let previewRunning = StatusCheckRollup(
             state: .pending,
-            contexts: Contexts(nodes: [.previewPending, .previewPending2])
+            contexts: Contexts(nodes: [.previewInProgress, .previewInProgress2])
         )
     }
 
@@ -201,12 +201,13 @@ class GitHub {
         let context: String?
         let description: String?
         let state: StatusCheckState?
+        let status: CheckStatusState?
         let targetURL: String?
 
         enum CodingKeys: String, CodingKey {
             case name, conclusion
             case detailsURL = "detailsUrl"
-            case context, description, state
+            case context, description, state, status
             case targetURL = "targetUrl"
         }
 
@@ -217,6 +218,7 @@ class GitHub {
             context: "success",
             description: "All tests passed",
             state: .success,
+            status: .completed,
             targetURL: "https://github.com/octocat/Hello-World/pull/1"
         )
 
@@ -227,6 +229,7 @@ class GitHub {
             context: "success",
             description: "All tests passed",
             state: .success,
+            status: .completed,
             targetURL: "https://github.com/octocat/Hello-World/pull/2"
         )
 
@@ -237,29 +240,47 @@ class GitHub {
             context: "failure",
             description: "All tests failed",
             state: .failure,
+            status: .completed,
             targetURL: "https://github.com/octocat/Hello-World/pull/1"
         )
 
-        static let previewPending = ContextsNode(
+        static let previewInProgress = ContextsNode(
             name: "Pending",
             conclusion: nil,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
             context: "pending",
             description: "All tests are pending",
             state: .pending,
+            status: .inProgress,
             targetURL: "https://github.com/octocat/Hello-World/pull/1"
         )
 
 
-        static let previewPending2 = ContextsNode(
+        static let previewInProgress2 = ContextsNode(
             name: "Pending",
             conclusion: nil,
             detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
             context: "pending",
             description: "All tests are pending",
             state: .pending,
+            status: .inProgress,
             targetURL: "https://github.com/octocat/Hello-World/pull/2"
         )
+    }
+
+    enum CheckStatusState: String, Codable, Equatable {
+        /// The check suite or run has been requested.
+        case requested = "REQUESTED"
+        /// The check suite or run has been queued.
+        case queued = "QUEUED"
+        /// The check suite or run is in progress.
+        case inProgress = "IN_PROGRESS"
+        /// The check suite or run has been completed.
+        case completed = "COMPLETED"
+        /// The check suite or run is in waiting state.
+        case waiting = "WAITING"
+        /// The check suite or run is in pending state.
+        case pending = "PENDING"
     }
 
 
