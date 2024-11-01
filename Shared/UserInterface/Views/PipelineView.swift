@@ -35,7 +35,7 @@ struct PipelineView: View {
 
             ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
                 HStack(spacing: 0) {
-                    CIJobsView(stage: stage, instance: instance)
+                    GitLabCIJobsView(stage: stage, instance: instance)
                         .id(stage.id)
                     // Create a staggered effect by masking children to appear correctly
                         .mask {

@@ -175,19 +175,6 @@ class GitHub {
         )
     }
 
-    enum StatusCheckState: String, Codable, Equatable {
-        /// Status is expected.
-        case expected = "EXPECTED"
-        /// Status is errored.
-        case error = "ERROR"
-        /// Status is failing.
-        case failure = "FAILURE"
-        /// Status is pending.
-        case pending = "PENDING"
-        /// Status is successful.
-        case success = "SUCCESS"
-    }
-
     // MARK: - Contexts
     struct Contexts: Codable, Equatable {
         let nodes: [ContextsNode]?
@@ -272,6 +259,19 @@ class GitHub {
             status: .inProgress,
             targetURL: "https://github.com/octocat/Hello-World/pull/2"
         )
+    }
+
+    enum StatusCheckState: String, Codable, Equatable {
+        /// Status is expected.
+        case expected = "EXPECTED"
+        /// Status is errored.
+        case error = "ERROR"
+        /// Status is failing.
+        case failure = "FAILURE"
+        /// Status is pending.
+        case pending = "PENDING"
+        /// Status is successful.
+        case success = "SUCCESS"
     }
 
     enum CheckStatusState: String, Codable, Equatable {

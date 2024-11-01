@@ -127,7 +127,7 @@
 		8A7935F32A5583E400F8FB6C /* TitleWebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1A2A55817400819B80 /* TitleWebLink.swift */; };
 		8A7935F42A5583E400F8FB6C /* LaunchPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1B2A55817400819B80 /* LaunchPadView.swift */; };
 		8A7935F52A5583E400F8FB6C /* WebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1C2A55817400819B80 /* WebLink.swift */; };
-		8A7935F62A5583E400F8FB6C /* CIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* CIJobsView.swift */; };
+		8A7935F62A5583E400F8FB6C /* GitLabCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */; };
 		8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */; };
 		8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
 		8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D202A55817400819B80 /* LaunchpadItem.swift */; };
@@ -174,6 +174,10 @@
 		8A858F192CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
 		8A858F1A2CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
 		8A858F1B2CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
+		8A858F1D2CD522630024795D /* GitHubCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F1C2CD522630024795D /* GitHubCIJobsView.swift */; };
+		8A858F1E2CD522630024795D /* GitHubCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F1C2CD522630024795D /* GitHubCIJobsView.swift */; };
+		8A858F1F2CD522630024795D /* GitHubCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F1C2CD522630024795D /* GitHubCIJobsView.swift */; };
+		8A858F202CD522630024795D /* GitHubCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F1C2CD522630024795D /* GitHubCIJobsView.swift */; };
 		8A91E2172CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
@@ -295,7 +299,7 @@
 		8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
 		8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1A2A55817400819B80 /* TitleWebLink.swift */; };
 		8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
-		8AE8A7212B989EFA002B3C9E /* CIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* CIJobsView.swift */; };
+		8AE8A7212B989EFA002B3C9E /* GitLabCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */; };
 		8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
 		8AE8A7242B989EFA002B3C9E /* MergeTrainIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D042A55817400819B80 /* MergeTrainIcon.swift */; };
 		8AE8A7262B989EFA002B3C9E /* TokenInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C20D2A5D51FA0096772B /* TokenInformationView.swift */; };
@@ -413,8 +417,8 @@
 		8AF80DC12A55817400819B80 /* LaunchPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1B2A55817400819B80 /* LaunchPadView.swift */; };
 		8AF80DC32A55817400819B80 /* WebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1C2A55817400819B80 /* WebLink.swift */; };
 		8AF80DC42A55817400819B80 /* WebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1C2A55817400819B80 /* WebLink.swift */; };
-		8AF80DC62A55817400819B80 /* CIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* CIJobsView.swift */; };
-		8AF80DC72A55817400819B80 /* CIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* CIJobsView.swift */; };
+		8AF80DC62A55817400819B80 /* GitLabCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */; };
+		8AF80DC72A55817400819B80 /* GitLabCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */; };
 		8AF80DC92A55817400819B80 /* MergeRequestRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */; };
 		8AF80DCA2A55817400819B80 /* MergeRequestRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */; };
 		8AF80DCC2A55817400819B80 /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
@@ -588,6 +592,7 @@
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A858F132CD4F25B0024795D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		8A858F172CD51F2D0024795D /* ActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsView.swift; sourceTree = "<group>"; };
+		8A858F1C2CD522630024795D /* GitHubCIJobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubCIJobsView.swift; sourceTree = "<group>"; };
 		8A91E2142CB7B5FE00BE51B9 /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
 		8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLink.swift; sourceTree = "<group>"; };
@@ -673,7 +678,7 @@
 		8AF80D1A2A55817400819B80 /* TitleWebLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleWebLink.swift; sourceTree = "<group>"; };
 		8AF80D1B2A55817400819B80 /* LaunchPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchPadView.swift; sourceTree = "<group>"; };
 		8AF80D1C2A55817400819B80 /* WebLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebLink.swift; sourceTree = "<group>"; };
-		8AF80D1D2A55817400819B80 /* CIJobsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIJobsView.swift; sourceTree = "<group>"; };
+		8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLabCIJobsView.swift; sourceTree = "<group>"; };
 		8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeRequestRowView.swift; sourceTree = "<group>"; };
 		8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarButtonStyle.swift; sourceTree = "<group>"; };
 		8AF80D202A55817400819B80 /* LaunchpadItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchpadItem.swift; sourceTree = "<group>"; };
@@ -1108,7 +1113,8 @@
 				8AF80D1B2A55817400819B80 /* LaunchPadView.swift */,
 				8AF80D1C2A55817400819B80 /* WebLink.swift */,
 				8AFDAAC42A850793001937AC /* AccountRow.swift */,
-				8AF80D1D2A55817400819B80 /* CIJobsView.swift */,
+				8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */,
+				8A858F1C2CD522630024795D /* GitHubCIJobsView.swift */,
 				8A111F342CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift */,
 				8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */,
 				8AF80D1E2A55817400819B80 /* MergeRequestRowView.swift */,
@@ -1532,13 +1538,14 @@
 				8A111F322CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8AF80D822A55817400819B80 /* CICreatedIcon.swift in Sources */,
 				8AF80DAC2A55817400819B80 /* LastUpdateMessageView.swift in Sources */,
-				8AF80DC72A55817400819B80 /* CIJobsView.swift in Sources */,
+				8AF80DC72A55817400819B80 /* GitLabCIJobsView.swift in Sources */,
 				8AE2743D2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A111F2A2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8A111F212CC1161500DEB0DD /* String.swift in Sources */,
 				8AF80D4F2A55817400819B80 /* NetworkReachability.swift in Sources */,
 				8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
+				8A858F1E2CD522630024795D /* GitHubCIJobsView.swift in Sources */,
 				8A7C0ADB2CD29D2500E479CA /* StructsGitHub.swift in Sources */,
 				8AF80D732A55817400819B80 /* DiscussionCountIcon.swift in Sources */,
 				8AF80DD02A55817400819B80 /* LaunchpadItem.swift in Sources */,
@@ -1652,6 +1659,7 @@
 				8A7935DE2A5583E400F8FB6C /* CIRetryIcon.swift in Sources */,
 				8AC0C20C2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8AFDAACB2A85112E001937AC /* GitProviderView.swift in Sources */,
+				8A858F1F2CD522630024795D /* GitHubCIJobsView.swift in Sources */,
 				8A7935DF2A5583E400F8FB6C /* ShareMergeRequestIcon.swift in Sources */,
 				8AFAE1942BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
 				8A7935E02A5583E400F8FB6C /* CICreatedIcon.swift in Sources */,
@@ -1687,7 +1695,7 @@
 				8A7935F42A5583E400F8FB6C /* LaunchPadView.swift in Sources */,
 				8A7935F52A5583E400F8FB6C /* WebLink.swift in Sources */,
 				8A7C0ACF2CCFEBD100E479CA /* DateCompare.swift in Sources */,
-				8A7935F62A5583E400F8FB6C /* CIJobsView.swift in Sources */,
+				8A7935F62A5583E400F8FB6C /* GitLabCIJobsView.swift in Sources */,
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
 				8A7C0AD72CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
 				8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */,
@@ -1776,7 +1784,7 @@
 				8AE274252CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8AF80DC32A55817400819B80 /* WebLink.swift in Sources */,
 				8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */,
-				8AF80DC62A55817400819B80 /* CIJobsView.swift in Sources */,
+				8AF80DC62A55817400819B80 /* GitLabCIJobsView.swift in Sources */,
 				8AF80D8A2A55817400819B80 /* CIProgressIcon.swift in Sources */,
 				8A111F312CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8AE7A3D72A83A4000004506F /* KeyedDecodingContainer.swift in Sources */,
@@ -1790,6 +1798,7 @@
 				8AF80DA22A55817400819B80 /* RefreshStatus.swift in Sources */,
 				8AF80DBD2A55817400819B80 /* TitleWebLink.swift in Sources */,
 				8AF80D362A55817400819B80 /* StructsGitLab.swift in Sources */,
+				8A858F1D2CD522630024795D /* GitHubCIJobsView.swift in Sources */,
 				8AF80D6F2A55817400819B80 /* CIWaitingForResourceIcon.swift in Sources */,
 				8A5FC0FA26EFD08E004136AB /* GitLabApp.swift in Sources */,
 				8A7C0AF12CD364B900E479CA /* GitHubAccountView.swift in Sources */,
@@ -1896,7 +1905,7 @@
 				8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */,
 				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
 				8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */,
-				8AE8A7212B989EFA002B3C9E /* CIJobsView.swift in Sources */,
+				8AE8A7212B989EFA002B3C9E /* GitLabCIJobsView.swift in Sources */,
 				8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AB969282BDBC7580078E5CD /* WrappingHStack.swift in Sources */,
 				8AE8A7222B989EFA002B3C9E /* Array+Difference.swift in Sources */,
@@ -1916,6 +1925,7 @@
 				8AE8A72F2B989EFA002B3C9E /* AddAccountView.swift in Sources */,
 				8AE8A7302B989EFA002B3C9E /* CIPreparingIcon.swift in Sources */,
 				8A111F2C2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
+				8A858F202CD522630024795D /* GitHubCIJobsView.swift in Sources */,
 				8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */,
 				8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */,
 				8AE274242CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,

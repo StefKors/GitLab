@@ -30,8 +30,7 @@ struct ActionsView: View {
 
             ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
                 HStack(spacing: 0) {
-                    CIPendingIcon()
-//                    CIJobsView(stage: stage, instance: instance)
+                    GitHubCIJobsView(stage: stage, instance: instance)
                         .id(stage.id)
                     // Create a staggered effect by masking children to appear correctly
                         .mask {

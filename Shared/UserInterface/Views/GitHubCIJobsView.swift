@@ -1,5 +1,5 @@
 //
-//  CIJobsView.swift
+//  GitHubCIJobsView.swift
 //
 //
 //  Created by Stef Kors on 28/06/2022.
@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct CIJobsView: View {
+struct GitHubCIJobsView: View {
     // TODO: account / instance from env
-    let stage: GitLab.FluffyNode
+    let stage: GitHub.ContextsNode
     var instance: String
 
-    init(stage: GitLab.FluffyNode, instance: String? = nil) {
+    init(stage: GitHub.ContextsNode, instance: String? = nil) {
         self.stage = stage
-        self.instance = instance ?? "https://www.gitlab.com"
+        self.instance = instance ?? "https://api.github.com"
     }
 
     @State var presentPopover: Bool = false
     @State var tapState: Bool = false
 
     private var hasFailedChildJob: Bool {
-        stage.jobs?.edges?.contains(where: { $0.node?.status == .failed }) ?? false
+        stage. ?? false
     }
 
     private var status: GitLab.PipelineStatus? {
