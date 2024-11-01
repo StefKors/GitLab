@@ -1,0 +1,15 @@
+disabled_rules: 
+  # Rule identifiers turned on by default to exclude from running
+  - colon
+  - comma
+  - control_statement
+  # Custom rule identifiers
+  - line_length
+  - type_body_length
+  - todo
+  - for_where
+  - file_length
+  - nesting
+  - redundant_string_enum_value
+  - identifier_name
+  - type_name

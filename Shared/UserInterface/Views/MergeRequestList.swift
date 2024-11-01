@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct MergeRequestList: View {
-    var mergeRequests: [MergeRequest]
+    var mergeRequests: [UniversalMergeRequest]
     var accounts: [Account]
     var selectedView: QueryType
 
     var body: some View {
-        if accounts.count > 1 {
-            SectionedMergeRequestList(
-                accounts: accounts,
-                mergeRequests: mergeRequests,
-                selectedView: selectedView
-            )
-        } else {
-            PlainMergeRequestList(mergeRequests: mergeRequests)
-        }
+        PlainMergeRequestList(mergeRequests: mergeRequests)
+//        if accounts.count > 1 {
+//            SectionedMergeRequestList(
+//                accounts: accounts,
+//                selectedView: selectedView
+//            )
+//        } else {
+//            PlainMergeRequestList(mergeRequests: mergeRequests)
+//        }
     }
 }
 

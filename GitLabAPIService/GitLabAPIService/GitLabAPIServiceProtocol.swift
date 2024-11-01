@@ -9,7 +9,7 @@ import Foundation
 
 /// The protocol that this service will vend as its API. This protocol will also need to be visible to the process hosting the service.
 @objc public protocol GitLabAPIServiceProtocol {
-    
+
     /// Replace the API of this protocol with an API appropriate to the service you are vending.
     func uppercase(string: String, with reply: @escaping (String) -> Void)
 }

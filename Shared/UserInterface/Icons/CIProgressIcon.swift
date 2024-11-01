@@ -17,12 +17,12 @@ struct CIProgressIcon: View {
             Circle()
                 .stroke(lineWidth: 2.0)
                 .opacity(0.3)
-                .foregroundColor(.accentColor)
+                .foregroundStyle(Color.accentColor)
 
             Circle()
                 .trim(from: 0.0, to: .pi/10)
                 .stroke(style: StrokeStyle(lineWidth: 2.0, lineCap: .round, lineJoin: .round))
-                .foregroundColor(.accentColor)
+                .foregroundStyle(Color.accentColor)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear, value: self.animation)
         }

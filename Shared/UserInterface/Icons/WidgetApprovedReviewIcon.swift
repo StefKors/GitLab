@@ -16,7 +16,6 @@ struct WidgetApprovedReviewIcon: View {
                 .help(String(localized: "Merge request approved"))
                 .clipShape(Rectangle())
 
-
             if isHovering {
                 Text("Approved")
 
@@ -32,7 +31,7 @@ struct WidgetApprovedReviewIcon: View {
             }
         }
         .font(.footnote)
-        .foregroundColor(.green.mix(with: .black, by: 0.2))
+        .foregroundStyle(.green)
         .padding(.vertical, 2)
         .padding(.horizontal, 6)
         .background(

@@ -24,24 +24,27 @@ struct Provider: TimelineProvider {
         )
     }
 
-    init(selectedView: QueryType) {
-        self.selectedView = selectedView
-    }
-
     // TODO: demo data? or at placeholder?
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         Task { @MainActor in
             let now = Date.now
 
             let context = ModelContainer.shared.mainContext
 
-            let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
+            let mergeRequests = (
+                try? context.fetch(
+                    FetchDescriptor<UniversalMergeRequest>(
+                        predicate: nil,
+                        sortBy: [.init(\.createdAt, order: .reverse)]
+                    )
+                )
+            ) ?? []
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
             let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
             let entry =   SimpleEntry(
                 date: now,
-                mergeRequests: mergeRequests, //Array(mergeRequests.prefix(5)),
+                mergeRequests: mergeRequests, // Array(mergeRequests.prefix(5)),
                 accounts: accounts,
                 repos: repos,
                 selectedView: selectedView
@@ -50,7 +53,7 @@ struct Provider: TimelineProvider {
         }
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         Task { @MainActor in
             var entries: [SimpleEntry] = []
 
@@ -58,7 +61,14 @@ struct Provider: TimelineProvider {
 
             let context = ModelContainer.shared.mainContext
 
-            let mergeRequests = (try? context.fetch(FetchDescriptor<MergeRequest>())) ?? []
+            let mergeRequests = (
+                try? context.fetch(
+                    FetchDescriptor<UniversalMergeRequest>(
+                        predicate: nil,
+                        sortBy: [.init(\.createdAt, order: .reverse)]
+                    )
+                )
+            ) ?? []
             let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
             let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
@@ -69,18 +79,18 @@ struct Provider: TimelineProvider {
 //            moreRepos.append(contentsOf: repos)
 //            moreRepos.append(contentsOf: repos)
 
-            //let mergeRequests = (
+            // let mergeRequests = (
             //    try? context.fetch(
             //        FetchDescriptor<MergeRequest>(predicate: #Predicate {
             //            $0.type == type
             //        })
             //    )
-            //) ?? []
+            // ) ?? []
 
             entries.append(
                 SimpleEntry(
                     date: now,
-                    mergeRequests: mergeRequests, //Array(mergeRequests.prefix(5)),
+                    mergeRequests: mergeRequests, // Array(mergeRequests.prefix(5)),
                     accounts: accounts,
                     repos: repos,
                     selectedView: selectedView
@@ -97,7 +107,7 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let mergeRequests: [MergeRequest]
+    let mergeRequests: [UniversalMergeRequest]
     let accounts: [Account]
     let repos: [LaunchpadRepo]
     let selectedView: QueryType
@@ -141,7 +151,6 @@ struct ReviewRequestedMergeRequestWidget: Widget {
     }
 }
 
-
 struct LaunchPadWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "LaunchpadWidget", provider: Provider(selectedView: .authoredMergeRequests)) { entry in
@@ -155,4 +164,3 @@ struct LaunchPadWidget: Widget {
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
-

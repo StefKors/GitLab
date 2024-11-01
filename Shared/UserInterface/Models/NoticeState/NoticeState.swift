@@ -16,39 +16,39 @@ class NoticeState: ObservableObject {
             }
         }
     }
-    
+
     func addNotice(notice: NoticeMessage) {
         // If the new notice is basically the same as the last notice, Don't add new notice
         for existingNotice in notices {
             if existingNotice.type == notice.type,
                existingNotice.statusCode == notice.statusCode,
                existingNotice.label == notice.label {
-                
+
                 // skip adding duplicate notice even if branch notice is dismissed
                 if notice.type == .branch {
                     return
                 }
-                
+
                 if existingNotice.dismissed == false {
                     print("skipping adding duplicate notice")
                     return
                 }
             }
         }
-        
+
         notices.append(notice)
     }
-    
+
     func dismissNotice(id: UUID) {
         let index = notices.lastIndex(where: { notice in
             notice.id == id
         })
-        
+
         if let index = index {
             notices[index].dismiss()
         }
     }
-    
+
     func clearNetworkNotices() {
         for (index, notice) in notices.enumerated() {
             if notice.type == .network {
@@ -56,9 +56,9 @@ class NoticeState: ObservableObject {
             }
         }
     }
-    
+
     func clearAllNotices() {
-        for (index, _) in notices.enumerated() {
+        for index in notices.indices {
             notices[index].dismiss()
         }
     }

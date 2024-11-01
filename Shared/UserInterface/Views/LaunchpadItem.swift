@@ -12,7 +12,7 @@ struct LaunchpadItem: View {
 
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
-    
+
     @State private var isHovering = false
 
     var body: some View {
@@ -20,13 +20,13 @@ struct LaunchpadItem: View {
 //            // TODO:
 //            print("todo: set filter")
 //        } label: {
-            HStack() {
+            HStack {
                 LaunchpadImage(repo: repo)
 
                 VStack(alignment: .leading) {
                     Text(repo.name)
                     Text(repo.group)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
 
                 Button {

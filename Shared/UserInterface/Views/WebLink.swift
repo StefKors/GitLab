@@ -10,9 +10,9 @@ import SwiftUI
 struct WebLink: View {
     var linkText: String
     var destination: URL?
-    
+
     @State private var isHovering = false
-    
+
     var body: some View {
         if let url = destination {
             Link(destination: url, label: {
@@ -20,12 +20,12 @@ struct WebLink: View {
                     .onHover { hovering in
                         isHovering = hovering
                     }
-                    .foregroundColor(isHovering ? .primary : .secondary)
+                    .foregroundStyle(isHovering ? .primary : .secondary)
                     .animation(.interactiveSpring(), value: isHovering)
             })
         } else {
             Text(linkText)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
         }
     }
 }

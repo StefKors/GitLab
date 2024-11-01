@@ -8,12 +8,12 @@
 import SwiftUI
 
  struct CIJobsNotificationView: View {
-     var stages: [FluffyNode?]
-    
-     init (stages: [FluffyNode?]?) {
+     var stages: [GitLab.FluffyNode?]
+
+     init (stages: [GitLab.FluffyNode?]?) {
         self.stages = stages ?? []
     }
-    
+
      var body: some View {
         HStack(alignment: .top, spacing: 0) {
             ForEach(stages.indices, id: \.self) { index in
@@ -35,10 +35,9 @@ import SwiftUI
                 }
             }
         }
-        
+
     }
 }
-
 
 struct CIJobsNotificationView_Previews: PreviewProvider {
     static var previews: some View {
@@ -51,7 +50,7 @@ struct CIJobsNotificationView_Previews: PreviewProvider {
                         // .padding()
                     // needed to render in the correct colorScheme
                         .colorScheme(.dark)
-                    
+
                     let renderer = ImageRenderer(content: renderView)
                     renderer.scale = 4.0
                     renderer.isOpaque = false

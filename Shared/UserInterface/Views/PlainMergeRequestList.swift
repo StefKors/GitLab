@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct PlainMergeRequestList: View {
-    let mergeRequests: [MergeRequest]
+    let mergeRequests: [UniversalMergeRequest]
 
-    var lastMR: MergeRequest? {
+    var lastMR: UniversalMergeRequest? {
         mergeRequests.last
     }
 
     var body: some View {
         ForEach(mergeRequests, id: \.id) { mergeRequest in
-            MergeRequestRowView(MR: mergeRequest)
+            MergeRequestRowView(request: mergeRequest)
                 .transition(.opacity)
 //                .listRowSeparator(.visible)
 //                .listRowSeparatorTint(Color.secondary.opacity(0.2))

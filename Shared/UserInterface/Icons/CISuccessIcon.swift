@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CISuccessIcon: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     var body: some View {
         Image(systemName: "checkmark.circle")
-            .foregroundColor(.green)
-            .font(.system(size: 18))
+            .foregroundStyle(.green.mix(with: .black, by: colorScheme == .dark ? 0 : 0.2))
+            .font(.system(size: 16))
             .help(String(localized: "CI Success"))
             .clipShape(Rectangle())
     }

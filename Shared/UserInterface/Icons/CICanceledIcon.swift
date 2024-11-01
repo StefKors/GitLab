@@ -10,8 +10,8 @@ import SwiftUI
 struct CICanceledIcon: View {
     var body: some View {
         Image(systemName: "circle.slash")
-            .foregroundColor(.gray)
-            .font(.system(size: 18))
+            .foregroundStyle(.gray)
+            .font(.system(size: 16))
             .help(String(localized: "CI canceled"))
             .clipShape(Rectangle())
     }

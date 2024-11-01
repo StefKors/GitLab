@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct MediumMergeRequestWidgetInterface: View {
-    var mergeRequests: [MergeRequest]
+    var mergeRequests: [UniversalMergeRequest]
     var accounts: [Account]
     var repos: [LaunchpadRepo]
     var selectedView: QueryType
 
-    private var filteredMRs: [MergeRequest] {
+    private var filteredMRs: [UniversalMergeRequest] {
         if selectedView == .reviewRequestedMergeRequests {
             return mergeRequests.filter { mr in
-                mr.approvedBy?.edges?.count == 0
+                mr.isApproved == false
             }
         }
 
@@ -29,28 +29,43 @@ struct MediumMergeRequestWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .center, spacing: 6) {
-                if selectedView == .reviewRequestedMergeRequests {
-                    Text(Image(.mergeRequest))
-                    Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
-                }
+            if selectedView == .reviewRequestedMergeRequests {
+                ViewThatFits(in: .horizontal, content: {
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.mergeRequest))
+                        Text("^[\(mergeRequests.count) reviews](inflect: true) requested")
+                    }
 
-                if selectedView == .authoredMergeRequests {
-                    Text(Image(.branch))
-                    Text("^[\(mergeRequests.count) merge requests](inflect: true)")
-                }
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.mergeRequest))
+                        Text(mergeRequests.count.description)
+                    }
+                })
+            }
+
+            if selectedView == .authoredMergeRequests {
+                ViewThatFits(in: .horizontal, content: {
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.branch))
+                        Text("^[\(mergeRequests.count) merge requests](inflect: true)")
+                    }
+
+                    HStack(alignment: .center, spacing: 6) {
+                        Text(Image(.branch))
+                        Text(mergeRequests.count.description)
+                    }
+                })
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { MR in
-                    WidgetMRRowIcon(MR: MR, providers: providers)
+                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { request in
+                    WidgetMRRowIcon(request: request, providers: providers)
                 }
             }
         }
         .frame(alignment: .top)
     }
 }
-
 
 #Preview {
     VStack {
@@ -66,7 +81,7 @@ struct MediumMergeRequestWidgetInterface: View {
 
         GroupBox {
             MediumMergeRequestWidgetInterface(
-                mergeRequests: [.preview, .previewGithub, .preview3, .preview2],
+                mergeRequests: [.preview, .previewGitHub, .preview3, .preview2],
                 accounts: [.preview, .previewGitHub],
                 repos: [],
                 selectedView: .authoredMergeRequests
@@ -77,8 +92,6 @@ struct MediumMergeRequestWidgetInterface: View {
     .scenePadding()
 }
 
-
-
 #Preview {
     MediumMergeRequestWidgetInterface(
         mergeRequests: [.preview, .preview, .preview, .preview],
@@ -87,4 +100,3 @@ struct MediumMergeRequestWidgetInterface: View {
         selectedView: .authoredMergeRequests
     )
 }
-

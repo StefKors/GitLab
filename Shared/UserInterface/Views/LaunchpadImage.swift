@@ -5,7 +5,6 @@
 //  Created by Stef Kors on 17/10/2024.
 //
 
-
 import SwiftUI
 
 struct LaunchpadImage: View {
@@ -33,7 +32,7 @@ struct LaunchpadImage: View {
                         if let char = repo.name.first {
                             Text(String(char).capitalized)
                                 .font(.headline.bold())
-                                .foregroundColor(.primary)
+                                .foregroundStyle(.primary)
                                 .colorInvert()
                         }
                     })

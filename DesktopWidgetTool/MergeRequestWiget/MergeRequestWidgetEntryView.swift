@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct MergeRequestWidgetEntryView : View {
+struct MergeRequestWidgetEntryView: View {
     var entry: Provider.Entry
 
     @Environment(\.widgetFamily) private var family

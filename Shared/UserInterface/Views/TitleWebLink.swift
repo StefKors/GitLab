@@ -12,15 +12,15 @@ struct TitleWebLink: View {
     var linkText: String
     var destination: URL?
     var weight: Font.Weight = .bold
-
+    var isDraft: Bool = false
 
     var body: some View {
         if let url = destination {
             Link(destination: url, label: {
-                MRTitleView(linkText: linkText, isLink: true, weight: weight)
+                MRTitleView(linkText: linkText, isLink: true, weight: weight, isDraft: isDraft)
             })
         } else {
-            MRTitleView(linkText: linkText, weight: weight)
+            MRTitleView(linkText: linkText, weight: weight, isDraft: isDraft)
         }
     }
 }

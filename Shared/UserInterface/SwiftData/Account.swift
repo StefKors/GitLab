@@ -19,9 +19,15 @@ enum GitProvider: String, Codable, CaseIterable {
     var instance: String
     var provider: GitProvider
 
+    @Relationship(inverse: \UniversalMergeRequest.account)
+    var requests: [UniversalMergeRequest] = []
+
 //    @Relationship(deleteRule: .cascade, inverse: \MergeRequest.account)
-    @Relationship(inverse: \MergeRequest.account)
-    var mergeRequests: [MergeRequest] = []
+//    @Relationship(inverse: \MergeRequest.account)
+//    var mergeRequests: [MergeRequest] = []
+//
+//    @Relationship(inverse: \PullRequest.account)
+//    var pullRequests: [PullRequest] = []
 
     init(token: String, instance: String, provider: GitProvider = .GitLab) {
         self.id = UUID().uuidString

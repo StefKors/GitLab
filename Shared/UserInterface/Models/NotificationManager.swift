@@ -43,7 +43,6 @@ class NotificationManager {
             options: []
         )
 
-
         // Define the notification type
         let mrApprovalCategory = UNNotificationCategory(
             identifier: "MR_EVENT",
@@ -58,7 +57,7 @@ class NotificationManager {
         notificationCenter.setNotificationCategories([mrApprovalCategory])
     }
 
-    func sendNotification(title: String, subtitle: String?, userInfo: [AnyHashable : Any]? = nil) {
+    func sendNotification(title: String, subtitle: String?, userInfo: [AnyHashable: Any]? = nil) {
         let content = UNMutableNotificationContent()
         content.title = title
 
@@ -83,7 +82,6 @@ class NotificationManager {
     }
 }
 
-
 class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     @Environment(\.openURL) private var openURL
 
@@ -106,7 +104,6 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
             openURL(url)
             // NSWorkspace.shared.open(url)
             center.removeAllDeliveredNotifications()
-            break
 
         case UNNotificationDismissActionIdentifier:
             // do nothing
@@ -116,7 +113,6 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
             openURL(url)
             // NSWorkspace.shared.open(url)
             center.removeAllDeliveredNotifications()
-            break
         }
         // Always call the completion handler when done.
         completionHandler()

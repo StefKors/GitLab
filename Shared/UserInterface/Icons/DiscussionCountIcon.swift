@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct DiscussionCountIcon: View {
-    var count: Int? = nil
+    var count: Int?
+    var provider: GitProvider
+
+    private var min: Int {
+        switch provider {
+        case .GitHub:
+            0
+        case .GitLab:
+            1
+        }
+    }
+
     var body: some View {
-        if let count = count, count > 1 {
+        if let count = count, count > min {
             if count <= 50 {
                 HStack(spacing: 2) {
                     Text(Image(systemName: "bubble.left.and.bubble.right"))
@@ -32,6 +43,6 @@ struct DiscussionCountIcon: View {
 
 struct CommentIcon_Previews: PreviewProvider {
     static var previews: some View {
-        DiscussionCountIcon(count: 12)
+        DiscussionCountIcon(count: 12, provider: .GitHub)
     }
 }

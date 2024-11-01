@@ -15,7 +15,7 @@ struct GitLab_iOSApp: App {
 
     // Persistance objects
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([Account.self, MergeRequest.self, LaunchpadRepo.self])
+        let schema = Schema([Account.self, MergeRequest.self, UniversalMergeRequest.self, PullRequest.self, LaunchpadRepo.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {

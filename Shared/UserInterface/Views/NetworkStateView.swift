@@ -13,13 +13,14 @@ struct NetworkStateView: View {
     @State private var sortOrder = [KeyPathComparator(\NetworkEvent.timestamp,
                                                        order: .reverse)]
 
-//    @SceneStorage("NetworkEventTableConfig")
-//    @State private var columnCustomization: TableColumnCustomization<NetworkEvent>
+    //    @SceneStorage("NetworkEventTableConfig")
+    //    @State private var columnCustomization: TableColumnCustomization<NetworkEvent>
 
-//    var tableData: [NetworkEvent] { networkState.events.sorted(using: sortOrder) }
+    //    var tableData: [NetworkEvent] { networkState.events.sorted(using: sortOrder) }
 
     @State private var events: [NetworkEvent] = []
-    @State private var searchText: String = ""
+
+    @State private var selectedEvents = Set<NetworkEvent.ID>()
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,7 +35,7 @@ struct NetworkStateView: View {
             }
             .padding(.vertical)
 
-            Table(events, sortOrder: $sortOrder) {
+            Table(events, selection: $selectedEvents, sortOrder: $sortOrder) {
                 TableColumn("status") { event in
                     HStack {
                         if let status = event.status {
@@ -55,7 +56,7 @@ struct NetworkStateView: View {
 
                 TableColumn("duration") { event in
                     Text(formatDuration(event.info.timestamp, event.timestamp))
-//                    Text(event.info.timestamp..<event.timestamp.formatted(.timeDuration).description)
+                    //                    Text(event.info.timestamp..<event.timestamp.formatted(.timeDuration).description)
                 }
                 .width(max: 60)
 
@@ -69,13 +70,14 @@ struct NetworkStateView: View {
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "Search request data")
             .onChange(of: networkState.events) { _, newEvents in
                 events = newEvents.sorted(using: sortOrder)
             }
             .onChange(of: sortOrder) { _, sortOrder in
                 events.sort(using: sortOrder)
             }
+
+            NetworkInspector(ids: selectedEvents, events: events)
         }
         .padding(.bottom)
         .frame(minHeight: 300)

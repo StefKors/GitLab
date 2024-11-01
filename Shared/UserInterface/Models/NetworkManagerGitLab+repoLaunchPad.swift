@@ -1,5 +1,4 @@
 //
-//  File.swift
 //
 //
 //  Created by Stef Kors on 19/09/2022.
@@ -8,9 +7,8 @@
 import Foundation
 import Get
 
-extension NetworkManager {
-
-    func addLaunchpadProject(with account: Account, _ project: TargetProject) async -> LaunchpadRepo? {
+extension NetworkManagerGitLab {
+    func addLaunchpadProject(with account: Account, _ project: GitLab.TargetProject) async -> LaunchpadRepo? {
         // guard project.avatarUrl != nil, let url = project.webURL else {
         guard let url = project.webURL else {
             return nil
@@ -19,7 +17,7 @@ extension NetworkManager {
         let repo = LaunchpadRepo(
             id: project.id,
             name: project.name ?? "",
-            image:  await self.getProjectImage(with: account, project),
+            image: await self.getProjectImage(with: account, project),
             group: project.group?.fullName ?? project.namespace?.fullName ?? "",
             url: url,
             hasUpdatedSinceLaunch: true
@@ -28,8 +26,7 @@ extension NetworkManager {
         return repo
     }
 
-
-    fileprivate func getProjectImage(with account: Account, _ project: TargetProject) async -> Data? {
+    fileprivate func getProjectImage(with account: Account, _ project: GitLab.TargetProject) async -> Data? {
         let id = project.id.components(separatedBy: "/").last ?? ""
         let branch = project.repository?.rootRef ?? "main"
 
@@ -38,7 +35,7 @@ extension NetworkManager {
 
         let url = URL(string: "/api/v4/projects/\(id)/repository/files/logo%2Epng")!
         print("fetch: update project image \(project.name ?? "")")
-        let req: Request<ProjectImageResponse> = Request.init(
+        let req: Request<GitLab.ProjectImageResponse> = Request.init(
             url: url,
             method: .get,
             query: [("ref", branch)],
@@ -53,7 +50,7 @@ extension NetworkManager {
         ))
 
         do {
-            let response: ProjectImageResponse? = try await launchPadClient.send(req).value
+            let response: GitLab.ProjectImageResponse? = try await launchPadClient.send(req).value
             if let content = response?.content {
                 return Data(base64Encoded: content)
             }
