@@ -170,6 +170,10 @@
 		8A7C0AFF2CD3657100E479CA /* UniversalMergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */; };
 		8A7C0B002CD3657100E479CA /* UniversalMergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */; };
 		8A858F142CD4F25E0024795D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8A858F132CD4F25B0024795D /* .swiftlint.yml */; };
+		8A858F182CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
+		8A858F192CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
+		8A858F1A2CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
+		8A858F1B2CD51F2D0024795D /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F172CD51F2D0024795D /* ActionsView.swift */; };
 		8A91E2172CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
@@ -583,6 +587,7 @@
 		8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMergeRequest.swift; sourceTree = "<group>"; };
 		8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; path = GitLabAPIService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A858F132CD4F25B0024795D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		8A858F172CD51F2D0024795D /* ActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsView.swift; sourceTree = "<group>"; };
 		8A91E2142CB7B5FE00BE51B9 /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
 		8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLink.swift; sourceTree = "<group>"; };
@@ -1090,6 +1095,7 @@
 				8AF80D0D2A55817400819B80 /* NoticeViews */,
 				8AF80D102A55817400819B80 /* RefreshStatus.swift */,
 				8AF80D112A55817400819B80 /* PipelineView.swift */,
+				8A858F172CD51F2D0024795D /* ActionsView.swift */,
 				8AFDAAC02A850784001937AC /* AccountListEmptyView.swift */,
 				8AFDAAC82A85112E001937AC /* GitProviderView.swift */,
 				8AF80D122A55817400819B80 /* ExpandHitBoxModifier.swift */,
@@ -1548,6 +1554,7 @@
 				8A7C0AEA2CD363B700E479CA /* Collection.swift in Sources */,
 				8AF80D7C2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AE274282CC3DD060059244E /* MainContentView.swift in Sources */,
+				8A858F182CD51F2D0024795D /* ActionsView.swift in Sources */,
 				8AF80D5B2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
 				8A33E9482CD3D4D100F2C148 /* OptionalType.swift in Sources */,
@@ -1634,6 +1641,7 @@
 				8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
 				8A7935DC2A5583E400F8FB6C /* CIScheduledIcon.swift in Sources */,
+				8A858F1A2CD51F2D0024795D /* ActionsView.swift in Sources */,
 				8A111F402CC12C5F00DEB0DD /* QueryType.swift in Sources */,
 				8AE274322CC66BBC0059244E /* AvatarRowView.swift in Sources */,
 				8A7935DD2A5583E400F8FB6C /* CIPendingIcon.swift in Sources */,
@@ -1734,6 +1742,7 @@
 				8ACBFD3C2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
 				8AF80D782A55817400819B80 /* CIPendingIcon.swift in Sources */,
 				8A111F272CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
+				8A858F192CD51F2D0024795D /* ActionsView.swift in Sources */,
 				8AE274342CC66BBC0059244E /* AvatarRowView.swift in Sources */,
 				8A7C0AE92CD363B700E479CA /* Collection.swift in Sources */,
 				8AFDAAC52A850793001937AC /* AccountRow.swift in Sources */,
@@ -1834,6 +1843,7 @@
 				8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */,
 				8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */,
 				8AE8A7032B989EFA002B3C9E /* AccountListEmptyView.swift in Sources */,
+				8A858F1B2CD51F2D0024795D /* ActionsView.swift in Sources */,
 				8AB9691F2BDBC1BF0078E5CD /* MergeRequestWidgetEntryView.swift in Sources */,
 				8AE8A7052B989EFA002B3C9E /* URL.swift in Sources */,
 				8AE8A7062B989EFA002B3C9E /* AccountRow.swift in Sources */,

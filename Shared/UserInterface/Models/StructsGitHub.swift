@@ -194,7 +194,8 @@ class GitHub {
     }
 
     // MARK: - ContextsNode
-    struct ContextsNode: Codable, Equatable {
+    struct ContextsNode: Codable, Equatable, Hashable {
+        let id: String
         let name: String?
         let conclusion: CheckConclusionState?
         let detailsURL: String?
@@ -205,6 +206,7 @@ class GitHub {
         let targetURL: String?
 
         enum CodingKeys: String, CodingKey {
+            case id
             case name, conclusion
             case detailsURL = "detailsUrl"
             case context, description, state, status
@@ -212,6 +214,7 @@ class GitHub {
         }
 
         static let previewSuccess = ContextsNode(
+            id: "CR_kwDOJO0j5s8AbbbbHiqSLJQ",
             name: "Success",
             conclusion: .success,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
@@ -223,6 +226,7 @@ class GitHub {
         )
 
         static let previewSuccess2 = ContextsNode(
+            id: "CR_kwDOJO0j5ssssssAAHiqSLJQ",
             name: "Success",
             conclusion: .success,
             detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
@@ -234,6 +238,7 @@ class GitHub {
         )
 
         static let previewFailure = ContextsNode(
+            id: "CR_kwDOJO0j5s8AAAAHiqwer3425",
             name: "Failure",
             conclusion: .failure,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
@@ -245,6 +250,7 @@ class GitHub {
         )
 
         static let previewInProgress = ContextsNode(
+            id: "CR_kwDOJO0j53453453AAAHiqSLJQ",
             name: "Pending",
             conclusion: nil,
             detailsURL: "https://github.com/octocat/Hello-World/pull/1/checks",
@@ -255,8 +261,8 @@ class GitHub {
             targetURL: "https://github.com/octocat/Hello-World/pull/1"
         )
 
-
         static let previewInProgress2 = ContextsNode(
+            id: "CR_kwDOJO0j545345345AAAHi234234JQ",
             name: "Pending",
             conclusion: nil,
             detailsURL: "https://github.com/octocat/Hello-World/pull/2/checks",
@@ -282,7 +288,6 @@ class GitHub {
         /// The check suite or run is in pending state.
         case pending = "PENDING"
     }
-
 
     enum MergeStateStatus: String, Codable, Equatable {
         /// The merge commit cannot be cleanly created.

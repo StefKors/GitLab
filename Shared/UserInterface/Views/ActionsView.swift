@@ -1,27 +1,22 @@
 //
-//  PipelineView.swift
+//  ActionsView.swift
+//  GitLab
 //
-//
-//  Created by Stef Kors on 24/06/2022.
+//  Created by Stef Kors on 01/11/2024.
 //
 
 import SwiftUI
 
-fileprivate struct Values {
-    var spacing = Angle.zero
-    var offset: CGFloat = 1.0
-}
-
-struct PipelineView: View {
-    var pipeline: GitLab.HeadPipeline
+struct ActionsView: View {
+    let status: GitHub.StatusCheckRollup
     var instance: String?
 
-    private var stages: [GitLab.FluffyNode] {
-        pipeline.stages?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
+    private var stages: [GitHub.ContextsNode] {
+        status.contexts?.nodes?.compactMap({ $0 }) ?? []
     }
 
     private var allSucceeded: Bool {
-        pipeline.status == .success && !isHovering
+        status.state == .success && !isHovering
     }
 
     private var spacing: CGFloat {
@@ -35,7 +30,8 @@ struct PipelineView: View {
 
             ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
                 HStack(spacing: 0) {
-                    CIJobsView(stage: stage, instance: instance)
+                    CIPendingIcon()
+//                    CIJobsView(stage: stage, instance: instance)
                         .id(stage.id)
                     // Create a staggered effect by masking children to appear correctly
                         .mask {
@@ -70,17 +66,10 @@ struct PipelineView: View {
 }
 
 #Preview {
-    VStack(alignment: .trailing) {
-        PipelineView(pipeline: .previewTestFailed, instance: nil)
-            .scenePadding()
-        PipelineView(pipeline: .previewMultiple, instance: nil)
-            .scenePadding()
-        PipelineView(pipeline: .previewMultipleSuccess, instance: nil)
-            .scenePadding()
-        PipelineView(pipeline: .previewMultipleSuccessMergeTrain, instance: nil)
-            .scenePadding()
-    }
-    .scenePadding()
-    .scenePadding()
-    .scenePadding()
+    VStack(alignment: .leading) {
+        // Single
+        // Double
+        ActionsView(status: .preview, instance: nil)
+
+    }.scenePadding()
 }

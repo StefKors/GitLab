@@ -7,17 +7,6 @@
 
 import SwiftUI
 
-struct ActionsView: View {
-    let status: GitHub.StatusCheckRollup
-    var body: some View {
-        Text("status")
-    }
-}
-
-#Preview {
-    ActionsView(status: .preview)
-}
-
 struct DoubleLineMergeRequestSubRowView: View {
     var request: UniversalMergeRequest
 
@@ -44,7 +33,7 @@ struct DoubleLineMergeRequestSubRowView: View {
                 }
 
                 if let status = request.pullRequest?.commits?.nodes?.first?.commit?.statusCheckRollup {
-                    ActionsView(status: status)
+                    ActionsView(status: status, instance: request.account.instance)
                 }
             }
         }
