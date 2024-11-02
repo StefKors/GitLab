@@ -10,7 +10,7 @@ import SwiftData
 
 class GitHub {
     // MARK: - GitHubQuery
-    struct Query: Codable, Equatable, Sendable {
+    struct Query: Codable, Equatable, Sendable, Hashable {
         let data: DataClass
 
         var authoredMergeRequests: [GitHub.PullRequestsNode] {
@@ -25,17 +25,17 @@ class GitHub {
     }
 
     // MARK: - DataClass
-    struct DataClass: Codable, Equatable, Sendable {
+    struct DataClass: Codable, Equatable, Sendable, Hashable {
         let viewer: Viewer?
     }
 
     // MARK: - Viewer
-    struct Viewer: Codable, Equatable, Sendable {
+    struct Viewer: Codable, Equatable, Sendable, Hashable {
         let pullRequests: PullRequests?
     }
 
     // MARK: - PullRequestsNode
-    struct PullRequestsNode: Codable, Equatable, Identifiable, Sendable {
+    struct PullRequestsNode: Codable, Equatable, Identifiable, Hashable {
         let id: String
         let title: String?
         let url: String?
@@ -92,23 +92,23 @@ class GitHub {
     }
 
     // MARK: - PullRequests
-    struct PullRequests: Codable, Equatable, Sendable {
+    struct PullRequests: Codable, Equatable, Sendable, Hashable {
         let nodes: [PullRequestsNode]?
     }
 
     // MARK: - Labels
-    struct Labels: Codable, Equatable, Sendable {
+    struct Labels: Codable, Equatable, Sendable, Hashable {
         let nodes: [LabelsNode]?
     }
 
     // MARK: - LabelsNode
-    struct LabelsNode: Codable, Equatable, Sendable {
+    struct LabelsNode: Codable, Equatable, Sendable, Hashable {
         let id, name, color: String?
         let isDefault: Bool?
     }
 
     // MARK: - Repository
-    struct Repository: Codable, Equatable, Sendable {
+    struct Repository: Codable, Equatable, Sendable, Hashable {
         let name, id: String?
         let isLocked: Bool?
         let isArchived: Bool?
@@ -126,41 +126,41 @@ class GitHub {
     }
 
 //    // MARK: - Comments
-//    struct Comments: Codable, Equatable, Sendable {
+//    struct Comments: Codable, Equatable, Sendable, Hashable {
 //        let nodes: [CommentsNode]?
 //    }
 //
 //    // MARK: - CommentsNode
-//    struct CommentsNode: Codable, Equatable, Sendable {
+//    struct CommentsNode: Codable, Equatable, Sendable, Hashable {
 //        let id: String?
 //        let author: Owner?
 //        let bodyText: String?
 //    }
 
     // MARK: - Owner
-    struct Owner: Codable, Equatable, Sendable {
+    struct Owner: Codable, Equatable, Sendable, Hashable {
         let login: String?
 
         static let previewBeam = Owner(login: "beamLegacy")
     }
 
 //    // MARK: - Commits
-//    struct Commits: Codable, Equatable, Sendable {
+//    struct Commits: Codable, Equatable, Sendable, Hashable {
 //        let nodes: [CommitsNode]?
 //    }
 //
 //    // MARK: - CommitsNode
-//    struct CommitsNode: Codable, Equatable, Sendable {
+//    struct CommitsNode: Codable, Equatable, Sendable, Hashable {
 //        let commit: Commit?
 //    }
 //
 //    // MARK: - Commit
-//    struct Commit: Codable, Equatable, Sendable {
+//    struct Commit: Codable, Equatable, Sendable, Hashable {
 //        let statusCheckRollup: StatusCheckRollup?
 //    }
 
     // MARK: - StatusCheckRollup
-    struct StatusCheckRollup: Codable, Equatable, Sendable {
+    struct StatusCheckRollup: Codable, Equatable, Sendable, Hashable {
         let state: StatusCheckState?
         let contexts: Contexts?
 
@@ -180,12 +180,12 @@ class GitHub {
     }
 
     // MARK: - Contexts
-    struct Contexts: Codable, Equatable, Sendable {
+    struct Contexts: Codable, Equatable, Sendable, Hashable {
         let nodes: [ContextsNode]?
     }
 
     // MARK: - ContextsNode (Like jobs in GitLab)
-    struct ContextsNode: Codable, Equatable, Hashable {
+    struct ContextsNode: Codable, Equatable, Hashable, Sendable {
         let id: String
         let name: String?
         let status: CheckStatusState?
@@ -274,7 +274,7 @@ class GitHub {
     }
 
     // MARK: - CheckSuite
-    struct CheckSuite: Codable, Equatable, Hashable {
+    struct CheckSuite: Codable, Equatable, Hashable, Sendable {
         let workflowRun: WorkflowRun?
 
         enum CodingKeys: String, CodingKey {
@@ -286,7 +286,7 @@ class GitHub {
     }
 
     // MARK: - WorkflowRun
-    struct WorkflowRun: Codable, Equatable, Hashable {
+    struct WorkflowRun: Codable, Equatable, Hashable, Sendable {
         let workflow: Workflow?
 
         enum CodingKeys: String, CodingKey {
@@ -295,7 +295,7 @@ class GitHub {
     }
 
     // MARK: - Workflow
-    struct Workflow: Codable, Equatable, Hashable {
+    struct Workflow: Codable, Equatable, Hashable, Sendable {
         let id: String?
         let name: String?
 
@@ -307,7 +307,7 @@ class GitHub {
 
     // MARK: - Steps
     /// Not used At the moment
-    struct Steps: Codable, Equatable, Hashable {
+    struct Steps: Codable, Equatable, Hashable, Sendable {
         let nodes: [StepsNode]?
 
 //        steps: Steps(nodes: [.previewCheckout, .previewSetup])
@@ -318,7 +318,7 @@ class GitHub {
     }
 
     // MARK: - StepsNode
-    struct StepsNode: Codable, Equatable, Hashable {
+    struct StepsNode: Codable, Equatable, Hashable, Sendable {
         let externalID, name: String?
         let number, secondsToCompletion: Int?
         let status: CheckStatusState?
@@ -463,18 +463,18 @@ class GitHub {
     }
 
     // MARK: - Reactions
-    struct Reactions: Codable, Equatable, Sendable {
+    struct Reactions: Codable, Equatable, Sendable, Hashable {
         let nodes: [ReactionsNode]?
     }
 
     // MARK: - ReactionsNode
-    struct ReactionsNode: Codable, Equatable, Sendable {
+    struct ReactionsNode: Codable, Equatable, Sendable, Hashable {
         let id: String?
         let user: Author?
     }
 
     // MARK: - Reviews
-    struct Reviews: Codable, Equatable, Sendable {
+    struct Reviews: Codable, Equatable, Sendable, Hashable {
         let nodes: [ReviewsNode]?
     }
 
@@ -488,7 +488,7 @@ class GitHub {
     }
 
     // MARK: - ReviewsNode
-    struct ReviewsNode: Codable, Equatable, Sendable {
+    struct ReviewsNode: Codable, Equatable, Sendable, Hashable {
         let id: String?
         let state: ReviewState?
         let author: Author?
@@ -508,7 +508,7 @@ class GitHub {
     }
 
     // MARK: - Author
-    struct Author: Codable, Equatable, Sendable {
+    struct Author: Codable, Equatable, Sendable, Hashable {
         let avatarURL: String?
         let name: String?
         let login: String?

@@ -18,6 +18,7 @@ struct PlainMergeRequestList: View {
         ForEach(mergeRequests, id: \.id) { mergeRequest in
             MergeRequestRowView(request: mergeRequest)
                 .transition(.opacity)
+                .id(mergeRequest.pullRequest?.hashValue ?? mergeRequest.mergeRequest?.hashValue)
 //                .listRowSeparator(.visible)
 //                .listRowSeparatorTint(Color.secondary.opacity(0.2))
             if mergeRequest != lastMR {

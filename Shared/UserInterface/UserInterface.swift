@@ -64,6 +64,9 @@ struct UserInterface: View {
                     accounts: accounts,
                     selectedView: $selectedView
                 )
+                .task(id: filteredMergeRequests) {
+                    print("filteredMergeRequests updated")
+                }
             }
         }
 
@@ -186,27 +189,31 @@ struct UserInterface: View {
     }
 
     private func removeAndInsertUniversal(_ type: QueryType, account: Account, requests: [UniversalMergeRequest]) {
-        try? modelContext.transaction {
-            // Get array of ids of current of type
-            let existing = mergeRequests.filter({ $0.type == type }).map({ $0.requestID })
-            // Get arary of new of current of type
-            let updated = requests.map { $0.requestID }
-            // Compute difference
-            let difference = existing.difference(from: updated)
-            print("difference: \(difference) \(existing) \(updated)")
-            // Delete existing
-            for pullRequest in account.requests {
-                if difference.contains(pullRequest.requestID) {
-                    print("removing \(pullRequest.requestID)")
-                    modelContext.delete(pullRequest)
-                }
+        //        try? modelContext.transaction {
+        // Get array of ids of current of type
+        let existing = mergeRequests.filter({ $0.type == type }).map({ $0.requestID })
+        // Get arary of new of current of type
+        let updated = requests.map { $0.requestID }
+        // Compute difference
+        let difference = existing.difference(from: updated)
+        // Delete existing
+        for pullRequest in account.requests {
+            if difference.contains(pullRequest.requestID) {
+                print("removing \(pullRequest.requestID)")
+                modelContext.delete(pullRequest)
+                try? modelContext.save()
             }
-            // Insert updated
-            for request in requests {
+        }
+
+        for request in requests {
+            // update values
+            if let existingMR = mergeRequests.first(where: { request.requestID == $0.requestID }) {
+                existingMR.mergeRequest = request.mergeRequest
+                existingMR.pullRequest = request.pullRequest
+            } else {
+                // if not insert
                 modelContext.insert(request)
             }
-            // Persist operation
-            try? modelContext.save()
         }
     }
 
