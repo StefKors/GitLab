@@ -21,7 +21,10 @@ struct UserInterface: View {
     @Environment(\.modelContext) private var modelContext
 
     @Query private var accounts: [Account]
-    @Query private var repos: [LaunchpadRepo]
+    @Query(
+        sort: \LaunchpadRepo.createdAt,
+        order: .reverse
+    ) private var repos: [LaunchpadRepo]
     @Query(
         sort: \UniversalMergeRequest.createdAt,
         order: .reverse
@@ -189,7 +192,6 @@ struct UserInterface: View {
     }
 
     private func removeAndInsertUniversal(_ type: QueryType, account: Account, requests: [UniversalMergeRequest]) {
-        //        try? modelContext.transaction {
         // Get array of ids of current of type
         let existing = mergeRequests.filter({ $0.type == type }).map({ $0.requestID })
         // Get arary of new of current of type
@@ -214,9 +216,48 @@ struct UserInterface: View {
                 // if not insert
                 modelContext.insert(request)
             }
+
+            // If no matching launchpad repo, insert a new one
+            let launchPadItem = repos.first { repo in
+                repo.url == request.repoUrl
+            }
+
+            if let launchPadItem {
+                if launchPadItem.hasUpdatedSinceLaunch == false {
+                    if let name = request.repoName {
+                        launchPadItem.name = name
+                    }
+                    if let owner = request.repoOwner {
+                        launchPadItem.group = owner
+                    }
+                    if  let url = request.repoUrl {
+                        launchPadItem.url = url
+                    }
+                    if let imageURL = request.repoImage {
+                        launchPadItem.imageURL = imageURL
+                    }
+                    launchPadItem.provider = request.provider
+                    launchPadItem.hasUpdatedSinceLaunch = true
+                }
+            } else if let name = request.repoName,
+                      let owner = request.repoOwner,
+                      let url = request.repoUrl {
+
+                let repo = LaunchpadRepo(
+                    id: request.repoId ?? UUID().uuidString,
+                    name: name,
+                    imageURL: request.repoImage,
+                    group: owner,
+                    url: url,
+                    provider: request.provider
+                )
+
+                modelContext.insert(repo)
+            }
         }
     }
 
+    // TDOO: fix this mess with split gitlab (below) and github (above) logic
     @MainActor
     private func fetchRepos() async {
         for account in accounts {
@@ -236,7 +277,39 @@ struct UserInterface: View {
 
                 if let results {
                     for result in results {
-                        modelContext.insert(result)
+                        if let url = result.webURL {
+                            // If no matching launchpad repo, insert a new one
+                            let launchPadItem = repos.first { repo in
+                                repo.url == url
+                            }
+
+                            if let launchPadItem {
+                                if launchPadItem.hasUpdatedSinceLaunch == false {
+                                    if let name = result.name {
+                                        launchPadItem.name = name
+                                    }
+                                    if let owner = result.group?.fullName ?? result.namespace?.fullName {
+                                        launchPadItem.group = owner
+                                    }
+                                    launchPadItem.url = url
+                                    if let image = await NetworkManagerGitLab.shared.getProjectImage(with: account, result) {
+                                        launchPadItem.image = image
+                                    }
+                                    launchPadItem.provider = account.provider
+                                    launchPadItem.hasUpdatedSinceLaunch = true
+                                }
+                            } else {
+                                let repo = LaunchpadRepo(
+                                    id: result.id,
+                                    name: result.name ?? "",
+                                    image: await NetworkManagerGitLab.shared.getProjectImage(with: account, result),
+                                    group: result.group?.fullName ?? result.namespace?.fullName ?? "",
+                                    url: url,
+                                    hasUpdatedSinceLaunch: true
+                                )
+                                modelContext.insert(repo)
+                            }
+                        }
                     }
                     try? modelContext.save()
                 }

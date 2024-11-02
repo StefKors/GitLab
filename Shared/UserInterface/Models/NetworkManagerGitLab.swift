@@ -169,7 +169,7 @@ extension NetworkManagerGitLab {
 }
 
 extension NetworkManagerGitLab {
-    func fetchProjects(with account: Account, ids: [Int]) async throws -> [LaunchpadRepo]? {
+    func fetchProjects(with account: Account, ids: [Int]) async throws -> [GitLab.TargetProject]? {
         let projectIds: String = ids.map { id in
             return "\"gid://gitlab/Project/\(id)\""
         }.joined(separator: ", ")
@@ -185,19 +185,19 @@ extension NetworkManagerGitLab {
 
         let fullProject: GitLab.TargetProjectsQuery = try await client.send(req).value
 
-        let projects = fullProject.data?.projects?.edges?.compactMap({ edge in
+        return fullProject.data?.projects?.edges?.compactMap({ edge in
             return edge.node
         })
 
-        guard let projects else { return nil }
-
-        var launchpadRepos: [LaunchpadRepo] = []
-        for project in projects {
-            if let result = await addLaunchpadProject(with: account, project) {
-                launchpadRepos.append(result)
-            }
-        }
-
-        return launchpadRepos
+//        guard let projects else { return nil }
+//
+//        var launchpadRepos: [LaunchpadRepo] = []
+//        for project in projects {
+//            if let result = await addLaunchpadProject(with: account, project) {
+//                launchpadRepos.append(result)
+//            }
+//        }
+//
+//        return launchpadRepos
     }
 }

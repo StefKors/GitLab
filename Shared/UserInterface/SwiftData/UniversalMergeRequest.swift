@@ -77,6 +77,47 @@ import SwiftData
         }
     }
 
+    var repoUrl: URL? {
+        switch provider {
+        case .GitHub:
+            if let url = pullRequest?.repository?.url {
+                return URL(string: url)
+            } else {
+                return nil
+            }
+        case .GitLab: return mergeRequest?.targetProject?.webURL
+        }
+    }
+
+    var repoName: String? {
+        switch provider {
+        case .GitHub: return pullRequest?.repository?.name
+        case .GitLab: return mergeRequest?.targetProject?.name
+        }
+    }
+
+    var repoOwner: String? {
+        switch provider {
+        case .GitHub: return pullRequest?.repository?.owner?.login
+        case .GitLab: return mergeRequest?.targetProject?.group?.name
+        }
+    }
+
+    var repoImage: URL? {
+        switch provider {
+        case .GitHub: return pullRequest?.repository?.owner?.avatarUrl
+        case .GitLab: return mergeRequest?.targetProject?.avatarUrl
+        }
+    }
+
+    var repoId: String? {
+        switch provider {
+        case .GitHub: return pullRequest?.repository?.owner?.id
+        case .GitLab: return mergeRequest?.targetProject?.id
+        }
+    }
+
+
     var number: String? {
         switch provider {
         case .GitHub: return pullRequest?.number?.description

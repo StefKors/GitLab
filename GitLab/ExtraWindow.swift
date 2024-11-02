@@ -14,7 +14,7 @@ struct ExtraWindow: View {
     @StateObject private var networkState = NetworkState()
     @Query(sort: \UniversalMergeRequest.createdAt, order: .reverse) private var mergeRequests: [UniversalMergeRequest]
     @Query private var accounts: [Account]
-    @Query private var repos: [LaunchpadRepo]
+    @Query(sort: \LaunchpadRepo.createdAt, order: .reverse) private var repos: [LaunchpadRepo]
 
     @State private var selectedView: QueryType = .authoredMergeRequests
 

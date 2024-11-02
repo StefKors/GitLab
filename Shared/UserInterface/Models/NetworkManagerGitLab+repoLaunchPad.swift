@@ -26,7 +26,7 @@ extension NetworkManagerGitLab {
         return repo
     }
 
-    fileprivate func getProjectImage(with account: Account, _ project: GitLab.TargetProject) async -> Data? {
+    func getProjectImage(with account: Account, _ project: GitLab.TargetProject) async -> Data? {
         let id = project.id.components(separatedBy: "/").last ?? ""
         let branch = project.repository?.rootRef ?? "main"
 

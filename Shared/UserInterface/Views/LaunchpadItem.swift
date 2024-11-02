@@ -6,20 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct LaunchpadItem: View {
     var repo: LaunchpadRepo
 
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.modelContext) private var modelContext
 
     @State private var isHovering = false
 
     var body: some View {
-//        Button {
-//            // TODO:
-//            print("todo: set filter")
-//        } label: {
             HStack {
                 LaunchpadImage(repo: repo)
 
@@ -38,7 +36,13 @@ struct LaunchpadItem: View {
                 }
                 .buttonStyle(.menubar)
             }
-//        }.buttonStyle(.shaded)
+            .contextMenu {
+                Button("Delete Repo Shortcut", systemImage: "delete.left", role: .destructive) {
+                    withAnimation(.smooth) {
+                        modelContext.delete(repo)
+                    }
+                }
+            }
     }
 }
 
