@@ -19,7 +19,7 @@ enum GitProvider: String, Codable, CaseIterable {
     var instance: String
     var provider: GitProvider
 
-    @Relationship(inverse: \UniversalMergeRequest.account)
+    @Relationship(deleteRule: .cascade, inverse: \UniversalMergeRequest.account)
     var requests: [UniversalMergeRequest] = []
 
 //    @Relationship(deleteRule: .cascade, inverse: \MergeRequest.account)

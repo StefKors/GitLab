@@ -8,15 +8,14 @@
 import SwiftUI
 import SwiftData
 
-@Model class UniversalMergeRequest {
-    #Unique<UniversalMergeRequest>([\.id])
+@Model class UniversalMergeRequest: Equatable {
+    #Unique<UniversalMergeRequest>([\.id, \.requestID])
     #Index<UniversalMergeRequest>([\.id])
 
-    var id: String
+    @Attribute(.unique) var id: String
     var requestID: String
 
     var createdAt: Date
-    var updatedAt: Date
     var provider: GitProvider
     var mergeRequest: GitLab.MergeRequest?
     var pullRequest: GitHub.PullRequestsNode?
@@ -31,7 +30,6 @@ import SwiftData
         self.provider = provider
         self.type = type
         self.createdAt = Date.from(request.createdAt) ?? Date.now
-        self.updatedAt = Date.from(request.updatedAt) ?? Date.now
     }
 
     init(request: GitHub.PullRequestsNode, account: Account, provider: GitProvider, type: QueryType) {
@@ -42,13 +40,21 @@ import SwiftData
         self.provider = provider
         self.type = type
         self.createdAt = request.createdAt ?? Date.now
-        self.updatedAt = request.updatedAt ?? Date.now
     }
 
     var title: String? {
         switch provider {
         case .GitHub: return pullRequest?.title
         case .GitLab: return mergeRequest?.title?.removeDraft
+        }
+    }
+
+    var updatedAt: Date {
+        switch provider {
+        case .GitLab:
+            Date.from(mergeRequest?.updatedAt) ?? Date.now
+        case .GitHub:
+            pullRequest?.updatedAt ?? Date.now
         }
     }
 

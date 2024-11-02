@@ -10,7 +10,7 @@ import SwiftData
 
 class GitHub {
     // MARK: - GitHubQuery
-    struct Query: Codable, Equatable {
+    struct Query: Codable, Equatable, Sendable, Hashable {
         let data: DataClass
 
         var authoredMergeRequests: [GitHub.PullRequestsNode] {
@@ -25,17 +25,17 @@ class GitHub {
     }
 
     // MARK: - DataClass
-    struct DataClass: Codable, Equatable {
+    struct DataClass: Codable, Equatable, Sendable, Hashable {
         let viewer: Viewer?
     }
 
     // MARK: - Viewer
-    struct Viewer: Codable, Equatable {
+    struct Viewer: Codable, Equatable, Sendable, Hashable {
         let pullRequests: PullRequests?
     }
 
     // MARK: - PullRequestsNode
-    struct PullRequestsNode: Codable, Equatable, Identifiable {
+    struct PullRequestsNode: Codable, Equatable, Identifiable, Hashable {
         let id: String
         let title: String?
         let url: String?
@@ -82,7 +82,7 @@ class GitHub {
         )
     }
 
-    enum PullRequestState: String, Codable, Equatable {
+    enum PullRequestState: String, Codable, Equatable, Sendable {
         /// A pull request that has been closed without being merged.
         case closed = "CLOSED"
         /// A pull request that has been closed by being merged.
@@ -92,23 +92,23 @@ class GitHub {
     }
 
     // MARK: - PullRequests
-    struct PullRequests: Codable, Equatable {
+    struct PullRequests: Codable, Equatable, Sendable, Hashable {
         let nodes: [PullRequestsNode]?
     }
 
     // MARK: - Labels
-    struct Labels: Codable, Equatable {
+    struct Labels: Codable, Equatable, Sendable, Hashable {
         let nodes: [LabelsNode]?
     }
 
     // MARK: - LabelsNode
-    struct LabelsNode: Codable, Equatable {
+    struct LabelsNode: Codable, Equatable, Sendable, Hashable {
         let id, name, color: String?
         let isDefault: Bool?
     }
 
     // MARK: - Repository
-    struct Repository: Codable, Equatable {
+    struct Repository: Codable, Equatable, Sendable, Hashable {
         let name, id: String?
         let isLocked: Bool?
         let isArchived: Bool?
@@ -126,41 +126,41 @@ class GitHub {
     }
 
 //    // MARK: - Comments
-//    struct Comments: Codable, Equatable {
+//    struct Comments: Codable, Equatable, Sendable, Hashable {
 //        let nodes: [CommentsNode]?
 //    }
 //
 //    // MARK: - CommentsNode
-//    struct CommentsNode: Codable, Equatable {
+//    struct CommentsNode: Codable, Equatable, Sendable, Hashable {
 //        let id: String?
 //        let author: Owner?
 //        let bodyText: String?
 //    }
 
     // MARK: - Owner
-    struct Owner: Codable, Equatable {
+    struct Owner: Codable, Equatable, Sendable, Hashable {
         let login: String?
 
         static let previewBeam = Owner(login: "beamLegacy")
     }
 
 //    // MARK: - Commits
-//    struct Commits: Codable, Equatable {
+//    struct Commits: Codable, Equatable, Sendable, Hashable {
 //        let nodes: [CommitsNode]?
 //    }
 //
 //    // MARK: - CommitsNode
-//    struct CommitsNode: Codable, Equatable {
+//    struct CommitsNode: Codable, Equatable, Sendable, Hashable {
 //        let commit: Commit?
 //    }
 //
 //    // MARK: - Commit
-//    struct Commit: Codable, Equatable {
+//    struct Commit: Codable, Equatable, Sendable, Hashable {
 //        let statusCheckRollup: StatusCheckRollup?
 //    }
 
     // MARK: - StatusCheckRollup
-    struct StatusCheckRollup: Codable, Equatable {
+    struct StatusCheckRollup: Codable, Equatable, Sendable, Hashable {
         let state: StatusCheckState?
         let contexts: Contexts?
 
@@ -180,12 +180,12 @@ class GitHub {
     }
 
     // MARK: - Contexts
-    struct Contexts: Codable, Equatable {
+    struct Contexts: Codable, Equatable, Sendable, Hashable {
         let nodes: [ContextsNode]?
     }
 
     // MARK: - ContextsNode (Like jobs in GitLab)
-    struct ContextsNode: Codable, Equatable, Hashable {
+    struct ContextsNode: Codable, Equatable, Hashable, Sendable {
         let id: String
         let name: String?
         let status: CheckStatusState?
@@ -274,7 +274,7 @@ class GitHub {
     }
 
     // MARK: - CheckSuite
-    struct CheckSuite: Codable, Equatable, Hashable {
+    struct CheckSuite: Codable, Equatable, Hashable, Sendable {
         let workflowRun: WorkflowRun?
 
         enum CodingKeys: String, CodingKey {
@@ -286,7 +286,7 @@ class GitHub {
     }
 
     // MARK: - WorkflowRun
-    struct WorkflowRun: Codable, Equatable, Hashable {
+    struct WorkflowRun: Codable, Equatable, Hashable, Sendable {
         let workflow: Workflow?
 
         enum CodingKeys: String, CodingKey {
@@ -295,7 +295,7 @@ class GitHub {
     }
 
     // MARK: - Workflow
-    struct Workflow: Codable, Equatable, Hashable {
+    struct Workflow: Codable, Equatable, Hashable, Sendable {
         let id: String?
         let name: String?
 
@@ -307,7 +307,7 @@ class GitHub {
 
     // MARK: - Steps
     /// Not used At the moment
-    struct Steps: Codable, Equatable, Hashable {
+    struct Steps: Codable, Equatable, Hashable, Sendable {
         let nodes: [StepsNode]?
 
 //        steps: Steps(nodes: [.previewCheckout, .previewSetup])
@@ -318,7 +318,7 @@ class GitHub {
     }
 
     // MARK: - StepsNode
-    struct StepsNode: Codable, Equatable, Hashable {
+    struct StepsNode: Codable, Equatable, Hashable, Sendable {
         let externalID, name: String?
         let number, secondsToCompletion: Int?
         let status: CheckStatusState?
@@ -396,7 +396,7 @@ class GitHub {
         )
     }
 
-    enum StatusCheckState: String, Codable, Equatable {
+    enum StatusCheckState: String, Codable, Equatable, Sendable {
         /// Status is expected.
         case expected = "EXPECTED"
         /// Status is errored.
@@ -409,7 +409,7 @@ class GitHub {
         case success = "SUCCESS"
     }
 
-    enum CheckStatusState: String, Codable, Equatable {
+    enum CheckStatusState: String, Codable, Equatable, Sendable {
         /// The check suite or run has been requested.
         case requested = "REQUESTED"
         /// The check suite or run has been queued.
@@ -424,7 +424,7 @@ class GitHub {
         case pending = "PENDING"
     }
 
-    enum MergeStateStatus: String, Codable, Equatable {
+    enum MergeStateStatus: String, Codable, Equatable, Sendable {
         /// The merge commit cannot be cleanly created.
         case dirty = "DIRTY"
         /// The state cannot currently be determined.
@@ -441,7 +441,7 @@ class GitHub {
         case clean = "CLEAN"
     }
 
-    enum CheckConclusionState: String, Codable, Equatable {
+    enum CheckConclusionState: String, Codable, Equatable, Sendable {
         /// The check suite or run requires action.
         case actionRequired = "ACTION_REQUIRED"
         /// The check suite or run has timed out.
@@ -463,22 +463,22 @@ class GitHub {
     }
 
     // MARK: - Reactions
-    struct Reactions: Codable, Equatable {
+    struct Reactions: Codable, Equatable, Sendable, Hashable {
         let nodes: [ReactionsNode]?
     }
 
     // MARK: - ReactionsNode
-    struct ReactionsNode: Codable, Equatable {
+    struct ReactionsNode: Codable, Equatable, Sendable, Hashable {
         let id: String?
         let user: Author?
     }
 
     // MARK: - Reviews
-    struct Reviews: Codable, Equatable {
+    struct Reviews: Codable, Equatable, Sendable, Hashable {
         let nodes: [ReviewsNode]?
     }
 
-    enum ReviewDecision: String, Codable, Equatable {
+    enum ReviewDecision: String, Codable, Equatable, Sendable {
         // The pull request has received an approving review.
         case approved = "APPROVED"
         // A review is required before the pull request can be merged.
@@ -488,13 +488,13 @@ class GitHub {
     }
 
     // MARK: - ReviewsNode
-    struct ReviewsNode: Codable, Equatable {
+    struct ReviewsNode: Codable, Equatable, Sendable, Hashable {
         let id: String?
         let state: ReviewState?
         let author: Author?
     }
 
-    enum ReviewState: String, Codable, Equatable {
+    enum ReviewState: String, Codable, Equatable, Sendable {
         /// A review that has not yet been submitted.
         case pending = "PENDING"
         /// An informational review.
@@ -508,7 +508,7 @@ class GitHub {
     }
 
     // MARK: - Author
-    struct Author: Codable, Equatable {
+    struct Author: Codable, Equatable, Sendable, Hashable {
         let avatarURL: String?
         let name: String?
         let login: String?

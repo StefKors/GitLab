@@ -13,11 +13,22 @@ struct UserAvatarView: View {
 
     @Environment(\.isInWidget) private var isInWidget
 
+    private var url: URL? {
+        if let picture = author.picture,
+            picture.host() == nil,
+           let instance = account?.instance,
+            let fullURL = URL(string: instance + picture.absoluteString) {
+            return fullURL
+        }
+
+        return author.picture
+    }
+
     var body: some View {
         VStack {
             // TODO: ios support
             // TODO: cache data fetch response
-            if isInWidget, let avatarUrl = author.picture, let data = try? Data(contentsOf: avatarUrl), let image = PlatformImage(data: data) {
+            if isInWidget, let avatarUrl = url, let data = try? Data(contentsOf: avatarUrl), let image = PlatformImage(data: data) {
 #if os(iOS)
                 Image(uiImage: image)
                     .resizable()
@@ -27,7 +38,7 @@ struct UserAvatarView: View {
 #endif
             } else
             // Previously we used account.instace to create the base url
-            if let avatarUrl = author.picture {
+            if let avatarUrl = url {
                 AsyncImage(url: avatarUrl) { image in
                     image
                         .resizable()
