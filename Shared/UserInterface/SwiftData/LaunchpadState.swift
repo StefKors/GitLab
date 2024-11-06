@@ -86,4 +86,22 @@ import SwiftData
         url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
         hasUpdatedSinceLaunch: false
     )
+
+    static let preview2 = LaunchpadRepo(
+        id: "uuid-1",
+        name: "SwiftUI Launchpad",
+        image: nil,
+        group: "StefKors",
+        url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
+        hasUpdatedSinceLaunch: false
+    )
+
+    static let preview3 = LaunchpadRepo(
+        id: "uuid-2",
+        name: "React",
+        image: nil,
+        group: "StefKors",
+        url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
+        hasUpdatedSinceLaunch: false
+    )
 }
