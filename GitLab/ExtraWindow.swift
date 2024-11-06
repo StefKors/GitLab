@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import BackgroundFetcher
+import OSLog
 
 struct ExtraWindow: View {
     @Environment(\.openURL) private var openURL
@@ -25,6 +27,19 @@ struct ExtraWindow: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.appearsActive) private var appearsActive
     @State private var hasLoaded: Bool = false
+
+    let log = Logger(subsystem: "ExtraWindow", category: "ExtraBG")
+
+
+//    let backgroundUpdateTimer: NSBackgroundActivityScheduler = {
+//        let scheduler: NSBackgroundActivityScheduler = .init(identifier: "com.stefkors.GitLab.backgroundAutoUpdate")
+//        scheduler.repeats = true
+//        scheduler.interval = 3
+//        scheduler.tolerance = 0
+//        scheduler.qualityOfService = .userInteractive
+//
+//        return scheduler
+//    }()
 
     var body: some View {
         VStack {
@@ -62,5 +77,51 @@ struct ExtraWindow: View {
                 .pickerStyle(.segmented)
             }
         }
+//        .onAppear {
+//            callXPC()
+
+
+
+//            if let session = try? XPCSession(xpcService: serviceName) {
+//                let request = CalculationRequest(firstNumber: 23, secondNumber: 19)
+//                try? session.send(request)
+//            }
+//        }
+//        .onAppear {
+//            log.warning("Jenga 1 start backgroundUpdateTimer")
+//            // Start the background update scheduler when the app starts
+//            backgroundUpdateTimer.schedule
+//            { (completion: NSBackgroundActivityScheduler.CompletionHandler) in
+//                log.warning("Jenga 5 (background task success)")
+//                completion(NSBackgroundActivityScheduler.Result.finished)
+//
+//            }
+//        }
     }
+
+//    @MainActor
+//    func callXPC() {
+//        let serviceName = "com.stefkors.BackgroundFetcher"
+//        let connection = NSXPCConnection(serviceName: serviceName)
+//        connection.remoteObjectInterface = NSXPCInterface(with: BackgroundFetcherProtocol.self)
+//        connection.resume()
+//
+//        let service = connection.remoteObjectProxyWithErrorHandler { error in
+//            print("Received error:", error)
+//        } as? BackgroundFetcherProtocol
+//
+//        log.warning("Jenga before calc 32")
+//
+//        service?.performCalculation(firstNumber: 12, secondNumber: 20)
+//    }
+}
+
+// A codable type that contains two numbers to add together.
+struct CalculationRequest: Codable {
+    let firstNumber: Int
+    let secondNumber: Int
+}
+
+struct CalcuationResponse: Codable {
+    let result: Int
 }

@@ -33,7 +33,7 @@ struct UserInterface: View {
     @State private var selectedView: QueryType = .authoredMergeRequests
 
     @State private var timelineDate: Date = .now
-    private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+//    private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
@@ -82,23 +82,23 @@ struct UserInterface: View {
                 networkState.record = false
             }
         }
-        .task(id: "once") {
-            Task {
-                await fetchReviewRequestedMRs()
-                await fetchAuthoredMRs()
-                await fetchRepos()
-                await branchPushes()
-            }
-        }
-        .onReceive(timer) { _ in
-            timelineDate = .now
-            Task {
-                await fetchReviewRequestedMRs()
-                await fetchAuthoredMRs()
-                await fetchRepos()
-                await branchPushes()
-            }
-        }
+//        .task(id: "once") {
+//            Task {
+//                await fetchReviewRequestedMRs()
+//                await fetchAuthoredMRs()
+//                await fetchRepos()
+//                await branchPushes()
+//            }
+//        }
+//        .onReceive(timer) { _ in
+//            timelineDate = .now
+//            Task {
+//                await fetchReviewRequestedMRs()
+//                await fetchAuthoredMRs()
+//                await fetchRepos()
+//                await branchPushes()
+//            }
+//        }
     }
 
     /// TODO: Cleanup and move both into the same function

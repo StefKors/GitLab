@@ -52,6 +52,9 @@ struct MainContentView: View {
             LastUpdateMessageView()
         }
         .frame(maxHeight: .infinity, alignment: .top)
+        .onChange(of: repos) { oldValue, newValue in
+            print("updated repos \(repos.count.description)")
+        }
     }
 }
 

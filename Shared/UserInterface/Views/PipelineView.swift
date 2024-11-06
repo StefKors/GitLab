@@ -37,7 +37,6 @@ struct PipelineView: View {
                 HStack(spacing: 0) {
                     GitLabCIJobsView(stage: stage, instance: instance)
                         .id(stage.id)
-                    // Create a staggered effect by masking children to appear correctly
                         .mask {
                             Circle()
                                 .subtracting(
