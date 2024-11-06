@@ -10,12 +10,6 @@ import OSLog
 
 class ServiceDelegate: NSObject, NSXPCListenerDelegate {
 
-//    var timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {
-//        (_) in
-//        let log2 = Logger()
-//        log2.warning("Jenga 5 (simple timer service delegate)")
-//    }
-
     /// This method is where the NSXPCListener configures, accepts, and resumes a new incoming NSXPCConnection.
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
         
@@ -30,19 +24,11 @@ class ServiceDelegate: NSObject, NSXPCListenerDelegate {
         // Resuming the connection allows the system to deliver more incoming messages.
         newConnection.resume()
 
-//        timer.fire()
-
         // Returning true from this method tells the system that you have accepted this connection. If you want to reject the connection for some reason, call invalidate() on the connection and return false.
         return true
     }
 }
 
-//var timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {
-//    (_) in
-//    let log2 = Logger()
-//    log2.warning("Jenga 5 (simple timer from main xpc)")
-//}
-//timer.fire()
 // Create the delegate for the service.
 let delegate = ServiceDelegate()
 

@@ -44,7 +44,6 @@ class NetworkManagerGitHub {
     // https://api.github.com/graphql
     func fetchAuthoredPullRequests(with account: Account) async throws -> [GitHub.PullRequestsNode]? {
         let client = APIClient(baseURL: URL(string: account.instance))
-        print("doing request to \(account.instance) with token: \(account.token)")
         let response: GitHub.Query = try await client.send(authoredMergeRequestsReq(with: account)).value
         let result = response.authoredMergeRequests
         print("recieved \(result.count) pull requests")

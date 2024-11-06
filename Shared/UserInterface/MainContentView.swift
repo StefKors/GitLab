@@ -48,7 +48,7 @@ struct MainContentView: View {
                 .scrollBounceBehavior(.basedOnSize)
             }
 
-            Spacer()
+//            Spacer()
             LastUpdateMessageView()
         }
         .frame(maxHeight: .infinity, alignment: .top)
@@ -65,5 +65,4 @@ struct MainContentView: View {
         accounts: [.preview],
         selectedView: .constant(.authoredMergeRequests)
     )
-    .environmentObject(NoticeState())
 }

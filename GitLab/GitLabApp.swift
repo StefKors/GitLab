@@ -25,39 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var service: BackgroundFetcherProtocol? = nil
     var connection: NSXPCConnection? = nil
-    // works here
-//    var timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {
-//        (_) in
-//        let log2 = Logger()
-//        log2.warning("Jenga 2 (simple timer)")
-//    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification)  {
-        print("hi from app delegate")
-        print("hi 1")
-//        timer.fire()
-//        activity.repeats = true
-//        activity.interval = 10 // seconds
-////        activity.tolerance = 0
-////        activity.qualityOfService = .userInitiated
-//        print("hi 2")
-//        log.warning("Jenga 4")
-////        activity.invalidate()
-//        activity.schedule { completion in
-//            // perform activity
-//            if self.activity.shouldDefer {
-//                self.log.warning("Jenga 5 (defered)")
-//                return completion(.deferred)
-//            } else {
-//                print("hi 3 from background activity")
-//                self.log.warning("Jenga 5 (success)")
-//                return completion(.finished)
-//            }
-//        }
-
-//        activity.invalidate()
-
-
         let serviceName = "com.stefkors.BackgroundFetcher"
         connection = NSXPCConnection(serviceName: serviceName)
         connection?.remoteObjectInterface = NSXPCInterface(with: BackgroundFetcherProtocol.self)
@@ -67,13 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             print("Received error:", error)
         } as? BackgroundFetcherProtocol
 
-        callXPC()
-    }
-
-    func callXPC() {
-
-
-        service?.performCalculation(firstNumber: 122, secondNumber: 20)
+        service?.startFetching()
     }
 }
 
@@ -81,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 struct GitLabApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
-    private var sharedModelContainer: ModelContainer = .shared
+//    private var sharedModelContainer: ModelContainer = .shared
 
     @State private var receivedURL: URL?
     @State var searchText: String = ""
@@ -95,21 +58,20 @@ struct GitLabApp: App {
     var body: some Scene {
         // TODO: close after opening link from widget
         Window("GitLab", id: "GitLab-Window") {
-            ExtraWindow()
-                .modelContainer(sharedModelContainer)
+            Text("hi")
+//            ExtraWindow()
+//                .modelContainer(sharedModelContainer)
                 .navigationTitle("GitLab")
                 .presentedWindowBackgroundStyle(.translucent)
         }
         .windowToolbarStyle(.unified(showsTitle: true))
         .windowResizability(.contentMinSize)
         .windowIdealSize(.fitToContent)
-        .backgroundTask(.urlSession("com.stefkors.GitLab.updatecheck2")) { value in
-            log.warning("Jenga 5 (success)")
-        }
 
         MenuBarExtra(content: {
-            MainGitLabView()
-                .modelContainer(sharedModelContainer)
+//            Text("menu")
+            UserInterface()
+                .modelContainer(.shared)
                 .frame(width: 600)
                 .onOpenURL { url in
                     openURL(url)
@@ -124,9 +86,9 @@ struct GitLabApp: App {
         .menuBarExtraStyle(.window)
         .windowResizability(.contentSize)
 
-        Settings {
-            SettingsView()
-                .modelContainer(sharedModelContainer)
-        }
+//        Settings {
+//            SettingsView()
+//                .modelContainer(sharedModelContainer)
+//        }
     }
 }
