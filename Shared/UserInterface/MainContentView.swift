@@ -17,15 +17,15 @@ struct MainContentView: View {
     @Binding var selectedView: QueryType
 
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
+        VStack(alignment: .center, spacing: 0) {
             LaunchpadView(repos: repos)
-                .padding(.horizontal, 6)
+                .padding(6)
 
             Divider()
 
             // Disabled in favor for real notifications?
             NoticeListView()
-                .padding(.horizontal, 6)
+                .padding(6)
 
             if accounts.isEmpty {
                 BaseTextView(message: "Setup your accounts in the settings")
@@ -39,16 +39,13 @@ struct MainContentView: View {
                         accounts: accounts,
                         selectedView: selectedView
                     )
-                    Spacer()
                 }
-//                .contentTransition(.interpolate)
                 .animation(.snappy(duration: 0.3), value: selectedView)
-                .padding(.horizontal, 6)
+                .padding(6)
                 .useScrollView(when: withScrollView)
                 .scrollBounceBehavior(.basedOnSize)
             }
 
-            Spacer()
             LastUpdateMessageView()
         }
         .frame(maxHeight: .infinity, alignment: .top)

@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A03BF222CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
-		8A03BF232CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
-		8A03BF242CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
-		8A03BF252CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
 		8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
 		8A0F41652CB5CCA1006BD170 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
 		8A111F1B2CC1118A00DEB0DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
@@ -525,7 +521,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8A03BF212CD6D29100ACE1EC /* IfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfView.swift; sourceTree = "<group>"; };
 		8A07E5672890492C0042EACB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A111F1A2CC1118900DEB0DD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8A111F1F2CC1161500DEB0DD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -946,7 +941,6 @@
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8A03BF212CD6D29100ACE1EC /* IfView.swift */,
 				8A33E9452CD3D4D100F2C148 /* OptionalType.swift */,
 				8A7C0AF22CD3650000E479CA /* Date.swift */,
 				8A7C0AE82CD363B700E479CA /* Collection.swift */,
@@ -1440,7 +1434,6 @@
 			files = (
 				8A31CB442866334100C94AC1 /* Preview Assets.xcassets in Resources */,
 				8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */,
-				8A03BF252CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8A31CB412866334100C94AC1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1463,7 +1456,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A03BF242CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1472,7 +1464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A03BF222CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8A858F142CD4F25E0024795D /* .swiftlint.yml in Resources */,
 				8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */,
 				8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */,
@@ -1498,7 +1489,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A03BF232CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8AE8A6F12B989E9B002B3C9E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
