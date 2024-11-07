@@ -7,9 +7,9 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
-struct NoticeMessage: Codable, Equatable, Hashable, Identifiable {
-    var id: UUID
+@Model class NoticeMessage {
     var label: String
     var statusCode: Int?
     var webLink: URL?
@@ -19,7 +19,6 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable {
     var createdAt: Date
 
     init(
-        id: UUID = UUID(),
         label: String,
         statusCode: Int? = nil,
         webLink: URL? = nil,
@@ -28,7 +27,6 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable {
         branchRef: String? = nil,
         createdAt: Date = .now
     ) {
-        self.id = id
         self.label = label
         self.statusCode = statusCode
         self.webLink = webLink
@@ -51,7 +49,7 @@ struct NoticeMessage: Codable, Equatable, Hashable, Identifiable {
         }
     }
 
-    mutating func dismiss() {
+    func dismiss() {
         dismissed = true
     }
 }

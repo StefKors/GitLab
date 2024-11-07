@@ -1,6 +1,15 @@
 import Foundation
 import SwiftData
 
+@propertyWrapper
+struct Preview<Value> {
+#if DEBUG
+    let wrappedValue: Value
+#else
+    // omitted in build
+#endif
+}
+
 class GitLab {
     // MARK: - GitLabQuery
     struct GitLabQuery: Codable, Equatable, Hashable {
@@ -539,6 +548,7 @@ class GitLab {
         let label: String?
         let group: String?
         let tooltip: String?
+        @available(iOS 17, *)
         let icon: String?
 
         init(id: String?, detailsPath: String?, text: String?, label: String?, group: String?, tooltip: String?, icon: String?) {

@@ -1,6 +1,6 @@
 //
 //  RepoLaunchpadState.swift
-//  
+//
 //
 //  Created by Stef Kors on 16/09/2022.
 //
@@ -54,11 +54,11 @@ import SwiftData
         self.image = try container.decodeIfPresent(Data.self, forKey: LaunchpadRepo.CodingKeys.image)
         self.imageURL = try container.decodeIfPresent(URL.self, forKey: LaunchpadRepo.CodingKeys.imageURL)
         self.group = try container.decode(String.self, forKey: LaunchpadRepo.CodingKeys.group)
-//        if let url = try container.decodeURLWithEncodingIfPresent(forKey: LaunchpadRepo.CodingKeys.url) {
-//            self.url = url
-//        } else {
-//            self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
-//        }
+        //        if let url = try container.decodeURLWithEncodingIfPresent(forKey: LaunchpadRepo.CodingKeys.url) {
+        //            self.url = url
+        //        } else {
+        //            self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
+        //        }
         self.url = try container.decode(URL.self, forKey: LaunchpadRepo.CodingKeys.url)
         self.createdAt = try container.decode(Date.self, forKey: LaunchpadRepo.CodingKeys.createdAt)
         self.provider = try container.decodeIfPresent(GitProvider.self, forKey: LaunchpadRepo.CodingKeys.provider)
@@ -82,6 +82,24 @@ import SwiftData
         id: "uuid",
         name: "GitLab",
         image: .previewRepoImage,
+        group: "StefKors",
+        url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
+        hasUpdatedSinceLaunch: false
+    )
+
+    static let preview2 = LaunchpadRepo(
+        id: "uuid-1",
+        name: "SwiftUI Launchpad",
+        image: nil,
+        group: "StefKors",
+        url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
+        hasUpdatedSinceLaunch: false
+    )
+
+    static let preview3 = LaunchpadRepo(
+        id: "uuid-2",
+        name: "React",
+        image: nil,
         group: "StefKors",
         url: URL(string: "https://gitlab.com/stefkors/swiftui-launchpad")!,
         hasUpdatedSinceLaunch: false

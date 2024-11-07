@@ -48,10 +48,13 @@ struct MainContentView: View {
                 .scrollBounceBehavior(.basedOnSize)
             }
 
-            Spacer()
+//            Spacer()
             LastUpdateMessageView()
         }
         .frame(maxHeight: .infinity, alignment: .top)
+        .onChange(of: repos) { oldValue, newValue in
+            print("updated repos \(repos.count.description)")
+        }
     }
 }
 
@@ -62,5 +65,4 @@ struct MainContentView: View {
         accounts: [.preview],
         selectedView: .constant(.authoredMergeRequests)
     )
-    .environmentObject(NoticeState())
 }

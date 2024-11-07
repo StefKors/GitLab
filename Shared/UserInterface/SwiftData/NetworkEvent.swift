@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import SwiftData
+import Get
 
+@Model
 class NetworkEvent: Identifiable, Equatable {
     static func == (lhs: NetworkEvent, rhs: NetworkEvent) -> Bool {
         lhs.identifier == rhs.identifier &&
@@ -15,11 +18,11 @@ class NetworkEvent: Identifiable, Equatable {
         lhs.response == rhs.response
     }
 
-    let info: NetworkInfo
+    var info: NetworkInfo
     var status: Int?
     var response: String?
-    let timestamp: Date = .now
-    let identifier: UUID = UUID()
+    var timestamp: Date = Date.now
+    var identifier: UUID = UUID()
     var id: String {
         "\(identifier)-\(status?.description ?? "nil")-\(timestamp)"
     }
@@ -30,3 +33,24 @@ class NetworkEvent: Identifiable, Equatable {
         self.response = response
     }
 }
+
+
+@Model class NetworkInfo {
+    var label: String
+    var account: Account
+
+    private var storedMethod: String
+    var method: HTTPMethod {
+        HTTPMethod(rawValue: storedMethod)
+    }
+
+    var timestamp: Date = Date.now
+    var id: UUID = UUID()
+
+    init(label: String, account: Account, method: HTTPMethod) {
+        self.label = label
+        self.account = account
+        self.storedMethod = method.rawValue
+    }
+}
+

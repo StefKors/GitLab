@@ -10,7 +10,7 @@ import SwiftData
 
 extension ModelContainer {
     static var previews: ModelContainer = {
-        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self])
+        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self, NetworkEvent.self])
         let modelConfiguration = ModelConfiguration("MergeRequests", schema: schema, isStoredInMemoryOnly: false)
 
         do {
@@ -21,7 +21,7 @@ extension ModelContainer {
     }()
 
     static var shared: ModelContainer = {
-        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self])
+        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self, NetworkEvent.self])
         let modelConfiguration = ModelConfiguration("MergeRequests", schema: schema, isStoredInMemoryOnly: false)
 
         do {

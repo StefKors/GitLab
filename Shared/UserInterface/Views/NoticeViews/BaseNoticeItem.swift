@@ -6,17 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BaseNoticeItem: View {
-    @EnvironmentObject private var noticeState: NoticeState
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.openURL) private var openURL
     @State private var isHovering: Bool = false
 
     var notice: NoticeMessage
-
-    init(notice: NoticeMessage) {
-        self.notice = notice
-    }
 
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
@@ -51,7 +48,7 @@ struct BaseNoticeItem: View {
                                     openURL(url)
                                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                                         withAnimation(.interpolatingSpring(stiffness: 500, damping: 15)) {
-                                            noticeState.dismissNotice(id: notice.id)
+                                            modelContext.delete(notice)
                                         }
                                     }
                                 }, label: {
@@ -68,7 +65,7 @@ struct BaseNoticeItem: View {
                                 isHovering = hoverState
                             }
                             .onTapGesture {
-                                noticeState.dismissNotice(id: notice.id)
+                                modelContext.delete(notice)
                             }
                     }
                     .animation(.spring(), value: isHovering)
@@ -122,7 +119,7 @@ struct NoticeTypeBackground: ViewModifier {
 }
 
 struct BaseNoticeItem_Previews: PreviewProvider {
-    static let noticeState = NoticeState()
+
     static var previews: some View {
         VStack(spacing: 25) {
             BaseNoticeItem(notice: .previewInformationNotice)
@@ -159,7 +156,6 @@ struct BaseNoticeItem_Previews: PreviewProvider {
         }
         .padding()
         .frame(height: 400)
-        // .environmentObject(self.networkManager)
-        .environmentObject(self.noticeState)
+        .modelContainer(.previews)
     }
 }

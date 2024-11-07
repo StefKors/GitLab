@@ -3,14 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A03BF222CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
-		8A03BF232CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
-		8A03BF242CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
-		8A03BF252CD6D29100ACE1EC /* IfView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 8A03BF212CD6D29100ACE1EC /* IfView.swift */; };
 		8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D192A55817400819B80 /* CIJobsNotificationView.swift */; };
 		8A0F41652CB5CCA1006BD170 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC4B4122865C1480054C601 /* WidgetKit.framework */; };
 		8A111F1B2CC1118A00DEB0DD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
@@ -49,22 +45,11 @@
 		8A111F452CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
 		8A111F462CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
 		8A111F472CC1384E00DEB0DD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */; };
-		8A111F492CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
-		8A111F4A2CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
-		8A111F4B2CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
-		8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F482CC1386600DEB0DD /* NetworkState.swift */; };
 		8A111F4E2CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
 		8A111F4F2CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
 		8A111F502CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
 		8A111F512CC1387F00DEB0DD /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
-		8A111F532CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
-		8A111F542CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
-		8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
-		8A111F562CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
 		8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A13B85D2A66A3E30090A6D9 /* Credits.rtf */; };
-		8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
-		8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
-		8A2E61872A9766A6001B6EAE /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
 		8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */; };
 		8A31CB412866334100C94AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB402866334100C94AC1 /* Assets.xcassets */; };
 		8A31CB442866334100C94AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB432866334100C94AC1 /* Preview Assets.xcassets */; };
@@ -80,6 +65,38 @@
 		8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A36AEFB2868D2650008B949 /* UserNotificationsUI.framework */; };
 		8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A36AF162869B4110008B949 /* MainInterface.storyboard */; };
 		8A36AF1D2869B4110008B949 /* NotificationContent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8A36AF102869B4110008B949 /* NotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A4533C82CD7C64A0011D5B5 /* BackgroundFetcher.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 8A4533BC2CD7C64A0011D5B5 /* BackgroundFetcher.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8A4534382CD7E9D40011D5B5 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */; };
+		8A4534392CD7E9E40011D5B5 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFDAA972A84FB26001937AC /* Account.swift */; };
+		8A45343A2CD7E9FA0011D5B5 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
+		8A45343B2CD7EA0A0011D5B5 /* UniversalMergeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */; };
+		8A45343C2CD7EA170011D5B5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1A2CC1118900DEB0DD /* Data.swift */; };
+		8A45343D2CD7EA210011D5B5 /* StructsGitLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE72A55817400819B80 /* StructsGitLab.swift */; };
+		8A45343E2CD7EA280011D5B5 /* StructsGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AD92CD29D1F00E479CA /* StructsGitHub.swift */; };
+		8A45343F2CD7EA3C0011D5B5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AF22CD3650000E479CA /* Date.swift */; };
+		8A4534402CD7EA960011D5B5 /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */; };
+		8A4534412CD7EA960011D5B5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F1F2CC1161500DEB0DD /* String.swift */; };
+		8A4534422CD7EA960011D5B5 /* OptionalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A33E9452CD3D4D100F2C148 /* OptionalType.swift */; };
+		8A4534432CD7EA960011D5B5 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
+		8A4534442CD7EA960011D5B5 /* Array+Difference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */; };
+		8A4534452CD7EA960011D5B5 /* DateCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */; };
+		8A4534462CD7EA960011D5B5 /* IfViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2743B2CC67A530059244E /* IfViewModifier.swift */; };
+		8A4534472CD7EA960011D5B5 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AE82CD363B700E479CA /* Collection.swift */; };
+		8A4534482CD7EB0B0011D5B5 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
+		8A4534492CD7EB0B0011D5B5 /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
+		8A45344A2CD7EB0B0011D5B5 /* gitlabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */; };
+		8A45344B2CD7EB0B0011D5B5 /* NetworkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */; };
+		8A45344D2CD7EB0B0011D5B5 /* NetworkManagerGitLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE62A55817400819B80 /* NetworkManagerGitLab.swift */; };
+		8A45344E2CD7EB0B0011D5B5 /* NetworkManagerGitLab+repoLaunchPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE02A55817400819B80 /* NetworkManagerGitLab+repoLaunchPad.swift */; };
+		8A45344F2CD7EB0B0011D5B5 /* NetworkManagerGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */; };
+		8A4534502CD7EB0B0011D5B5 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
+		8A4534522CD7EB0B0011D5B5 /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
+		8A4534532CD7EB0B0011D5B5 /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
+		8A4534552CD7EB0B0011D5B5 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE52A55817400819B80 /* NotificationManager.swift */; };
+		8A4534562CD7EB0B0011D5B5 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */; };
+		8A4534572CD7EB0B0011D5B5 /* PipelineStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A858F212CD527B10024795D /* PipelineStatus.swift */; };
+		8A4534592CD7EB190011D5B5 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8A4534582CD7EB190011D5B5 /* Get */; };
+		8A45345B2CD7EB1D0011D5B5 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 8A45345A2CD7EB1D0011D5B5 /* OrderedCollections */; };
 		8A55E3C82CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */; };
 		8A55E3C92CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */; };
 		8A55E3CA2CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */; };
@@ -100,7 +117,6 @@
 		8A7935CF2A5583E400F8FB6C /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CEF2A55817400819B80 /* NetworkReachability.swift */; };
 		8A7935D02A5583E400F8FB6C /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
 		8A7935D12A5583E400F8FB6C /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
-		8A7935D22A5583E400F8FB6C /* NoticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF32A55817400819B80 /* NoticeState.swift */; };
 		8A7935D32A5583E400F8FB6C /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF52A55817400819B80 /* CISkippedIcon.swift */; };
 		8A7935D42A5583E400F8FB6C /* CIManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF62A55817400819B80 /* CIManualIcon.swift */; };
 		8A7935D52A5583E400F8FB6C /* CICanceledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF72A55817400819B80 /* CICanceledIcon.swift */; };
@@ -283,7 +299,6 @@
 		8AE8A6FC2B989EFA002B3C9E /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
 		8AE8A6FD2B989EFA002B3C9E /* ApprovedReviewIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CFA2A55817400819B80 /* ApprovedReviewIcon.swift */; };
 		8AE8A6FE2B989EFA002B3C9E /* CIStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D162A55817400819B80 /* CIStatusView.swift */; };
-		8AE8A6FF2B989EFA002B3C9E /* MainGitLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */; };
 		8AE8A7002B989EFA002B3C9E /* LaunchPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1B2A55817400819B80 /* LaunchPadView.swift */; };
 		8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0C2092A5D3D720096772B /* AccessToken.swift */; };
 		8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */; };
@@ -294,7 +309,6 @@
 		8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1F2A55817400819B80 /* MenuBarButtonStyle.swift */; };
 		8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF52A55817400819B80 /* CISkippedIcon.swift */; };
 		8AE8A70A2B989EFA002B3C9E /* gitlabISO8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */; };
-		8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF32A55817400819B80 /* NoticeState.swift */; };
 		8AE8A70D2B989EFA002B3C9E /* CachedAsyncImage+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */; };
 		8AE8A70E2B989EFA002B3C9E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CE52A55817400819B80 /* NotificationManager.swift */; };
 		8AE8A70F2B989EFA002B3C9E /* CICanceledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF72A55817400819B80 /* CICanceledIcon.swift */; };
@@ -361,8 +375,6 @@
 		8AF80D522A55817400819B80 /* NoticeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF12A55817400819B80 /* NoticeMessage.swift */; };
 		8AF80D542A55817400819B80 /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
 		8AF80D552A55817400819B80 /* NoticeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF22A55817400819B80 /* NoticeType.swift */; };
-		8AF80D572A55817400819B80 /* NoticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF32A55817400819B80 /* NoticeState.swift */; };
-		8AF80D582A55817400819B80 /* NoticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF32A55817400819B80 /* NoticeState.swift */; };
 		8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF52A55817400819B80 /* CISkippedIcon.swift */; };
 		8AF80D5B2A55817400819B80 /* CISkippedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF52A55817400819B80 /* CISkippedIcon.swift */; };
 		8AF80D5D2A55817400819B80 /* CIManualIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80CF62A55817400819B80 /* CIManualIcon.swift */; };
@@ -486,6 +498,13 @@
 			remoteGlobalIDString = 8A36AF0F2869B4110008B949;
 			remoteInfo = NotificationContent;
 		};
+		8A4533C62CD7C64A0011D5B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A5FC0EE26EFD08E004136AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A4533BB2CD7C64A0011D5B5;
+			remoteInfo = BackgroundFetcher;
+		};
 		8A5FC10C26EFD08F004136AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8A5FC0EE26EFD08E004136AB /* Project object */;
@@ -510,6 +529,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8A4533C92CD7C64A0011D5B5 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				8A4533C82CD7C64A0011D5B5 /* BackgroundFetcher.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AC4B4262865C14A0054C601 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -525,7 +555,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8A03BF212CD6D29100ACE1EC /* IfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfView.swift; sourceTree = "<group>"; };
 		8A07E5672890492C0042EACB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A111F1A2CC1118900DEB0DD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8A111F1F2CC1161500DEB0DD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -536,11 +565,8 @@
 		8A111F392CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLineMergeRequestSubRowView.swift; sourceTree = "<group>"; };
 		8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
 		8A111F432CC1384E00DEB0DD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
-		8A111F482CC1386600DEB0DD /* NetworkState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEvent.swift; sourceTree = "<group>"; };
-		8A111F522CC1388900DEB0DD /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
 		8A13B85D2A66A3E30090A6D9 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGitLabView.swift; sourceTree = "<group>"; };
 		8A2F5B8A2A54C5BD00C0B52F /* Small Icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon16.png"; sourceTree = "<group>"; };
 		8A2F5B8B2A54C5BD00C0B52F /* Large Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Large Icon1024.png"; sourceTree = "<group>"; };
 		8A2F5B8C2A54C5BD00C0B52F /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -581,6 +607,7 @@
 		8A36AF172869B4110008B949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		8A36AF192869B4110008B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContent.entitlements; sourceTree = "<group>"; };
+		8A4533BC2CD7C64A0011D5B5 /* BackgroundFetcher.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = BackgroundFetcher.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchpadState.swift; sourceTree = "<group>"; };
 		8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merge Requests for GitLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* GitLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabApp.swift; sourceTree = "<group>"; };
@@ -657,7 +684,6 @@
 		8AF80CEF2A55817400819B80 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		8AF80CF12A55817400819B80 /* NoticeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeMessage.swift; sourceTree = "<group>"; };
 		8AF80CF22A55817400819B80 /* NoticeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeType.swift; sourceTree = "<group>"; };
-		8AF80CF32A55817400819B80 /* NoticeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeState.swift; sourceTree = "<group>"; };
 		8AF80CF52A55817400819B80 /* CISkippedIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CISkippedIcon.swift; sourceTree = "<group>"; };
 		8AF80CF62A55817400819B80 /* CIManualIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIManualIcon.swift; sourceTree = "<group>"; };
 		8AF80CF72A55817400819B80 /* CICanceledIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CICanceledIcon.swift; sourceTree = "<group>"; };
@@ -705,6 +731,27 @@
 		8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsInWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8A4533CC2CD7C64A0011D5B5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8A4533BB2CD7C64A0011D5B5 /* BackgroundFetcher */;
+		};
+		8A4533CF2CD7C9270011D5B5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BackgroundFetcherProtocol.swift,
+			);
+			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8A4533BD2CD7C64A0011D5B5 /* BackgroundFetcher */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (8A4533CF2CD7C9270011D5B5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 8A4533CC2CD7C64A0011D5B5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BackgroundFetcher; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		8A31CB372866334000C94AC1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -739,6 +786,15 @@
 				8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */,
 				8A36AF112869B4110008B949 /* UserNotifications.framework in Frameworks */,
 				8A7935FB2A5583F700F8FB6C /* Get in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A4533B92CD7C64A0011D5B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A45345B2CD7EB1D0011D5B5 /* OrderedCollections in Frameworks */,
+				8A4534592CD7EB190011D5B5 /* Get in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +932,7 @@
 				8AF80BE92A5580E700819B80 /* Shared */,
 				8A07E5672890492C0042EACB /* README.md */,
 				8AE8A6EB2B989E9A002B3C9E /* DesktopWidgetTool */,
+				8A4533BD2CD7C64A0011D5B5 /* BackgroundFetcher */,
 				8AC4B4112865C1480054C601 /* Frameworks */,
 				8A5FC0F826EFD08E004136AB /* GitLab */,
 				8A31CB3B2866334000C94AC1 /* GitLab iOS */,
@@ -900,6 +957,7 @@
 				8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */,
 				8A36AF102869B4110008B949 /* NotificationContent.appex */,
 				8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */,
+				8A4533BC2CD7C64A0011D5B5 /* BackgroundFetcher.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -946,7 +1004,6 @@
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8A03BF212CD6D29100ACE1EC /* IfView.swift */,
 				8A33E9452CD3D4D100F2C148 /* OptionalType.swift */,
 				8A7C0AF22CD3650000E479CA /* Date.swift */,
 				8A7C0AE82CD363B700E479CA /* Collection.swift */,
@@ -1040,7 +1097,6 @@
 				8AF80CF42A55817400819B80 /* Icons */,
 				8AF80D062A55817400819B80 /* UserInterface.swift */,
 				8AE274272CC3DD060059244E /* MainContentView.swift */,
-				8A2E61842A9766A6001B6EAE /* MainGitLabView.swift */,
 				8AF80D072A55817400819B80 /* Views */,
 			);
 			path = UserInterface;
@@ -1052,14 +1108,10 @@
 				8AC0C2092A5D3D720096772B /* AccessToken.swift */,
 				8AF80CE92A55817400819B80 /* CachedAsyncImage+ImageCache.swift */,
 				8AF80CE82A55817400819B80 /* gitlabISO8601DateFormatter.swift */,
-				8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */,
-				8A111F522CC1388900DEB0DD /* NetworkInfo.swift */,
 				8AF80CE62A55817400819B80 /* NetworkManagerGitLab.swift */,
 				8AF80CE02A55817400819B80 /* NetworkManagerGitLab+repoLaunchPad.swift */,
 				8A7C0AD42CD292A700E479CA /* NetworkManagerGitHub.swift */,
 				8AF80CEF2A55817400819B80 /* NetworkReachability.swift */,
-				8A111F482CC1386600DEB0DD /* NetworkState.swift */,
-				8AF80CF02A55817400819B80 /* NoticeState */,
 				8AF80CE52A55817400819B80 /* NotificationManager.swift */,
 				8A111F3E2CC12C5F00DEB0DD /* QueryType.swift */,
 				8AF80CE72A55817400819B80 /* StructsGitLab.swift */,
@@ -1067,16 +1119,6 @@
 				8A7C0AD92CD29D1F00E479CA /* StructsGitHub.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8AF80CF02A55817400819B80 /* NoticeState */ = {
-			isa = PBXGroup;
-			children = (
-				8AF80CF12A55817400819B80 /* NoticeMessage.swift */,
-				8AF80CF22A55817400819B80 /* NoticeType.swift */,
-				8AF80CF32A55817400819B80 /* NoticeState.swift */,
-			);
-			path = NoticeState;
 			sourceTree = "<group>";
 		};
 		8AF80CF42A55817400819B80 /* Icons */ = {
@@ -1182,9 +1224,12 @@
 		8AFDAA962A84FAED001937AC /* SwiftData */ = {
 			isa = PBXGroup;
 			children = (
+				8AF80CF12A55817400819B80 /* NoticeMessage.swift */,
+				8AF80CF22A55817400819B80 /* NoticeType.swift */,
 				8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */,
 				8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */,
 				8AFDAA972A84FB26001937AC /* Account.swift */,
+				8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -1280,6 +1325,30 @@
 			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		8A4533BB2CD7C64A0011D5B5 /* BackgroundFetcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A4533CD2CD7C64A0011D5B5 /* Build configuration list for PBXNativeTarget "BackgroundFetcher" */;
+			buildPhases = (
+				8A4533B82CD7C64A0011D5B5 /* Sources */,
+				8A4533B92CD7C64A0011D5B5 /* Frameworks */,
+				8A4533BA2CD7C64A0011D5B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8A4533BD2CD7C64A0011D5B5 /* BackgroundFetcher */,
+			);
+			name = BackgroundFetcher;
+			packageProductDependencies = (
+				8A4534582CD7EB190011D5B5 /* Get */,
+				8A45345A2CD7EB1D0011D5B5 /* OrderedCollections */,
+			);
+			productName = BackgroundFetcher;
+			productReference = 8A4533BC2CD7C64A0011D5B5 /* BackgroundFetcher.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 		8A5FC0F526EFD08E004136AB /* GitLab */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A5FC11F26EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLab" */;
@@ -1288,12 +1357,14 @@
 				8A5FC0F326EFD08E004136AB /* Frameworks */,
 				8A5FC0F426EFD08E004136AB /* Resources */,
 				8AC4B4262865C14A0054C601 /* Embed Foundation Extensions */,
+				8A4533C92CD7C64A0011D5B5 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
 				8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */,
+				8A4533C72CD7C64A0011D5B5 /* PBXTargetDependency */,
 			);
 			name = GitLab;
 			packageProductDependencies = (
@@ -1370,7 +1441,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					8A31CB392866334000C94AC1 = {
@@ -1386,6 +1457,9 @@
 					};
 					8A36AF0F2869B4110008B949 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					8A4533BB2CD7C64A0011D5B5 = {
+						CreatedOnToolsVersion = 16.0;
 					};
 					8A5FC0F526EFD08E004136AB = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -1429,6 +1503,7 @@
 				8A31CB522866334100C94AC1 /* GitLab iOSUITests */,
 				8A36AF0F2869B4110008B949 /* NotificationContent */,
 				8AE8A6E72B989E9A002B3C9E /* DesktopWidgetToolExtension */,
+				8A4533BB2CD7C64A0011D5B5 /* BackgroundFetcher */,
 			);
 		};
 /* End PBXProject section */
@@ -1440,7 +1515,6 @@
 			files = (
 				8A31CB442866334100C94AC1 /* Preview Assets.xcassets in Resources */,
 				8AD294BF298AA72C006F1932 /* Settings.bundle in Resources */,
-				8A03BF252CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8A31CB412866334100C94AC1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1463,8 +1537,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A03BF242CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8A36AF182869B4110008B949 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A4533BA2CD7C64A0011D5B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,7 +1552,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A03BF222CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8A858F142CD4F25E0024795D /* .swiftlint.yml in Resources */,
 				8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */,
 				8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */,
@@ -1498,7 +1577,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A03BF232CD6D29100ACE1EC /* IfView.swift in Resources */,
 				8AE8A6F12B989E9B002B3C9E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1566,11 +1644,9 @@
 				8AF80DC72A55817400819B80 /* GitLabCIJobsView.swift in Sources */,
 				8AE2743D2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8A858F242CD527B10024795D /* PipelineStatus.swift in Sources */,
-				8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A111F2A2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8A111F212CC1161500DEB0DD /* String.swift in Sources */,
 				8AF80D4F2A55817400819B80 /* NetworkReachability.swift in Sources */,
-				8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8A858F1E2CD522630024795D /* GitHubCIJobsView.swift in Sources */,
 				8A7C0ADB2CD29D2500E479CA /* StructsGitHub.swift in Sources */,
 				8AF80D732A55817400819B80 /* DiscussionCountIcon.swift in Sources */,
@@ -1596,7 +1672,6 @@
 				8ACBFD392CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
 				8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80D672A55817400819B80 /* CIPreparingIcon.swift in Sources */,
-				8AF80D582A55817400819B80 /* NoticeState.swift in Sources */,
 				8AF80D762A55817400819B80 /* CIScheduledIcon.swift in Sources */,
 				8A9D87902BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8A111F3D2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
@@ -1604,7 +1679,6 @@
 				8AF80D8E2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D6D2A55817400819B80 /* CISuccessIcon.swift in Sources */,
 				8AF80D642A55817400819B80 /* CIFailedIcon.swift in Sources */,
-				8A111F492CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8AE274262CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8A7C0AEE2CD364B900E479CA /* GitHubAccountView.swift in Sources */,
 				8AFDAAC62A850793001937AC /* AccountRow.swift in Sources */,
@@ -1646,7 +1720,6 @@
 				8A7935C82A5583E400F8FB6C /* gitlabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8ABBD2082B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
-				8A111F562CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8A7C0ADD2CD29D2500E479CA /* StructsGitHub.swift in Sources */,
 				8A7C0AEF2CD364B900E479CA /* GitHubAccountView.swift in Sources */,
 				8A7935C92A5583E400F8FB6C /* CachedAsyncImage+ImageCache.swift in Sources */,
@@ -1655,7 +1728,6 @@
 				8A7935CF2A5583E400F8FB6C /* NetworkReachability.swift in Sources */,
 				8A7935D02A5583E400F8FB6C /* NoticeMessage.swift in Sources */,
 				8A7935D12A5583E400F8FB6C /* NoticeType.swift in Sources */,
-				8A7935D22A5583E400F8FB6C /* NoticeState.swift in Sources */,
 				8AC7B4B72CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8A7935D32A5583E400F8FB6C /* CISkippedIcon.swift in Sources */,
 				8ACBFD3A2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
@@ -1692,7 +1764,6 @@
 				8A55E3C92CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */,
 				8A7935E02A5583E400F8FB6C /* CICreatedIcon.swift in Sources */,
 				8A7935E12A5583E400F8FB6C /* NeedsReviewIcon.swift in Sources */,
-				8A2E61872A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A7935E22A5583E400F8FB6C /* MergeTrainIcon.swift in Sources */,
 				8A7935E32A5583E400F8FB6C /* CIProgressIcon.swift in Sources */,
 				8A7C0AE52CD2AFAC00E479CA /* NetworkInspector.swift in Sources */,
@@ -1726,7 +1797,6 @@
 				8A7935F62A5583E400F8FB6C /* GitLabCIJobsView.swift in Sources */,
 				8A7935F72A5583E400F8FB6C /* MergeRequestRowView.swift in Sources */,
 				8A7C0AD72CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
-				8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */,
 				8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */,
 				8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */,
@@ -1737,6 +1807,42 @@
 				8A7C0AF52CD3650000E479CA /* Date.swift in Sources */,
 				8A7935C02A55837500F8FB6C /* StructsGitLab.swift in Sources */,
 				8A7935BE2A55830F00F8FB6C /* NotificationViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A4533B82CD7C64A0011D5B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A4534482CD7EB0B0011D5B5 /* AccessToken.swift in Sources */,
+				8A4534492CD7EB0B0011D5B5 /* CachedAsyncImage+ImageCache.swift in Sources */,
+				8A45344A2CD7EB0B0011D5B5 /* gitlabISO8601DateFormatter.swift in Sources */,
+				8A45344B2CD7EB0B0011D5B5 /* NetworkEvent.swift in Sources */,
+				8A45344D2CD7EB0B0011D5B5 /* NetworkManagerGitLab.swift in Sources */,
+				8A45344E2CD7EB0B0011D5B5 /* NetworkManagerGitLab+repoLaunchPad.swift in Sources */,
+				8A45344F2CD7EB0B0011D5B5 /* NetworkManagerGitHub.swift in Sources */,
+				8A4534502CD7EB0B0011D5B5 /* NetworkReachability.swift in Sources */,
+				8A4534522CD7EB0B0011D5B5 /* NoticeMessage.swift in Sources */,
+				8A4534532CD7EB0B0011D5B5 /* NoticeType.swift in Sources */,
+				8A4534552CD7EB0B0011D5B5 /* NotificationManager.swift in Sources */,
+				8A4534562CD7EB0B0011D5B5 /* QueryType.swift in Sources */,
+				8A4534572CD7EB0B0011D5B5 /* PipelineStatus.swift in Sources */,
+				8A45343B2CD7EA0A0011D5B5 /* UniversalMergeRequest.swift in Sources */,
+				8A4534392CD7E9E40011D5B5 /* Account.swift in Sources */,
+				8A45343A2CD7E9FA0011D5B5 /* ModelContainer.swift in Sources */,
+				8A4534382CD7E9D40011D5B5 /* LaunchpadState.swift in Sources */,
+				8A4534402CD7EA960011D5B5 /* KeyedDecodingContainer.swift in Sources */,
+				8A4534412CD7EA960011D5B5 /* String.swift in Sources */,
+				8A4534422CD7EA960011D5B5 /* OptionalType.swift in Sources */,
+				8A4534432CD7EA960011D5B5 /* URL.swift in Sources */,
+				8A4534442CD7EA960011D5B5 /* Array+Difference.swift in Sources */,
+				8A4534452CD7EA960011D5B5 /* DateCompare.swift in Sources */,
+				8A4534462CD7EA960011D5B5 /* IfViewModifier.swift in Sources */,
+				8A4534472CD7EA960011D5B5 /* Collection.swift in Sources */,
+				8A45343D2CD7EA210011D5B5 /* StructsGitLab.swift in Sources */,
+				8A45343F2CD7EA3C0011D5B5 /* Date.swift in Sources */,
+				8A45343C2CD7EA170011D5B5 /* Data.swift in Sources */,
+				8A45343E2CD7EA280011D5B5 /* StructsGitHub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1763,7 +1869,6 @@
 				8AF80D9F2A55817400819B80 /* BaseNoticeItem.swift in Sources */,
 				8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */,
-				8A111F542CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8AF80DB72A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
 				8AE2741F2CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */,
@@ -1804,10 +1909,8 @@
 				8A7C0AD62CD292B300E479CA /* NetworkManagerGitHub.swift in Sources */,
 				8A0CDABB2A55932E0056B63F /* CIJobsNotificationView.swift in Sources */,
 				8AF80D602A55817400819B80 /* CICanceledIcon.swift in Sources */,
-				8A2E61852A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8AF80D632A55817400819B80 /* CIFailedIcon.swift in Sources */,
 				8A55E3C82CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */,
-				8AF80D572A55817400819B80 /* NoticeState.swift in Sources */,
 				8A9D878A2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8AE274252CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8AF80DC32A55817400819B80 /* WebLink.swift in Sources */,
@@ -1838,7 +1941,6 @@
 				8AF80D542A55817400819B80 /* NoticeType.swift in Sources */,
 				8AE2743E2CC67A530059244E /* IfViewModifier.swift in Sources */,
 				8AFDAAC92A85112E001937AC /* GitProviderView.swift in Sources */,
-				8A111F4A2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8A7C0AFE2CD3657100E479CA /* UniversalMergeRequest.swift in Sources */,
 				8AF80D7E2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
 				8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */,
@@ -1876,7 +1978,6 @@
 				8AE8A6FD2B989EFA002B3C9E /* ApprovedReviewIcon.swift in Sources */,
 				8AE8A6FE2B989EFA002B3C9E /* CIStatusView.swift in Sources */,
 				8A111F3C2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
-				8AE8A6FF2B989EFA002B3C9E /* MainGitLabView.swift in Sources */,
 				8AE8A7002B989EFA002B3C9E /* LaunchPadView.swift in Sources */,
 				8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */,
 				8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */,
@@ -1893,12 +1994,10 @@
 				8AE8A7082B989EFA002B3C9E /* MenuBarButtonStyle.swift in Sources */,
 				8AE8A7092B989EFA002B3C9E /* CISkippedIcon.swift in Sources */,
 				8AE8A70A2B989EFA002B3C9E /* gitlabISO8601DateFormatter.swift in Sources */,
-				8AE8A70B2B989EFA002B3C9E /* NoticeState.swift in Sources */,
 				8A111F472CC1384E00DEB0DD /* NetworkStateView.swift in Sources */,
 				8AE274202CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8A9D878D2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8ACBFD3B2CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
-				8A111F532CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8A33E9462CD3D4D100F2C148 /* OptionalType.swift in Sources */,
 				8AE8A70D2B989EFA002B3C9E /* CachedAsyncImage+ImageCache.swift in Sources */,
 				8AFAE1952BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
@@ -1960,7 +2059,6 @@
 				8AE274242CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8AB969112BDBC0EB0078E5CD /* MediumMergeRequestWidgetInterface.swift in Sources */,
 				8AE8A7322B989EFA002B3C9E /* NeedsReviewIcon.swift in Sources */,
-				8A111F4B2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8AB969262BDBC2C00078E5CD /* MediumLaunchPadWidgetView.swift in Sources */,
 				8AE8A7332B989EFA002B3C9E /* NoticeListView.swift in Sources */,
 				8A111F222CC1161500DEB0DD /* String.swift in Sources */,
@@ -2003,6 +2101,11 @@
 			isa = PBXTargetDependency;
 			target = 8A36AF0F2869B4110008B949 /* NotificationContent */;
 			targetProxy = 8A36AF1B2869B4110008B949 /* PBXContainerItemProxy */;
+		};
+		8A4533C72CD7C64A0011D5B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A4533BB2CD7C64A0011D5B5 /* BackgroundFetcher */;
+			targetProxy = 8A4533C62CD7C64A0011D5B5 /* PBXContainerItemProxy */;
 		};
 		8A5FC10D26EFD08F004136AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2258,6 +2361,61 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab.NotificationContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8A4533CA2CD7C64A0011D5B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = BackgroundFetcher/BackgroundFetcher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BackgroundFetcher/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BackgroundFetcher;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.BackgroundFetcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8A4533CB2CD7C64A0011D5B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = BackgroundFetcher/BackgroundFetcher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BackgroundFetcher/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BackgroundFetcher;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.BackgroundFetcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2667,6 +2825,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8A4533CD2CD7C64A0011D5B5 /* Build configuration list for PBXNativeTarget "BackgroundFetcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A4533CA2CD7C64A0011D5B5 /* Debug */,
+				8A4533CB2CD7C64A0011D5B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "GitLab" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2742,6 +2909,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A4534582CD7EB190011D5B5 /* Get */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;
+			productName = Get;
+		};
+		8A45345A2CD7EB1D0011D5B5 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
 		8A7935FA2A5583F700F8FB6C /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */;

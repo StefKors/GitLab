@@ -7,11 +7,10 @@
 
 import SwiftUI
 import SwiftData
+import BackgroundFetcher
 
 struct ExtraWindow: View {
     @Environment(\.openURL) private var openURL
-    @StateObject private var noticeState = NoticeState()
-    @StateObject private var networkState = NetworkState()
     @Query(sort: \UniversalMergeRequest.createdAt, order: .reverse) private var mergeRequests: [UniversalMergeRequest]
     @Query private var accounts: [Account]
     @Query(sort: \LaunchpadRepo.createdAt, order: .reverse) private var repos: [LaunchpadRepo]
@@ -46,8 +45,6 @@ struct ExtraWindow: View {
                     hasLoaded = true
                 }
         })
-        .environmentObject(self.noticeState)
-        .environmentObject(self.networkState)
         .onOpenURL { url in
             openURL(url)
         }
@@ -63,4 +60,14 @@ struct ExtraWindow: View {
             }
         }
     }
+}
+
+// A codable type that contains two numbers to add together.
+struct CalculationRequest: Codable {
+    let firstNumber: Int
+    let secondNumber: Int
+}
+
+struct CalcuationResponse: Codable {
+    let result: Int
 }

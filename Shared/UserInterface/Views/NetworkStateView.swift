@@ -6,18 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NetworkStateView: View {
-    @EnvironmentObject private var networkState: NetworkState
+    @State private var sortOrder = [
+        KeyPathComparator(\NetworkEvent.timestamp,order: .reverse)
+    ]
 
-    @State private var sortOrder = [KeyPathComparator(\NetworkEvent.timestamp,
-                                                       order: .reverse)]
-
-    //    @SceneStorage("NetworkEventTableConfig")
-    //    @State private var columnCustomization: TableColumnCustomization<NetworkEvent>
-
-    //    var tableData: [NetworkEvent] { networkState.events.sorted(using: sortOrder) }
-
+    @Query private var eventsData: [NetworkEvent]
     @State private var events: [NetworkEvent] = []
 
     @State private var selectedEvents = Set<NetworkEvent.ID>()
@@ -27,7 +23,7 @@ struct NetworkStateView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "circle.fill")
-                        .foregroundStyle(networkState.record ? .red : .secondary)
+                        .foregroundStyle(.red)
                     Text("Network Events")
                         .font(.headline)
                 }
@@ -70,8 +66,8 @@ struct NetworkStateView: View {
                     }
                 }
             }
-            .onChange(of: networkState.events) { _, newEvents in
-                events = newEvents.sorted(using: sortOrder)
+            .onChange(of: eventsData) { _, newEvents in
+                events = eventsData.sorted(using: sortOrder)
             }
             .onChange(of: sortOrder) { _, sortOrder in
                 events.sort(using: sortOrder)
