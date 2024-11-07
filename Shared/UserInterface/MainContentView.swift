@@ -48,7 +48,7 @@ struct MainContentView: View {
                 .scrollBounceBehavior(.basedOnSize)
             }
 
-            Spacer()
+//            Spacer()
             LastUpdateMessageView()
         }
         .frame(maxHeight: .infinity, alignment: .top)
