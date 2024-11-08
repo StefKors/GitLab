@@ -9,23 +9,42 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
-    // Persistance objects
-    private enum Tabs: Hashable {
+
+    private enum Tabs: String, Hashable, CaseIterable {
+        case general
         case account
     }
 
-    init() { }
+
+    @State private var selectedTab: Tabs = .general
 
     var body: some View {
-        TabView {
-            AccountSettingsView()
-                .tabItem {
-                    Image(systemName: "person.badge.shield.checkmark.fill")
-                    Text("Account")
+        HStack(alignment: .top, spacing: 0) {
+            List(Tabs.allCases, id: \.rawValue, selection: $selectedTab) { tab in
+                switch tab {
+                case .general: Label(tab.rawValue.capitalized, systemImage: "gear").tag(tab)
+                case .account: Label(tab.rawValue.capitalized, systemImage: "person.2.fill").tag(tab)
                 }
-                .tag(Tabs.account)
+            }
+            .scrollContentBackground(.hidden)
+            .listStyle(.sidebar)
+            .frame(width: 180)
+            .padding(.top, 20)
+
+            Divider()
+
+            ZStack {
+                switch selectedTab {
+                case .general: GeneralSettingsView()
+                case .account: AccountSettingsView()
+                }
+            }
+            //            .ignoresSafeArea()
+            .navigationTitle(selectedTab.rawValue.capitalized)
         }
-        .frame(idealWidth: 600, idealHeight: 500)
-        .navigationTitle("Settings")
     }
+}
+
+#Preview {
+    SettingsView()
 }

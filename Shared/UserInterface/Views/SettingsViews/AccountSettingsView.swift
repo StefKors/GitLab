@@ -24,86 +24,101 @@ struct AlertDetails: Identifiable {
     @State private var showCreateSheet: Bool = false
     let alertTitle: String = "Confirm deletion"
      var body: some View {
-        Form {
-            Section("Tokens") {
-                if accounts.isEmpty {
-                    AccountListEmptyView()
-                } else {
-                    List {
-                        ForEach(accounts) { account in
-                            HStack {
-                                GitProviderView(provider: account.provider)
-                                    .frame(width: 25, height: 25, alignment: .center)
-                                AccountRow(account: account)
-                                Spacer()
+         VStack(alignment: .leading, spacing: 0) {
+             SettingsTitleView(label: "Account", systemImage: "person.2.fill", fill: .blue.darker(by: 15))
+                 .padding()
+             //                .padding(.horizontal)
+                 .padding(.leading, 4)
 
-                                Button(role: .destructive) {
-                                    showAlert(for: account)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                .labelStyle(.iconOnly)
-                                .buttonStyle(.borderless)
-                                .tint(.red)
-                            }
-                        }
-                        .onDelete(perform: deleteItems)
-                    }
-                }
-                HStack {
-                    Button("Add Account", action: { showCreateSheet.toggle() })
-                        .buttonStyle(.borderedProminent)
-                }
-            }
-            .sheet(isPresented: $showCreateSheet, content: {
+             Divider()
+             
+             Form {
+                 Section {
+                     if accounts.isEmpty {
+                         AccountListEmptyView()
+                     } else {
+                         List {
+                             ForEach(accounts) { account in
+                                 HStack {
+                                     GitProviderView(provider: account.provider)
+                                         .frame(width: 25, height: 25, alignment: .center)
+                                     AccountRow(account: account)
+                                     Spacer()
+
+                                     Button(role: .destructive) {
+                                         showAlert(for: account)
+                                     } label: {
+                                         Label("Delete", systemImage: "trash")
+                                     }
+                                     .labelStyle(.iconOnly)
+                                     .buttonStyle(.borderless)
+                                     .tint(.red)
+                                     .padding(.trailing, 4)
+                                 }
+                             }
+                             .onDelete(perform: deleteItems)
+                         }
+                         .padding(.vertical, 4)
+                     }
+                     HStack {
+                         Button("Add Account", action: { showCreateSheet.toggle() })
+                             .buttonStyle(.borderedProminent)
+                     }
+                 } header: {
+                     Text("Tokens")
+                         .foregroundStyle(.secondary)
+                 }
+                 .sheet(isPresented: $showCreateSheet, content: {
 #if os(macOS)
-                AddAccountView()
-                    .interactiveDismissDisabled(false)
-                    .presentationCompactAdaptation(.fullScreenCover)
+                     AddAccountView()
+                         .interactiveDismissDisabled(false)
+                         .presentationCompactAdaptation(.fullScreenCover)
 #else
-                NavigationView {
-                    VStack {
-                        Text("sdf")
-                        // add sectioned view that goes step by step
-                        // 1. server
-                        // 2. key
-                        // 3. verify
-                        // 4. close
+                     NavigationView {
+                         VStack {
+                             Text("sdf")
+                             // add sectioned view that goes step by step
+                             // 1. server
+                             // 2. key
+                             // 3. verify
+                             // 4. close
 
-//                                            AddAccountView()
-                    }
-                    .border(Color.black)
-                    .navigationBarBackButtonHidden(false)
-                    .toolbar(.visible, for: .navigationBar)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button("Cancel") {
+                             //                                            AddAccountView()
+                         }
+                         .border(Color.black)
+                         .navigationBarBackButtonHidden(false)
+                         .toolbar(.visible, for: .navigationBar)
+                         .toolbar {
+                             ToolbarItem(placement: .topBarLeading) {
+                                 Button("Cancel") {
 
-                            }
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button("Done") {
+                                 }
+                             }
+                             ToolbarItem(placement: .topBarTrailing) {
+                                 Button("Done") {
 
-                            }
-                        }
-                    }
-                }
-//                    .interactiveDismissDisabled(false)
-//                    .presentationCompactAdaptation(.sheet)
-                    .presentationDetents([.medium])
+                                 }
+                             }
+                         }
+                     }
+                     //                    .interactiveDismissDisabled(false)
+                     //                    .presentationCompactAdaptation(.sheet)
+                     .presentationDetents([.medium])
 #endif
-                // .presentationContentInteraction(.resizes)
-            })
+                     // .presentationContentInteraction(.resizes)
+                 })
 
-            // Section("Notifications") {
-            //     HStack {
-            //         Text("Clear all Notifications")
-            //         Spacer()
-            //         Button("Clear", action: clearNotifications)
-            //     }
-            // }
+                 // Section("Notifications") {
+                 //     HStack {
+                 //         Text("Clear all Notifications")
+                 //         Spacer()
+                 //         Button("Clear", action: clearNotifications)
+                 //     }
+                 // }
+             }
         }
         .formStyle(.grouped)
+        .groupBoxStyle(PlainGroupBoxStyle())
         .alert(
             alertTitle,
             isPresented: $showingAlert,

@@ -16,7 +16,7 @@ struct AccountRow: View {
             } else {
                 Text(account.instance)
             }
-            Text(String(repeating: "⏺", count: account.token.count))
+            Text(String(repeating: "⏺", count: 18))
                 .lineLimit(1)
                 .truncationMode(.middle)
                 .foregroundStyle(.secondary)
@@ -26,4 +26,5 @@ struct AccountRow: View {
 
 #Preview {
     AccountRow(account: .preview)
+        .scenePadding()
 }

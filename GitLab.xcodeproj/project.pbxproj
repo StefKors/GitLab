@@ -193,6 +193,29 @@
 		8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
 		8A91E21A2CB7B68900BE51B9 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */; };
+		8A99E8F72CDE273800CCE670 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99E8F62CDE273800CCE670 /* LaunchAtLogin */; };
+		8A99E8F92CDE283500CCE670 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99E8F82CDE283500CCE670 /* LaunchAtLogin */; };
+		8A99E8FB2CDE284000CCE670 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 8A99E8FA2CDE284000CCE670 /* LaunchAtLogin */; };
+		8A99E9762CDE429400CCE670 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9752CDE429400CCE670 /* Color.swift */; };
+		8A99E9772CDE429400CCE670 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9752CDE429400CCE670 /* Color.swift */; };
+		8A99E9782CDE429400CCE670 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9752CDE429400CCE670 /* Color.swift */; };
+		8A99E9792CDE429400CCE670 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9752CDE429400CCE670 /* Color.swift */; };
+		8A99E97B2CDE42BF00CCE670 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97A2CDE42BF00CCE670 /* Border.swift */; };
+		8A99E97C2CDE42BF00CCE670 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97A2CDE42BF00CCE670 /* Border.swift */; };
+		8A99E97D2CDE42BF00CCE670 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97A2CDE42BF00CCE670 /* Border.swift */; };
+		8A99E97E2CDE42BF00CCE670 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97A2CDE42BF00CCE670 /* Border.swift */; };
+		8A99E9802CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97F2CDE48EB00CCE670 /* GeneralSettingsView.swift */; };
+		8A99E9812CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97F2CDE48EB00CCE670 /* GeneralSettingsView.swift */; };
+		8A99E9822CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97F2CDE48EB00CCE670 /* GeneralSettingsView.swift */; };
+		8A99E9832CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E97F2CDE48EB00CCE670 /* GeneralSettingsView.swift */; };
+		8A99E9852CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9842CDE48FB00CCE670 /* PlainGroupBoxStyle.swift */; };
+		8A99E9862CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9842CDE48FB00CCE670 /* PlainGroupBoxStyle.swift */; };
+		8A99E9872CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9842CDE48FB00CCE670 /* PlainGroupBoxStyle.swift */; };
+		8A99E9882CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9842CDE48FB00CCE670 /* PlainGroupBoxStyle.swift */; };
+		8A99E98A2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9892CDE490D00CCE670 /* SettingsTitleView.swift */; };
+		8A99E98B2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9892CDE490D00CCE670 /* SettingsTitleView.swift */; };
+		8A99E98C2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9892CDE490D00CCE670 /* SettingsTitleView.swift */; };
+		8A99E98D2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9892CDE490D00CCE670 /* SettingsTitleView.swift */; };
 		8A9D878A2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
 		8A9D878B2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
 		8A9D878C2BD2736C00E2C0CD /* ProjectLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */; };
@@ -259,7 +282,6 @@
 		8AE274292CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
 		8AE2742A2CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
 		8AE2742B2CC3DD060059244E /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274272CC3DD060059244E /* MainContentView.swift */; };
-		8AE274302CC3E4FA0059244E /* TranslucentWindowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */; };
 		8AE274322CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
 		8AE274332CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
 		8AE274342CC66BBC0059244E /* AvatarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE274312CC66BBC0059244E /* AvatarRowView.swift */; };
@@ -605,6 +627,11 @@
 		8A858F212CD527B10024795D /* PipelineStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipelineStatus.swift; sourceTree = "<group>"; };
 		8A91E2142CB7B5FE00BE51B9 /* en.xcloc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = en.xcloc; sourceTree = "<group>"; };
 		8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
+		8A99E9752CDE429400CCE670 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8A99E97A2CDE42BF00CCE670 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		8A99E97F2CDE48EB00CCE670 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		8A99E9842CDE48FB00CCE670 /* PlainGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainGroupBoxStyle.swift; sourceTree = "<group>"; };
+		8A99E9892CDE490D00CCE670 /* SettingsTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTitleView.swift; sourceTree = "<group>"; };
 		8A9D87892BD2736C00E2C0CD /* ProjectLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLink.swift; sourceTree = "<group>"; };
 		8A9D878E2BD2786E00E2C0CD /* AutoSizingWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingWebLinks.swift; sourceTree = "<group>"; };
 		8AB969012BDBC0210078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeMergeRequestWidgetInterface.swift; sourceTree = "<group>"; };
@@ -633,7 +660,6 @@
 		8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMRRowIcon.swift; sourceTree = "<group>"; };
 		8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
 		8AE274272CC3DD060059244E /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
-		8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentWindowStyle.swift; sourceTree = "<group>"; };
 		8AE274312CC66BBC0059244E /* AvatarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarRowView.swift; sourceTree = "<group>"; };
 		8AE2743B2CC67A530059244E /* IfViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfViewModifier.swift; sourceTree = "<group>"; };
 		8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
@@ -729,6 +755,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A99E8FB2CDE284000CCE670 /* LaunchAtLogin in Frameworks */,
 				8A858F2C2CD5507D0024795D /* OrderedCollections in Frameworks */,
 				8A7935FD2A5583FA00F8FB6C /* CachedAsyncImage in Frameworks */,
 				8A36AF122869B4110008B949 /* UserNotificationsUI.framework in Frameworks */,
@@ -743,6 +770,7 @@
 			files = (
 				8AF80DD72A5581A600819B80 /* Get in Frameworks */,
 				8AF80DDA2A5581B700819B80 /* CachedAsyncImage in Frameworks */,
+				8A99E8F72CDE273800CCE670 /* LaunchAtLogin in Frameworks */,
 				8A858F282CD54D2B0024795D /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,6 +793,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A99E8F92CDE283500CCE670 /* LaunchAtLogin in Frameworks */,
 				8A858F2E2CD550820024795D /* OrderedCollections in Frameworks */,
 				8AE8A7442B989F78002B3C9E /* Get in Frameworks */,
 				8AE8A7462B989F78002B3C9E /* CachedAsyncImage in Frameworks */,
@@ -941,6 +970,9 @@
 		8A63DE6F2A83A1FC002DD636 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A99E9842CDE48FB00CCE670 /* PlainGroupBoxStyle.swift */,
+				8A99E97A2CDE42BF00CCE670 /* Border.swift */,
+				8A99E9752CDE429400CCE670 /* Color.swift */,
 				8A33E9452CD3D4D100F2C148 /* OptionalType.swift */,
 				8A7C0AF22CD3650000E479CA /* Date.swift */,
 				8A7C0AE82CD363B700E479CA /* Collection.swift */,
@@ -952,7 +984,6 @@
 				8ADEBF9D2A83A227007C22CD /* URL.swift */,
 				8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */,
 				8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */,
-				8AE2742F2CC3E4FA0059244E /* TranslucentWindowStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1150,6 +1181,8 @@
 		8AF80D092A55817400819B80 /* SettingsViews */ = {
 			isa = PBXGroup;
 			children = (
+				8A99E9892CDE490D00CCE670 /* SettingsTitleView.swift */,
+				8A99E97F2CDE48EB00CCE670 /* GeneralSettingsView.swift */,
 				8AF80D0A2A55817400819B80 /* SettingsView.swift */,
 				8AF80D0C2A55817400819B80 /* AccountSettingsView.swift */,
 			);
@@ -1269,6 +1302,7 @@
 				8A7935FA2A5583F700F8FB6C /* Get */,
 				8A7935FC2A5583FA00F8FB6C /* CachedAsyncImage */,
 				8A858F2B2CD5507D0024795D /* OrderedCollections */,
+				8A99E8FA2CDE284000CCE670 /* LaunchAtLogin */,
 			);
 			productName = NotificationContent;
 			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
@@ -1294,6 +1328,7 @@
 				8AF80DD62A5581A600819B80 /* Get */,
 				8AF80DD92A5581B700819B80 /* CachedAsyncImage */,
 				8A858F272CD54D2B0024795D /* OrderedCollections */,
+				8A99E8F62CDE273800CCE670 /* LaunchAtLogin */,
 			);
 			productName = GitLab;
 			productReference = 8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */;
@@ -1352,6 +1387,7 @@
 				8AE8A7432B989F78002B3C9E /* Get */,
 				8AE8A7452B989F78002B3C9E /* CachedAsyncImage */,
 				8A858F2D2CD550820024795D /* OrderedCollections */,
+				8A99E8F82CDE283500CCE670 /* LaunchAtLogin */,
 			);
 			productName = DesktopWidgetToolExtension;
 			productReference = 8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */;
@@ -1410,6 +1446,7 @@
 				8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */,
 				8AF80DD82A5581B700819B80 /* XCRemoteSwiftPackageReference "CachedAsyncImage" */,
 				8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */,
+				8A99E8F52CDE273800CCE670 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 			);
 			productRefGroup = 8A5FC0F726EFD08E004136AB /* Products */;
 			projectDirPath = "";
@@ -1535,6 +1572,7 @@
 				8A7C0AF42CD3650000E479CA /* Date.swift in Sources */,
 				8AF80D9D2A55817400819B80 /* NoticeListView.swift in Sources */,
 				8AF80DB52A55817400819B80 /* CIStatusView.swift in Sources */,
+				8A99E97C2CDE42BF00CCE670 /* Border.swift in Sources */,
 				8AF80D5E2A55817400819B80 /* CIManualIcon.swift in Sources */,
 				8A7C0ACE2CCFEBD100E479CA /* DateCompare.swift in Sources */,
 				8AF80D222A55817400819B80 /* NetworkManagerGitLab+repoLaunchPad.swift in Sources */,
@@ -1559,6 +1597,7 @@
 				8A2E61862A9766A6001B6EAE /* MainGitLabView.swift in Sources */,
 				8A111F2A2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8A111F212CC1161500DEB0DD /* String.swift in Sources */,
+				8A99E98C2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */,
 				8AF80D4F2A55817400819B80 /* NetworkReachability.swift in Sources */,
 				8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
 				8A858F1E2CD522630024795D /* GitHubCIJobsView.swift in Sources */,
@@ -1577,8 +1616,10 @@
 				8A7C0AEA2CD363B700E479CA /* Collection.swift in Sources */,
 				8AF80D7C2A55817400819B80 /* CIRetryIcon.swift in Sources */,
 				8AE274282CC3DD060059244E /* MainContentView.swift in Sources */,
+				8A99E9802CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */,
 				8A55E3CB2CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */,
 				8A858F182CD51F2D0024795D /* ActionsView.swift in Sources */,
+				8A99E9772CDE429400CCE670 /* Color.swift in Sources */,
 				8AF80D5B2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8A91E2182CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
 				8A33E9482CD3D4D100F2C148 /* OptionalType.swift in Sources */,
@@ -1598,6 +1639,7 @@
 				8AE274262CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
 				8A7C0AEE2CD364B900E479CA /* GitHubAccountView.swift in Sources */,
 				8AFDAAC62A850793001937AC /* AccountRow.swift in Sources */,
+				8A99E9862CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */,
 				8AF80D6A2A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
 				8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8ACBFD402CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
@@ -1632,6 +1674,7 @@
 				8A111F352CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
 				8A7935C62A5583E400F8FB6C /* NotificationManager.swift in Sources */,
 				8ACBFD3E2CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
+				8A99E98A2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */,
 				8A7935C72A5583E400F8FB6C /* NetworkManagerGitLab.swift in Sources */,
 				8A7935C82A5583E400F8FB6C /* gitlabISO8601DateFormatter.swift in Sources */,
 				8AC0C2102A5D51FA0096772B /* TokenInformationView.swift in Sources */,
@@ -1660,6 +1703,7 @@
 				8A7935D82A5583E400F8FB6C /* ApprovedReviewIcon.swift in Sources */,
 				8A7935D92A5583E400F8FB6C /* CISuccessIcon.swift in Sources */,
 				8AE2743F2CC67A530059244E /* IfViewModifier.swift in Sources */,
+				8A99E9792CDE429400CCE670 /* Color.swift in Sources */,
 				8A7935DA2A5583E400F8FB6C /* CIWaitingForResourceIcon.swift in Sources */,
 				8ADD57082B821964001F8E8F /* PlainMergeRequestList.swift in Sources */,
 				8A7935DB2A5583E400F8FB6C /* DiscussionCountIcon.swift in Sources */,
@@ -1725,6 +1769,9 @@
 				8AFDAAC72A850793001937AC /* AccountRow.swift in Sources */,
 				8A7935BC2A55830D00F8FB6C /* CIJobsNotificationView.swift in Sources */,
 				8A7C0AF52CD3650000E479CA /* Date.swift in Sources */,
+				8A99E9812CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */,
+				8A99E9852CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */,
+				8A99E97D2CDE42BF00CCE670 /* Border.swift in Sources */,
 				8A7935C02A55837500F8FB6C /* StructsGitLab.swift in Sources */,
 				8A7935BE2A55830F00F8FB6C /* NotificationViewController.swift in Sources */,
 			);
@@ -1738,11 +1785,11 @@
 				8A91E2192CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
 				8AF80D812A55817400819B80 /* CICreatedIcon.swift in Sources */,
 				8AF80D842A55817400819B80 /* NeedsReviewIcon.swift in Sources */,
+				8A99E98D2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */,
 				8AF80DA52A55817400819B80 /* PipelineView.swift in Sources */,
 				8AF80D6C2A55817400819B80 /* CISuccessIcon.swift in Sources */,
 				8A111F3A2CC1203700DEB0DD /* DoubleLineMergeRequestSubRowView.swift in Sources */,
 				8A111F362CC1202000DEB0DD /* HorizontalMergeRequestSubRowView.swift in Sources */,
-				8AE274302CC3E4FA0059244E /* TranslucentWindowStyle.swift in Sources */,
 				8A7C0ADC2CD29D2500E479CA /* StructsGitHub.swift in Sources */,
 				8AF80D5D2A55817400819B80 /* CIManualIcon.swift in Sources */,
 				8A7C0AE22CD2A9BD00E479CA /* GitLabAccountView.swift in Sources */,
@@ -1784,10 +1831,12 @@
 				8A111F412CC12C5F00DEB0DD /* QueryType.swift in Sources */,
 				8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */,
 				8AF80D7B2A55817400819B80 /* CIRetryIcon.swift in Sources */,
+				8A99E9882CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */,
 				8AC0C20E2A5D51FA0096772B /* TokenInformationView.swift in Sources */,
 				8A7C0AE42CD2AFAC00E479CA /* NetworkInspector.swift in Sources */,
 				8A111F202CC1161500DEB0DD /* String.swift in Sources */,
 				8A111F2D2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
+				8A99E9822CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */,
 				8AF80D8D2A55817400819B80 /* UserInterface.swift in Sources */,
 				8AF80D5A2A55817400819B80 /* CISkippedIcon.swift in Sources */,
 				8AFAE1922BEB7C1C0030541E /* MergeRequestList.swift in Sources */,
@@ -1834,8 +1883,10 @@
 				8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8A111F1E2CC1118A00DEB0DD /* Data.swift in Sources */,
 				8AE274292CC3DD060059244E /* MainContentView.swift in Sources */,
+				8A99E9762CDE429400CCE670 /* Color.swift in Sources */,
 				8A7C0AF62CD3650000E479CA /* Date.swift in Sources */,
 				8AF80DC92A55817400819B80 /* MergeRequestRowView.swift in Sources */,
+				8A99E97B2CDE42BF00CCE670 /* Border.swift in Sources */,
 				8AF80D512A55817400819B80 /* NoticeMessage.swift in Sources */,
 				8AF80D992A55817400819B80 /* AccountSettingsView.swift in Sources */,
 			);
@@ -1871,6 +1922,7 @@
 				8AE8A7012B989EFA002B3C9E /* AccessToken.swift in Sources */,
 				8AE8A7022B989EFA002B3C9E /* AccountSettingsView.swift in Sources */,
 				8AE8A7032B989EFA002B3C9E /* AccountListEmptyView.swift in Sources */,
+				8A99E9872CDE48FB00CCE670 /* PlainGroupBoxStyle.swift in Sources */,
 				8A858F1B2CD51F2D0024795D /* ActionsView.swift in Sources */,
 				8AB9691F2BDBC1BF0078E5CD /* MergeRequestWidgetEntryView.swift in Sources */,
 				8AE8A7052B989EFA002B3C9E /* URL.swift in Sources */,
@@ -1916,6 +1968,7 @@
 				8A7C0AF02CD364B900E479CA /* GitHubAccountView.swift in Sources */,
 				8AE8A71C2B989EFA002B3C9E /* MergeStatusView.swift in Sources */,
 				8AE274352CC66BBC0059244E /* AvatarRowView.swift in Sources */,
+				8A99E97E2CDE42BF00CCE670 /* Border.swift in Sources */,
 				8A7C0AF32CD3650000E479CA /* Date.swift in Sources */,
 				8AE8A7402B989F57002B3C9E /* Account.swift in Sources */,
 				8A9D87922BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
@@ -1924,6 +1977,7 @@
 				8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */,
 				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
 				8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */,
+				8A99E98B2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */,
 				8AE8A7212B989EFA002B3C9E /* GitLabCIJobsView.swift in Sources */,
 				8AC7B4BA2CB5BFD400CBD21C /* CIWarningIcon.swift in Sources */,
 				8AB969282BDBC7580078E5CD /* WrappingHStack.swift in Sources */,
@@ -1945,6 +1999,8 @@
 				8AE8A7302B989EFA002B3C9E /* CIPreparingIcon.swift in Sources */,
 				8A111F2C2CC11A8C00DEB0DD /* ShadedButton.swift in Sources */,
 				8A858F202CD522630024795D /* GitHubCIJobsView.swift in Sources */,
+				8A99E9782CDE429400CCE670 /* Color.swift in Sources */,
+				8A99E9832CDE48EB00CCE670 /* GeneralSettingsView.swift in Sources */,
 				8AB9690F2BDBC0EB0078E5CD /* ExtraLargeMergeRequestWidgetInterface.swift in Sources */,
 				8AB969102BDBC0EB0078E5CD /* LargeMergeRequestWidgetInterface.swift in Sources */,
 				8AE274242CC3DA9D0059244E /* OverflowContentViewModifier.swift in Sources */,
@@ -2713,6 +2769,14 @@
 				minimumVersion = 1.1.4;
 			};
 		};
+		8A99E8F52CDE273800CCE670 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8AF80DD52A5581A600819B80 /* XCRemoteSwiftPackageReference "Get" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Get.git";
@@ -2761,6 +2825,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A858F262CD54D2B0024795D /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		8A99E8F62CDE273800CCE670 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A99E8F52CDE273800CCE670 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+		8A99E8F82CDE283500CCE670 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A99E8F52CDE273800CCE670 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+		8A99E8FA2CDE284000CCE670 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A99E8F52CDE273800CCE670 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
 		};
 		8AE024DA2A92457C000548D7 /* Get */ = {
 			isa = XCSwiftPackageProductDependency;
