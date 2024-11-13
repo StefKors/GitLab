@@ -51,3 +51,66 @@ extension Color {
                      opacity: Double(self.components.opacity))
     }
 }
+
+extension Color {
+    static func generateColor(for text: String) -> Color {
+        var hash = 0
+        let colorConstant = 131
+        let maxSafeValue = Int.max / colorConstant
+        for char in text.unicodeScalars{
+            if hash > maxSafeValue {
+                hash = hash / colorConstant
+            }
+            hash = Int(char.value) + ((hash << 5) - hash)
+        }
+        let finalHash = abs(hash) % (256*256*256);
+        //let color = UIColor(hue:CGFloat(finalHash)/255.0 , saturation: 0.40, brightness: 0.75, alpha: 1.0)
+        return Color(
+            red: CGFloat((finalHash & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((finalHash & 0xFF00) >> 8) / 255.0,
+            blue: CGFloat((finalHash & 0xFF)) / 255.0
+        )
+    }
+
+    static func generateHSLColor(for text: String) -> Color {
+        var hash = 0;
+        let colorConstant = 50
+        let maxSafeValue = Int.max / colorConstant
+        for char in text.unicodeScalars {
+            if hash > maxSafeValue {
+                hash = hash / colorConstant
+            }
+            hash = Int(char.value) + ((hash << 5) - hash)
+        }
+
+        let hue = hash % 360;
+
+        let finalHue = CGFloat(hue.clamped(to: 0...360))/360
+        return Color(
+            hue: finalHue,
+            saturation: 72/100,
+            lightness: 50/100,
+            opacity: 1.0
+        )
+    }
+
+    init(hue: CGFloat, saturation: CGFloat, lightness: CGFloat, opacity: CGFloat) {
+        precondition(0...1 ~= hue &&
+                     0...1 ~= saturation &&
+                     0...1 ~= lightness &&
+                     0...1 ~= opacity, "input range is out of range 0...1")
+
+        //From HSL TO HSB ---------
+        var newSaturation: Double = 0.0
+
+        let brightness = lightness + saturation * min(lightness, 1-lightness)
+
+        if brightness == 0 { newSaturation = 0.0 }
+        else {
+            newSaturation = 2 * (1 - lightness / brightness)
+        }
+        //---------
+
+        self.init(hue: hue, saturation: newSaturation, brightness: brightness, opacity: opacity)
+    }
+}

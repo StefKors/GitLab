@@ -33,13 +33,11 @@ struct MainContentView: View {
                 BaseTextView(message: "All done 🥳")
                     .foregroundStyle(.secondary)
             } else {
-                VStack(alignment: .leading) {
                     MergeRequestList(
                         mergeRequests: filteredMergeRequests,
                         accounts: accounts,
                         selectedView: selectedView
                     )
-                }
                 .animation(.snappy(duration: 0.3), value: selectedView)
                 .padding(6)
                 .useScrollView(when: withScrollView)
@@ -59,5 +57,5 @@ struct MainContentView: View {
         accounts: [.preview],
         selectedView: .constant(.authoredMergeRequests)
     )
-    .environmentObject(NoticeState())
+    .previewEnvironment()
 }

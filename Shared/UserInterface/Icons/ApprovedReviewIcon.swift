@@ -64,11 +64,6 @@ struct ApprovedReviewIcon: View {
                 .fill(Color.green.gradient.quinary)
         )
         .animation(.smooth, value: approvedBy)
-        //        .onHover(perform: { state in
-        //            withAnimation(.snappy) {
-        //                isHovering = state
-        //            }
-        //        })
         .help(String(localized: "Approved by \(names)"))
     }
 

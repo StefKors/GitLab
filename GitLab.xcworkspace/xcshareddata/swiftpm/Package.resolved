@@ -1,15 +1,6 @@
 {
-  "originHash" : "dce1b8a118c0ae72d5bcd8ca067f57598bf04b96309f3475f046c7d768530a67",
+  "originHash" : "77a9a227bd452281004cba93df985c6af4bba9194c5c50fa0ec79550d8be81c6",
   "pins" : [
-    {
-      "identity" : "cachedasyncimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/StefKors/CachedAsyncImage.git",
-      "state" : {
-        "revision" : "467a3d17479887943ab917a379e62bbaff60ac8a",
-        "version" : "2.1.1"
-      }
-    },
     {
       "identity" : "get",
       "kind" : "remoteSourceControl",
@@ -26,6 +17,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "a04ec1c363be3627734f6dad757d82f5d4fa8fcc"
+      }
+    },
+    {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:kean/Nuke.git",
+      "state" : {
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {

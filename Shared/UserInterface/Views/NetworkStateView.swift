@@ -13,11 +13,6 @@ struct NetworkStateView: View {
     @State private var sortOrder = [KeyPathComparator(\NetworkEvent.timestamp,
                                                        order: .reverse)]
 
-    //    @SceneStorage("NetworkEventTableConfig")
-    //    @State private var columnCustomization: TableColumnCustomization<NetworkEvent>
-
-    //    var tableData: [NetworkEvent] { networkState.events.sorted(using: sortOrder) }
-
     @State private var events: [NetworkEvent] = []
 
     @State private var selectedEvents = Set<NetworkEvent.ID>()
