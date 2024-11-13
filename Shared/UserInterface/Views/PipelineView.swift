@@ -28,44 +28,43 @@ struct PipelineView: View {
         allSucceeded ? -14 : 0
     }
 
-    @State private var isHovering: Bool = false
+    @Environment(\.isHoveringRow) private var isHoveringRow
+
+    private var isHovering: Bool {
+        stages.count > 1 && isHoveringRow
+    }
 
     var body: some View {
-        HStack(alignment: .center, spacing: spacing) {
+        if !Array(stages.enumerated()).isEmpty {
+            HStack(alignment: .center, spacing: spacing) {
 
-            ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
-                HStack(spacing: 0) {
-                    GitLabCIJobsView(stage: stage, instance: instance)
-                        .id(stage.id)
-                    // Create a staggered effect by masking children to appear correctly
-                        .mask {
-                            Circle()
-                                .subtracting(
-                                    Circle()
-                                        .offset(x: index != 0 && allSucceeded ? -4 : -26)
-                                )
+                ForEach(Array(stages.enumerated()), id: \.element, content: { index, stage in
+                    HStack(spacing: 0) {
+                        GitLabCIJobsView(stage: stage, instance: instance)
+                            .id(stage.id)
+                        // Create a staggered effect by masking children to appear correctly
+                            .mask {
+                                Circle()
+                                    .subtracting(
+                                        Circle()
+                                            .offset(x: index != 0 && allSucceeded ? -4 : -26)
+                                    )
+                            }
+                            .zIndex(2)
+
+                        let isLast = index == stages.count - 1
+                        if !isLast {
+                            Rectangle()
+                                .fill(.quaternary)
+                                .frame(width: allSucceeded ? 0 : 6, height: 2, alignment: .center)
+                                .opacity(allSucceeded ? 0 : 1)
+                                .animation(.snappy.delay(isHovering ? 0.05 : 0), value: isHovering)
+                                .zIndex(1)
                         }
-                        .zIndex(2)
 
-                    let isLast = index == stages.count - 1
-                    if !isLast {
-                        Rectangle()
-                            .fill(.quaternary)
-                            .frame(width: allSucceeded ? 0 : 6, height: 2, alignment: .center)
-                            .opacity(allSucceeded ? 0 : 1)
-                            .animation(.snappy.delay(isHovering ? 0.05 : 0), value: isHovering)
-                            .zIndex(1)
                     }
-
-                }
-                .zIndex(Double(stages.count - index))
-            })
-        }
-        .onHover { state in
-            withAnimation(.easeInOut) {
-                if stages.count > 1 {
-                    isHovering = state
-                }
+                    .zIndex(Double(stages.count - index))
+                })
             }
         }
     }
@@ -75,14 +74,35 @@ struct PipelineView: View {
     VStack(alignment: .trailing) {
         PipelineView(pipeline: .previewTestFailed, instance: nil)
             .scenePadding()
+            .modifier(IsHoveringRowPreviewEnv())
+
         PipelineView(pipeline: .previewMultiple, instance: nil)
             .scenePadding()
+            .modifier(IsHoveringRowPreviewEnv())
+
         PipelineView(pipeline: .previewMultipleSuccess, instance: nil)
             .scenePadding()
+            .modifier(IsHoveringRowPreviewEnv())
+
         PipelineView(pipeline: .previewMultipleSuccessMergeTrain, instance: nil)
             .scenePadding()
+            .modifier(IsHoveringRowPreviewEnv())
     }
     .scenePadding()
     .scenePadding()
     .scenePadding()
+}
+
+fileprivate struct IsHoveringRowPreviewEnv: ViewModifier {
+    @State private var isHoveringRow: Bool = false
+
+    func body(content: Content) -> some View {
+        content
+            .environment(\.isHoveringRow, isHoveringRow)
+            .onHover { state in
+                withAnimation(.snappy(duration: 0.18)) {
+                    isHoveringRow = state
+                }
+            }
+    }
 }

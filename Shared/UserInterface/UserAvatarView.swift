@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import NukeUI
+import Nuke
 
 struct UserAvatarView: View {
     let author: Approval
@@ -15,9 +17,9 @@ struct UserAvatarView: View {
 
     private var url: URL? {
         if let picture = author.picture,
-            picture.host() == nil,
+           picture.host() == nil,
            let instance = account?.instance,
-            let fullURL = URL(string: instance + picture.absoluteString) {
+           let fullURL = URL(string: instance + picture.absoluteString) {
             return fullURL
         }
 
@@ -36,44 +38,31 @@ struct UserAvatarView: View {
                 Image(nsImage: image)
                     .resizable()
 #endif
-            } else
-            // Previously we used account.instace to create the base url
-            if let avatarUrl = url {
-                AsyncImage(url: avatarUrl) { image in
-                    image
-                        .resizable()
-                        .transition(.opacity.combined(with: .scale).combined(with: .blurReplace))
-                } placeholder: {
-                    if let name = (author.name ?? author.username)?.first {
-                        Text(String(name))
-                            .foregroundStyle(.primary)
-                            .frame(width: 14, height: 14, alignment: .center)
-                            .font(.system(size: 8, weight: .semibold))
-                            .textCase(.uppercase)
-                            .contentTransition(.interpolate)
-                    } else {
-                        Text(Image(systemName: "person.fill"))
-                            .foregroundStyle(.primary)
-                            .foregroundStyle(.secondary)
-                            .font(.system(size: 8, weight: .semibold))
-                            .clipShape(Circle())
-                            .frame(width: 14, height: 14)
+            } else {
+                // Previously we used account.instace to create the base url
+                LazyImage(url: url) { state in
+                    if let image = state.image {
+                        image
+                            .resizable()
+                            .transition(.opacity.combined(with: .scale).combined(with: .blurReplace))
+                    }  else {
+                        if let name = (author.name ?? author.username)?.first {
+                            Text(String(name))
+                                .foregroundStyle(.primary)
+                                .frame(width: 14, height: 14, alignment: .center)
+                                .font(.system(size: 8, weight: .semibold))
+                                .textCase(.uppercase)
+                                .contentTransition(.interpolate)
+                        } else {
+                            Text(Image(systemName: "person.fill"))
+                                .foregroundStyle(.primary)
+                                .foregroundStyle(.secondary)
+                                .font(.system(size: 8, weight: .semibold))
+                                .clipShape(Circle())
+                                .frame(width: 14, height: 14)
+                        }
                     }
                 }
-            } else if let name = (author.name ?? author.username)?.first {
-                Text(String(name))
-                    .foregroundStyle(.primary)
-                    .frame(width: 14, height: 14, alignment: .center)
-                    .font(.system(size: 8, weight: .semibold))
-                    .textCase(.uppercase)
-                    .contentTransition(.interpolate)
-            } else {
-                Text(Image(systemName: "person.fill"))
-                    .foregroundStyle(.primary)
-                    .foregroundStyle(.secondary)
-                    .font(.system(size: 8, weight: .semibold))
-                    .clipShape(Circle())
-                    .frame(width: 14, height: 14)
             }
         }
         .aspectRatio(contentMode: .fill)
@@ -81,8 +70,6 @@ struct UserAvatarView: View {
             Circle()
                 .stroke(lineWidth: 1)
                 .foregroundStyle(.primary)
-//                .background(.tertiary)
-//                .background(.background)
         }
         .overlay(content: {
             Circle()

@@ -4,14 +4,18 @@
 //
 //  Created by Stef Kors on 24/06/2022.
 //
-
 import SwiftUI
+
+extension EnvironmentValues {
+    @Entry var isHoveringRow: Bool = false
+}
 
 struct MergeRequestRowView: View {
     var request: UniversalMergeRequest
 
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
+    @State private var isHoveringRow: Bool = false
 
     var body: some View {
         Button {
@@ -30,8 +34,16 @@ struct MergeRequestRowView: View {
 
                 HorizontalMergeRequestSubRowView(request: request)
             }
+            .environment(\.isHoveringRow, isHoveringRow)
         }
-        .buttonStyle(.shaded)
+        .buttonStyle(.plain)
+        .padding(.vertical, 5)
+        .contentShape(Rectangle())
+        .onHover { state in
+            withAnimation(.snappy(duration: 0.18)) {
+                isHoveringRow = state
+            }
+        }
     }
 }
 
@@ -41,6 +53,8 @@ struct MergeRequestRowView: View {
             MergeRequestRowView(request: .preview)
             MergeRequestRowView(request: .preview3)
             MergeRequestRowView(request: .preview2)
+            MergeRequestRowView(request: .preview4)
+            MergeRequestRowView(request: .previewGitHub)
         })
         .frame(width: 190)
 
@@ -48,6 +62,8 @@ struct MergeRequestRowView: View {
             MergeRequestRowView(request: .preview)
             MergeRequestRowView(request: .preview3)
             MergeRequestRowView(request: .preview2)
+            MergeRequestRowView(request: .preview4)
+            MergeRequestRowView(request: .previewGitHub)
         })
         .frame(width: 290)
 
@@ -55,7 +71,11 @@ struct MergeRequestRowView: View {
             MergeRequestRowView(request: .preview)
             MergeRequestRowView(request: .preview3)
             MergeRequestRowView(request: .preview2)
+            MergeRequestRowView(request: .preview4)
+            MergeRequestRowView(request: .previewGitHub)
         })
     })
-    .scenePadding()
+    .previewEnvironment()
+    .scenePadding(.vertical)
+    .scenePadding(.vertical)
 }

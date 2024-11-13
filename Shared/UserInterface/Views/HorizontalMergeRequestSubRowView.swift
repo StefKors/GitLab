@@ -18,9 +18,11 @@ struct HorizontalMergeRequestSubRowView: View {
             AutoSizingWebLinks(request: request)
 
             Spacer()
+
             if let count = request.discussionCount, count > 1 {
                 DiscussionCountIcon(count: count, provider: request.provider)
             }
+
             MergeStatusView(request: request)
 
             if let pipeline = request.mergeRequest?.headPipeline {

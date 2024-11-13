@@ -45,10 +45,10 @@ struct UserInterface: View {
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
             Picker(selection: $selectedView, content: {
-                Text("Your Merge Requests").tag(QueryType.authoredMergeRequests)
+                Text("Your Pull Requests").tag(QueryType.authoredMergeRequests)
                 Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
 #if DEBUG
-                Text("Debug").tag(QueryType.networkDebug)
+                Text("Debug Network").tag(QueryType.networkDebug)
 #endif
             }, label: {
                 EmptyView()

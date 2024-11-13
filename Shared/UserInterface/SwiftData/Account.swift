@@ -18,6 +18,7 @@ enum GitProvider: String, Codable, CaseIterable {
     var token: String
     var instance: String
     var provider: GitProvider
+    var createdAt: Date = Date.now
 
     @Relationship(deleteRule: .cascade, inverse: \UniversalMergeRequest.account)
     var requests: [UniversalMergeRequest] = []

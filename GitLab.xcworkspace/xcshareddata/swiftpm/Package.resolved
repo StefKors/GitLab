@@ -1,15 +1,6 @@
 {
-  "originHash" : "9806bd7ce346bb22b1ac0276b71426edc4726013c924a9d475cde30babfc1fd0",
+  "originHash" : "77a9a227bd452281004cba93df985c6af4bba9194c5c50fa0ec79550d8be81c6",
   "pins" : [
-    {
-      "identity" : "cachedasyncimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/StefKors/CachedAsyncImage.git",
-      "state" : {
-        "revision" : "467a3d17479887943ab917a379e62bbaff60ac8a",
-        "version" : "2.1.1"
-      }
-    },
     {
       "identity" : "get",
       "kind" : "remoteSourceControl",
@@ -17,6 +8,24 @@
       "state" : {
         "revision" : "12830cc64f31789ae6f4352d2d51d03a25fc3741",
         "version" : "2.1.6"
+      }
+    },
+    {
+      "identity" : "launchatlogin-modern",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/LaunchAtLogin-Modern",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a04ec1c363be3627734f6dad757d82f5d4fa8fcc"
+      }
+    },
+    {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:kean/Nuke.git",
+      "state" : {
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {

@@ -12,13 +12,15 @@ struct SectionedMergeRequestList: View {
     let selectedView: QueryType
 
     var body: some View {
-        ForEach(accounts) { account in
-            Section(header: Text(account.instance)) {
-                ForEach(account.requests, id: \.id) { mergeRequest in
-                    MergeRequestRowView(request: mergeRequest)
-                        .padding(.bottom, 4)
-                        .listRowSeparator(.visible)
-                        .listRowSeparatorTint(Color.secondary.opacity(0.2))
+        VStack(alignment: .leading) {
+            ForEach(accounts) { account in
+                Section(header: Text(account.instance)) {
+                    ForEach(account.requests, id: \.id) { mergeRequest in
+                        MergeRequestRowView(request: mergeRequest)
+                            .padding(.bottom, 4)
+                            .listRowSeparator(.visible)
+                            .listRowSeparatorTint(Color.secondary.opacity(0.2))
+                    }
                 }
             }
         }

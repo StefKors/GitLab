@@ -20,13 +20,14 @@ struct MergeStatusView: View {
     }
 
     @Environment(\.isInWidget) private var isInWidget
+    @EnvironmentObject private var settings: SettingsState
 
     var body: some View {
         if isOnMergeTrain {
             MergeTrainIcon()
         } else if let approvers = approvers, !approvers.isEmpty {
             ApprovedReviewIcon(approvedBy: approvers, account: request.account)
-        } else if !isInWidget, !request.isDraft {
+        } else if !isInWidget, !request.isDraft, settings.showShareButton {
             ShareMergeRequestIcon(request: request)
         } else {
             // NeedsReviewIcon()
