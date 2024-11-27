@@ -87,6 +87,7 @@ struct ActionsView: View {
         // Single
         // Double
         ActionsView(status: .preview, instance: nil)
-
+        ActionsView(status: .previewSuccess, instance: nil)
+        ActionsView(status: .previewRunning, instance: nil)
     }.scenePadding()
 }

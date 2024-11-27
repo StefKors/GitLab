@@ -11,10 +11,16 @@ struct AccountRow: View {
     let account: Account
     var body: some View {
         VStack(alignment: .leading) {
-            if let url = URL(string: account.instance), let host = url.host() {
-                Text(host)
-            } else {
-                Text(account.instance)
+            HStack {
+                if let url = URL(string: account.instance), let host = url.host() {
+                    Text(host)
+                } else {
+                    Text(account.instance)
+                }
+
+                Text(account.createdAt, style: .relative)
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
             }
             Text(String(repeating: "⏺", count: 18))
                 .lineLimit(1)

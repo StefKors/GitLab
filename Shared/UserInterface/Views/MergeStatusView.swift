@@ -10,6 +10,7 @@ import Foundation
 
 struct MergeStatusView: View {
     var request: UniversalMergeRequest
+    var account: Account?
 
     private var isOnMergeTrain: Bool {
         request.mergeRequest?.headPipeline?.mergeRequestEventType == .mergeTrain
@@ -26,7 +27,7 @@ struct MergeStatusView: View {
         if isOnMergeTrain {
             MergeTrainIcon()
         } else if let approvers = approvers, !approvers.isEmpty {
-            ApprovedReviewIcon(approvedBy: approvers, account: request.account)
+            ApprovedReviewIcon(approvedBy: approvers, account: account)
         } else if !isInWidget, !request.isDraft, settings.showShareButton {
             ShareMergeRequestIcon(request: request)
         } else {

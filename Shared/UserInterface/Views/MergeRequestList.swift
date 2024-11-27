@@ -13,7 +13,7 @@ struct MergeRequestList: View {
     var selectedView: QueryType
 
     var body: some View {
-        PlainMergeRequestList(mergeRequests: mergeRequests)
+        PlainMergeRequestList(mergeRequests: mergeRequests, accounts: accounts)
 //        if accounts.count > 1 {
 //            SectionedMergeRequestList(
 //                accounts: accounts,

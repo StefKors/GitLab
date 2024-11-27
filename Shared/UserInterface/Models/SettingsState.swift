@@ -14,22 +14,25 @@ class SettingsState: ObservableObject {
 
     @AppStorage("Settings.requestLanguage") var requestLanguage: RequestLanguageType = .auto
     var language: RequestLanguageType {
-        let context = ModelContext(.shared)
-        let accounts = (try? context.fetch(FetchDescriptor<Account>(sortBy: [.init(\.createdAt, order: .reverse)]))) ?? []
-        switch requestLanguage {
-        case .auto:
-            if let firstAccount = accounts.first {
-                switch firstAccount.provider {
-                case .GitHub:
-                    return .pullRequest
-                case .GitLab:
-                    return .mergeRequest
-                }
-            }
-            return .mergeRequest
-        default:
-            return requestLanguage
-        }
+        .pullRequest
+//        let context = ModelContext(.shared)
+//        let accounts = (try? context.fetch(FetchDescriptor<Account>(sortBy: [.init(\.createdAt, order: .reverse)]))) ?? []
+//        switch requestLanguage {
+//        case .auto:
+//            if let firstAccount = accounts.first {
+//                switch firstAccount.provider {
+//                case .GitHub:
+//                    return .pullRequest
+//                case .GitLab:
+//                    return .mergeRequest
+//                default:
+//                    return .pullRequest
+//                }
+//            }
+//            return .mergeRequest
+//        default:
+//            return requestLanguage
+//        }
     }
 
     @Published private var isSettingActivationPolicy: Bool = false

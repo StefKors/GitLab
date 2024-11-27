@@ -29,4 +29,26 @@ class NetworkState: ObservableObject {
             events = newEvents
         }
     }
+
+    static var preview: NetworkState {
+        let state = NetworkState()
+        state.record = true
+        state.events = [
+            .preview,
+            .previewGitHub,
+            .previewGitHubFailed,
+        ]
+        return state
+    }
+
+    static var previewPaused: NetworkState {
+        let state = NetworkState()
+        state.record = false
+        state.events = [
+            .preview,
+            .previewGitHub,
+            .previewGitHubFailed,
+        ]
+        return state
+    }
 }

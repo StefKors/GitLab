@@ -9,25 +9,25 @@ import Foundation
 import SwiftData
 
 extension ModelContainer {
-    static var previews: ModelContainer = {
-        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self])
-        let modelConfiguration = ModelConfiguration("MergeRequests", schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
-    static var shared: ModelContainer = {
-        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self])
-        let modelConfiguration = ModelConfiguration("MergeRequests", schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+//    static var previews: ModelContainer = {
+//        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self])
+//        let modelConfiguration = ModelConfiguration("MergeRequests", schema: schema, isStoredInMemoryOnly: false)
+//
+//        do {
+//            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+//        } catch {
+//            fatalError("Could not create ModelContainer: \(error)")
+//        }
+//    }()
+//
+//    static var shared: ModelContainer = {
+//        let schema = Schema([Account.self, UniversalMergeRequest.self, LaunchpadRepo.self])
+//        let modelConfiguration = ModelConfiguration("MergeRequests", schema: schema, isStoredInMemoryOnly: true)
+//        print(modelConfiguration.url)
+//        do {
+//            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+//        } catch {
+//            fatalError("Could not create ModelContainer: \(error)")
+//        }
+//    }()
 }

@@ -19,41 +19,60 @@ struct NetworkStateView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 HStack {
-                    Image(systemName: "circle.fill")
-                        .foregroundStyle(networkState.record ? .red : .secondary)
-                    Text("Network Events")
+                    if networkState.record {
+                        Image(systemName: "circle.fill")
+                            .foregroundStyle(.green)
+                    } else {
+                        Image(systemName: "pause.fill")
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Text("Network Events (\(events.count.description))")
                         .font(.headline)
                 }
+                .frame(alignment: .leading)
                 Text("Events are only recorded when debug window is open.")
             }
             .padding(.vertical)
+            .padding(.horizontal)
 
             Table(events, selection: $selectedEvents, sortOrder: $sortOrder) {
+                TableColumn("") { event in
+                    GitProviderView(provider: event.info.account.provider)
+                        .frame(width: 18, height: 18, alignment: .center)
+                }
+                .width(max: 18)
+
                 TableColumn("status") { event in
                     HStack {
                         if let status = event.status {
+                            Text(Image(systemName: "circle.fill"))
+                                .foregroundStyle(status == 200 ? .green : .red)
                             Text("\(status)")
                         } else {
                             ProgressView()
                                 .progressViewStyle(.linear)
                         }
                     }
-                    .frame(width: 30)
+                    .frame(alignment: .leading)
+                    .fontDesign(.monospaced)
                 }
-                .width(max: 40)
+                .width(max: 50)
 
-                TableColumn("timestamp", value: \.timestamp) { event in
+                TableColumn("time", value: \.timestamp) { event in
                     Text(event.timestamp.formatted(date: .omitted, time: .standard))
+                        .fontDesign(.monospaced)
                 }
-                .width(max: 80)
+                .width(max: 65)
 
                 TableColumn("duration") { event in
                     Text(formatDuration(event.info.timestamp, event.timestamp))
+                        .fontDesign(.monospaced)
                     //                    Text(event.info.timestamp..<event.timestamp.formatted(.timeDuration).description)
                 }
-                .width(max: 60)
+                .width(min: 10, ideal: 60, max: 80)
 
                 TableColumn("label") { event in
                     Text(event.info.label)
@@ -65,7 +84,7 @@ struct NetworkStateView: View {
                     }
                 }
             }
-            .onChange(of: networkState.events) { _, newEvents in
+            .onChange(of: networkState.events, initial: true) { _, newEvents in
                 events = newEvents.sorted(using: sortOrder)
             }
             .onChange(of: sortOrder) { _, sortOrder in
@@ -76,7 +95,6 @@ struct NetworkStateView: View {
         }
         .padding(.bottom)
         .frame(minHeight: 300)
-        .padding(.horizontal)
         .scrollBounceBehavior(.basedOnSize)
     }
 
@@ -90,6 +108,12 @@ struct NetworkStateView: View {
     }
 }
 
-#Preview {
+#Preview("NetworkStateView - Recording") {
     NetworkStateView()
+        .environmentObject(NetworkState.preview)
+}
+
+#Preview("NetworkStateView - Paused") {
+    NetworkStateView()
+        .environmentObject(NetworkState.previewPaused)
 }

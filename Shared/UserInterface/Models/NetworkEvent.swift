@@ -29,4 +29,8 @@ class NetworkEvent: Identifiable, Equatable {
         self.status = status
         self.response = response
     }
+
+    static let preview = NetworkEvent(info: .preview, status: 200, response: "Optional([])")
+    static let previewGitHub = NetworkEvent(info: .previewGitHub, status: 200, response: "Optional([])")
+    static let previewGitHubFailed = NetworkEvent(info: .previewGitHub, status: 0, response: "Data couldn't be read because it's missing")
 }

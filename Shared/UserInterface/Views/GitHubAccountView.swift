@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SharingGRDB
 
 private enum SubmitState {
     case readyToSubmit
@@ -15,7 +16,7 @@ private enum SubmitState {
 }
 
 struct GitHubAccountView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Dependency(\.defaultDatabase) private var database
     @Environment(\.dismiss) private var dismiss
 
     @State private var token: String = ""
@@ -114,14 +115,20 @@ struct GitHubAccountView: View {
     }
 
     func handleSave() {
-        addAccount()
+        addAccount(token: token, instance: instance)
         dismiss()
     }
 
-    func addAccount() {
-        withAnimation {
-            let newAccount = Account(token: token, instance: instance, provider: .GitHub)
-            modelContext.insert(newAccount)
+    func addAccount(token: String, instance: String) {
+        Task {
+            do {
+                try await database.write { db in
+                    try Account.insert(Account(token: token, instance: instance, provider: .GitHub))
+                        .execute(db)
+                }
+            } catch {
+                print("[Add GitHub Account] Failed to add account: \(error.localizedDescription)")
+            }
         }
     }
 }

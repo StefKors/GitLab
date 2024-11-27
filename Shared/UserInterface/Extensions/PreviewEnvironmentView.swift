@@ -21,7 +21,7 @@ struct PreviewEnvironmentView: ViewModifier {
             .environmentObject(noticeState)
             .environmentObject(networkState)
             .environmentObject(settingsState)
-            .modelContainer(.shared)
+//            .modelContainer(.shared)
             .if(padding) {
                 $0.scenePadding()
             }

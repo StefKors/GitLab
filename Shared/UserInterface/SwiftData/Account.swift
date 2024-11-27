@@ -6,35 +6,40 @@
 //
 
 import SwiftUI
-import SwiftData
+import SharingGRDB
 
-enum GitProvider: String, Codable, CaseIterable {
-    case GitLab
-    case GitHub
+extension EnvironmentValues {
+    @Entry var account: Account? = nil
 }
 
-@Model final class Account {
-    @Attribute(.unique) var id: String
+enum GitProvider: String, Codable, CaseIterable, Hashable {
+    case GitLab = "GitLab"
+    case GitHub = "GitHub"
+}
+
+@Table
+struct Account: FetchableRecord, Identifiable, Equatable, Codable, MutablePersistableRecord {
+    
+
+    /// AutoIncrementedPrimaryKey
+    var id: Int64?
     var token: String
     var instance: String
+    @Column(as: JSONRepresentation<GitProvider>.self)
     var provider: GitProvider
+    @Column(as: Date.ISO8601Representation.self)
     var createdAt: Date = Date.now
+//    var requests: [UniversalMergeRequest] = []
 
-    @Relationship(deleteRule: .cascade, inverse: \UniversalMergeRequest.account)
-    var requests: [UniversalMergeRequest] = []
+//    /// The association from an account to its requests
+//    static let requests = hasMany(UniversalMergeRequest.self)
+//    /// The request for the requests of an account
+//    var requests: QueryInterfaceRequest<UniversalMergeRequest> {
+//        request(for: Account.requests)
+//    }
 
-//    @Relationship(deleteRule: .cascade, inverse: \MergeRequest.account)
-//    @Relationship(inverse: \MergeRequest.account)
-//    var mergeRequests: [MergeRequest] = []
-//
-//    @Relationship(inverse: \PullRequest.account)
-//    var pullRequests: [PullRequest] = []
-
-    init(token: String, instance: String, provider: GitProvider = .GitLab) {
-        self.id = UUID().uuidString
-        self.token = token
-        self.instance = instance
-        self.provider = provider
+    mutating func didInsert(_ inserted: InsertionSuccess) {
+        id = inserted.rowID
     }
 }
 

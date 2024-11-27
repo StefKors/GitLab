@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
-import SwiftData
+import SharingGRDB
 
 struct ExtraWindow: View {
     @Environment(\.openURL) private var openURL
     @StateObject private var noticeState = NoticeState()
     @StateObject private var networkState = NetworkState()
-    @Query(sort: \UniversalMergeRequest.createdAt, order: .reverse) private var mergeRequests: [UniversalMergeRequest]
-    @Query private var accounts: [Account]
-    @Query(sort: \LaunchpadRepo.createdAt, order: .reverse) private var repos: [LaunchpadRepo]
+    @FetchAll(UniversalMergeRequest.order(by: { $0.createdAt.desc() })) private var mergeRequests
+    @FetchAll(Account.order(by: { $0.createdAt.desc() })) private var accounts: [Account]
+    @FetchAll(LaunchpadRepo.order(by: { $0.updatedAt.desc() })) private var repos: [LaunchpadRepo]
 
     @State private var selectedView: QueryType = .authoredMergeRequests
 

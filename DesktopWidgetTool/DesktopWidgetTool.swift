@@ -28,28 +28,28 @@ struct Provider: TimelineProvider {
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         Task { @MainActor in
             let now = Date.now
-
-            let context = ModelContainer.shared.mainContext
-
-            let mergeRequests = (
-                try? context.fetch(
-                    FetchDescriptor<UniversalMergeRequest>(
-                        predicate: nil,
-                        sortBy: [.init(\.createdAt, order: .reverse)]
-                    )
-                )
-            ) ?? []
-            let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
-            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
-
-            let entry =   SimpleEntry(
-                date: now,
-                mergeRequests: mergeRequests, // Array(mergeRequests.prefix(5)),
-                accounts: accounts,
-                repos: repos,
-                selectedView: selectedView
-            )
-            completion(entry)
+//
+//            let context = ModelContainer.shared.mainContext
+//
+//            let mergeRequests = (
+//                try? context.fetch(
+//                    FetchDescriptor<UniversalMergeRequest>(
+//                        predicate: nil,
+//                        sortBy: [.init(\.createdAt, order: .reverse)]
+//                    )
+//                )
+//            ) ?? []
+//            let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
+//            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
+//
+//            let entry =   SimpleEntry(
+//                date: now,
+//                mergeRequests: mergeRequests, // Array(mergeRequests.prefix(5)),
+//                accounts: accounts,
+//                repos: repos,
+//                selectedView: selectedView
+//            )
+//            completion(entry)
         }
     }
 
@@ -59,18 +59,18 @@ struct Provider: TimelineProvider {
 
             let now = Date.now
 
-            let context = ModelContainer.shared.mainContext
-
-            let mergeRequests = (
-                try? context.fetch(
-                    FetchDescriptor<UniversalMergeRequest>(
-                        predicate: nil,
-                        sortBy: [.init(\.createdAt, order: .reverse)]
-                    )
-                )
-            ) ?? []
-            let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
-            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
+//            let context = ModelContainer.shared.mainContext
+//
+//            let mergeRequests = (
+//                try? context.fetch(
+//                    FetchDescriptor<UniversalMergeRequest>(
+//                        predicate: nil,
+//                        sortBy: [.init(\.createdAt, order: .reverse)]
+//                    )
+//                )
+//            ) ?? []
+//            let accounts = (try? context.fetch(FetchDescriptor<Account>())) ?? []
+//            let repos = (try? context.fetch(FetchDescriptor<LaunchpadRepo>()))?.reversed() ?? []
 
 //            var moreRepos = repos
 //            moreRepos.append(contentsOf: repos)
@@ -87,15 +87,15 @@ struct Provider: TimelineProvider {
             //    )
             // ) ?? []
 
-            entries.append(
-                SimpleEntry(
-                    date: now,
-                    mergeRequests: mergeRequests, // Array(mergeRequests.prefix(5)),
-                    accounts: accounts,
-                    repos: repos,
-                    selectedView: selectedView
-                )
-            )
+//            entries.append(
+//                SimpleEntry(
+//                    date: now,
+//                    mergeRequests: mergeRequests, // Array(mergeRequests.prefix(5)),
+//                    accounts: accounts,
+//                    repos: repos,
+//                    selectedView: selectedView
+//                )
+//            )
 
 //            let timeline = Timeline(entries: entries, policy: .after(now.addingTimeInterval(5 * 60)))
 //            let timeline = Timeline(entries: entries, policy: .never)

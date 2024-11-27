@@ -189,3 +189,4 @@ struct ApprovedReviewIcon: View {
     }
     .scenePadding()
 }
+

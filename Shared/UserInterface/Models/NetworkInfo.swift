@@ -14,4 +14,21 @@ struct NetworkInfo: Identifiable, Equatable {
     let method: HTTPMethod
     let timestamp: Date = .now
     let id: UUID = UUID()
+
+    static let preview = NetworkInfo(
+        label: "Fetch Authored Merge Requests",
+        account: .preview,
+        method: .get
+    )
+    static let previewGitLab = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: .preview, method: .get)
+    static let previewGitHub = NetworkInfo(
+        label: "Fetch Authored Pull Requests",
+        account: .previewGitHub,
+        method: .get
+    )
+    static let previewGitHub2 = NetworkInfo(
+        label: "Submit Authored Pull Requests",
+        account: .previewGitHub,
+        method: .post
+    )
 }

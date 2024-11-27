@@ -24,7 +24,7 @@ struct MediumMergeRequestWidgetInterface: View {
     }
 
     private var providers: [GitProvider] {
-        Array(Set(accounts.map(\.provider)))
+        Array(Set(accounts.compactMap { $0.provider }))
     }
 
     var body: some View {
@@ -59,7 +59,8 @@ struct MediumMergeRequestWidgetInterface: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 ForEach(Array(mergeRequests.prefix(5)), id: \.id) { request in
-                    WidgetMRRowIcon(request: request, providers: providers)
+                    // TODO: Insert account in view
+                    WidgetMRRowIcon(request: request, providers: providers, account: nil)
                 }
             }
         }

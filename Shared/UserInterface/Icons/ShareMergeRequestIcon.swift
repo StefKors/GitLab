@@ -73,11 +73,8 @@ struct ShareMergeRequestIcon: View {
     }
 
     func copyToPasteboard() {
-        let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
-        let content = """
-\(request.title ?? "") \(emoji)
-\(request.url?.absoluteString ?? "")
-"""
+//        let emoji = String.FriendlyEmojis.randomElement() ?? "🦆"
+        let content = ":github: PR: [\(request.title ?? "")](\(request.url?.absoluteString ?? ""))"
 #if canImport(AppKit)
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
@@ -87,7 +84,7 @@ struct ShareMergeRequestIcon: View {
         let pasteboard = UIPasteboard.general
         pasteboard.string = content
 #endif
-        chosenEmoji = emoji
+//        chosenEmoji = emoji
     }
 }
 

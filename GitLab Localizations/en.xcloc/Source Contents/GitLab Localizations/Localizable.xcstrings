@@ -1,0 +1,249 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " " : {
+
+    },
+    " (%@)" : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "%lld discussions" : {
+
+    },
+    "^[%lld reviews](inflect: true) requested" : {
+
+    },
+    "Account" : {
+
+    },
+    "Active:" : {
+
+    },
+    "Add Account" : {
+
+    },
+    "Add your GitLab or GitHub Account" : {
+
+    },
+    "Approved" : {
+
+    },
+    "Approved by %@" : {
+
+    },
+    "Automatic uses the right naming convention based on the first configured account." : {
+
+    },
+    "Base URL" : {
+
+    },
+    "CI canceled" : {
+
+    },
+    "CI Created" : {
+
+    },
+    "CI Failed" : {
+
+    },
+    "CI in progress" : {
+
+    },
+    "CI pipeline pending" : {
+
+    },
+    "CI pipeline preparing" : {
+
+    },
+    "CI pipeline scheduled" : {
+
+    },
+    "CI pipeline waiting for resources" : {
+
+    },
+    "CI Success" : {
+
+    },
+    "CI Warning" : {
+
+    },
+    "Close" : {
+
+    },
+    "Create a classic read-only GitHub [access-token](https://github.com/settings/tokens) that the app can use to query the API with. You need at least repo, workflow, org, and user permissions." : {
+
+    },
+    "Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with." : {
+
+    },
+    "Create merge request" : {
+
+    },
+    "Created at:" : {
+
+    },
+    "Debug Network" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete Repo Shortcut" : {
+
+    },
+    "Dismiss" : {
+
+    },
+    "Draft" : {
+
+    },
+    "duration" : {
+
+    },
+    "Enable dock icon" : {
+
+    },
+    "Enter token here..." : {
+
+    },
+    "Events are only recorded when debug window is open." : {
+
+    },
+    "Expires at:" : {
+
+    },
+    "Failed" : {
+
+    },
+    "GitHub" : {
+
+    },
+    "GitHub Token" : {
+
+    },
+    "GitLab" : {
+
+    },
+    "GitLab Desktop" : {
+
+    },
+    "GitLab Token" : {
+
+    },
+    "Hide or Show Dock Icon" : {
+
+    },
+    "https://www.gitlab.com" : {
+
+    },
+    "label" : {
+
+    },
+    "Language" : {
+
+    },
+    "Last used at:" : {
+
+    },
+    "Manual CI step" : {
+
+    },
+    "Merge request approved" : {
+
+    },
+    "Merge Requests" : {
+
+    },
+    "Merge Train 🚂" : {
+
+    },
+    "Name:" : {
+
+    },
+    "Needs Review" : {
+
+    },
+    "Network Events" : {
+
+    },
+    "Open on Web" : {
+
+    },
+    "Quit" : {
+
+    },
+    "Remove %@" : {
+
+    },
+    "Request type" : {
+
+    },
+    "Response" : {
+
+    },
+    "Retry CI pipeline" : {
+
+    },
+    "Review requested" : {
+
+    },
+    "Revoked:" : {
+
+    },
+    "Save" : {
+
+    },
+    "Scopes:" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Share" : {
+
+    },
+    "Show share button" : {
+
+    },
+    "Skipped CI step" : {
+
+    },
+    "status" : {
+
+    },
+    "Submit" : {
+
+    },
+    "System" : {
+
+    },
+    "This %@ account will be removed immediatly. You can't undo this action." : {
+
+    },
+    "timestamp" : {
+
+    },
+    "Tokens" : {
+
+    },
+    "Too much discussions" : {
+
+    },
+    "updating" : {
+
+    },
+    "Validating..." : {
+
+    },
+    "Your Pull Requests" : {
+
+    }
+  },
+  "version" : "1.0"
+}

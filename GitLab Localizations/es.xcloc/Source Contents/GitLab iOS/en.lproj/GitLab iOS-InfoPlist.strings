@@ -1,0 +1,4 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "GitLab";
+/* Bundle name */
+"CFBundleName" = "GitLab iOS";

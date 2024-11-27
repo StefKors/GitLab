@@ -28,9 +28,7 @@ struct MergeRequestRowView: View {
                 MRTitleView(linkText: request.title ?? "untitled", isDraft: request.isDraft)
                     .multilineTextAlignment(.leading)
                     .truncationMode(.middle)
-                    .padding(.trailing
-
-                    )
+                    .padding(.trailing)
 
                 HorizontalMergeRequestSubRowView(request: request)
             }

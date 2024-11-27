@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import SwiftData
+import SharingGRDB
 
 struct LaunchpadItem: View {
     var repo: LaunchpadRepo
 
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.modelContext) private var modelContext
+    @Dependency(\.defaultDatabase) private var database
 
     @State private var isHovering = false
 
@@ -23,7 +23,8 @@ struct LaunchpadItem: View {
 
                 VStack(alignment: .leading) {
                     Text(repo.name)
-                    Text(repo.group)
+//                    Text(repo.group)
+                    Text(repo.updatedAt, format: .dateTime)
                         .foregroundStyle(.secondary)
                 }
 
@@ -36,13 +37,17 @@ struct LaunchpadItem: View {
                 }
                 .buttonStyle(.menubar)
             }
-            .contextMenu {
-                Button("Delete Repo Shortcut", systemImage: "delete.left", role: .destructive) {
-                    withAnimation(.smooth) {
-                        modelContext.delete(repo)
-                    }
-                }
-            }
+//            .contextMenu {
+//                Button("Delete Repo Shortcut", systemImage: "delete.left", role: .destructive) {
+//                    withAnimation(.smooth) {
+//                        Task {
+//                            try await database.write { db in
+//                                try repo.delete(db)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
     }
 }
 

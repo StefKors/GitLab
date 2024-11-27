@@ -33,11 +33,12 @@ struct MainContentView: View {
                 BaseTextView(message: "All done 🥳")
                     .foregroundStyle(.secondary)
             } else {
-                    MergeRequestList(
-                        mergeRequests: filteredMergeRequests,
-                        accounts: accounts,
-                        selectedView: selectedView
-                    )
+                PlainMergeRequestList(mergeRequests: filteredMergeRequests, accounts: accounts)
+//                    MergeRequestList(
+//                        mergeRequests: filteredMergeRequests,
+//                        accounts: accounts,
+//                        selectedView: selectedView
+//                    )
                 .animation(.snappy(duration: 0.3), value: selectedView)
                 .padding(6)
                 .useScrollView(when: withScrollView)

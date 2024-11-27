@@ -7,7 +7,7 @@
 
 import SwiftUI
 // import UserNotifications
-import SwiftData
+import SharingGRDB
 
 struct AlertDetails: Identifiable {
     let name: String
@@ -15,107 +15,110 @@ struct AlertDetails: Identifiable {
     let item: Account
 }
 
- struct AccountSettingsView: View {
-    @Environment(\.modelContext) private var modelContext
+// createing a new token via a link
+// https://github.com/settings/tokens/new?description=Graphite+(Created+on+Jun%206,%2012:14%20PM)&scopes=repo,read:org,read:user,user:email
 
-    @Query var accounts: [Account]
+struct AccountSettingsView: View {
+    @Dependency(\.defaultDatabase) private var database
+    @FetchAll private var accounts: [Account]
     @State private var showingAlert: Bool = false
     @State private var details: AlertDetails?
     @State private var showCreateSheet: Bool = false
-    let alertTitle: String = "Confirm deletion"
-     var body: some View {
-         VStack(alignment: .leading, spacing: 0) {
-             SettingsTitleView(label: "Account", systemImage: "person.2.fill", fill: .blue.darker(by: 15))
-                 .padding()
-             //                .padding(.horizontal)
-                 .padding(.leading, 4)
+    private let alertTitle: String = "Confirm deletion"
 
-             Divider()
-             
-             Form {
-                 Section {
-                     if accounts.isEmpty {
-                         AccountListEmptyView()
-                     } else {
-                         List {
-                             ForEach(accounts) { account in
-                                 HStack {
-                                     GitProviderView(provider: account.provider)
-                                         .frame(width: 25, height: 25, alignment: .center)
-                                     AccountRow(account: account)
-                                     Spacer()
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            SettingsTitleView(label: "Account", systemImage: "person.2.fill", fill: .blue.darker(by: 15))
+                .padding()
+            //                .padding(.horizontal)
+                .padding(.leading, 4)
 
-                                     Button(role: .destructive) {
-                                         showAlert(for: account)
-                                     } label: {
-                                         Label("Delete", systemImage: "trash")
-                                     }
-                                     .labelStyle(.iconOnly)
-                                     .buttonStyle(.borderless)
-                                     .tint(.red)
-                                     .padding(.trailing, 4)
-                                 }
-                             }
-                             .onDelete(perform: deleteItems)
-                         }
-                         .padding(.vertical, 4)
-                     }
-                     HStack {
-                         Button("Add Account", action: { showCreateSheet.toggle() })
-                             .buttonStyle(.borderedProminent)
-                     }
-                 } header: {
-                     Text("Tokens")
-                         .foregroundStyle(.secondary)
-                 }
-                 .sheet(isPresented: $showCreateSheet, content: {
+            Divider()
+
+            Form {
+                Section {
+                    if accounts.isEmpty {
+                        AccountListEmptyView()
+                    } else {
+                        List {
+                            ForEach(accounts) { account in
+                                HStack {
+                                    GitProviderView(provider: account.provider)
+                                        .frame(width: 25, height: 25, alignment: .center)
+                                    AccountRow(account: account)
+                                    Spacer()
+
+                                    Button(role: .destructive) {
+                                        showAlert(for: account)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    .labelStyle(.iconOnly)
+                                    .buttonStyle(.borderless)
+                                    .tint(.red)
+                                    .padding(.trailing, 4)
+                                }
+                            }
+                            .onDelete(perform: deleteItems)
+                        }
+                        .padding(.vertical, 4)
+                    }
+                    HStack {
+                        Button("Add Account", action: { showCreateSheet.toggle() })
+                            .buttonStyle(.borderedProminent)
+                    }
+                } header: {
+                    Text("Tokens")
+                        .foregroundStyle(.secondary)
+                }
+                .sheet(isPresented: $showCreateSheet, content: {
 #if os(macOS)
-                     AddAccountView()
-                         .interactiveDismissDisabled(false)
-                         .presentationCompactAdaptation(.fullScreenCover)
+                    AddAccountView()
+                        .interactiveDismissDisabled(false)
+                        .presentationCompactAdaptation(.fullScreenCover)
 #else
-                     NavigationView {
-                         VStack {
-                             Text("sdf")
-                             // add sectioned view that goes step by step
-                             // 1. server
-                             // 2. key
-                             // 3. verify
-                             // 4. close
+                    NavigationView {
+                        VStack {
+                            Text("sdf")
+                            // add sectioned view that goes step by step
+                            // 1. server
+                            // 2. key
+                            // 3. verify
+                            // 4. close
 
-                             //                                            AddAccountView()
-                         }
-                         .border(Color.black)
-                         .navigationBarBackButtonHidden(false)
-                         .toolbar(.visible, for: .navigationBar)
-                         .toolbar {
-                             ToolbarItem(placement: .topBarLeading) {
-                                 Button("Cancel") {
+                            //                                            AddAccountView()
+                        }
+                        .border(Color.black)
+                        .navigationBarBackButtonHidden(false)
+                        .toolbar(.visible, for: .navigationBar)
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button("Cancel") {
 
-                                 }
-                             }
-                             ToolbarItem(placement: .topBarTrailing) {
-                                 Button("Done") {
+                                }
+                            }
+                            ToolbarItem(placement: .topBarTrailing) {
+                                Button("Done") {
 
-                                 }
-                             }
-                         }
-                     }
-                     //                    .interactiveDismissDisabled(false)
-                     //                    .presentationCompactAdaptation(.sheet)
-                     .presentationDetents([.medium])
+                                }
+                            }
+                        }
+                    }
+                    //                    .interactiveDismissDisabled(false)
+                    //                    .presentationCompactAdaptation(.sheet)
+                    .presentationDetents([.medium])
 #endif
-                     // .presentationContentInteraction(.resizes)
-                 })
+                    // .presentationContentInteraction(.resizes)
+                })
 
-                 // Section("Notifications") {
-                 //     HStack {
-                 //         Text("Clear all Notifications")
-                 //         Spacer()
-                 //         Button("Clear", action: clearNotifications)
-                 //     }
-                 // }
-             }
+                // Section("Notifications") {
+                //     HStack {
+                //         Text("Clear all Notifications")
+                //         Spacer()
+                //         Button("Clear", action: clearNotifications)
+                //     }
+                // }
+            }
         }
         .formStyle(.grouped)
         .groupBoxStyle(PlainGroupBoxStyle())
@@ -137,14 +140,20 @@ struct AlertDetails: Identifiable {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(accounts[index])
+                deleteItem(accounts[index])
             }
         }
     }
 
     private func deleteItem(_ item: Account) {
-        withAnimation {
-            modelContext.delete(item)
+        Task {
+            do {
+                try await database.write { db in
+                    try Account.delete(item).execute(db)
+                }
+            } catch {
+                print("[Delete Account] Failed to delete account: \(error.localizedDescription)")
+            }
         }
     }
 
@@ -164,13 +173,13 @@ struct AlertDetails: Identifiable {
     //             print("has delivered notif \(delivered.description)")
     //         }
     //     }
-    // 
+    //
     //     notifs.getPendingNotificationRequests { pendings in
     //         for pending in pendings {
     //             print("has pending notif \(pending.description)")
     //         }
     //     }
-    // 
+    //
     //     notifs.removeAllDeliveredNotifications()
     //     if #available(macOS 13.0, *) {
     //         notifs.setBadgeCount(0) { error in
@@ -182,7 +191,7 @@ struct AlertDetails: Identifiable {
     // }
 }
 
-#Preview {
-    AccountSettingsView()
-        .modelContainer(.shared)
-}
+//#Preview {
+//    AccountSettingsView()
+//        .modelContainer(.shared)
+//}

@@ -13,7 +13,7 @@ class GitHub {
     struct Query: Codable, Equatable, Sendable, Hashable {
         let data: DataClass
 
-        var authoredMergeRequests: [GitHub.PullRequestsNode] {
+        var authoredPullRequests: [GitHub.PullRequestsNode] {
             return self.data.viewer?.pullRequests?.nodes?.compactMap({ node in
                 if node.locked == false {
                     return node
@@ -38,16 +38,17 @@ class GitHub {
     struct PullRequestsNode: Codable, Equatable, Identifiable, Hashable {
         let id: String
         let title: String?
-        let url: String?
+        let url: String? // url?
         let state: PullRequestState?
         let isDraft: Bool?
-        let createdAt: Date?
-        let updatedAt: Date?
+        let createdAt: String?
+        let updatedAt: String?
         let headRefName: String?
         let baseRefName: String?
         let reviewDecision: ReviewDecision?
-        let labels: Labels?
-        let isInMergeQueue, locked: Bool?
+//        let labels: Labels?
+        let isInMergeQueue: Bool?
+        let locked: Bool?
         let mergeStateStatus: MergeStateStatus?
         let number: Int?
         let permalink: String?
@@ -62,11 +63,12 @@ class GitHub {
             url: "https://github.com/beamlegacy/beam/pull/12",
             state: .open,
             isDraft: false,
-            createdAt: Date.from("2023-10-23T14:21:50Z"),
-            updatedAt: Date.from("2023-12-11T11:55:38Z"),
+            createdAt: Date.from("2023-10-23T14:21:50Z")?.description,
+            updatedAt: Date.from("2023-12-11T11:55:38Z")?.description,
             headRefName: "summary-implementation",
             baseRefName: "main",
-            reviewDecision: .reviewRequired, labels: nil,
+            reviewDecision: .reviewRequired,
+//            labels: nil,
             isInMergeQueue: false,
             locked: false,
             mergeStateStatus: .dirty,
@@ -188,7 +190,7 @@ class GitHub {
 
     // MARK: - ContextsNode (Like jobs in GitLab)
     struct ContextsNode: Codable, Equatable, Hashable, Sendable {
-        let id: String
+        let id: String?
         let name: String?
         let status: CheckStatusState?
         let conclusion: CheckConclusionState?
@@ -512,11 +514,12 @@ class GitHub {
     // MARK: - Author
     struct Author: Codable, Equatable, Sendable, Hashable {
         let avatarURL: String?
-        let name: String?
+//        let name: String?
         let login: String?
 
         enum CodingKeys: String, CodingKey {
             case avatarURL = "avatarUrl"
-            case name, login
+//            case name
+             case login = "login"
         }
     }}

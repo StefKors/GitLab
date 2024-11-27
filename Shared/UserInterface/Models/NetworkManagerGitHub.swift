@@ -10,10 +10,25 @@ import Get
 
 class NetworkManagerGitHub {
     static let shared = NetworkManagerGitHub()
-//
-//    func authoredMergeRequestsReq(with account: Account) -> Request<GitLabQuery> {
-//
-//    }
+
+    var clients: [String: APIClient] = [
+        "https://api.github.com": APIClient(baseURL: URL(string: "https://api.github.com")!)
+    ]
+
+    func getClient(instance: String) -> APIClient {
+        if let client = clients[instance] {
+            return client
+        } else {
+            let client = APIClient(baseURL: URL(string: instance)!)
+            clients[instance] = client
+            return client
+        }
+    }
+
+    //
+    //    func authoredMergeRequestsReq(with account: Account) -> Request<GitLabQuery> {
+    //
+    //    }
 
     /// Private method to build the GraphQL query based on the user information. Prefer getQuery methods instead
     /// - Parameters:
@@ -21,34 +36,50 @@ class NetworkManagerGitHub {
     ///   - type: QueryType
     /// - Returns: GraphQL query with MR information
     fileprivate static func buildQuery(type: QueryType) -> String {
-//        let state = "OPEN"
-        let query = "{ viewer { pullRequests(last: 100, states: OPEN) { nodes { id title url state isDraft url createdAt updatedAt headRefName baseRefName reviewDecision labels(first: 100) { nodes { id name color isDefault } } isInMergeQueue locked mergeStateStatus number permalink totalCommentsCount repository { name id isLocked isArchived url owner { login id avatarUrl } homepageUrl } state reviewDecision reviews(first: 100) { nodes { id state author { avatarUrl login } } } statusCheckRollup { state contexts(last: 100) { nodes { ... on CheckRun { id name status conclusion detailsUrl title url checkSuite { workflowRun { workflow { id name } } } } } } } } } } }"
-
-        return "{\n\t\"query\": \"\(query)\",\n\t\"variables\": {}\n}"
+        //        let state = "OPEN"
+//        let query = "{ viewer { pullRequests(last: 100, states: OPEN) { nodes { id title url state isDraft url createdAt updatedAt headRefName baseRefName reviewDecision labels(first: 100) { nodes { id name color isDefault } } isInMergeQueue locked mergeStateStatus number permalink totalCommentsCount repository { name id isLocked isArchived url owner { login id avatarUrl } homepageUrl } state reviewDecision reviews(first: 100) { nodes { id state author { avatarUrl login } } } statusCheckRollup { state contexts(last: 100) { nodes { ... on CheckRun { id name status conclusion detailsUrl title url checkSuite { workflowRun { workflow { id name } } } } } } } } } } }"
+//
+//        return "{\n\t\"query\": \"\(query)\",\n\t\"variables\": {}\n}"
+        return "{\n\t\"query\": \"query{viewer{pullRequests(last:100,states:OPEN){nodes{id title url state isDraft url createdAt updatedAt headRefName baseRefName reviewDecision labels(first:100){nodes{id name color isDefault}}isInMergeQueue locked mergeStateStatus number permalink totalCommentsCount repository{name id isLocked isArchived url owner{login id avatarUrl}homepageUrl}state reviewDecision reviews(first:100){nodes{id state author{avatarUrl login}}}statusCheckRollup{state contexts(last:100){nodes{... on CheckRun{id name status conclusion detailsUrl title url checkSuite{workflowRun{workflow{id name}}}}}}}}}}}\",\n\t\"variables\": {}\n}"
     }
 
-//    func getQuery() {
-//
-//    }
+    //    func getQuery() {
+    //
+    //    }
+
+
 
     func authoredMergeRequestsReq(with account: Account) -> Request<GitHub.Query> {
         Request.init(
             path: "/graphql",
             method: .post,
-            body: Self.buildQuery(type: .authoredMergeRequests),
-            headers: ["Authorization": "token \(account.token)"]
+            body: """
+            { "query": "query{viewer{pullRequests(last:100,states:OPEN){nodes{id title url state isDraft url createdAt updatedAt headRefName baseRefName reviewDecision labels(first:100){nodes{id name color isDefault}}isInMergeQueue locked mergeStateStatus number permalink totalCommentsCount repository{name id isLocked isArchived url owner{login id avatarUrl}homepageUrl}state reviewDecision reviews(first:100){nodes{id state author{avatarUrl login}}}statusCheckRollup{state contexts(last:100){nodes{... on CheckRun{id name status conclusion detailsUrl title url checkSuite{workflowRun{workflow{id name}}}}}}}}}}}", "variables": {}}
+""".trimmingCharacters(in: .whitespacesAndNewlines),
+            headers: [
+                "Authorization": "bearer \(account.token)", //"bearer \(account.token)",
+                "Content-Type": "application/json; charset=utf-8"
+            ]
         )
     }
 
     // https://docs.github.com/en/graphql/overview/explorer
     // https://api.github.com/graphql
     func fetchAuthoredPullRequests(with account: Account) async throws -> [GitHub.PullRequestsNode]? {
-        let client = APIClient(baseURL: URL(string: account.instance))
-        print("doing request to \(account.instance) with token: \(account.token)")
-        let response: GitHub.Query = try await client.send(authoredMergeRequestsReq(with: account)).value
-        let result = response.authoredMergeRequests
-        print("recieved \(result.count) pull requests")
-        return result
+        let client = getClient(instance: account.instance)
+        let response = try? await client.send(authoredMergeRequestsReq(with: account))
+        return response?.value.authoredPullRequests
+    }
+
+    func fetchAuthoredPullRequests(with account: Account) async throws -> [UniversalMergeRequest]? {
+        return try await fetchAuthoredPullRequests(with: account)?.map { request in
+            return UniversalMergeRequest(
+                request: request,
+                account: account,
+                provider: .GitHub,
+                type: .authoredMergeRequests
+            )
+        }
     }
 
 }

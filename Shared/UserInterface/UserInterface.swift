@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftData
+import SharingGRDB
 import Get
 
 /// TODO: Show different accounts
@@ -18,17 +18,12 @@ import Get
 /// TODO: Reinstate clear notifications setting
 /// TODO: Split networking
 struct UserInterface: View {
-    @Environment(\.modelContext) private var modelContext
+    @Dependency(\.defaultDatabase) private var database
+//    @SharedReader(.fetchAll(sql: "SELECT * FROM universal_merge_requests ORDER BY datetime(createdAt) DESC")) private var mergeRequests: [UniversalMergeRequest]
 
-    @Query private var accounts: [Account]
-    @Query(
-        sort: \LaunchpadRepo.createdAt,
-        order: .reverse
-    ) private var repos: [LaunchpadRepo]
-    @Query(
-        sort: \UniversalMergeRequest.createdAt,
-        order: .reverse
-    ) private var mergeRequests: [UniversalMergeRequest]
+    @FetchAll(UniversalMergeRequest.order(by: { $0.createdAt.desc() })) private var mergeRequests
+    @FetchAll(Account.order(by: { $0.createdAt.desc() })) private var accounts: [Account]
+    @FetchAll(LaunchpadRepo.order(by: { $0.updatedAt.desc() })) private var repos: [LaunchpadRepo]
 
     @State private var selectedView: QueryType = .authoredMergeRequests
 
@@ -107,12 +102,12 @@ struct UserInterface: View {
         for account in accounts {
             if account.provider == .GitLab {
                 let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
-                let results = await wrapRequest(info: info) {
+                let results: [GitLab.MergeRequest]? = await wrapRequest(info: info) {
                     try await NetworkManagerGitLab.shared.fetchReviewRequestedMergeRequests(with: account)
                 }
 
                 if let results {
-                    removeAndInsertUniversal(
+                    try? await removeAndInsertUniversal(
                         .reviewRequestedMergeRequests,
                         account: account,
                         results: results
@@ -125,45 +120,31 @@ struct UserInterface: View {
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
-            if account.provider == .GitLab {
-                let info = NetworkInfo(
-                    label: "Fetch Authored Merge Requests",
-                    account: account,
-                    method: .get
-                )
-                let results = await wrapRequest(info: info) {
-                    try await NetworkManagerGitLab.shared.fetchAuthoredMergeRequests(with: account)
+            let info = NetworkInfo(
+                label: "Fetch Authored Merge Requests",
+                account: account,
+                method: .get
+            )
+            let requests: [UniversalMergeRequest]? = await wrapRequest(info: info) {
+                switch account.provider {
+                case .GitLab:
+                    return try await NetworkManagerGitLab.shared.fetchAuthoredMergeRequests(with: account)
+                case .GitHub:
+                    return try await NetworkManagerGitHub.shared.fetchAuthoredPullRequests(with: account)
                 }
+            }
 
-                if let results {
-                    removeAndInsertUniversal(
-                        .authoredMergeRequests,
-                        account: account,
-                        results: results
-                    )
-                }
-            } else {
-                let info = NetworkInfo(
-                    label: "Fetch Authored Pull Requests",
-                    account: account,
-                    method: .get
-                )
-                let results = await wrapRequest(info: info) {
-                    try await NetworkManagerGitHub.shared.fetchAuthoredPullRequests(with: account)
-                }
+            guard let requests else { return }
 
-                if let results {
-                    removeAndInsertUniversal(
-                        .authoredMergeRequests,
-                        account: account,
-                        results: results
-                    )
-                }
+            do {
+                try await removeAndInsertUniversal(.authoredMergeRequests, account: account, requests: requests)
+            } catch {
+                print("[\(account.provider)] Failed to insert: \(error.localizedDescription)")
             }
         }
     }
 
-    private func removeAndInsertUniversal(_ type: QueryType, account: Account, results: [GitLab.MergeRequest]) {
+    private func removeAndInsertUniversal(_ type: QueryType, account: Account, results: [GitLab.MergeRequest]) async throws {
         // Map results to universal request
         let requests = results.map { result in
             return UniversalMergeRequest(
@@ -174,11 +155,10 @@ struct UserInterface: View {
             )
         }
         // Call universal remove and insert
-        removeAndInsertUniversal(type, account: account, requests: requests)
+        try await removeAndInsertUniversal(type, account: account, requests: requests)
     }
 
-    private func removeAndInsertUniversal(_ type: QueryType, account: Account, results: [GitHub.PullRequestsNode]) {
-        // Map results to universal request
+    private func removeAndInsertUniversal(_ type: QueryType, account: Account, results: [GitHub.PullRequestsNode]) async throws {
         let requests = results.map { result in
             return UniversalMergeRequest(
                 request: result,
@@ -188,71 +168,43 @@ struct UserInterface: View {
             )
         }
         // Call universal remove and insert
-        removeAndInsertUniversal(type, account: account, requests: requests)
+        try await removeAndInsertUniversal(type, account: account, requests: requests)
     }
 
-    private func removeAndInsertUniversal(_ type: QueryType, account: Account, requests: [UniversalMergeRequest]) {
-        // Get array of ids of current of type
-        let existing = mergeRequests.filter({ $0.type == type }).map({ $0.requestID })
-        // Get arary of new of current of type
-        let updated = requests.map { $0.requestID }
-        // Compute difference
-        let difference = existing.difference(from: updated)
-        // Delete existing
-        for pullRequest in account.requests {
-            if difference.contains(pullRequest.requestID) {
-                print("removing \(pullRequest.requestID)")
-                modelContext.delete(pullRequest)
-                try? modelContext.save()
+    private func removeAndInsertUniversal(_ type: QueryType, account: Account, requests: [UniversalMergeRequest]) async throws {
+        if requests.isEmpty {
+            return
+        }
+        // Map results to universal request
+        let incomingIds = requests.map(\.id)
+
+        // Remove all MRs from this account that aren't included anymore
+        let mrsToRemove = mergeRequests.filter { existingMR in
+            let isAccount = existingMR.accountsId == account.id
+            return isAccount && !incomingIds.contains(existingMR.id)
+        }
+
+        for mrToRemove in mrsToRemove {
+            try await database.write { db in
+                try UniversalMergeRequest.delete(mrToRemove).execute(db)
             }
         }
 
         for request in requests {
-            // update values
-            if let existingMR = mergeRequests.first(where: { request.requestID == $0.requestID }) {
-                existingMR.mergeRequest = request.mergeRequest
-                existingMR.pullRequest = request.pullRequest
-            } else {
-                // if not insert
-                modelContext.insert(request)
+            try await database.write { db in
+                try UniversalMergeRequest.upsert(UniversalMergeRequest.Draft(request)).execute(db)
             }
 
-            // If no matching launchpad repo, insert a new one
-            let launchPadItem = repos.first { repo in
-                repo.url == request.repoUrl
-            }
-
-            if let launchPadItem {
-                if launchPadItem.hasUpdatedSinceLaunch == false {
-                    if let name = request.repoName {
-                        launchPadItem.name = name
+            // Update the repository's updatedAt field
+            if let repoUrl = request.repoUrl {
+                if var repo = repos.first(where: { $0.url == repoUrl }) {
+                    if repo.updatedAt < request.updatedAt {
+                        repo.updatedAt = request.updatedAt
+                        try await database.write { db in
+                            try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                        }
                     }
-                    if let owner = request.repoOwner {
-                        launchPadItem.group = owner
-                    }
-                    if  let url = request.repoUrl {
-                        launchPadItem.url = url
-                    }
-                    if let imageURL = request.repoImage {
-                        launchPadItem.imageURL = imageURL
-                    }
-                    launchPadItem.provider = request.provider
-                    launchPadItem.hasUpdatedSinceLaunch = true
                 }
-            } else if let name = request.repoName,
-                      let owner = request.repoOwner,
-                      let url = request.repoUrl {
-
-                let repo = LaunchpadRepo(
-                    id: request.repoId ?? UUID().uuidString,
-                    name: name,
-                    imageURL: request.repoImage,
-                    group: owner,
-                    url: url,
-                    provider: request.provider
-                )
-
-                modelContext.insert(repo)
             }
         }
     }
@@ -278,40 +230,115 @@ struct UserInterface: View {
                 if let results {
                     for result in results {
                         if let url = result.webURL {
-                            // If no matching launchpad repo, insert a new one
-                            let launchPadItem = repos.first { repo in
-                                repo.url == url
-                            }
+                            // Check if repo already exists in database
+                            let existingRepo = repos.first { $0.url == url }
 
-                            if let launchPadItem {
-                                if launchPadItem.hasUpdatedSinceLaunch == false {
+                            if let existingRepo {
+                                print("updating \(existingRepo)")
+                                // Update existing repo if it hasn't been updated since launch
+                                if existingRepo.hasUpdatedSinceLaunch == false {
+                                    var updatedRepo = existingRepo
                                     if let name = result.name {
-                                        launchPadItem.name = name
+                                        updatedRepo.name = name
                                     }
                                     if let owner = result.group?.fullName ?? result.namespace?.fullName {
-                                        launchPadItem.group = owner
+                                        updatedRepo.group = owner
                                     }
-                                    launchPadItem.url = url
+                                    updatedRepo.url = url
                                     if let image = await NetworkManagerGitLab.shared.getProjectImage(with: account, result) {
-                                        launchPadItem.image = image
+                                        updatedRepo.image = image
                                     }
-                                    launchPadItem.provider = account.provider
-                                    launchPadItem.hasUpdatedSinceLaunch = true
+                                    updatedRepo.provider = account.provider
+                                    updatedRepo.hasUpdatedSinceLaunch = true
+                                    
+                                    try? await database.write { db in
+                                        try updatedRepo.update(db)
+                                    }
                                 }
                             } else {
+                                // Insert new repo
                                 let repo = LaunchpadRepo(
                                     id: result.id,
                                     name: result.name ?? "",
                                     image: await NetworkManagerGitLab.shared.getProjectImage(with: account, result),
                                     group: result.group?.fullName ?? result.namespace?.fullName ?? "",
                                     url: url,
+                                    provider: account.provider,
                                     hasUpdatedSinceLaunch: true
                                 )
-                                modelContext.insert(repo)
+                                
+                                try? await database.write { db in
+                                    try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                                }
                             }
                         }
                     }
-                    try? modelContext.save()
+                }
+            } else if account.provider == .GitHub {
+                // Extract unique repositories from GitHub pull requests
+                let githubRepos = mergeRequests
+                    .filter { $0.provider == .GitHub && $0.accountsId == account.id }
+                    .compactMap { request -> (id: String, name: String, owner: String, url: URL, image: URL?, updatedAt: Date)? in
+                        guard let repo = request.pullRequest?.repository,
+                              let repoUrl = request.repoUrl,
+                              let repoName = request.repoName,
+                              let repoOwner = request.repoOwner else {
+                            return nil
+                        }
+                        
+                        return (
+                            id: repo.id ?? "github-\(UUID().uuidString)",
+                            name: repoName,
+                            owner: repoOwner,
+                            url: repoUrl,
+                            image: request.repoImage,
+                            updatedAt: request.updatedAt
+                        )
+                    }
+                
+                // Get unique repositories
+                let uniqueRepos = Dictionary(grouping: githubRepos, by: { $0.url })
+                    .compactMap { $0.value.first }
+                
+                for githubRepo in uniqueRepos {
+                    // Check if repo already exists in database
+                    let existingRepo = repos.first { $0.url == githubRepo.url }
+                    
+                    if let existingRepo {
+                        print("updating GitHub repo \(existingRepo)")
+                        // Update existing repo if it hasn't been updated since launch
+                        if existingRepo.hasUpdatedSinceLaunch == false {
+                            var updatedRepo = existingRepo
+                            updatedRepo.name = githubRepo.name
+                            updatedRepo.group = githubRepo.owner
+                            updatedRepo.url = githubRepo.url
+                            updatedRepo.imageURL = githubRepo.image
+                            updatedRepo.provider = account.provider
+                            updatedRepo.hasUpdatedSinceLaunch = true
+                            updatedRepo.updatedAt = existingRepo.updatedAt
+
+                            try? await database.write { db in
+                                try updatedRepo.update(db)
+                            }
+                        }
+                    } else {
+                        // Insert new repo
+                        let repo = LaunchpadRepo(
+                            id: githubRepo.id,
+                            name: githubRepo.name,
+                            image: nil,
+                            imageURL: githubRepo.image,
+                            group: githubRepo.owner,
+                            url: githubRepo.url,
+                            provider: account.provider,
+                            hasUpdatedSinceLaunch: true,
+                            updatedAt: githubRepo.updatedAt
+                        )
+                        
+                        try? await database.write { db in
+                            try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                        }
+                    }
                 }
             }
         }
@@ -321,7 +348,7 @@ struct UserInterface: View {
     private func branchPushes() async {
         for account in accounts {
             if account.provider == .GitLab {
-                let info = NetworkInfo(label: "Branch Push", account: account, method: .get)
+                let info = NetworkInfo(label: "Fetch Branch Push", account: account, method: .get)
                 let notice = await wrapRequest(info: info) {
                     try await NetworkManagerGitLab.shared.fetchLatestBranchPush(with: account, repos: repos)
                 }
@@ -347,6 +374,7 @@ struct UserInterface: View {
 
     @MainActor
     private func wrapRequest<T>(info: NetworkInfo, do request: () async throws -> T?) async -> T? {
+        print("[\(info.method.rawValue)] [\(info.account.instance.replacingOccurrences(of: "https://", with: ""))] \(info.label)")
         let event = NetworkEvent(info: info, status: nil, response: nil)
         networkState.add(event)
         do {
@@ -360,6 +388,7 @@ struct UserInterface: View {
             event.response = "Unacceptable Status Code: \(statusCode)"
             networkState.update(event)
         } catch let error {
+            print("catching error")
             event.status = 0
             event.response = error.localizedDescription
             networkState.update(event)
@@ -373,13 +402,11 @@ struct UserInterface: View {
 #Preview {
     HStack(alignment: .top) {
         UserInterface()
-            .modelContainer(.previews)
             .environmentObject(NoticeState())
             .environmentObject(NetworkState())
-            .frame(maxHeight: .infinity, alignment: .top)
-            .scenePadding()
+//            .frame(maxHeight: .infinity, alignment: .top)
+        //            .modelContainer(.previews)
     }
-    .scenePadding()
 }
 
 // NotificationManager.shared.sendNotification(

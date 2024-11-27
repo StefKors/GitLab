@@ -1,0 +1,6 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "NotificationContent";
+/* Bundle name */
+"CFBundleName" = "NotificationContent";
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "";

@@ -8,6 +8,7 @@ import Foundation
 import Get
 
 extension NetworkManagerGitLab {
+
     func addLaunchpadProject(with account: Account, _ project: GitLab.TargetProject) async -> LaunchpadRepo? {
         // guard project.avatarUrl != nil, let url = project.webURL else {
         guard let url = project.webURL else {
@@ -44,10 +45,7 @@ extension NetworkManagerGitLab {
             ]
         )
         // uses custom delegate to handle correctly encoding url path
-        let launchPadClient = APIClient(configuration: APIClient.Configuration(
-            baseURL: URL(string: account.instance),
-            delegate: LaunchPadClientDelegate()
-        ))
+        let launchPadClient = getLaunchpadClient(instance: account.instance)
 
         do {
             let response: GitLab.ProjectImageResponse? = try await launchPadClient.send(req).value

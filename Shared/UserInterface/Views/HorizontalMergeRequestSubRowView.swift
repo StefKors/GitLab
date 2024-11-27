@@ -10,10 +10,14 @@ import SwiftUI
 struct HorizontalMergeRequestSubRowView: View {
     var request: UniversalMergeRequest
 
+    @Environment(\.account) private var account
+
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
-            GitProviderView(provider: request.account.provider)
-                .frame(width: 18, height: 18, alignment: .center)
+            if let provider = account?.provider {
+                GitProviderView(provider: provider)
+                    .frame(width: 18, height: 18, alignment: .center)
+            }
 
             AutoSizingWebLinks(request: request)
 
@@ -26,11 +30,11 @@ struct HorizontalMergeRequestSubRowView: View {
             MergeStatusView(request: request)
 
             if let pipeline = request.mergeRequest?.headPipeline {
-                PipelineView(pipeline: pipeline, instance: request.account.instance)
+                PipelineView(pipeline: pipeline, instance: account?.instance)
             }
 
             if let status = request.pullRequest?.statusCheckRollup {
-                ActionsView(status: status, instance: request.account.instance)
+                ActionsView(status: status, instance: account?.instance)
             }
         }
     }

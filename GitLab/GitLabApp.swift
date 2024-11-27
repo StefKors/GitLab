@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SharingGRDB
 
 //private static func updateDockIcon() {
 //    dockContentView.needsDisplay = true
@@ -50,12 +51,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage("Settings.activationPolicy") private var activationPolicy: Bool = false
     /// Setting activation policy to `.prohibited` to prevent it from stealing the current app's focus
     func applicationWillFinishLaunching(_ notification: Notification) {
-        NSApplication.shared.setActivationPolicy(.prohibited)
+//        NSApplication.shared.setActivationPolicy(.prohibited)
     }
     /// Setting desired activation policy (`.regular` or `.accessory`) and showing app's windows
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy ? .regular : .accessory
-        NSApplication.shared.setActivationPolicy(newActivationPolicy)
+//        let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy ? .regular : .accessory
+        NSApplication.shared.setActivationPolicy(.regular)
 //        WindowManager.shared.show()
     }
 
@@ -81,13 +82,20 @@ struct GitLabApp: App {
     @StateObject private var noticeState = NoticeState()
     @StateObject private var networkState = NetworkState()
 
+    init() {
+        prepareDependencies {
+            let db = try! appDatabase()
+            $0.defaultDatabase = db
+        }
+    }
+
     var body: some Scene {
         Window("GitLab", id: "GitLab-Window") {
             ExtraWindow()
                 .environmentObject(noticeState)
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
-                .modelContainer(.shared)
+//                .modelContainer(.shared)
                 .navigationTitle("GitLab")
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
                 .containerBackground(.thinMaterial, for: .window)
@@ -113,13 +121,12 @@ struct GitLabApp: App {
 //        .windowIdealSize(.fitToContent)
 //        .defaultLaunchBehavior(.presented)
 
-
+//
         MenuBarExtra(content: {
             UserInterface()
                 .environmentObject(noticeState)
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
-                .modelContainer(.shared)
                 .frame(width: 600)
         }, label: {
             Label(title: {
@@ -136,7 +143,7 @@ struct GitLabApp: App {
                 .environmentObject(noticeState)
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
-                .modelContainer(.shared)
+//                .modelContainer(.shared)
                 .ignoresSafeArea(.all, edges: .top)
                 .navigationTitle("Settings")
                 .toolbar(removing: .title)
@@ -147,8 +154,79 @@ struct GitLabApp: App {
                 .windowResizeBehavior(.disabled)
         }
         .windowResizability(.contentSize)
-        .defaultSize(width: 600, height: 400)
+        .defaultSize(width: 600, height: 500)
         .restorationBehavior(.disabled)
+    }
 
+    func appDatabase() throws -> any DatabaseWriter {
+        let database: any DatabaseWriter
+        var configuration = Configuration()
+        configuration.foreignKeysEnabled = true
+        configuration.prepareDatabase { db in
+#if DEBUG
+//            db.trace(options: .profile) {
+//                print($0.expandedDescription)
+//            }
+#endif
+        }
+        @Dependency(\.context) var context
+        if context == .live {
+            let path = URL.documentsDirectory.appending(component: "db.sqlite").path()
+            print("open", path)
+            database = try! DatabasePool(path: path, configuration: configuration)
+        } else {
+            database = try! DatabaseQueue(configuration: configuration)
+        }
+        var migrator = DatabaseMigrator()
+#if DEBUG
+        migrator.eraseDatabaseOnSchemaChange = true
+#endif
+        migrator.registerMigration("Create Account table") { db in
+            try db.create(table: Account.tableName) { table in
+                table.autoIncrementedPrimaryKey("id")
+                table.column("token", .text).notNull()
+                table.column("instance", .text).notNull()
+                table.column("provider", .jsonb).notNull()
+                table.column("createdAt", .datetime).notNull()
+            }
+        }
+
+        migrator.registerMigration("Create UniversalMergeRequest table") { db in
+            try db.create(table: UniversalMergeRequest.tableName) { table in
+                table.column("id", .text).notNull().unique()
+                table.column("requestID", .text).notNull()
+                table.column("createdAt", .datetime).notNull()
+                table.column("provider", .jsonb).notNull()
+                table.column("mergeRequest", .jsonb)
+                table.column("pullRequest", .jsonb)
+                //                table.column("accountId", .integer)
+                //                    .references(Account.databaseTableName, column: "id", onDelete: .cascade)
+                //                    .notNull()
+                // Deletes MRs when Account is deleted
+                table.belongsTo(Account.tableName, onDelete: .cascade).notNull()
+                table.column("type", .jsonb)
+            }
+        }
+
+        migrator.registerMigration("Create LaunchpadRepo table") { db in
+            try db.create(table: LaunchpadRepo.tableName) { table in
+                table.column("id", .text).notNull().unique()
+                table.column("name", .text).notNull()
+                table.column("image", .blob)
+                table.column("imageURL", .jsonb)
+                table.column("group", .text).notNull()
+                table.column("url", .jsonb).notNull()
+                table.column("createdAt", .datetime).notNull()
+                table.column("updatedAt", .datetime).notNull()
+                table.column("provider", .jsonb)
+                table.column("hasUpdatedSinceLaunch", .boolean).notNull().defaults(to: false)
+            }
+        }
+        //        migrator.registerMigration("Create 'universal_merge_requests' table") { db in
+        //
+        //        }
+        try! migrator.migrate(database)
+        print("migrator.migrations: \(migrator.migrations)")
+        return database
     }
 }
