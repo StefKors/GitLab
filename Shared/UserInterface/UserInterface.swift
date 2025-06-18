@@ -118,6 +118,23 @@ struct UserInterface: View {
                         results: results
                     )
                 }
+            } else {
+                let info = NetworkInfo(
+                    label: "Fetch Review Requested Pull Requests",
+                    account: account,
+                    method: .get
+                )
+                let results = await wrapRequest(info: info) {
+                    try await NetworkManagerGitHub.shared.fetchReviewRequestedPullRequests(with: account)
+                }
+
+                if let results {
+                    removeAndInsertUniversal(
+                        .reviewRequestedMergeRequests,
+                        account: account,
+                        results: results
+                    )
+                }
             }
         }
     }
