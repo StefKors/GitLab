@@ -519,4 +519,36 @@ class GitHub {
             case avatarURL = "avatarUrl"
             case name, login
         }
-    }}
+    }
+
+    // MARK: - SearchQuery (for review requested PRs using search API)
+    struct SearchQuery: Codable, Equatable, Sendable, Hashable {
+        let data: SearchDataClass
+        
+        var reviewRequestedMergeRequests: [GitHub.PullRequestsNode] {
+            return self.data.search?.edges?.compactMap({ edge in
+                if edge.node?.locked == false {
+                    return edge.node
+                } else {
+                    return nil
+                }
+            }) ?? []
+        }
+    }
+
+    // MARK: - SearchDataClass
+    struct SearchDataClass: Codable, Equatable, Sendable, Hashable {
+        let search: Search?
+    }
+
+    // MARK: - Search
+    struct Search: Codable, Equatable, Sendable, Hashable {
+        let issueCount: Int?
+        let edges: [SearchEdge]?
+    }
+
+    // MARK: - SearchEdge
+    struct SearchEdge: Codable, Equatable, Sendable, Hashable {
+        let node: PullRequestsNode?
+    }
+}
