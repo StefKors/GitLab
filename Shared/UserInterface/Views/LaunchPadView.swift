@@ -13,7 +13,7 @@ struct LaunchpadView: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(repos.reversed(), id: \.id) { repo in
+                ForEach(repos, id: \.id) { repo in
                     LaunchpadItem(repo: repo)
                 }
                 Spacer()

@@ -7,6 +7,36 @@
 
 import SwiftUI
 
+struct LabelsView: View {
+    var request: UniversalMergeRequest
+
+    var body: some View {
+        HStack {
+            ForEach(request.labels, id: \.self) { label in
+                Text(label)
+                    .font(.footnote)
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 6)
+                    .background(.quaternary, in: Capsule())
+                    .foregroundStyle(.secondary)
+                    .transition(.opacity.combined(with: .blurReplace).combined(with: .move(edge: .leading)))
+            }
+        }
+    }
+}
+
+#Preview {
+    LabelsView(
+        request: UniversalMergeRequest(
+            request: .previewGitHub,
+            account: .previewGitHub,
+            provider: .GitHub,
+            type: .authoredMergeRequests
+        )
+    )
+    .scenePadding()
+}
+
 struct DoubleLineMergeRequestSubRowView: View {
     var request: UniversalMergeRequest
     var account: Account?
@@ -20,6 +50,8 @@ struct DoubleLineMergeRequestSubRowView: View {
                 }
 
                 AutoSizingWebLinks(request: request)
+
+                LabelsView(request: request)
 
                 Spacer()
             }

@@ -188,7 +188,23 @@ struct UniversalMergeRequest: FetchableRecord, Identifiable, Equatable, Codable,
         case .GitHub: return pullRequest?.reviewDecision == .approved
         case .GitLab: return (approvals?.count ?? 0) > 0
         }
-        
+    }
+
+    var labels: [String] {
+        switch provider {
+        case .GitHub: return pullRequest?.labels?.nodes?.compactMap(\.name).sorted() ?? []
+        case .GitLab: return [] //mergeRequest?.targetProject?.namespace?.fullPath.split(separator: "/").last.flatMap(String.init) ?? []? []
+        }
+    }
+}
+
+struct Label: Codable {
+    let name: String
+    let hexColor: String
+
+    init(name: String, hexColor: String) {
+        self.name = name
+        self.hexColor = hexColor
     }
 }
 

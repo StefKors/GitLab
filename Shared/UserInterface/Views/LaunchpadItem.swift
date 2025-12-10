@@ -23,8 +23,7 @@ struct LaunchpadItem: View {
 
                 VStack(alignment: .leading) {
                     Text(repo.name)
-//                    Text(repo.group)
-                    Text(repo.updatedAt, format: .dateTime)
+                    Text(repo.group)
                         .foregroundStyle(.secondary)
                 }
 

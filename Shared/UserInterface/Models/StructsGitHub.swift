@@ -46,7 +46,7 @@ class GitHub {
         let headRefName: String?
         let baseRefName: String?
         let reviewDecision: ReviewDecision?
-//        let labels: Labels?
+        let labels: Labels?
         let isInMergeQueue: Bool?
         let locked: Bool?
         let mergeStateStatus: MergeStateStatus?
@@ -68,7 +68,10 @@ class GitHub {
             headRefName: "summary-implementation",
             baseRefName: "main",
             reviewDecision: .reviewRequired,
-//            labels: nil,
+            labels: Labels(nodes: [
+                LabelsNode(id: "uuid-id", name: "macos", color: "#7289DA", isDefault: false),
+                LabelsNode(id: "uuid-id", name: "swift-packages", color: "#EF6C00", isDefault: false)
+            ]),
             isInMergeQueue: false,
             locked: false,
             mergeStateStatus: .dirty,

@@ -1516,7 +1516,6 @@
       }
     },
     "Debug Network" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
