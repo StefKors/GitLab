@@ -196,34 +196,32 @@ struct UserInterface: View {
     }
 
     private func removeAndInsertUniversal(_ type: QueryType, account: Account, requests: [UniversalMergeRequest]) async throws {
-        if requests.isEmpty {
-            return
-        }
-        // Map results to universal request
         let incomingIds = requests.map(\.id)
-
-        // Remove all MRs from this account that aren't included anymore
-        let mrsToRemove = mergeRequests.filter { existingMR in
-            let isAccount = existingMR.accountsId == account.id
-            return isAccount && !incomingIds.contains(existingMR.id)
+        let existingForAccountType = mergeRequests.filter { existingMR in
+            existingMR.accountsId == account.id &&
+            existingMR.provider == account.provider &&
+            existingMR.type == type
         }
+        let mrsToRemove = existingForAccountType.filter { !incomingIds.contains($0.id) }
 
-        for mrToRemove in mrsToRemove {
-            try await database.write { db in
+        try await database.write { db in
+            // Delete stale items for this account + provider + type
+            for mrToRemove in mrsToRemove {
                 try UniversalMergeRequest.delete(mrToRemove).execute(db)
             }
-        }
 
-        for request in requests {
-            try await database.write { db in
+            // Upsert incoming items (updates existing + inserts new)
+            for request in requests {
                 try UniversalMergeRequest.upsert(UniversalMergeRequest.Draft(request)).execute(db)
             }
-            
-            // Request widget refresh when MRs are updated
-            WidgetCenter.shared.reloadTimelines(ofKind: "AuthoredMergeRequestWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "ReviewRequestedMergeRequestWidget")
+        }
 
-            // Update the repository's updatedAt field
+        // Request widget refresh when MRs are updated
+        WidgetCenter.shared.reloadTimelines(ofKind: "AuthoredMergeRequestWidget")
+        WidgetCenter.shared.reloadTimelines(ofKind: "ReviewRequestedMergeRequestWidget")
+
+        // Update the repository's updatedAt field
+        for request in requests {
             if let repoUrl = request.repoUrl {
                 if var repo = repos.first(where: { $0.url == repoUrl }) {
                     if repo.updatedAt < request.updatedAt {
