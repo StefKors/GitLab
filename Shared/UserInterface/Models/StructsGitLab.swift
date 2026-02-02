@@ -23,7 +23,7 @@ class GitLab {
         }
     }
 
-    struct MergeRequest: Codable, Equatable, Identifiable, Hashable {
+    struct MergeRequest: Codable, Equatable, Identifiable, Hashable, Sendable {
         var id: String
         var title: String?
         var createdAt: String?
@@ -111,19 +111,19 @@ class GitLab {
     }
 
     // MARK: - DataClass
-    struct DataClass: Codable, Equatable, Hashable {
+    struct DataClass: Codable, Equatable, Hashable, Sendable {
         let currentUser: CurrentUser?
         let user: CurrentUser?
     }
 
     // MARK: - CurrentUser
-    struct CurrentUser: Codable, Equatable, Hashable {
+    struct CurrentUser: Codable, Equatable, Hashable, Sendable {
         let name: String?
         let authoredMergeRequests: AuthoredMergeRequests?
         let reviewRequestedMergeRequests: ReviewRequestedMergeRequests?
     }
 
-    struct Author: Codable, Equatable, Identifiable, Hashable {
+    struct Author: Codable, Equatable, Identifiable, Hashable, Sendable {
         let id, name, username: String?
         let avatarUrl: URL?
 
@@ -197,12 +197,12 @@ class GitLab {
     }
 
     // MARK: - ApprovedMergeRequestsEdge
-    struct ApprovedMergeRequestsEdge: Codable, Equatable, Hashable {
+    struct ApprovedMergeRequestsEdge: Codable, Equatable, Hashable, Sendable {
         let node: Author?
     }
 
     // MARK: - ApprovedMergeRequests
-    struct ApprovedMergeRequests: Codable, Equatable, Hashable {
+    struct ApprovedMergeRequests: Codable, Equatable, Hashable, Sendable {
         let edges: [ApprovedMergeRequestsEdge]?
 
         static let preview = ApprovedMergeRequests(edges: [ApprovedMergeRequestsEdge(node: .preview)])
@@ -213,32 +213,32 @@ class GitLab {
     }
 
     // MARK: - AuthoredMergeRequestsEdge
-    struct AuthoredMergeRequestsEdge: Codable, Equatable, Hashable {
+    struct AuthoredMergeRequestsEdge: Codable, Equatable, Hashable, Sendable {
         let node: MergeRequest?
     }
 
     // MARK: - AuthoredMergeRequests
-    struct AuthoredMergeRequests: Codable, Equatable, Hashable {
+    struct AuthoredMergeRequests: Codable, Equatable, Hashable, Sendable {
         let edges: [AuthoredMergeRequestsEdge]?
     }
 
     // MARK: - ReviewRequestedMergeRequests
-    struct ReviewRequestedMergeRequests: Codable, Equatable, Hashable {
+    struct ReviewRequestedMergeRequests: Codable, Equatable, Hashable, Sendable {
         let edges: [ReviewRequestedMergeRequestsEdge]?
     }
 
     // MARK: - ReviewRequestedMergeRequestsEdge
-    struct ReviewRequestedMergeRequestsEdge: Codable, Equatable, Hashable {
+    struct ReviewRequestedMergeRequestsEdge: Codable, Equatable, Hashable, Sendable {
         let node: MergeRequest?
     }
 
     // MARK: - JobsEdge
-    struct JobsEdge: Codable, Equatable, Hashable {
+    struct JobsEdge: Codable, Equatable, Hashable, Sendable {
         let node: HeadPipeline?
     }
 
     // MARK: - Jobs
-    struct Jobs: Codable, Equatable, Hashable {
+    struct Jobs: Codable, Equatable, Hashable, Sendable {
         let edges: [JobsEdge]?
 
         static let previewBuildJobs = Jobs(edges: [
@@ -260,7 +260,7 @@ class GitLab {
     }
 
     // MARK: - FluffyNode
-    struct FluffyNode: Codable, Equatable, Identifiable, Hashable {
+    struct FluffyNode: Codable, Equatable, Identifiable, Hashable, Sendable {
         let id: String?
         let status: StageStatusType?
         let name: String?
@@ -331,12 +331,12 @@ class GitLab {
     }
 
     // MARK: - StagesEdge
-    struct StagesEdge: Codable, Equatable, Hashable {
+    struct StagesEdge: Codable, Equatable, Hashable, Sendable {
         let node: FluffyNode?
     }
 
     // MARK: - Stages
-    struct Stages: Codable, Equatable, Hashable {
+    struct Stages: Codable, Equatable, Hashable, Sendable {
         let edges: [StagesEdge]?
 
         static let previewParent = Stages(edges: [StagesEdge(node: .previewTest)])
@@ -361,7 +361,7 @@ class GitLab {
 
     // MARK: - HeadPipeline
 
-    struct HeadPipeline: Codable, Equatable, Hashable {
+    struct HeadPipeline: Codable, Equatable, Hashable, Sendable {
         var id: String?
         var active: Bool?
         var status: PipelineStatus?
@@ -532,7 +532,7 @@ class GitLab {
     }
 
     // MARK: - DetailedStatus
-    struct DetailedStatus: Codable, Equatable, Hashable {
+    struct DetailedStatus: Codable, Equatable, Hashable, Sendable {
         let id: String?
         let detailsPath: String?
         let text: String?
@@ -563,7 +563,7 @@ class GitLab {
     }
 
     // MARK: - TargetProject
-    struct TargetProject: Codable, Equatable, Hashable, Identifiable {
+    struct TargetProject: Codable, Equatable, Hashable, Identifiable, Sendable {
         let id: String
         let projectID: String?
         let name, path: String?
@@ -621,7 +621,7 @@ class GitLab {
     }
 
     // MARK: - NameSpace
-    struct NameSpace: Codable, Equatable, Hashable, Identifiable {
+    struct NameSpace: Codable, Equatable, Hashable, Identifiable, Sendable {
         let id: String
         let fullPath: String
         let fullName: String
@@ -634,7 +634,7 @@ class GitLab {
     }
 
     // MARK: - Repository
-    struct Repository: Codable, Equatable, Hashable {
+    struct Repository: Codable, Equatable, Hashable, Sendable {
         /// Main Branch
         let rootRef: String?
 
@@ -644,7 +644,7 @@ class GitLab {
     }
 
     // MARK: - Group
-    struct Group: Codable, Equatable, Hashable {
+    struct Group: Codable, Equatable, Hashable, Sendable {
         let id, name, fullName, fullPath: String?
         let webURL: URL?
 
@@ -820,22 +820,22 @@ class GitLab {
     }
 
     // MARK: - GitLabQuery
-    struct TargetProjectsQuery: Codable, Equatable, Hashable {
+    struct TargetProjectsQuery: Codable, Equatable, Hashable, Sendable {
         let data: TargetProjectsDataClass?
     }
 
     // MARK: - TargetProjectsDataClass
-    struct TargetProjectsDataClass: Codable, Equatable, Hashable {
+    struct TargetProjectsDataClass: Codable, Equatable, Hashable, Sendable {
         let projects: ProjectsEdges?
     }
 
     // MARK: - ProjectsEdges
-    struct ProjectsEdges: Codable, Equatable, Hashable {
+    struct ProjectsEdges: Codable, Equatable, Hashable, Sendable {
         let edges: [TargetProjectsEdge]?
     }
 
     // MARK: - TargetProjectsEdge
-    struct TargetProjectsEdge: Codable, Equatable, Hashable {
+    struct TargetProjectsEdge: Codable, Equatable, Hashable, Sendable {
         let node: TargetProject?
     }
 

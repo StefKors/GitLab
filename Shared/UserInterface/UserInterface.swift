@@ -210,8 +210,9 @@ struct UserInterface: View {
                 if var repo = repos.first(where: { $0.url == repoUrl }) {
                     if repo.updatedAt < request.updatedAt {
                         repo.updatedAt = request.updatedAt
+                        let repoToUpdate = repo
                         try await database.write { db in
-                            try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                            try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repoToUpdate)).execute(db)
                         }
                     }
                 }
@@ -261,8 +262,9 @@ struct UserInterface: View {
                                     updatedRepo.provider = account.provider
                                     updatedRepo.hasUpdatedSinceLaunch = true
                                     
+                                    let repoToUpdate = updatedRepo
                                     try? await database.write { db in
-                                        try updatedRepo.update(db)
+                                        try repoToUpdate.update(db)
                                     }
                                 }
                             } else {
@@ -327,8 +329,9 @@ struct UserInterface: View {
                             updatedRepo.hasUpdatedSinceLaunch = true
                             updatedRepo.updatedAt = existingRepo.updatedAt
 
+                            let repoToUpdate = updatedRepo
                             try? await database.write { db in
-                                try updatedRepo.update(db)
+                                try repoToUpdate.update(db)
                             }
                         }
                     } else {

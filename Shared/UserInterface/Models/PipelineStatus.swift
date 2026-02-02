@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PipelineStatus
-enum PipelineStatus: String, Codable, Equatable {
+enum PipelineStatus: String, Codable, Equatable, Sendable {
     /// Pipeline has been created.
     case created = "CREATED"
     /// A resource (for example, a runner) that the pipeline requires to run is unavailable.
