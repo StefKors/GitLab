@@ -50,7 +50,7 @@ struct LaunchpadItem: View {
                     dismissWindow()
                 }
             } label: {
-                Label(isFiltered ? "Clear Filter" : "Open on Web", systemImage: isFiltered ? "xmark" : "arrow.up.forward")
+                SwiftUI.Label(isFiltered ? "Clear Filter" : "Open on Web", systemImage: isFiltered ? "xmark" : "arrow.up.forward")
                     .labelStyle(.iconOnly)
             }
             .buttonStyle(.menubar)

@@ -20,10 +20,12 @@ struct SettingsView: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
-            List(Tabs.allCases, id: \.rawValue, selection: $selectedTab) { tab in
-                switch tab {
-                case .general: Label(tab.rawValue.capitalized, systemImage: "gear").tag(tab)
-                case .account: Label(tab.rawValue.capitalized, systemImage: "person.2.fill").tag(tab)
+            List(selection: $selectedTab) {
+                ForEach(Tabs.allCases, id: \.self) { tab in
+                    switch tab {
+                    case .general: SwiftUI.Label(tab.rawValue.capitalized, systemImage: "gear").tag(tab)
+                    case .account: SwiftUI.Label(tab.rawValue.capitalized, systemImage: "person.2.fill").tag(tab)
+                    }
                 }
             }
             .scrollContentBackground(.hidden)

@@ -36,7 +36,7 @@ struct GitLab_iOSApp: App {
                         NavigationLink {
                             SettingsView()
                         } label: {
-                            Label("Settings", systemImage: "gear")
+                            SwiftUI.Label("Settings", systemImage: "gear")
                         }
                     }
                 }

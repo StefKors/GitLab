@@ -129,11 +129,11 @@ struct GitLabApp: App {
                 .environmentObject(settingsState)
                 .frame(width: 600)
         }, label: {
-            Label(title: {
+            SwiftUI.Label {
                 Text("GitLab Desktop")
-            }, icon: {
+            } icon: {
                 Image(.iconGradientsPNG)
-            })
+            }
         })
         .menuBarExtraStyle(.window)
         .windowResizability(.contentSize)

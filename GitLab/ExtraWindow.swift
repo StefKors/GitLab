@@ -17,6 +17,7 @@ struct ExtraWindow: View {
     @FetchAll(LaunchpadRepo.order(by: { $0.updatedAt.desc() })) private var repos: [LaunchpadRepo]
 
     @State private var selectedView: QueryType = .authoredMergeRequests
+    @State private var activeRepoUrl: URL?
 
     private var filteredMergeRequests: [UniversalMergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
@@ -34,7 +35,8 @@ struct ExtraWindow: View {
                 filteredMergeRequests: filteredMergeRequests,
                 accounts: accounts,
                 withScrollView: true,
-                selectedView: $selectedView
+                selectedView: $selectedView,
+                activeRepoUrl: $activeRepoUrl
             )
         }
         .overlay(content: {

@@ -55,7 +55,7 @@ struct BaseNoticeItem: View {
                                         }
                                     }
                                 }, label: {
-                                    Label("Create merge request", image: "merge-request")
+                                    SwiftUI.Label("Create merge request", image: "merge-request")
                                 })
                             }
                         }.fixedSize(horizontal: false, vertical: true)

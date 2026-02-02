@@ -51,7 +51,7 @@ struct AccountSettingsView: View {
                                     Button(role: .destructive) {
                                         showAlert(for: account)
                                     } label: {
-                                        Label("Delete", systemImage: "trash")
+                                        SwiftUI.Label("Delete", systemImage: "trash")
                                     }
                                     .labelStyle(.iconOnly)
                                     .buttonStyle(.borderless)

@@ -17,13 +17,13 @@ struct LastUpdateMessageView: View {
 
 #if os(macOS)
                 if #available(macOS 14.0, *) {
-                    SettingsLink {
-                        Label("Settings", systemImage: "gear")
+                    Button(action: openSettings) {
+                        SwiftUI.Label("Settings", systemImage: "gear")
                     }
                     .buttonStyle(.menubar)
                 } else {
                     Button(action: openSettings, label: {
-                        Label("Settings", systemImage: "gear")
+                        SwiftUI.Label("Settings", systemImage: "gear")
                     })
                     .buttonStyle(.menubar)
                 }
