@@ -15,10 +15,11 @@ struct MainContentView: View {
     let accounts: [Account]
     var withScrollView: Bool = false
     @Binding var selectedView: QueryType
+    @Binding var activeRepoUrl: URL?
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
-            LaunchpadView(repos: repos)
+            LaunchpadView(repos: repos, activeRepoUrl: $activeRepoUrl)
                 .padding(6)
 
             Divider()
@@ -56,7 +57,8 @@ struct MainContentView: View {
         repos: [.preview],
         filteredMergeRequests: [.preview, .preview2, .preview3, .preview4],
         accounts: [.preview],
-        selectedView: .constant(.authoredMergeRequests)
+        selectedView: .constant(.authoredMergeRequests),
+        activeRepoUrl: .constant(nil)
     )
     .previewEnvironment()
 }

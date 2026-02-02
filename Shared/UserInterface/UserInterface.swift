@@ -26,6 +26,7 @@ struct UserInterface: View {
     @FetchAll(LaunchpadRepo.order(by: { $0.updatedAt.desc() })) private var repos: [LaunchpadRepo]
 
     @State private var selectedView: QueryType = .authoredMergeRequests
+    @State private var activeRepoUrl: URL?
 
     @State private var timelineDate: Date = .now
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
@@ -33,8 +34,16 @@ struct UserInterface: View {
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
 
-    private var filteredMergeRequests: [UniversalMergeRequest] {
+    private var selectedMergeRequests: [UniversalMergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
+    }
+
+    private var filteredMergeRequests: [UniversalMergeRequest] {
+        guard let activeRepoUrl = activeRepoUrl else {
+            return selectedMergeRequests
+        }
+
+        return selectedMergeRequests.filter { $0.repoUrl == activeRepoUrl }
     }
 
     var body: some View {
@@ -60,7 +69,8 @@ struct UserInterface: View {
                     repos: repos,
                     filteredMergeRequests: filteredMergeRequests,
                     accounts: accounts,
-                    selectedView: $selectedView
+                    selectedView: $selectedView,
+                    activeRepoUrl: $activeRepoUrl
                 )
                 .task(id: filteredMergeRequests) {
                     print("filteredMergeRequests updated")
@@ -356,7 +366,7 @@ struct UserInterface: View {
                 if let notice {
                     if notice.type == .branch, let branch = notice.branchRef {
 
-                        let matchedMR = filteredMergeRequests.first { request in
+                        let matchedMR = selectedMergeRequests.first { request in
                             return request.sourceBranch == branch
                         }
 
