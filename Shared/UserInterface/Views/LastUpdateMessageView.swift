@@ -44,8 +44,10 @@ struct LastUpdateMessageView: View {
     func openSettings() {
 #if os(macOS)
         if #available(macOS 13.0, *) {
+            // Private API - must use string-based selector
             NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
         } else {
+            // Private API - must use string-based selector
             NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
         }
 #endif
@@ -53,7 +55,7 @@ struct LastUpdateMessageView: View {
 
     func quitApp() {
 #if os(macOS)
-        NSApp.sendAction(Selector(("terminate:")), to: nil, from: nil)
+        NSApplication.shared.terminate(nil)
 #endif
     }
 }

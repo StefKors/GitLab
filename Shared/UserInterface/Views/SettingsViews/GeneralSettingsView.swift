@@ -39,7 +39,7 @@ struct GeneralSettingsView: View {
 
                     Toggle(isOn: $settings.activationPolicy) { Text("Enable dock icon") }
                         .disabled(isSettingActivationPolicy)
-                        .onChange(of: settings.activationPolicy) { isOn in
+                        .onChange(of: settings.activationPolicy) { oldValue, newValue in
                             isSettingActivationPolicy = true
                             /// Wait until the dock icon's appearance/disappearance animation completes before allowing to toggle it again.
                             /// Otherwise, there is a chance of having multiple app icons in the dock :)

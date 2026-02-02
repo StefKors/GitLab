@@ -87,7 +87,7 @@ struct LaunchpadItem: View {
                 if isFiltered {
                     clearFilter()
                 }
-                withAnimation(.smooth) {
+                _ = withAnimation(.smooth) {
                     Task {
                         try await database.write { db in
                             try repo.delete(db)

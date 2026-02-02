@@ -27,7 +27,7 @@ struct Provider: TimelineProvider {
     // TODO: demo data? or at placeholder?
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
         Task { @MainActor in
-            let now = Date.now
+            _ = Date.now
 //
 //            let context = ModelContainer.shared.mainContext
 //
@@ -55,7 +55,7 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         Task { @MainActor in
-            var entries: [SimpleEntry] = []
+            let entries: [SimpleEntry] = []
 
             let now = Date.now
 
