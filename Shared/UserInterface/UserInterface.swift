@@ -111,10 +111,23 @@ struct UserInterface: View {
     @MainActor
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
-            if account.provider == .GitLab {
-                let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
+            let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
+            switch account.provider {
+            case .GitLab:
                 let results: [GitLab.MergeRequest]? = await wrapRequest(info: info) {
                     try await NetworkManagerGitLab.shared.fetchReviewRequestedMergeRequests(with: account)
+                }
+
+                if let results {
+                    try? await removeAndInsertUniversal(
+                        .reviewRequestedMergeRequests,
+                        account: account,
+                        results: results
+                    )
+                }
+            case .GitHub:
+                let results: [GitHub.PullRequestsNode]? = await wrapRequest(info: info) {
+                    try await NetworkManagerGitHub.shared.fetchReviewRequestedPullRequests(with: account)
                 }
 
                 if let results {

@@ -24,6 +24,28 @@ class GitHub {
         }
     }
 
+    // MARK: - SearchQuery (review requested)
+    struct SearchQuery: Codable, Equatable, Sendable, Hashable {
+        let data: SearchData
+
+        var reviewRequestedPullRequests: [GitHub.PullRequestsNode] {
+            return data.search.nodes?.compactMap { node in
+                if node.locked == false {
+                    return node
+                }
+                return nil
+            } ?? []
+        }
+    }
+
+    struct SearchData: Codable, Equatable, Sendable, Hashable {
+        let search: SearchResult
+    }
+
+    struct SearchResult: Codable, Equatable, Sendable, Hashable {
+        let nodes: [PullRequestsNode]?
+    }
+
     // MARK: - DataClass
     struct DataClass: Codable, Equatable, Sendable, Hashable {
         let viewer: Viewer?

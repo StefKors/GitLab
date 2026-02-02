@@ -63,12 +63,32 @@ class NetworkManagerGitHub {
         )
     }
 
+    func reviewRequestedPullRequestsReq(with account: Account) -> Request<GitHub.SearchQuery> {
+        Request.init(
+            path: "/graphql",
+            method: .post,
+            body: """
+            { "query": "query{search(query:\\"is:pr is:open review-requested:@me\\",type:ISSUE,first:100){nodes{... on PullRequest{id title url state isDraft createdAt updatedAt headRefName baseRefName reviewDecision labels(first:100){nodes{id name color isDefault}}isInMergeQueue locked mergeStateStatus number permalink totalCommentsCount repository{name id isLocked isArchived url owner{login id avatarUrl}homepageUrl}reviews(first:100){nodes{id state author{avatarUrl login}}}statusCheckRollup{state contexts(last:100){nodes{... on CheckRun{id name status conclusion detailsUrl title url checkSuite{workflowRun{workflow{id name}}}}}}}}}}}", "variables": {}}
+""".trimmingCharacters(in: .whitespacesAndNewlines),
+            headers: [
+                "Authorization": "bearer \(account.token)",
+                "Content-Type": "application/json; charset=utf-8"
+            ]
+        )
+    }
+
     // https://docs.github.com/en/graphql/overview/explorer
     // https://api.github.com/graphql
     func fetchAuthoredPullRequests(with account: Account) async throws -> [GitHub.PullRequestsNode]? {
         let client = getClient(instance: account.instance)
         let response = try? await client.send(authoredMergeRequestsReq(with: account))
         return response?.value.authoredPullRequests
+    }
+
+    func fetchReviewRequestedPullRequests(with account: Account) async throws -> [GitHub.PullRequestsNode]? {
+        let client = getClient(instance: account.instance)
+        let response = try? await client.send(reviewRequestedPullRequestsReq(with: account))
+        return response?.value.reviewRequestedPullRequests
     }
 
     func fetchAuthoredPullRequests(with account: Account) async throws -> [UniversalMergeRequest]? {
@@ -78,6 +98,17 @@ class NetworkManagerGitHub {
                 account: account,
                 provider: .GitHub,
                 type: .authoredMergeRequests
+            )
+        }
+    }
+
+    func fetchReviewRequestedPullRequests(with account: Account) async throws -> [UniversalMergeRequest]? {
+        return try await fetchReviewRequestedPullRequests(with: account)?.map { request in
+            return UniversalMergeRequest(
+                request: request,
+                account: account,
+                provider: .GitHub,
+                type: .reviewRequestedMergeRequests
             )
         }
     }
