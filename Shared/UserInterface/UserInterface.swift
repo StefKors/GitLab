@@ -8,6 +8,7 @@
 import SwiftUI
 import SharingGRDB
 import Get
+import WidgetKit
 
 /// TODO: Show different accounts
 /// TODO: Show different git providers (GL / GH)
@@ -204,6 +205,10 @@ struct UserInterface: View {
             try await database.write { db in
                 try UniversalMergeRequest.upsert(UniversalMergeRequest.Draft(request)).execute(db)
             }
+            
+            // Request widget refresh when MRs are updated
+            WidgetCenter.shared.reloadTimelines(ofKind: "AuthoredMergeRequestWidget")
+            WidgetCenter.shared.reloadTimelines(ofKind: "ReviewRequestedMergeRequestWidget")
 
             // Update the repository's updatedAt field
             if let repoUrl = request.repoUrl {
@@ -282,6 +287,9 @@ struct UserInterface: View {
                                 try? await database.write { db in
                                     try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
                                 }
+                                
+                                // Request widget refresh when repos are updated
+                                WidgetCenter.shared.reloadTimelines(ofKind: "LaunchpadWidget")
                             }
                         }
                     }
@@ -333,6 +341,9 @@ struct UserInterface: View {
                             try? await database.write { db in
                                 try repoToUpdate.update(db)
                             }
+                            
+                            // Request widget refresh when repos are updated
+                            WidgetCenter.shared.reloadTimelines(ofKind: "LaunchpadWidget")
                         }
                     } else {
                         // Insert new repo
@@ -351,6 +362,9 @@ struct UserInterface: View {
                         try? await database.write { db in
                             try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
                         }
+                        
+                        // Request widget refresh when repos are updated
+                        WidgetCenter.shared.reloadTimelines(ofKind: "LaunchpadWidget")
                     }
                 }
             }
