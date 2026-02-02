@@ -21,7 +21,7 @@ struct PlainMergeRequestList: View {
     @State private var account: Account?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        LazyVStack(alignment: .leading, spacing: 0) {
             ForEach(mergeRequests, id: \.id) { mergeRequest in
                 MergeRequestRowView(request: mergeRequest)
                     .transition(.opacity)

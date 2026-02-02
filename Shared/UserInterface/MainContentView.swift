@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 import Get
 
 struct MainContentView: View {
@@ -14,6 +13,7 @@ struct MainContentView: View {
     let filteredMergeRequests: [UniversalMergeRequest]
     let accounts: [Account]
     var withScrollView: Bool = false
+    var allowScrollBounce: Bool = true
     @Binding var selectedView: QueryType
     @Binding var activeRepoUrl: URL?
 
@@ -34,21 +34,38 @@ struct MainContentView: View {
                 BaseTextView(message: "All done 🥳")
                     .foregroundStyle(.secondary)
             } else {
-                PlainMergeRequestList(mergeRequests: filteredMergeRequests, accounts: accounts)
-//                    MergeRequestList(
-//                        mergeRequests: filteredMergeRequests,
-//                        accounts: accounts,
-//                        selectedView: selectedView
-//                    )
-                .animation(.snappy(duration: 0.3), value: selectedView)
-                .padding(6)
-                .useScrollView(when: withScrollView)
-                .scrollBounceBehavior(.basedOnSize)
+                mergeRequestList
             }
 
             LastUpdateMessageView()
         }
         .frame(maxHeight: .infinity, alignment: .top)
+    }
+
+    @ViewBuilder
+    private var mergeRequestList: some View {
+        let listContent = PlainMergeRequestList(mergeRequests: filteredMergeRequests, accounts: accounts)
+//            MergeRequestList(
+//                mergeRequests: filteredMergeRequests,
+//                accounts: accounts,
+//                selectedView: selectedView
+//            )
+            .animation(.snappy(duration: 0.3), value: selectedView)
+            .padding(6)
+
+        let list = ScrollView {
+            listContent
+        }
+
+        if withScrollView {
+            if allowScrollBounce {
+                list.scrollBounceBehavior(.basedOnSize)
+            } else {
+                list
+            }
+        } else {
+            listContent
+        }
     }
 }
 

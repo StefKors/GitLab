@@ -9,6 +9,9 @@ import SwiftUI
 import SharingGRDB
 import Get
 import WidgetKit
+#if os(macOS)
+import AppKit
+#endif
 
 /// TODO: Show different accounts
 /// TODO: Show different git providers (GL / GH)
@@ -70,9 +73,12 @@ struct UserInterface: View {
                     repos: repos,
                     filteredMergeRequests: filteredMergeRequests,
                     accounts: accounts,
+                    withScrollView: true,
+                    allowScrollBounce: true,
                     selectedView: $selectedView,
                     activeRepoUrl: $activeRepoUrl
                 )
+                .frame(maxHeight: menuBarMaxHeight)
                 .task(id: filteredMergeRequests) {
                     print("filteredMergeRequests updated")
                 }
@@ -434,6 +440,14 @@ struct UserInterface: View {
 
         return nil
 
+    }
+
+    private var menuBarMaxHeight: CGFloat? {
+#if os(macOS)
+        return NSScreen.main.map { $0.visibleFrame.height * 0.9 }
+#else
+        return nil
+#endif
     }
 }
 
