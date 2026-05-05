@@ -14,6 +14,7 @@ struct MainContentView: View {
     let accounts: [Account]
     var withScrollView: Bool = false
     var allowScrollBounce: Bool = true
+    var maxHeight: CGFloat? = nil
     @Binding var selectedView: QueryType
     @Binding var activeRepoUrl: URL?
 
@@ -53,15 +54,16 @@ struct MainContentView: View {
             .animation(.snappy(duration: 0.3), value: selectedView)
             .padding(6)
 
-        let list = ScrollView {
-            listContent
-        }
-
         if withScrollView {
+            let scrollView = ScrollView {
+                listContent
+            }
+            .frame(maxHeight: maxHeight)
+
             if allowScrollBounce {
-                list.scrollBounceBehavior(.basedOnSize)
+                scrollView.scrollBounceBehavior(.basedOnSize)
             } else {
-                list
+                scrollView
             }
         } else {
             listContent

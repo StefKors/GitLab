@@ -75,6 +75,7 @@ struct UserInterface: View {
                     accounts: accounts,
                     withScrollView: true,
                     allowScrollBounce: true,
+                    maxHeight: menuBarMaxHeight,
                     selectedView: $selectedView,
                     activeRepoUrl: $activeRepoUrl
                 )
@@ -444,7 +445,7 @@ struct UserInterface: View {
 
     private var menuBarMaxHeight: CGFloat? {
 #if os(macOS)
-        return NSScreen.main.map { $0.visibleFrame.height * 0.9 }
+        return 700
 #else
         return nil
 #endif
