@@ -81,12 +81,24 @@ struct GitLabApp: App {
     // Non-Persisted state objects
     @StateObject private var noticeState = NoticeState()
     @StateObject private var networkState = NetworkState()
+    private let startupDatabaseError: String?
 
     init() {
+        var startupError: String?
         prepareDependencies {
-            let db = try! appDatabase()
-            $0.defaultDatabase = db
+            do {
+                let db = try Self.appDatabase()
+                $0.defaultDatabase = db
+            } catch {
+                startupError = error.localizedDescription
+                do {
+                    $0.defaultDatabase = try DatabaseQueue()
+                } catch {
+                    startupError = "Failed to initialize app database: \(error.localizedDescription)"
+                }
+            }
         }
+        startupDatabaseError = startupError
     }
 
     var body: some Scene {
@@ -99,6 +111,15 @@ struct GitLabApp: App {
                 .navigationTitle("GitLab")
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
                 .containerBackground(.thinMaterial, for: .window)
+                .task(id: startupDatabaseError) {
+                    guard let startupDatabaseError else { return }
+                    noticeState.addNotice(
+                        notice: NoticeMessage(
+                            label: "Database unavailable, running in degraded mode: \(startupDatabaseError)",
+                            type: .error
+                        )
+                    )
+                }
             //                .presentedWindowBackgroundStyle(.translucent)
         }
         .handlesExternalEvents(matching: ["openNewWindow"])
@@ -158,7 +179,7 @@ struct GitLabApp: App {
         .restorationBehavior(.disabled)
     }
 
-    func appDatabase() throws -> any DatabaseWriter {
+    static func appDatabase() throws -> any DatabaseWriter {
         let database: any DatabaseWriter
         var configuration = Configuration()
         configuration.foreignKeysEnabled = true
@@ -173,9 +194,9 @@ struct GitLabApp: App {
         if context == .live {
             let path = URL.documentsDirectory.appending(component: "db.sqlite").path()
             print("open", path)
-            database = try! DatabasePool(path: path, configuration: configuration)
+            database = try DatabasePool(path: path, configuration: configuration)
         } else {
-            database = try! DatabaseQueue(configuration: configuration)
+            database = try DatabaseQueue(configuration: configuration)
         }
         var migrator = DatabaseMigrator()
 #if DEBUG
@@ -225,7 +246,7 @@ struct GitLabApp: App {
         //        migrator.registerMigration("Create 'universal_merge_requests' table") { db in
         //
         //        }
-        try! migrator.migrate(database)
+        try migrator.migrate(database)
         print("migrator.migrations: \(migrator.migrations)")
         return database
     }

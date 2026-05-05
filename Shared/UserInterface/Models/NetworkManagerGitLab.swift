@@ -14,6 +14,20 @@ import AppKit
 import UIKit
 #endif
 
+enum GitLabNetworkError: LocalizedError {
+  case invalidInstance(String)
+  case unsupportedURLScheme(String)
+
+  var errorDescription: String? {
+    switch self {
+    case .invalidInstance(let value):
+      return "Invalid GitLab instance URL: \(value)"
+    case .unsupportedURLScheme(let value):
+      return "Unsupported URL scheme for instance: \(value)"
+    }
+  }
+}
+
 class NetworkManagerGitLab {
   static let shared = NetworkManagerGitLab()
 
@@ -21,28 +35,32 @@ class NetworkManagerGitLab {
     "https://gitlab.com/api": APIClient(baseURL: URL(string: "https://gitlab.com/api")!)
   ]
 
-  func getClient(instance: String) -> APIClient {
-    if let client = clients[instance] {
+  func getClient(instance: String) throws -> APIClient {
+    let normalizedInstance = try normalizedAPIBaseURL(from: instance)
+
+    if let client = clients[normalizedInstance] {
       return client
     } else {
-      let client = APIClient(baseURL: URL(string: instance)!)
-      clients[instance] = client
+      let client = APIClient(baseURL: URL(string: normalizedInstance)!)
+      clients[normalizedInstance] = client
       return client
     }
   }
 
   var launchpadClients: [String: APIClient] = [:]
 
-  func getLaunchpadClient(instance: String) -> APIClient {
-    if let client = launchpadClients[instance] {
+  func getLaunchpadClient(instance: String) throws -> APIClient {
+    let normalizedInstance = try normalizedInstanceURL(from: instance)
+
+    if let client = launchpadClients[normalizedInstance] {
       return client
     } else {
       let client = APIClient(configuration: APIClient.Configuration(
-        baseURL: URL(string: instance)!,
+        baseURL: URL(string: normalizedInstance)!,
         delegate: LaunchPadClientDelegate()
       ))
 
-      launchpadClients[instance] = client
+      launchpadClients[normalizedInstance] = client
       return client
     }
   }
@@ -116,7 +134,8 @@ class NetworkManagerGitLab {
     ])
 
     do {
-      let response: AccessToken? = try await APIClient(baseURL: URL(string: "\(instance)/api")).send(accessTokenReq).value
+      let baseURL = try normalizedAPIBaseURL(from: instance)
+      let response: AccessToken? = try await APIClient(baseURL: URL(string: baseURL)).send(accessTokenReq).value
 
       return response
     } catch {
@@ -124,11 +143,43 @@ class NetworkManagerGitLab {
       return nil
     }
   }
+
+  private func normalizedInstanceURL(from instance: String) throws -> String {
+    guard var components = URLComponents(string: instance) else {
+      throw GitLabNetworkError.invalidInstance(instance)
+    }
+
+    if components.scheme == nil {
+      components.scheme = "https"
+    }
+
+    guard let scheme = components.scheme, scheme == "https" || scheme == "http" else {
+      throw GitLabNetworkError.unsupportedURLScheme(instance)
+    }
+
+    guard components.host != nil else {
+      throw GitLabNetworkError.invalidInstance(instance)
+    }
+
+    components.query = nil
+    components.fragment = nil
+
+    guard let url = components.url else {
+      throw GitLabNetworkError.invalidInstance(instance)
+    }
+
+    return url.absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+  }
+
+  private func normalizedAPIBaseURL(from instance: String) throws -> String {
+    let base = try normalizedInstanceURL(from: instance)
+    return "\(base)/api"
+  }
 }
 
 extension NetworkManagerGitLab {
     func fetchAuthoredMergeRequests(with account: Account) async throws -> [GitLab.MergeRequest]? {
-        let client = getClient(instance: "\(account.instance)/api")
+        let client = try getClient(instance: account.instance)
         let value: GitLab.GitLabQuery = try await client.send(authoredMergeRequestsReq(with: account)).value
         return value.authoredMergeRequests
     }
@@ -149,7 +200,7 @@ extension NetworkManagerGitLab {
 
 extension NetworkManagerGitLab {
   func fetchReviewRequestedMergeRequests(with account: Account) async throws -> [GitLab.MergeRequest]? {
-    let client = getClient(instance: "\(account.instance)/api")
+    let client = try getClient(instance: account.instance)
     let response: GitLab.GitLabQuery = try await client.send(reviewRequestedMergeRequestsReq(with: account)).value
     return response.reviewRequestedMergeRequests
   }
@@ -164,7 +215,7 @@ extension NetworkManagerGitLab {
       ("private_token", account.token)
     ])
 
-    let client = getClient(instance: "\(account.instance)/api")
+    let client = try getClient(instance: account.instance)
 
     let response: GitLab.PushEvents = try await client.send(req).value
 
@@ -230,7 +281,7 @@ extension NetworkManagerGitLab {
       ("private_token", account.token)
     ])
 
-    let client = getClient(instance: "\(account.instance)/api")
+    let client = try getClient(instance: account.instance)
 
     let fullProject: GitLab.TargetProjectsQuery = try await client.send(req).value
 

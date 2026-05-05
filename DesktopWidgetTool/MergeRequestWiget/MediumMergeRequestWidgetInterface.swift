@@ -58,9 +58,9 @@ struct MediumMergeRequestWidgetInterface: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                ForEach(Array(mergeRequests.prefix(5)), id: \.id) { request in
-                    // TODO: Insert account in view
-                    WidgetMRRowIcon(request: request, providers: providers, account: nil)
+                ForEach(Array(filteredMRs.prefix(5)), id: \.id) { request in
+                    let account = accounts.first(where: { $0.id == request.accountsId })
+                    WidgetMRRowIcon(request: request, providers: providers, account: account)
                 }
             }
         }

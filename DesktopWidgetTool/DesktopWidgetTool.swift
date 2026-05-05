@@ -14,9 +14,47 @@ import SharingGRDB
 
 /// Shared database accessor for widget extensions
 enum WidgetDatabase {
+    enum WidgetDatabaseError: LocalizedError {
+        case missingDatabase
+
+        var errorDescription: String? {
+            switch self {
+            case .missingDatabase:
+                return "Shared widget database was not found in expected locations."
+            }
+        }
+    }
+
+    /// Candidate shared app-group identifiers.
+    static let appGroupIdentifiers: [String] = [
+        "com.stefkors.GitLab",
+        "group.com.stefkors.GitLab"
+    ]
+
+    /// Resolve a database file path from the app group first, then legacy documents path.
+    static var resolvedDatabasePath: String? {
+        let fileManager = FileManager.default
+
+        for groupIdentifier in appGroupIdentifiers {
+            if let groupURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) {
+                let candidate = groupURL.appending(component: "db.sqlite").path()
+                if fileManager.fileExists(atPath: candidate) {
+                    return candidate
+                }
+            }
+        }
+
+        let documentsCandidate = URL.documentsDirectory.appending(component: "db.sqlite").path()
+        if fileManager.fileExists(atPath: documentsCandidate) {
+            return documentsCandidate
+        }
+
+        return nil
+    }
+
     /// Get the database path used by the main app
     static var databasePath: String {
-        URL.documentsDirectory.appending(component: "db.sqlite").path()
+        resolvedDatabasePath ?? URL.documentsDirectory.appending(component: "db.sqlite").path()
     }
     
     /// Create a read-only database connection for widgets
@@ -25,7 +63,9 @@ enum WidgetDatabase {
         configuration.foreignKeysEnabled = true
         configuration.readonly = true
         
-        let path = databasePath
+        guard let path = resolvedDatabasePath else {
+            throw WidgetDatabaseError.missingDatabase
+        }
         return try DatabaseQueue(path: path, configuration: configuration)
     }
     

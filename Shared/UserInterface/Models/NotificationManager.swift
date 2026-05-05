@@ -7,7 +7,6 @@
 
 import Foundation
 import UserNotifications
-import SwiftUI
 #if canImport(AppKit)
 import AppKit
 #else
@@ -78,13 +77,15 @@ class NotificationManager {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
         // add our notification request
-        UNUserNotificationCenter.current().add(request)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error {
+                print("[Notification] Failed to schedule: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
 class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
-    @Environment(\.openURL) private var openURL
-
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -102,8 +103,6 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         switch response.actionIdentifier {
         case "OPEN_URL":
             openURL(url)
-            // NSWorkspace.shared.open(url)
-            center.removeAllDeliveredNotifications()
 
         case UNNotificationDismissActionIdentifier:
             // do nothing
@@ -111,10 +110,16 @@ class GitLabNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
 
         default:
             openURL(url)
-            // NSWorkspace.shared.open(url)
-            center.removeAllDeliveredNotifications()
         }
         // Always call the completion handler when done.
         completionHandler()
+    }
+
+    private func openURL(_ url: URL) {
+#if canImport(AppKit)
+        NSWorkspace.shared.open(url)
+#else
+        UIApplication.shared.open(url)
+#endif
     }
 }

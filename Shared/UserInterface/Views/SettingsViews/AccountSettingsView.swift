@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-// import UserNotifications
+import UserNotifications
 import SharingGRDB
 
 struct AlertDetails: Identifiable {
@@ -77,47 +77,20 @@ struct AccountSettingsView: View {
                         .interactiveDismissDisabled(false)
                         .presentationCompactAdaptation(.fullScreenCover)
 #else
-                    NavigationView {
-                        VStack {
-                            Text("sdf")
-                            // add sectioned view that goes step by step
-                            // 1. server
-                            // 2. key
-                            // 3. verify
-                            // 4. close
-
-                            //                                            AddAccountView()
-                        }
-                        .border(Color.black)
-                        .navigationBarBackButtonHidden(false)
-                        .toolbar(.visible, for: .navigationBar)
-                        .toolbar {
-                            ToolbarItem(placement: .topBarLeading) {
-                                Button("Cancel") {
-
-                                }
-                            }
-                            ToolbarItem(placement: .topBarTrailing) {
-                                Button("Done") {
-
-                                }
-                            }
-                        }
-                    }
-                    //                    .interactiveDismissDisabled(false)
-                    //                    .presentationCompactAdaptation(.sheet)
-                    .presentationDetents([.medium])
+                    AddAccountView()
+                        .interactiveDismissDisabled(false)
+                        .presentationCompactAdaptation(.sheet)
 #endif
                     // .presentationContentInteraction(.resizes)
                 })
 
-                // Section("Notifications") {
-                //     HStack {
-                //         Text("Clear all Notifications")
-                //         Spacer()
-                //         Button("Clear", action: clearNotifications)
-                //     }
-                // }
+                Section("Notifications") {
+                    HStack {
+                        Text("Clear all notifications")
+                        Spacer()
+                        Button("Clear", action: clearNotifications)
+                    }
+                }
             }
         }
         .formStyle(.grouped)
@@ -166,29 +139,18 @@ struct AccountSettingsView: View {
         showingAlert.toggle()
     }
 
-    // func clearNotifications() {
-    //     let notifs = UNUserNotificationCenter.current()
-    //     notifs.getDeliveredNotifications { delivereds in
-    //         for delivered in delivereds {
-    //             print("has delivered notif \(delivered.description)")
-    //         }
-    //     }
-    //
-    //     notifs.getPendingNotificationRequests { pendings in
-    //         for pending in pendings {
-    //             print("has pending notif \(pending.description)")
-    //         }
-    //     }
-    //
-    //     notifs.removeAllDeliveredNotifications()
-    //     if #available(macOS 13.0, *) {
-    //         notifs.setBadgeCount(0) { error in
-    //             print("error? \(String(describing: error?.localizedDescription))")
-    //         }
-    //     } else {
-    //         // Fallback on earlier versions
-    //     }
-    // }
+    private func clearNotifications() {
+        let notifications = UNUserNotificationCenter.current()
+        notifications.removeAllDeliveredNotifications()
+        notifications.removeAllPendingNotificationRequests()
+        if #available(macOS 13.0, iOS 16.0, *) {
+            notifications.setBadgeCount(0) { error in
+                if let error {
+                    print("[Notifications] Failed to reset badge count: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }
 
 //#Preview {

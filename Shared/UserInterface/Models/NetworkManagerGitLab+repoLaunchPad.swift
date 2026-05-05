@@ -45,7 +45,15 @@ extension NetworkManagerGitLab {
             ]
         )
         // uses custom delegate to handle correctly encoding url path
-        let launchPadClient = getLaunchpadClient(instance: account.instance)
+        let launchPadClient: APIClient
+        do {
+            launchPadClient = try getLaunchpadClient(instance: account.instance)
+        } catch {
+            print("========== failed to construct launchpad client for: \(account.instance)")
+            print(error.localizedDescription)
+            print("==========")
+            return nil
+        }
 
         do {
             let response: GitLab.ProjectImageResponse? = try await launchPadClient.send(req).value

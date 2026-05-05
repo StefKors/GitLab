@@ -13,14 +13,10 @@ import WidgetKit
 import AppKit
 #endif
 
-/// TODO: Show different accounts
-/// TODO: Show different git providers (GL / GH)
-/// TODO: Filter by type
-/// TODO: show assigned issues
-/// TODO: widget?
-/// TODO: timeline view updates
-/// TODO: Reinstate clear notifications setting
-/// TODO: Split networking
+/// Backlog tickets:
+/// - UI-101: multi-account switcher and provider filter (GitLab/GitHub)
+/// - UI-102: assigned issues tab and query pipeline
+/// - UI-103: split provider-specific networking from UI orchestration
 struct UserInterface: View {
     @Dependency(\.defaultDatabase) private var database
 //    @SharedReader(.fetchAll(sql: "SELECT * FROM universal_merge_requests ORDER BY datetime(createdAt) DESC")) private var mergeRequests: [UniversalMergeRequest]
@@ -37,6 +33,7 @@ struct UserInterface: View {
 
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
+    @StateObject private var widgetTimelineReloader = WidgetTimelineReloader()
 
     private var selectedMergeRequests: [UniversalMergeRequest] {
         mergeRequests.filter { $0.type == selectedView }
@@ -114,10 +111,10 @@ struct UserInterface: View {
         }
     }
 
-    /// TODO: Cleanup and move both into the same function
     @MainActor
     private func fetchReviewRequestedMRs() async {
         for account in accounts {
+            guard isValidInstance(account) else { continue }
             let info = NetworkInfo(label: "Fetch Review Requested Merge Requests", account: account, method: .get)
             switch account.provider {
             case .GitLab:
@@ -126,11 +123,15 @@ struct UserInterface: View {
                 }
 
                 if let results {
-                    try? await removeAndInsertUniversal(
-                        .reviewRequestedMergeRequests,
-                        account: account,
-                        results: results
-                    )
+                    do {
+                        try await removeAndInsertUniversal(
+                            .reviewRequestedMergeRequests,
+                            account: account,
+                            results: results
+                        )
+                    } catch {
+                        reportPersistenceFailure("[\(account.provider.rawValue)] Failed to save review requested requests: \(error.localizedDescription)")
+                    }
                 }
             case .GitHub:
                 let results: [GitHub.PullRequestsNode]? = await wrapRequest(info: info) {
@@ -138,11 +139,15 @@ struct UserInterface: View {
                 }
 
                 if let results {
-                    try? await removeAndInsertUniversal(
-                        .reviewRequestedMergeRequests,
-                        account: account,
-                        results: results
-                    )
+                    do {
+                        try await removeAndInsertUniversal(
+                            .reviewRequestedMergeRequests,
+                            account: account,
+                            results: results
+                        )
+                    } catch {
+                        reportPersistenceFailure("[\(account.provider.rawValue)] Failed to save review requested requests: \(error.localizedDescription)")
+                    }
                 }
             }
         }
@@ -151,6 +156,7 @@ struct UserInterface: View {
     @MainActor
     private func fetchAuthoredMRs() async {
         for account in accounts {
+            guard isValidInstance(account) else { continue }
             let info = NetworkInfo(
                 label: "Fetch Authored Merge Requests",
                 account: account,
@@ -165,12 +171,12 @@ struct UserInterface: View {
                 }
             }
 
-            guard let requests else { return }
+            guard let requests else { continue }
 
             do {
                 try await removeAndInsertUniversal(.authoredMergeRequests, account: account, requests: requests)
             } catch {
-                print("[\(account.provider)] Failed to insert: \(error.localizedDescription)")
+                reportPersistenceFailure("[\(account.provider.rawValue)] Failed to save authored requests: \(error.localizedDescription)")
             }
         }
     }
@@ -224,8 +230,7 @@ struct UserInterface: View {
         }
 
         // Request widget refresh when MRs are updated
-        WidgetCenter.shared.reloadTimelines(ofKind: "AuthoredMergeRequestWidget")
-        WidgetCenter.shared.reloadTimelines(ofKind: "ReviewRequestedMergeRequestWidget")
+        reloadMergeRequestWidgetsIfNeeded()
 
         // Update the repository's updatedAt field
         for request in requests {
@@ -247,6 +252,7 @@ struct UserInterface: View {
     @MainActor
     private func fetchRepos() async {
         for account in accounts {
+            guard isValidInstance(account) else { continue }
             if account.provider == .GitLab {
                 let ids = Array(Set(mergeRequests.compactMap { request in
                     if request.provider == .GitLab {
@@ -286,8 +292,12 @@ struct UserInterface: View {
                                     updatedRepo.hasUpdatedSinceLaunch = true
                                     
                                     let repoToUpdate = updatedRepo
-                                    try? await database.write { db in
-                                        try repoToUpdate.update(db)
+                                    do {
+                                        try await database.write { db in
+                                            try repoToUpdate.update(db)
+                                        }
+                                    } catch {
+                                        reportPersistenceFailure("[GitLab] Failed to update repo \(updatedRepo.name): \(error.localizedDescription)")
                                     }
                                 }
                             } else {
@@ -302,12 +312,16 @@ struct UserInterface: View {
                                     hasUpdatedSinceLaunch: true
                                 )
                                 
-                                try? await database.write { db in
-                                    try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                                do {
+                                    try await database.write { db in
+                                        try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                                    }
+                                } catch {
+                                    reportPersistenceFailure("[GitLab] Failed to insert repo \(repo.name): \(error.localizedDescription)")
                                 }
                                 
                                 // Request widget refresh when repos are updated
-                                WidgetCenter.shared.reloadTimelines(ofKind: "LaunchpadWidget")
+                                reloadLaunchpadWidgetIfNeeded()
                             }
                         }
                     }
@@ -356,12 +370,16 @@ struct UserInterface: View {
                             updatedRepo.updatedAt = existingRepo.updatedAt
 
                             let repoToUpdate = updatedRepo
-                            try? await database.write { db in
-                                try repoToUpdate.update(db)
+                            do {
+                                try await database.write { db in
+                                    try repoToUpdate.update(db)
+                                }
+                            } catch {
+                                reportPersistenceFailure("[GitHub] Failed to update repo \(updatedRepo.name): \(error.localizedDescription)")
                             }
                             
                             // Request widget refresh when repos are updated
-                            WidgetCenter.shared.reloadTimelines(ofKind: "LaunchpadWidget")
+                            reloadLaunchpadWidgetIfNeeded()
                         }
                     } else {
                         // Insert new repo
@@ -377,12 +395,16 @@ struct UserInterface: View {
                             updatedAt: githubRepo.updatedAt
                         )
                         
-                        try? await database.write { db in
-                            try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                        do {
+                            try await database.write { db in
+                                try LaunchpadRepo.upsert(LaunchpadRepo.Draft(repo)).execute(db)
+                            }
+                        } catch {
+                            reportPersistenceFailure("[GitHub] Failed to insert repo \(repo.name): \(error.localizedDescription)")
                         }
                         
                         // Request widget refresh when repos are updated
-                        WidgetCenter.shared.reloadTimelines(ofKind: "LaunchpadWidget")
+                        reloadLaunchpadWidgetIfNeeded()
                     }
                 }
             }
@@ -393,6 +415,7 @@ struct UserInterface: View {
     private func branchPushes() async {
         for account in accounts {
             if account.provider == .GitLab {
+                guard isValidInstance(account) else { continue }
                 let info = NetworkInfo(label: "Fetch Branch Push", account: account, method: .get)
                 let notice = await wrapRequest(info: info) {
                     try await NetworkManagerGitLab.shared.fetchLatestBranchPush(with: account, repos: repos)
@@ -443,6 +466,42 @@ struct UserInterface: View {
 
     }
 
+    private func reloadMergeRequestWidgetsIfNeeded() {
+        widgetTimelineReloader.scheduleReload(kind: "AuthoredMergeRequestWidget")
+        widgetTimelineReloader.scheduleReload(kind: "ReviewRequestedMergeRequestWidget")
+    }
+
+    private func reloadLaunchpadWidgetIfNeeded() {
+        widgetTimelineReloader.scheduleReload(kind: "LaunchpadWidget")
+    }
+
+    private func reportPersistenceFailure(_ message: String) {
+        noticeState.addNotice(
+            notice: NoticeMessage(
+                label: message,
+                type: .error
+            )
+        )
+    }
+
+    private func isValidInstance(_ account: Account) -> Bool {
+        guard var components = URLComponents(string: account.instance) else {
+            reportPersistenceFailure("Invalid \(account.provider.rawValue) instance URL: \(account.instance)")
+            return false
+        }
+
+        if components.scheme == nil {
+            components.scheme = "https"
+        }
+
+        guard components.host != nil else {
+            reportPersistenceFailure("Invalid \(account.provider.rawValue) instance URL: \(account.instance)")
+            return false
+        }
+
+        return true
+    }
+
     private var menuBarMaxHeight: CGFloat? {
 #if os(macOS)
         return NSScreen.main.map { $0.visibleFrame.height * 0.9 }
@@ -450,6 +509,21 @@ struct UserInterface: View {
 #else
         return nil
 #endif
+    }
+}
+
+@MainActor
+private final class WidgetTimelineReloader: ObservableObject {
+    private var lastReloadAt: [String: Date] = [:]
+    private let cooldown: TimeInterval = 5
+
+    func scheduleReload(kind: String) {
+        let now = Date.now
+        if let previous = lastReloadAt[kind], now.timeIntervalSince(previous) < cooldown {
+            return
+        }
+        lastReloadAt[kind] = now
+        WidgetCenter.shared.reloadTimelines(ofKind: kind)
     }
 }
 
