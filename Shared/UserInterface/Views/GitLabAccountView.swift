@@ -18,6 +18,9 @@ private enum SubmitState {
 struct GitLabAccountView: View {
     @Dependency(\.defaultDatabase) private var database
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var accountSlotStore: AccountSlotStore
+    @EnvironmentObject private var noticeState: NoticeState
+    @FetchAll(Account.order(by: { $0.createdAt.desc() })) private var accounts: [Account]
 
     @State private var token: String = ""
     @State private var instance: String = "https://www.gitlab.com"
@@ -109,6 +112,16 @@ struct GitLabAccountView: View {
     }
 
     func handleSave() {
+        guard accountSlotStore.canAddAccount(currentCount: accounts.count) else {
+            noticeState.addNotice(
+                notice: NoticeMessage(
+                    label: "You have reached the free account limit. Buy another account slot to add more accounts.",
+                    type: .error
+                )
+            )
+            return
+        }
+
         addAccount(token: token, instance: instance)
         dismiss()
     }
@@ -122,6 +135,12 @@ struct GitLabAccountView: View {
                 }
             } catch {
                 print("[Add GitLab Account] Failed to add account: \(error.localizedDescription)")
+                noticeState.addNotice(
+                    notice: NoticeMessage(
+                        label: "[Add GitLab Account] \(error.localizedDescription)",
+                        type: .error
+                    )
+                )
             }
         }
     }

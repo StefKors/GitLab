@@ -15,12 +15,14 @@ struct PreviewEnvironmentView: ViewModifier {
     // Non-Persisted state objects
     @StateObject private var noticeState = NoticeState()
     @StateObject private var networkState = NetworkState()
+    @StateObject private var accountSlotStore = AccountSlotStore()
 
     func body(content: Content) -> some View {
         content
             .environmentObject(noticeState)
             .environmentObject(networkState)
             .environmentObject(settingsState)
+            .environmentObject(accountSlotStore)
 //            .modelContainer(.shared)
             .if(padding) {
                 $0.scenePadding()

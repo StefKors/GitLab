@@ -81,6 +81,7 @@ struct GitLabApp: App {
     // Non-Persisted state objects
     @StateObject private var noticeState = NoticeState()
     @StateObject private var networkState = NetworkState()
+    @StateObject private var accountSlotStore = AccountSlotStore()
     private let startupDatabaseError: String?
 
     init() {
@@ -107,6 +108,7 @@ struct GitLabApp: App {
                 .environmentObject(noticeState)
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
+                .environmentObject(accountSlotStore)
 //                .modelContainer(.shared)
                 .navigationTitle("GitLab")
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
@@ -148,6 +150,7 @@ struct GitLabApp: App {
                 .environmentObject(noticeState)
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
+                .environmentObject(accountSlotStore)
                 .frame(width: 600)
         }, label: {
             SwiftUI.Label {
@@ -164,6 +167,7 @@ struct GitLabApp: App {
                 .environmentObject(noticeState)
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
+                .environmentObject(accountSlotStore)
 //                .modelContainer(.shared)
                 .ignoresSafeArea(.all, edges: .top)
                 .navigationTitle("Settings")

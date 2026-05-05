@@ -12,6 +12,7 @@ import SwiftData
 struct GitLab_iOSApp: App {
     // Non-Persisted state objects
     @StateObject private var noticeState = NoticeState()
+    @StateObject private var accountSlotStore = AccountSlotStore()
 
     // Persistance objects
     var sharedModelContainer: ModelContainer = {
@@ -42,6 +43,7 @@ struct GitLab_iOSApp: App {
                 }
             }
             .environmentObject(self.noticeState)
+            .environmentObject(accountSlotStore)
             .modelContainer(sharedModelContainer)
         }
     }

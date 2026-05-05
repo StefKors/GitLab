@@ -1,0 +1,135 @@
+{
+  "identifier" : "GitLabAccountSlots",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_3",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 3 total GitLab accounts.",
+          "displayName" : "Account Slot 3",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.3",
+      "referenceName" : "Account Slot 3",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_4",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 4 total GitLab accounts.",
+          "displayName" : "Account Slot 4",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.4",
+      "referenceName" : "Account Slot 4",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_5",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 5 total GitLab accounts.",
+          "displayName" : "Account Slot 5",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.5",
+      "referenceName" : "Account Slot 5",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_6",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 6 total GitLab accounts.",
+          "displayName" : "Account Slot 6",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.6",
+      "referenceName" : "Account Slot 6",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_7",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 7 total GitLab accounts.",
+          "displayName" : "Account Slot 7",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.7",
+      "referenceName" : "Account Slot 7",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_8",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 8 total GitLab accounts.",
+          "displayName" : "Account Slot 8",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.8",
+      "referenceName" : "Account Slot 8",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_9",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 9 total GitLab accounts.",
+          "displayName" : "Account Slot 9",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.9",
+      "referenceName" : "Account Slot 9",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "ACCOUNT_SLOT_10",
+      "localizations" : [
+        {
+          "description" : "Unlock up to 10 total GitLab accounts.",
+          "displayName" : "Account Slot 10",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.stefkors.gitlab.accountslot.10",
+      "referenceName" : "Account Slot 10",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "locale" : "en_US",
+    "storefront" : "USA"
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

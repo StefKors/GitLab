@@ -21,6 +21,8 @@ struct AlertDetails: Identifiable {
 struct AccountSettingsView: View {
     @Dependency(\.defaultDatabase) private var database
     @FetchAll private var accounts: [Account]
+    @EnvironmentObject private var accountSlotStore: AccountSlotStore
+    @EnvironmentObject private var noticeState: NoticeState
     @State private var showingAlert: Bool = false
     @State private var details: AlertDetails?
     @State private var showCreateSheet: Bool = false
@@ -37,6 +39,13 @@ struct AccountSettingsView: View {
 
             Form {
                 Section {
+                    HStack {
+                        Text("Current usage")
+                        Spacer()
+                        Text("\(accounts.count) of \(accountSlotStore.maxAllowedAccounts)")
+                            .foregroundStyle(.secondary)
+                    }
+
                     if accounts.isEmpty {
                         AccountListEmptyView()
                     } else {
@@ -63,9 +72,67 @@ struct AccountSettingsView: View {
                         }
                         .padding(.vertical, 4)
                     }
-                    HStack {
-                        Button("Add Account", action: { showCreateSheet.toggle() })
-                            .buttonStyle(.borderedProminent)
+                    if accounts.count < accountSlotStore.maxAllowedAccounts {
+                        HStack {
+                            Button("Add Account", action: { showCreateSheet.toggle() })
+                                .buttonStyle(.borderedProminent)
+                        }
+                    } else if let nextProduct = accountSlotStore.nextAccountSlotProduct {
+                        Button {
+#if os(macOS)
+                            Task {
+                                await purchaseNextSlot()
+                            }
+#else
+                            showCreateSheet.toggle()
+#endif
+                        } label: {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack(alignment: .center) {
+                                    Image(systemName: "sparkles.rectangle.stack.fill")
+                                        .font(.title3)
+                                        .foregroundStyle(.white.opacity(0.95))
+                                    Spacer()
+                                    Text(nextProduct.displayPrice)
+                                        .font(.headline)
+                                        .foregroundStyle(.white)
+                                }
+
+                                Text("Purchase account slot")
+                                    .font(.headline)
+                                    .foregroundStyle(.white)
+
+                                Text("Unlock account \(nextProduct.totalAccountCount) and keep adding more GitHub or GitLab accounts.")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.white.opacity(0.88))
+                                    .multilineTextAlignment(.leading)
+                            }
+                            .padding(16)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(
+                                LinearGradient(
+                                    colors: [
+                                        Color.blue.darker(by: 10),
+                                        Color.cyan.darker(by: 20)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        }
+                        .buttonStyle(.plain)
+                    } else if accountSlotStore.nextRequiredProductID != nil {
+                        HStack {
+                            ProgressView()
+                            Text("Loading account slot purchase options...")
+                                .foregroundStyle(.secondary)
+                        }
+                    } else {
+                        HStack {
+                            Text("Maximum supported account limit unlocked.")
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 } header: {
                     Text("Tokens")
@@ -90,6 +157,48 @@ struct AccountSettingsView: View {
                         Spacer()
                         Button("Clear", action: clearNotifications)
                     }
+                }
+
+                Section("Account Slots") {
+                    HStack {
+                        Text("Current usage")
+                        Spacer()
+                        Text("\(accounts.count) of \(accountSlotStore.maxAllowedAccounts)")
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if let nextProduct = accountSlotStore.nextAccountSlotProduct {
+                        HStack {
+                            Text("Next slot price")
+                            Spacer()
+                            Text(nextProduct.displayPrice)
+                                .foregroundStyle(.secondary)
+                        }
+
+#if os(macOS)
+                        Button("Buy account slot \(nextProduct.totalAccountCount)") {
+                            Task {
+                                await purchaseNextSlot()
+                            }
+                        }
+                        .disabled(accountSlotStore.isLoadingProducts || accountSlotStore.isRefreshingEntitlements)
+#endif
+                    } else if accountSlotStore.nextRequiredProductID != nil {
+                        Text("Loading account slot purchase options...")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("Maximum supported account limit unlocked.")
+                            .foregroundStyle(.secondary)
+                    }
+
+#if os(macOS)
+                    Button("Restore Purchases") {
+                        Task {
+                            await restorePurchases()
+                        }
+                    }
+                    .disabled(accountSlotStore.isRefreshingEntitlements)
+#endif
                 }
             }
         }
@@ -149,6 +258,48 @@ struct AccountSettingsView: View {
                     print("[Notifications] Failed to reset badge count: \(error.localizedDescription)")
                 }
             }
+        }
+    }
+
+    @MainActor
+    private func purchaseNextSlot() async {
+        do {
+            try await accountSlotStore.purchaseNextSlot()
+            noticeState.addNotice(
+                notice: NoticeMessage(
+                    label: "Account slot purchased successfully.",
+                    type: .information
+                )
+            )
+        } catch AccountSlotStoreError.purchaseCancelled {
+            return
+        } catch {
+            noticeState.addNotice(
+                notice: NoticeMessage(
+                    label: error.localizedDescription,
+                    type: .error
+                )
+            )
+        }
+    }
+
+    @MainActor
+    private func restorePurchases() async {
+        do {
+            try await accountSlotStore.restorePurchases()
+            noticeState.addNotice(
+                notice: NoticeMessage(
+                    label: "Purchases restored.",
+                    type: .information
+                )
+            )
+        } catch {
+            noticeState.addNotice(
+                notice: NoticeMessage(
+                    label: error.localizedDescription,
+                    type: .error
+                )
+            )
         }
     }
 }

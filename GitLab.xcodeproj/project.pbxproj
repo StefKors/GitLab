@@ -78,6 +78,7 @@
 		8A55E3CA2CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */; };
 		8A55E3CB2CD6C8B2005B4AA5 /* LaunchpadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */; };
 		8A5B657528E4E76000535C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC0FD26EFD08F004136AB /* Assets.xcassets */; };
+		8A5E11E72FAA401900ED5A9E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5E11E62FAA401900ED5A9E /* StoreKit.framework */; };
 		8A5FC0FA26EFD08E004136AB /* GitLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC0F926EFD08E004136AB /* GitLabApp.swift */; };
 		8A5FC10126EFD08F004136AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */; };
 		8A5FC11026EFD08F004136AB /* GitLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5FC10F26EFD08F004136AB /* GitLabTests.swift */; };
@@ -633,6 +634,7 @@
 		8A36AF192869B4110008B949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContent.entitlements; sourceTree = "<group>"; };
 		8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchpadState.swift; sourceTree = "<group>"; };
+		8A5E11E62FAA401900ED5A9E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merge Requests for GitLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* GitLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabApp.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -828,6 +830,7 @@
 				8AE417E62CE0EB1800B25DCD /* NukeUI in Frameworks */,
 				8A858F282CD54D2B0024795D /* OrderedCollections in Frameworks */,
 				8AA709082DA5446400E2363A /* SharingGRDB in Frameworks */,
+				8A5E11E72FAA401900ED5A9E /* StoreKit.framework in Frameworks */,
 				8AE417E42CE0EB1800B25DCD /* Nuke in Frameworks */,
 				8AB53DDB2DBF862B00551FA7 /* StructuredQueriesGRDB in Frameworks */,
 			);
@@ -1094,6 +1097,7 @@
 		8AC4B4112865C1480054C601 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A5E11E62FAA401900ED5A9E /* StoreKit.framework */,
 				8A7FBF6729C3326D0032E394 /* GitLabAPIService.xpc */,
 				8AC4B4122865C1480054C601 /* WidgetKit.framework */,
 				8AC4B4142865C1480054C601 /* SwiftUI.framework */,

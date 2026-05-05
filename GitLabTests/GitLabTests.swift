@@ -183,4 +183,38 @@ final class ReliabilityTests: XCTestCase {
             XCTAssertEqual(fetched.first?.name, "GitLab")
         }
     }
+
+    func testAccountSlotPolicyFreeLimit() {
+        let purchasedProductIDs = Set<String>()
+        XCTAssertEqual(AccountSlotPolicy.purchasedExtraSlots(for: purchasedProductIDs), 0)
+        XCTAssertEqual(AccountSlotPolicy.maxAllowedAccounts(for: purchasedProductIDs), 2)
+        XCTAssertTrue(AccountSlotPolicy.canAddAccount(currentCount: 1, purchasedProductIDs: purchasedProductIDs))
+        XCTAssertFalse(AccountSlotPolicy.canAddAccount(currentCount: 2, purchasedProductIDs: purchasedProductIDs))
+        XCTAssertEqual(
+            AccountSlotPolicy.nextRequiredProductID(for: purchasedProductIDs),
+            "com.stefkors.gitlab.accountslot.3"
+        )
+    }
+
+    func testAccountSlotPolicyUsesHighestUnlockedSlot() {
+        let purchasedProductIDs = Set([
+            "com.stefkors.gitlab.accountslot.3",
+            "com.stefkors.gitlab.accountslot.5"
+        ])
+
+        XCTAssertEqual(AccountSlotPolicy.purchasedExtraSlots(for: purchasedProductIDs), 3)
+        XCTAssertEqual(AccountSlotPolicy.maxAllowedAccounts(for: purchasedProductIDs), 5)
+        XCTAssertEqual(
+            AccountSlotPolicy.nextRequiredProductID(for: purchasedProductIDs),
+            "com.stefkors.gitlab.accountslot.6"
+        )
+    }
+
+    func testAccountSlotPolicyCapsAtMaximumSupportedAccounts() {
+        let purchasedProductIDs = Set(["com.stefkors.gitlab.accountslot.10"])
+
+        XCTAssertEqual(AccountSlotPolicy.maxAllowedAccounts(for: purchasedProductIDs), 10)
+        XCTAssertNil(AccountSlotPolicy.nextRequiredProductID(for: purchasedProductIDs))
+        XCTAssertFalse(AccountSlotPolicy.canAddAccount(currentCount: 10, purchasedProductIDs: purchasedProductIDs))
+    }
 }
