@@ -2213,7 +2213,7 @@
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = GitLab;
+				INFOPLIST_KEY_CFBundleDisplayName = Merger;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2252,7 +2252,7 @@
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = GitLab;
+				INFOPLIST_KEY_CFBundleDisplayName = Merger;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -2580,7 +2580,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "GitLab Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = Merger;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2615,7 +2615,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = GitLab/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "GitLab Widget";
+				INFOPLIST_KEY_CFBundleDisplayName = Merger;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
