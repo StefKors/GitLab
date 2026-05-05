@@ -445,7 +445,8 @@ struct UserInterface: View {
 
     private var menuBarMaxHeight: CGFloat? {
 #if os(macOS)
-        return 700
+        return NSScreen.main.map { $0.visibleFrame.height * 0.9 }
+        // return 700
 #else
         return nil
 #endif

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LastUpdateMessageView: View {
+
+    @Environment(\.openSettings) var openSetting
     var body: some View {
         VStack(spacing: 0) {
             Divider()
@@ -42,15 +44,16 @@ struct LastUpdateMessageView: View {
     }
 
     func openSettings() {
-#if os(macOS)
-        if #available(macOS 13.0, *) {
-            // Private API - must use string-based selector
-            NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-        } else {
-            // Private API - must use string-based selector
-            NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-        }
-#endif
+        openSetting()
+// #if os(macOS)
+//         if #available(macOS 13.0, *) {
+//             // Private API - must use string-based selector
+//             NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+//         } else {
+//             // Private API - must use string-based selector
+//             NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+//         }
+// #endif
     }
 
     func quitApp() {

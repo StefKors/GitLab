@@ -58,7 +58,7 @@ struct MainContentView: View {
             let scrollView = ScrollView {
                 listContent
             }
-            .frame(maxHeight: maxHeight)
+                .frame(minHeight: 500, maxHeight: maxHeight)
 
             if allowScrollBounce {
                 scrollView.scrollBounceBehavior(.basedOnSize)
