@@ -6,31 +6,19 @@
 //
 
 import SwiftUI
-import SharingGRDB
 
 struct PlainMergeRequestList: View {
-    let mergeRequests: [UniversalMergeRequest]
-    let accounts: [Account]
-    
-    var lastMR: UniversalMergeRequest? {
-        mergeRequests.last
-    }
-    
-    @Dependency(\.defaultDatabase) private var database
-    
-    @State private var account: Account?
-    
+    let rowModels: [MergeRequestRowModel]
+
     var body: some View {
         LazyVStack(alignment: .leading, spacing: 0) {
-            ForEach(mergeRequests, id: \.id) { mergeRequest in
-                MergeRequestRowView(request: mergeRequest)
+            ForEach(rowModels) { rowModel in
+                MergeRequestRowView(rowModel: rowModel)
                     .transition(.opacity)
-                    .id(mergeRequest.pullRequest?.hashValue ?? mergeRequest.mergeRequest?.hashValue)
-                    .environment(\.account, accounts.first(where: { $0.id == mergeRequest.accountsId }))
                 //                .listRowSeparator(.visible)
                 //                .listRowSeparatorTint(Color.secondary.opacity(0.2))
                 
-                if mergeRequest != lastMR {
+                if rowModel.id != rowModels.last?.id {
                     Divider()
                         .padding(.horizontal, 4)
                         .transition(.opacity)
@@ -41,7 +29,13 @@ struct PlainMergeRequestList: View {
 }
 
 #Preview {
-    PlainMergeRequestList(mergeRequests: [.preview, .preview2, .preview3, .preview4, .previewGitHub], accounts: [.preview, .previewGitHub])
+    PlainMergeRequestList(rowModels: [
+        .init(request: .preview, account: .preview),
+        .init(request: .preview2, account: .preview),
+        .init(request: .preview3, account: .preview),
+        .init(request: .preview4, account: .preview),
+        .init(request: .previewGitHub, account: .previewGitHub)
+    ])
         .previewEnvironment()
     //        .frame(maxWidth: .infinity, maxHeight: .infinity)
 }

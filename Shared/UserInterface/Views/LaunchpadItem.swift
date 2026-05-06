@@ -14,7 +14,7 @@ import UIKit
 #endif
 
 struct LaunchpadItem: View {
-    var repo: LaunchpadRepo
+    let model: LaunchpadItemModel
     @Binding var activeRepoUrl: URL?
 
     @Environment(\.openURL) private var openURL
@@ -22,7 +22,15 @@ struct LaunchpadItem: View {
     @Dependency(\.defaultDatabase) private var database
 
     private var isFiltered: Bool {
-        activeRepoUrl == repo.url
+        activeRepoUrl == model.repo.url
+    }
+
+    private var actionIconName: String {
+        isFiltered ? "xmark" : "arrow.up.forward"
+    }
+
+    private var actionText: String {
+        isFiltered ? "Clear Filter" : "Open on Web"
     }
 
     var body: some View {
@@ -30,15 +38,7 @@ struct LaunchpadItem: View {
             Button {
                 toggleFilter()
             } label: {
-                HStack {
-                    LaunchpadImage(repo: repo)
-
-                    VStack(alignment: .leading) {
-                        Text(repo.name)
-                        Text(repo.group)
-                            .foregroundStyle(.secondary)
-                    }
-                }
+                LaunchpadItemContent(model: model)
             }
             .buttonStyle(.plain)
 
@@ -46,11 +46,11 @@ struct LaunchpadItem: View {
                 if isFiltered {
                     clearFilter()
                 } else {
-                    openURL(repo.url)
+                    openURL(model.repo.url)
                     dismissWindow()
                 }
             } label: {
-                SwiftUI.Label(isFiltered ? "Clear Filter" : "Open on Web", systemImage: isFiltered ? "xmark" : "arrow.up.forward")
+                SwiftUI.Label(actionText, systemImage: actionIconName)
                     .labelStyle(.iconOnly)
             }
             .buttonStyle(.menubar)
@@ -69,16 +69,16 @@ struct LaunchpadItem: View {
             Divider()
 
             Button("Open Repository", systemImage: "arrow.up.forward") {
-                openURL(repo.url)
+                openURL(model.repo.url)
                 dismissWindow()
             }
 
             Button("Copy Repository URL", systemImage: "doc.on.doc") {
-                copyToPasteboard(repo.url.absoluteString)
+                copyToPasteboard(model.repo.url.absoluteString)
             }
 
             Button("Copy Repository Name", systemImage: "textformat") {
-                copyToPasteboard(repoDisplayName)
+                copyToPasteboard(model.displayName)
             }
 
             Divider()
@@ -90,20 +90,12 @@ struct LaunchpadItem: View {
                 _ = withAnimation(.smooth) {
                     Task {
                         try await database.write { db in
-                            try repo.delete(db)
+                            try model.repo.delete(db)
                         }
                     }
                 }
             }
         }
-    }
-
-    private var repoDisplayName: String {
-        if repo.group.isEmpty {
-            return repo.name
-        }
-
-        return "\(repo.group)/\(repo.name)"
     }
 
     private func toggleFilter() {
@@ -116,7 +108,7 @@ struct LaunchpadItem: View {
 
     private func setFilter() {
         withAnimation(.snappy(duration: 0.25)) {
-            activeRepoUrl = repo.url
+            activeRepoUrl = model.repo.url
         }
     }
 
@@ -137,7 +129,23 @@ struct LaunchpadItem: View {
     }
 }
 
+private struct LaunchpadItemContent: View, Equatable {
+    let model: LaunchpadItemModel
+
+    var body: some View {
+        HStack(spacing: 8) {
+            LaunchpadImage(repo: model.repo)
+
+            VStack(alignment: .leading) {
+                Text(model.repo.name)
+                Text(model.repo.group)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+}
+
 #Preview {
-    LaunchpadItem(repo: .preview, activeRepoUrl: .constant(nil))
+    LaunchpadItem(model: .init(repo: .preview), activeRepoUrl: .constant(nil))
         .scenePadding()
 }

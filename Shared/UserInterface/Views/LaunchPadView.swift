@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct LaunchpadView: View {
-    let repos: [LaunchpadRepo]
+    let launchpadItems: [LaunchpadItemModel]
     @Binding var activeRepoUrl: URL?
 
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(repos, id: \.id) { repo in
-                    LaunchpadItem(repo: repo, activeRepoUrl: $activeRepoUrl)
+                ForEach(launchpadItems) { item in
+                    LaunchpadItem(model: item, activeRepoUrl: $activeRepoUrl)
                 }
                 Spacer()
             }

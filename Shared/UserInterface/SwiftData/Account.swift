@@ -5,12 +5,8 @@
 //  Created by Stef Kors on 26/07/2023.
 //
 
-import SwiftUI
+import Foundation
 import SharingGRDB
-
-extension EnvironmentValues {
-    @Entry var account: Account? = nil
-}
 
 enum GitProvider: String, Codable, CaseIterable, Hashable {
     case GitLab = "GitLab"

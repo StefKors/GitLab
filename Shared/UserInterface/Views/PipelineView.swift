@@ -15,6 +15,7 @@ private struct Values {
 struct PipelineView: View {
     var pipeline: GitLab.HeadPipeline
     var instance: String?
+    var isHoveringRow: Bool = false
 
     private var stages: [GitLab.FluffyNode] {
         pipeline.stages?.edges?.map({ $0.node }).compactMap({ $0 }) ?? []
@@ -27,8 +28,6 @@ struct PipelineView: View {
     private var spacing: CGFloat {
         allSucceeded ? -14 : 0
     }
-
-    @Environment(\.isHoveringRow) private var isHoveringRow
 
     private var isHovering: Bool {
         stages.count > 1 && isHoveringRow
@@ -72,37 +71,19 @@ struct PipelineView: View {
 
 #Preview {
     VStack(alignment: .trailing) {
-        PipelineView(pipeline: .previewTestFailed, instance: nil)
+        PipelineView(pipeline: .previewTestFailed, instance: nil, isHoveringRow: true)
             .scenePadding()
-            .modifier(IsHoveringRowPreviewEnv())
 
-        PipelineView(pipeline: .previewMultiple, instance: nil)
+        PipelineView(pipeline: .previewMultiple, instance: nil, isHoveringRow: true)
             .scenePadding()
-            .modifier(IsHoveringRowPreviewEnv())
 
-        PipelineView(pipeline: .previewMultipleSuccess, instance: nil)
+        PipelineView(pipeline: .previewMultipleSuccess, instance: nil, isHoveringRow: true)
             .scenePadding()
-            .modifier(IsHoveringRowPreviewEnv())
 
-        PipelineView(pipeline: .previewMultipleSuccessMergeTrain, instance: nil)
+        PipelineView(pipeline: .previewMultipleSuccessMergeTrain, instance: nil, isHoveringRow: true)
             .scenePadding()
-            .modifier(IsHoveringRowPreviewEnv())
     }
     .scenePadding()
     .scenePadding()
     .scenePadding()
-}
-
-fileprivate struct IsHoveringRowPreviewEnv: ViewModifier {
-    @State private var isHoveringRow: Bool = false
-
-    func body(content: Content) -> some View {
-        content
-            .environment(\.isHoveringRow, isHoveringRow)
-            .onHover { state in
-                withAnimation(.snappy(duration: 0.18)) {
-                    isHoveringRow = state
-                }
-            }
-    }
 }

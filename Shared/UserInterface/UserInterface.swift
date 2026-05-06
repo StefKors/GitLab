@@ -9,6 +9,7 @@ import SwiftUI
 import SharingGRDB
 import Get
 import WidgetKit
+import os
 #if os(macOS)
 import AppKit
 #endif
@@ -30,6 +31,7 @@ struct UserInterface: View {
 
     @State private var timelineDate: Date = .now
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
+    private let perfLog = OSLog(subsystem: "com.stefkors.gitlab", category: "performance")
 
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
@@ -47,39 +49,37 @@ struct UserInterface: View {
         return selectedMergeRequests.filter { $0.repoUrl == activeRepoUrl }
     }
 
+    private var accountByID: [Account.ID: Account] {
+        Dictionary(uniqueKeysWithValues: accounts.map { ($0.id, $0) })
+    }
+
+    private var rowModels: [MergeRequestRowModel] {
+        filteredMergeRequests.map { request in
+            MergeRequestRowModel(request: request, account: accountByID[request.accountsId])
+        }
+    }
+
+    private var launchpadItems: [LaunchpadItemModel] {
+        repos.map(LaunchpadItemModel.init)
+    }
+
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            Picker(selection: $selectedView, content: {
-                Text("Your Pull Requests").tag(QueryType.authoredMergeRequests)
-                Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
-#if DEBUG
-                Text("Debug Network").tag(QueryType.networkDebug)
-#endif
-            }, label: {
-                EmptyView()
-            })
-            .pickerStyle(.segmented)
-            .padding(.horizontal, 6)
-            .padding(.top, 6)
-            .padding(.bottom, 0)
+            MergeRequestHeaderView(selectedView: $selectedView)
 
             if selectedView == .networkDebug {
                 NetworkStateView()
             } else {
                 MainContentView(
-                    repos: repos,
-                    filteredMergeRequests: filteredMergeRequests,
-                    accounts: accounts,
+                    launchpadItems: launchpadItems,
+                    rowModels: rowModels,
+                    hasAccounts: !accounts.isEmpty,
                     withScrollView: true,
                     allowScrollBounce: true,
                     maxHeight: menuBarMaxHeight,
-                    selectedView: $selectedView,
                     activeRepoUrl: $activeRepoUrl
                 )
                 .frame(maxHeight: menuBarMaxHeight)
-                .task(id: filteredMergeRequests) {
-                    print("filteredMergeRequests updated")
-                }
             }
         }
 
@@ -92,21 +92,29 @@ struct UserInterface: View {
                 networkState.record = false
             }
         }
+        .onChange(of: filteredMergeRequests.map(\.id)) { _, _ in
+            let listPublishID = OSSignpostID(log: perfLog)
+            os_signpost(.event, log: perfLog, name: "list_data_published", signpostID: listPublishID)
+        }
         .task(id: "once") {
-            Task {
-                await fetchReviewRequestedMRs()
-                await fetchAuthoredMRs()
-                await fetchRepos()
-                await branchPushes()
-            }
+            let startupSignpostID = OSSignpostID(log: perfLog)
+            os_signpost(.begin, log: perfLog, name: "initial_load", signpostID: startupSignpostID)
+            await fetchReviewRequestedMRs()
+            await fetchAuthoredMRs()
+            await fetchRepos()
+            await branchPushes()
+            os_signpost(.end, log: perfLog, name: "initial_load", signpostID: startupSignpostID)
         }
         .onReceive(timer) { _ in
             timelineDate = .now
             Task {
+                let refreshSignpostID = OSSignpostID(log: perfLog)
+                os_signpost(.begin, log: perfLog, name: "periodic_refresh", signpostID: refreshSignpostID)
                 await fetchReviewRequestedMRs()
                 await fetchAuthoredMRs()
                 await fetchRepos()
                 await branchPushes()
+                os_signpost(.end, log: perfLog, name: "periodic_refresh", signpostID: refreshSignpostID)
             }
         }
     }
@@ -216,7 +224,14 @@ struct UserInterface: View {
             existingMR.type == type
         }
         let mrsToRemove = existingForAccountType.filter { !incomingIds.contains($0.id) }
+        let noChanges = hasNoMRChanges(existing: existingForAccountType, incoming: requests, removals: mrsToRemove)
 
+        if noChanges {
+            return
+        }
+
+        let persistSignpostID = OSSignpostID(log: perfLog)
+        os_signpost(.begin, log: perfLog, name: "persist_mrs", signpostID: persistSignpostID)
         try await database.write { db in
             // Delete stale items for this account + provider + type
             for mrToRemove in mrsToRemove {
@@ -228,6 +243,7 @@ struct UserInterface: View {
                 try UniversalMergeRequest.upsert(UniversalMergeRequest.Draft(request)).execute(db)
             }
         }
+        os_signpost(.end, log: perfLog, name: "persist_mrs", signpostID: persistSignpostID)
 
         // Request widget refresh when MRs are updated
         reloadMergeRequestWidgetsIfNeeded()
@@ -246,6 +262,25 @@ struct UserInterface: View {
                 }
             }
         }
+    }
+
+    private func hasNoMRChanges(existing: [UniversalMergeRequest], incoming: [UniversalMergeRequest], removals: [UniversalMergeRequest]) -> Bool {
+        guard removals.isEmpty else {
+            return false
+        }
+
+        guard existing.count == incoming.count else {
+            return false
+        }
+
+        let existingByID = Dictionary(uniqueKeysWithValues: existing.map { ($0.id, $0.updatedAt) })
+        for request in incoming {
+            guard let existingUpdatedAt = existingByID[request.id], existingUpdatedAt == request.updatedAt else {
+                return false
+            }
+        }
+
+        return true
     }
 
     // TDOO: fix this mess with split gitlab (below) and github (above) logic
@@ -542,3 +577,23 @@ private final class WidgetTimelineReloader: ObservableObject {
 //    subtitle: "\(reference) is approved by \(approvers.formatted())",
 //    userInfo: userInfo
 // )
+
+private struct MergeRequestHeaderView: View {
+    @Binding var selectedView: QueryType
+
+    var body: some View {
+        Picker(selection: $selectedView, content: {
+            Text("Your Pull Requests").tag(QueryType.authoredMergeRequests)
+            Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
+#if DEBUG
+            Text("Debug Network").tag(QueryType.networkDebug)
+#endif
+        }, label: {
+            EmptyView()
+        })
+        .pickerStyle(.segmented)
+        .padding(.horizontal, 6)
+        .padding(.top, 6)
+        .padding(.bottom, 0)
+    }
+}

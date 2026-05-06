@@ -13,7 +13,7 @@ struct WidgetLaunchPadRow: View {
     var body: some View {
         HStack {
             ForEach(repos.prefix(length), id: \.id) { repo in
-                LaunchpadItem(repo: repo, activeRepoUrl: .constant(nil))
+                LaunchpadItem(model: .init(repo: repo), activeRepoUrl: .constant(nil))
             }
         }
         .frame(alignment: .leading)

@@ -12,8 +12,18 @@ struct MergeRequestList: View {
     var accounts: [Account]
     var selectedView: QueryType
 
+    private var accountByID: [Account.ID: Account] {
+        Dictionary(uniqueKeysWithValues: accounts.map { ($0.id, $0) })
+    }
+
+    private var rowModels: [MergeRequestRowModel] {
+        mergeRequests.map { request in
+            MergeRequestRowModel(request: request, account: accountByID[request.accountsId])
+        }
+    }
+
     var body: some View {
-        PlainMergeRequestList(mergeRequests: mergeRequests, accounts: accounts)
+        PlainMergeRequestList(rowModels: rowModels)
 //        if accounts.count > 1 {
 //            SectionedMergeRequestList(
 //                accounts: accounts,

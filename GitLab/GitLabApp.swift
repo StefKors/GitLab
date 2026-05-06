@@ -72,8 +72,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 @main
 struct GitLabApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissWindow) private var dismissWindow
 
     // Persisted state objects
     @StateObject private var settingsState = SettingsState()
@@ -146,18 +144,14 @@ struct GitLabApp: App {
 
 //
         MenuBarExtra(content: {
-            UserInterface()
-                .environmentObject(noticeState)
-                .environmentObject(networkState)
-                .environmentObject(settingsState)
-                .environmentObject(accountSlotStore)
-                .frame(width: 600)
+            MenuBarRootView(
+                noticeState: noticeState,
+                networkState: networkState,
+                settingsState: settingsState,
+                accountSlotStore: accountSlotStore
+            )
         }, label: {
-            SwiftUI.Label {
-                Text("GitLab Desktop")
-            } icon: {
-                Image(.iconGradientsPNG)
-            }
+            MenuBarLabelView()
         })
         .menuBarExtraStyle(.window)
         .windowResizability(.contentSize)
@@ -173,7 +167,6 @@ struct GitLabApp: App {
                 .navigationTitle("Settings")
                 .toolbar(removing: .title)
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
-                .containerBackground(.thinMaterial, for: .window)
                 .containerBackground(.thinMaterial, for: .window)
                 .windowMinimizeBehavior(.disabled)
                 .windowResizeBehavior(.disabled)
@@ -253,5 +246,31 @@ struct GitLabApp: App {
         try migrator.migrate(database)
         print("migrator.migrations: \(migrator.migrations)")
         return database
+    }
+}
+
+private struct MenuBarRootView: View {
+    @ObservedObject var noticeState: NoticeState
+    @ObservedObject var networkState: NetworkState
+    @ObservedObject var settingsState: SettingsState
+    @ObservedObject var accountSlotStore: AccountSlotStore
+
+    var body: some View {
+        UserInterface()
+            .environmentObject(noticeState)
+            .environmentObject(networkState)
+            .environmentObject(settingsState)
+            .environmentObject(accountSlotStore)
+            .frame(width: 600)
+    }
+}
+
+private struct MenuBarLabelView: View {
+    var body: some View {
+        SwiftUI.Label {
+            Text("GitLab Desktop")
+        } icon: {
+            Image(.iconGradientsPNG)
+        }
     }
 }

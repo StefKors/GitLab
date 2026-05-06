@@ -38,12 +38,16 @@ struct ActionsView: View {
         return dict
     }
 
+    private var workflowEntries: [(workflow: GitHub.Workflow, stages: [GitHub.ContextsNode])] {
+        groupedByWorkflow.map { ($0.key, $0.value) }
+    }
+
     var body: some View {
-        if !Array(groupedByWorkflow.keys.enumerated()).isEmpty {
+        if !workflowEntries.isEmpty {
             HStack(alignment: .center, spacing: spacing) {
-                
-                ForEach(Array(groupedByWorkflow.keys.enumerated()), id: \.element) { index, workflow in
-                    let stages = groupedByWorkflow[workflow] ?? []
+                ForEach(Array(workflowEntries.enumerated()), id: \.element.workflow.id) { index, entry in
+                    let workflow = entry.workflow
+                    let stages = entry.stages
                     HStack(spacing: 0) {
                         GitHubCIJobsView(workflow: workflow, stages: stages, instance: instance)
                             .id(workflow.id)
@@ -57,7 +61,7 @@ struct ActionsView: View {
                             }
                             .zIndex(2)
                         
-                        let isLast = index == Array(groupedByWorkflow.keys.enumerated()).count - 1
+                        let isLast = index == workflowEntries.count - 1
                         if !isLast {
                             Rectangle()
                                 .fill(.quaternary)
@@ -73,7 +77,7 @@ struct ActionsView: View {
             }
             .onHover { state in
                 withAnimation(.easeInOut) {
-                    if Array(groupedByWorkflow.keys).count > 1 {
+                    if workflowEntries.count > 1 {
                         isHovering = state
                     }
                 }

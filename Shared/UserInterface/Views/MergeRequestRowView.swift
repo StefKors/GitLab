@@ -11,112 +11,62 @@ import AppKit
 import UIKit
 #endif
 
-extension EnvironmentValues {
-    @Entry var isHoveringRow: Bool = false
-}
-
 struct MergeRequestRowView: View {
-    var request: UniversalMergeRequest
+    let rowModel: MergeRequestRowModel
 
     @Environment(\.openURL) private var openURL
     @Environment(\.dismissWindow) private var dismissWindow
     @State private var isHoveringRow: Bool = false
-    
-    private var titleText: String {
-        request.title ?? "untitled"
-    }
-    
-    private var requestUrl: URL? {
-        request.url
-    }
-    
-    private var repoUrl: URL? {
-        request.repoUrl
-    }
-    
-    private var sourceBranch: String? {
-        request.sourceBranch ?? request.pullRequest?.headRefName
-    }
-    
-    private var targetBranch: String? {
-        request.targetBranch
-    }
-    
-    private var branchSummary: String? {
-        switch (sourceBranch, targetBranch) {
-        case let (source?, target?):
-            return "\(source) -> \(target)"
-        case let (source?, nil):
-            return source
-        case let (nil, target?):
-            return target
-        default:
-            return nil
-        }
-    }
-    
-    private var markdownLink: String? {
-        guard let requestUrl else { return nil }
-        return "[\(titleText)](\(requestUrl.absoluteString))"
-    }
 
     var body: some View {
         Button {
-            openLink(requestUrl)
+            openLink(rowModel.requestURL)
         } label: {
-            VStack(alignment: .leading, spacing: 5) {
-                MRTitleView(linkText: titleText, isDraft: request.isDraft)
-                    .multilineTextAlignment(.leading)
-                    .truncationMode(.middle)
-                    .padding(.trailing)
-
-                HorizontalMergeRequestSubRowView(request: request)
-            }
-            .environment(\.isHoveringRow, isHoveringRow)
+            MergeRequestRowContent(rowModel: rowModel, isHoveringRow: isHoveringRow)
         }
         .buttonStyle(.plain)
         .padding(.vertical, 5)
         .contentShape(Rectangle())
         .contextMenu {
-            if let requestUrl {
+            if let requestURL = rowModel.requestURL {
                 Button("Open Merge Request", systemImage: "arrow.up.forward") {
-                    openLink(requestUrl)
+                    openLink(requestURL)
                 }
             }
             
-            if let repoUrl {
+            if let repoURL = rowModel.repoURL {
                 Button("Open Repository", systemImage: "folder") {
-                    openLink(repoUrl)
+                    openLink(repoURL)
                 }
             }
             
             Divider()
             
             Button("Copy Title", systemImage: "textformat") {
-                copyToPasteboard(titleText)
+                copyToPasteboard(rowModel.titleText)
             }
             
-            if let requestUrl {
+            if let requestURL = rowModel.requestURL {
                 Button("Copy Link", systemImage: "link") {
-                    copyToPasteboard(requestUrl.absoluteString)
+                    copyToPasteboard(requestURL.absoluteString)
                 }
             }
 
-            if let markdownLink {
+            if let markdownLink = rowModel.markdownLink {
                 Button("Copy Markdown Link", systemImage: "doc.on.doc") {
                     copyToPasteboard(markdownLink)
                 }
             }
 
-            if let branchSummary {
+            if let branchSummary = rowModel.branchSummary {
                 Button("Copy Branches", systemImage: "arrow.left.and.right") {
                     copyToPasteboard(branchSummary)
                 }
             }
 
-            if let repoUrl {
+            if let repoURL = rowModel.repoURL {
                 Button("Copy Repository URL", systemImage: "doc.on.doc") {
-                    copyToPasteboard(repoUrl.absoluteString)
+                    copyToPasteboard(repoURL.absoluteString)
                 }
             }
         }
@@ -144,32 +94,54 @@ struct MergeRequestRowView: View {
     }
 }
 
+private struct MergeRequestRowContent: View, Equatable {
+    let rowModel: MergeRequestRowModel
+    let isHoveringRow: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            MRTitleView(linkText: rowModel.titleText, isDraft: rowModel.request.isDraft)
+                .multilineTextAlignment(.leading)
+                .truncationMode(.middle)
+                .padding(.trailing)
+
+            HorizontalMergeRequestSubRowView(
+                request: rowModel.request,
+                provider: rowModel.provider,
+                account: rowModel.account,
+                instance: rowModel.instance,
+                isHoveringRow: isHoveringRow
+            )
+        }
+    }
+}
+
 #Preview {
     VStack(alignment: .leading, spacing: 50, content: {
         VStack(alignment: .leading, content: {
-            MergeRequestRowView(request: .preview)
-            MergeRequestRowView(request: .preview3)
-            MergeRequestRowView(request: .preview2)
-            MergeRequestRowView(request: .preview4)
-            MergeRequestRowView(request: .previewGitHub)
+            MergeRequestRowView(rowModel: .init(request: .preview, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview3, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview2, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview4, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .previewGitHub, account: .previewGitHub))
         })
         .frame(width: 190)
 
         VStack(alignment: .leading, content: {
-            MergeRequestRowView(request: .preview)
-            MergeRequestRowView(request: .preview3)
-            MergeRequestRowView(request: .preview2)
-            MergeRequestRowView(request: .preview4)
-            MergeRequestRowView(request: .previewGitHub)
+            MergeRequestRowView(rowModel: .init(request: .preview, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview3, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview2, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview4, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .previewGitHub, account: .previewGitHub))
         })
         .frame(width: 290)
 
         VStack(alignment: .leading, content: {
-            MergeRequestRowView(request: .preview)
-            MergeRequestRowView(request: .preview3)
-            MergeRequestRowView(request: .preview2)
-            MergeRequestRowView(request: .preview4)
-            MergeRequestRowView(request: .previewGitHub)
+            MergeRequestRowView(rowModel: .init(request: .preview, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview3, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview2, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .preview4, account: .preview))
+            MergeRequestRowView(rowModel: .init(request: .previewGitHub, account: .previewGitHub))
         })
     })
     .previewEnvironment()
