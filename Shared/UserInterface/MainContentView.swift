@@ -145,7 +145,7 @@ private struct MergeRequestListContainer: View, Equatable {
                 let scrollView = ScrollView {
                     listContent
                 }
-                .frame(minHeight: 500, maxHeight: maxHeight)
+                .frame(minHeight: 300, maxHeight: maxHeight)
 
                 if allowScrollBounce {
                     scrollView.scrollBounceBehavior(.basedOnSize)

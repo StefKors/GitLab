@@ -270,7 +270,7 @@ private struct MenuBarLabelView: View {
         SwiftUI.Label {
             Text("GitLab Desktop")
         } icon: {
-            Image(.iconGradientsPNG)
+            Image(.merge)
         }
     }
 }
