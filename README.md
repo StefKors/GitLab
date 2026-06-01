@@ -2,10 +2,10 @@
   <img src="GitLab/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png" height="128">
   <img src="GitLab/Assets.xcassets/AppIcon_dev.appiconset/icon_512x512@2x.png" height="124">
   <img src="GitLab/Assets.xcassets/AppIcon_alt.appiconset/mac1024.png" height="124">
-  <h1 align="center">GitLab Widget</h1>
+  <h1 align="center">Merger for GitLab and GitHub</h1>
 </p>
 
-[GitLab Widget](https://github.com/StefKors/GitLab) is a menu bar application that makes it easier to work with GitLab. The Widget makes it easy to see the merge requests you opened and the merge requests you should review. It will also notify you when any of your merge requests get approved.
+[Merger](https://github.com/StefKors/GitLab) is a menu bar application that makes it easier to work with GitLab & GitHub. The Widget makes it easy to see the merge requests you opened and the merge requests you should review. It will also notify you when any of your merge requests get approved.
 
 #### Supported Platforms
 <p align="left">
