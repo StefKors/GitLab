@@ -7,7 +7,8 @@
 
 import Foundation
 import SwiftUI
-import SharingGRDB
+import GRDB
+import SQLiteData
 
 @Table
 struct LaunchpadRepo: FetchableRecord, Identifiable, Equatable, Codable, MutablePersistableRecord {
@@ -15,21 +16,19 @@ struct LaunchpadRepo: FetchableRecord, Identifiable, Equatable, Codable, Mutable
     var name: String
     var image: Data?
     
-    @Column(as: JSONRepresentation<URL?>.self)
+    @Column(as: URL?.JSONRepresentation.self)
     var imageURL: URL?
     
     var group: String
     
-    @Column(as: JSONRepresentation<URL>.self)
+    @Column(as: URL.JSONRepresentation.self)
     var url: URL
     
-    @Column(as: Date.ISO8601Representation.self)
     var createdAt: Date
     
-    @Column(as: Date.ISO8601Representation.self)
     var updatedAt: Date
     
-    @Column(as: JSONRepresentation<GitProvider?>.self)
+    @Column(as: GitProvider?.JSONRepresentation.self)
     var provider: GitProvider?
     
     var hasUpdatedSinceLaunch: Bool

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SharingGRDB
+import SQLiteData
 #if canImport(AppKit)
 import AppKit
 #elseif canImport(UIKit)

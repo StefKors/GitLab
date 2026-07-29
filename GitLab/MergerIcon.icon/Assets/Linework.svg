@@ -1,0 +1,17 @@
+<svg width="742" height="742" viewBox="0 0 742 742" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.2">
+<mask id="mask0_570_727" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="742" height="742">
+<path d="M575.999 0H165.6C74.1415 0 0 74.1416 0 165.6V576C0 667.458 74.1415 741.6 165.6 741.6H575.999C667.457 741.6 741.599 667.458 741.599 576V165.6C741.599 74.1416 667.457 0 575.999 0Z" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_570_727)">
+<path d="M191.469 0.488281H184.168V742.088H191.469V0.488281Z" fill="#BCE4FA"/>
+<path d="M562.299 0.488281H554.998V742.088H562.299V0.488281Z" fill="#BCE4FA"/>
+<path d="M374.077 0.488281H366.775V742.088H374.077V0.488281Z" fill="#BCE4FA"/>
+<path d="M742.088 376.473V369.172L0.489075 369.172V376.473L742.088 376.473Z" fill="#BCE4FA"/>
+<path d="M742.088 191.469V184.168L0.489075 184.168V191.469L742.088 191.469Z" fill="#BCE4FA"/>
+<path d="M742.088 561.895V554.594H0.489075V561.895H742.088Z" fill="#BCE4FA"/>
+<rect width="1048.85" height="7.30142" transform="matrix(-0.707106 -0.707107 0.707106 -0.707107 737.932 745.234)" fill="#BCE4FA"/>
+<rect width="1048.85" height="7.30142" transform="matrix(0.707106 -0.707107 0.707106 0.707107 -3.16211 741.586)" fill="#BCE4FA"/>
+</g>
+</g>
+</svg>

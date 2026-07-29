@@ -7,7 +7,7 @@
 
 import SwiftUI
 import UserNotifications
-import SharingGRDB
+import SQLiteData
 
 struct AlertDetails: Identifiable {
     let name: String

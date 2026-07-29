@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SharingGRDB
+import SQLiteData
 
 struct AddAccountView: View {
     @FetchAll(Account.order(by: { $0.createdAt.desc() })) private var accounts: [Account]

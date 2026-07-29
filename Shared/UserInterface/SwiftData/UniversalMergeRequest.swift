@@ -5,24 +5,24 @@
 //  Created by Stef Kors on 31/10/2024.
 //
 
-import SharingGRDB
 import Foundation
+import GRDB
+import SQLiteData
 
 @Table
 struct UniversalMergeRequest: FetchableRecord, Identifiable, Equatable, Codable, MutablePersistableRecord {
     var id: String
     var requestID: String
     
-    @Column(as: Date.ISO8601Representation.self)
     var createdAt: Date
     
-    @Column(as: JSONRepresentation<GitProvider>.self)
+    @Column(as: GitProvider.JSONRepresentation.self)
     var provider: GitProvider
     
-    @Column(as: JSONRepresentation<GitLab.MergeRequest?>.self)
+    @Column(as: GitLab.MergeRequest?.JSONRepresentation.self)
     var mergeRequest: GitLab.MergeRequest?
     
-    @Column(as: JSONRepresentation<GitHub.PullRequestsNode?>.self)
+    @Column(as: GitHub.PullRequestsNode?.JSONRepresentation.self)
     var pullRequest: GitHub.PullRequestsNode?
     
     var accountsId: Account.ID
@@ -30,7 +30,7 @@ struct UniversalMergeRequest: FetchableRecord, Identifiable, Equatable, Codable,
     static let withAccount = group(by: \.id)
         .leftJoin(Account.all) { $0.accountsId.eq($1.id) }
     
-    @Column(as: JSONRepresentation<QueryType>.self)
+    @Column(as: QueryType.JSONRepresentation.self)
     var type: QueryType
     
     init(request: GitLab.MergeRequest, account: Account, provider: GitProvider, type: QueryType) {

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SharingGRDB
+import SQLiteData
 
 struct ExtraWindow: View {
     @Environment(\.openURL) private var openURL

@@ -8,7 +8,7 @@
 import WidgetKit
 import SwiftUI
 import GRDB
-import SharingGRDB
+import SQLiteData
 
 // Interactions & open link from widgets https://stackoverflow.com/a/77190038/3199999
 

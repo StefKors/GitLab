@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import SharingGRDB
+import GRDB
+import SQLiteData
 
 enum GitProvider: String, Codable, CaseIterable, Hashable {
     case GitLab = "GitLab"
@@ -21,9 +22,8 @@ struct Account: FetchableRecord, Identifiable, Equatable, Codable, MutablePersis
     var id: Int64?
     var token: String
     var instance: String
-    @Column(as: JSONRepresentation<GitProvider>.self)
+    @Column(as: GitProvider.JSONRepresentation.self)
     var provider: GitProvider
-    @Column(as: Date.ISO8601Representation.self)
     var createdAt: Date = Date.now
 //    var requests: [UniversalMergeRequest] = []
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SwiftData
-import SharingGRDB
+import SQLiteData
 
 //private static func updateDockIcon() {
 //    dockContentView.needsDisplay = true
@@ -270,7 +270,10 @@ private struct MenuBarLabelView: View {
         SwiftUI.Label {
             Text("GitLab Desktop")
         } icon: {
-            Image(.merge)
+            // Using a safe SF Symbol fallback to avoid actool crashes if the asset is missing.
+            // Restore your custom asset by replacing this with: Image("merge") or Image(.merge) once the asset exists.
+            Image(systemName: "arrow.triangle.merge")
+                .symbolVariant(.fill)
         }
     }
 }
