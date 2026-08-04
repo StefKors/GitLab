@@ -8,6 +8,7 @@
 
 import SwiftUI
 import StoreKit
+import SQLiteData
 
 enum AccountSlotStoreError: LocalizedError {
     case productUnavailable
@@ -265,27 +266,25 @@ final class AccountSlotStore: ObservableObject {
 class SettingsState: ObservableObject {
     @AppStorage("Settings.showShareButton") var showShareButton: Bool = true
 
+    @FetchOne(Account.order(by: { $0.createdAt.desc() })) private var firstAccount: Account?
+
     @AppStorage("Settings.requestLanguage") var requestLanguage: RequestLanguageType = .auto
     var language: RequestLanguageType {
-        .pullRequest
-//        let context = ModelContext(.shared)
-//        let accounts = (try? context.fetch(FetchDescriptor<Account>(sortBy: [.init(\.createdAt, order: .reverse)]))) ?? []
-//        switch requestLanguage {
-//        case .auto:
-//            if let firstAccount = accounts.first {
-//                switch firstAccount.provider {
-//                case .GitHub:
-//                    return .pullRequest
-//                case .GitLab:
-//                    return .mergeRequest
-//                default:
-//                    return .pullRequest
-//                }
-//            }
-//            return .mergeRequest
-//        default:
-//            return requestLanguage
-//        }
+        switch requestLanguage {
+        case .auto:
+            if let firstAccount {
+                switch firstAccount.provider {
+                case .GitLab:
+                    return .mergeRequest
+                case .GitHub:
+                    return .pullRequest
+                }
+            } else {
+                return .mergeRequest
+            }
+        default:
+            return requestLanguage
+        }
     }
 
     @Published private var isSettingActivationPolicy: Bool = false

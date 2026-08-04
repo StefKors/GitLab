@@ -580,10 +580,11 @@ private final class WidgetTimelineReloader: ObservableObject {
 
 private struct MergeRequestHeaderView: View {
     @Binding var selectedView: QueryType
+    @EnvironmentObject private var settings: SettingsState
 
     var body: some View {
         Picker(selection: $selectedView, content: {
-            Text("Your Pull Requests").tag(QueryType.authoredMergeRequests)
+            Text("\(settings.language.rawValue)s").tag(QueryType.authoredMergeRequests)
             Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
 #if DEBUG
             Text("Debug Network").tag(QueryType.networkDebug)

@@ -39,6 +39,8 @@ struct ExtraWindow: View {
     @Environment(\.appearsActive) private var appearsActive
     @State private var hasLoaded: Bool = false
 
+    @EnvironmentObject private var settings: SettingsState
+
     var body: some View {
         VStack {
             Divider()
@@ -65,7 +67,7 @@ struct ExtraWindow: View {
         .toolbar {
             ToolbarItem {
                 Picker(selection: $selectedView, content: {
-                    Text("Merge Requests").tag(QueryType.authoredMergeRequests)
+                    Text("\(settings.language.rawValue)s").tag(QueryType.authoredMergeRequests)
                     Text("Review requested").tag(QueryType.reviewRequestedMergeRequests)
                 }, label: {
                     EmptyView()
