@@ -56,7 +56,7 @@ struct GitLabAccountView: View {
         } header: {
             Text("Account").bold()
 
-            Text("Create a read-only GitLab [access-token](https://gitlab.com/-/profile/personal_access_tokens) that the app can use to query the API with.")
+            Text("Create a read-only GitLab [access-token](https://gitlab.com/-/user_settings/personal_access_tokens/legacy/new) that the app can use to query the API with.")
                 .foregroundStyle(.secondary)
         } footer: {
             Button("Close") {
