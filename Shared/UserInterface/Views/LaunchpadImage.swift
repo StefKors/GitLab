@@ -16,8 +16,8 @@ struct LaunchpadImage: View {
     private var url: URL? {
         if let image = repo.image {
             return URL(string: "data:image/png;base64," + image.base64EncodedString())
-        } else if let imageURL = repo.imageURL {
-            return imageURL
+        } else if !repo.imageURL.isEmpty {
+            return URL(string: repo.imageURL)
         } else {
             return nil
         }

@@ -365,7 +365,7 @@ struct UserInterface: View {
                 // Extract unique repositories from GitHub pull requests
                 let githubRepos = mergeRequests
                     .filter { $0.provider == .GitHub && $0.accountsId == account.id }
-                    .compactMap { request -> (id: String, name: String, owner: String, url: URL, image: URL?, updatedAt: Date)? in
+                    .compactMap { request -> (id: String, name: String, owner: String, url: URL, image: String, updatedAt: Date)? in
                         guard let repo = request.pullRequest?.repository,
                               let repoUrl = request.repoUrl,
                               let repoName = request.repoName,
@@ -378,7 +378,7 @@ struct UserInterface: View {
                             name: repoName,
                             owner: repoOwner,
                             url: repoUrl,
-                            image: request.repoImage,
+                            image: request.repoImage?.absoluteString ?? "",
                             updatedAt: request.updatedAt
                         )
                     }

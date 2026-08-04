@@ -118,7 +118,11 @@ struct UniversalMergeRequest: FetchableRecord, Identifiable, Equatable, Codable,
     
     var repoImage: URL? {
         switch provider {
-        case .GitHub: return pullRequest?.repository?.owner?.avatarUrl
+        case .GitHub:
+            if let urlString = pullRequest?.repository?.owner?.avatarUrl {
+                return URL(string: urlString)
+            }
+            return nil
         case .GitLab: return mergeRequest?.targetProject?.avatarUrl
         }
     }

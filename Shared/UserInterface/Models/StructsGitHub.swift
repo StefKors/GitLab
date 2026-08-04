@@ -166,9 +166,9 @@ class GitHub {
 
     // MARK: - Owner
     struct Owner: Codable, Equatable, Sendable, Hashable {
-        let id: String
+        let id: String?
         let login: String?
-        let avatarUrl: URL?
+        let avatarUrl: String?
 
         static let previewBeam = Owner(id: "UUID", login: "beamLegacy", avatarUrl: nil)
     }

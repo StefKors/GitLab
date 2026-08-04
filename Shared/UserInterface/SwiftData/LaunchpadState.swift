@@ -16,8 +16,8 @@ struct LaunchpadRepo: FetchableRecord, Identifiable, Equatable, Codable, Mutable
     var name: String
     var image: Data?
     
-    @Column(as: URL?.JSONRepresentation.self)
-    var imageURL: URL?
+    @Column(as: String.JSONRepresentation.self)
+    var imageURL: String
     
     var group: String
     
@@ -33,7 +33,7 @@ struct LaunchpadRepo: FetchableRecord, Identifiable, Equatable, Codable, Mutable
     
     var hasUpdatedSinceLaunch: Bool
 
-    init(id: String, name: String, image: Data? = nil, imageURL: URL? = nil, group: String, url: URL, provider: GitProvider? = nil, hasUpdatedSinceLaunch: Bool = false, updatedAt: Date? = nil) {
+    init(id: String, name: String, image: Data? = nil, imageURL: String = "", group: String, url: URL, provider: GitProvider? = nil, hasUpdatedSinceLaunch: Bool = false, updatedAt: Date? = nil) {
         self.id = id
         self.name = name
         self.image = image
