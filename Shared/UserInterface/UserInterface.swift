@@ -32,6 +32,7 @@ struct UserInterface: View {
     @State private var timelineDate: Date = .now
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     private let perfLog = OSLog(subsystem: "com.stefkors.gitlab", category: "performance")
+    private let logger = Logger(subsystem: "com.stefkors.gitlab", category: "UserInterface")
 
     @EnvironmentObject private var noticeState: NoticeState
     @EnvironmentObject private var networkState: NetworkState
@@ -273,9 +274,15 @@ struct UserInterface: View {
             return false
         }
 
-        let existingByID = Dictionary(uniqueKeysWithValues: existing.map { ($0.id, $0.updatedAt) })
+        // Compare payloads instead of just updatedAt: pipeline/CI job updates
+        // do not bump the merge request's updatedAt, but must still be persisted.
+        let existingByID = Dictionary(uniqueKeysWithValues: existing.map { ($0.id, $0) })
         for request in incoming {
-            guard let existingUpdatedAt = existingByID[request.id], existingUpdatedAt == request.updatedAt else {
+            guard let existingRequest = existingByID[request.id],
+                  existingRequest.mergeRequest == request.mergeRequest,
+                  existingRequest.pullRequest == request.pullRequest,
+                  existingRequest.type == request.type,
+                  existingRequest.provider == request.provider else {
                 return false
             }
         }
@@ -309,7 +316,7 @@ struct UserInterface: View {
                             let existingRepo = repos.first { $0.url == url }
 
                             if let existingRepo {
-                                print("updating \(existingRepo)")
+                                logger.debug("updating repo \(existingRepo.name) (\(existingRepo.url.absoluteString))")
                                 // Update existing repo if it hasn't been updated since launch
                                 if existingRepo.hasUpdatedSinceLaunch == false {
                                     var updatedRepo = existingRepo
@@ -392,7 +399,7 @@ struct UserInterface: View {
                     let existingRepo = repos.first { $0.url == githubRepo.url }
                     
                     if let existingRepo {
-                        print("updating GitHub repo \(existingRepo)")
+                        logger.debug("updating GitHub repo \(existingRepo.name) (\(existingRepo.url.absoluteString))")
                         // Update existing repo if it hasn't been updated since launch
                         if existingRepo.hasUpdatedSinceLaunch == false {
                             var updatedRepo = existingRepo
@@ -466,10 +473,13 @@ struct UserInterface: View {
                         let alreadyHasMR = matchedMR != nil
 
                         if alreadyHasMR || !notice.createdAt.isWithinLastHours(1) {
-                            return
+                            logger.debug("Fetch Branch Push: skipping notice for '\(branch)' (alreadyHasMR: \(alreadyHasMR), createdAt: \(notice.createdAt))")
+                            continue
                         }
                     }
                     noticeState.addNotice(notice: notice)
+                } else {
+                    logger.debug("Fetch Branch Push: no notice returned for \(account.instance)")
                 }
             }
         }
@@ -477,7 +487,7 @@ struct UserInterface: View {
 
     @MainActor
     private func wrapRequest<T>(info: NetworkInfo, do request: () async throws -> T?) async -> T? {
-        print("[\(info.method.rawValue)] [\(info.account.instance.replacingOccurrences(of: "https://", with: ""))] \(info.label)")
+        logger.info("[\(info.method.rawValue)] [\(info.account.instance.replacingOccurrences(of: "https://", with: ""))] \(info.label)")
         let event = NetworkEvent(info: info, status: nil, response: nil)
         networkState.add(event)
         do {
@@ -487,11 +497,12 @@ struct UserInterface: View {
             networkState.update(event)
             return result
         } catch APIError.unacceptableStatusCode(let statusCode) {
+            logger.warning("\(info.label) failed with status code \(statusCode)")
             event.status = statusCode
             event.response = "Unacceptable Status Code: \(statusCode)"
             networkState.update(event)
         } catch let error {
-            print("catching error")
+            logger.error("\(info.label) failed: \(String(describing: error))")
             event.status = 0
             event.response = error.localizedDescription
             networkState.update(event)

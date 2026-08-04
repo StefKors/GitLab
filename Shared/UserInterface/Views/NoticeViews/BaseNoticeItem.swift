@@ -108,15 +108,23 @@ struct NoticeTypeBackground: ViewModifier {
     let radius: CGFloat = 8
     func body(content: Content) -> some View {
         if notice.type == .branch {
-            content
-                .background {
-                    RoundedRectangle(cornerRadius: radius, style: .continuous)
-                        .stroke(.secondary.opacity(0.5), lineWidth: 1)
-                }
-                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+            if #available(macOS 26.0, *) {
+                content.glassEffect(.regular, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+            } else {
+                content
+                    .background {
+                        RoundedRectangle(cornerRadius: radius, style: .continuous)
+                            .stroke(.secondary.opacity(0.5), lineWidth: 1)
+                    }
+                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+            }
         } else {
-            content
-                .background(notice.color.opacity(0.3), in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+            if #available(macOS 26.0, *) {
+                content.glassEffect(.regular.tint(notice.color.opacity(0.3)), in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+            } else {
+                content
+                    .background(notice.color.opacity(0.3), in: RoundedRectangle(cornerRadius: radius, style: .continuous))
+            }
         }
     }
 }

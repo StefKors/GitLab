@@ -7,7 +7,7 @@
 
 import XCTest
 import GRDB
-@testable import Merge_Requests_for_GitLab
+@testable import Merger
 
 class GitLabTests: XCTestCase {
 
@@ -74,6 +74,113 @@ class GitLabTests: XCTestCase {
         for input in invalidInputs {
             XCTAssertNil(Date.from(input))
         }
+    }
+
+    func testGitLabDateParsingFractionalSeconds() throws {
+        // GitLab REST API timestamps include fractional seconds, e.g. /v4/events created_at
+        let inputs = [
+            "2026-08-03T14:22:31.473Z",
+            "2026-08-03T14:22:31.000Z"
+        ]
+
+        for input in inputs {
+            let parsedDate = Date.from(input)
+            XCTAssertNotNil(parsedDate, "Failed to parse fractional-seconds timestamp: \(input)")
+            if let parsedDate {
+                let cal = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: parsedDate)
+                XCTAssertEqual(cal.year, 2026)
+                XCTAssertEqual(cal.month, 8)
+                XCTAssertEqual(cal.day, 3)
+                XCTAssertEqual(cal.hour, 14)
+                XCTAssertEqual(cal.minute, 22)
+                XCTAssertEqual(cal.second, 31)
+            }
+        }
+    }
+
+    func testGitLabDateParsingZuluSuffix() throws {
+        // GitHub GraphQL timestamps use a plain Z suffix without fractional seconds
+        let input = "2023-07-03T11:47:21Z"
+        let parsedDate = Date.from(input)
+        XCTAssertNotNil(parsedDate)
+        if let parsedDate {
+            let cal = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: parsedDate)
+            XCTAssertEqual(cal.year, 2023)
+            XCTAssertEqual(cal.month, 7)
+            XCTAssertEqual(cal.day, 3)
+            XCTAssertEqual(cal.hour, 11)
+            XCTAssertEqual(cal.minute, 47)
+        }
+    }
+
+    func testPushEventDecoding() throws {
+        // Realistic /v4/events?action=pushed payload
+        let json = """
+        [
+          {
+            "id": 122,
+            "project_id": 3,
+            "action_name": "pushed new",
+            "target_id": null,
+            "target_iid": null,
+            "target_type": null,
+            "author_id": 1,
+            "target_title": null,
+            "created_at": "2026-08-03T14:22:31.473Z",
+            "author": {"id": 1, "name": "Stef", "username": "stefkors", "avatar_url": "https://gitlab.com/uploads/avatar.png"},
+            "push_data": {"commit_count": 1, "action": "created", "ref_type": "branch", "commit_from": null, "commit_to": "50c09", "ref": "feature-x", "commit_title": "add test"},
+            "author_username": "stefkors"
+          },
+          {
+            "id": 121,
+            "project_id": 3,
+            "action_name": "pushed to",
+            "target_id": 44,
+            "target_iid": 12,
+            "target_type": null,
+            "author_id": 1,
+            "target_title": null,
+            "created_at": "2026-08-03T12:10:05.012Z",
+            "author": {"id": 1, "name": "Stef", "username": "stefkors", "avatar_url": null},
+            "push_data": {"commit_count": 3, "action": "pushed", "ref_type": "branch", "commit_from": "abc", "commit_to": "def", "ref": "main", "commit_title": "wip"},
+            "author_username": "stefkors"
+          },
+          {
+            "id": 120,
+            "project_id": 3,
+            "action_name": "pushed new",
+            "target_id": null,
+            "target_iid": null,
+            "target_type": null,
+            "author_id": 1,
+            "target_title": null,
+            "created_at": "2026-08-02T09:00:00.000Z",
+            "author": {"id": 1, "name": "Stef", "username": "stefkors", "avatar_url": null},
+            "push_data": {"commit_count": 1, "action": "created", "ref_type": "tag", "commit_from": null, "commit_to": "aaa", "ref": "v1.2.0", "commit_title": "release"},
+            "author_username": "stefkors"
+          }
+        ]
+        """.data(using: .utf8)!
+
+        let events = try JSONDecoder().decode(GitLab.PushEvents.self, from: json)
+
+        XCTAssertEqual(events.count, 3)
+
+        XCTAssertEqual(events[0].actionName, .pushedNew)
+        XCTAssertEqual(events[0].projectID, 3)
+        XCTAssertNil(events[0].targetID)
+        XCTAssertEqual(events[0].pushData?.ref, "feature-x")
+        XCTAssertEqual(events[0].pushData?.refType, .branch)
+        XCTAssertEqual(events[0].author?.username, "stefkors")
+
+        // target_id / target_iid arrive as integers (or null) in the events API
+        XCTAssertEqual(events[1].actionName, .pushedTo)
+        XCTAssertEqual(events[1].targetID, 44)
+        XCTAssertEqual(events[1].targetIid, 12)
+        XCTAssertEqual(events[1].pushData?.action, .pushed)
+
+        XCTAssertEqual(events[2].pushData?.refType, .tag)
+        XCTAssertEqual(events[2].pushData?.ref, "v1.2.0")
     }
 
     func testPerformanceExample() throws {
@@ -151,8 +258,8 @@ final class ReliabilityTests: XCTestCase {
             insertedRequest.accountsId = account.id
             try insertedRequest.insert(db)
 
-            let insertedAccounts = try Account.fetchCount(db)
-            let insertedRequests = try UniversalMergeRequest.fetchCount(db)
+            let insertedAccounts = try Account.all().fetchCount(db)
+            let insertedRequests = try UniversalMergeRequest.all().fetchCount(db)
             XCTAssertEqual(insertedAccounts, 1)
             XCTAssertEqual(insertedRequests, 1)
 
@@ -160,7 +267,7 @@ final class ReliabilityTests: XCTestCase {
                 _ = try Account.deleteOne(db, id: accountID)
             }
 
-            let remainingRequests = try UniversalMergeRequest.fetchCount(db)
+            let remainingRequests = try UniversalMergeRequest.all().fetchCount(db)
             XCTAssertEqual(remainingRequests, 0)
         }
     }
@@ -178,7 +285,7 @@ final class ReliabilityTests: XCTestCase {
 
         try db.write { db in
             try repo.insert(db)
-            let fetched = try LaunchpadRepo.fetchAll(db)
+            let fetched = try LaunchpadRepo.all().fetchAll(db)
             XCTAssertEqual(fetched.count, 1)
             XCTAssertEqual(fetched.first?.name, "GitLab")
         }

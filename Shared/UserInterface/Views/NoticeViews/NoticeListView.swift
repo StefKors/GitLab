@@ -19,6 +19,7 @@ struct NoticeListView: View {
                 }
             }
             .animation(.spring(), value: noticeState.notices)
+            .padding(6)
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Get
+import OSLog
 import SwiftUI
 #if canImport(AppKit)
 import AppKit
@@ -30,6 +31,8 @@ enum GitLabNetworkError: LocalizedError {
 
 class NetworkManagerGitLab {
   static let shared = NetworkManagerGitLab()
+
+  private let logger = Logger(subsystem: "com.stefkors.gitlab", category: "NetworkManagerGitLab")
 
   var clients: [String: APIClient] = [
     "https://gitlab.com/api": APIClient(baseURL: URL(string: "https://gitlab.com/api")!)
@@ -219,22 +222,25 @@ extension NetworkManagerGitLab {
 
     let response: GitLab.PushEvents = try await client.send(req).value
 
-    let pushedBranch = response.first(where: { event in
-      event.actionName == .pushedNew
-    })
+    let actionCounts = Dictionary(grouping: response, by: { $0.actionName?.rawValue ?? "unknown" })
+      .mapValues(\.count)
+    logger.debug("Fetch Branch Push: decoded \(response.count) events, actions: \(actionCounts)")
 
-    if let notice = eventToNotice(event: pushedBranch, repos: repos) {
-      return notice
+    guard let pushedBranch = response.first(where: { event in
+      event.actionName == .pushedNew
+    }) else {
+      logger.debug("Fetch Branch Push: no 'pushed new' event found, returning nil")
+      return nil
     }
 
-    return nil
+    return eventToNotice(event: pushedBranch, repos: repos)
   }
 }
 
 extension NetworkManagerGitLab {
   fileprivate func getYesterdayDate() -> String {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "YYYY-MM-dd"
+    dateFormatter.dateFormat = "yyyy-MM-dd"
     // yesterday
     let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
     return dateFormatter.string(from: date)
@@ -249,13 +255,26 @@ extension NetworkManagerGitLab {
   }
 
   fileprivate func eventToNotice(event: GitLab.PushEvent?, repos: [LaunchpadRepo]) -> NoticeMessage? {
-    guard let event,
-          let project = repos.first(where: { $0.id == "gid://gitlab/Project/\(event.projectID)" }),
-          let branchRef = event.pushData?.ref,
-          let branchURL = URL(string: "\(project.url.absoluteString)/-/tree/\(branchRef)"),
-          let createdAt = event.createdAt,
+    guard let event else {
+      logger.debug("Fetch Branch Push: event is nil, no notice created")
+      return nil
+    }
+    guard let project = repos.first(where: { $0.id == "gid://gitlab/Project/\(event.projectID)" }) else {
+      logger.debug("Fetch Branch Push: project \(event.projectID) not found in \(repos.count) launchpad repos, no notice created")
+      return nil
+    }
+    guard let branchRef = event.pushData?.ref else {
+      logger.debug("Fetch Branch Push: event \(event.id) has no push_data.ref, no notice created")
+      return nil
+    }
+    guard let branchURL = URL(string: "\(project.url.absoluteString)/-/tree/\(branchRef)") else {
+      logger.debug("Fetch Branch Push: could not build branch URL for ref '\(branchRef)', no notice created")
+      return nil
+    }
+    guard let createdAt = event.createdAt,
           // Possible use Date.from(createdAt) or GitLabISO8601DateFormatter?
           let date = Date.from(createdAt) else {
+      logger.warning("Fetch Branch Push: could not parse created_at '\(event.createdAt ?? "nil")' for event \(event.id), no notice created")
       return nil
     }
     return NoticeMessage(

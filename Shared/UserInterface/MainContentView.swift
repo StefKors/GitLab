@@ -86,7 +86,7 @@ struct MainContentView: View {
 
             // Disabled in favor for real notifications?
             NoticeListView()
-                .padding(6)
+                
 
             MergeRequestListContainer(
                 rowModels: rowModels,
@@ -98,7 +98,7 @@ struct MainContentView: View {
 
             LastUpdateMessageView()
         }
-        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(maxHeight: 900, alignment: .top)
     }
 }
 

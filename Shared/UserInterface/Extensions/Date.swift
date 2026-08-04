@@ -14,6 +14,11 @@ extension Date {
         let fixedFormatter = DateFormatter()
 //        fixedFormatter.locale = Locale(identifier: "en_US_POSIX")
         fixedFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        // GitLab REST API timestamps include fractional seconds, e.g. "2026-08-03T14:22:31.473Z"
+        fixedFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date = fixedFormatter.date(from: string) {
+            return date
+        }
         fixedFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return fixedFormatter.date(from: string)
     }
