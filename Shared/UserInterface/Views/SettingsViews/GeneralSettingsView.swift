@@ -35,8 +35,6 @@ struct GeneralSettingsView: View {
                     LaunchAtLogin.Toggle()
                     Toggle(isOn: $settings.showShareButton) { Text("Show share button") }
 
-                    Toggle(isOn: $settings.showShareButton) { Text("Show share button") }
-
                     Toggle(isOn: $settings.activationPolicy) { Text("Enable dock icon") }
                         .disabled(isSettingActivationPolicy)
                         .onChange(of: settings.activationPolicy) { oldValue, newValue in
