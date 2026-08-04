@@ -1,5 +1,4 @@
 import Foundation
-import SwiftData
 
 class GitLab {
     // MARK: - GitLabQuery

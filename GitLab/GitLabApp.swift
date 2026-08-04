@@ -6,15 +6,11 @@
 //
 
 import SwiftUI
-import SwiftData
 import SQLiteData
 
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage("Settings.activationPolicy") private var activationPolicy: Bool = false
-    /// Setting activation policy to `.prohibited` to prevent it from stealing the current app's focus
-    func applicationWillFinishLaunching(_ notification: Notification) {
-//        NSApplication.shared.setActivationPolicy(.prohibited)
-    }
+
     /// Setting desired activation policy (`.regular` or `.accessory`) and showing app's windows
     func applicationDidFinishLaunching(_ notification: Notification) {
         let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy ? .regular : .accessory

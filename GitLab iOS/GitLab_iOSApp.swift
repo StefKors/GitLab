@@ -6,25 +6,9 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct GitLab_iOSApp: App {
-    // Non-Persisted state objects
-    @StateObject private var noticeState = NoticeState()
-    @StateObject private var accountSlotStore = AccountSlotStore()
-
-    // Persistance objects
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([Account.self, MergeRequest.self, UniversalMergeRequest.self, PullRequest.self, LaunchpadRepo.self])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
 
     var body: some Scene {
         WindowGroup {
@@ -37,14 +21,11 @@ struct GitLab_iOSApp: App {
                         NavigationLink {
                             SettingsView()
                         } label: {
-                            SwiftUI.Label("Settings", systemImage: "gear")
+                            Label("Settings", systemImage: "gear")
                         }
                     }
                 }
             }
-            .environmentObject(self.noticeState)
-            .environmentObject(accountSlotStore)
-            .modelContainer(sharedModelContainer)
         }
     }
 }

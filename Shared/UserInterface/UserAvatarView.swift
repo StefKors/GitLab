@@ -28,8 +28,6 @@ struct UserAvatarView: View {
 
     var body: some View {
         VStack {
-            // TODO: ios support
-            // TODO: cache data fetch response
             if isInWidget, let avatarUrl = url, let data = try? Data(contentsOf: avatarUrl), let image = PlatformImage(data: data) {
 #if os(iOS)
                 Image(uiImage: image)

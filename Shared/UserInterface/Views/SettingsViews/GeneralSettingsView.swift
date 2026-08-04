@@ -25,7 +25,6 @@ struct GeneralSettingsView: View {
         VStack(alignment: .leading, spacing: 0) {
             SettingsTitleView(label: "General", systemImage: "gear", fill: .gray.darker(by: 15))
                 .padding()
-            //                .padding(.horizontal)
                 .padding(.leading, 4)
 
             Divider()

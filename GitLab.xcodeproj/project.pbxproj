@@ -271,9 +271,6 @@
 		8ADD570B2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
 		8ADD570C2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
 		8ADD570D2B82197C001F8E8F /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
-		8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
-		8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
-		8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
 		8ADEBF9E2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8ADEBF9F2A83A227007C22CD /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADEBF9D2A83A227007C22CD /* URL.swift */; };
 		8AE024DB2A92457C000548D7 /* Get in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE024DA2A92457C000548D7 /* Get */; };
@@ -343,7 +340,6 @@
 		8AE8A71B2B989EFA002B3C9E /* PlainMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */; };
 		8AE8A71C2B989EFA002B3C9E /* MergeStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D142A55817400819B80 /* MergeStatusView.swift */; };
 		8AE8A71D2B989EFA002B3C9E /* CICreatedIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D022A55817400819B80 /* CICreatedIcon.swift */; };
-		8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */; };
 		8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1A2A55817400819B80 /* TitleWebLink.swift */; };
 		8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */; };
 		8AE8A7212B989EFA002B3C9E /* GitLabCIJobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF80D1D2A55817400819B80 /* GitLabCIJobsView.swift */; };
@@ -688,7 +684,6 @@
 		8AD294BE298AA72C006F1932 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8ADD57052B821964001F8E8F /* PlainMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainMergeRequestList.swift; sourceTree = "<group>"; };
 		8ADD570A2B82197C001F8E8F /* SectionedMergeRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMergeRequestList.swift; sourceTree = "<group>"; };
-		8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
 		8ADEBF9D2A83A227007C22CD /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AE2741D2CC3D3A90059244E /* WidgetMRRowIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMRRowIcon.swift; sourceTree = "<group>"; };
 		8AE274222CC3DA9D0059244E /* OverflowContentViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowContentViewModifier.swift; sourceTree = "<group>"; };
@@ -1028,7 +1023,6 @@
 				8AE7A3D62A83A3FF0004506F /* KeyedDecodingContainer.swift */,
 				8ADEBF9D2A83A227007C22CD /* URL.swift */,
 				8ABBD2052B7E2E70007C03E6 /* Array+Difference.swift */,
-				8ADD570F2B8220D3001F8E8F /* ModelContainer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1113,7 +1107,7 @@
 				8A111F2E2CC11AAC00DEB0DD /* ButtonStyles */,
 				8A91E2162CB7B68900BE51B9 /* UserAvatarView.swift */,
 				8AFF87ED2BDA711500D21D16 /* EnvironmentValues */,
-				8AFDAA962A84FAED001937AC /* SwiftData */,
+				8AFDAA962A84FAED001937AC /* SQLiteData */,
 				8A63DE6F2A83A1FC002DD636 /* Extensions */,
 				8AF80CDF2A55817400819B80 /* Models */,
 				8AF80CF42A55817400819B80 /* Icons */,
@@ -1260,14 +1254,14 @@
 			path = NotificationViews;
 			sourceTree = "<group>";
 		};
-		8AFDAA962A84FAED001937AC /* SwiftData */ = {
+		8AFDAA962A84FAED001937AC /* SQLiteData */ = {
 			isa = PBXGroup;
 			children = (
 				8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */,
 				8A7C0AFC2CD3657100E479CA /* UniversalMergeRequest.swift */,
 				8AFDAA972A84FB26001937AC /* Account.swift */,
 			);
-			path = SwiftData;
+			path = SQLiteData;
 			sourceTree = "<group>";
 		};
 		8AFF87ED2BDA711500D21D16 /* EnvironmentValues */ = {
@@ -1703,7 +1697,6 @@
 				8A33E9482CD3D4D100F2C148 /* OptionalType.swift in Sources */,
 				8AF80DAF2A55817400819B80 /* MergeStatusView.swift in Sources */,
 				8ACBFD392CC270AC00A8753B /* PluralWidgetTitle.swift in Sources */,
-				8ADD57112B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AF80D672A55817400819B80 /* CIPreparingIcon.swift in Sources */,
 				8AF80D582A55817400819B80 /* NoticeState.swift in Sources */,
 				8AF80D762A55817400819B80 /* CIScheduledIcon.swift in Sources */,
@@ -1843,7 +1836,6 @@
 				8A111F4C2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8A7935F82A5583E400F8FB6C /* MenuBarButtonStyle.swift in Sources */,
 				8A7935F92A5583E400F8FB6C /* LaunchpadItem.swift in Sources */,
-				8ADD57122B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8AFA080C2CE4D038004A2839 /* Comparable.swift in Sources */,
 				8A111F1C2CC1118A00DEB0DD /* Data.swift in Sources */,
 				8AE2742B2CC3DD060059244E /* MainContentView.swift in Sources */,
@@ -1963,7 +1955,6 @@
 				8A111F4A2CC1386600DEB0DD /* NetworkState.swift in Sources */,
 				8A7C0AFE2CD3657100E479CA /* UniversalMergeRequest.swift in Sources */,
 				8AF80D7E2A55817400819B80 /* ShareMergeRequestIcon.swift in Sources */,
-				8ADD57102B8220D3001F8E8F /* ModelContainer.swift in Sources */,
 				8A111F1E2CC1118A00DEB0DD /* Data.swift in Sources */,
 				8AE274292CC3DD060059244E /* MainContentView.swift in Sources */,
 				8A99E9762CDE429400CCE670 /* Color.swift in Sources */,
@@ -2057,7 +2048,6 @@
 				8A9D87922BD2786E00E2C0CD /* AutoSizingWebLinks.swift in Sources */,
 				8A111F252CC116DE00DEB0DD /* MRTitleView.swift in Sources */,
 				8AE8A71D2B989EFA002B3C9E /* CICreatedIcon.swift in Sources */,
-				8AE8A71E2B989EFA002B3C9E /* ModelContainer.swift in Sources */,
 				8AE8A71F2B989EFA002B3C9E /* TitleWebLink.swift in Sources */,
 				8AE8A7202B989EFA002B3C9E /* SectionedMergeRequestList.swift in Sources */,
 				8A99E98B2CDE490D00CCE670 /* SettingsTitleView.swift in Sources */,

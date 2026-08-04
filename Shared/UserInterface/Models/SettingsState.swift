@@ -7,7 +7,6 @@
 
 
 import SwiftUI
-import SwiftData
 import StoreKit
 
 enum AccountSlotStoreError: LocalizedError {
