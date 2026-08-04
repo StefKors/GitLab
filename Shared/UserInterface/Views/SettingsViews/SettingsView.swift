@@ -40,7 +40,6 @@ struct SettingsView: View {
                 case .account: AccountSettingsView()
                 }
             }
-            //            .ignoresSafeArea()
             .navigationTitle(selectedTab.rawValue.capitalized)
         }
     }

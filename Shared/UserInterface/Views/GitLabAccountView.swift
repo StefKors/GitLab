@@ -46,14 +46,10 @@ struct GitLabAccountView: View {
                     state = .readyToSubmit
                 }
 
-            // Menu("Options") {
             TextField("Base URL", text: $instance, prompt: Text("https://www.gitlab.com"))
                 .onChange(of: instance, initial: false) { _, _ in
                     state = .readyToSubmit
                 }
-
-            // Button("custom item", action: {})
-            // }
 
             TokenInformationView(token: tokenInformation)
 

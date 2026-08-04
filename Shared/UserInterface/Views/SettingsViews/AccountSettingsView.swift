@@ -32,7 +32,6 @@ struct AccountSettingsView: View {
         VStack(alignment: .leading, spacing: 0) {
             SettingsTitleView(label: "Account", systemImage: "person.2.fill", fill: .blue.darker(by: 15))
                 .padding()
-            //                .padding(.horizontal)
                 .padding(.leading, 4)
 
             Divider()
