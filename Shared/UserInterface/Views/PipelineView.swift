@@ -57,7 +57,6 @@ struct PipelineView: View {
                                 .fill(.quaternary)
                                 .frame(width: allSucceeded ? 0 : 6, height: 2, alignment: .center)
                                 .opacity(allSucceeded ? 0 : 1)
-                                .animation(.snappy.delay(isHovering ? 0.05 : 0), value: isHovering)
                                 .zIndex(1)
                         }
 
@@ -70,7 +69,7 @@ struct PipelineView: View {
 }
 
 #Preview {
-    Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 12) {
+    Grid(alignment: .leading, horizontalSpacing: 0, verticalSpacing: 0) {
         PipelinePreviewRow(label: "Single stage, no jobs", pipeline: .preview)
 
         PipelinePreviewRow(label: "Test stage failed", pipeline: .previewTestFailed)
@@ -98,13 +97,22 @@ private struct PipelinePreviewRow: View {
     let pipeline: GitLab.HeadPipeline
     var isHoveringRow: Bool = false
 
+    @State private var isHovering: Bool = false
+
     var body: some View {
         GridRow {
             Text(label)
                 .foregroundStyle(.secondary)
                 .gridColumnAlignment(.trailing)
 
-            PipelineView(pipeline: pipeline, instance: nil, isHoveringRow: isHoveringRow)
+            PipelineView(pipeline: pipeline, instance: nil, isHoveringRow: isHoveringRow || isHovering)
+        }
+        .padding(6)
+        .contentShape(Rectangle())
+        .onHover { state in
+            withAnimation(.snappy(duration: 0.18)) {
+                isHovering = state
+            }
         }
     }
 }
@@ -115,7 +123,7 @@ private extension GitLab.HeadPipeline {
         active: true,
         status: .running,
         stages: GitLab.Stages(edges: [
-            GitLab.StagesEdge(node: .previewFirstJobRunning),
+            GitLab.StagesEdge(node: .previewSuccess),
             GitLab.StagesEdge(node: .previewTestsRunning),
             GitLab.StagesEdge(node: .previewManual)
         ]),

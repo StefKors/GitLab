@@ -66,5 +66,6 @@ struct CIStatusView_Previews: PreviewProvider {
                 CIStatusView(status: .scheduled)
             }
         }
+        .scenePadding()
     }
 }
