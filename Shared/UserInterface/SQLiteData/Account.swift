@@ -25,14 +25,6 @@ struct Account: FetchableRecord, Identifiable, Equatable, Codable, MutablePersis
     @Column(as: GitProvider.JSONRepresentation.self)
     var provider: GitProvider
     var createdAt: Date = Date.now
-//    var requests: [UniversalMergeRequest] = []
-
-//    /// The association from an account to its requests
-//    static let requests = hasMany(UniversalMergeRequest.self)
-//    /// The request for the requests of an account
-//    var requests: QueryInterfaceRequest<UniversalMergeRequest> {
-//        request(for: Account.requests)
-//    }
 
     mutating func didInsert(_ inserted: InsertionSuccess) {
         id = inserted.rowID
