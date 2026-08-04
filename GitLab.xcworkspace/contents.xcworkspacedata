@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:GitLab.xcodeproj">
+      location = "container:Merger.xcodeproj">
    </FileRef>
 </Workspace>

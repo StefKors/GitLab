@@ -599,13 +599,13 @@
 		8A2F5B9F2A54C5BD00C0B52F /* Small Icon32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon32.png"; sourceTree = "<group>"; };
 		8A2F5BA02A54C5BD00C0B52F /* macos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = macos.svg; sourceTree = "<group>"; };
 		8A2F5BA12A54C5BD00C0B52F /* tvos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tvos-active.svg"; sourceTree = "<group>"; };
-		8A31CB3A2866334000C94AC1 /* GitLab iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitLab iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A31CB3A2866334000C94AC1 /* Merger iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merger iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSApp.swift; sourceTree = "<group>"; };
 		8A31CB402866334100C94AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A31CB432866334100C94AC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitLab iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A31CB492866334100C94AC1 /* Merger iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Merger iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB4D2866334100C94AC1 /* GitLab_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSTests.swift; sourceTree = "<group>"; };
-		8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GitLab iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A31CB532866334100C94AC1 /* Merger iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Merger iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A31CB572866334100C94AC1 /* GitLab_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSUITests.swift; sourceTree = "<group>"; };
 		8A31CB592866334100C94AC1 /* GitLab_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLab_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A3221C1301A219900815DFF /* MergerIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = MergerIcon.icon; sourceTree = "<group>"; };
@@ -620,16 +620,16 @@
 		8A36AF1A2869B4110008B949 /* NotificationContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContent.entitlements; sourceTree = "<group>"; };
 		8A55E3C72CD6C8B2005B4AA5 /* LaunchpadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchpadState.swift; sourceTree = "<group>"; };
 		8A5E11E62FAA401900ED5A9E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Merge Requests for GitLab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5FC0F626EFD08E004136AB /* Merger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC0F926EFD08E004136AB /* GitLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabApp.swift; sourceTree = "<group>"; };
 		8A5FC0FD26EFD08F004136AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5FC10026EFD08F004136AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A5FC10526EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A5FC10626EFD08F004136AB /* GitLab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitLab.entitlements; sourceTree = "<group>"; };
-		8A5FC10B26EFD08F004136AB /* GitLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5FC10B26EFD08F004136AB /* MergerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MergerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC10F26EFD08F004136AB /* GitLabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabTests.swift; sourceTree = "<group>"; };
 		8A5FC11126EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5FC11626EFD08F004136AB /* MergerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MergerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5FC11A26EFD08F004136AB /* GitLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabUITests.swift; sourceTree = "<group>"; };
 		8A5FC11C26EFD08F004136AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7C0ACC2CCFEBD100E479CA /* DateCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompare.swift; sourceTree = "<group>"; };
@@ -953,12 +953,12 @@
 		8A5FC0F726EFD08E004136AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */,
-				8A5FC10B26EFD08F004136AB /* GitLabTests.xctest */,
-				8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */,
-				8A31CB3A2866334000C94AC1 /* GitLab iOS.app */,
-				8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */,
-				8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */,
+				8A5FC0F626EFD08E004136AB /* Merger.app */,
+				8A5FC10B26EFD08F004136AB /* MergerTests.xctest */,
+				8A5FC11626EFD08F004136AB /* MergerUITests.xctest */,
+				8A31CB3A2866334000C94AC1 /* Merger iOS.app */,
+				8A31CB492866334100C94AC1 /* Merger iOSTests.xctest */,
+				8A31CB532866334100C94AC1 /* Merger iOSUITests.xctest */,
 				8A36AF102869B4110008B949 /* NotificationContent.appex */,
 				8AE8A6E82B989E9A002B3C9E /* DesktopWidgetToolExtension.appex */,
 			);
@@ -1275,9 +1275,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8A31CB392866334000C94AC1 /* GitLab iOS */ = {
+		8A31CB392866334000C94AC1 /* Merger iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A31CB612866334100C94AC1 /* Build configuration list for PBXNativeTarget "GitLab iOS" */;
+			buildConfigurationList = 8A31CB612866334100C94AC1 /* Build configuration list for PBXNativeTarget "Merger iOS" */;
 			buildPhases = (
 				8A31CB362866334000C94AC1 /* Sources */,
 				8A31CB372866334000C94AC1 /* Frameworks */,
@@ -1287,18 +1287,18 @@
 			);
 			dependencies = (
 			);
-			name = "GitLab iOS";
+			name = "Merger iOS";
 			packageProductDependencies = (
 				8AE024DA2A92457C000548D7 /* Get */,
 				8A858F292CD550750024795D /* OrderedCollections */,
 			);
 			productName = "GitLab iOS";
-			productReference = 8A31CB3A2866334000C94AC1 /* GitLab iOS.app */;
+			productReference = 8A31CB3A2866334000C94AC1 /* Merger iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8A31CB482866334100C94AC1 /* GitLab iOSTests */ = {
+		8A31CB482866334100C94AC1 /* Merger iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A31CB622866334100C94AC1 /* Build configuration list for PBXNativeTarget "GitLab iOSTests" */;
+			buildConfigurationList = 8A31CB622866334100C94AC1 /* Build configuration list for PBXNativeTarget "Merger iOSTests" */;
 			buildPhases = (
 				8A31CB452866334100C94AC1 /* Sources */,
 				8A31CB462866334100C94AC1 /* Frameworks */,
@@ -1309,14 +1309,14 @@
 			dependencies = (
 				8A31CB4B2866334100C94AC1 /* PBXTargetDependency */,
 			);
-			name = "GitLab iOSTests";
+			name = "Merger iOSTests";
 			productName = "GitLab iOSTests";
-			productReference = 8A31CB492866334100C94AC1 /* GitLab iOSTests.xctest */;
+			productReference = 8A31CB492866334100C94AC1 /* Merger iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8A31CB522866334100C94AC1 /* GitLab iOSUITests */ = {
+		8A31CB522866334100C94AC1 /* Merger iOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A31CB632866334100C94AC1 /* Build configuration list for PBXNativeTarget "GitLab iOSUITests" */;
+			buildConfigurationList = 8A31CB632866334100C94AC1 /* Build configuration list for PBXNativeTarget "Merger iOSUITests" */;
 			buildPhases = (
 				8A31CB4F2866334100C94AC1 /* Sources */,
 				8A31CB502866334100C94AC1 /* Frameworks */,
@@ -1327,9 +1327,9 @@
 			dependencies = (
 				8A31CB552866334100C94AC1 /* PBXTargetDependency */,
 			);
-			name = "GitLab iOSUITests";
+			name = "Merger iOSUITests";
 			productName = "GitLab iOSUITests";
-			productReference = 8A31CB532866334100C94AC1 /* GitLab iOSUITests.xctest */;
+			productReference = 8A31CB532866334100C94AC1 /* Merger iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		8A36AF0F2869B4110008B949 /* NotificationContent */ = {
@@ -1357,9 +1357,9 @@
 			productReference = 8A36AF102869B4110008B949 /* NotificationContent.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		8A5FC0F526EFD08E004136AB /* GitLab */ = {
+		8A5FC0F526EFD08E004136AB /* Merger */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A5FC11F26EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLab" */;
+			buildConfigurationList = 8A5FC11F26EFD08F004136AB /* Build configuration list for PBXNativeTarget "Merger" */;
 			buildPhases = (
 				8A5FC0F226EFD08E004136AB /* Sources */,
 				8A5FC0F326EFD08E004136AB /* Frameworks */,
@@ -1372,7 +1372,7 @@
 				8A36AF1C2869B4110008B949 /* PBXTargetDependency */,
 				8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */,
 			);
-			name = GitLab;
+			name = Merger;
 			packageProductDependencies = (
 				8AF80DD62A5581A600819B80 /* Get */,
 				8A858F272CD54D2B0024795D /* OrderedCollections */,
@@ -1382,12 +1382,12 @@
 				8A47C4CF301A2AAF00787BD2 /* SQLiteData */,
 			);
 			productName = GitLab;
-			productReference = 8A5FC0F626EFD08E004136AB /* Merge Requests for GitLab.app */;
+			productReference = 8A5FC0F626EFD08E004136AB /* Merger.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8A5FC10A26EFD08F004136AB /* GitLabTests */ = {
+		8A5FC10A26EFD08F004136AB /* MergerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A5FC12226EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLabTests" */;
+			buildConfigurationList = 8A5FC12226EFD08F004136AB /* Build configuration list for PBXNativeTarget "MergerTests" */;
 			buildPhases = (
 				8A5FC10726EFD08F004136AB /* Sources */,
 				8A5FC10826EFD08F004136AB /* Frameworks */,
@@ -1398,14 +1398,14 @@
 			dependencies = (
 				8A5FC10D26EFD08F004136AB /* PBXTargetDependency */,
 			);
-			name = GitLabTests;
+			name = MergerTests;
 			productName = GitLabTests;
-			productReference = 8A5FC10B26EFD08F004136AB /* GitLabTests.xctest */;
+			productReference = 8A5FC10B26EFD08F004136AB /* MergerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8A5FC11526EFD08F004136AB /* GitLabUITests */ = {
+		8A5FC11526EFD08F004136AB /* MergerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A5FC12526EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLabUITests" */;
+			buildConfigurationList = 8A5FC12526EFD08F004136AB /* Build configuration list for PBXNativeTarget "MergerUITests" */;
 			buildPhases = (
 				8A5FC11226EFD08F004136AB /* Sources */,
 				8A5FC11326EFD08F004136AB /* Frameworks */,
@@ -1416,9 +1416,9 @@
 			dependencies = (
 				8A5FC11826EFD08F004136AB /* PBXTargetDependency */,
 			);
-			name = GitLabUITests;
+			name = MergerUITests;
 			productName = GitLabUITests;
-			productReference = 8A5FC11626EFD08F004136AB /* GitLabUITests.xctest */;
+			productReference = 8A5FC11626EFD08F004136AB /* MergerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		8AE8A6E72B989E9A002B3C9E /* DesktopWidgetToolExtension */ = {
@@ -1486,7 +1486,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "GitLab" */;
+			buildConfigurationList = 8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "Merger" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1513,12 +1513,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8A5FC0F526EFD08E004136AB /* GitLab */,
-				8A5FC10A26EFD08F004136AB /* GitLabTests */,
-				8A5FC11526EFD08F004136AB /* GitLabUITests */,
-				8A31CB392866334000C94AC1 /* GitLab iOS */,
-				8A31CB482866334100C94AC1 /* GitLab iOSTests */,
-				8A31CB522866334100C94AC1 /* GitLab iOSUITests */,
+				8A5FC0F526EFD08E004136AB /* Merger */,
+				8A5FC10A26EFD08F004136AB /* MergerTests */,
+				8A5FC11526EFD08F004136AB /* MergerUITests */,
+				8A31CB392866334000C94AC1 /* Merger iOS */,
+				8A31CB482866334100C94AC1 /* Merger iOSTests */,
+				8A31CB522866334100C94AC1 /* Merger iOSUITests */,
 				8A36AF0F2869B4110008B949 /* NotificationContent */,
 				8AE8A6E72B989E9A002B3C9E /* DesktopWidgetToolExtension */,
 			);
@@ -2112,12 +2112,12 @@
 /* Begin PBXTargetDependency section */
 		8A31CB4B2866334100C94AC1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A31CB392866334000C94AC1 /* GitLab iOS */;
+			target = 8A31CB392866334000C94AC1 /* Merger iOS */;
 			targetProxy = 8A31CB4A2866334100C94AC1 /* PBXContainerItemProxy */;
 		};
 		8A31CB552866334100C94AC1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A31CB392866334000C94AC1 /* GitLab iOS */;
+			target = 8A31CB392866334000C94AC1 /* Merger iOS */;
 			targetProxy = 8A31CB542866334100C94AC1 /* PBXContainerItemProxy */;
 		};
 		8A36AF1C2869B4110008B949 /* PBXTargetDependency */ = {
@@ -2127,12 +2127,12 @@
 		};
 		8A5FC10D26EFD08F004136AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
+			target = 8A5FC0F526EFD08E004136AB /* Merger */;
 			targetProxy = 8A5FC10C26EFD08F004136AB /* PBXContainerItemProxy */;
 		};
 		8A5FC11826EFD08F004136AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A5FC0F526EFD08E004136AB /* GitLab */;
+			target = 8A5FC0F526EFD08E004136AB /* Merger */;
 			targetProxy = 8A5FC11726EFD08F004136AB /* PBXContainerItemProxy */;
 		};
 		8AE8A6F52B989E9B002B3C9E /* PBXTargetDependency */ = {
@@ -2247,7 +2247,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitLab iOS.app/GitLab iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merger iOS.app/Merger iOS";
 			};
 			name = Debug;
 		};
@@ -2267,7 +2267,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitLab iOS.app/GitLab iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merger iOS.app/Merger iOS";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2538,7 +2538,7 @@
 				MARKETING_VERSION = 2.1;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -enable-actor-data-race-checks -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
-				PRODUCT_NAME = "Merge Requests for GitLab";
+				PRODUCT_NAME = Merger;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2573,7 +2573,7 @@
 				MARKETING_VERSION = 2.1;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLab;
-				PRODUCT_NAME = "Merge Requests for GitLab";
+				PRODUCT_NAME = Merger;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2597,7 +2597,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merge Requests for GitLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merge Requests for GitLab";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merge Requests for Merger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merge Requests for Merger";
 			};
 			name = Debug;
 		};
@@ -2618,7 +2618,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merge Requests for GitLab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merge Requests for GitLab";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merge Requests for Merger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merge Requests for Merger";
 			};
 			name = Release;
 		};
@@ -2740,7 +2740,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A31CB612866334100C94AC1 /* Build configuration list for PBXNativeTarget "GitLab iOS" */ = {
+		8A31CB612866334100C94AC1 /* Build configuration list for PBXNativeTarget "Merger iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A31CB5B2866334100C94AC1 /* Debug */,
@@ -2749,7 +2749,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A31CB622866334100C94AC1 /* Build configuration list for PBXNativeTarget "GitLab iOSTests" */ = {
+		8A31CB622866334100C94AC1 /* Build configuration list for PBXNativeTarget "Merger iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A31CB5D2866334100C94AC1 /* Debug */,
@@ -2758,7 +2758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A31CB632866334100C94AC1 /* Build configuration list for PBXNativeTarget "GitLab iOSUITests" */ = {
+		8A31CB632866334100C94AC1 /* Build configuration list for PBXNativeTarget "Merger iOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A31CB5F2866334100C94AC1 /* Debug */,
@@ -2776,7 +2776,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "GitLab" */ = {
+		8A5FC0F126EFD08E004136AB /* Build configuration list for PBXProject "Merger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A5FC11D26EFD08F004136AB /* Debug */,
@@ -2785,7 +2785,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A5FC11F26EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLab" */ = {
+		8A5FC11F26EFD08F004136AB /* Build configuration list for PBXNativeTarget "Merger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A5FC12026EFD08F004136AB /* Debug */,
@@ -2794,7 +2794,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A5FC12226EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLabTests" */ = {
+		8A5FC12226EFD08F004136AB /* Build configuration list for PBXNativeTarget "MergerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A5FC12326EFD08F004136AB /* Debug */,
@@ -2803,7 +2803,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A5FC12526EFD08F004136AB /* Build configuration list for PBXNativeTarget "GitLabUITests" */ = {
+		8A5FC12526EFD08F004136AB /* Build configuration list for PBXNativeTarget "MergerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A5FC12626EFD08F004136AB /* Debug */,
