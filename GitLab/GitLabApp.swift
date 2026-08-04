@@ -9,44 +9,6 @@ import SwiftUI
 import SwiftData
 import SQLiteData
 
-//private static func updateDockIcon() {
-//    dockContentView.needsDisplay = true
-//    NSApp.dockTile.display()
-//}
-//
-//private final class ContentView: NSView {
-//    override func draw(_ dirtyRect: CGRect) {
-//        NSGraphicsContext.current?.imageInterpolation = .high
-//
-//        NSApp.applicationIconImage?.draw(in: bounds)
-//
-//        // TODO: If the `progress` is 1, draw the full circle, then schedule another draw in n milliseconds to hide it
-//        guard
-//            displayedProgress > 0,
-//            displayedProgress < 1
-//        else {
-//            return
-//        }
-//
-//        switch style {
-//        case .bar:
-//            drawProgressBar(bounds)
-//        case .squircle(let inset, let color):
-//            drawProgressSquircle(bounds, inset: inset, color: color)
-//        case .circle(let radius, let color):
-//            drawProgressCircle(bounds, radius: radius, color: color)
-//        case .badge(let color, let badgeValue):
-//            drawProgressBadge(bounds, color: color, badgeLabel: badgeValue())
-//        case .pie(let color):
-//            drawProgressBadge(bounds, color: color, badgeLabel: 0, isPie: true)
-//        case .custom(let drawingHandler):
-//            drawingHandler(bounds)
-//        }
-//    }
-//}
-
-
-
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage("Settings.activationPolicy") private var activationPolicy: Bool = false
     /// Setting activation policy to `.prohibited` to prevent it from stealing the current app's focus
@@ -55,9 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
     /// Setting desired activation policy (`.regular` or `.accessory`) and showing app's windows
     func applicationDidFinishLaunching(_ notification: Notification) {
-//        let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy ? .regular : .accessory
-        NSApplication.shared.setActivationPolicy(.regular)
-//        WindowManager.shared.show()
+        let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy ? .regular : .accessory
+        NSApplication.shared.setActivationPolicy(newActivationPolicy)
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {
@@ -107,7 +68,6 @@ struct GitLabApp: App {
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
                 .environmentObject(accountSlotStore)
-//                .modelContainer(.shared)
                 .navigationTitle("GitLab")
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
                 .containerBackground(.thinMaterial, for: .window)
@@ -120,29 +80,12 @@ struct GitLabApp: App {
                         )
                     )
                 }
-            //                .presentedWindowBackgroundStyle(.translucent)
         }
         .handlesExternalEvents(matching: ["openNewWindow"])
         .windowToolbarStyle(.unified(showsTitle: true))
         .windowResizability(.contentMinSize)
         .windowIdealSize(.fitToContent)
 
-
-
-//        Window("Welcome", id: "Welcome") {
-//            Text("Welcome")
-//                .modelContainer(.shared)
-//                .navigationTitle("GitLab")
-//                .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
-//                .containerBackground(.thinMaterial, for: .window)
-//            //                .presentedWindowBackgroundStyle(.translucent)
-//        }
-//        .windowToolbarStyle(.unified(showsTitle: true))
-//        .windowResizability(.contentMinSize)
-//        .windowIdealSize(.fitToContent)
-//        .defaultLaunchBehavior(.presented)
-
-//
         MenuBarExtra(content: {
             MenuBarRootView(
                 noticeState: noticeState,
@@ -162,7 +105,6 @@ struct GitLabApp: App {
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
                 .environmentObject(accountSlotStore)
-//                .modelContainer(.shared)
                 .ignoresSafeArea(.all, edges: .top)
                 .navigationTitle("Settings")
                 .toolbar(removing: .title)
@@ -217,10 +159,6 @@ struct GitLabApp: App {
                 table.column("provider", .jsonb).notNull()
                 table.column("mergeRequest", .jsonb)
                 table.column("pullRequest", .jsonb)
-                //                table.column("accountId", .integer)
-                //                    .references(Account.databaseTableName, column: "id", onDelete: .cascade)
-                //                    .notNull()
-                // Deletes MRs when Account is deleted
                 table.belongsTo(Account.tableName, onDelete: .cascade).notNull()
                 table.column("type", .jsonb)
             }
@@ -240,11 +178,8 @@ struct GitLabApp: App {
                 table.column("hasUpdatedSinceLaunch", .boolean).notNull().defaults(to: false)
             }
         }
-        //        migrator.registerMigration("Create 'universal_merge_requests' table") { db in
-        //
-        //        }
+
         try migrator.migrate(database)
-        print("migrator.migrations: \(migrator.migrations)")
         return database
     }
 }
@@ -270,8 +205,6 @@ private struct MenuBarLabelView: View {
         SwiftUI.Label {
             Text("GitLab Desktop")
         } icon: {
-            // Using a safe SF Symbol fallback to avoid actool crashes if the asset is missing.
-            // Restore your custom asset by replacing this with: Image("merge") or Image(.merge) once the asset exists.
             Image(.merge)
                 .symbolVariant(.fill)
         }
