@@ -64,7 +64,7 @@ struct GitLabApp: App {
                 .environmentObject(networkState)
                 .environmentObject(settingsState)
                 .environmentObject(accountSlotStore)
-                .navigationTitle("GitLab")
+                .navigationTitle("Merger")
                 .toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
                 .containerBackground(.thinMaterial, for: .window)
                 .task(id: startupDatabaseError) {
