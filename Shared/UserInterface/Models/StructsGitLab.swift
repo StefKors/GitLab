@@ -175,7 +175,7 @@ class GitLab {
 
         enum CodingKeys: String, CodingKey {
             case id, name, username
-            case avatarUrl = "avatarUrl"
+            case avatarUrl = "avatar_url"
         }
 
         init(id: Int?, name: String?, username: String?, avatarUrl: URL?) {
@@ -256,6 +256,34 @@ class GitLab {
             JobsEdge(node: .preview),
             JobsEdge(node: .preview)
         ])
+
+        static let previewFirstJobRunningJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildiOS),
+            JobsEdge(node: .previewTestPending1),
+            JobsEdge(node: .previewTestPending2)
+        ])
+
+        static let previewTestsRunningJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildMacOS),
+            JobsEdge(node: .previewTestRunning1),
+            JobsEdge(node: .previewTestRunning2),
+            JobsEdge(node: .previewTestPending2)
+        ])
+
+        static let previewSomeFailedJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildMacOS),
+            JobsEdge(node: .previewTestFailed),
+            JobsEdge(node: .previewTestPending2)
+        ])
+
+        static let previewWarningJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildMacOS),
+            JobsEdge(node: .previewTestFailed)
+        ])
+
+        static let previewManualJobs = Jobs(edges: [
+            JobsEdge(node: .previewManualJob)
+        ])
     }
 
     // MARK: - FluffyNode
@@ -326,6 +354,41 @@ class GitLab {
             status: .success,
             name: "staging deployment",
             jobs: .previewSuccess
+        )
+
+        static let previewFirstJobRunning = FluffyNode(
+            id: "id-id-id-9",
+            status: .running,
+            name: "Build",
+            jobs: .previewFirstJobRunningJobs
+        )
+
+        static let previewTestsRunning = FluffyNode(
+            id: "id-id-id-10",
+            status: .running,
+            name: "Test",
+            jobs: .previewTestsRunningJobs
+        )
+
+        static let previewSomeJobsFailed = FluffyNode(
+            id: "id-id-id-11",
+            status: .failed,
+            name: "Test",
+            jobs: .previewSomeFailedJobs
+        )
+
+        static let previewWarning = FluffyNode(
+            id: "id-id-id-12",
+            status: .success,
+            name: "Test",
+            jobs: .previewWarningJobs
+        )
+
+        static let previewManual = FluffyNode(
+            id: "id-id-id-13",
+            status: .manual,
+            name: "Deploy",
+            jobs: .previewManualJobs
         )
     }
 
@@ -525,6 +588,16 @@ class GitLab {
             status: .pending,
             stages: .previewChild,
             name: "test:ios-uitest",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewManualJob = HeadPipeline(
+            id: "id-id-id",
+            active: false,
+            status: .manual,
+            stages: .previewChild,
+            name: "deploy:production",
             detailedStatus: .preview,
             mergeRequestEventType: .mergedResult
         )
@@ -757,7 +830,9 @@ class GitLab {
     struct PushEvent: Codable, Equatable, Hashable {
         let id, projectID: Int
         let actionName: ActionName?
-        let targetID, targetIid, targetType: String?
+        // target_id / target_iid are integers in the GitLab events API (or null for push events)
+        let targetID, targetIid: Int?
+        let targetType: String?
         let authorID: Int?
         let targetTitle: String?
         let createdAt: String?
@@ -783,9 +858,20 @@ class GitLab {
     }
 
     enum ActionName: String, Codable {
+        case approved = "approved"
+        case closed = "closed"
+        case commentedOn = "commented on"
+        case created = "created"
         case deleted = "deleted"
+        case destroyed = "destroyed"
+        case expired = "expired"
+        case joined = "joined"
+        case left = "left"
+        case merged = "merged"
         case pushedNew = "pushed new"
         case pushedTo = "pushed to"
+        case reopened = "reopened"
+        case updated = "updated"
     }
 
     // MARK: - PushData
@@ -816,6 +902,7 @@ class GitLab {
 
     enum RefType: String, Codable {
         case branch = "branch"
+        case tag = "tag"
     }
 
     // MARK: - GitLabQuery

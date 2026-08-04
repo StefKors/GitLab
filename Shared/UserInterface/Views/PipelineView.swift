@@ -70,20 +70,71 @@ struct PipelineView: View {
 }
 
 #Preview {
-    VStack(alignment: .trailing) {
-        PipelineView(pipeline: .previewTestFailed, instance: nil, isHoveringRow: true)
-            .scenePadding()
+    Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 12) {
+        PipelinePreviewRow(label: "Single stage, no jobs", pipeline: .preview)
 
-        PipelineView(pipeline: .previewMultiple, instance: nil, isHoveringRow: true)
-            .scenePadding()
+        PipelinePreviewRow(label: "Test stage failed", pipeline: .previewTestFailed)
 
-        PipelineView(pipeline: .previewMultipleSuccess, instance: nil, isHoveringRow: true)
-            .scenePadding()
+        PipelinePreviewRow(label: "Mixed stages", pipeline: .previewMultiple)
 
-        PipelineView(pipeline: .previewMultipleSuccessMergeTrain, instance: nil, isHoveringRow: true)
-            .scenePadding()
+        PipelinePreviewRow(label: "Mixed stages (hovering)", pipeline: .previewMultiple, isHoveringRow: true)
+
+        PipelinePreviewRow(label: "All succeeded (collapsed)", pipeline: .previewMultipleSuccess)
+
+        PipelinePreviewRow(label: "All succeeded (hovering)", pipeline: .previewMultipleSuccess, isHoveringRow: true)
+
+        PipelinePreviewRow(label: "Merge train (hovering)", pipeline: .previewMultipleSuccessMergeTrain, isHoveringRow: true)
+
+        PipelinePreviewRow(label: "Running towards manual deploy", pipeline: .previewRunningToManual, isHoveringRow: true)
+
+        PipelinePreviewRow(label: "Failed tests & warning", pipeline: .previewFailedWithWarning, isHoveringRow: true)
     }
     .scenePadding()
     .scenePadding()
-    .scenePadding()
+}
+
+private struct PipelinePreviewRow: View {
+    let label: String
+    let pipeline: GitLab.HeadPipeline
+    var isHoveringRow: Bool = false
+
+    var body: some View {
+        GridRow {
+            Text(label)
+                .foregroundStyle(.secondary)
+                .gridColumnAlignment(.trailing)
+
+            PipelineView(pipeline: pipeline, instance: nil, isHoveringRow: isHoveringRow)
+        }
+    }
+}
+
+private extension GitLab.HeadPipeline {
+    static let previewRunningToManual = GitLab.HeadPipeline(
+        id: "preview-running-to-manual",
+        active: true,
+        status: .running,
+        stages: GitLab.Stages(edges: [
+            GitLab.StagesEdge(node: .previewFirstJobRunning),
+            GitLab.StagesEdge(node: .previewTestsRunning),
+            GitLab.StagesEdge(node: .previewManual)
+        ]),
+        name: "deploy",
+        detailedStatus: .preview,
+        mergeRequestEventType: .none
+    )
+
+    static let previewFailedWithWarning = GitLab.HeadPipeline(
+        id: "preview-failed-with-warning",
+        active: false,
+        status: .failed,
+        stages: GitLab.Stages(edges: [
+            GitLab.StagesEdge(node: .previewSuccess),
+            GitLab.StagesEdge(node: .previewSomeJobsFailed),
+            GitLab.StagesEdge(node: .previewWarning)
+        ]),
+        name: "deploy",
+        detailedStatus: .preview,
+        mergeRequestEventType: .none
+    )
 }

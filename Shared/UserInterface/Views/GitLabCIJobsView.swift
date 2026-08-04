@@ -69,3 +69,46 @@ struct GitLabCIJobsView: View {
         }
     }
 }
+
+#Preview {
+    Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 12) {
+        CIJobsPreviewRow(label: "All jobs pass", stage: .previewSuccess)
+
+        CIJobsPreviewRow(label: "First job running, others pending", stage: .previewFirstJobRunning)
+
+        CIJobsPreviewRow(label: "UI & unit tests running", stage: .previewTestsRunning)
+
+        CIJobsPreviewRow(label: "Some jobs failed", stage: .previewSomeJobsFailed)
+
+        CIJobsPreviewRow(label: "Warning (stage passed, child failed)", stage: .previewWarning)
+
+        CIJobsPreviewRow(label: "Manual (can be triggered)", stage: .previewManual)
+    }
+    .scenePadding()
+    .scenePadding()
+}
+
+private struct CIJobsPreviewRow: View {
+    let label: String
+    let stage: GitLab.FluffyNode
+
+    private var jobs: [GitLab.HeadPipeline] {
+        stage.jobs?.edges?.compactMap({ $0.node }) ?? []
+    }
+
+    var body: some View {
+        GridRow {
+            Text(label)
+                .foregroundStyle(.secondary)
+                .gridColumnAlignment(.trailing)
+
+            GitLabCIJobsView(stage: stage)
+
+            HStack(spacing: 4) {
+                ForEach(jobs.indices, id: \.self) { index in
+                    CIStatusView(status: jobs[index].status)
+                }
+            }
+        }
+    }
+}
