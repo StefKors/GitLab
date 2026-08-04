@@ -19,7 +19,7 @@
                BlueprintIdentifier = "8AE8A6E72B989E9A002B3C9E"
                BuildableName = "DesktopWidgetToolExtension.appex"
                BlueprintName = "DesktopWidgetToolExtension"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,9 +31,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-               BuildableName = "Merge Requests for GitLab.app"
-               BlueprintName = "GitLab"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               BuildableName = "Merger.app"
+               BlueprintName = "Merger"
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -66,16 +66,16 @@
             BlueprintIdentifier = "8AE8A6E72B989E9A002B3C9E"
             BuildableName = "DesktopWidgetToolExtension.appex"
             BlueprintName = "DesktopWidgetToolExtension"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-            BuildableName = "Merge Requests for GitLab.app"
-            BlueprintName = "GitLab"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            BuildableName = "Merger.app"
+            BlueprintName = "Merger"
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -114,9 +114,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-            BuildableName = "Merge Requests for GitLab.app"
-            BlueprintName = "GitLab"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            BuildableName = "Merger.app"
+            BlueprintName = "Merger"
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

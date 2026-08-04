@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A31CB392866334000C94AC1"
-               BuildableName = "GitLab iOS.app"
-               BlueprintName = "GitLab iOS"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               BuildableName = "Merger iOS.app"
+               BlueprintName = "Merger iOS"
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A31CB482866334100C94AC1"
-               BuildableName = "GitLab iOSTests.xctest"
-               BlueprintName = "GitLab iOSTests"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               BuildableName = "Merger iOSTests.xctest"
+               BlueprintName = "Merger iOSTests"
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A31CB522866334100C94AC1"
-               BuildableName = "GitLab iOSUITests.xctest"
-               BlueprintName = "GitLab iOSUITests"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               BuildableName = "Merger iOSUITests.xctest"
+               BlueprintName = "Merger iOSUITests"
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A31CB392866334000C94AC1"
-            BuildableName = "GitLab iOS.app"
-            BlueprintName = "GitLab iOS"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            BuildableName = "Merger iOS.app"
+            BlueprintName = "Merger iOS"
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A31CB392866334000C94AC1"
-            BuildableName = "GitLab iOS.app"
-            BlueprintName = "GitLab iOS"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            BuildableName = "Merger iOS.app"
+            BlueprintName = "Merger iOS"
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

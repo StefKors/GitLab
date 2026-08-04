@@ -2287,7 +2287,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "GitLab iOS";
+				TEST_TARGET_NAME = "Merger iOS";
 			};
 			name = Debug;
 		};
@@ -2306,7 +2306,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "GitLab iOS";
+				TEST_TARGET_NAME = "Merger iOS";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2597,7 +2597,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merge Requests for Merger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merge Requests for Merger";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merger";
 			};
 			name = Debug;
 		};
@@ -2618,7 +2618,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merge Requests for Merger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merge Requests for Merger";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Merger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Merger";
 			};
 			name = Release;
 		};
@@ -2638,7 +2638,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = GitLab;
+				TEST_TARGET_NAME = Merger;
 			};
 			name = Debug;
 		};
@@ -2658,7 +2658,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.GitLabUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = GitLab;
+				TEST_TARGET_NAME = Merger;
 			};
 			name = Release;
 		};

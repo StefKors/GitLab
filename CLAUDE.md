@@ -11,10 +11,10 @@ GitLab Widget is a multi-platform macOS/iOS application that provides GitLab mer
 ### Development Builds
 ```bash
 # Build main macOS app (recommended)
-xcodebuild -workspace GitLab.xcworkspace -scheme GitLab -configuration Debug build
+xcodebuild -workspace GitLab.xcworkspace -scheme Merger -configuration Debug build
 
 # Build iOS companion app
-xcodebuild -workspace GitLab.xcworkspace -scheme "GitLab iOS" -configuration Debug build
+xcodebuild -workspace GitLab.xcworkspace -scheme "Merger iOS" -configuration Debug build
 
 # Build specific widget extension
 xcodebuild -workspace GitLab.xcworkspace -scheme DesktopWidgetToolExtension -configuration Debug build
@@ -23,19 +23,19 @@ xcodebuild -workspace GitLab.xcworkspace -scheme DesktopWidgetToolExtension -con
 ### Testing
 ```bash
 # Run macOS tests
-xcodebuild -workspace GitLab.xcworkspace -scheme GitLab -configuration Debug test
+xcodebuild -workspace GitLab.xcworkspace -scheme Merger -configuration Debug test
 
 # Run iOS tests  
-xcodebuild -workspace GitLab.xcworkspace -scheme "GitLab iOS" -configuration Debug test
+xcodebuild -workspace GitLab.xcworkspace -scheme "Merger iOS" -configuration Debug test
 ```
 
 ### Release Builds
 ```bash
 # Archive for App Store (macOS)
-xcodebuild -workspace GitLab.xcworkspace -scheme GitLab -configuration Release archive
+xcodebuild -workspace GitLab.xcworkspace -scheme Merger -configuration Release archive
 
 # Archive for App Store (iOS)
-xcodebuild -workspace GitLab.xcworkspace -scheme "GitLab iOS" -configuration Release archive
+xcodebuild -workspace GitLab.xcworkspace -scheme "Merger iOS" -configuration Release archive
 ```
 
 ## Architecture Overview

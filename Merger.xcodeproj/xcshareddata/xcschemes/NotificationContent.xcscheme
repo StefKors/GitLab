@@ -19,7 +19,7 @@
                BlueprintIdentifier = "8A36AF0F2869B4110008B949"
                BuildableName = "NotificationContent.appex"
                BlueprintName = "NotificationContent"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,9 +31,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-               BuildableName = "Merge Requests for GitLab.app"
-               BlueprintName = "GitLab"
-               ReferencedContainer = "container:GitLab.xcodeproj">
+               BuildableName = "Merger.app"
+               BlueprintName = "Merger"
+               ReferencedContainer = "container:Merger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-            BuildableName = "Merge Requests for GitLab.app"
-            BlueprintName = "GitLab"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            BuildableName = "Merger.app"
+            BlueprintName = "Merger"
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A5FC0F526EFD08E004136AB"
-            BuildableName = "Merge Requests for GitLab.app"
-            BlueprintName = "GitLab"
-            ReferencedContainer = "container:GitLab.xcodeproj">
+            BuildableName = "Merger.app"
+            BlueprintName = "Merger"
+            ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
