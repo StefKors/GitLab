@@ -272,7 +272,7 @@ private struct MenuBarLabelView: View {
         } icon: {
             // Using a safe SF Symbol fallback to avoid actool crashes if the asset is missing.
             // Restore your custom asset by replacing this with: Image("merge") or Image(.merge) once the asset exists.
-            Image(systemName: "arrow.triangle.merge")
+            Image(.merge)
                 .symbolVariant(.fill)
         }
     }

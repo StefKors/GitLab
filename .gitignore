@@ -13,3 +13,4 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 .idea/
+db.sqlite
