@@ -14,13 +14,8 @@ import os
 import AppKit
 #endif
 
-/// Backlog tickets:
-/// - UI-101: multi-account switcher and provider filter (GitLab/GitHub)
-/// - UI-102: assigned issues tab and query pipeline
-/// - UI-103: split provider-specific networking from UI orchestration
 struct UserInterface: View {
     @Dependency(\.defaultDatabase) private var database
-//    @SharedReader(.fetchAll(sql: "SELECT * FROM universal_merge_requests ORDER BY datetime(createdAt) DESC")) private var mergeRequests: [UniversalMergeRequest]
 
     @FetchAll(UniversalMergeRequest.order(by: { $0.createdAt.desc() })) private var mergeRequests
     @FetchAll(Account.order(by: { $0.createdAt.desc() })) private var accounts: [Account]
