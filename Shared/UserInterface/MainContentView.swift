@@ -173,3 +173,55 @@ private struct MergeRequestListContainer: View, Equatable {
     )
     .previewEnvironment()
 }
+
+#Preview("List - Full range of states") {
+    MergeRequestListContainer(
+        rowModels: [
+            // GitLab: mixed pipeline, approvals & discussions
+            .init(request: .preview, account: .preview),
+            // GitLab: draft with failed test job
+            .init(request: .preview2, account: .preview),
+            // GitLab: draft, single stage without jobs
+            .init(request: .preview3, account: .preview),
+            // GitLab: merge train, all stages succeeded
+            .init(request: .preview4, account: .preview),
+            // GitLab: merge conflicts, failed pipeline with warning
+            .init(request: .previewConflicts, account: .preview),
+            // GitLab: approved, fully green pipeline
+            .init(request: .previewAllSuccess, account: .preview),
+            // GitLab: running towards manual deploy
+            .init(request: .previewManualDeploy, account: .preview),
+            // GitLab: no pipeline attached
+            .init(request: .previewNoPipeline, account: .preview),
+            // GitHub: PR with labels and status checks
+            .init(request: .previewGitHub, account: .previewGitHub)
+        ],
+        hasAccounts: true,
+        withScrollView: true,
+        allowScrollBounce: true,
+        maxHeight: 600
+    )
+    .previewEnvironment()
+}
+
+#Preview("List - All done") {
+    MergeRequestListContainer(
+        rowModels: [],
+        hasAccounts: true,
+        withScrollView: false,
+        allowScrollBounce: true,
+        maxHeight: nil
+    )
+    .previewEnvironment()
+}
+
+#Preview("List - No accounts") {
+    MergeRequestListContainer(
+        rowModels: [],
+        hasAccounts: false,
+        withScrollView: false,
+        allowScrollBounce: true,
+        maxHeight: nil
+    )
+    .previewEnvironment()
+}

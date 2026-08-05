@@ -241,6 +241,34 @@ extension UniversalMergeRequest {
         type: .authoredMergeRequests
     )
     
+    static let previewConflicts = UniversalMergeRequest(
+        request: .previewConflicts,
+        account: .preview,
+        provider: .GitLab,
+        type: .authoredMergeRequests
+    )
+    
+    static let previewAllSuccess = UniversalMergeRequest(
+        request: .previewAllSuccess,
+        account: .preview,
+        provider: .GitLab,
+        type: .authoredMergeRequests
+    )
+    
+    static let previewManualDeploy = UniversalMergeRequest(
+        request: .previewManualDeploy,
+        account: .preview,
+        provider: .GitLab,
+        type: .reviewRequestedMergeRequests
+    )
+    
+    static let previewNoPipeline = UniversalMergeRequest(
+        request: .previewNoPipeline,
+        account: .preview,
+        provider: .GitLab,
+        type: .reviewRequestedMergeRequests
+    )
+    
     static let previewGitHub = UniversalMergeRequest(
         request: .previewGitHub,
         account: .previewGitHub,

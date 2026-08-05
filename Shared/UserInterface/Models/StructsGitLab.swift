@@ -107,6 +107,74 @@ class GitLab {
             reference: "654",
             targetProject: .preview
         )
+
+        static let previewConflicts = MergeRequest(
+            id: "gid://gitlab/MergeRequest/812",
+            title: "Migrate onboarding flow to new design system",
+            createdAt: "2023-07-02T11:47:21Z",
+            updatedAt: "2023-07-02T11:51:41Z",
+            state: .opened,
+            draft: false,
+            webUrl: URL(string: "https://gitlab.com/proj"),
+            mergeStatusEnum: .cannotBeMerged,
+            approvedBy: nil,
+            userDiscussionsCount: 3,
+            userNotesCount: 3,
+            headPipeline: .previewFailedWithWarning,
+            reference: "812",
+            targetProject: .preview
+        )
+
+        static let previewAllSuccess = MergeRequest(
+            id: "gid://gitlab/MergeRequest/903",
+            title: "Add localized date formatting to notifications",
+            createdAt: "2023-07-01T11:47:21Z",
+            updatedAt: "2023-07-01T11:51:41Z",
+            state: .opened,
+            draft: false,
+            webUrl: URL(string: "https://gitlab.com/proj"),
+            mergeStatusEnum: .canBeMerged,
+            approvedBy: .preview,
+            userDiscussionsCount: 2,
+            userNotesCount: 2,
+            headPipeline: .previewMultipleSuccess,
+            reference: "903",
+            targetProject: .preview
+        )
+
+        static let previewManualDeploy = MergeRequest(
+            id: "gid://gitlab/MergeRequest/1044",
+            title: "Release v2.4.0",
+            createdAt: "2023-06-30T11:47:21Z",
+            updatedAt: "2023-06-30T11:51:41Z",
+            state: .opened,
+            draft: false,
+            webUrl: URL(string: "https://gitlab.com/proj"),
+            mergeStatusEnum: .canBeMerged,
+            approvedBy: .preview3,
+            userDiscussionsCount: nil,
+            userNotesCount: nil,
+            headPipeline: .previewRunningToManual,
+            reference: "1044",
+            targetProject: .preview
+        )
+
+        static let previewNoPipeline = MergeRequest(
+            id: "gid://gitlab/MergeRequest/1102",
+            title: "Update README with troubleshooting steps",
+            createdAt: "2023-06-29T11:47:21Z",
+            updatedAt: "2023-06-29T11:51:41Z",
+            state: .opened,
+            draft: false,
+            webUrl: URL(string: "https://gitlab.com/proj"),
+            mergeStatusEnum: .unchecked,
+            approvedBy: nil,
+            userDiscussionsCount: nil,
+            userNotesCount: nil,
+            headPipeline: nil,
+            reference: "1102",
+            targetProject: .preview
+        )
     }
 
     // MARK: - DataClass
@@ -240,21 +308,31 @@ class GitLab {
     struct Jobs: Codable, Equatable, Hashable, Sendable {
         let edges: [JobsEdge]?
 
-        static let previewBuildJobs = Jobs(edges: [
-            JobsEdge(node: .previewBuildiOS),
-            JobsEdge(node: .previewBuildMacOS)
-        ])
         static let previewTestJobs = Jobs(edges: [
-            JobsEdge(node: .previewTestFailed),
             JobsEdge(node: .previewTestRunning1),
             JobsEdge(node: .previewTestRunning2),
             JobsEdge(node: .previewTestPending1),
             JobsEdge(node: .previewTestPending2)
         ])
 
+        static let previewFailedBuildJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildiOSFailed),
+            JobsEdge(node: .previewBuildMacOS)
+        ])
+
+        static let previewPendingBuildJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildiOSPending),
+            JobsEdge(node: .previewBuildMacOSPending)
+        ])
+
+        static let previewSkippedJobs = Jobs(edges: [
+            JobsEdge(node: .previewBuildiOSSkipped),
+            JobsEdge(node: .previewBuildMacOSSkipped)
+        ])
+
         static let previewSuccess = Jobs(edges: [
-            JobsEdge(node: .preview),
-            JobsEdge(node: .preview)
+            JobsEdge(node: .previewBuildMacOS),
+            JobsEdge(node: .previewTestSuccess)
         ])
 
         static let previewFirstJobRunningJobs = Jobs(edges: [
@@ -273,7 +351,7 @@ class GitLab {
         static let previewSomeFailedJobs = Jobs(edges: [
             JobsEdge(node: .previewBuildMacOS),
             JobsEdge(node: .previewTestFailed),
-            JobsEdge(node: .previewTestPending2)
+            JobsEdge(node: .previewTestSkipped)
         ])
 
         static let previewWarningJobs = Jobs(edges: [
@@ -304,14 +382,14 @@ class GitLab {
             id: "id-id-id-1",
             status: .failed,
             name: "Deploy",
-            jobs: .previewBuildJobs
+            jobs: .previewFailedBuildJobs
         )
 
         static let previewBuild = FluffyNode(
             id: "id-id-id-2",
             status: .pending,
             name: "Build",
-            jobs: .previewBuildJobs
+            jobs: .previewPendingBuildJobs
         )
 
         static let previewTest = FluffyNode(
@@ -332,7 +410,7 @@ class GitLab {
             id: "id-id-id-5",
             status: .skipped,
             name: "jest",
-            jobs: .previewBuildJobs
+            jobs: .previewSkippedJobs
         )
 
         static let previewSuccess = FluffyNode(
@@ -542,6 +620,76 @@ class GitLab {
             mergeRequestEventType: .mergedResult
         )
 
+        static let previewBuildiOSFailed = HeadPipeline(
+            id: "job-build-ios-failed",
+            active: false,
+            status: .failed,
+            stages: .previewChild,
+            name: "build:ios-dev",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewBuildiOSPending = HeadPipeline(
+            id: "job-build-ios-pending",
+            active: false,
+            status: .pending,
+            stages: .previewChild,
+            name: "build:ios-dev",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewBuildMacOSPending = HeadPipeline(
+            id: "job-build-macos-pending",
+            active: false,
+            status: .pending,
+            stages: .previewChild,
+            name: "build:macos-dev",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewBuildiOSSkipped = HeadPipeline(
+            id: "job-build-ios-skipped",
+            active: false,
+            status: .skipped,
+            stages: .previewChild,
+            name: "build:ios-dev",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewBuildMacOSSkipped = HeadPipeline(
+            id: "job-build-macos-skipped",
+            active: false,
+            status: .skipped,
+            stages: .previewChild,
+            name: "build:macos-dev",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewTestSuccess = HeadPipeline(
+            id: "job-test-success",
+            active: false,
+            status: .success,
+            stages: .previewChild,
+            name: "test:macos-unit",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
+        static let previewTestSkipped = HeadPipeline(
+            id: "job-test-skipped",
+            active: false,
+            status: .skipped,
+            stages: .previewChild,
+            name: "test:ios-uitest",
+            detailedStatus: .preview,
+            mergeRequestEventType: .mergedResult
+        )
+
         static let previewTestFailed = HeadPipeline(
             id: "id-id-id",
             active: false,
@@ -600,6 +748,34 @@ class GitLab {
             name: "deploy:production",
             detailedStatus: .preview,
             mergeRequestEventType: .mergedResult
+        )
+
+        static let previewRunningToManual = HeadPipeline(
+            id: "preview-running-to-manual",
+            active: true,
+            status: .running,
+            stages: Stages(edges: [
+                StagesEdge(node: .previewSuccess),
+                StagesEdge(node: .previewTestsRunning),
+                StagesEdge(node: .previewManual)
+            ]),
+            name: "deploy",
+            detailedStatus: .preview,
+            mergeRequestEventType: .none
+        )
+
+        static let previewFailedWithWarning = HeadPipeline(
+            id: "preview-failed-with-warning",
+            active: false,
+            status: .failed,
+            stages: Stages(edges: [
+                StagesEdge(node: .previewSuccess),
+                StagesEdge(node: .previewSomeJobsFailed),
+                StagesEdge(node: .previewWarning)
+            ]),
+            name: "deploy",
+            detailedStatus: .preview,
+            mergeRequestEventType: .none
         )
     }
 

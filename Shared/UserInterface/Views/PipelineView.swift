@@ -117,32 +117,3 @@ private struct PipelinePreviewRow: View {
     }
 }
 
-private extension GitLab.HeadPipeline {
-    static let previewRunningToManual = GitLab.HeadPipeline(
-        id: "preview-running-to-manual",
-        active: true,
-        status: .running,
-        stages: GitLab.Stages(edges: [
-            GitLab.StagesEdge(node: .previewSuccess),
-            GitLab.StagesEdge(node: .previewTestsRunning),
-            GitLab.StagesEdge(node: .previewManual)
-        ]),
-        name: "deploy",
-        detailedStatus: .preview,
-        mergeRequestEventType: .none
-    )
-
-    static let previewFailedWithWarning = GitLab.HeadPipeline(
-        id: "preview-failed-with-warning",
-        active: false,
-        status: .failed,
-        stages: GitLab.Stages(edges: [
-            GitLab.StagesEdge(node: .previewSuccess),
-            GitLab.StagesEdge(node: .previewSomeJobsFailed),
-            GitLab.StagesEdge(node: .previewWarning)
-        ]),
-        name: "deploy",
-        detailedStatus: .preview,
-        mergeRequestEventType: .none
-    )
-}
