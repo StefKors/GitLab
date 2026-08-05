@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SQLiteData
 
 struct LargeMergeRequestWidgetInterface: View {
     var mergeRequests: [UniversalMergeRequest]
@@ -25,6 +26,8 @@ struct LargeMergeRequestWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            Text("db path: \(WidgetDatabase.databasePath)")
+            Text("fetching: \(mergeRequests.count) MRs from db")
             if selectedView == .reviewRequestedMergeRequests {
                 ViewThatFits(in: .horizontal, content: {
                     HStack(alignment: .center, spacing: 6) {

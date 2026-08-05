@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SQLiteData
+import OSLog
 
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage("Settings.activationPolicy") private var activationPolicy: Bool = false
@@ -39,18 +40,24 @@ struct GitLabApp: App {
     @StateObject private var accountSlotStore = AccountSlotStore()
     private let startupDatabaseError: String?
 
+    static let dbInitLogger = Logger(subsystem: "com.stefkors.gitlab", category: "DatabaseInit")
+
     init() {
         var startupError: String?
         prepareDependencies {
             do {
                 let db = try Self.appDatabase()
                 $0.defaultDatabase = db
+                Self.dbInitLogger.info("[MERGERDB] Main app database initialized and ready")
             } catch {
                 startupError = error.localizedDescription
+                Self.dbInitLogger.error("[MERGERDB] Main app database initialization failed: \(error.localizedDescription, privacy: .public)")
                 do {
                     $0.defaultDatabase = try DatabaseQueue()
+                    Self.dbInitLogger.warning("[MERGERDB] Main app database fallback to in-memory database")
                 } catch {
                     startupError = "Failed to initialize app database: \(error.localizedDescription)"
+                    Self.dbInitLogger.fault("[MERGERDB] Main app database in-memory fallback failed: \(error.localizedDescription, privacy: .public)")
                 }
             }
         }
@@ -115,6 +122,7 @@ struct GitLabApp: App {
     }
 
     static func appDatabase() throws -> any DatabaseWriter {
+        Self.dbInitLogger.info("[MERGERDB] Main app database initialization starting...")
         let database: any DatabaseWriter
         var configuration = Configuration()
         configuration.foreignKeysEnabled = true
@@ -127,15 +135,71 @@ struct GitLabApp: App {
         }
         @Dependency(\.context) var context
         if context == .live {
-            let path = URL.documentsDirectory.appending(component: "db.sqlite").path()
-            database = try DatabasePool(path: path, configuration: configuration)
+            Self.dbInitLogger.info("[MERGERDB] Main app database state: resolving URL (live context)")
+            let fileManager = FileManager.default
+            let groupIdentifier = "group.com.stefkors.gitlab"
+            let legacyURL = URL.documentsDirectory.appending(component: "db.sqlite")
+            let sharedURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)?
+                .appending(component: "db.sqlite")
+
+            let databaseURL: URL
+            if let sharedURL {
+                if fileManager.fileExists(atPath: sharedURL.path) {
+                    databaseURL = sharedURL
+                    Self.dbInitLogger.info("[MERGERDB] Main app database state: using existing shared database")
+                } else if fileManager.fileExists(atPath: legacyURL.path) {
+                    Self.dbInitLogger.info("[MERGERDB] Main app database state: migrating legacy database to shared container")
+                    // Migrate the legacy database (and any WAL/SHM files) into the
+                    // shared app group container so the widget extension can read it.
+                    let sharedDirectory = sharedURL.deletingLastPathComponent()
+                    let legacyDirectory = legacyURL.deletingLastPathComponent()
+                    try fileManager.createDirectory(at: sharedDirectory, withIntermediateDirectories: true)
+                    let fileNames = try fileManager.contentsOfDirectory(atPath: legacyDirectory.path)
+                        .filter { $0.hasPrefix("db.sqlite") }
+                    for fileName in fileNames where !fileManager.fileExists(atPath: sharedDirectory.appending(component: fileName).path) {
+                        let source = legacyDirectory.appending(component: fileName)
+                        let destination = sharedDirectory.appending(component: fileName)
+                        try fileManager.moveItem(at: source, to: destination)
+                    }
+                    databaseURL = sharedURL
+                } else {
+                    databaseURL = sharedURL
+                    Self.dbInitLogger.info("[MERGERDB] Main app database state: creating new shared database")
+                }
+            } else {
+                databaseURL = legacyURL
+                Self.dbInitLogger.info("[MERGERDB] Main app database state: shared group unavailable, using legacy documents database")
+            }
+
+            Self.dbInitLogger.info("[MERGERDB] Main app database URL: \(databaseURL.path, privacy: .public)")
+            Self.dbInitLogger.info("[MERGERDB] Main app database state: file exists = \(fileManager.fileExists(atPath: databaseURL.path), privacy: .public)")
+            Self.dbInitLogger.info("[MERGERDB] Main app database state: opening")
+            database = try DatabasePool(path: databaseURL.path, configuration: configuration)
+            Self.dbInitLogger.info("[MERGERDB] Main app database state: connection opened")
         } else {
+            Self.dbInitLogger.info("[MERGERDB] Main app database state: using in-memory database (non-live context)")
             database = try DatabaseQueue(configuration: configuration)
         }
+
         var migrator = DatabaseMigrator()
 #if DEBUG
         migrator.eraseDatabaseOnSchemaChange = true
 #endif
+        // 
+        // // Migration to rename tables from plural to singular to match @Table macro expectations
+        // migrator.registerMigration("Rename tables to singular for @Table macro") { db in
+        //     // Check if old plural tables exist and rename them to singular
+        //     if try db.tableExists("accounts") {
+        //         try db.rename(table: "accounts", to: "account")
+        //     }
+        //     if try db.tableExists("universalMergeRequests") {
+        //         try db.rename(table: "universalMergeRequests", to: "universalMergeRequest")
+        //     }
+        //     if try db.tableExists("launchpadRepos") {
+        //         try db.rename(table: "launchpadRepos", to: "launchpadRepo")
+        //     }
+        // }
+        // 
         migrator.registerMigration("Create Account table") { db in
             try db.create(table: Account.tableName) { table in
                 table.autoIncrementedPrimaryKey("id")
@@ -174,7 +238,15 @@ struct GitLabApp: App {
             }
         }
 
+        Self.dbInitLogger.info("[MERGERDB] Main app database state: migrating")
         try migrator.migrate(database)
+        Self.dbInitLogger.info("[MERGERDB] Main app database state: migration complete")
+
+        try database.write { db in
+            try db.execute(sql: "SELECT 1")
+        }
+        Self.dbInitLogger.info("[MERGERDB] Main app database state: connected correctly = true")
+
         return database
     }
 }

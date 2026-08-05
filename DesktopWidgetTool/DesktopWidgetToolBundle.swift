@@ -7,9 +7,17 @@
 
 import WidgetKit
 import SwiftUI
+import GRDB
+import SQLiteData
+import OSLog
 
 @main
 struct DesktopWidgetToolBundle: WidgetBundle {
+
+    init() {
+        
+    }
+
     var body: some Widget {
         ReviewRequestedMergeRequestWidget()
         AuthoredMergeRequestWidget()

@@ -47,8 +47,8 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
@@ -65,7 +65,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8AE8A6E72B989E9A002B3C9E"
             BuildableName = "DesktopWidgetToolExtension.appex"
-            BlueprintName = "DesktopWidgetToolExtension"
             ReferencedContainer = "container:Merger.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>

@@ -6,6 +6,11 @@
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>WKAppBundleIdentifier</key>
+			<string>com.stefkors.GitLab</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

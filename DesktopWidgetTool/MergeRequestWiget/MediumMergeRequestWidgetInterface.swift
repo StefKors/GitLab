@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SQLiteData
 
 struct MediumMergeRequestWidgetInterface: View {
     var mergeRequests: [UniversalMergeRequest]
@@ -29,6 +30,8 @@ struct MediumMergeRequestWidgetInterface: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
+            Text("db path: \(WidgetDatabase.databasePath)")
+            Text("fetching: \(mergeRequests.count) MRs from db")
             if selectedView == .reviewRequestedMergeRequests {
                 ViewThatFits(in: .horizontal, content: {
                     HStack(alignment: .center, spacing: 6) {
