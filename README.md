@@ -41,7 +41,7 @@
 </p>
 
 -------
-  <img alt="Screenshot of GitLab" src="Images/Screenshot-1.png">
+  <img src="Images/preview_1.png">
   
 This repository contains **Merger**, (also known as GitLab Widget, Merge Requeest for Gitlab) a macOS menu bar widget that shows your latest merge/pull request activity.   
   
@@ -130,6 +130,8 @@ When everything succeeds, the pipeline becomes a small visual indicator. When so
 MainContentView contains previews showcasing the different states and UI elements visible in merge request rows.  
 This was useful for iterating on information hierarchy and ensuring the interface remained understandable across different states.  
   
+  <img src="Images/preview_2.png">
+
   
 ## Some Thoughts on Design  
   
