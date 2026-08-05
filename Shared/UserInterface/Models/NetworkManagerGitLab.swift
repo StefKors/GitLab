@@ -93,12 +93,11 @@ class NetworkManagerGitLab {
   /// - Returns: GraphQL query with MR information
   fileprivate static func buildQuery(target: String, type: QueryType) -> String {
       "{\n    \"query\": \"{\(target){name \(type.rawValue)(state:opened){edges{node{state id title draft webUrl reference createdAt updatedAt sourceBranch targetBranch labels{edges{node{id description color textColor title}}}targetProject{id name path webUrl avatarUrl namespace{id fullName fullPath}repository{rootRef}group{id name fullName fullPath webUrl}}approvedBy{edges{node{id name username avatarUrl}}}mergeStatusEnum userDiscussionsCount userNotesCount headPipeline{id active status mergeRequestEventType stages{edges{node{id status name jobs{edges{node{id active name status detailedStatus{id detailsPath text label group tooltip icon}}}}}}}}}}}}}\",\n    \"variables\": {}\n}"
-//      "{ \(target) { name \(type.rawValue)(state: opened) { edges { node { state id title draft webUrl reference createdAt updatedAt sourceBranch targetBranch labels { edges { node { id description color textColor title } } } targetProject { id name path webUrl avatarUrl namespace { id fullName fullPath } repository { rootRef } group { id name fullName fullPath webUrl } } approvedBy { edges { node { id name username avatarUrl } } } mergeStatusEnum userDiscussionsCount userNotesCount headPipeline { id active status mergeRequestEventType stages { edges { node { id status name jobs { edges { node { id active name status detailedStatus { id detailsPath text label group tooltip icon } } } } } } } } } } } } }"
   }
 
   func branchPushReq(with account: Account) -> Request<GitLab.PushEvents> {
     Request.init(path: "/v4/events", query: [
-      ("after", "2022-06-25"),
+      ("after", getTwoDaysAgoDate()),
       ("scope", "read_user"),
       ("action", "pushed"),
       ("private_token", account.token)
@@ -122,13 +121,6 @@ class NetworkManagerGitLab {
       ("query", Self.getQuery(.reviewRequestedMergeRequests)),
       ("private_token", account.token)
     ])
-  }
-
-  func fetch(with account: Account) async throws {
-    // Parallel?
-    // await fetchLatestBranchPush()
-    // try await fetchAuthoredMergeRequests(with: account)
-    // try await fetchReviewRequestedMergeRequests(with: account)
   }
 
   func validateToken(instance: String, token: String) async -> AccessToken? {
@@ -246,6 +238,14 @@ extension NetworkManagerGitLab {
     return dateFormatter.string(from: date)
   }
 
+  fileprivate func getTwoDaysAgoDate() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    // two days ago
+    let date = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
+    return dateFormatter.string(from: date)
+  }
+
   fileprivate func makeMRUrl(url: URL?, branchRef: String) -> URL? {
     guard let url = url else {
       return nil
@@ -307,16 +307,5 @@ extension NetworkManagerGitLab {
     return fullProject.data?.projects?.edges?.compactMap({ edge in
       return edge.node
     })
-
-    //        guard let projects else { return nil }
-    //
-    //        var launchpadRepos: [LaunchpadRepo] = []
-    //        for project in projects {
-    //            if let result = await addLaunchpadProject(with: account, project) {
-    //                launchpadRepos.append(result)
-    //            }
-    //        }
-    //
-    //        return launchpadRepos
   }
 }

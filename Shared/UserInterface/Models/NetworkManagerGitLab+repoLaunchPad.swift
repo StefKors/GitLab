@@ -35,7 +35,6 @@ extension NetworkManagerGitLab {
         // https://gitlab.com/api/v4/projects/35262023/repository/files/logo%2Epng
 
         let url = URL(string: "/api/v4/projects/\(id)/repository/files/logo%2Epng")!
-        print("fetch: update project image \(project.name ?? "")")
         let req: Request<GitLab.ProjectImageResponse> = Request.init(
             url: url,
             method: .get,
@@ -49,9 +48,7 @@ extension NetworkManagerGitLab {
         do {
             launchPadClient = try getLaunchpadClient(instance: account.instance)
         } catch {
-            print("========== failed to construct launchpad client for: \(account.instance)")
             print(error.localizedDescription)
-            print("==========")
             return nil
         }
 
@@ -61,9 +58,7 @@ extension NetworkManagerGitLab {
                 return Data(base64Encoded: content)
             }
         } catch {
-            print("========== failed to get ProjectImageResponse for: \(String(describing: project.name)) \(id) \(branch)")
             print(error.localizedDescription)
-            print("==========")
         }
 
         return nil
