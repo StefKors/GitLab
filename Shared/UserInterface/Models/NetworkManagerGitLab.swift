@@ -76,16 +76,6 @@ class NetworkManagerGitLab {
     Self.buildQuery(target: "currentUser", type: type)
   }
 
-  /// Return query for a specific user name
-  /// - Parameters:
-  ///   - username: Username to fetch results for
-  ///   - type: QueryType
-  /// - Returns: GraphQL query with MR information
-  static func getQuery(username: String, type: QueryType) -> String {
-    let user = "user(username: \"\(username)\""
-    return Self.buildQuery(target: user, type: type)
-  }
-
   /// Private method to build the GraphQL query based on the user information. Prefer getQuery methods instead
   /// - Parameters:
   ///   - target: target string to fetch results for. Either string should be either `"currentUser"` or `"user(username: \"\(username)\""`
@@ -93,15 +83,6 @@ class NetworkManagerGitLab {
   /// - Returns: GraphQL query with MR information
   fileprivate static func buildQuery(target: String, type: QueryType) -> String {
       "{\n    \"query\": \"{\(target){name \(type.rawValue)(state:opened){edges{node{state id title draft webUrl reference createdAt updatedAt sourceBranch targetBranch labels{edges{node{id description color textColor title}}}targetProject{id name path webUrl avatarUrl namespace{id fullName fullPath}repository{rootRef}group{id name fullName fullPath webUrl}}approvedBy{edges{node{id name username avatarUrl}}}mergeStatusEnum userDiscussionsCount userNotesCount headPipeline{id active status mergeRequestEventType stages{edges{node{id status name jobs{edges{node{id active name status detailedStatus{id detailsPath text label group tooltip icon}}}}}}}}}}}}}\",\n    \"variables\": {}\n}"
-  }
-
-  func branchPushReq(with account: Account) -> Request<GitLab.PushEvents> {
-    Request.init(path: "/v4/events", query: [
-      ("after", getTwoDaysAgoDate()),
-      ("scope", "read_user"),
-      ("action", "pushed"),
-      ("private_token", account.token)
-    ])
   }
 
   func authoredMergeRequestsReq(with account: Account) -> Request<GitLab.GitLabQuery> {
@@ -235,14 +216,6 @@ extension NetworkManagerGitLab {
     dateFormatter.dateFormat = "yyyy-MM-dd"
     // yesterday
     let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
-    return dateFormatter.string(from: date)
-  }
-
-  fileprivate func getTwoDaysAgoDate() -> String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    // two days ago
-    let date = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
     return dateFormatter.string(from: date)
   }
 
