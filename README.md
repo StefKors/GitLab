@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="GitLab/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png" height="128">
-  <img src="GitLab/Assets.xcassets/AppIcon_dev.appiconset/icon_512x512@2x.png" height="124">
-  <img src="GitLab/Assets.xcassets/AppIcon_alt.appiconset/mac1024.png" height="124">
+  <img src="merger-request-logo-iOS-ClearDark-1024@1x.png" height="128">
+  <img src="merger-request-logo-iOS-Default-1024@1x.png" height="124">
+  <img src="merger-request-logo-iOS-TintedLight-1024@1x.png" height="124">
   <h1 align="center">Merger for GitLab and GitHub</h1>
 </p>
 
@@ -45,7 +45,7 @@
   
 This repository contains **Merger**, (also known as GitLab Widget, Merge Requeest for Gitlab) a macOS menu bar widget that shows your latest merge/pull request activity.   
   
-I started this project in 2021 while working at Beam. At the time, our team, like much of the developer community, was frustrated with GitLab’s merge request overview. It was slow, frequently showed stale data, and somehow simply refreshing the page did not update the information. Workarounds such as hard refreshes and clearing the browser cache were the only reliable ways to get up-to-date data. Beyond performance issues, GitLab lacked a clear personal view. Developers couldn’t easily see the merge requests they owned or needed to review, and had to dig through multiple pages to determine the status of their own merge requests. My goal was to design and build an application end-to-end that provided developers a live overview of GitLab merge requests without opening the browser.  
+I started this project in 2021 while working at Beam. At the time, our team, like much of the developer community, was frustrated with GitLab’s merge request overview. It was slow, frequently showed stale data, and somehow simply refreshing the page did not update the information. Workarounds such as hard refreshes and clearing the browser cache were the only reliable ways to get up-to-date data. Beyond performance issues, GitLab lacked a clear personal view. Developers couldn’t easily see the merge requests they owned or needed to review, and had to dig through multiple pages to determine the status of their work. My goal was to design and build an application end-to-end that provided developers **a live overview of GitLab merge requests without opening the browser**.  
 
 The application needed to: 
 
@@ -133,7 +133,7 @@ This was useful for iterating on information hierarchy and ensuring the interfac
   
 ## Some Thoughts on Design  
   
-The biggest product challenge was **information density**. Merge requests have an astonishing number of possible states and statuses ([see](https://gitlab.com/gitlab-org/gitlab/-/work_items/299193)). Attempting to organise all of this information based **primarily on activity state** can quickly become overwhelming. I instead chose to organise by **ownership role**, as I noticed that developers frequently describe MRs relationally, for example "my MRs," "MRs I created," "MRs I authored," "MRs I'm assigned to," and "MRs I need to review”.  
+The biggest product challenge was **information density**. Merge requests have an astonishing number of possible states and statuses ([see](https://gitlab.com/gitlab-org/gitlab/-/work_items/299193)). Attempting to organise all of this information based **primarily on activity state** can quickly become overwhelming. I instead chose to organise by **ownership role**, as I noticed that developers frequently describe MRs **relationally**, for example "my MRs," "MRs I created," "MRs I authored," "MRs I'm assigned to," and "MRs I need to review”.  
   
 Based on conversations with colleagues and my own experience, it additionally became clear that developers prioritised visibility and findability. They needed to understand the status of dozens of merge requests quickly rather than reading through pages of detailed information.  
   
