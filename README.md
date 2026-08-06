@@ -47,7 +47,7 @@ This repository contains **Merger**, (also known as GitLab Widget, Merge Requees
   
 I started this project in 2021 while working at Beam. At the time, our team, like much of the developer community, was frustrated with GitLab’s merge request overview. It was slow, frequently showed stale data, and somehow simply refreshing the page did not update the information. Workarounds such as hard refreshes and clearing the browser cache were the only reliable ways to get up-to-date data. Beyond performance issues, GitLab lacked a clear personal view. Developers couldn’t easily see the merge requests they owned or needed to review, and had to dig through multiple pages to determine the status of their work. My goal was to design and build an application end-to-end that provided developers **a live overview of GitLab merge requests without opening the browser**.  
 
-The application needed to: 
+The application intended to: 
 
 * Provide a live overview of merge requests  
 * Update automatically without user interaction  
@@ -114,16 +114,15 @@ I designed ```UniversalMergeRequest.swift``` as a unified model with:
   
 ### PipelineView.swift 
   
-The ```UPipelineView.swift``` is one of the more interesting UI components (maybe even my favorite?). CI pipelines can contain a lot of information, but the amount of detail users need depends heavily on context.  
+The ```PipelineView.swift``` is one of the more interesting UI components (maybe even my favorite?). CI pipelines can contain a lot of information, but the amount of detail users need depends heavily on context. That means, for example, that when everything succeeds, the pipeline operates as a small visual indicator but when something fails, the interface becomes a tool to provide actionable information.    
 
-  The view:  
+  In more detail, the view:  
   
   * Shows pipeline stages and their status.  
   * Expands a stage to show individual jobs when clicked.  
   * Collapses successful pipelines to reduce visual noise.  
   * Highlights failed stages by exposing more details.
     
-When everything succeeds, the pipeline becomes a small visual indicator. When something fails, the interface expands to provide actionable information.  
   
 ### MainContentView
   
@@ -137,7 +136,7 @@ This was useful for iterating on information hierarchy and ensuring the interfac
   
 The biggest product challenge was **information density**. Merge requests have an astonishing number of possible states and statuses ([see](https://gitlab.com/gitlab-org/gitlab/-/work_items/299193)). Attempting to organise all of this information based **primarily on activity state** can quickly become overwhelming. I instead chose to organise by **ownership role**, as I noticed that developers frequently describe MRs **relationally**, for example "my MRs," "MRs I created," "MRs I authored," "MRs I'm assigned to," and "MRs I need to review”.  
   
-Based on conversations with colleagues and my own experience, it additionally became clear that developers prioritised visibility and findability. They needed to understand the status of dozens of merge requests quickly rather than reading through pages of detailed information.  
+Based on conversations with colleagues and my own experience, it additionally became clear that developers prioritised **visibility** and **findability**. They needed to understand the status of dozens of merge requests quickly rather than reading through pages of detailed information.  
   
 I deliberately constrained each row to roughly two lines of information with only the most important information shown immediately:  
 
@@ -147,7 +146,7 @@ I deliberately constrained each row to roughly two lines of information with onl
   
 Everything else appears progressively through interaction.  
   
-In general, a user only needs detailed CI information when something has failed. When everything succeeds, the information becomes visual noise. I intentionally collapse successful stages to leave room for more important information like approval or comment count.  
+In general, a user only needs detailed CI information when something has failed. When everything succeeds, detailed information can become visual noise. I intentionally collapse successful stages to leave room for more important actionable information like approval or comment count.  
   
 For example:  
 * Successful pipelines collapsed because they no longer require any action for the user  
