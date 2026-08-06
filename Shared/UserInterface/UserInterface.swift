@@ -568,16 +568,6 @@ private final class WidgetTimelineReloader: ObservableObject {
     }
 }
 
-#Preview {
-    HStack(alignment: .top) {
-        UserInterface()
-            .environmentObject(NoticeState())
-            .environmentObject(NetworkState())
-//            .frame(maxHeight: .infinity, alignment: .top)
-        //            .modelContainer(.previews)
-    }
-}
-
 // NotificationManager.shared.sendNotification(
 //    title: title,
 //    subtitle: "\(reference) is approved by \(approvers.formatted())",
