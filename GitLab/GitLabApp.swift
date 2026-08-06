@@ -12,9 +12,11 @@ import OSLog
 class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @AppStorage("Settings.activationPolicy") private var activationPolicy: Bool = false
 
+    @Environment(\.isPreview) private var isPreview
+
     /// Setting desired activation policy (`.regular` or `.accessory`) and showing app's windows
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy ? .regular : .accessory
+        let newActivationPolicy: NSApplication.ActivationPolicy = activationPolicy && !isPreview ? .regular : .accessory
         NSApplication.shared.setActivationPolicy(newActivationPolicy)
     }
 
@@ -41,6 +43,8 @@ struct GitLabApp: App {
     private let startupDatabaseError: String?
 
     static let dbInitLogger = Logger(subsystem: "com.stefkors.gitlab", category: "DatabaseInit")
+
+    @Environment(\.isPreview) private var isPreview
 
     init() {
         var startupError: String?
@@ -89,7 +93,7 @@ struct GitLabApp: App {
         .windowResizability(.contentMinSize)
         .windowIdealSize(.fitToContent)
 
-        MenuBarExtra(content: {
+        MenuBarExtra(isInserted: .constant(!isPreview), content: {
             MenuBarRootView(
                 noticeState: noticeState,
                 networkState: networkState,

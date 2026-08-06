@@ -58,6 +58,10 @@
 		8A111F552CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
 		8A111F562CC1388900DEB0DD /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A111F522CC1388900DEB0DD /* NetworkInfo.swift */; };
 		8A13B85E2A66A3E30090A6D9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A13B85D2A66A3E30090A6D9 /* Credits.rtf */; };
+		8A15401B30247633009DAD5F /* isPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15401A30247633009DAD5F /* isPreview.swift */; };
+		8A15401C30247633009DAD5F /* isPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15401A30247633009DAD5F /* isPreview.swift */; };
+		8A15401D30247633009DAD5F /* isPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15401A30247633009DAD5F /* isPreview.swift */; };
+		8A15401E30247633009DAD5F /* isPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15401A30247633009DAD5F /* isPreview.swift */; };
 		8A31CB3D2866334000C94AC1 /* GitLab_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31CB3C2866334000C94AC1 /* GitLab_iOSApp.swift */; };
 		8A31CB412866334100C94AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB402866334100C94AC1 /* Assets.xcassets */; };
 		8A31CB442866334100C94AC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A31CB432866334100C94AC1 /* Preview Assets.xcassets */; };
@@ -577,6 +581,7 @@
 		8A111F4D2CC1387F00DEB0DD /* NetworkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEvent.swift; sourceTree = "<group>"; };
 		8A111F522CC1388900DEB0DD /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
 		8A13B85D2A66A3E30090A6D9 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		8A15401A30247633009DAD5F /* isPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isPreview.swift; sourceTree = "<group>"; };
 		8A2F5B8A2A54C5BD00C0B52F /* Small Icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Small Icon16.png"; sourceTree = "<group>"; };
 		8A2F5B8B2A54C5BD00C0B52F /* Large Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Large Icon1024.png"; sourceTree = "<group>"; };
 		8A2F5B8C2A54C5BD00C0B52F /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -1268,6 +1273,7 @@
 			isa = PBXGroup;
 			children = (
 				8AFF87EE2BDA713800D21D16 /* IsInWidget.swift */,
+				8A15401A30247633009DAD5F /* isPreview.swift */,
 			);
 			path = EnvironmentValues;
 			sourceTree = "<group>";
@@ -1714,6 +1720,7 @@
 				8AF80D6A2A55817400819B80 /* ApprovedReviewIcon.swift in Sources */,
 				8AFA08132CE4DC75004A2839 /* PreviewEnvironmentView.swift in Sources */,
 				8AC0C20B2A5D3D720096772B /* AccessToken.swift in Sources */,
+				8A15401C30247633009DAD5F /* isPreview.swift in Sources */,
 				8ACBFD402CC280F300A8753B /* WidgetApprovedReviewIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1806,6 +1813,7 @@
 				8A9D878C2BD2736C00E2C0CD /* ProjectLink.swift in Sources */,
 				8AFDAA9A2A84FB26001937AC /* Account.swift in Sources */,
 				8A7935E42A5583E400F8FB6C /* UserInterface.swift in Sources */,
+				8A15401D30247633009DAD5F /* isPreview.swift in Sources */,
 				8A7935E52A5583E400F8FB6C /* BaseTextView.swift in Sources */,
 				8A111F302CC11D3B00DEB0DD /* LaunchpadImage.swift in Sources */,
 				8A7935E62A5583E400F8FB6C /* SettingsView.swift in Sources */,
@@ -1874,6 +1882,7 @@
 				8ABBD2062B7E2E70007C03E6 /* Array+Difference.swift in Sources */,
 				8AC0C20A2A5D3D720096772B /* AccessToken.swift in Sources */,
 				8A111F542CC1388900DEB0DD /* NetworkInfo.swift in Sources */,
+				8A15401B30247633009DAD5F /* isPreview.swift in Sources */,
 				8AF80DB72A55817400819B80 /* MergeRequestLabelView.swift in Sources */,
 				8AE2741F2CC3D3A90059244E /* WidgetMRRowIcon.swift in Sources */,
 				8AF80DCF2A55817400819B80 /* LaunchpadItem.swift in Sources */,
@@ -2100,6 +2109,7 @@
 				8AB969242BDBC25E0078E5CD /* SmallLaunchPadWidgetView.swift in Sources */,
 				8A91E21A2CB7B68900BE51B9 /* UserAvatarView.swift in Sources */,
 				8AE2743C2CC67A530059244E /* IfViewModifier.swift in Sources */,
+				8A15401E30247633009DAD5F /* isPreview.swift in Sources */,
 				8AFA080D2CE4D038004A2839 /* Comparable.swift in Sources */,
 				8AE8A6EF2B989E9A002B3C9E /* DesktopWidgetTool.swift in Sources */,
 				8AE8A6ED2B989E9A002B3C9E /* DesktopWidgetToolBundle.swift in Sources */,
