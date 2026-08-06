@@ -277,12 +277,6 @@ extension UniversalMergeRequest {
     )
 }
 
-// extension MergeRequest: CustomDebugStringConvertible {
-//    var debugDescription: String {
-//        return "MergeRequest(mergerequestID: \(mergerequestID ?? "nil"), title: \(title ?? "nil"))"
-//    }
-// }
-
 struct Approval: Codable, Equatable, Identifiable, Hashable {
     let id: String
     let name: String?
